@@ -1,0 +1,44 @@
+<meta>
+	<script src="System/Core.lua" type="shared"/>
+	<script src="System/Interfaces.lua" type="shared"/>
+	<script src="System/Exception.lua" type="shared"/>
+	<script src="System/Number.lua" type="shared"/>
+	<script src="System/Char.lua" type="shared"/>
+	<script src="System/String.lua" type="shared"/>
+	<script src="System/Boolean.lua" type="shared"/>
+	<script src="System/Delegate.lua" type="shared"/>
+	<script src="System/Enum.lua" type="shared"/>
+	<script src="System/TimeSpan.lua" type="shared"/>
+	<script src="System/DateTime.lua" type="shared"/>
+	<script src="System/Type.lua" type="shared"/>
+	<script src="System/Collections/EqualityComparer.lua" type="shared"/>
+	<script src="System/Collection.lua" type="shared"/>
+	<script src="System/Array.lua" type="shared"/>
+	<script src="System/Collections/List.lua" type="shared"/>
+	<script src="System/Collections/Dictionary.lua" type="shared"/>
+	<script src="System/Collections/Queue.lua" type="shared"/>
+	<script src="System/Collections/Stack.lua" type="shared"/>
+	<script src="System/Collections/HashSet.lua" type="shared"/>
+	<script src="System/Collections/LinkedList.lua" type="shared"/>
+	<script src="System/Collections/Linq.lua" type="shared"/>
+	<script src="System/Convert.lua" type="shared"/>
+	<script src="System/Math.lua" type="shared"/>
+	<script src="System/Random.lua" type="shared"/>
+	<script src="System/Text/StringBuilder.lua" type="shared"/>
+	<script src="System/Console.lua" type="shared"/>
+	<script src="System/IO/File.lua" type="shared"/>
+	<script src="System/Reflection/Assembly.lua" type="shared"/>
+	<script src="System/Threads/Timer.lua" type="shared"/>
+	<script src="System/Threads/Thread.lua" type="shared"/>
+	<script src="System/Threads/Task.lua" type="shared"/>
+	<script src="System/Utilities.lua" type="shared"/>
+
+	<script src="MTA/client.lua" type="client"/>
+	<script src="MTA/server.lua" type="server"/>
+
+	<script src="Resource/dist/Element.lua" type="server"/>
+	<script src="Resource/dist/Program.lua" type="server"/>
+	<script src="Resource/dist/Vehicle.lua" type="server"/>
+	<script src="Resource/dist/Structs.lua" type="server"/>
+	<script src="main.lua" type="server"/>
+</meta>

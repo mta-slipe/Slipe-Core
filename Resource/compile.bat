@@ -1,0 +1,1 @@
+dotnet CSharp.lua.Launcher.dll -s .\src\src -d .\dist -l .\MTACore.dll
