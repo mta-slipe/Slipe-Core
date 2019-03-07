@@ -20,12 +20,12 @@ namespace MTAServerResource
             {
                 vehicles.Add(new Vehicle(VehicleModel.RHINO, new Vector3(i * 15, 0, 3)));
             }
-            vehicles[5].SetRotation(new Vector3(0, 0, 45));
+            vehicles[5].Rotation = new Vector3(0, 0, 45);
 
 
             Dictionary<string, Vehicle> vehicleDictionary = new Dictionary<string, Vehicle>();
             vehicleDictionary["best"] = vehicles[3];
-            vehicleDictionary["best"].SetPosition(new Vector3(0, 0, 20));
+            vehicleDictionary["best"].Position = new Vector3(0, 0, 20);
         }
     }
 }

@@ -9,13 +9,74 @@ namespace MTASharedWrapper
     {
         protected MultiTheftAuto.Element element;
 
-        public bool SetPosition(Vector3 position)
+        public bool Destroy()
         {
-            return Server.SetElementPosition(element, position.x, position.y, position.z, false);
+            return Server.DestroyElement(element);
         }
-        public bool SetRotation(Vector3 rotation)
+
+        public Vector3 Position
         {
-            return Server.SetElementRotation(element, rotation.x, rotation.y, rotation.z, "default", false);
+            get
+            {
+                Tuple<float, float, float> position = Server.GetElementPosition(element);
+                return new Vector3(position.Item1, position.Item2, position.Item3);
+            }
+            set
+            {
+                Server.SetElementPosition(element, value.x, value.y, value.z, false);
+            }
         }
+
+        public Vector3 Rotation
+        {
+            get
+            {
+                Tuple<float, float, float> rotation = Server.GetElementRotation(element, "default");
+                return new Vector3(rotation.Item1, rotation.Item2, rotation.Item3);
+            }
+            set
+            {
+                Server.SetElementRotation(element, value.x, value.y, value.z, "default", false);
+            }
+        }
+
+        public int Dimension
+        {
+            get
+            {
+                return Server.GetElementDimension(element);
+            }
+            set
+            {
+                Server.SetElementDimension(element, value);
+            }
+        }
+
+        public int Interior
+        {
+            get
+            {
+                return Server.GetElementInterior(element);
+            }
+            set
+            {
+                Vector3 position = Position;
+                Server.SetElementInterior(element, value, position.x, position.y, position.z);
+            }
+        }
+
+        public bool Frozen
+        {
+            get
+            {
+                return Server.IsElementFrozen(element);
+            }
+            set
+            {
+                Server.SetElementFrozen(element, value);
+            }
+        }
+
+
     }
 }
