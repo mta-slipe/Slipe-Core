@@ -5,7 +5,7 @@ using MultiTheftAuto;
 
 namespace MTASharedWrapper
 {
-    public class Element
+    public class SharedElement
     {
         protected MultiTheftAuto.Element element;
 
