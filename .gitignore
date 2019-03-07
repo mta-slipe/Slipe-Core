@@ -2,6 +2,7 @@ Symlinks/
 Dist/
 
 Resource/.vs
+.vs/
 
 [Dd]ebug/
 [Dd]ebugPublic/
