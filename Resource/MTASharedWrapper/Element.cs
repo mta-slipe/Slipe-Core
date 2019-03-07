@@ -77,6 +77,53 @@ namespace MTASharedWrapper
             }
         }
 
+        public int Alpha
+        {
+            get
+            {
+                return Server.GetElementAlpha(element);
+            }
+            set
+            {
+                Server.SetElementAlpha(element, value);
+            }
+        }
 
+        public float Health
+        {
+            get
+            {
+                return Server.GetElementHealth(element);
+            }
+            set
+            {
+                Server.SetElementHealth(element, value);
+            }
+        }
+
+        public Vector3 Velocity
+        {
+            get
+            {
+                Tuple<float, float, float> velocity = Server.GetElementVelocity(element);
+                return new Vector3(velocity.Item1, velocity.Item2, velocity.Item3);
+            }
+            set
+            {
+                Server.SetElementVelocity(element, value.x, value.y, value.z);
+            }
+        }
+        
+        public int Model
+        {
+            get
+            {
+                return Server.GetElementModel(element);
+            }
+            set
+            {
+                Server.SetElementModel(element, value);
+            }
+        }
     }
 }
