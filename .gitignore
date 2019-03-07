@@ -1,4 +1,8 @@
-Resource/src/.vs
+Symlinks/
+Dist/
+
+Resource/.vs
+
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/

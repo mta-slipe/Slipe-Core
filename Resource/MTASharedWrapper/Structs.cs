@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace src
+namespace MTASharedWrapper
 {
     public struct Vector3
     {

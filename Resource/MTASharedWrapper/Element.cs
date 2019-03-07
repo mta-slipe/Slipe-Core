@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using MultiTheftAuto;
-using src;
 
-namespace MTAWrapper
+namespace MTASharedWrapper
 {
     public class Element
     {

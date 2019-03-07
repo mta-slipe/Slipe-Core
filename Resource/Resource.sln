@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28621.142
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTASharedWrapper", "MTASharedWrapper\MTASharedWrapper.csproj", "{143219F2-2E16-436D-BFAE-F415CE6D1ACB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTACore", "MTACore\MTACore.csproj", "{861B0D58-6714-4270-88BF-6E88126C81B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTAServerWrapper", "MTAServerWrapper\MTAServerWrapper.csproj", "{C2699992-1877-4522-8BD1-30A573A950C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTAClientWrapper", "MTAClientWrapper\MTAClientWrapper.csproj", "{661AE4AE-A260-4ABA-923A-05C39D9396B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTAServerResource", "MTAServerResource\MTAServerResource.csproj", "{C0F22D0D-3E17-4EDD-8D2F-5598238C7BF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTAClientResource", "MTAClientResource\MTAClientResource.csproj", "{ABE9713E-8B2B-48F4-9156-820A0BDC3285}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resource", "Resource", "{3BAE3D07-C859-4665-B92B-786ECB449FE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{B9532276-8EF2-4275-9570-87EBEA1D4687}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{143219F2-2E16-436D-BFAE-F415CE6D1ACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{143219F2-2E16-436D-BFAE-F415CE6D1ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{143219F2-2E16-436D-BFAE-F415CE6D1ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{143219F2-2E16-436D-BFAE-F415CE6D1ACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{861B0D58-6714-4270-88BF-6E88126C81B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{861B0D58-6714-4270-88BF-6E88126C81B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{861B0D58-6714-4270-88BF-6E88126C81B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{861B0D58-6714-4270-88BF-6E88126C81B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2699992-1877-4522-8BD1-30A573A950C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2699992-1877-4522-8BD1-30A573A950C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2699992-1877-4522-8BD1-30A573A950C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2699992-1877-4522-8BD1-30A573A950C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{661AE4AE-A260-4ABA-923A-05C39D9396B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{661AE4AE-A260-4ABA-923A-05C39D9396B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{661AE4AE-A260-4ABA-923A-05C39D9396B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{661AE4AE-A260-4ABA-923A-05C39D9396B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0F22D0D-3E17-4EDD-8D2F-5598238C7BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0F22D0D-3E17-4EDD-8D2F-5598238C7BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0F22D0D-3E17-4EDD-8D2F-5598238C7BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0F22D0D-3E17-4EDD-8D2F-5598238C7BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABE9713E-8B2B-48F4-9156-820A0BDC3285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABE9713E-8B2B-48F4-9156-820A0BDC3285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABE9713E-8B2B-48F4-9156-820A0BDC3285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABE9713E-8B2B-48F4-9156-820A0BDC3285}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{143219F2-2E16-436D-BFAE-F415CE6D1ACB} = {B9532276-8EF2-4275-9570-87EBEA1D4687}
+		{861B0D58-6714-4270-88BF-6E88126C81B1} = {B9532276-8EF2-4275-9570-87EBEA1D4687}
+		{C2699992-1877-4522-8BD1-30A573A950C8} = {B9532276-8EF2-4275-9570-87EBEA1D4687}
+		{661AE4AE-A260-4ABA-923A-05C39D9396B6} = {B9532276-8EF2-4275-9570-87EBEA1D4687}
+		{C0F22D0D-3E17-4EDD-8D2F-5598238C7BF5} = {3BAE3D07-C859-4665-B92B-786ECB449FE8}
+		{ABE9713E-8B2B-48F4-9156-820A0BDC3285} = {3BAE3D07-C859-4665-B92B-786ECB449FE8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A90CAD4-53BE-4856-8024-F10959030200}
+	EndGlobalSection
+EndGlobal

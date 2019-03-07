@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MTACore\MTACore.csproj" />
+    <ProjectReference Include="..\MTAServerWrapper\MTAServerWrapper.csproj" />
   </ItemGroup>
 
 </Project>

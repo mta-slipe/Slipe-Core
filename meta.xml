@@ -1,4 +1,5 @@
 <meta>
+	<!-- System -->
 	<script src="System/Core.lua" type="shared"/>
 	<script src="System/Interfaces.lua" type="shared"/>
 	<script src="System/Exception.lua" type="shared"/>
@@ -32,13 +33,24 @@
 	<script src="System/Threads/Thread.lua" type="shared"/>
 	<script src="System/Threads/Task.lua" type="shared"/>
 	<script src="System/Utilities.lua" type="shared"/>
-
-	<script src="MTA/client.lua" type="client"/>
+	
+	<!-- server -->
 	<script src="MTA/server.lua" type="server"/>
+	
+	<script src="Dist/Server/MTASharedWrapper/Element.lua" type="shared"/>
+	<script src="Dist/Server/MTASharedWrapper/Vehicle.lua" type="shared"/>
+	<script src="Dist/Server/MTASharedWrapper/Structs.lua" type="shared"/>
 
-	<script src="Resource/dist/Element.lua" type="server"/>
-	<script src="Resource/dist/Program.lua" type="server"/>
-	<script src="Resource/dist/Vehicle.lua" type="server"/>
-	<script src="Resource/dist/Structs.lua" type="server"/>
-	<script src="main.lua" type="server"/>
+	<script src="Dist/Server/MTAServerResource/Program.lua" type="server"/>
+	
+	<script src="Dist/main.server.lua" type="server"/>
+
+	
+
+	<!-- client -->
+	<script src="MTA/client.lua" type="client"/>
+
+
+
+	<script src="Dist/main.client.lua" type="client"/>
 </meta>

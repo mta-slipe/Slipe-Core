@@ -1,0 +1,3 @@
+IF not EXIST ".\Symlinks" call .\symlinks.bat
+dotnet .\Compiler\CSharp.lua.Launcher.dll -s .\Symlinks\Server -d .\Dist\Server -l .\Symlinks\Server\MTAServerResource\bin\Debug\netcoreapp3.0\MTACore.dll;.\Symlinks\Server\MTAServerResource\bin\Debug\netcoreapp3.0\MTASharedWrapper.dll;.\Symlinks\Server\MTAServerResource\bin\Debug\netcoreapp3.0\MTAServerWrapper.dll
+dotnet .\Compiler\CSharp.lua.Launcher.dll -s .\Symlinks\Client -d .\Dist\Client -l .\Symlinks\Client\MTAClientResource\bin\Debug\netcoreapp3.0\MTACore.dll;.\Symlinks\Client\MTAClientResource\bin\Debug\netcoreapp3.0\MTASharedWrapper.dll;.\Symlinks\Client\MTAClientResource\bin\Debug\netcoreapp3.0\MTAClientWrapper.dll

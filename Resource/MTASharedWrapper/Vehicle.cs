@@ -1,12 +1,11 @@
 ﻿using MultiTheftAuto;
-using src;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MTAWrapper
+namespace MTASharedWrapper
 {
-    class Vehicle: Element
+    public class Vehicle: Element
     {
         public Vehicle(VehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1)
         {
