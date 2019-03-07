@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,5 +8,9 @@
   <ItemGroup>
     <ProjectReference Include="..\MTAClientWrapper\MTAClientWrapper.csproj" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="cd ..\..\ &amp;&amp; compile.bat" />
+  </Target>
 
 </Project>

@@ -17,3 +17,5 @@ dotnet .\Compiler\CSharp.lua.Launcher.dll -s .\Symlinks\Client -d .\Dist\Client 
 
 REM update meta
 .\updateMeta.exe 1 > nul 2>&1
+
+exit 0;
