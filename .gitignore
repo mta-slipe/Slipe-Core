@@ -1,5 +1,6 @@
 Symlinks/
-Dist/
+Dist/Server
+Dist/Client
 meta.xml
 
 .vs/
