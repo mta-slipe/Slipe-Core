@@ -125,5 +125,15 @@ namespace MTASharedWrapper
                 Shared.SetElementModel(element, value);
             }
         }
+
+        public bool AttachTo(SharedElement element, Vector3 offset, Vector3 rotationOffset)
+        {
+            return Shared.AttachElements(this.element, element.element, offset.x, offset.y, offset.z, rotationOffset.x, rotationOffset.y, rotationOffset.z);
+        }
+
+        public bool AttachTo(SharedElement element, Vector3 offset)
+        {
+            return AttachTo(element, offset, new Vector3(0, 0, 0));
+        }
     }
 }

@@ -15,7 +15,6 @@ namespace MTAServerResource
 
         public Program()
         {
-
             List<Vehicle> vehicles = new List<Vehicle>(); ;
             for (int i = 0; i < 10; i++)
             {
@@ -23,6 +22,11 @@ namespace MTAServerResource
             }
             vehicles[5].Rotation = new Vector3(0, 0, 45);
 
+            ServerObject dildo = new ServerObject(321, new Vector3(3, 3, 3));
+            dildo.Scale = new Vector3(3, 3, 3);
+            dildo.Move(5000, new Vector3(3, 3, 10));
+
+            vehicles[4].AttachTo(dildo, new Vector3(0, 0, 3));
 
             Dictionary<string, Vehicle> vehicleDictionary = new Dictionary<string, Vehicle>();
             vehicleDictionary["best"] = vehicles[3];

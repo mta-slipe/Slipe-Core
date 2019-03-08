@@ -43,6 +43,8 @@
         <script src="MTA/client.lua" type="client"/>
         <script src="MTA/server.lua" type="server"/>
         <script src="MTA/shared.lua" type="shared"/>
+
+        <script src="Dist/Client/manifest.lua" type="client"/>
     </scripts>
 
     <folders>
