@@ -39,12 +39,13 @@
         <script src="System/Threads/Thread.lua" type="shared"/>
         <script src="System/Threads/Task.lua" type="shared"/>
         <script src="System/Utilities.lua" type="shared"/>
+
+        <script src="MTA/client.lua" type="client"/>
+        <script src="MTA/server.lua" type="server"/>
+        <script src="MTA/shared.lua" type="shared"/>
     </scripts>
 
     <folders>
-        <folder path="MTA" type="script" script-type="shared"></folder>
-
-
         <folder path="Dist/Server/MTASharedWrapper" type="script" script-type="server"></folder>
         <folder path="Dist/Server/MTAServerWrapper" type="script" script-type="server"></folder>
         <folder path="Dist/Server/MTAServerResource" type="script" script-type="server"></folder>

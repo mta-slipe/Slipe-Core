@@ -11,19 +11,19 @@ namespace MTASharedWrapper
 
         public bool Destroy()
         {
-            return Server.DestroyElement(element);
+            return Shared.DestroyElement(element);
         }
 
         public Vector3 Position
         {
             get
             {
-                Tuple<float, float, float> position = Server.GetElementPosition(element);
+                Tuple<float, float, float> position = Shared.GetElementPosition(element);
                 return new Vector3(position.Item1, position.Item2, position.Item3);
             }
             set
             {
-                Server.SetElementPosition(element, value.x, value.y, value.z, false);
+                Shared.SetElementPosition(element, value.x, value.y, value.z, false);
             }
         }
 
@@ -31,12 +31,12 @@ namespace MTASharedWrapper
         {
             get
             {
-                Tuple<float, float, float> rotation = Server.GetElementRotation(element, "default");
+                Tuple<float, float, float> rotation = Shared.GetElementRotation(element, "default");
                 return new Vector3(rotation.Item1, rotation.Item2, rotation.Item3);
             }
             set
             {
-                Server.SetElementRotation(element, value.x, value.y, value.z, "default", false);
+                Shared.SetElementRotation(element, value.x, value.y, value.z, "default", false);
             }
         }
 
@@ -44,11 +44,11 @@ namespace MTASharedWrapper
         {
             get
             {
-                return Server.GetElementDimension(element);
+                return Shared.GetElementDimension(element);
             }
             set
             {
-                Server.SetElementDimension(element, value);
+                Shared.SetElementDimension(element, value);
             }
         }
 
@@ -56,12 +56,12 @@ namespace MTASharedWrapper
         {
             get
             {
-                return Server.GetElementInterior(element);
+                return Shared.GetElementInterior(element);
             }
             set
             {
                 Vector3 position = Position;
-                Server.SetElementInterior(element, value, position.x, position.y, position.z);
+                Shared.SetElementInterior(element, value, position.x, position.y, position.z);
             }
         }
 
@@ -69,11 +69,11 @@ namespace MTASharedWrapper
         {
             get
             {
-                return Server.IsElementFrozen(element);
+                return Shared.IsElementFrozen(element);
             }
             set
             {
-                Server.SetElementFrozen(element, value);
+                Shared.SetElementFrozen(element, value);
             }
         }
 
@@ -81,11 +81,11 @@ namespace MTASharedWrapper
         {
             get
             {
-                return Server.GetElementAlpha(element);
+                return Shared.GetElementAlpha(element);
             }
             set
             {
-                Server.SetElementAlpha(element, value);
+                Shared.SetElementAlpha(element, value);
             }
         }
 
@@ -93,11 +93,11 @@ namespace MTASharedWrapper
         {
             get
             {
-                return Server.GetElementHealth(element);
+                return Shared.GetElementHealth(element);
             }
             set
             {
-                Server.SetElementHealth(element, value);
+                Shared.SetElementHealth(element, value);
             }
         }
 
@@ -105,12 +105,12 @@ namespace MTASharedWrapper
         {
             get
             {
-                Tuple<float, float, float> velocity = Server.GetElementVelocity(element);
+                Tuple<float, float, float> velocity = Shared.GetElementVelocity(element);
                 return new Vector3(velocity.Item1, velocity.Item2, velocity.Item3);
             }
             set
             {
-                Server.SetElementVelocity(element, value.x, value.y, value.z);
+                Shared.SetElementVelocity(element, value.x, value.y, value.z);
             }
         }
         
@@ -118,11 +118,11 @@ namespace MTASharedWrapper
         {
             get
             {
-                return Server.GetElementModel(element);
+                return Shared.GetElementModel(element);
             }
             set
             {
-                Server.SetElementModel(element, value);
+                Shared.SetElementModel(element, value);
             }
         }
     }

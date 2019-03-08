@@ -7,15 +7,15 @@ namespace MTASharedWrapper
 {
     public class SharedPlayer: SharedElement
     {
-        public string Name
+        public virtual string Name
         {
             get
             {
-                return Server.GetPlayerName(element);
+                return Shared.GetPlayerName(element);
             }
             set
             {
-                Server.SetPlayerName(element, value);
+                throw new NotImplementedException();
             }
         }
     }
