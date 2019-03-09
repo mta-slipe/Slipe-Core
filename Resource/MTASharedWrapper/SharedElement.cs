@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MTASharedWrapper.CollisionShapes;
 using MultiTheftAuto;
 
 namespace MTASharedWrapper
@@ -131,10 +132,10 @@ namespace MTASharedWrapper
             }
         }
 
-        public SharedCollisionShape CollisionShape {
+        public CollisionShape CollisionShape {
             get
             {
-                return (SharedCollisionShape) SharedElementManager.Instance.GetElement(Shared.GetElementColShape(element));
+                return (CollisionShape) SharedElementManager.Instance.GetElement(Shared.GetElementColShape(element));
             }
         }
 
