@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MTAClientWrapper
 {
-    public class ClientObject: SharedObject
+    public class MTAObject : SharedObject 
     {
         public float Mass
         {
@@ -39,11 +39,11 @@ namespace MTAClientWrapper
                 Client.ToggleObjectRespawn(element, value);
             }
         }
-        public ClientObject(int model, Vector3 position) : base(model, position)
+        public MTAObject(int model, Vector3 position) : base(model, position)
         {
         }
 
-        public ClientObject(int model, Vector3 position, Vector3 rotation, bool isLowLOD = false) : base(model, position, rotation, isLowLOD)
+        public MTAObject(int model, Vector3 position, Vector3 rotation, bool isLowLOD = false) : base(model, position, rotation, isLowLOD)
         {
         }
 

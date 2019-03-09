@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MTASharedWrapper
 {
-    public class SharedObject: SharedElement
+    public class SharedObject : SharedElement
     {
         public Vector3 Scale
         {

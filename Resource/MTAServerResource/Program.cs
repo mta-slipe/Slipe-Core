@@ -23,7 +23,7 @@ namespace MTAServerResource
             }
             vehicles[5].Rotation = new Vector3(0, 0, 45);
 
-            ServerObject dildo = new ServerObject(321, new Vector3(3, 3, 3));
+            MTAObject dildo = new MTAObject(321, new Vector3(3, 3, 3));
             dildo.Scale = new Vector3(3, 3, 3);
             dildo.Move(5000, new Vector3(3, 3, 10));
 
