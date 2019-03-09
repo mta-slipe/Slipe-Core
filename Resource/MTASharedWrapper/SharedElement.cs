@@ -7,11 +7,19 @@ namespace MTASharedWrapper
 {
     public class SharedElement
     {
-        protected MultiTheftAuto.Element element;
+        protected Element element;
 
         public bool Destroy()
         {
             return Shared.DestroyElement(element);
+        }
+
+        public Element MTAElement
+        {
+            get
+            {
+                return element;
+            }
         }
 
         public Vector3 Position
@@ -126,6 +134,16 @@ namespace MTASharedWrapper
             }
         }
 
+        public SharedElement()
+        {
+        }
+
+        public SharedElement(Element mtaElement)
+        {
+            element = mtaElement;
+            SharedElementManager.Instance.RegisterElement(this);
+        }
+
         public bool AttachTo(SharedElement element, Vector3 offset, Vector3 rotationOffset)
         {
             return Shared.AttachElements(this.element, element.element, offset.x, offset.y, offset.z, rotationOffset.x, rotationOffset.y, rotationOffset.z);
@@ -134,6 +152,15 @@ namespace MTASharedWrapper
         public bool AttachTo(SharedElement element, Vector3 offset)
         {
             return AttachTo(element, offset, new Vector3(0, 0, 0));
+        }
+
+        public void AddEventHandler(string eventName, bool propagated = true, string priorty = "normal") {
+            SharedElementManager.Instance.AddEventHandler(this, eventName, propagated, priorty);
+        }
+
+        public virtual void HandleEvent(string eventName, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        {
+            Console.WriteLine(eventName + " has been triggered");
         }
     }
 }

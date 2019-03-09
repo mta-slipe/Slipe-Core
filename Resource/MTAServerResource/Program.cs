@@ -1,5 +1,6 @@
 ﻿using MTAServerWrapper;
 using MTASharedWrapper;
+using MultiTheftAuto;
 using System;
 using System.Collections.Generic;
 
@@ -31,6 +32,15 @@ namespace MTAServerResource
             Dictionary<string, Vehicle> vehicleDictionary = new Dictionary<string, Vehicle>();
             vehicleDictionary["best"] = vehicles[3];
             vehicleDictionary["best"].Position = new Vector3(0, 0, 20);
+
+
+            Vehicle alpha = new Vehicle(VehicleModel.ALPHA, new Vector3(0, 10, 3));
+
+            alpha.AddEventHandler("onVehicleDamage");
+            alpha.OnDamage += (float loss) =>
+            {
+                Console.WriteLine("Vehicle lost " + loss +" health");
+            };
         }
     }
 }

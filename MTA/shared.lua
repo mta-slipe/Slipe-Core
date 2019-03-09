@@ -72,7 +72,7 @@ System.define("MultiTheftAuto.Shared", {
 	SetElementRotation = setElementRotation,
 	SetElementHealth = setElementHealth,
 	SetElementPosition = setElementPosition,
-	AddEventHandler = function(event, source, handlerName, delegate, priorty) local splits = split(handlerName, ".") local result = _G for _, split in ipairs(splits) do result = result[split] end addEventHandler(event, source, result, delegate, priorty) end,
+	AddEventHandler = function(event, source, handlerName, delegate, priorty) local splits = split(handlerName, ".") local result = _G for _, split in ipairs(splits) do result = result[split] end addEventHandler(event, source, function(...) result(event, source, ...) end, delegate, priorty) end,
 	AddEvent = addEvent,
 	SetLowLODElement = setLowLODElement,
 	SetElementVelocity = setElementVelocity,

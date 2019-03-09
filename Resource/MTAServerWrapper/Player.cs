@@ -8,6 +8,9 @@ namespace MTAServerWrapper
 {
     class Player: SharedPlayer
     {
+        public Player(MultiTheftAuto.Element mtaElement) : base(mtaElement)
+        {
+        }
 
         public int WantedLevel
         {
