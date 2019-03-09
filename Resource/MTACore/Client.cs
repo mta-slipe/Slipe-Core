@@ -105,7 +105,7 @@ namespace MultiTheftAuto {
 		public static bool IsBrowserLoading (Element webBrowser){ throw new NotImplementedException(); }
 		public static bool NavigateBrowserForward (Element webBrowser){ throw new NotImplementedException(); }
 		public static bool ReloadBrowserPage (Element webBrowser){ throw new NotImplementedException(); }
-		public static bool RequestBrowserDomains (dynamic pages, bool parseAsURL, dynamic callback){ throw new NotImplementedException(); }
+		public static bool RequestBrowserDomains (dynamic pages, bool parseAsURL, Action<bool, string[]> callback){ throw new NotImplementedException(); }
 		public static bool ResizeBrowser (Element webBrowser, float width, float height){ throw new NotImplementedException(); }
 		public static bool SetBrowserProperty (Element theBrowser, string key, string value){ throw new NotImplementedException(); }
 		public static bool SetBrowserVolume (Element webBrowser, float volume){ throw new NotImplementedException(); }

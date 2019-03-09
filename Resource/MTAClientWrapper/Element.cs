@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MTAClientWrapper
 {
-    class Element: SharedElement
+    public class Element: SharedElement
     {
     }
 }

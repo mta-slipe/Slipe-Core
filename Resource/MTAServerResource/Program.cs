@@ -1,6 +1,5 @@
 ﻿using MTAServerWrapper;
 using MTASharedWrapper;
-using MultiTheftAuto;
 using System;
 using System.Collections.Generic;
 
@@ -19,7 +18,8 @@ namespace MTAServerResource
             List<Vehicle> vehicles = new List<Vehicle>(); ;
             for (int i = 0; i < 10; i++)
             {
-                vehicles.Add(new Vehicle(VehicleModel.RHINO, new Vector3(i * 15, 0, 3)));
+                Vehicle rhino = new Vehicle(VehicleModel.RHINO, new Vector3(i * 15, 0, 3));
+                vehicles.Add(rhino);
             }
             vehicles[5].Rotation = new Vector3(0, 0, 45);
 
@@ -32,11 +32,14 @@ namespace MTAServerResource
             Dictionary<string, Vehicle> vehicleDictionary = new Dictionary<string, Vehicle>();
             vehicleDictionary["best"] = vehicles[3];
             vehicleDictionary["best"].Position = new Vector3(0, 0, 20);
+            vehicleDictionary["best"].Frozen = true;
 
 
             Vehicle alpha = new Vehicle(VehicleModel.ALPHA, new Vector3(0, 10, 3));
 
-            alpha.AddEventHandler("onVehicleDamage");
+            Element.Root.AddEventHandler("onVehicleDamage");
+
+            // alpha.AddEventHandler("onVehicleDamage");
             alpha.OnDamage += (float loss) =>
             {
                 Console.WriteLine("Vehicle lost " + loss +" health");

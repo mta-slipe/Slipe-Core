@@ -23,6 +23,7 @@ namespace MTASharedWrapper
         public SharedObject(int model, Vector3 position, Vector3 rotation, bool isLowLOD = false)
         {
             this.element = Shared.CreateObject(model, position.x, position.y, position.z, rotation.x, rotation.y, rotation.z, isLowLOD);
+            SharedElementManager.Instance.RegisterElement(this);
         }
 
         public SharedObject(int model, Vector3 position): this(model, position, new Vector3(0, 0, 0))

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MTAServerWrapper
 {
-    class Player: SharedPlayer
+    public class Player: SharedPlayer
     {
         public Player(MultiTheftAuto.Element mtaElement) : base(mtaElement)
         {

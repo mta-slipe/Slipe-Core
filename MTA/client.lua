@@ -102,7 +102,11 @@ System.define("MultiTheftAuto.Client", {
 	IsBrowserLoading = isBrowserLoading,
 	NavigateBrowserForward = navigateBrowserForward,
 	ReloadBrowserPage = reloadBrowserPage,
-	RequestBrowserDomains = requestBrowserDomains,
+	RequestBrowserDomains = function(domains, url, callback)
+		requestBrowserDomains(domains, url, function (wasAccepted)
+			callback(wasAccepted, domains)
+		end)
+	end,
 	ResizeBrowser = resizeBrowser,
 	SetBrowserProperty = setBrowserProperty,
 	SetBrowserVolume = setBrowserVolume,

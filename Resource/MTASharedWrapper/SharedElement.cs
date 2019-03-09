@@ -9,10 +9,7 @@ namespace MTASharedWrapper
     {
         protected Element element;
 
-        public bool Destroy()
-        {
-            return Shared.DestroyElement(element);
-        }
+        public static SharedElement Root { get { return SharedElementManager.Instance.Root; } }
 
         public Element MTAElement
         {
@@ -134,6 +131,8 @@ namespace MTASharedWrapper
             }
         }
 
+        public string Type { get { return Shared.GetElementType(element); } }
+
         public SharedElement()
         {
         }
@@ -142,6 +141,11 @@ namespace MTASharedWrapper
         {
             element = mtaElement;
             SharedElementManager.Instance.RegisterElement(this);
+        }
+
+        public bool Destroy()
+        {
+            return Shared.DestroyElement(element);
         }
 
         public bool AttachTo(SharedElement element, Vector3 offset, Vector3 rotationOffset)
@@ -158,9 +162,17 @@ namespace MTASharedWrapper
             SharedElementManager.Instance.AddEventHandler(this, eventName, propagated, priorty);
         }
 
-        public virtual void HandleEvent(string eventName, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public virtual void HandleEvent(string eventName, Element source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             Console.WriteLine(eventName + " has been triggered");
+
+            if (this == Root)
+            {
+                OnRootEvent?.Invoke(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
+            }
         }
+
+        public delegate void OnRootEventHandler(string eventName, Element source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8);
+        public static event OnRootEventHandler OnRootEvent;
     }
 }
