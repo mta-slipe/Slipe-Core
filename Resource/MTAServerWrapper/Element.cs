@@ -23,7 +23,15 @@ namespace MTAServerWrapper
                 return elements;
             }
 
-            dynamic mtaElements = Server.GetElementsByType(ElementTypeNames[typeof(T)], null);
+            List<dynamic> mtaElements = Shared.GetListFromTable(Server.GetElementsByType(ElementTypeNames[typeof(T)], null));
+            foreach(dynamic mtaElement in mtaElements)
+            {
+                SharedElement element = SharedElementManager.Instance.GetElement((MultiTheftAuto.Element)mtaElement);
+                if (element != null && element is T)
+                {
+                    elements.Add((T) element);
+                }
+            }
 
             return elements;
         }

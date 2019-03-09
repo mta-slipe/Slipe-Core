@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MTASharedWrapper
+namespace MTASharedWrapper.Enums
 {
     public enum VehicleModel
     {

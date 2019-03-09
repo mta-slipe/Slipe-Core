@@ -36,7 +36,7 @@ namespace MTAClientResource
             //        };
             //    };
             //    Browser.RequestDomain("nanobob.net", false);
-            };
+            //};
         }
     }
 }

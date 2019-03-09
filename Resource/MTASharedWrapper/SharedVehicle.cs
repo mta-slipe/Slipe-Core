@@ -1,4 +1,5 @@
-﻿using MultiTheftAuto;
+﻿using MTASharedWrapper.Enums;
+using MultiTheftAuto;
 using System;
 using System.Collections.Generic;
 using System.Text;

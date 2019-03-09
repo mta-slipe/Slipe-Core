@@ -131,6 +131,13 @@ namespace MTASharedWrapper
             }
         }
 
+        public SharedCollisionShape CollisionShape {
+            get
+            {
+                return (SharedCollisionShape) SharedElementManager.Instance.GetElement(Shared.GetElementColShape(element));
+            }
+        }
+
         public string Type { get { return Shared.GetElementType(element); } }
 
         public SharedElement()

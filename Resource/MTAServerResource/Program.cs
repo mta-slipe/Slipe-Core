@@ -1,5 +1,6 @@
 ﻿using MTAServerWrapper;
 using MTASharedWrapper;
+using MTASharedWrapper.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -33,6 +34,11 @@ namespace MTAServerResource
             vehicleDictionary["best"] = vehicles[3];
             vehicleDictionary["best"].Position = new Vector3(0, 0, 20);
             vehicleDictionary["best"].Frozen = true;
+
+            foreach (Vehicle vehicle in Element.GetByType<Vehicle>())
+            {
+                vehicle.Rotation = new Vector3(0, 0, 90);
+            }
 
 
             Vehicle alpha = new Vehicle(VehicleModel.ALPHA, new Vector3(0, 10, 3));

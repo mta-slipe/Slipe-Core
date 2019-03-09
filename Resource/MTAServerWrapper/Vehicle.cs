@@ -1,4 +1,5 @@
 ﻿using MTASharedWrapper;
+using MTASharedWrapper.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,7 +17,7 @@ namespace MTAServerWrapper
         {
         }
 
-        public override void HandleEvent(string eventName, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public override void HandleEvent(string eventName, MultiTheftAuto.Element element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             switch (eventName)
             {
