@@ -18,6 +18,8 @@ namespace MTAServerResource
             Console.WriteLine(result.X);
             Console.WriteLine(result2.X);
             Console.WriteLine("Hello World");
+            string asdf = "asdf";
+            Console.WriteLine(asdf[2]); // will print d ?
             new Program();
         }
 
