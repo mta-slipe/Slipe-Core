@@ -11,10 +11,12 @@ namespace MTAServerResource
     {
         static void Main(string[] args)
         {
-            Vector3 v3 = new Vector3(4, 5, 6);
-            Vector3 v6 = new Vector3(1, 2, 3);
-            Console.WriteLine(v3.X);
-            Console.WriteLine(v6.Y);
+            Vector3 v3 = new Vector3(5);
+            Vector3 v4 = new Vector3(3);
+            Vector3 result = Vector3.Add(v3, v4);
+            Vector3 result2 = v3 + v4;
+            Console.WriteLine(result.X);
+            Console.WriteLine(result2.X);
             Console.WriteLine("Hello World");
             new Program();
         }
