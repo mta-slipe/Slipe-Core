@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Numerics;
 
 namespace MTASharedWrapper.CollisionShapes
 {
@@ -11,7 +12,7 @@ namespace MTASharedWrapper.CollisionShapes
         
         public bool IsInside(Vector3 position)
         {
-            return Shared.IsInsideColShape(element, position.x, position.y, position.z);
+            return Shared.IsInsideColShape(element, position.X, position.Y, position.Z);
         }
 
         public bool IsElementWithin(SharedElement element)

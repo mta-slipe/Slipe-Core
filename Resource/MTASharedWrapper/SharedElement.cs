@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MTASharedWrapper.CollisionShapes;
 using MultiTheftAuto;
+using System.Numerics;
 
 namespace MTASharedWrapper
 {
@@ -29,7 +30,7 @@ namespace MTASharedWrapper
             }
             set
             {
-                Shared.SetElementPosition(element, value.x, value.y, value.z, false);
+                Shared.SetElementPosition(element, value.X, value.Y, value.Z, false);
             }
         }
 
@@ -42,7 +43,7 @@ namespace MTASharedWrapper
             }
             set
             {
-                Shared.SetElementRotation(element, value.x, value.y, value.z, "default", false);
+                Shared.SetElementRotation(element, value.X, value.Y, value.Z, "default", false);
             }
         }
 
@@ -67,7 +68,7 @@ namespace MTASharedWrapper
             set
             {
                 Vector3 position = Position;
-                Shared.SetElementInterior(element, value, position.x, position.y, position.z);
+                Shared.SetElementInterior(element, value, position.X, position.Y, position.Z);
             }
         }
 
@@ -116,7 +117,7 @@ namespace MTASharedWrapper
             }
             set
             {
-                Shared.SetElementVelocity(element, value.x, value.y, value.z);
+                Shared.SetElementVelocity(element, value.X, value.Y, value.Z);
             }
         }
         
@@ -158,7 +159,7 @@ namespace MTASharedWrapper
 
         public bool AttachTo(SharedElement element, Vector3 offset, Vector3 rotationOffset)
         {
-            return Shared.AttachElements(this.element, element.element, offset.x, offset.y, offset.z, rotationOffset.x, rotationOffset.y, rotationOffset.z);
+            return Shared.AttachElements(this.element, element.element, offset.X, offset.Y, offset.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z);
         }
 
         public bool AttachTo(SharedElement element, Vector3 offset)

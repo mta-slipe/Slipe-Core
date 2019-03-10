@@ -3,6 +3,7 @@ using MultiTheftAuto;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Numerics;
 
 namespace MTAServerWrapper
 {
@@ -35,7 +36,7 @@ namespace MTAServerWrapper
         public void Spawn(Vector3 position, int rotation = 0, int skin = 0, int interior = 0, int dimension = 0)
         {
             //TODO: Add team parameter
-            Server.SpawnPlayer(element, position.x, position.y, position.z, rotation, skin, interior, dimension, null);
+            Server.SpawnPlayer(element, position.X, position.Y, position.Z, rotation, skin, interior, dimension, null);
         }
     }
 }
