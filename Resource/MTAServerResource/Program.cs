@@ -3,6 +3,7 @@ using MTASharedWrapper;
 using MTASharedWrapper.Enums;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Numerics;
 
 namespace MTAServerResource
@@ -59,6 +60,8 @@ namespace MTAServerResource
             {
                 Console.WriteLine("Vehicle lost " + loss +" health");
             };
+
+            Console.WriteLine(File.ReadAllText("meta.xml"));
         }
     }
 }

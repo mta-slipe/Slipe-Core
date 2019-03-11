@@ -11,7 +11,7 @@ namespace MTASharedWrapper.CollisionShapes
         public CollisionCircle(Vector2 position, float radius)
         {
             element = Shared.CreateColCircle(position.X, position.Y, radius);
-            SharedElementManager.Instance.RegisterElement(this);
+            ElementManager.Instance.RegisterElement(this);
         }
     }
 }

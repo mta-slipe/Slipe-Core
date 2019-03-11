@@ -27,7 +27,7 @@ namespace MTAServerWrapper
             List<dynamic> mtaElements = Shared.GetListFromTable(Server.GetElementsByType(ElementTypeNames[typeof(T)], null));
             foreach (dynamic mtaElement in mtaElements)
             {
-                Element element = SharedElementManager.Instance.GetElement((MTAElement)mtaElement);
+                Element element = ElementManager.Instance.GetElement((MTAElement)mtaElement);
                 if (element != null && element is T)
                 {
                     elements.Add((T)element);

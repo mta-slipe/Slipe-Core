@@ -11,7 +11,7 @@ namespace MTASharedWrapper.CollisionShapes
         public CollisionRectangle(Vector2 position, float width, float height)
         {
             element = Shared.CreateColRectangle(position.X, position.Y, width, height);
-            SharedElementManager.Instance.RegisterElement(this);
+            ElementManager.Instance.RegisterElement(this);
         }
     }
 }

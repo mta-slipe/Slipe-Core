@@ -29,37 +29,57 @@ local IOException = define("System.IO.IOException", {
 
 local File = {}
 
-local function openFile(path, mode)
-end
-
-local function readAll(path, mode)
-end
-
 function File.ReadAllBytes(path)
+  local file = fileOpen(path, true)
+  local contents = fileRead(file, fileGetSize(file))
+  fileClose(file)
+  return contents
 end
 
 function File.ReadAllText(path)
+  local file = fileOpen(path, true)
+  local contents = fileRead(file, fileGetSize(file))
+  fileClose(file)
+  return contents
 end
 
 function File.ReadAllLines(path)
-end
-
-local function writeAll(path, contents, mode)
+  local file = fileOpen(path, true)
+  local contents = fileRead(file, fileGetSize(file))
+  fileClose(file)
+  return System.arrayFromTable(split(contents, "\n"))
 end
 
 function File.WriteWriteAllBytes(path, contents)
+  local file = fileOpen(path)
+  fileWrite(file, contents)
+  fileClose(path)
 end
 
 function File.WriteAllText(path, contents)
+  local file = fileOpen(path)
+  fileWrite(file, contents)
+  fileClose(path)
 end
 
 function File.WriteAllLines(path, contents)
+  local file = fileOpen(path)
+  for _, line in each(contents) do
+    if line == nil then
+      fileWrite(file, "\n")
+    else
+      fileWrite(file, line .. "\n")
+    end
+  end
+  fileClose(file)
 end
 
 function File.Exists(path)
+  return fileExists(path)
 end
 
 function File.Delete(path)
+  return fileDelete(path)
 end
 
 define("System.IO.File", File)

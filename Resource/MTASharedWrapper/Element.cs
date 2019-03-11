@@ -11,7 +11,7 @@ namespace MTASharedWrapper
     {
         protected MTAElement element;
 
-        public static Element Root { get { return SharedElementManager.Instance.Root; } }
+        public static Element Root { get { return ElementManager.Instance.Root; } }
 
         public MTAElement MTAElement
         {
@@ -136,7 +136,7 @@ namespace MTASharedWrapper
         public CollisionShape CollisionShape {
             get
             {
-                return (CollisionShape) SharedElementManager.Instance.GetElement(Shared.GetElementColShape(element));
+                return (CollisionShape) ElementManager.Instance.GetElement(Shared.GetElementColShape(element));
             }
         }
 
@@ -149,7 +149,7 @@ namespace MTASharedWrapper
         public Element(MTAElement mtaElement)
         {
             element = mtaElement;
-            SharedElementManager.Instance.RegisterElement(this);
+            ElementManager.Instance.RegisterElement(this);
         }
 
         public bool Destroy()
@@ -168,7 +168,7 @@ namespace MTASharedWrapper
         }
 
         public void AddEventHandler(string eventName, bool propagated = true, string priorty = "normal") {
-            SharedElementManager.Instance.AddEventHandler(this, eventName, propagated, priorty);
+            ElementManager.Instance.AddEventHandler(this, eventName, propagated, priorty);
         }
 
         public virtual void HandleEvent(string eventName, MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
