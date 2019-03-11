@@ -2,14 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Numerics;
 
 namespace MTASharedWrapper.CollisionShapes
 {
     public class CollisionTube: CollisionShape
     {
-        public CollisionTube(float x, float y, float z, float radius, float height)
+        public CollisionTube(Vector3 position, float radius, float height)
         {
-            element = Shared.CreateColTube(x, y, z, radius, height);
+            element = Shared.CreateColTube(position.X, position.Y, position.Z, radius, height);
             SharedElementManager.Instance.RegisterElement(this);
         }
     }

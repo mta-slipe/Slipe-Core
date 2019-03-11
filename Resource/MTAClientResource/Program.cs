@@ -1,6 +1,7 @@
 ﻿using MTAClientWrapper;
 using MTAClientWrapper.Javascript;
 using System;
+using System.Numerics;
 
 namespace MTAClientResource
 {
@@ -17,7 +18,7 @@ namespace MTAClientResource
 
         public Program()
         {
-            guiBrowser = new GUIBrowser(0, 0, 1, 1, false, true, true);
+            guiBrowser = new GUIBrowser(Vector2.Zero, 1, 1, false, true, true);
             browser = guiBrowser.Browser;
 
             Browser.OnDomainRequestAccepted += OnDomainRequestAccepted;
