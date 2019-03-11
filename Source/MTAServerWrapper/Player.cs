@@ -7,11 +7,14 @@ using System.Numerics;
 
 namespace MTAServerWrapper
 {
-    public class Player: SharedPlayer
+    public class Player : SharedPlayer
     {
         public Player(MultiTheftAuto.MTAElement mtaElement) : base(mtaElement)
         {
+            Camera = new Camera(this);
         }
+
+        public Camera Camera { get; }
 
         public int WantedLevel
         {

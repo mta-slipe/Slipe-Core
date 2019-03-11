@@ -1,6 +1,7 @@
 ﻿using MTAServerWrapper;
 using MTASharedWrapper;
 using MTASharedWrapper.Enums;
+using MultiTheftAuto;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -68,6 +69,9 @@ namespace MTAServerResource
             alpha.OnDamage += (float loss) =>
             {
                 Console.WriteLine("Vehicle lost " + loss +" health");
+
+                //Player player = new Player(Server.GetRandomPlayer());
+                //player.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
             };
 
             // Console.WriteLine(File.ReadAllText("meta.xml"));

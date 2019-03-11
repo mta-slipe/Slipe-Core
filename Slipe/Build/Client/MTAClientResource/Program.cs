@@ -10,7 +10,7 @@ namespace MTAClientResource
         static void Main(string[] args)
         {
             Console.WriteLine("Hello Client!");
-            new Program();
+            // new Program();
         }
 
         private GUIBrowser guiBrowser;
