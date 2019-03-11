@@ -1,5 +1,3 @@
--- TODO: Decompose is unsafe, not added yet.
-
 local System = System
 local SystemNumerics = System.Numerics
 
@@ -1551,8 +1549,48 @@ Matrix4x4.GetHashCode = function (this)
     return this.M11:GetHashCode() + this.M12:GetHashCode() + this.M13:GetHashCode() + this.M14:GetHashCode() + this.M21:GetHashCode() + this.M22:GetHashCode() + this.M23:GetHashCode() + this.M24:GetHashCode() + this.M31:GetHashCode() + this.M32:GetHashCode() + this.M33:GetHashCode() + this.M34:GetHashCode() + this.M41:GetHashCode() + this.M42:GetHashCode() + this.M43:GetHashCode() + this.M44:GetHashCode()
 end
 
+-- https://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati
+-- It appears that this function is not complete, as it appears by the comments
+-- Improvement is welcome
 Matrix4x4.Decompose = function(matrix, scale, rotation, translation)
-    throw(NotImplementedException("Matrix4x4.Decompose is not yet implemented"))
+    -- throw(NotImplementedException("Matrix4x4.Decompose is not yet implemented"))
+
+    -- Extract Translation
+    translation = SystemNumerics.Vector3(matrix.M14, matrix.M24, matrix.M34)
+
+    -- Zero Translation
+    matrix.M41 = 0
+    matrix.M42 = 0
+    matrix.M43 = 0
+
+    -- Extract scales
+
+    local sx = SystemNumerics.Vector3(matrix.M11, matrix.M21, matrix.M31):Length()
+    local sy = SystemNumerics.Vector3(matrix.M12, matrix.M22, matrix.M32):Length()
+    local sz = SystemNumerics.Vector3(matrix.M13, matrix.M23, matrix.M33):Length()
+
+    scale = SystemNumerics.Vector3(sx, sy, sz)
+
+    -- divide by scale
+
+    local matTemp = matrix.__clone__()
+
+    matTemp.M11 = matTemp.M11 / sx
+    matTemp.M21 = matTemp.M21 / sx
+    matTemp.M31 = matTemp.M31 / sx
+
+    matTemp.M12 = matTemp.M12 / sy
+    matTemp.M22 = matTemp.M22 / sy
+    matTemp.M32 = matTemp.M32 / sy
+
+    matTemp.M13 = matTemp.M13 / sz
+    matTemp.M23 = matTemp.M23 / sz
+    matTemp.M33 = matTemp.M33/ sz
+
+    rotation = SystemNumerics.Quaternion.CreateFromRotationMatrix(matTemp)
+
+    return true
+
 end
 
 System.defStc("System.Numerics.Matrix4x4", Matrix4x4)
