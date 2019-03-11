@@ -1,0 +1,64 @@
+{
+  "compileTargets": {
+    "client": [
+      "MTASharedWrapper",
+      "MTAClientWrapper",
+      "MTAClientResource"
+    ],
+    "server": [
+      "MTASharedWrapper",
+      "MTAServerWrapper",
+      "MTAServerResource"
+    ]
+  },
+  "dlls": [
+    "../../Source/MTAServerResource/bin/Debug/netcoreapp3.0/MTACore.dll",
+    "../../Source/MTAServerResource/bin/Debug/netcoreapp3.0/MTASharedWrapper.dll",
+    "../../Source/MTAServerResource/bin/Debug/netcoreapp3.0/MTAServerWrapper.dll",
+    "../../Source/MTAClientResource/bin/Debug/netcoreapp3.0/MTAClientWrapper.dll"
+  ],
+  "systemComponents": [
+    "Core.lua",
+    "Interfaces.lua",
+    "Exception.lua",
+    "Number.lua",
+    "Char.lua",
+    "String.lua",
+    "Boolean.lua",
+    "Delegate.lua",
+    "Enum.lua",
+    "TimeSpan.lua",
+    "DateTime.lua",
+    "Type.lua",
+    "Collections/EqualityComparer.lua",
+    "Collection.lua",
+    "Array.lua",
+    "Collections/List.lua",
+    "Collections/Dictionary.lua",
+    "Collections/Queue.lua",
+    "Collections/Stack.lua",
+    "Collections/HashSet.lua",
+    "Collections/LinkedList.lua",
+    "Collections/Linq.lua",
+    "Convert.lua",
+    "Math.lua",
+    "Random.lua",
+    "Text/StringBuilder.lua",
+    "Console.lua",
+    "IO/File.lua",
+    "Reflection/Assembly.lua",
+    "Threads/Timer.lua",
+    "Threads/Thread.lua",
+    "Threads/Task.lua",
+    "Utilities.lua",
+    "Numerics/HashCodeHelper.lua",
+    "Numerics/Complex.lua",
+    "Numerics/Matrix3x2.lua",
+    "Numerics/Matrix4x4.lua",
+    "Numerics/Plane.lua",
+    "Numerics/Quaternion.lua",
+    "Numerics/Vector2.lua",
+    "Numerics/Vector3.lua",
+    "Numerics/Vector4.lua"
+  ]
+}

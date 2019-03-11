@@ -1,11 +1,7 @@
-Symlinks/
-Dist/Server
-Dist/Client
+Dist/
 meta.xml
 
 .vs/
-
-
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
