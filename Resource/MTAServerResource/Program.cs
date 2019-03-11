@@ -3,6 +3,7 @@ using MTASharedWrapper;
 using MTASharedWrapper.Enums;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace MTAServerResource
 {
@@ -10,7 +11,15 @@ namespace MTAServerResource
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World");
+            Vector3 v3 = new Vector3(5);
+            Vector3 v4 = new Vector3(3);
+            Vector3 result = v3 * 2;
+            Vector3 result2 = 4 * v4;
+            Console.WriteLine(result.X);
+            Console.WriteLine(result2.X);
+            Console.WriteLine(v3.Length());
+            string asdf = "asdf";
+            Console.WriteLine(asdf[2]); // will print d ?
             new Program();
         }
 
