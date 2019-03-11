@@ -9,34 +9,49 @@ namespace MTAClientResource
         static void Main(string[] args)
         {
             Console.WriteLine("Hello Client!");
+            new Program();
+        }
 
-            //GUIBrowser guiBrowser = new GUIBrowser(0, 0, 1, 1, false, true, true);
-            //Browser browser = guiBrowser.Browser;
-            //browser.AddEventHandler("onClientBrowserCreated");
-            //browser.OnCreated += () =>
-            //{
-            //    Browser.OnDomainRequestAccepted += (string domain) =>
-            //    {
-            //        browser.LoadUrl("https://nanobob.net");
-            //        Cursor.SetVisible(true);
+        private GUIBrowser guiBrowser;
+        private Browser browser;
 
-            //        browser.AddEventHandler("onClientBrowserDocumentReady");
-            //        browser.OnDocumentReady += (string url) =>
-            //        {
-            //            browser.ExecuteJavascript("testMethod", new JavascriptVariable[]
-            //            {
-            //                new JavascriptVariable("test"),
-            //                new JavascriptVariable(true),
-            //                new JavascriptVariable(new string[]{
-            //                    "hey", "there"
-            //                }),
-            //                new JavascriptVariable(5.2),
-            //                new JavascriptVariable(10),
-            //            });
-            //        };
-            //    };
-            //    Browser.RequestDomain("nanobob.net", false);
-            //};
+        public Program()
+        {
+            guiBrowser = new GUIBrowser(0, 0, 1, 1, false, true, true);
+            browser = guiBrowser.Browser;
+
+            Browser.OnDomainRequestAccepted += OnDomainRequestAccepted;
+            browser.OnCreated += OnCreated;
+            browser.OnDocumentReady += OnReady;
+
+            browser.AddEventHandler("onClientBrowserCreated");
+        }
+
+        public void OnCreated()
+        {
+            Browser.RequestDomain("nanobob.net", false);
+        }
+
+        public void OnDomainRequestAccepted(string domain)
+        {
+            browser.LoadUrl("https://nanobob.net");
+            Cursor.SetVisible(true);
+
+            browser.AddEventHandler("onClientBrowserDocumentReady");
+        }
+
+        public void OnReady(string url)
+        {
+            browser.ExecuteJavascript("testMethod", new JavascriptVariable[]
+            {
+                new JavascriptVariable("test"),
+                new JavascriptVariable(true),
+                new JavascriptVariable(new string[]{
+                    "hey", "there"
+                }),
+                new JavascriptVariable(5.2),
+                new JavascriptVariable(10),
+            });
         }
     }
 }
