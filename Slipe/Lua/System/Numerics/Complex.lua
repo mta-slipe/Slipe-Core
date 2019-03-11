@@ -170,13 +170,11 @@ end
 
 Complex.ToString = function (this)
     local sb = System.StringBuilder()
-    local separator = 44 --[[',']]
-    sb:AppendChar(60 --[['<']])
+    sb:Append("(")
     sb:Append(this.m_real:ToString())
-    sb:AppendChar(separator)
-    sb:AppendChar(32 --[[' ']])
-    sb:AppendChar(this.m_imaginary:ToString())
-    sb:AppendChar(62 --[['>']])
+    sb:Append(", ")
+    sb:Append(this.m_imaginary:ToString())
+    sb:Append(")")
     return sb:ToString()
 end
 
