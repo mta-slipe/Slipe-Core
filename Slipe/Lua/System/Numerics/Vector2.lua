@@ -1,5 +1,5 @@
 local System = System
-local System_Numerics = System.Numerics
+local SystemNumerics = System.Numerics
 local abs = math.abs
 local min = math.min
 local max = math.max
@@ -144,7 +144,7 @@ end
 
 Vector2.GetHashCode = function (this)
     local hash = this.X:GetHashCode()
-    hash = System_Numerics.HashCodeHelper.CombineHashCodes(hash, this.Y:GetHashCode())
+    hash = SystemNumerics.HashCodeHelper.CombineHashCodes(hash, this.Y:GetHashCode())
     return hash
 end
 

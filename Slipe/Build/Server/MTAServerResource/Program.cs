@@ -13,6 +13,10 @@ namespace MTAServerResource
     {
         static void Main(string[] args)
         {
+            Matrix3x2 s = Matrix3x2.CreateRotation(0.5f);
+            Matrix4x4 asd = new Matrix4x4(s);
+            asd = asd * 4;
+            Console.WriteLine(asd.ToString());
             Quaternion q = new Quaternion(12, 41, 42, 10);
             Quaternion p = new Quaternion(new Vector3(10, 20, 4), 6);
             Console.WriteLine(q.GetHashCode());

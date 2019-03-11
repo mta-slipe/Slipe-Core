@@ -1,5 +1,5 @@
 local System = System
-local System_Numerics = System.Numerics
+local SystemNumerics = System.Numerics
 
 local sqrt = math.sqrt
 local sin = math.sin
