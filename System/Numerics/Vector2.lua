@@ -239,8 +239,8 @@ Vector2.Transform = function (position, matrix)
         local yy2 = matrix.Y * y2
         local zz2 = matrix.Z * z2
 
-        return new(Vector2, value.X * (1.0 - yy2 - zz2) + value.Y * (xy2 - wz2),
-                            value.X * (xy2 + wz2) + value.Y * (1.0 - xx2 - zz2)
+        return new(Vector2, position.X * (1.0 - yy2 - zz2) + position.Y * (xy2 - wz2),
+                            position.X * (xy2 + wz2) + position.Y * (1.0 - xx2 - zz2)
                                 )    
     end
 end

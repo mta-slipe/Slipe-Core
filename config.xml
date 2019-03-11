@@ -40,8 +40,9 @@
         <script src="System/Threads/Task.lua" type="shared"/>
         <script src="System/Utilities.lua" type="shared"/>
         <script src="System/Numerics/HashCodeHelper.lua" type="shared"/>
-        <script src="System/Numerics/Vector3.lua" type="shared"/>
         <script src="System/Numerics/Vector2.lua" type="shared"/>
+        <script src="System/Numerics/Vector3.lua" type="shared"/>
+        <script src="System/Numerics/Vector4.lua" type="shared"/>
 
         <script src="MTA/client.lua" type="client"/>
         <script src="MTA/server.lua" type="server"/>

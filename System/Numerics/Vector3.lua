@@ -262,25 +262,25 @@ end
 -- https://docs.microsoft.com/en-us/dotnet/api/system.numerics.vector3.transform?view=netframework-4.7.2#System_Numerics_Vector3_Transform_System_Numerics_Vector3_System_Numerics_Matrix4x4_
 -- https://docs.microsoft.com/en-us/dotnet/api/system.numerics.vector3.transform?view=netframework-4.7.2#System_Numerics_Vector3_Transform_System_Numerics_Vector3_System_Numerics_Quaternion_
 Vector3.Transform = function(position, matrix)
-    if rotation.X then
+    if matrix.X then
         -- quaternion
-        local x2 = rotation.X + rotation.X
-        local y2 = rotation.Y + rotation.Y
-        local z2 = rotation.Z + rotation.Z
+        local x2 = matrix.X + matrix.X
+        local y2 = matrix.Y + matrix.Y
+        local z2 = matrix.Z + matrix.Z
   
-        local wx2 = rotation.W * x2
-        local wy2 = rotation.W * y2
-        local wz2 = rotation.W * z2
-        local xx2 = rotation.X * x2
-        local xy2 = rotation.X * y2
-        local xz2 = rotation.X * z2
-        local yy2 = rotation.Y * y2
-        local yz2 = rotation.Y * z2
-        local zz2 = rotation.Z * z2
+        local wx2 = matrix.W * x2
+        local wy2 = matrix.W * y2
+        local wz2 = matrix.W * z2
+        local xx2 = matrix.X * x2
+        local xy2 = matrix.X * y2
+        local xz2 = matrix.X * z2
+        local yy2 = matrix.Y * y2
+        local yz2 = matrix.Y * z2
+        local zz2 = matrix.Z * z2
   
-        return new(Vector3, value.X * (1.0 - yy2 - zz2) + value.Y * (xy2 - wz2) + value.Z * (xz2 + wy2), 
-                            value.X * (xy2 + wz2) + value.Y * (1.0 - xx2 - zz2) + value.Z * (yz2 - wx2), 
-                            value.X * (xz2 - wy2) + value.Y * (yz2 + wx2) + value.Z * (1.0 - xx2 - yy2)
+        return new(Vector3, position.X * (1.0 - yy2 - zz2) + position.Y * (xy2 - wz2) + position.Z * (xz2 + wy2), 
+                            position.X * (xy2 + wz2) + position.Y * (1.0 - xx2 - zz2) + position.Z * (yz2 - wx2), 
+                            position.X * (xz2 - wy2) + position.Y * (yz2 + wx2) + position.Z * (1.0 - xx2 - yy2)
                         )
     else
         -- 4x4 matrix

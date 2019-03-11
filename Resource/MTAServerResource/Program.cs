@@ -12,10 +12,10 @@ namespace MTAServerResource
     {
         static void Main(string[] args)
         {
-            Vector2 v3 = new Vector2(5);
-            Vector2 v4 = new Vector2(3);
-            Vector2 result = v3 * 2;
-            Vector2 result2 = 4 * v4;
+            Vector4 v3 = new Vector4(5);
+            Vector4 v4 = new Vector4(3);
+            Vector4 result = v3 * 2;
+            Vector4 result2 = 4 * v4;
             Console.WriteLine(result.X);
             Console.WriteLine(result2.X);
             Console.WriteLine(v3.Length());
@@ -61,7 +61,7 @@ namespace MTAServerResource
                 Console.WriteLine("Vehicle lost " + loss +" health");
             };
 
-            Console.WriteLine(File.ReadAllText("meta.xml"));
+            // Console.WriteLine(File.ReadAllText("meta.xml"));
         }
     }
 }
