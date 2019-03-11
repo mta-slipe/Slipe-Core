@@ -7,7 +7,7 @@ using System.Numerics;
 
 namespace MTASharedWrapper
 {
-    public class SharedVehicle: SharedElement
+    public class SharedVehicle: Element
     {
         public SharedVehicle(VehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1)
         {

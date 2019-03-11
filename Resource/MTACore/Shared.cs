@@ -2,214 +2,214 @@ using System;
 
 namespace MultiTheftAuto {
 	public class Shared {
-		public static int GetBlipIcon (Element theBlip){ throw new NotImplementedException(); }
-		public static Tuple<int, int, int, int> GetBlipColor (Element theBlip){ throw new NotImplementedException(); }
-		public static int GetBlipOrdering (Element theBlip){ throw new NotImplementedException(); }
-		public static int GetBlipSize (Element theBlip){ throw new NotImplementedException(); }
-		public static bool SetBlipColor (Element theBlip, int red, int green, int blue, int alpha){ throw new NotImplementedException(); }
-		public static float GetBlipVisibleDistance (Element theBlip){ throw new NotImplementedException(); }
-		public static bool SetBlipOrdering (Element theBlip, int ordering){ throw new NotImplementedException(); }
-		public static bool SetBlipSize (Element theBlip, int iconSize){ throw new NotImplementedException(); }
-		public static bool SetBlipIcon (Element theBlip, int icon){ throw new NotImplementedException(); }
-		public static bool SetBlipVisibleDistance (Element theBlip, float theDistance){ throw new NotImplementedException(); }
+		public static int GetBlipIcon (MTAElement theBlip){ throw new NotImplementedException(); }
+		public static Tuple<int, int, int, int> GetBlipColor (MTAElement theBlip){ throw new NotImplementedException(); }
+		public static int GetBlipOrdering (MTAElement theBlip){ throw new NotImplementedException(); }
+		public static int GetBlipSize (MTAElement theBlip){ throw new NotImplementedException(); }
+		public static bool SetBlipColor (MTAElement theBlip, int red, int green, int blue, int alpha){ throw new NotImplementedException(); }
+		public static float GetBlipVisibleDistance (MTAElement theBlip){ throw new NotImplementedException(); }
+		public static bool SetBlipOrdering (MTAElement theBlip, int ordering){ throw new NotImplementedException(); }
+		public static bool SetBlipSize (MTAElement theBlip, int iconSize){ throw new NotImplementedException(); }
+		public static bool SetBlipIcon (MTAElement theBlip, int icon){ throw new NotImplementedException(); }
+		public static bool SetBlipVisibleDistance (MTAElement theBlip, float theDistance){ throw new NotImplementedException(); }
 		public static string GetBodyPartName (int bodyPartID){ throw new NotImplementedException(); }
 		public static Tuple<string, string> GetClothesByTypeIndex (int clothesType, int clothesIndex){ throw new NotImplementedException(); }
 		public static string GetClothesTypeName (int clothesType){ throw new NotImplementedException(); }
 		public static Tuple<int, int> GetTypeIndexFromClothes (string clothesTexture, string clothesModel){ throw new NotImplementedException(); }
-		public static Element CreateColCircle (float fX, float fY, float radius){ throw new NotImplementedException(); }
-		public static Element CreateColCuboid (float fX, float fY, float fZ, float fWidth, float fDepth, float fHeight){ throw new NotImplementedException(); }
-		public static Element CreateColRectangle (float fX, float fY, float fWidth, float fHeight){ throw new NotImplementedException(); }
-		public static Element CreateColPolygon (float fX, float fY, float fX1, float fY1, float fX2, float fY2, float fX3, float fY3){ throw new NotImplementedException(); }
-		public static Element CreateColSphere (float fX, float fY, float fZ, float fRadius){ throw new NotImplementedException(); }
-		public static Element CreateColTube (float fX, float fY, float fZ, float fRadius, float fHeight){ throw new NotImplementedException(); }
-		public static string GetColShapeType (Element shape){ throw new NotImplementedException(); }
-		public static Element GetElementColShape (Element theElement){ throw new NotImplementedException(); }
-		public static bool IsElementWithinColShape (Element theElement, Element theShape){ throw new NotImplementedException(); }
-		public static dynamic GetElementsWithinColShape (Element theShape, string elemType){ throw new NotImplementedException(); }
-		public static bool IsInsideColShape (Element theShape, float posX, float posY, float posZ){ throw new NotImplementedException(); }
-		public static bool AttachElements (Element theElement, Element theAttachToElement, float xPosOffset, float yPosOffset, float zPosOffset, float xRotOffset, float yRotOffset, float zRotOffset){ throw new NotImplementedException(); }
-		public static Element CreateElement (string elementType, string elementID){ throw new NotImplementedException(); }
-		public static bool DestroyElement (Element elementToDestroy){ throw new NotImplementedException(); }
-		public static bool DetachElements (Element theElement, Element theAttachToElement){ throw new NotImplementedException(); }
-		public static Tuple<float, float, float, float, float, float> GetElementAttachedOffsets (Element theElement){ throw new NotImplementedException(); }
-		public static dynamic GetAttachedElements (Element theElement){ throw new NotImplementedException(); }
-		public static Element GetElementAttachedTo (Element theElement){ throw new NotImplementedException(); }
-		public static int GetElementAlpha (Element theElement){ throw new NotImplementedException(); }
-		public static bool GetElementCollisionsEnabled (Element theElement){ throw new NotImplementedException(); }
-		public static Element GetElementByID (string id, int index){ throw new NotImplementedException(); }
-		public static int GetElementChildrenCount (Element parent){ throw new NotImplementedException(); }
-		public static Element GetElementChild (Element parent, int index){ throw new NotImplementedException(); }
-		public static dynamic GetElementChildren (Element parent, string theType){ throw new NotImplementedException(); }
-		public static dynamic GetElementData (Element theElement, string key, bool inherit){ throw new NotImplementedException(); }
-		public static int GetElementDimension (Element theElement){ throw new NotImplementedException(); }
-		public static string GetElementID (Element theElement){ throw new NotImplementedException(); }
-		public static int GetElementInterior (Element theElement){ throw new NotImplementedException(); }
-		public static float GetElementHealth (Element theElement){ throw new NotImplementedException(); }
-		public static dynamic GetElementMatrix (Element theElement, bool legacy){ throw new NotImplementedException(); }
-		public static int GetElementModel (Element theElement){ throw new NotImplementedException(); }
-		public static Element GetElementParent (Element theElement){ throw new NotImplementedException(); }
-		public static Tuple<float, float, float> GetElementPosition (Element theElement){ throw new NotImplementedException(); }
-		public static string GetElementType (Element theElement){ throw new NotImplementedException(); }
-		public static Tuple<float, float, float> GetElementVelocity (Element theElement){ throw new NotImplementedException(); }
-		public static Tuple<float, float, float> GetElementRotation (Element theElement, string rotOrder){ throw new NotImplementedException(); }
-		public static Element GetLowLODElement (Element theElement){ throw new NotImplementedException(); }
-		public static Element GetRootElement (){ throw new NotImplementedException(); }
+		public static MTAElement CreateColCircle (float fX, float fY, float radius){ throw new NotImplementedException(); }
+		public static MTAElement CreateColCuboid (float fX, float fY, float fZ, float fWidth, float fDepth, float fHeight){ throw new NotImplementedException(); }
+		public static MTAElement CreateColRectangle (float fX, float fY, float fWidth, float fHeight){ throw new NotImplementedException(); }
+		public static MTAElement CreateColPolygon (float fX, float fY, float fX1, float fY1, float fX2, float fY2, float fX3, float fY3){ throw new NotImplementedException(); }
+		public static MTAElement CreateColSphere (float fX, float fY, float fZ, float fRadius){ throw new NotImplementedException(); }
+		public static MTAElement CreateColTube (float fX, float fY, float fZ, float fRadius, float fHeight){ throw new NotImplementedException(); }
+		public static string GetColShapeType (MTAElement shape){ throw new NotImplementedException(); }
+		public static MTAElement GetElementColShape (MTAElement theElement){ throw new NotImplementedException(); }
+		public static bool IsElementWithinColShape (MTAElement theElement, MTAElement theShape){ throw new NotImplementedException(); }
+		public static dynamic GetElementsWithinColShape (MTAElement theShape, string elemType){ throw new NotImplementedException(); }
+		public static bool IsInsideColShape (MTAElement theShape, float posX, float posY, float posZ){ throw new NotImplementedException(); }
+		public static bool AttachElements (MTAElement theElement, MTAElement theAttachToElement, float xPosOffset, float yPosOffset, float zPosOffset, float xRotOffset, float yRotOffset, float zRotOffset){ throw new NotImplementedException(); }
+		public static MTAElement CreateElement (string elementType, string elementID){ throw new NotImplementedException(); }
+		public static bool DestroyElement (MTAElement elementToDestroy){ throw new NotImplementedException(); }
+		public static bool DetachElements (MTAElement theElement, MTAElement theAttachToElement){ throw new NotImplementedException(); }
+		public static Tuple<float, float, float, float, float, float> GetElementAttachedOffsets (MTAElement theElement){ throw new NotImplementedException(); }
+		public static dynamic GetAttachedElements (MTAElement theElement){ throw new NotImplementedException(); }
+		public static MTAElement GetElementAttachedTo (MTAElement theElement){ throw new NotImplementedException(); }
+		public static int GetElementAlpha (MTAElement theElement){ throw new NotImplementedException(); }
+		public static bool GetElementCollisionsEnabled (MTAElement theElement){ throw new NotImplementedException(); }
+		public static MTAElement GetElementByID (string id, int index){ throw new NotImplementedException(); }
+		public static int GetElementChildrenCount (MTAElement parent){ throw new NotImplementedException(); }
+		public static MTAElement GetElementChild (MTAElement parent, int index){ throw new NotImplementedException(); }
+		public static dynamic GetElementChildren (MTAElement parent, string theType){ throw new NotImplementedException(); }
+		public static dynamic GetElementData (MTAElement theElement, string key, bool inherit){ throw new NotImplementedException(); }
+		public static int GetElementDimension (MTAElement theElement){ throw new NotImplementedException(); }
+		public static string GetElementID (MTAElement theElement){ throw new NotImplementedException(); }
+		public static int GetElementInterior (MTAElement theElement){ throw new NotImplementedException(); }
+		public static float GetElementHealth (MTAElement theElement){ throw new NotImplementedException(); }
+		public static dynamic GetElementMatrix (MTAElement theElement, bool legacy){ throw new NotImplementedException(); }
+		public static int GetElementModel (MTAElement theElement){ throw new NotImplementedException(); }
+		public static MTAElement GetElementParent (MTAElement theElement){ throw new NotImplementedException(); }
+		public static Tuple<float, float, float> GetElementPosition (MTAElement theElement){ throw new NotImplementedException(); }
+		public static string GetElementType (MTAElement theElement){ throw new NotImplementedException(); }
+		public static Tuple<float, float, float> GetElementVelocity (MTAElement theElement){ throw new NotImplementedException(); }
+		public static Tuple<float, float, float> GetElementRotation (MTAElement theElement, string rotOrder){ throw new NotImplementedException(); }
+		public static MTAElement GetLowLODElement (MTAElement theElement){ throw new NotImplementedException(); }
+		public static MTAElement GetRootElement (){ throw new NotImplementedException(); }
 		public static bool IsElement (dynamic theValue){ throw new NotImplementedException(); }
-		public static bool IsElementAttached (Element theElement){ throw new NotImplementedException(); }
-		public static bool IsElementDoubleSided (Element theElement){ throw new NotImplementedException(); }
-		public static bool IsElementInWater (Element theElement){ throw new NotImplementedException(); }
-		public static bool IsElementCallPropagationEnabled (Element theElement){ throw new NotImplementedException(); }
-		public static bool IsElementFrozen (Element theElement){ throw new NotImplementedException(); }
-		public static bool IsElementLowLOD (Element theElement){ throw new NotImplementedException(); }
-		public static bool IsElementWithinMarker (Element theElement, Element theMarker){ throw new NotImplementedException(); }
-		public static bool SetElementAngularVelocity (Element theElement, float rx, float ry, float rz){ throw new NotImplementedException(); }
-		public static bool SetElementAlpha (Element theElement, int alpha){ throw new NotImplementedException(); }
-		public static bool SetElementCallPropagationEnabled (Element theElement, bool enabled){ throw new NotImplementedException(); }
-		public static bool SetElementCollisionsEnabled (Element theElement, bool enabled){ throw new NotImplementedException(); }
-		public static bool SetElementDimension (Element theElement, int dimension){ throw new NotImplementedException(); }
-		public static bool GetElementAngularVelocity (Element theElement){ throw new NotImplementedException(); }
-		public static bool SetElementAttachedOffsets (Element theElement, float xPosOffset, float yPosOffset, float zPosOffset, float xRotOffset, float yRotOffset, float zRotOffset){ throw new NotImplementedException(); }
-		public static bool SetElementData (Element theElement, string key, dynamic value, bool synchronize){ throw new NotImplementedException(); }
-		public static bool SetElementFrozen (Element theElement, bool freezeStatus){ throw new NotImplementedException(); }
-		public static bool SetElementID (Element theElement, string name){ throw new NotImplementedException(); }
-		public static bool SetElementPosition (Element theElement, float x, float y, float z, bool warp){ throw new NotImplementedException(); }
-		public static bool SetElementHealth (Element theElement, float newHealth){ throw new NotImplementedException(); }
-		public static bool SetElementDoubleSided (Element theElement, bool enable){ throw new NotImplementedException(); }
-		public static bool SetElementInterior (Element theElement, int interior, float x, float y, float z){ throw new NotImplementedException(); }
-		public static bool SetElementModel (Element theElement, int model){ throw new NotImplementedException(); }
-		public static bool SetElementRotation (Element theElement, float rotX, float rotY, float rotZ, string rotOrder, bool conformPedRotation){ throw new NotImplementedException(); }
-		public static bool SetElementParent (Element theElement, Element parent){ throw new NotImplementedException(); }
-		public static bool SetElementVelocity (Element theElement, float speedX, float speedY, float speedZ){ throw new NotImplementedException(); }
-		public static bool SetLowLODElement (Element theElement, Element lowLODElement){ throw new NotImplementedException(); }
+		public static bool IsElementAttached (MTAElement theElement){ throw new NotImplementedException(); }
+		public static bool IsElementDoubleSided (MTAElement theElement){ throw new NotImplementedException(); }
+		public static bool IsElementInWater (MTAElement theElement){ throw new NotImplementedException(); }
+		public static bool IsElementCallPropagationEnabled (MTAElement theElement){ throw new NotImplementedException(); }
+		public static bool IsElementFrozen (MTAElement theElement){ throw new NotImplementedException(); }
+		public static bool IsElementLowLOD (MTAElement theElement){ throw new NotImplementedException(); }
+		public static bool IsElementWithinMarker (MTAElement theElement, MTAElement theMarker){ throw new NotImplementedException(); }
+		public static bool SetElementAngularVelocity (MTAElement theElement, float rx, float ry, float rz){ throw new NotImplementedException(); }
+		public static bool SetElementAlpha (MTAElement theElement, int alpha){ throw new NotImplementedException(); }
+		public static bool SetElementCallPropagationEnabled (MTAElement theElement, bool enabled){ throw new NotImplementedException(); }
+		public static bool SetElementCollisionsEnabled (MTAElement theElement, bool enabled){ throw new NotImplementedException(); }
+		public static bool SetElementDimension (MTAElement theElement, int dimension){ throw new NotImplementedException(); }
+		public static bool GetElementAngularVelocity (MTAElement theElement){ throw new NotImplementedException(); }
+		public static bool SetElementAttachedOffsets (MTAElement theElement, float xPosOffset, float yPosOffset, float zPosOffset, float xRotOffset, float yRotOffset, float zRotOffset){ throw new NotImplementedException(); }
+		public static bool SetElementData (MTAElement theElement, string key, dynamic value, bool synchronize){ throw new NotImplementedException(); }
+		public static bool SetElementFrozen (MTAElement theElement, bool freezeStatus){ throw new NotImplementedException(); }
+		public static bool SetElementID (MTAElement theElement, string name){ throw new NotImplementedException(); }
+		public static bool SetElementPosition (MTAElement theElement, float x, float y, float z, bool warp){ throw new NotImplementedException(); }
+		public static bool SetElementHealth (MTAElement theElement, float newHealth){ throw new NotImplementedException(); }
+		public static bool SetElementDoubleSided (MTAElement theElement, bool enable){ throw new NotImplementedException(); }
+		public static bool SetElementInterior (MTAElement theElement, int interior, float x, float y, float z){ throw new NotImplementedException(); }
+		public static bool SetElementModel (MTAElement theElement, int model){ throw new NotImplementedException(); }
+		public static bool SetElementRotation (MTAElement theElement, float rotX, float rotY, float rotZ, string rotOrder, bool conformPedRotation){ throw new NotImplementedException(); }
+		public static bool SetElementParent (MTAElement theElement, MTAElement parent){ throw new NotImplementedException(); }
+		public static bool SetElementVelocity (MTAElement theElement, float speedX, float speedY, float speedZ){ throw new NotImplementedException(); }
+		public static bool SetLowLODElement (MTAElement theElement, MTAElement lowLODElement){ throw new NotImplementedException(); }
 		public static bool AddEvent (string eventName, bool allowRemoteTrigger){ throw new NotImplementedException(); }
-		public static bool AddEventHandler (string eventName, Element attachedTo, dynamic handlerFunction, bool getPropagated, string priority){ throw new NotImplementedException(); }
-		public static dynamic GetEventHandlers (string eventName, Element attachedTo){ throw new NotImplementedException(); }
-		public static bool TriggerEvent (string eventName, Element baseElement, dynamic argument1){ throw new NotImplementedException(); }
-		public static bool RemoveEventHandler (string eventName, Element attachedTo, dynamic functionVar){ throw new NotImplementedException(); }
+		public static bool AddEventHandler (string eventName, MTAElement attachedTo, dynamic handlerFunction, bool getPropagated, string priority){ throw new NotImplementedException(); }
+		public static dynamic GetEventHandlers (string eventName, MTAElement attachedTo){ throw new NotImplementedException(); }
+		public static bool TriggerEvent (string eventName, MTAElement baseElement, dynamic argument1){ throw new NotImplementedException(); }
+		public static bool RemoveEventHandler (string eventName, MTAElement attachedTo, dynamic functionVar){ throw new NotImplementedException(); }
 		public static bool WasEventCancelled (){ throw new NotImplementedException(); }
-		public static bool FileClose (Element theFile){ throw new NotImplementedException(); }
+		public static bool FileClose (MTAElement theFile){ throw new NotImplementedException(); }
 		public static bool FileCopy (string filePath, string copyToFilePath, bool overwrite){ throw new NotImplementedException(); }
-		public static Element FileCreate (string filePath){ throw new NotImplementedException(); }
+		public static MTAElement FileCreate (string filePath){ throw new NotImplementedException(); }
 		public static bool FileDelete (string filePath){ throw new NotImplementedException(); }
-		public static bool FileFlush (Element theFile){ throw new NotImplementedException(); }
+		public static bool FileFlush (MTAElement theFile){ throw new NotImplementedException(); }
 		public static bool FileExists (string filePath){ throw new NotImplementedException(); }
-		public static string FileGetPath (Element theFile){ throw new NotImplementedException(); }
-		public static int FileGetSize (Element theFile){ throw new NotImplementedException(); }
-		public static int FileGetPos (Element theFile){ throw new NotImplementedException(); }
-		public static bool FileIsEOF (Element theFile){ throw new NotImplementedException(); }
+		public static string FileGetPath (MTAElement theFile){ throw new NotImplementedException(); }
+		public static int FileGetSize (MTAElement theFile){ throw new NotImplementedException(); }
+		public static int FileGetPos (MTAElement theFile){ throw new NotImplementedException(); }
+		public static bool FileIsEOF (MTAElement theFile){ throw new NotImplementedException(); }
 		public static bool FileRename (string filePath, string newFilePath){ throw new NotImplementedException(); }
-		public static Element FileOpen (string filePath, bool readOnly){ throw new NotImplementedException(); }
-		public static string FileRead (Element theFile, int count){ throw new NotImplementedException(); }
-		public static int FileSetPos (Element theFile, int offset){ throw new NotImplementedException(); }
-		public static int FileWrite (Element theFile, string string1, string string2, string string3){ throw new NotImplementedException(); }
+		public static MTAElement FileOpen (string filePath, bool readOnly){ throw new NotImplementedException(); }
+		public static string FileRead (MTAElement theFile, int count){ throw new NotImplementedException(); }
+		public static int FileSetPos (MTAElement theFile, int offset){ throw new NotImplementedException(); }
+		public static int FileWrite (MTAElement theFile, string string1, string string2, string string3){ throw new NotImplementedException(); }
 		public static bool HttpRequestLogin (){ throw new NotImplementedException(); }
 		public static bool HttpClear (){ throw new NotImplementedException(); }
 		public static bool HttpSetResponseCode (int code){ throw new NotImplementedException(); }
 		public static bool HttpSetResponseCookie (string cookieName, string cookieValue){ throw new NotImplementedException(); }
 		public static bool HttpSetResponseHeader (string headerName, string headerValue){ throw new NotImplementedException(); }
 		public static bool HttpWrite (string data, int length){ throw new NotImplementedException(); }
-		public static dynamic GetCommandHandlers (Element theResource){ throw new NotImplementedException(); }
+		public static dynamic GetCommandHandlers (MTAElement theResource){ throw new NotImplementedException(); }
 		public static bool RemoveCommandHandler (string commandName, dynamic handler){ throw new NotImplementedException(); }
-		public static bool SetControlState (Element thePlayer, string control, bool state){ throw new NotImplementedException(); }
-		public static string GetMarkerIcon (Element theMarker){ throw new NotImplementedException(); }
+		public static bool SetControlState (MTAElement thePlayer, string control, bool state){ throw new NotImplementedException(); }
+		public static string GetMarkerIcon (MTAElement theMarker){ throw new NotImplementedException(); }
 		public static int GetMarkerCount (){ throw new NotImplementedException(); }
-		public static Tuple<int, int, int, int> GetMarkerColor (Element theMarker){ throw new NotImplementedException(); }
-		public static float GetMarkerSize (Element myMarker){ throw new NotImplementedException(); }
-		public static Tuple<float, float, float> GetMarkerTarget (Element theMarker){ throw new NotImplementedException(); }
-		public static string GetMarkerType (Element theMarker){ throw new NotImplementedException(); }
-		public static bool SetMarkerIcon (Element theMarker, string icon){ throw new NotImplementedException(); }
-		public static bool SetMarkerSize (Element theMarker, float size){ throw new NotImplementedException(); }
-		public static bool SetMarkerTarget (Element theMarker, float x, float y, float z){ throw new NotImplementedException(); }
-		public static bool SetMarkerType (Element theMarker, string markerType){ throw new NotImplementedException(); }
-		public static Tuple<float, float, float> GetObjectScale (Element theObject){ throw new NotImplementedException(); }
-		public static Element CreateObject (int modelid, float x, float y, float z, float rx, float ry, float rz, bool isLowLOD){ throw new NotImplementedException(); }
-		public static bool SetObjectScale (Element theObject, float scale, float scaleY, float scaleZ){ throw new NotImplementedException(); }
-		public static bool MoveObject (Element theObject, int time, float targetx, float targety, float targetz, float moverx, float movery, float moverz, string strEasingType, float fEasingPeriod, float fEasingAmplitude, float fEasingOvershoot){ throw new NotImplementedException(); }
-		public static bool StopObject (Element theobject){ throw new NotImplementedException(); }
+		public static Tuple<int, int, int, int> GetMarkerColor (MTAElement theMarker){ throw new NotImplementedException(); }
+		public static float GetMarkerSize (MTAElement myMarker){ throw new NotImplementedException(); }
+		public static Tuple<float, float, float> GetMarkerTarget (MTAElement theMarker){ throw new NotImplementedException(); }
+		public static string GetMarkerType (MTAElement theMarker){ throw new NotImplementedException(); }
+		public static bool SetMarkerIcon (MTAElement theMarker, string icon){ throw new NotImplementedException(); }
+		public static bool SetMarkerSize (MTAElement theMarker, float size){ throw new NotImplementedException(); }
+		public static bool SetMarkerTarget (MTAElement theMarker, float x, float y, float z){ throw new NotImplementedException(); }
+		public static bool SetMarkerType (MTAElement theMarker, string markerType){ throw new NotImplementedException(); }
+		public static Tuple<float, float, float> GetObjectScale (MTAElement theObject){ throw new NotImplementedException(); }
+		public static MTAElement CreateObject (int modelid, float x, float y, float z, float rx, float ry, float rz, bool isLowLOD){ throw new NotImplementedException(); }
+		public static bool SetObjectScale (MTAElement theObject, float scale, float scaleY, float scaleZ){ throw new NotImplementedException(); }
+		public static bool MoveObject (MTAElement theObject, int time, float targetx, float targety, float targetz, float moverx, float movery, float moverz, string strEasingType, float fEasingPeriod, float fEasingAmplitude, float fEasingOvershoot){ throw new NotImplementedException(); }
+		public static bool StopObject (MTAElement theobject){ throw new NotImplementedException(); }
 		public static bool OutputDebugString (string text, int level, int red, int green, int blue){ throw new NotImplementedException(); }
-		public static bool SetMarkerColor (Element theMarker, int r, int g, int b, int a){ throw new NotImplementedException(); }
-		public static bool AddPedClothes (Element thePed, string clothesTexture, string clothesModel, int clothesType){ throw new NotImplementedException(); }
-		public static Tuple<string, string> GetPedClothes (Element thePed, int clothesType){ throw new NotImplementedException(); }
-		public static int GetPedAmmoInClip (Element thePed, int weaponSlot){ throw new NotImplementedException(); }
-		public static int GetPedFightingStyle (Element thePed){ throw new NotImplementedException(); }
-		public static float GetPedArmor (Element thePed){ throw new NotImplementedException(); }
-		public static Element GetPedContactElement (Element thePed){ throw new NotImplementedException(); }
-		public static Element GetPedOccupiedVehicle (Element thePed){ throw new NotImplementedException(); }
-		public static int GetPedOccupiedVehicleSeat (Element thePed){ throw new NotImplementedException(); }
-		public static Element GetPedTarget (Element thePed){ throw new NotImplementedException(); }
-		public static int GetPedWalkingStyle (Element thePed){ throw new NotImplementedException(); }
-		public static int GetPedTotalAmmo (Element thePed, int weaponSlot){ throw new NotImplementedException(); }
-		public static float GetPedStat (Element thePed, int stat){ throw new NotImplementedException(); }
-		public static int GetPedWeaponSlot (Element thePed){ throw new NotImplementedException(); }
-		public static int GetPedWeapon (Element thePed, int weaponSlot){ throw new NotImplementedException(); }
-		public static bool IsPedChoking (Element thePed){ throw new NotImplementedException(); }
+		public static bool SetMarkerColor (MTAElement theMarker, int r, int g, int b, int a){ throw new NotImplementedException(); }
+		public static bool AddPedClothes (MTAElement thePed, string clothesTexture, string clothesModel, int clothesType){ throw new NotImplementedException(); }
+		public static Tuple<string, string> GetPedClothes (MTAElement thePed, int clothesType){ throw new NotImplementedException(); }
+		public static int GetPedAmmoInClip (MTAElement thePed, int weaponSlot){ throw new NotImplementedException(); }
+		public static int GetPedFightingStyle (MTAElement thePed){ throw new NotImplementedException(); }
+		public static float GetPedArmor (MTAElement thePed){ throw new NotImplementedException(); }
+		public static MTAElement GetPedContactElement (MTAElement thePed){ throw new NotImplementedException(); }
+		public static MTAElement GetPedOccupiedVehicle (MTAElement thePed){ throw new NotImplementedException(); }
+		public static int GetPedOccupiedVehicleSeat (MTAElement thePed){ throw new NotImplementedException(); }
+		public static MTAElement GetPedTarget (MTAElement thePed){ throw new NotImplementedException(); }
+		public static int GetPedWalkingStyle (MTAElement thePed){ throw new NotImplementedException(); }
+		public static int GetPedTotalAmmo (MTAElement thePed, int weaponSlot){ throw new NotImplementedException(); }
+		public static float GetPedStat (MTAElement thePed, int stat){ throw new NotImplementedException(); }
+		public static int GetPedWeaponSlot (MTAElement thePed){ throw new NotImplementedException(); }
+		public static int GetPedWeapon (MTAElement thePed, int weaponSlot){ throw new NotImplementedException(); }
+		public static bool IsPedChoking (MTAElement thePed){ throw new NotImplementedException(); }
 		public static dynamic GetValidPedModels (){ throw new NotImplementedException(); }
-		public static bool IsPedDead (Element thePed){ throw new NotImplementedException(); }
-		public static bool IsPedDoingGangDriveby (Element thePed){ throw new NotImplementedException(); }
-		public static bool IsPedDucked (Element thePed){ throw new NotImplementedException(); }
-		public static bool IsPedHeadless (Element thePed){ throw new NotImplementedException(); }
-		public static bool IsPedOnFire (Element thePed){ throw new NotImplementedException(); }
-		public static bool IsPedOnGround (Element thePed){ throw new NotImplementedException(); }
-		public static bool IsPedInVehicle (Element thePed){ throw new NotImplementedException(); }
-		public static bool KillPed (Element thePed, Element theKiller, int weapon, int bodyPart, bool stealth){ throw new NotImplementedException(); }
-		public static bool RemovePedClothes (Element thePed, int clothesType, string clothesTexture, string clothesModel){ throw new NotImplementedException(); }
-		public static bool IsPedWearingJetpack (Element thePed){ throw new NotImplementedException(); }
-		public static bool RemovePedFromVehicle (Element thePed){ throw new NotImplementedException(); }
-		public static bool SetPedAnimationProgress (Element thePed, string anim, float progress){ throw new NotImplementedException(); }
-		public static bool SetPedAnimation (Element thePed, string block, string anim, int time, bool freezeLastFrame, int blendTime){ throw new NotImplementedException(); }
-		public static bool SetPedDoingGangDriveby (Element thePed, bool state){ throw new NotImplementedException(); }
-		public static bool SetPedAnimationSpeed (Element thePed, string anim, float speed){ throw new NotImplementedException(); }
-		public static bool SetPedHeadless (Element thePed, bool headState){ throw new NotImplementedException(); }
-		public static bool SetPedOnFire (Element thePed, bool isOnFire){ throw new NotImplementedException(); }
-		public static bool SetPedWalkingStyle (Element thePed, int style){ throw new NotImplementedException(); }
-		public static bool SetPedWeaponSlot (Element thePed, int weaponSlot){ throw new NotImplementedException(); }
-		public static bool SetPedStat (Element thePed, int stat, float value){ throw new NotImplementedException(); }
-		public static bool WarpPedIntoVehicle (Element thePed, Element theVehicle, int seat){ throw new NotImplementedException(); }
-		public static int GetPickupAmmo (Element thePickup){ throw new NotImplementedException(); }
-		public static int GetPickupAmount (Element thePickup){ throw new NotImplementedException(); }
-		public static Element CreatePickup (float x, float y, float z, int theType, int amount, int respawnTime, int ammo){ throw new NotImplementedException(); }
-		public static int GetPickupType (Element thePickup){ throw new NotImplementedException(); }
-		public static int GetPickupWeapon (Element thePickup){ throw new NotImplementedException(); }
-		public static bool SetPickupType (Element thePickup, int theType, int amount, int ammo){ throw new NotImplementedException(); }
-		public static bool UsePickup (Element thePickup, Element thePlayer){ throw new NotImplementedException(); }
-		public static string GetPlayerName (Element thePlayer){ throw new NotImplementedException(); }
-		public static Element GetPlayerFromName (string playerName){ throw new NotImplementedException(); }
-		public static string GetPlayerNametagText (Element thePlayer){ throw new NotImplementedException(); }
-		public static int GetPlayerPing (Element thePlayer){ throw new NotImplementedException(); }
-		public static Element GetPlayerTeam (Element thePlayer){ throw new NotImplementedException(); }
+		public static bool IsPedDead (MTAElement thePed){ throw new NotImplementedException(); }
+		public static bool IsPedDoingGangDriveby (MTAElement thePed){ throw new NotImplementedException(); }
+		public static bool IsPedDucked (MTAElement thePed){ throw new NotImplementedException(); }
+		public static bool IsPedHeadless (MTAElement thePed){ throw new NotImplementedException(); }
+		public static bool IsPedOnFire (MTAElement thePed){ throw new NotImplementedException(); }
+		public static bool IsPedOnGround (MTAElement thePed){ throw new NotImplementedException(); }
+		public static bool IsPedInVehicle (MTAElement thePed){ throw new NotImplementedException(); }
+		public static bool KillPed (MTAElement thePed, MTAElement theKiller, int weapon, int bodyPart, bool stealth){ throw new NotImplementedException(); }
+		public static bool RemovePedClothes (MTAElement thePed, int clothesType, string clothesTexture, string clothesModel){ throw new NotImplementedException(); }
+		public static bool IsPedWearingJetpack (MTAElement thePed){ throw new NotImplementedException(); }
+		public static bool RemovePedFromVehicle (MTAElement thePed){ throw new NotImplementedException(); }
+		public static bool SetPedAnimationProgress (MTAElement thePed, string anim, float progress){ throw new NotImplementedException(); }
+		public static bool SetPedAnimation (MTAElement thePed, string block, string anim, int time, bool freezeLastFrame, int blendTime){ throw new NotImplementedException(); }
+		public static bool SetPedDoingGangDriveby (MTAElement thePed, bool state){ throw new NotImplementedException(); }
+		public static bool SetPedAnimationSpeed (MTAElement thePed, string anim, float speed){ throw new NotImplementedException(); }
+		public static bool SetPedHeadless (MTAElement thePed, bool headState){ throw new NotImplementedException(); }
+		public static bool SetPedOnFire (MTAElement thePed, bool isOnFire){ throw new NotImplementedException(); }
+		public static bool SetPedWalkingStyle (MTAElement thePed, int style){ throw new NotImplementedException(); }
+		public static bool SetPedWeaponSlot (MTAElement thePed, int weaponSlot){ throw new NotImplementedException(); }
+		public static bool SetPedStat (MTAElement thePed, int stat, float value){ throw new NotImplementedException(); }
+		public static bool WarpPedIntoVehicle (MTAElement thePed, MTAElement theVehicle, int seat){ throw new NotImplementedException(); }
+		public static int GetPickupAmmo (MTAElement thePickup){ throw new NotImplementedException(); }
+		public static int GetPickupAmount (MTAElement thePickup){ throw new NotImplementedException(); }
+		public static MTAElement CreatePickup (float x, float y, float z, int theType, int amount, int respawnTime, int ammo){ throw new NotImplementedException(); }
+		public static int GetPickupType (MTAElement thePickup){ throw new NotImplementedException(); }
+		public static int GetPickupWeapon (MTAElement thePickup){ throw new NotImplementedException(); }
+		public static bool SetPickupType (MTAElement thePickup, int theType, int amount, int ammo){ throw new NotImplementedException(); }
+		public static bool UsePickup (MTAElement thePickup, MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static string GetPlayerName (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static MTAElement GetPlayerFromName (string playerName){ throw new NotImplementedException(); }
+		public static string GetPlayerNametagText (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static int GetPlayerPing (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static MTAElement GetPlayerTeam (MTAElement thePlayer){ throw new NotImplementedException(); }
 		public static bool IsVoiceEnabled (){ throw new NotImplementedException(); }
-		public static Tuple<int, int, int> GetPlayerNametagColor (Element thePlayer){ throw new NotImplementedException(); }
-		public static bool IsPlayerNametagShowing (Element thePlayer){ throw new NotImplementedException(); }
-		public static bool SetPlayerNametagColor (Element thePlayer, int r, int g, int b){ throw new NotImplementedException(); }
-		public static bool SetPlayerNametagShowing (Element thePlayer, bool showing){ throw new NotImplementedException(); }
-		public static bool SetPlayerNametagText (Element thePlayer, string text){ throw new NotImplementedException(); }
-		public static Element CreateRadarArea (float startPosX, float startPosY, float sizeX, float sizeY, int r, int g, int b, int a, Element visibleTo){ throw new NotImplementedException(); }
-		public static Tuple<float, float> GetRadarAreaSize (Element theRadararea){ throw new NotImplementedException(); }
-		public static Tuple<int, int, int, int> GetRadarAreaColor (Element theRadararea){ throw new NotImplementedException(); }
-		public static bool IsRadarAreaFlashing (Element theRadararea){ throw new NotImplementedException(); }
-		public static bool IsInsideRadarArea (Element theArea, float posX, float posY){ throw new NotImplementedException(); }
-		public static bool SetRadarAreaFlashing (Element theRadarArea, bool flash){ throw new NotImplementedException(); }
-		public static bool SetRadarAreaSize (Element theRadararea, float x, float y){ throw new NotImplementedException(); }
-		public static bool SetRadarAreaColor (Element theRadarArea, int r, int g, int b, int a){ throw new NotImplementedException(); }
-		public static dynamic Call (Element theResource, string theFunction){ throw new NotImplementedException(); }
-		public static Element GetResourceConfig (string filePath){ throw new NotImplementedException(); }
+		public static Tuple<int, int, int> GetPlayerNametagColor (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static bool IsPlayerNametagShowing (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static bool SetPlayerNametagColor (MTAElement thePlayer, int r, int g, int b){ throw new NotImplementedException(); }
+		public static bool SetPlayerNametagShowing (MTAElement thePlayer, bool showing){ throw new NotImplementedException(); }
+		public static bool SetPlayerNametagText (MTAElement thePlayer, string text){ throw new NotImplementedException(); }
+		public static MTAElement CreateRadarArea (float startPosX, float startPosY, float sizeX, float sizeY, int r, int g, int b, int a, MTAElement visibleTo){ throw new NotImplementedException(); }
+		public static Tuple<float, float> GetRadarAreaSize (MTAElement theRadararea){ throw new NotImplementedException(); }
+		public static Tuple<int, int, int, int> GetRadarAreaColor (MTAElement theRadararea){ throw new NotImplementedException(); }
+		public static bool IsRadarAreaFlashing (MTAElement theRadararea){ throw new NotImplementedException(); }
+		public static bool IsInsideRadarArea (MTAElement theArea, float posX, float posY){ throw new NotImplementedException(); }
+		public static bool SetRadarAreaFlashing (MTAElement theRadarArea, bool flash){ throw new NotImplementedException(); }
+		public static bool SetRadarAreaSize (MTAElement theRadararea, float x, float y){ throw new NotImplementedException(); }
+		public static bool SetRadarAreaColor (MTAElement theRadarArea, int r, int g, int b, int a){ throw new NotImplementedException(); }
+		public static dynamic Call (MTAElement theResource, string theFunction){ throw new NotImplementedException(); }
+		public static MTAElement GetResourceConfig (string filePath){ throw new NotImplementedException(); }
 		public static bool FetchRemote (string URL, string queueName, int connectionAttempts, int connectTimeout, dynamic callbackFunction, string postData, bool postIsBinary){ throw new NotImplementedException(); }
-		public static Element GetResourceDynamicElementRoot (Element theResource){ throw new NotImplementedException(); }
-		public static dynamic GetResourceExportedFunctions (Element theResource){ throw new NotImplementedException(); }
-		public static Element GetResourceFromName (string resourceName){ throw new NotImplementedException(); }
-		public static string GetResourceName (Element res){ throw new NotImplementedException(); }
-		public static Element GetResourceRootElement (Element theResource){ throw new NotImplementedException(); }
-		public static string GetResourceState (Element theResource){ throw new NotImplementedException(); }
-		public static Element GetThisResource (){ throw new NotImplementedException(); }
+		public static MTAElement GetResourceDynamicElementRoot (MTAElement theResource){ throw new NotImplementedException(); }
+		public static dynamic GetResourceExportedFunctions (MTAElement theResource){ throw new NotImplementedException(); }
+		public static MTAElement GetResourceFromName (string resourceName){ throw new NotImplementedException(); }
+		public static string GetResourceName (MTAElement res){ throw new NotImplementedException(); }
+		public static MTAElement GetResourceRootElement (MTAElement theResource){ throw new NotImplementedException(); }
+		public static string GetResourceState (MTAElement theResource){ throw new NotImplementedException(); }
+		public static MTAElement GetThisResource (){ throw new NotImplementedException(); }
 		public static int GetFPSLimit (){ throw new NotImplementedException(); }
 		public static bool SetFPSLimit (int fpsLimit){ throw new NotImplementedException(); }
 		public static dynamic GetVersion (){ throw new NotImplementedException(); }
-		public static int CountPlayersInTeam (Element theTeam){ throw new NotImplementedException(); }
-		public static dynamic GetPlayersInTeam (Element theTeam){ throw new NotImplementedException(); }
-		public static Tuple<int, int, int> GetTeamColor (Element theTeam){ throw new NotImplementedException(); }
-		public static bool GetTeamFriendlyFire (Element theTeam){ throw new NotImplementedException(); }
-		public static Element GetTeamFromName (string teamName){ throw new NotImplementedException(); }
-		public static string GetTeamName (Element theTeam){ throw new NotImplementedException(); }
+		public static int CountPlayersInTeam (MTAElement theTeam){ throw new NotImplementedException(); }
+		public static dynamic GetPlayersInTeam (MTAElement theTeam){ throw new NotImplementedException(); }
+		public static Tuple<int, int, int> GetTeamColor (MTAElement theTeam){ throw new NotImplementedException(); }
+		public static bool GetTeamFriendlyFire (MTAElement theTeam){ throw new NotImplementedException(); }
+		public static MTAElement GetTeamFromName (string teamName){ throw new NotImplementedException(); }
+		public static string GetTeamName (MTAElement theTeam){ throw new NotImplementedException(); }
 		public static string Base64Decode (string data){ throw new NotImplementedException(); }
 		public static int BitAnd (int var1, int var2){ throw new NotImplementedException(); }
 		public static string Base64Encode (string data){ throw new NotImplementedException(); }
@@ -239,24 +239,24 @@ namespace MultiTheftAuto {
 		public static dynamic GetRealTime (int seconds, bool localTime){ throw new NotImplementedException(); }
 		public static int GetTickCount (){ throw new NotImplementedException(); }
 		public static dynamic GetTimers (int theTime){ throw new NotImplementedException(); }
-		public static Tuple<int, int, int> GetTimerDetails (Element theTimer){ throw new NotImplementedException(); }
+		public static Tuple<int, int, int> GetTimerDetails (MTAElement theTimer){ throw new NotImplementedException(); }
 		public static string Gettok (string text, int tokenNumber, string parameter2){ throw new NotImplementedException(); }
-		public static string GetUserdataType (Element value){ throw new NotImplementedException(); }
+		public static string GetUserdataType (MTAElement value){ throw new NotImplementedException(); }
 		public static string Hash (string algorithm, string dataToHash){ throw new NotImplementedException(); }
 		public static string Inspect (dynamic var, dynamic options){ throw new NotImplementedException(); }
 		public static Tuple<float, float, float> InterpolateBetween (float x1, float y1, float z1, float x2, float y2, float z2, float fProgress, string strEasingType, float fEasingPeriod, float fEasingAmplitude, float fEasingOvershoot){ throw new NotImplementedException(); }
 		public static bool Iprint (dynamic var1, dynamic var2, dynamic var3){ throw new NotImplementedException(); }
 		public static bool IsOOPEnabled (){ throw new NotImplementedException(); }
-		public static bool KillTimer (Element theTimer){ throw new NotImplementedException(); }
-		public static bool IsTimer (Element theTimer){ throw new NotImplementedException(); }
+		public static bool KillTimer (MTAElement theTimer){ throw new NotImplementedException(); }
+		public static bool IsTimer (MTAElement theTimer){ throw new NotImplementedException(); }
 		public static string Md5 (string str){ throw new NotImplementedException(); }
 		public static string PasswordHash (string password, string algorithm, dynamic options, dynamic callback){ throw new NotImplementedException(); }
 		public static string PregReplace (string subject, string pattern, string replacement, dynamic flags){ throw new NotImplementedException(); }
 		public static bool PasswordVerify (string password, string hash, dynamic options, dynamic callback){ throw new NotImplementedException(); }
 		public static bool RemoveDebugHook (string hookType, dynamic callbackFunction){ throw new NotImplementedException(); }
-		public static bool ResetTimer (Element theTimer){ throw new NotImplementedException(); }
+		public static bool ResetTimer (MTAElement theTimer){ throw new NotImplementedException(); }
 		public static dynamic PregMatch (string argument_base, string pattern, dynamic flags, int maxResults){ throw new NotImplementedException(); }
-		public static Element SetTimer (dynamic theFunction, int timeInterval, int timesToExecute, dynamic arguments){ throw new NotImplementedException(); }
+		public static MTAElement SetTimer (dynamic theFunction, int timeInterval, int timesToExecute, dynamic arguments){ throw new NotImplementedException(); }
 		public static bool PregFind (string subject, string pattern, dynamic flags){ throw new NotImplementedException(); }
 		public static string Sha256 (string str){ throw new NotImplementedException(); }
 		public static bool SetDevelopmentMode (bool enable, bool enableWeb){ throw new NotImplementedException(); }
@@ -286,97 +286,97 @@ namespace MultiTheftAuto {
 		public static string Utf8_sub (string input, int i, int j){ throw new NotImplementedException(); }
 		public static string Utf8_reverse (string input){ throw new NotImplementedException(); }
 		public static string Utf8_remove (string input, int start, int stop){ throw new NotImplementedException(); }
-		public static bool FixVehicle (Element theVehicle){ throw new NotImplementedException(); }
+		public static bool FixVehicle (MTAElement theVehicle){ throw new NotImplementedException(); }
 		public static string Utf8_title (dynamic input){ throw new NotImplementedException(); }
-		public static bool DetachTrailerFromVehicle (Element theVehicle, Element theTrailer){ throw new NotImplementedException(); }
-		public static bool AttachTrailerToVehicle (Element theVehicle, Element theTrailer){ throw new NotImplementedException(); }
-		public static Element CreateVehicle (int model, float x, float y, float z, float rx, float ry, float rz, string numberplate, bool bDirection, int variant1, int variant2){ throw new NotImplementedException(); }
-		public static int GetTrainTrack (Element train){ throw new NotImplementedException(); }
-		public static float GetTrainSpeed (Element train){ throw new NotImplementedException(); }
+		public static bool DetachTrailerFromVehicle (MTAElement theVehicle, MTAElement theTrailer){ throw new NotImplementedException(); }
+		public static bool AttachTrailerToVehicle (MTAElement theVehicle, MTAElement theTrailer){ throw new NotImplementedException(); }
+		public static MTAElement CreateVehicle (int model, float x, float y, float z, float rx, float ry, float rz, string numberplate, bool bDirection, int variant1, int variant2){ throw new NotImplementedException(); }
+		public static int GetTrainTrack (MTAElement train){ throw new NotImplementedException(); }
+		public static float GetTrainSpeed (MTAElement train){ throw new NotImplementedException(); }
 		public static dynamic GetOriginalHandling (int modelID){ throw new NotImplementedException(); }
-		public static float GetVehicleDoorOpenRatio (Element theVehicle, int door){ throw new NotImplementedException(); }
-		public static dynamic GetVehicleCompatibleUpgrades (Element theVehicle, int slot){ throw new NotImplementedException(); }
-		public static Element GetVehicleController (Element theVehicle){ throw new NotImplementedException(); }
-		public static Tuple<int, int, int, int> GetVehicleColor (Element theVehicle){ throw new NotImplementedException(); }
-		public static bool GetTrainDirection (Element train){ throw new NotImplementedException(); }
-		public static int GetVehicleDoorState (Element theVehicle, int door){ throw new NotImplementedException(); }
-		public static float GetTrainPosition (Element train){ throw new NotImplementedException(); }
-		public static Element GetVehicleOccupant (Element theVehicle, int seat){ throw new NotImplementedException(); }
-		public static string GetVehicleName (Element theVehicle){ throw new NotImplementedException(); }
-		public static dynamic GetVehicleOccupants (Element theVehicle){ throw new NotImplementedException(); }
-		public static bool GetVehicleEngineState (Element theVehicle){ throw new NotImplementedException(); }
-		public static Tuple<int, int, int> GetVehicleHeadLightColor (Element theVehicle){ throw new NotImplementedException(); }
-		public static bool GetVehicleLandingGearDown (Element theVehicle){ throw new NotImplementedException(); }
-		public static int GetVehicleLightState (Element theVehicle, int light){ throw new NotImplementedException(); }
+		public static float GetVehicleDoorOpenRatio (MTAElement theVehicle, int door){ throw new NotImplementedException(); }
+		public static dynamic GetVehicleCompatibleUpgrades (MTAElement theVehicle, int slot){ throw new NotImplementedException(); }
+		public static MTAElement GetVehicleController (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static Tuple<int, int, int, int> GetVehicleColor (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static bool GetTrainDirection (MTAElement train){ throw new NotImplementedException(); }
+		public static int GetVehicleDoorState (MTAElement theVehicle, int door){ throw new NotImplementedException(); }
+		public static float GetTrainPosition (MTAElement train){ throw new NotImplementedException(); }
+		public static MTAElement GetVehicleOccupant (MTAElement theVehicle, int seat){ throw new NotImplementedException(); }
+		public static string GetVehicleName (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static dynamic GetVehicleOccupants (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static bool GetVehicleEngineState (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static Tuple<int, int, int> GetVehicleHeadLightColor (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static bool GetVehicleLandingGearDown (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static int GetVehicleLightState (MTAElement theVehicle, int light){ throw new NotImplementedException(); }
 		public static int GetVehicleModelFromName (string name){ throw new NotImplementedException(); }
-		public static string GetVehiclePlateText (Element theVehicle){ throw new NotImplementedException(); }
-		public static int GetVehicleMaxPassengers (Element theVehicle){ throw new NotImplementedException(); }
-		public static dynamic GetVehicleSirens (Element theVehicle){ throw new NotImplementedException(); }
+		public static string GetVehiclePlateText (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static int GetVehicleMaxPassengers (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static dynamic GetVehicleSirens (MTAElement theVehicle){ throw new NotImplementedException(); }
 		public static string GetVehicleNameFromModel (int model){ throw new NotImplementedException(); }
-		public static int GetVehiclePaintjob (Element theVehicle){ throw new NotImplementedException(); }
-		public static dynamic GetVehicleHandling (Element theVehicle){ throw new NotImplementedException(); }
-		public static bool GetVehicleSirensOn (Element theVehicle){ throw new NotImplementedException(); }
-		public static int GetVehicleOverrideLights (Element theVehicle){ throw new NotImplementedException(); }
-		public static int GetVehiclePanelState (Element theVehicle, int panel){ throw new NotImplementedException(); }
-		public static dynamic GetVehicleSirenParams (Element theVehicle){ throw new NotImplementedException(); }
-		public static Element GetVehicleTowingVehicle (Element theVehicle){ throw new NotImplementedException(); }
+		public static int GetVehiclePaintjob (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static dynamic GetVehicleHandling (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static bool GetVehicleSirensOn (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static int GetVehicleOverrideLights (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static int GetVehiclePanelState (MTAElement theVehicle, int panel){ throw new NotImplementedException(); }
+		public static dynamic GetVehicleSirenParams (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static MTAElement GetVehicleTowingVehicle (MTAElement theVehicle){ throw new NotImplementedException(); }
 		public static string GetVehicleUpgradeSlotName (int slot){ throw new NotImplementedException(); }
-		public static bool IsVehicleTaxiLightOn (Element taxi){ throw new NotImplementedException(); }
-		public static bool IsVehicleBlown (Element theVehicle){ throw new NotImplementedException(); }
-		public static int GetVehicleUpgradeOnSlot (Element theVehicle, int slot){ throw new NotImplementedException(); }
+		public static bool IsVehicleTaxiLightOn (MTAElement taxi){ throw new NotImplementedException(); }
+		public static bool IsVehicleBlown (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static int GetVehicleUpgradeOnSlot (MTAElement theVehicle, int slot){ throw new NotImplementedException(); }
 		public static int Utf8_width (dynamic input, bool ambi_is_double, int default_width){ throw new NotImplementedException(); }
-		public static Tuple<int, int> GetVehicleVariant (Element theVehicle){ throw new NotImplementedException(); }
-		public static bool IsVehicleLocked (Element theVehicle){ throw new NotImplementedException(); }
-		public static Element GetVehicleTowedByVehicle (Element theVehicle){ throw new NotImplementedException(); }
-		public static Tuple<int, int, int, int> GetVehicleWheelStates (Element theVehicle){ throw new NotImplementedException(); }
-		public static bool IsTrainDerailable (Element vehicleToCheck){ throw new NotImplementedException(); }
-		public static bool IsVehicleFuelTankExplodable (Element theVehicle){ throw new NotImplementedException(); }
+		public static Tuple<int, int> GetVehicleVariant (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static bool IsVehicleLocked (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static MTAElement GetVehicleTowedByVehicle (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static Tuple<int, int, int, int> GetVehicleWheelStates (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static bool IsTrainDerailable (MTAElement vehicleToCheck){ throw new NotImplementedException(); }
+		public static bool IsVehicleFuelTankExplodable (MTAElement theVehicle){ throw new NotImplementedException(); }
 		public static Tuple<int, int, int> Utf8_widthindex (string input, int location, bool ambi_is_double, int default_width){ throw new NotImplementedException(); }
-		public static bool IsVehicleOnGround (Element theVehicle){ throw new NotImplementedException(); }
-		public static bool IsVehicleDamageProof (Element theVehicle){ throw new NotImplementedException(); }
-		public static bool SetTrainDerailable (Element derailableVehicle, bool derailable){ throw new NotImplementedException(); }
-		public static bool IsTrainDerailed (Element vehicleToCheck){ throw new NotImplementedException(); }
-		public static bool AddVehicleUpgrade (Element theVehicle, int upgrade){ throw new NotImplementedException(); }
-		public static bool RemoveVehicleUpgrade (Element theVehicle, int upgrade){ throw new NotImplementedException(); }
-		public static bool SetTrainSpeed (Element train, float speed){ throw new NotImplementedException(); }
-		public static bool SetTrainPosition (Element train, float position){ throw new NotImplementedException(); }
-		public static bool SetVehicleColor (Element theVehicle, int r1, int g1, int b1, int r2, int g2, int b2, int r3, int g3, int b3, int r4, int g4, int b4){ throw new NotImplementedException(); }
-		public static bool SetTrainDirection (Element train, bool clockwise){ throw new NotImplementedException(); }
-		public static bool SetVehicleHandling (Element theVehicle, string property, dynamic value){ throw new NotImplementedException(); }
-		public static bool SetVehicleDamageProof (Element theVehicle, bool damageProof){ throw new NotImplementedException(); }
-		public static bool SetTrainDerailed (Element vehicleToDerail, bool derailed){ throw new NotImplementedException(); }
-		public static bool SetVehicleFuelTankExplodable (Element theVehicle, bool explodable){ throw new NotImplementedException(); }
-		public static bool SetVehicleEngineState (Element theVehicle, bool engineState){ throw new NotImplementedException(); }
-		public static bool SetTrainTrack (Element train, int track){ throw new NotImplementedException(); }
-		public static bool SetVehicleDoorState (Element theVehicle, int door, int state){ throw new NotImplementedException(); }
-		public static bool SetVehicleDoorsUndamageable (Element theVehicle, bool state){ throw new NotImplementedException(); }
-		public static bool SetVehicleLightState (Element theVehicle, int light, int state){ throw new NotImplementedException(); }
-		public static bool SetVehicleHeadLightColor (Element theVehicle, int red, int green, int blue){ throw new NotImplementedException(); }
+		public static bool IsVehicleOnGround (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static bool IsVehicleDamageProof (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static bool SetTrainDerailable (MTAElement derailableVehicle, bool derailable){ throw new NotImplementedException(); }
+		public static bool IsTrainDerailed (MTAElement vehicleToCheck){ throw new NotImplementedException(); }
+		public static bool AddVehicleUpgrade (MTAElement theVehicle, int upgrade){ throw new NotImplementedException(); }
+		public static bool RemoveVehicleUpgrade (MTAElement theVehicle, int upgrade){ throw new NotImplementedException(); }
+		public static bool SetTrainSpeed (MTAElement train, float speed){ throw new NotImplementedException(); }
+		public static bool SetTrainPosition (MTAElement train, float position){ throw new NotImplementedException(); }
+		public static bool SetVehicleColor (MTAElement theVehicle, int r1, int g1, int b1, int r2, int g2, int b2, int r3, int g3, int b3, int r4, int g4, int b4){ throw new NotImplementedException(); }
+		public static bool SetTrainDirection (MTAElement train, bool clockwise){ throw new NotImplementedException(); }
+		public static bool SetVehicleHandling (MTAElement theVehicle, string property, dynamic value){ throw new NotImplementedException(); }
+		public static bool SetVehicleDamageProof (MTAElement theVehicle, bool damageProof){ throw new NotImplementedException(); }
+		public static bool SetTrainDerailed (MTAElement vehicleToDerail, bool derailed){ throw new NotImplementedException(); }
+		public static bool SetVehicleFuelTankExplodable (MTAElement theVehicle, bool explodable){ throw new NotImplementedException(); }
+		public static bool SetVehicleEngineState (MTAElement theVehicle, bool engineState){ throw new NotImplementedException(); }
+		public static bool SetTrainTrack (MTAElement train, int track){ throw new NotImplementedException(); }
+		public static bool SetVehicleDoorState (MTAElement theVehicle, int door, int state){ throw new NotImplementedException(); }
+		public static bool SetVehicleDoorsUndamageable (MTAElement theVehicle, bool state){ throw new NotImplementedException(); }
+		public static bool SetVehicleLightState (MTAElement theVehicle, int light, int state){ throw new NotImplementedException(); }
+		public static bool SetVehicleHeadLightColor (MTAElement theVehicle, int red, int green, int blue){ throw new NotImplementedException(); }
 		public static bool ResetWaterLevel (){ throw new NotImplementedException(); }
-		public static bool SetVehicleLandingGearDown (Element theVehicle, bool gearState){ throw new NotImplementedException(); }
-		public static bool SetVehicleDoorOpenRatio (Element theVehicle, int door, float ratio, int time){ throw new NotImplementedException(); }
-		public static bool SetVehiclePaintjob (Element theVehicle, int value){ throw new NotImplementedException(); }
+		public static bool SetVehicleLandingGearDown (MTAElement theVehicle, bool gearState){ throw new NotImplementedException(); }
+		public static bool SetVehicleDoorOpenRatio (MTAElement theVehicle, int door, float ratio, int time){ throw new NotImplementedException(); }
+		public static bool SetVehiclePaintjob (MTAElement theVehicle, int value){ throw new NotImplementedException(); }
 		public static Tuple<int, int, int, int> GetWaterColor (){ throw new NotImplementedException(); }
-		public static bool SetVehiclePlateText (Element theVehicle, string numberplate){ throw new NotImplementedException(); }
-		public static bool SetVehicleSirensOn (Element theVehicle, bool sirensOn){ throw new NotImplementedException(); }
-		public static bool SetVehicleTaxiLightOn (Element taxi, bool LightState){ throw new NotImplementedException(); }
-		public static bool SetVehicleWheelStates (Element theVehicle, int frontLeft, int rearLeft, int frontRight, int rearRight){ throw new NotImplementedException(); }
-		public static bool SetVehicleSirens (Element theVehicle, int sirenPoint, float posX, float posY, float posZ, float red, float green, float blue, float alpha, float minAlpha){ throw new NotImplementedException(); }
-		public static bool SetVehiclePanelState (Element theVehicle, int panelID, int state){ throw new NotImplementedException(); }
+		public static bool SetVehiclePlateText (MTAElement theVehicle, string numberplate){ throw new NotImplementedException(); }
+		public static bool SetVehicleSirensOn (MTAElement theVehicle, bool sirensOn){ throw new NotImplementedException(); }
+		public static bool SetVehicleTaxiLightOn (MTAElement taxi, bool LightState){ throw new NotImplementedException(); }
+		public static bool SetVehicleWheelStates (MTAElement theVehicle, int frontLeft, int rearLeft, int frontRight, int rearRight){ throw new NotImplementedException(); }
+		public static bool SetVehicleSirens (MTAElement theVehicle, int sirenPoint, float posX, float posY, float posZ, float red, float green, float blue, float alpha, float minAlpha){ throw new NotImplementedException(); }
+		public static bool SetVehiclePanelState (MTAElement theVehicle, int panelID, int state){ throw new NotImplementedException(); }
 		public static bool SetWaterColor (int red, int green, int blue, int alpha){ throw new NotImplementedException(); }
 		public static float GetWaveHeight (){ throw new NotImplementedException(); }
-		public static Tuple<int, int, float> GetWaterVertexPosition (Element theWater, int vertexIndex){ throw new NotImplementedException(); }
+		public static Tuple<int, int, float> GetWaterVertexPosition (MTAElement theWater, int vertexIndex){ throw new NotImplementedException(); }
 		public static bool ResetWaterColor (){ throw new NotImplementedException(); }
-		public static bool SetVehicleTurretPosition (Element turretVehicle, float positionX, float positionY){ throw new NotImplementedException(); }
-		public static bool SetWaterVertexPosition (Element theWater, int vertexIndex, int x, int y, float z){ throw new NotImplementedException(); }
-		public static Element CreateWater (int x1, int y1, float z1, int x2, int y2, float z2, int x3, int y3, float z3, int x4, int y4, float z4, bool bShallow){ throw new NotImplementedException(); }
-		public static bool SetWaterLevel (Element theWater, float level){ throw new NotImplementedException(); }
+		public static bool SetVehicleTurretPosition (MTAElement turretVehicle, float positionX, float positionY){ throw new NotImplementedException(); }
+		public static bool SetWaterVertexPosition (MTAElement theWater, int vertexIndex, int x, int y, float z){ throw new NotImplementedException(); }
+		public static MTAElement CreateWater (int x1, int y1, float z1, int x2, int y2, float z2, int x3, int y3, float z3, int x4, int y4, float z4, bool bShallow){ throw new NotImplementedException(); }
+		public static bool SetWaterLevel (MTAElement theWater, float level){ throw new NotImplementedException(); }
 		public static string GetWeaponNameFromID (int id){ throw new NotImplementedException(); }
 		public static bool SetWaveHeight (float height){ throw new NotImplementedException(); }
 		public static int GetWeaponIDFromName (string name){ throw new NotImplementedException(); }
 		public static bool SetWeaponProperty (int weaponID, string weaponSkill, string property, dynamic theValue){ throw new NotImplementedException(); }
 		public static int GetSlotFromWeapon (int weaponid){ throw new NotImplementedException(); }
-		public static Tuple<float, float> GetVehicleTurretPosition (Element turretVehicle){ throw new NotImplementedException(); }
+		public static Tuple<float, float> GetVehicleTurretPosition (MTAElement turretVehicle){ throw new NotImplementedException(); }
 		public static Tuple<int, int, int, int, int, int, int, Tuple<int, bool>> GetHeatHaze (){ throw new NotImplementedException(); }
 		public static float GetRainLevel (){ throw new NotImplementedException(); }
 		public static int GetOriginalWeaponProperty (int weaponID, string weaponSkill, string property){ throw new NotImplementedException(); }
@@ -384,10 +384,10 @@ namespace MultiTheftAuto {
 		public static bool AreTrafficLightsLocked (){ throw new NotImplementedException(); }
 		public static float GetFarClipDistance (){ throw new NotImplementedException(); }
 		public static float GetAircraftMaxVelocity (){ throw new NotImplementedException(); }
-		public static dynamic GetVehicleUpgrades (Element theVehicle){ throw new NotImplementedException(); }
+		public static dynamic GetVehicleUpgrades (MTAElement theVehicle){ throw new NotImplementedException(); }
 		public static int GetWeaponProperty (int weaponID, string weaponSkill, string property){ throw new NotImplementedException(); }
-		public static string GetVehicleType (Element theVehicle){ throw new NotImplementedException(); }
-		public static bool SetWeaponAmmo (Element thePlayer, int weapon, int totalAmmo, int ammoInClip){ throw new NotImplementedException(); }
+		public static string GetVehicleType (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static bool SetWeaponAmmo (MTAElement thePlayer, int weapon, int totalAmmo, int ammoInClip){ throw new NotImplementedException(); }
 		public static float GetFogDistance (){ throw new NotImplementedException(); }
 		public static bool GetCloudsEnabled (){ throw new NotImplementedException(); }
 		public static float GetGravity (){ throw new NotImplementedException(); }
@@ -412,17 +412,17 @@ namespace MultiTheftAuto {
 		public static Tuple<int, int> GetWeather (){ throw new NotImplementedException(); }
 		public static int GetMoonSize (){ throw new NotImplementedException(); }
 		public static bool SetFogDistance (float distance){ throw new NotImplementedException(); }
-		public static bool SetVehicleLocked (Element theVehicle, bool locked){ throw new NotImplementedException(); }
+		public static bool SetVehicleLocked (MTAElement theVehicle, bool locked){ throw new NotImplementedException(); }
 		public static bool IsGarageOpen (int garageID){ throw new NotImplementedException(); }
 		public static bool SetFarClipDistance (float distance){ throw new NotImplementedException(); }
 		public static bool SetAircraftMaxVelocity (float velocity){ throw new NotImplementedException(); }
 		public static bool ResetSunColor (){ throw new NotImplementedException(); }
 		public static bool ResetWindVelocity (){ throw new NotImplementedException(); }
 		public static bool SetGameSpeed (float value){ throw new NotImplementedException(); }
-		public static bool SetVehicleOverrideLights (Element theVehicle, int value){ throw new NotImplementedException(); }
+		public static bool SetVehicleOverrideLights (MTAElement theVehicle, int value){ throw new NotImplementedException(); }
 		public static bool RestoreAllWorldModels (){ throw new NotImplementedException(); }
 		public static bool SetSunColor (int aRed, int aGreen, int aBlue, int bRed, int bGreen, int bBlue){ throw new NotImplementedException(); }
-		public static bool XmlDestroyNode (Element theXMLNode){ throw new NotImplementedException(); }
+		public static bool XmlDestroyNode (MTAElement theXMLNode){ throw new NotImplementedException(); }
 		public static bool SetInteriorSoundsEnabled (bool enabled){ throw new NotImplementedException(); }
 		public static bool SetWeather (int weatherID){ throw new NotImplementedException(); }
 		public static bool RestoreWorldModel (int modelID, float radius, float x, float y, float z, int iInterior){ throw new NotImplementedException(); }
@@ -432,33 +432,33 @@ namespace MultiTheftAuto {
 		public static bool SetRainLevel (float level){ throw new NotImplementedException(); }
 		public static bool SetGarageOpen (int garageID, bool open){ throw new NotImplementedException(); }
 		public static bool SetGravity (float level){ throw new NotImplementedException(); }
-		public static Element XmlCreateFile (string filePath, string rootNodeName){ throw new NotImplementedException(); }
-		public static bool XmlNodeSetAttribute (Element node, string name, dynamic value){ throw new NotImplementedException(); }
+		public static MTAElement XmlCreateFile (string filePath, string rootNodeName){ throw new NotImplementedException(); }
+		public static bool XmlNodeSetAttribute (MTAElement node, string name, dynamic value){ throw new NotImplementedException(); }
 		public static bool SetOcclusionsEnabled (bool enabled){ throw new NotImplementedException(); }
 		public static bool SetSkyGradient (int topRed, int topGreen, int topBlue, int bottomRed, int bottomGreen, int bottomBlue){ throw new NotImplementedException(); }
 		public static bool SetWindVelocity (float velocityX, float velocityY, float velocityZ){ throw new NotImplementedException(); }
 		public static bool SetHeatHaze (int intensity, int randomShift, int speedMin, int speedMax, int scanSizeX, int scanSizeY, int renderSizeX, int renderSizeY, bool bShowInside){ throw new NotImplementedException(); }
 		public static bool SetMoonSize (int size){ throw new NotImplementedException(); }
-		public static bool XmlNodeSetValue (Element theXMLNode, string value, bool setCDATA){ throw new NotImplementedException(); }
+		public static bool XmlNodeSetValue (MTAElement theXMLNode, string value, bool setCDATA){ throw new NotImplementedException(); }
 		public static bool SetTime (int hour, int minute){ throw new NotImplementedException(); }
-		public static Element XmlCopyFile (Element nodeToCopy, string newFilePath){ throw new NotImplementedException(); }
-		public static dynamic XmlNodeGetAttributes (Element node){ throw new NotImplementedException(); }
-		public static bool XmlNodeSetName (Element node, string name){ throw new NotImplementedException(); }
-		public static string XmlNodeGetAttribute (Element node, string name){ throw new NotImplementedException(); }
-		public static bool XmlUnloadFile (Element node){ throw new NotImplementedException(); }
-		public static string XmlNodeGetName (Element node){ throw new NotImplementedException(); }
-		public static Element XmlLoadFile (string filePath, bool readOnly){ throw new NotImplementedException(); }
-		public static Element XmlFindChild (Element parent, string tagName, int index){ throw new NotImplementedException(); }
-		public static Element XmlCreateChild (Element parentNode, string tagName){ throw new NotImplementedException(); }
+		public static MTAElement XmlCopyFile (MTAElement nodeToCopy, string newFilePath){ throw new NotImplementedException(); }
+		public static dynamic XmlNodeGetAttributes (MTAElement node){ throw new NotImplementedException(); }
+		public static bool XmlNodeSetName (MTAElement node, string name){ throw new NotImplementedException(); }
+		public static string XmlNodeGetAttribute (MTAElement node, string name){ throw new NotImplementedException(); }
+		public static bool XmlUnloadFile (MTAElement node){ throw new NotImplementedException(); }
+		public static string XmlNodeGetName (MTAElement node){ throw new NotImplementedException(); }
+		public static MTAElement XmlLoadFile (string filePath, bool readOnly){ throw new NotImplementedException(); }
+		public static MTAElement XmlFindChild (MTAElement parent, string tagName, int index){ throw new NotImplementedException(); }
+		public static MTAElement XmlCreateChild (MTAElement parentNode, string tagName){ throw new NotImplementedException(); }
 		public static bool SetWeatherBlended (int weatherID){ throw new NotImplementedException(); }
-		public static bool XmlSaveFile (Element rootNode){ throw new NotImplementedException(); }
-		public static dynamic XmlNodeGetChildren (Element parent, int index){ throw new NotImplementedException(); }
-		public static Element XmlNodeGetParent (Element node){ throw new NotImplementedException(); }
-		public static string XmlNodeGetValue (Element theXMLNode){ throw new NotImplementedException(); }
+		public static bool XmlSaveFile (MTAElement rootNode){ throw new NotImplementedException(); }
+		public static dynamic XmlNodeGetChildren (MTAElement parent, int index){ throw new NotImplementedException(); }
+		public static MTAElement XmlNodeGetParent (MTAElement node){ throw new NotImplementedException(); }
+		public static string XmlNodeGetValue (MTAElement theXMLNode){ throw new NotImplementedException(); }
 		public static bool RemoveWorldModel (int modelID, float radius, float x, float y, float z, int interior){ throw new NotImplementedException(); }
 		public static bool SetTrafficLightState (int state){ throw new NotImplementedException(); }
 		public static dynamic GetElementsWithinRange (float x, float y, float z, float range, string elemType){ throw new NotImplementedException(); }
-		public static bool SetVehicleDirtLevel (Element theVehicle, int dirtLevel){ throw new NotImplementedException(); }
+		public static bool SetVehicleDirtLevel (MTAElement theVehicle, int dirtLevel){ throw new NotImplementedException(); }
 		public static float GetAircraftMaxHeight (){ throw new NotImplementedException(); }
 		public static bool SetAircraftMaxHeight (float Height){ throw new NotImplementedException(); }
 		public static bool SetJetpackMaxHeight (float Height){ throw new NotImplementedException(); }

@@ -7,13 +7,13 @@ using System.Numerics;
 
 namespace MTASharedWrapper
 {
-    public class SharedElement
+    public class Element
     {
-        protected Element element;
+        protected MTAElement element;
 
-        public static SharedElement Root { get { return SharedElementManager.Instance.Root; } }
+        public static Element Root { get { return SharedElementManager.Instance.Root; } }
 
-        public Element MTAElement
+        public MTAElement MTAElement
         {
             get
             {
@@ -142,11 +142,11 @@ namespace MTASharedWrapper
 
         public string Type { get { return Shared.GetElementType(element); } }
 
-        public SharedElement()
+        public Element()
         {
         }
 
-        public SharedElement(Element mtaElement)
+        public Element(MTAElement mtaElement)
         {
             element = mtaElement;
             SharedElementManager.Instance.RegisterElement(this);
@@ -157,12 +157,12 @@ namespace MTASharedWrapper
             return Shared.DestroyElement(element);
         }
 
-        public bool AttachTo(SharedElement element, Vector3 offset, Vector3 rotationOffset)
+        public bool AttachTo(Element element, Vector3 offset, Vector3 rotationOffset)
         {
             return Shared.AttachElements(this.element, element.element, offset.X, offset.Y, offset.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z);
         }
 
-        public bool AttachTo(SharedElement element, Vector3 offset)
+        public bool AttachTo(Element element, Vector3 offset)
         {
             return AttachTo(element, offset, new Vector3(0, 0, 0));
         }
@@ -171,7 +171,7 @@ namespace MTASharedWrapper
             SharedElementManager.Instance.AddEventHandler(this, eventName, propagated, priorty);
         }
 
-        public virtual void HandleEvent(string eventName, Element source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public virtual void HandleEvent(string eventName, MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             Console.WriteLine(eventName + " has been triggered");
 
@@ -181,7 +181,7 @@ namespace MTASharedWrapper
             }
         }
 
-        public delegate void OnRootEventHandler(string eventName, Element source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8);
+        public delegate void OnRootEventHandler(string eventName, MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8);
         public static event OnRootEventHandler OnRootEvent;
     }
 }

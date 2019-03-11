@@ -3,199 +3,199 @@ using System;
 namespace MultiTheftAuto {
 	public class Server {
 		public static dynamic GetAccounts (){ throw new NotImplementedException(); }
-		public static bool RemoveAccount (Element theAccount){ throw new NotImplementedException(); }
-		public static int GetAccountID (Element theAccount){ throw new NotImplementedException(); }
-		public static dynamic GetAllAccountData (Element theAccount){ throw new NotImplementedException(); }
-		public static string GetAccountSerial (Element theAccount){ throw new NotImplementedException(); }
-		public static bool LogOut (Element thePlayer){ throw new NotImplementedException(); }
-		public static Element AddAccount (string name, string pass, bool allowCaseVariations){ throw new NotImplementedException(); }
-		public static string GetAccountName (Element theAccount){ throw new NotImplementedException(); }
+		public static bool RemoveAccount (MTAElement theAccount){ throw new NotImplementedException(); }
+		public static int GetAccountID (MTAElement theAccount){ throw new NotImplementedException(); }
+		public static dynamic GetAllAccountData (MTAElement theAccount){ throw new NotImplementedException(); }
+		public static string GetAccountSerial (MTAElement theAccount){ throw new NotImplementedException(); }
+		public static bool LogOut (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static MTAElement AddAccount (string name, string pass, bool allowCaseVariations){ throw new NotImplementedException(); }
+		public static string GetAccountName (MTAElement theAccount){ throw new NotImplementedException(); }
 		public static dynamic GetAccountsBySerial (string serial){ throw new NotImplementedException(); }
-		public static Element GetPlayerAccount (Element thePlayer){ throw new NotImplementedException(); }
-		public static bool LogIn (Element thePlayer, Element theAccount, string thePassword){ throw new NotImplementedException(); }
-		public static bool IsGuestAccount (Element theAccount){ throw new NotImplementedException(); }
-		public static Element GetAccountPlayer (Element theAccount){ throw new NotImplementedException(); }
-		public static string GetAccountData (Element theAccount, string key){ throw new NotImplementedException(); }
-		public static bool CopyAccountData (Element theAccount, Element fromAccount){ throw new NotImplementedException(); }
-		public static Element GetAccount (string username, string password, bool caseSensitive){ throw new NotImplementedException(); }
-		public static bool SetAccountPassword (Element theAccount, string password){ throw new NotImplementedException(); }
-		public static bool SetAccountData (Element theAccount, string key, string value){ throw new NotImplementedException(); }
+		public static MTAElement GetPlayerAccount (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static bool LogIn (MTAElement thePlayer, MTAElement theAccount, string thePassword){ throw new NotImplementedException(); }
+		public static bool IsGuestAccount (MTAElement theAccount){ throw new NotImplementedException(); }
+		public static MTAElement GetAccountPlayer (MTAElement theAccount){ throw new NotImplementedException(); }
+		public static string GetAccountData (MTAElement theAccount, string key){ throw new NotImplementedException(); }
+		public static bool CopyAccountData (MTAElement theAccount, MTAElement fromAccount){ throw new NotImplementedException(); }
+		public static MTAElement GetAccount (string username, string password, bool caseSensitive){ throw new NotImplementedException(); }
+		public static bool SetAccountPassword (MTAElement theAccount, string password){ throw new NotImplementedException(); }
+		public static bool SetAccountData (MTAElement theAccount, string key, string value){ throw new NotImplementedException(); }
 		public static dynamic GetAccountsByData (string dataName, string value){ throw new NotImplementedException(); }
-		public static Element GetAccountByID (int id){ throw new NotImplementedException(); }
-		public static string GetAccountIP (Element theAccount){ throw new NotImplementedException(); }
-		public static Element AclCreate (string aclName){ throw new NotImplementedException(); }
+		public static MTAElement GetAccountByID (int id){ throw new NotImplementedException(); }
+		public static string GetAccountIP (MTAElement theAccount){ throw new NotImplementedException(); }
+		public static MTAElement AclCreate (string aclName){ throw new NotImplementedException(); }
 		public static dynamic GetAccountsByIP (string ip){ throw new NotImplementedException(); }
-		public static bool SetAccountName (Element theAccount, string name, bool allowCaseVariations){ throw new NotImplementedException(); }
-		public static Element AclGetGroup (string groupName){ throw new NotImplementedException(); }
-		public static bool AclDestroy (Element theACL){ throw new NotImplementedException(); }
-		public static bool AclDestroyGroup (Element aclGroup){ throw new NotImplementedException(); }
-		public static Element AclCreateGroup (string groupName){ throw new NotImplementedException(); }
-		public static Element AclGet (string aclName){ throw new NotImplementedException(); }
-		public static string AclGetName (Element theAcl){ throw new NotImplementedException(); }
-		public static bool AclGetRight (Element theAcl, string rightName){ throw new NotImplementedException(); }
-		public static string AclGroupGetName (Element aclGroup){ throw new NotImplementedException(); }
-		public static bool AclGroupAddACL (Element theGroup, Element theACL){ throw new NotImplementedException(); }
-		public static bool AclGroupAddObject (Element theGroup, string theObjectName){ throw new NotImplementedException(); }
-		public static dynamic AclGroupListObjects (Element theGroup){ throw new NotImplementedException(); }
-		public static bool AclGroupRemoveACL (Element theGroup, Element theACL){ throw new NotImplementedException(); }
+		public static bool SetAccountName (MTAElement theAccount, string name, bool allowCaseVariations){ throw new NotImplementedException(); }
+		public static MTAElement AclGetGroup (string groupName){ throw new NotImplementedException(); }
+		public static bool AclDestroy (MTAElement theACL){ throw new NotImplementedException(); }
+		public static bool AclDestroyGroup (MTAElement aclGroup){ throw new NotImplementedException(); }
+		public static MTAElement AclCreateGroup (string groupName){ throw new NotImplementedException(); }
+		public static MTAElement AclGet (string aclName){ throw new NotImplementedException(); }
+		public static string AclGetName (MTAElement theAcl){ throw new NotImplementedException(); }
+		public static bool AclGetRight (MTAElement theAcl, string rightName){ throw new NotImplementedException(); }
+		public static string AclGroupGetName (MTAElement aclGroup){ throw new NotImplementedException(); }
+		public static bool AclGroupAddACL (MTAElement theGroup, MTAElement theACL){ throw new NotImplementedException(); }
+		public static bool AclGroupAddObject (MTAElement theGroup, string theObjectName){ throw new NotImplementedException(); }
+		public static dynamic AclGroupListObjects (MTAElement theGroup){ throw new NotImplementedException(); }
+		public static bool AclGroupRemoveACL (MTAElement theGroup, MTAElement theACL){ throw new NotImplementedException(); }
 		public static dynamic AclGroupList (){ throw new NotImplementedException(); }
-		public static bool AclGroupRemoveObject (Element theGroup, string theObjectString){ throw new NotImplementedException(); }
-		public static dynamic AclGroupListACL (Element theGroup){ throw new NotImplementedException(); }
-		public static dynamic AclListRights (Element theACL, string allowedType){ throw new NotImplementedException(); }
+		public static bool AclGroupRemoveObject (MTAElement theGroup, string theObjectString){ throw new NotImplementedException(); }
+		public static dynamic AclGroupListACL (MTAElement theGroup){ throw new NotImplementedException(); }
+		public static dynamic AclListRights (MTAElement theACL, string allowedType){ throw new NotImplementedException(); }
 		public static dynamic AclList (){ throw new NotImplementedException(); }
-		public static bool AclRemoveRight (Element theAcl, string rightName){ throw new NotImplementedException(); }
+		public static bool AclRemoveRight (MTAElement theAcl, string rightName){ throw new NotImplementedException(); }
 		public static bool AclSave (){ throw new NotImplementedException(); }
-		public static bool AclSetRight (Element theAcl, string rightName, bool hasAccess){ throw new NotImplementedException(); }
-		public static bool IsObjectInACLGroup (string theObject, Element theGroup){ throw new NotImplementedException(); }
-		public static Element AddBan (string IP, string Username, string Serial, Element responsibleElement, string reason, int seconds){ throw new NotImplementedException(); }
+		public static bool AclSetRight (MTAElement theAcl, string rightName, bool hasAccess){ throw new NotImplementedException(); }
+		public static bool IsObjectInACLGroup (string theObject, MTAElement theGroup){ throw new NotImplementedException(); }
+		public static MTAElement AddBan (string IP, string Username, string Serial, MTAElement responsibleElement, string reason, int seconds){ throw new NotImplementedException(); }
 		public static bool HasObjectPermissionTo (string parameter0, string theAction, bool defaultPermission){ throw new NotImplementedException(); }
-		public static string GetBanAdmin (Element theBan){ throw new NotImplementedException(); }
-		public static string GetBanIP (Element theBan){ throw new NotImplementedException(); }
-		public static Element BanPlayer (Element bannedPlayer, bool IP, bool Username, bool Serial, dynamic responsiblePlayer, string reason, int seconds){ throw new NotImplementedException(); }
-		public static string GetBanNick (Element theBan){ throw new NotImplementedException(); }
-		public static int GetBanTime (Element theBan){ throw new NotImplementedException(); }
-		public static string GetBanSerial (Element theBan){ throw new NotImplementedException(); }
-		public static string GetBanReason (Element theBan){ throw new NotImplementedException(); }
+		public static string GetBanAdmin (MTAElement theBan){ throw new NotImplementedException(); }
+		public static string GetBanIP (MTAElement theBan){ throw new NotImplementedException(); }
+		public static MTAElement BanPlayer (MTAElement bannedPlayer, bool IP, bool Username, bool Serial, dynamic responsiblePlayer, string reason, int seconds){ throw new NotImplementedException(); }
+		public static string GetBanNick (MTAElement theBan){ throw new NotImplementedException(); }
+		public static int GetBanTime (MTAElement theBan){ throw new NotImplementedException(); }
+		public static string GetBanSerial (MTAElement theBan){ throw new NotImplementedException(); }
+		public static string GetBanReason (MTAElement theBan){ throw new NotImplementedException(); }
 		public static dynamic GetBans (){ throw new NotImplementedException(); }
-		public static string GetBanUsername (Element theBan){ throw new NotImplementedException(); }
-		public static bool IsBan (Element theBan){ throw new NotImplementedException(); }
-		public static int GetUnbanTime (Element theBan){ throw new NotImplementedException(); }
-		public static bool KickPlayer (Element kickedPlayer, dynamic responsiblePlayer, string reason){ throw new NotImplementedException(); }
-		public static bool SetBanNick (Element theBan, string theNick){ throw new NotImplementedException(); }
+		public static string GetBanUsername (MTAElement theBan){ throw new NotImplementedException(); }
+		public static bool IsBan (MTAElement theBan){ throw new NotImplementedException(); }
+		public static int GetUnbanTime (MTAElement theBan){ throw new NotImplementedException(); }
+		public static bool KickPlayer (MTAElement kickedPlayer, dynamic responsiblePlayer, string reason){ throw new NotImplementedException(); }
+		public static bool SetBanNick (MTAElement theBan, string theNick){ throw new NotImplementedException(); }
 		public static bool AclReload (){ throw new NotImplementedException(); }
-		public static bool SetBanReason (Element theBan, string theReason){ throw new NotImplementedException(); }
-		public static bool SetBanAdmin (Element theBan, string theAdmin){ throw new NotImplementedException(); }
-		public static bool RemoveBan (Element theBan, Element responsibleElement){ throw new NotImplementedException(); }
+		public static bool SetBanReason (MTAElement theBan, string theReason){ throw new NotImplementedException(); }
+		public static bool SetBanAdmin (MTAElement theBan, string theAdmin){ throw new NotImplementedException(); }
+		public static bool RemoveBan (MTAElement theBan, MTAElement responsibleElement){ throw new NotImplementedException(); }
 		public static bool ReloadBans (){ throw new NotImplementedException(); }
-		public static bool SetUnbanTime (Element theBan, int theTime){ throw new NotImplementedException(); }
+		public static bool SetUnbanTime (MTAElement theBan, int theTime){ throw new NotImplementedException(); }
 		public static string GetGameType (){ throw new NotImplementedException(); }
-		public static bool PlaySoundFrontEnd (Element thePlayer, int sound){ throw new NotImplementedException(); }
+		public static bool PlaySoundFrontEnd (MTAElement thePlayer, int sound){ throw new NotImplementedException(); }
 		public static string GetMapName (){ throw new NotImplementedException(); }
 		public static string GetRuleValue (string key){ throw new NotImplementedException(); }
 		public static bool RemoveRuleValue (string key){ throw new NotImplementedException(); }
 		public static bool SetGameType (string gameType){ throw new NotImplementedException(); }
 		public static bool SetMapName (string mapName){ throw new NotImplementedException(); }
 		public static bool SetRuleValue (string key, string value){ throw new NotImplementedException(); }
-		public static Element CreateBlipAttachedTo (Element elementToAttachTo, int icon, int size, int r, int g, int b, int a, int ordering, float visibleDistance, Element visibleTo){ throw new NotImplementedException(); }
-		public static Element CreateBlip (float x, float y, float z, int icon, int size, int r, int g, int b, int a, int ordering, float visibleDistance, Element visibleTo){ throw new NotImplementedException(); }
-		public static bool FadeCamera (Element thePlayer, bool fadeIn, float timeToFade, int red, int green, int blue){ throw new NotImplementedException(); }
-		public static Tuple<float, float, float, float, float, float, float, float> GetCameraMatrix (Element thePlayer){ throw new NotImplementedException(); }
-		public static int GetCameraInterior (Element thePlayer){ throw new NotImplementedException(); }
-		public static Element GetCameraTarget (Element thePlayer){ throw new NotImplementedException(); }
-		public static bool SetCameraInterior (Element thePlayer, int interior){ throw new NotImplementedException(); }
-		public static bool SetCameraMatrix (Element thePlayer, float positionX, float positionY, float positionZ, float lookAtX, float lookAtY, float lookAtZ, float roll, float fov){ throw new NotImplementedException(); }
-		public static bool SetCameraTarget (Element thePlayer, Element target){ throw new NotImplementedException(); }
-		public static bool IsCursorShowing (Element thePlayer){ throw new NotImplementedException(); }
-		public static bool ShowCursor (Element thePlayer, bool show, bool toggleControls){ throw new NotImplementedException(); }
-		public static bool ClearElementVisibleTo (Element theElement){ throw new NotImplementedException(); }
-		public static Element CloneElement (Element theElement, float xPos, float yPos, float zPos, bool cloneChildren){ throw new NotImplementedException(); }
-		public static dynamic GetAllElementData (Element theElement){ throw new NotImplementedException(); }
-		public static Element GetElementByIndex (string theType, int index){ throw new NotImplementedException(); }
-		public static dynamic GetElementsByType (string theType, Element startat){ throw new NotImplementedException(); }
-		public static Element GetElementSyncer (Element theElement){ throw new NotImplementedException(); }
-		public static string GetElementZoneName (Element theElement, bool citiesonly){ throw new NotImplementedException(); }
-		public static bool RemoveElementData (Element theElement, string key){ throw new NotImplementedException(); }
-		public static bool IsElementVisibleTo (Element theElement, Element visibleTo){ throw new NotImplementedException(); }
-		public static bool SetElementVisibleTo (Element theElement, Element visibleTo, bool visible){ throw new NotImplementedException(); }
-		public static bool SetElementSyncer (Element theElement, Element thePlayer){ throw new NotImplementedException(); }
+		public static MTAElement CreateBlipAttachedTo (MTAElement elementToAttachTo, int icon, int size, int r, int g, int b, int a, int ordering, float visibleDistance, MTAElement visibleTo){ throw new NotImplementedException(); }
+		public static MTAElement CreateBlip (float x, float y, float z, int icon, int size, int r, int g, int b, int a, int ordering, float visibleDistance, MTAElement visibleTo){ throw new NotImplementedException(); }
+		public static bool FadeCamera (MTAElement thePlayer, bool fadeIn, float timeToFade, int red, int green, int blue){ throw new NotImplementedException(); }
+		public static Tuple<float, float, float, float, float, float, float, float> GetCameraMatrix (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static int GetCameraInterior (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static MTAElement GetCameraTarget (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static bool SetCameraInterior (MTAElement thePlayer, int interior){ throw new NotImplementedException(); }
+		public static bool SetCameraMatrix (MTAElement thePlayer, float positionX, float positionY, float positionZ, float lookAtX, float lookAtY, float lookAtZ, float roll, float fov){ throw new NotImplementedException(); }
+		public static bool SetCameraTarget (MTAElement thePlayer, MTAElement target){ throw new NotImplementedException(); }
+		public static bool IsCursorShowing (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static bool ShowCursor (MTAElement thePlayer, bool show, bool toggleControls){ throw new NotImplementedException(); }
+		public static bool ClearElementVisibleTo (MTAElement theElement){ throw new NotImplementedException(); }
+		public static MTAElement CloneElement (MTAElement theElement, float xPos, float yPos, float zPos, bool cloneChildren){ throw new NotImplementedException(); }
+		public static dynamic GetAllElementData (MTAElement theElement){ throw new NotImplementedException(); }
+		public static MTAElement GetElementByIndex (string theType, int index){ throw new NotImplementedException(); }
+		public static dynamic GetElementsByType (string theType, MTAElement startat){ throw new NotImplementedException(); }
+		public static MTAElement GetElementSyncer (MTAElement theElement){ throw new NotImplementedException(); }
+		public static string GetElementZoneName (MTAElement theElement, bool citiesonly){ throw new NotImplementedException(); }
+		public static bool RemoveElementData (MTAElement theElement, string key){ throw new NotImplementedException(); }
+		public static bool IsElementVisibleTo (MTAElement theElement, MTAElement visibleTo){ throw new NotImplementedException(); }
+		public static bool SetElementVisibleTo (MTAElement theElement, MTAElement visibleTo, bool visible){ throw new NotImplementedException(); }
+		public static bool SetElementSyncer (MTAElement theElement, MTAElement thePlayer){ throw new NotImplementedException(); }
 		public static bool CancelEvent (bool cancel, string reason){ throw new NotImplementedException(); }
 		public static string GetCancelReason (){ throw new NotImplementedException(); }
-		public static bool CancelLatentEvent (Element thePlayer, int handle){ throw new NotImplementedException(); }
-		public static dynamic GetLatentEventHandles (Element thePlayer){ throw new NotImplementedException(); }
-		public static dynamic GetLatentEventStatus (Element thePlayer, int handle){ throw new NotImplementedException(); }
+		public static bool CancelLatentEvent (MTAElement thePlayer, int handle){ throw new NotImplementedException(); }
+		public static dynamic GetLatentEventHandles (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static dynamic GetLatentEventStatus (MTAElement thePlayer, int handle){ throw new NotImplementedException(); }
 		public static bool TriggerClientEvent (dynamic sendTo){ throw new NotImplementedException(); }
 		public static bool TriggerLatentClientEvent (dynamic sendTo){ throw new NotImplementedException(); }
-		public static bool CreateExplosion (float x, float y, float z, int theType, Element creator){ throw new NotImplementedException(); }
-		public static bool BindKey (Element thePlayer, string key, string keyState, dynamic handlerFunction, dynamic arguments){ throw new NotImplementedException(); }
+		public static bool CreateExplosion (float x, float y, float z, int theType, MTAElement creator){ throw new NotImplementedException(); }
+		public static bool BindKey (MTAElement thePlayer, string key, string keyState, dynamic handlerFunction, dynamic arguments){ throw new NotImplementedException(); }
 		public static bool AddCommandHandler (string commandName, dynamic handlerFunction, bool restricted, bool caseSensitive){ throw new NotImplementedException(); }
-		public static string GetKeyBoundToFunction (Element thePlayer, dynamic theFunction){ throw new NotImplementedException(); }
-		public static bool GetControlState (Element thePlayer, string controlName){ throw new NotImplementedException(); }
-		public static bool IsKeyBound (Element thePlayer, string key, string keyState, dynamic handler){ throw new NotImplementedException(); }
-		public static bool IsControlEnabled (Element thePlayer, string control){ throw new NotImplementedException(); }
-		public static bool ExecuteCommandHandler (string commandName, Element thePlayer, string args){ throw new NotImplementedException(); }
-		public static dynamic GetFunctionsBoundToKey (Element thePlayer, string key, string keyState){ throw new NotImplementedException(); }
-		public static bool ToggleAllControls (Element thePlayer, bool enabled, bool gtaControls, bool mtaControls){ throw new NotImplementedException(); }
-		public static Element LoadMapData (Element node, Element parent){ throw new NotImplementedException(); }
-		public static bool ToggleControl (Element thePlayer, string control, bool enabled){ throw new NotImplementedException(); }
-		public static bool ResetMapInfo (Element thePlayer){ throw new NotImplementedException(); }
-		public static bool SaveMapData (Element node, Element baseElement, bool childrenOnly){ throw new NotImplementedException(); }
-		public static bool UnbindKey (Element thePlayer, string key, string keyState, string command){ throw new NotImplementedException(); }
-		public static Element CreateMarker (float x, float y, float z, string theType, float size, int r, int g, int b, int a, bool visibleTo){ throw new NotImplementedException(); }
+		public static string GetKeyBoundToFunction (MTAElement thePlayer, dynamic theFunction){ throw new NotImplementedException(); }
+		public static bool GetControlState (MTAElement thePlayer, string controlName){ throw new NotImplementedException(); }
+		public static bool IsKeyBound (MTAElement thePlayer, string key, string keyState, dynamic handler){ throw new NotImplementedException(); }
+		public static bool IsControlEnabled (MTAElement thePlayer, string control){ throw new NotImplementedException(); }
+		public static bool ExecuteCommandHandler (string commandName, MTAElement thePlayer, string args){ throw new NotImplementedException(); }
+		public static dynamic GetFunctionsBoundToKey (MTAElement thePlayer, string key, string keyState){ throw new NotImplementedException(); }
+		public static bool ToggleAllControls (MTAElement thePlayer, bool enabled, bool gtaControls, bool mtaControls){ throw new NotImplementedException(); }
+		public static MTAElement LoadMapData (MTAElement node, MTAElement parent){ throw new NotImplementedException(); }
+		public static bool ToggleControl (MTAElement thePlayer, string control, bool enabled){ throw new NotImplementedException(); }
+		public static bool ResetMapInfo (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static bool SaveMapData (MTAElement node, MTAElement baseElement, bool childrenOnly){ throw new NotImplementedException(); }
+		public static bool UnbindKey (MTAElement thePlayer, string key, string keyState, string command){ throw new NotImplementedException(); }
+		public static MTAElement CreateMarker (float x, float y, float z, string theType, float size, int r, int g, int b, int a, bool visibleTo){ throw new NotImplementedException(); }
 		public static dynamic GetLoadedModules (){ throw new NotImplementedException(); }
 		public static dynamic GetModuleInfo (string moduleName){ throw new NotImplementedException(); }
-		public static bool ClearChatBox (Element clearFor){ throw new NotImplementedException(); }
-		public static bool OutputChatBox (string text, Element visibleTo){ throw new NotImplementedException(); }
-		public static bool OutputConsole (string text, Element visibleTo){ throw new NotImplementedException(); }
-		public static bool ShowChat (Element thePlayer, bool show){ throw new NotImplementedException(); }
+		public static bool ClearChatBox (MTAElement clearFor){ throw new NotImplementedException(); }
+		public static bool OutputChatBox (string text, MTAElement visibleTo){ throw new NotImplementedException(); }
+		public static bool OutputConsole (string text, MTAElement visibleTo){ throw new NotImplementedException(); }
+		public static bool ShowChat (MTAElement thePlayer, bool show){ throw new NotImplementedException(); }
 		public static bool OutputServerLog (string text){ throw new NotImplementedException(); }
-		public static Element CreatePed (int modelid, float x, float y, float z, float rot, bool synced){ throw new NotImplementedException(); }
-		public static float GetPedGravity (Element thePed){ throw new NotImplementedException(); }
-		public static bool ReloadPedWeapon (Element thePed){ throw new NotImplementedException(); }
-		public static bool SetPedChoking (Element thePed, bool choking){ throw new NotImplementedException(); }
-		public static bool SetPedArmor (Element thePed, float armor){ throw new NotImplementedException(); }
-		public static bool SetPedFightingStyle (Element thePed, int style){ throw new NotImplementedException(); }
-		public static bool SetPedGravity (Element thePed, float gravity){ throw new NotImplementedException(); }
-		public static bool SetPedWearingJetpack (Element thePed, bool state){ throw new NotImplementedException(); }
-		public static int GetPickupRespawnInterval (Element thePickup){ throw new NotImplementedException(); }
-		public static bool IsPickupSpawned (Element thePickup){ throw new NotImplementedException(); }
-		public static bool SetPickupRespawnInterval (Element thePickup, int ms){ throw new NotImplementedException(); }
+		public static MTAElement CreatePed (int modelid, float x, float y, float z, float rot, bool synced){ throw new NotImplementedException(); }
+		public static float GetPedGravity (MTAElement thePed){ throw new NotImplementedException(); }
+		public static bool ReloadPedWeapon (MTAElement thePed){ throw new NotImplementedException(); }
+		public static bool SetPedChoking (MTAElement thePed, bool choking){ throw new NotImplementedException(); }
+		public static bool SetPedArmor (MTAElement thePed, float armor){ throw new NotImplementedException(); }
+		public static bool SetPedFightingStyle (MTAElement thePed, int style){ throw new NotImplementedException(); }
+		public static bool SetPedGravity (MTAElement thePed, float gravity){ throw new NotImplementedException(); }
+		public static bool SetPedWearingJetpack (MTAElement thePed, bool state){ throw new NotImplementedException(); }
+		public static int GetPickupRespawnInterval (MTAElement thePickup){ throw new NotImplementedException(); }
+		public static bool IsPickupSpawned (MTAElement thePickup){ throw new NotImplementedException(); }
+		public static bool SetPickupRespawnInterval (MTAElement thePickup, int ms){ throw new NotImplementedException(); }
 		public static dynamic GetAlivePlayers (){ throw new NotImplementedException(); }
-		public static bool ForcePlayerMap (Element thePlayer, bool forceOn){ throw new NotImplementedException(); }
+		public static bool ForcePlayerMap (MTAElement thePlayer, bool forceOn){ throw new NotImplementedException(); }
 		public static dynamic GetDeadPlayers (){ throw new NotImplementedException(); }
-		public static dynamic GetPlayerACInfo (Element thePlayer){ throw new NotImplementedException(); }
-		public static string GetPlayerAnnounceValue (Element thePlayer, string key){ throw new NotImplementedException(); }
-		public static int GetPlayerBlurLevel (Element thePlayer){ throw new NotImplementedException(); }
+		public static dynamic GetPlayerACInfo (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static string GetPlayerAnnounceValue (MTAElement thePlayer, string key){ throw new NotImplementedException(); }
+		public static int GetPlayerBlurLevel (MTAElement thePlayer){ throw new NotImplementedException(); }
 		public static int GetPlayerCount (){ throw new NotImplementedException(); }
-		public static string GetPlayerIP (Element thePlayer){ throw new NotImplementedException(); }
-		public static int GetPlayerIdleTime (Element thePlayer){ throw new NotImplementedException(); }
-		public static int GetPlayerMoney (Element thePlayer){ throw new NotImplementedException(); }
-		public static string GetPlayerVersion (Element thePlayer){ throw new NotImplementedException(); }
-		public static Element GetRandomPlayer (){ throw new NotImplementedException(); }
-		public static int GetPlayerWantedLevel (Element thePlayer){ throw new NotImplementedException(); }
-		public static string GetPlayerSerial (Element thePlayer){ throw new NotImplementedException(); }
-		public static bool GivePlayerMoney (Element thePlayer, int amount){ throw new NotImplementedException(); }
-		public static bool IsPlayerMapForced (Element thePlayer){ throw new NotImplementedException(); }
-		public static bool IsPlayerMuted (Element thePlayer){ throw new NotImplementedException(); }
-		public static bool RedirectPlayer (Element thePlayer, string serverIP, int serverPort, string serverPassword){ throw new NotImplementedException(); }
-		public static bool ResendPlayerACInfo (Element thePlayer){ throw new NotImplementedException(); }
-		public static bool ResendPlayerModInfo (Element thePlayer){ throw new NotImplementedException(); }
-		public static bool SetPlayerAnnounceValue (Element thePlayer, string key, string value){ throw new NotImplementedException(); }
-		public static bool SetPlayerBlurLevel (Element thePlayer, int level){ throw new NotImplementedException(); }
-		public static bool SetPlayerHudComponentVisible (Element thePlayer, string component, bool show){ throw new NotImplementedException(); }
-		public static bool SetPlayerMoney (Element thePlayer, int amount, bool instant){ throw new NotImplementedException(); }
-		public static bool SetPlayerMuted (Element thePlayer, bool state){ throw new NotImplementedException(); }
-		public static bool SetPlayerName (Element thePlayer, string newName){ throw new NotImplementedException(); }
-		public static bool SetPlayerTeam (Element thePlayer, Element theTeam){ throw new NotImplementedException(); }
-		public static bool SetPlayerVoiceBroadcastTo (Element thePlayer, dynamic broadcastTo){ throw new NotImplementedException(); }
-		public static bool SetPlayerWantedLevel (Element thePlayer, int stars){ throw new NotImplementedException(); }
-		public static bool SpawnPlayer (Element thePlayer, float x, float y, float z, int rotation, int skinID, int interior, int dimension, Element theTeam){ throw new NotImplementedException(); }
-		public static bool SetPlayerVoiceIgnoreFrom (Element thePlayer, dynamic ignoreFrom){ throw new NotImplementedException(); }
-		public static bool DetonateSatchels (Element Player){ throw new NotImplementedException(); }
-		public static bool TakePlayerMoney (Element thePlayer, int amount){ throw new NotImplementedException(); }
-		public static bool TakePlayerScreenShot (Element thePlayer, int width, int height, string tag, int quality, int maxBandwith, int maxPacketSize){ throw new NotImplementedException(); }
-		public static Element AddResourceConfig (string filePath, string filetype){ throw new NotImplementedException(); }
-		public static Element AddResourceMap (string filePath, int dimension){ throw new NotImplementedException(); }
-		public static Element CopyResource (Element theResource, string newResourceName, string organizationalDir){ throw new NotImplementedException(); }
+		public static string GetPlayerIP (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static int GetPlayerIdleTime (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static int GetPlayerMoney (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static string GetPlayerVersion (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static MTAElement GetRandomPlayer (){ throw new NotImplementedException(); }
+		public static int GetPlayerWantedLevel (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static string GetPlayerSerial (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static bool GivePlayerMoney (MTAElement thePlayer, int amount){ throw new NotImplementedException(); }
+		public static bool IsPlayerMapForced (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static bool IsPlayerMuted (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static bool RedirectPlayer (MTAElement thePlayer, string serverIP, int serverPort, string serverPassword){ throw new NotImplementedException(); }
+		public static bool ResendPlayerACInfo (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static bool ResendPlayerModInfo (MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static bool SetPlayerAnnounceValue (MTAElement thePlayer, string key, string value){ throw new NotImplementedException(); }
+		public static bool SetPlayerBlurLevel (MTAElement thePlayer, int level){ throw new NotImplementedException(); }
+		public static bool SetPlayerHudComponentVisible (MTAElement thePlayer, string component, bool show){ throw new NotImplementedException(); }
+		public static bool SetPlayerMoney (MTAElement thePlayer, int amount, bool instant){ throw new NotImplementedException(); }
+		public static bool SetPlayerMuted (MTAElement thePlayer, bool state){ throw new NotImplementedException(); }
+		public static bool SetPlayerName (MTAElement thePlayer, string newName){ throw new NotImplementedException(); }
+		public static bool SetPlayerTeam (MTAElement thePlayer, MTAElement theTeam){ throw new NotImplementedException(); }
+		public static bool SetPlayerVoiceBroadcastTo (MTAElement thePlayer, dynamic broadcastTo){ throw new NotImplementedException(); }
+		public static bool SetPlayerWantedLevel (MTAElement thePlayer, int stars){ throw new NotImplementedException(); }
+		public static bool SpawnPlayer (MTAElement thePlayer, float x, float y, float z, int rotation, int skinID, int interior, int dimension, MTAElement theTeam){ throw new NotImplementedException(); }
+		public static bool SetPlayerVoiceIgnoreFrom (MTAElement thePlayer, dynamic ignoreFrom){ throw new NotImplementedException(); }
+		public static bool DetonateSatchels (MTAElement Player){ throw new NotImplementedException(); }
+		public static bool TakePlayerMoney (MTAElement thePlayer, int amount){ throw new NotImplementedException(); }
+		public static bool TakePlayerScreenShot (MTAElement thePlayer, int width, int height, string tag, int quality, int maxBandwith, int maxPacketSize){ throw new NotImplementedException(); }
+		public static MTAElement AddResourceConfig (string filePath, string filetype){ throw new NotImplementedException(); }
+		public static MTAElement AddResourceMap (string filePath, int dimension){ throw new NotImplementedException(); }
+		public static MTAElement CopyResource (MTAElement theResource, string newResourceName, string organizationalDir){ throw new NotImplementedException(); }
 		public static bool CallRemote (string host, string queueName, int connectionAttempts, int connectTimeout, string resourceName, string functionName, dynamic callbackFunction){ throw new NotImplementedException(); }
-		public static Element CreateResource (string resourceName, string organizationalDir){ throw new NotImplementedException(); }
-		public static dynamic GetResourceACLRequests (Element theResource){ throw new NotImplementedException(); }
+		public static MTAElement CreateResource (string resourceName, string organizationalDir){ throw new NotImplementedException(); }
+		public static dynamic GetResourceACLRequests (MTAElement theResource){ throw new NotImplementedException(); }
 		public static bool DeleteResource (string resourceName){ throw new NotImplementedException(); }
-		public static string GetResourceInfo (Element theResource, string attribute){ throw new NotImplementedException(); }
-		public static string GetResourceLoadFailureReason (Element theResource){ throw new NotImplementedException(); }
-		public static int GetResourceLoadTime (Element res){ throw new NotImplementedException(); }
-		public static Element GetResourceMapRootElement (Element theResource, string mapName){ throw new NotImplementedException(); }
-		public static int GetResourceLastStartTime (Element theResource){ throw new NotImplementedException(); }
-		public static string GetResourceOrganizationalPath (Element theResource){ throw new NotImplementedException(); }
+		public static string GetResourceInfo (MTAElement theResource, string attribute){ throw new NotImplementedException(); }
+		public static string GetResourceLoadFailureReason (MTAElement theResource){ throw new NotImplementedException(); }
+		public static int GetResourceLoadTime (MTAElement res){ throw new NotImplementedException(); }
+		public static MTAElement GetResourceMapRootElement (MTAElement theResource, string mapName){ throw new NotImplementedException(); }
+		public static int GetResourceLastStartTime (MTAElement theResource){ throw new NotImplementedException(); }
+		public static string GetResourceOrganizationalPath (MTAElement theResource){ throw new NotImplementedException(); }
 		public static dynamic GetResources (){ throw new NotImplementedException(); }
-		public static bool RefreshResources (bool refreshAll, Element targetResource){ throw new NotImplementedException(); }
-		public static bool IsResourceArchived (Element resourceElement){ throw new NotImplementedException(); }
+		public static bool RefreshResources (bool refreshAll, MTAElement targetResource){ throw new NotImplementedException(); }
+		public static bool IsResourceArchived (MTAElement resourceElement){ throw new NotImplementedException(); }
 		public static bool RenameResource (string resourceName, string newResourceName, string organizationalPath){ throw new NotImplementedException(); }
-		public static bool RemoveResourceFile (Element theResource, string fileName){ throw new NotImplementedException(); }
-		public static bool StartResource (Element resourceToStart, bool persistent, bool startIncludedResources, bool loadServerConfigs, bool loadMaps, bool loadServerScripts, bool loadHTML, bool loadClientConfigs, bool loadClientScripts, bool loadFiles){ throw new NotImplementedException(); }
-		public static bool RestartResource (Element theResource, bool persistent, bool configs, bool maps, bool scripts, bool html, bool clientConfigs, bool clientScripts, bool clientFiles){ throw new NotImplementedException(); }
-		public static bool StopResource (Element theResource){ throw new NotImplementedException(); }
-		public static bool SetResourceInfo (Element theResource, string attribute, string value){ throw new NotImplementedException(); }
-		public static bool UpdateResourceACLRequest (Element theResource, string rightName, bool access, string byWho){ throw new NotImplementedException(); }
+		public static bool RemoveResourceFile (MTAElement theResource, string fileName){ throw new NotImplementedException(); }
+		public static bool StartResource (MTAElement resourceToStart, bool persistent, bool startIncludedResources, bool loadServerConfigs, bool loadMaps, bool loadServerScripts, bool loadHTML, bool loadClientConfigs, bool loadClientScripts, bool loadFiles){ throw new NotImplementedException(); }
+		public static bool RestartResource (MTAElement theResource, bool persistent, bool configs, bool maps, bool scripts, bool html, bool clientConfigs, bool clientScripts, bool clientFiles){ throw new NotImplementedException(); }
+		public static bool StopResource (MTAElement theResource){ throw new NotImplementedException(); }
+		public static bool SetResourceInfo (MTAElement theResource, string attribute, string value){ throw new NotImplementedException(); }
+		public static bool UpdateResourceACLRequest (MTAElement theResource, string rightName, bool access, string byWho){ throw new NotImplementedException(); }
 		public static int GetMaxPlayers (){ throw new NotImplementedException(); }
 		public static string GetServerName (){ throw new NotImplementedException(); }
 		public static string GetServerPassword (){ throw new NotImplementedException(); }
@@ -209,60 +209,60 @@ namespace MultiTheftAuto {
 		public static dynamic Get (string settingName){ throw new NotImplementedException(); }
 		public static bool Set (string settingName, dynamic value){ throw new NotImplementedException(); }
 		public static dynamic ExecuteSQLQuery (string query, dynamic param1, dynamic param2){ throw new NotImplementedException(); }
-		public static bool DbExec (Element databaseConnection, string query, dynamic param1, dynamic param2){ throw new NotImplementedException(); }
-		public static Element DbConnect (string databaseType, string host, string username, string password, string options){ throw new NotImplementedException(); }
-		public static bool DbFree (Element queryHandle){ throw new NotImplementedException(); }
-		public static string DbPrepareString (Element databaseConnection, string query, dynamic param1, dynamic param2){ throw new NotImplementedException(); }
-		public static dynamic DbPoll (Element queryHandle, int timeout, bool multipleResults){ throw new NotImplementedException(); }
-		public static Element DbQuery (dynamic callbackFunction, dynamic callbackArguments, Element databaseConnection, string query, dynamic param1, dynamic param2){ throw new NotImplementedException(); }
-		public static Element CreateTeam (string teamName, int colorR, int colorG, int colorB){ throw new NotImplementedException(); }
-		public static bool SetTeamColor (Element theTeam, int colorR, int colorG, int colorB){ throw new NotImplementedException(); }
-		public static bool SetTeamFriendlyFire (Element theTeam, bool friendlyFire){ throw new NotImplementedException(); }
-		public static bool SetTeamName (Element theTeam, string newName){ throw new NotImplementedException(); }
-		public static Element TextCreateDisplay (){ throw new NotImplementedException(); }
-		public static Element TextCreateTextItem (string text, float x, float y, string priority, int red, int green, int blue, int alpha, float scale, string alignX, string alignY, int shadowAlpha){ throw new NotImplementedException(); }
-		public static bool TextDestroyDisplay (Element display){ throw new NotImplementedException(); }
-		public static dynamic TextDestroyTextItem (Element theTextitem){ throw new NotImplementedException(); }
-		public static dynamic TextDisplayAddObserver (Element display, Element playerToAdd){ throw new NotImplementedException(); }
-		public static dynamic TextDisplayAddText (Element displayToAddTo, Element itemToAdd){ throw new NotImplementedException(); }
-		public static dynamic TextDisplayGetObservers (Element theDisplay){ throw new NotImplementedException(); }
-		public static bool TextDisplayRemoveObserver (Element display, Element playerToRemove){ throw new NotImplementedException(); }
-		public static bool TextDisplayIsObserver (Element display, Element thePlayer){ throw new NotImplementedException(); }
-		public static Tuple<int, int, int, int> TextItemGetColor (Element theTextItem){ throw new NotImplementedException(); }
-		public static dynamic TextDisplayRemoveText (Element displayToRemoveFrom, Element itemToRemove){ throw new NotImplementedException(); }
-		public static Tuple<float, float> TextItemGetPosition (Element theTextItem){ throw new NotImplementedException(); }
-		public static int TextItemGetPriority (Element textitemToCheck){ throw new NotImplementedException(); }
-		public static float TextItemGetScale (Element theTextitem){ throw new NotImplementedException(); }
-		public static string TextItemGetText (Element theTextitem){ throw new NotImplementedException(); }
-		public static bool TextItemSetColor (Element theTextItem, int r, int g, int b, int a){ throw new NotImplementedException(); }
-		public static bool TextItemSetPosition (Element theTextItem, float x, float y){ throw new NotImplementedException(); }
-		public static bool TextItemSetScale (Element theTextitem, float scale){ throw new NotImplementedException(); }
-		public static dynamic TextItemSetPriority (Element theTextItem, string priority){ throw new NotImplementedException(); }
-		public static dynamic TextItemSetText (Element theTextitem, string text){ throw new NotImplementedException(); }
-		public static dynamic GetNetworkStats (Element thePlayer){ throw new NotImplementedException(); }
+		public static bool DbExec (MTAElement databaseConnection, string query, dynamic param1, dynamic param2){ throw new NotImplementedException(); }
+		public static MTAElement DbConnect (string databaseType, string host, string username, string password, string options){ throw new NotImplementedException(); }
+		public static bool DbFree (MTAElement queryHandle){ throw new NotImplementedException(); }
+		public static string DbPrepareString (MTAElement databaseConnection, string query, dynamic param1, dynamic param2){ throw new NotImplementedException(); }
+		public static dynamic DbPoll (MTAElement queryHandle, int timeout, bool multipleResults){ throw new NotImplementedException(); }
+		public static MTAElement DbQuery (dynamic callbackFunction, dynamic callbackArguments, MTAElement databaseConnection, string query, dynamic param1, dynamic param2){ throw new NotImplementedException(); }
+		public static MTAElement CreateTeam (string teamName, int colorR, int colorG, int colorB){ throw new NotImplementedException(); }
+		public static bool SetTeamColor (MTAElement theTeam, int colorR, int colorG, int colorB){ throw new NotImplementedException(); }
+		public static bool SetTeamFriendlyFire (MTAElement theTeam, bool friendlyFire){ throw new NotImplementedException(); }
+		public static bool SetTeamName (MTAElement theTeam, string newName){ throw new NotImplementedException(); }
+		public static MTAElement TextCreateDisplay (){ throw new NotImplementedException(); }
+		public static MTAElement TextCreateTextItem (string text, float x, float y, string priority, int red, int green, int blue, int alpha, float scale, string alignX, string alignY, int shadowAlpha){ throw new NotImplementedException(); }
+		public static bool TextDestroyDisplay (MTAElement display){ throw new NotImplementedException(); }
+		public static dynamic TextDestroyTextItem (MTAElement theTextitem){ throw new NotImplementedException(); }
+		public static dynamic TextDisplayAddObserver (MTAElement display, MTAElement playerToAdd){ throw new NotImplementedException(); }
+		public static dynamic TextDisplayAddText (MTAElement displayToAddTo, MTAElement itemToAdd){ throw new NotImplementedException(); }
+		public static dynamic TextDisplayGetObservers (MTAElement theDisplay){ throw new NotImplementedException(); }
+		public static bool TextDisplayRemoveObserver (MTAElement display, MTAElement playerToRemove){ throw new NotImplementedException(); }
+		public static bool TextDisplayIsObserver (MTAElement display, MTAElement thePlayer){ throw new NotImplementedException(); }
+		public static Tuple<int, int, int, int> TextItemGetColor (MTAElement theTextItem){ throw new NotImplementedException(); }
+		public static dynamic TextDisplayRemoveText (MTAElement displayToRemoveFrom, MTAElement itemToRemove){ throw new NotImplementedException(); }
+		public static Tuple<float, float> TextItemGetPosition (MTAElement theTextItem){ throw new NotImplementedException(); }
+		public static int TextItemGetPriority (MTAElement textitemToCheck){ throw new NotImplementedException(); }
+		public static float TextItemGetScale (MTAElement theTextitem){ throw new NotImplementedException(); }
+		public static string TextItemGetText (MTAElement theTextitem){ throw new NotImplementedException(); }
+		public static bool TextItemSetColor (MTAElement theTextItem, int r, int g, int b, int a){ throw new NotImplementedException(); }
+		public static bool TextItemSetPosition (MTAElement theTextItem, float x, float y){ throw new NotImplementedException(); }
+		public static bool TextItemSetScale (MTAElement theTextitem, float scale){ throw new NotImplementedException(); }
+		public static dynamic TextItemSetPriority (MTAElement theTextItem, string priority){ throw new NotImplementedException(); }
+		public static dynamic TextItemSetText (MTAElement theTextitem, string text){ throw new NotImplementedException(); }
+		public static dynamic GetNetworkStats (MTAElement thePlayer){ throw new NotImplementedException(); }
 		public static string GetServerConfigSetting (string name){ throw new NotImplementedException(); }
 		public static bool SetServerConfigSetting (string name, string value, bool bSave){ throw new NotImplementedException(); }
 		public static dynamic GetModelHandling (int modelId){ throw new NotImplementedException(); }
-		public static bool BlowVehicle (Element vehicleToBlow, bool explode){ throw new NotImplementedException(); }
-		public static Tuple<float, float, float> GetVehicleRespawnRotation (Element theVehicle){ throw new NotImplementedException(); }
-		public static Tuple<float, float, float> GetVehicleRespawnPosition (Element theVehicle){ throw new NotImplementedException(); }
-		public static bool ResetVehicleExplosionTime (Element theVehicle){ throw new NotImplementedException(); }
+		public static bool BlowVehicle (MTAElement vehicleToBlow, bool explode){ throw new NotImplementedException(); }
+		public static Tuple<float, float, float> GetVehicleRespawnRotation (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static Tuple<float, float, float> GetVehicleRespawnPosition (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static bool ResetVehicleExplosionTime (MTAElement theVehicle){ throw new NotImplementedException(); }
 		public static dynamic GetVehiclesOfType (int model){ throw new NotImplementedException(); }
-		public static bool ResetVehicleIdleTime (Element theVehicle){ throw new NotImplementedException(); }
-		public static bool RemoveVehicleSirens (Element theVehicle){ throw new NotImplementedException(); }
-		public static bool AddVehicleSirens (Element theVehicle, int sirenCount, int sirenType, bool argument_360flag, bool checkLosFlag, bool useRandomiser, bool silentFlag){ throw new NotImplementedException(); }
+		public static bool ResetVehicleIdleTime (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static bool RemoveVehicleSirens (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static bool AddVehicleSirens (MTAElement theVehicle, int sirenCount, int sirenType, bool argument_360flag, bool checkLosFlag, bool useRandomiser, bool silentFlag){ throw new NotImplementedException(); }
 		public static bool SetModelHandling (int modelId, string property, dynamic value){ throw new NotImplementedException(); }
-		public static bool RespawnVehicle (Element theVehicle){ throw new NotImplementedException(); }
-		public static bool SetVehicleIdleRespawnDelay (Element theVehicle, int timeDelay){ throw new NotImplementedException(); }
-		public static bool SetVehicleRespawnPosition (Element theVehicle, float x, float y, float z, float rx, float ry, float rz){ throw new NotImplementedException(); }
-		public static bool SetVehicleRespawnDelay (Element theVehicle, int timeDelay){ throw new NotImplementedException(); }
-		public static bool SetVehicleVariant (Element theVehicle, int variant1, int variant2){ throw new NotImplementedException(); }
-		public static bool SpawnVehicle (Element theVehicle, float x, float y, float z, float rx, float ry, float rz){ throw new NotImplementedException(); }
-		public static bool SetVehicleRespawnRotation (Element theVehicle, float rx, float ry, float rz){ throw new NotImplementedException(); }
-		public static bool ToggleVehicleRespawn (Element theVehicle, bool Respawn){ throw new NotImplementedException(); }
-		public static bool GiveWeapon (Element thePlayer, int weapon, int ammo, bool setAsCurrent){ throw new NotImplementedException(); }
-		public static bool TakeAllWeapons (Element thePed){ throw new NotImplementedException(); }
-		public static bool TakeWeapon (Element thePlayer, int weaponId, int ammo){ throw new NotImplementedException(); }
+		public static bool RespawnVehicle (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static bool SetVehicleIdleRespawnDelay (MTAElement theVehicle, int timeDelay){ throw new NotImplementedException(); }
+		public static bool SetVehicleRespawnPosition (MTAElement theVehicle, float x, float y, float z, float rx, float ry, float rz){ throw new NotImplementedException(); }
+		public static bool SetVehicleRespawnDelay (MTAElement theVehicle, int timeDelay){ throw new NotImplementedException(); }
+		public static bool SetVehicleVariant (MTAElement theVehicle, int variant1, int variant2){ throw new NotImplementedException(); }
+		public static bool SpawnVehicle (MTAElement theVehicle, float x, float y, float z, float rx, float ry, float rz){ throw new NotImplementedException(); }
+		public static bool SetVehicleRespawnRotation (MTAElement theVehicle, float rx, float ry, float rz){ throw new NotImplementedException(); }
+		public static bool ToggleVehicleRespawn (MTAElement theVehicle, bool Respawn){ throw new NotImplementedException(); }
+		public static bool GiveWeapon (MTAElement thePlayer, int weapon, int ammo, bool setAsCurrent){ throw new NotImplementedException(); }
+		public static bool TakeAllWeapons (MTAElement thePed){ throw new NotImplementedException(); }
+		public static bool TakeWeapon (MTAElement thePlayer, int weaponId, int ammo){ throw new NotImplementedException(); }
 		public static bool GetJetpackWeaponEnabled (string weapon){ throw new NotImplementedException(); }
 		public static bool SetJetpackWeaponEnabled (string weapon, bool enabled){ throw new NotImplementedException(); }
 	}

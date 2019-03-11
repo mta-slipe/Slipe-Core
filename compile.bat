@@ -3,6 +3,8 @@
 REM Create symlinks if they do not yet exist
 IF not EXIST ".\Symlinks" call .\symlinks.bat
 
+del /s *.notcs
+
 REM Temporarily rename .cs file in obj folders to have them not be compiled
 ren .\Resource\MTACore\obj\Debug\netcoreapp3.0\*.cs *.notcs 
 ren .\Resource\MTASharedWrapper\obj\Debug\netcoreapp3.0\*.cs *.notcs 
