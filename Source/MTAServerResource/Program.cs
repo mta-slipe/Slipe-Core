@@ -13,10 +13,6 @@ namespace MTAServerResource
     {
         static void Main(string[] args)
         {
-            Matrix3x2 s = Matrix3x2.CreateRotation(0.5f);
-            Matrix4x4 asd = new Matrix4x4(s);
-            asd = asd * 4;
-            Console.WriteLine(asd.ToString());
             Quaternion q = new Quaternion(12, 41, 42, 10);
             Quaternion p = new Quaternion(new Vector3(10, 20, 4), 6);
             Console.WriteLine(q.GetHashCode());
@@ -69,6 +65,8 @@ namespace MTAServerResource
 
             Element.Root.AddEventHandler("onVehicleDamage");
 
+            Color color = new Color(0xff00aa55);
+            Console.WriteLine("Color: " + color.R + ", " + color.G + ", " + color.B + ", " + color.A);
             // alpha.AddEventHandler("onVehicleDamage");
             alpha.OnDamage += (float loss) =>
             {

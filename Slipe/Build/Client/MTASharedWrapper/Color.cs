@@ -19,6 +19,14 @@ namespace MTASharedWrapper
             this.B = (hex - this.R * 256 * 256 - this.B * 256);
         }
 
+        public Color(uint hex)
+        {
+            this.R = (int)(hex / 256 / 256 / 256);
+            this.G = (int)(hex - this.R * 256 * 256 * 256) / 256 / 256;
+            this.B = (int)(hex - this.R * 256 * 256 * 256 - this.G * 256 * 256) / 256;
+            this.A = (int)(hex - this.R * 256 * 256 * 256 - this.G * 256 * 256 - this.B * 256);
+        }
+
         public Color(byte r, byte g, byte b, byte a)
         {
             this.R = r;
