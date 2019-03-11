@@ -40,6 +40,11 @@
         <script src="System/Threads/Task.lua" type="shared"/>
         <script src="System/Utilities.lua" type="shared"/>
         <script src="System/Numerics/HashCodeHelper.lua" type="shared"/>
+        <script src="System/Numerics/Complex.lua" type="shared"/>
+        <script src="System/Numerics/Matrix3x2.lua" type="shared"/>
+        <script src="System/Numerics/Matrix4x4.lua" type="shared"/>
+        <script src="System/Numerics/Plane.lua" type="shared"/>
+        <script src="System/Numerics/Quaternion.lua" type="shared"/>
         <script src="System/Numerics/Vector2.lua" type="shared"/>
         <script src="System/Numerics/Vector3.lua" type="shared"/>
         <script src="System/Numerics/Vector4.lua" type="shared"/>

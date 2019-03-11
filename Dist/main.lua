@@ -6,7 +6,6 @@ local file = fileOpen(filepath)
 local content = fileRead(file, fileGetSize(file))
 fileClose(file)
 local result = loadstring(content)
-print(result)
 result()()
 
 if triggerServerEvent == nil then

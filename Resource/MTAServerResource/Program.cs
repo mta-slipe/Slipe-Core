@@ -12,6 +12,8 @@ namespace MTAServerResource
     {
         static void Main(string[] args)
         {
+            Complex c = Complex.Zero;
+            Console.WriteLine(c.Imaginary);
             Vector4 v3 = new Vector4(5);
             Vector4 v4 = new Vector4(3);
             Vector4 result = v3 * 2;
