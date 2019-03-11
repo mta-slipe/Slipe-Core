@@ -1,5 +1,5 @@
 local System = System
-local System_Numerics = System.Numerics
+local SystemNumerics = System.Numerics
 local atan2 = math.atan2
 local cos = math.cos
 local sin = math.sin

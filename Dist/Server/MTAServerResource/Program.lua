@@ -50,6 +50,10 @@ System.namespace("MTAServerResource", function (namespace)
       -- Console.WriteLine(File.ReadAllText("meta.xml"));
     end
     Main = function (args)
+      local s = SystemNumerics.Matrix3x2.CreateRotation(0.5)
+      local asd = SystemNumerics.Matrix4x4(s)
+      asd = SystemNumerics.Matrix4x4.op_Multiply(asd, 4)
+      System.Console.WriteLine(asd:ToString())
       local q = SystemNumerics.Quaternion(12, 41, 42, 10)
       local p = SystemNumerics.Quaternion(SystemNumerics.Vector3(10, 20, 4), 6)
       System.Console.WriteLine(q:GetHashCode())
