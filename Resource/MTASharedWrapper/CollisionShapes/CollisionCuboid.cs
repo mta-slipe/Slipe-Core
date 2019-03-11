@@ -10,7 +10,7 @@ namespace MTASharedWrapper.CollisionShapes
         public CollisionCuboid(float x, float y, float z, float width, float depth, float height)
         {
             element = Shared.CreateColCuboid(x, y, z, width, depth, height);
-            SharedElementManager.Instance.RegisterElement(this);
+            ElementManager.Instance.RegisterElement(this);
         }
     }
 }

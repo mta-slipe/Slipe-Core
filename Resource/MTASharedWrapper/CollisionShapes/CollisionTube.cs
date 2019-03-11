@@ -10,7 +10,7 @@ namespace MTASharedWrapper.CollisionShapes
         public CollisionTube(float x, float y, float z, float radius, float height)
         {
             element = Shared.CreateColTube(x, y, z, radius, height);
-            SharedElementManager.Instance.RegisterElement(this);
+            ElementManager.Instance.RegisterElement(this);
         }
     }
 }

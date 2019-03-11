@@ -10,7 +10,7 @@ namespace MTASharedWrapper.CollisionShapes
         public CollisionRectangle(float x, float y, float width, float height)
         {
             element = Shared.CreateColRectangle(x, y, width, height);
-            SharedElementManager.Instance.RegisterElement(this);
+            ElementManager.Instance.RegisterElement(this);
         }
     }
 }

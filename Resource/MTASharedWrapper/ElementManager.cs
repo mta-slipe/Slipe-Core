@@ -5,14 +5,14 @@ using System.Text;
 
 namespace MTASharedWrapper
 {
-    public class SharedElementManager
+    public class ElementManager
     {
-        private static SharedElementManager instance;
-        public static SharedElementManager Instance
+        private static ElementManager instance;
+        public static ElementManager Instance
         {
             get
             {
-                return instance ?? new SharedElementManager();
+                return instance ?? new ElementManager();
             }
         }
 
@@ -22,7 +22,7 @@ namespace MTASharedWrapper
 
         private Dictionary<System.Object, Element> elements;
 
-        public SharedElementManager()
+        public ElementManager()
         {
             instance = this;
             elements = new Dictionary<System.Object, Element>();
@@ -46,7 +46,7 @@ namespace MTASharedWrapper
 
         protected internal void AddEventHandler(Element element, string eventName, bool propagated = true, string priorty = "normal")
         {
-            Shared.AddEventHandler(eventName, element.MTAElement, "MTASharedWrapper.SharedElementManager.HandleEvent", propagated, priorty);
+            Shared.AddEventHandler(eventName, element.MTAElement, "MTASharedWrapper.ElementManager.HandleEvent", propagated, priorty);
         }
 
         public static void HandleEvent(string eventString, MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)

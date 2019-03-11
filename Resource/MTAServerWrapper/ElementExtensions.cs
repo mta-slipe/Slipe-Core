@@ -35,5 +35,15 @@ namespace MTAServerWrapper
         {
             return Server.GetElementZoneName(source.MTAElement, citiesOnly);
         }
+
+        public static Element GetSyncer(this Element source)
+        {
+            return ElementManager.Instance.GetElement(Server.GetElementSyncer(source.MTAElement));
+        }
+
+        public static bool SetSyncer(this Element source, Element target)
+        {
+            return Server.SetElementSyncer(source.MTAElement, target.MTAElement);
+        }
     }
 }

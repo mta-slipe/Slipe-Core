@@ -14,7 +14,7 @@ namespace MTAClientWrapper
         public GUIBrowser(float x, float y, float width, float height, bool isLocal, bool isTransparent, bool isRelative)
         {
             this.element = Client.GuiCreateBrowser(x, y, width, height, isLocal, isTransparent, isRelative, null);
-            SharedElementManager.Instance.RegisterElement(this);
+            ElementManager.Instance.RegisterElement(this);
 
             this.browser = new Browser(Client.GuiGetBrowser(this.element));
         }

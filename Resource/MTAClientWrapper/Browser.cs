@@ -61,13 +61,13 @@ namespace MTAClientWrapper
         public Browser(int width, int height, bool isLocal, bool transparent = false)
         {
             this.element = Client.CreateBrowser(width, height, isLocal, transparent);
-            SharedElementManager.Instance.RegisterElement(this);
+            ElementManager.Instance.RegisterElement(this);
         }
 
         internal Browser(MultiTheftAuto.MTAElement element)
         {
             this.element = element;
-            SharedElementManager.Instance.RegisterElement(this);
+            ElementManager.Instance.RegisterElement(this);
         }
 
         public bool ReloadPage()

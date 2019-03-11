@@ -37,6 +37,5 @@ namespace MTAServerWrapper
 
         public delegate void OnPlayerJoinHandler(Player player);
         public event OnPlayerJoinHandler OnPlayerJoin;
-
     }
 }

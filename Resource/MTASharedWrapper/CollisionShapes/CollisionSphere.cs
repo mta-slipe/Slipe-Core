@@ -10,7 +10,7 @@ namespace MTASharedWrapper.CollisionShapes
         public CollisionSphere(float x, float y, float z, float radius)
         {
             element = Shared.CreateColSphere(x, y, z, radius);
-            SharedElementManager.Instance.RegisterElement(this);
+            ElementManager.Instance.RegisterElement(this);
         }
     }
 }
