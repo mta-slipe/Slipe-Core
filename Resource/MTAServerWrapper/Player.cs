@@ -9,7 +9,7 @@ namespace MTAServerWrapper
 {
     public class Player: SharedPlayer
     {
-        public Player(MultiTheftAuto.Element mtaElement) : base(mtaElement)
+        public Player(MultiTheftAuto.MTAElement mtaElement) : base(mtaElement)
         {
         }
 

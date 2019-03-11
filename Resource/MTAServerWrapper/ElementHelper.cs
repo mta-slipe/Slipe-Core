@@ -1,12 +1,12 @@
 ﻿using MTASharedWrapper;
-using MultiTheftAuto;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MultiTheftAuto;
 
 namespace MTAServerWrapper
 {
-    public class Element: SharedElement
+    public class ElementHelper
     {
         private static Dictionary<Type, string> ElementTypeNames = new Dictionary<Type, string>
         {
@@ -15,21 +15,22 @@ namespace MTAServerWrapper
             [typeof(Player)] = "player",
         };
 
-        public static List<T> GetByType<T>() where T : SharedElement
+        public static List<T> GetByType<T>() where T : Element
         {
             List<T> elements = new List<T>();
 
-            if (!ElementTypeNames.ContainsKey(typeof(T))) {
+            if (!ElementTypeNames.ContainsKey(typeof(T)))
+            {
                 return elements;
             }
 
             List<dynamic> mtaElements = Shared.GetListFromTable(Server.GetElementsByType(ElementTypeNames[typeof(T)], null));
-            foreach(dynamic mtaElement in mtaElements)
+            foreach (dynamic mtaElement in mtaElements)
             {
-                SharedElement element = SharedElementManager.Instance.GetElement((MultiTheftAuto.Element)mtaElement);
+                Element element = SharedElementManager.Instance.GetElement((MTAElement)mtaElement);
                 if (element != null && element is T)
                 {
-                    elements.Add((T) element);
+                    elements.Add((T)element);
                 }
             }
 

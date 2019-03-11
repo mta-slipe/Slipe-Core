@@ -24,7 +24,7 @@ namespace MTAServerWrapper
             Element.Root.AddEventHandler("onPlayerJoin");
         }
 
-        public void HandleRootEvent(string eventName, MultiTheftAuto.Element source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public void HandleRootEvent(string eventName, MultiTheftAuto.MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             switch (eventName)
             {

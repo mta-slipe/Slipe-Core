@@ -44,7 +44,7 @@ namespace MTAServerResource
             vehicleDictionary["best"].Position = new Vector3(0, 0, 20);
             vehicleDictionary["best"].Frozen = true;
 
-            foreach (Vehicle vehicle in Element.GetByType<Vehicle>())
+            foreach (Vehicle vehicle in ElementHelper.GetByType<Vehicle>())
             {
                 vehicle.Rotation = new Vector3(0, 0, 90);
             }

@@ -1,3 +1,3 @@
 namespace MultiTheftAuto {
-	public class Element{}
+	public class MTAElement{}
 }
