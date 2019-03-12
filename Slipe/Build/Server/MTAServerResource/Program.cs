@@ -58,6 +58,11 @@ namespace MTAServerResource
                 //player.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
             };
 
+            Player player = new Player(Server.GetRandomPlayer());
+
+            MTAObject bin = new MTAObject(1337, player.Position + player.ForwardVector * 3 + player.UpVector * 2);
+            bin.QuaternionRotation = player.QuaternionRotation;
+           
             // Console.WriteLine(File.ReadAllText("meta.xml"));
         }
     }

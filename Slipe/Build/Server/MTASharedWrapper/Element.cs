@@ -51,31 +51,54 @@ namespace MTASharedWrapper
         {
             get
             {
-                Tuple<float, float, float> rotation = Shared.GetElementRotation(element, "ZYX");
-                return Quaternion.CreateFromYawPitchRoll(rotation.Item1, rotation.Item2, rotation.Item3);
+                // Default is XYZ
+                // Yaw = y-axis, Pitch = x-axis, Roll = z-axis
+                Tuple<float, float, float> rotation = Shared.GetElementRotation(element, "default");
+                float v1 = rotation.Item1 * (float) (Math.PI / 180.0);
+                float v2 = rotation.Item2 * (float)(Math.PI / 180.0);
+                float v3 = rotation.Item3 * (float)(Math.PI / 180.0);
+                Console.WriteLine(v1.ToString());
+                Console.WriteLine(v2.ToString());
+                Console.WriteLine(v3.ToString());
+                return Quaternion.CreateFromYawPitchRoll(v1, v2, v3);
             }
             set
             {
+                float v1 = value.Z;
+                float v2 = value.X;
+                float v3 = value.Y;
+                float v4 = value.W;
+          
 
-                // roll (x-axis rotation)
-                double sinr_cosp = 2.0 * (value.W * value.X + value.Y * value.Z);
-                double cosr_cosp = 1.0 - 2.0 * (value.X * value.X + value.Y * value.Y);
+                double sinr_cosp = 2.0 * (v4 * v1 + v2 * v3);
+                double cosr_cosp = 1.0 - 2.0 * (v1 * v1 + v2 * v2);
                 double roll = Math.Atan2(sinr_cosp, cosr_cosp);
 
-                // pitch (y-axis rotation)
-                double sinp = 2.0 * (value.W * value.Y - value.Z * value.X);
+
+                double sinp = 2.0 * (v4 * v2 - v3 * v1);
                 double pitch;
                 if (Math.Abs(sinp) >= 1)
-                    pitch = Math.Sign(sinp) > 0 ? Math.PI : -Math.PI;                   
+                    pitch = Math.Sign(sinp) > 0 ? Math.PI : -Math.PI;            
                 else
                     pitch = Math.Asin(sinp);
 
-                // yaw (z-axis rotation)
-                double siny_cosp = 2.0 * (value.W * value.Z + value.X * value.Y);
-                double cosy_cosp = 1.0 - 2.0 * (value.Y * value.Y + value.Z * value.Z);
+
+                double siny_cosp = 2.0 * (v4 * v3 + v1 * v2);
+                double cosy_cosp = 1.0 - 2.0 * (v2 * v2 + v3 * v3);
                 double yaw = Math.Atan2(siny_cosp, cosy_cosp);
 
-                Shared.SetElementRotation(element, (float) yaw, (float) pitch, (float) roll, "ZYX", true);
+                if (yaw < 0)
+                    yaw += 2 * Math.PI;
+
+                if (pitch < 0)
+                    pitch += 2 * Math.PI;
+
+                if (roll < 0)
+                    roll += 2 * Math.PI;
+
+                // Vector3 v = new Vector3((float) roll, (float) pitch, (float) yaw);
+                // Console.WriteLine(v.ToString());
+                Shared.SetElementRotation(element, (float) (yaw * (180.0 / Math.PI)), (float)(pitch * (180.0 / Math.PI)), (float)(roll * (180.0 / Math.PI)), "default", false);
             }
         }
 
@@ -91,7 +114,7 @@ namespace MTASharedWrapper
             }
             set
             {
-                this.Position = new Vector3(value.M14, value.M24, value.M34);
+                this.Position = new Vector3(value.M41, value.M42, value.M43);
                 this.QuaternionRotation = Quaternion.CreateFromRotationMatrix(value);
             }
         }
@@ -101,7 +124,7 @@ namespace MTASharedWrapper
             get
             {
                 Matrix4x4 m = this.Matrix;
-                return new Vector3(m.M12, m.M22, m.M32);
+                return new Vector3(m.M21, m.M22, m.M23);
             }
         }
 
@@ -110,7 +133,7 @@ namespace MTASharedWrapper
             get
             {
                 Matrix4x4 m = this.Matrix;
-                return new Vector3(m.M11, m.M21, m.M31);
+                return new Vector3(m.M11, m.M12, m.M13);
             }
         }
 
@@ -119,7 +142,7 @@ namespace MTASharedWrapper
             get
             {
                 Matrix4x4 m = this.Matrix;
-                return new Vector3(m.M13, m.M23, m.M33);
+                return new Vector3(m.M31, m.M32, m.M33);
             }
         }
 
