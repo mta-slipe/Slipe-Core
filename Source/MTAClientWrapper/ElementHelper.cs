@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System.Text;
 using MultiTheftAuto;
 
-namespace MTAServerWrapper
+namespace MTAClientWrapper
 {
     public class ElementHelper: IElementHelper
     {
         private static Dictionary<Type, string> ElementTypeNames = new Dictionary<Type, string>
         {
             [typeof(Element)] = "element",
-            [typeof(Vehicle)] = "vehicle",
             [typeof(Player)] = "player",
             [typeof(MTAObject)] = "object",
+            [typeof(GUIBrowser)] = "gui-browser",
         };
 
         public static List<T> GetByType<T>() where T : Element
@@ -44,12 +44,14 @@ namespace MTAServerWrapper
             {
                 case "element":
                     return new Element(element);
-                case "vehicle":
-                    return new Vehicle(element);
                 case "player":
                     return new Player(element);
                 case "object":
                     return new MTAObject(element);
+                case "gui-browser":
+                    return new GUIBrowser(element);
+                case "browser":
+                    return new Browser(element);
             }
             return null;
         }
