@@ -20,6 +20,9 @@ Matrix3x2.__ctor__ = function(this, m11, m12, m21, m22, m31, m32)
     this.M22 = m22 or 0
     this.M31 = m31 or 0
     this.M32 = m32 or 0
+    local mt = getmetatable(this)
+    mt.__unm = Matrix3x2.op_UnaryNegation
+    setmetatable(this, mt)
 end
 
 Matrix3x2.getIdentity = function ()
@@ -76,10 +79,10 @@ Matrix3x2.CreateScale = function(val1, val2, val3)
                 -- CreateScale(Single)
                 local result = new(Matrix3x2)
 
-                result.M11 = scale
+                result.M11 = val1
                 result.M12 = 0.0
                 result.M21 = 0.0
-                result.M22 = scale
+                result.M22 = val1
                 result.M31 = 0.0
                 result.M32 = 0.0
           
@@ -88,10 +91,10 @@ Matrix3x2.CreateScale = function(val1, val2, val3)
                 -- CreateScale(Vector2)
                 local result = new(Matrix3x2)
 
-                result.M11 = scales.X
+                result.M11 = val1.X
                 result.M12 = 0.0
                 result.M21 = 0.0
-                result.M22 = scales.Y
+                result.M22 = val1.Y
                 result.M31 = 0.0
                 result.M32 = 0.0
 
@@ -102,10 +105,10 @@ Matrix3x2.CreateScale = function(val1, val2, val3)
                 -- CreateScale(Single, Single)
                 local result = new(Matrix3x2)
 
-                result.M11 = xScale
+                result.M11 = val1
                 result.M12 = 0.0
                 result.M21 = 0.0
-                result.M22 = yScale
+                result.M22 = val2
                 result.M31 = 0.0
                 result.M32 = 0.0
 
@@ -115,13 +118,13 @@ Matrix3x2.CreateScale = function(val1, val2, val3)
                     -- CreateScale(Single, Vector2)
                     local result = new(Matrix3x2)
 
-                    local tx = centerPoint.X * (1 - scale)
-                    local ty = centerPoint.Y * (1 - scale)
+                    local tx = val2.X * (1 - val1)
+                    local ty = val2.Y * (1 - val1)
 
-                    result.M11 = scale
+                    result.M11 = val1
                     result.M12 = 0.0
                     result.M21 = 0.0
-                    result.M22 = scale
+                    result.M22 = val1
                     result.M31 = tx
                     result.M32 = ty
 
@@ -130,13 +133,13 @@ Matrix3x2.CreateScale = function(val1, val2, val3)
                     -- CreateScale(Vector2, Vector2)
                     local result = new(Matrix3x2)
 
-                    local tx = centerPoint.X * (1 - scales.X)
-                    local ty = centerPoint.Y * (1 - scales.Y)
+                    local tx = val2.X * (1 - val1.X)
+                    local ty = val2.Y * (1 - val1.Y)
 
-                    result.M11 = scales.X
+                    result.M11 = val1.X
                     result.M12 = 0.0
                     result.M21 = 0.0
-                    result.M22 = scales.Y
+                    result.M22 = val1.Y
                     result.M31 = tx
                     result.M32 = ty
 
@@ -148,13 +151,13 @@ Matrix3x2.CreateScale = function(val1, val2, val3)
         -- CreateScale(Single, Single, Vector2)
         local result = new(Matrix3x2)
 
-        local tx = centerPoint.X * (1 - xScale)
-        local ty = centerPoint.Y * (1 - yScale)
+        local tx = val3.X * (1 - val1)
+        local ty = val3.Y * (1 - val2)
 
-        result.M11 = xScale
+        result.M11 = val1
         result.M12 = 0.0
         result.M21 = 0.0
-        result.M22 = yScale
+        result.M22 = val2
         result.M31 = tx
         result.M32 = ty
 
@@ -312,6 +315,10 @@ end
 
 Matrix3x2.Invert = function (matrix, result)
     local det = (matrix.M11 * matrix.M22) - (matrix.M21 * matrix.M12)
+
+    if result == nil then
+        result = new(Matrix3x2)
+    end
 
     if abs(det) < 1.401298E-45 --[[Single.Epsilon]] then
       result = new(Matrix3x2, System.Single.NaN, System.Single.NaN, System.Single.NaN, System.Single.NaN, System.Single.NaN, System.Single.NaN)

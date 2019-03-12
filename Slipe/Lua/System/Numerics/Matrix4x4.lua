@@ -74,7 +74,10 @@ Matrix4x4.__ctor__ = function (this, m11, m12, m13, m14, m21, m22, m23, m24, m31
         this.M42 = m11.M32
         this.M43 = 0
         this.M44 = 1
-    end    
+    end 
+    local mt = getmetatable(this)
+    mt.__unm = Matrix4x4.op_UnaryNegation
+    setmetatable(this, mt)   
   end
 
 Matrix4x4.getIdentity = function ()
@@ -231,17 +234,17 @@ Matrix4x4.CreateScale = function(val1, val2, val3, val4)
                     -- CreateScale(Single)
                     local result = new(Matrix4x4)
 
-                    result.M11 = scale
+                    result.M11 = val1
                     result.M12 = 0.0
                     result.M13 = 0.0
                     result.M14 = 0.0
                     result.M21 = 0.0
-                    result.M22 = scale
+                    result.M22 = val1
                     result.M23 = 0.0
                     result.M24 = 0.0
                     result.M31 = 0.0
                     result.M32 = 0.0
-                    result.M33 = scale
+                    result.M33 = val1
                     result.M34 = 0.0
                     result.M41 = 0.0
                     result.M42 = 0.0
@@ -253,17 +256,17 @@ Matrix4x4.CreateScale = function(val1, val2, val3, val4)
                     -- CreateScale(Vector3)
                     local result = new(Matrix4x4)
 
-                    result.M11 = scales.X
+                    result.M11 = val1.X
                     result.M12 = 0.0
                     result.M13 = 0.0
                     result.M14 = 0.0
                     result.M21 = 0.0
-                    result.M22 = scales.Y
+                    result.M22 = val1.Y
                     result.M23 = 0.0
                     result.M24 = 0.0
                     result.M31 = 0.0
                     result.M32 = 0.0
-                    result.M33 = scales.Z
+                    result.M33 = val1.Z
                     result.M34 = 0.0
                     result.M41 = 0.0
                     result.M42 = 0.0
@@ -277,21 +280,21 @@ Matrix4x4.CreateScale = function(val1, val2, val3, val4)
                     -- CreateScale(Single, Vector3)
                     local result = new(Matrix4x4)
 
-                    local tx = centerPoint.X * (1 - scale)
-                    local ty = centerPoint.Y * (1 - scale)
-                    local tz = centerPoint.Z * (1 - scale)
+                    local tx = val2.X * (1 - val1)
+                    local ty = val2.Y * (1 - val1)
+                    local tz = val2.Z * (1 - val1)
 
-                    result.M11 = scale
+                    result.M11 = val1
                     result.M12 = 0.0
                     result.M13 = 0.0
                     result.M14 = 0.0
                     result.M21 = 0.0
-                    result.M22 = scale
+                    result.M22 = val1
                     result.M23 = 0.0
                     result.M24 = 0.0
                     result.M31 = 0.0
                     result.M32 = 0.0
-                    result.M33 = scale
+                    result.M33 = val1
                     result.M34 = 0.0
                     result.M41 = tx
                     result.M42 = ty
@@ -303,21 +306,21 @@ Matrix4x4.CreateScale = function(val1, val2, val3, val4)
                     -- CreateScale(Vector3, Vector3)
                     local result = new(Matrix4x4)
 
-                    local tx = centerPoint.X * (1 - scales.X)
-                    local ty = centerPoint.Y * (1 - scales.Y)
-                    local tz = centerPoint.Z * (1 - scales.Z)
+                    local tx = val2.X * (1 - val1.X)
+                    local ty = val2.Y * (1 - val1.Y)
+                    local tz = val2.Z * (1 - val1.Z)
 
-                    result.M11 = scales.X
+                    result.M11 = val1.X
                     result.M12 = 0.0
                     result.M13 = 0.0
                     result.M14 = 0.0
                     result.M21 = 0.0
-                    result.M22 = scales.Y
+                    result.M22 = val1.Y
                     result.M23 = 0.0
                     result.M24 = 0.0
                     result.M31 = 0.0
                     result.M32 = 0.0
-                    result.M33 = scales.Z
+                    result.M33 = val1.Z
                     result.M34 = 0.0
                     result.M41 = tx
                     result.M42 = ty
@@ -331,17 +334,17 @@ Matrix4x4.CreateScale = function(val1, val2, val3, val4)
             -- CreateScale(Single, Single, Single)
             local result = new(Matrix4x4)
 
-            result.M11 = xScale
+            result.M11 = val1
             result.M12 = 0.0
             result.M13 = 0.0
             result.M14 = 0.0
             result.M21 = 0.0
-            result.M22 = yScale
+            result.M22 = val2
             result.M23 = 0.0
             result.M24 = 0.0
             result.M31 = 0.0
             result.M32 = 0.0
-            result.M33 = zScale
+            result.M33 = val3
             result.M34 = 0.0
             result.M41 = 0.0
             result.M42 = 0.0
@@ -354,21 +357,21 @@ Matrix4x4.CreateScale = function(val1, val2, val3, val4)
         -- CreateScale(Single, Single, Single, Vector3)
         local result = new(Matrix4x4)
 
-        local tx = centerPoint.X * (1 - xScale)
-        local ty = centerPoint.Y * (1 - yScale)
-        local tz = centerPoint.Z * (1 - zScale)
+        local tx = val4.X * (1 - val1)
+        local ty = val4.Y * (1 - val2)
+        local tz = val4.Z * (1 - val3)
 
-        result.M11 = xScale
+        result.M11 = val1
         result.M12 = 0.0
         result.M13 = 0.0
         result.M14 = 0.0
         result.M21 = 0.0
-        result.M22 = yScale
+        result.M22 = val2
         result.M23 = 0.0
         result.M24 = 0.0
         result.M31 = 0.0
         result.M32 = 0.0
-        result.M33 = zScale
+        result.M33 = val3
         result.M34 = 0.0
         result.M41 = tx
         result.M42 = ty
@@ -664,15 +667,12 @@ Matrix4x4.CreatePerspective = function (width, height, nearPlaneDistance, farPla
     if nearPlaneDistance <= 0.0 then
       System.throw(System.ArgumentOutOfRangeException("nearPlaneDistance"))
     end
-
     if farPlaneDistance <= 0.0 then
       System.throw(System.ArgumentOutOfRangeException("farPlaneDistance"))
     end
-
     if nearPlaneDistance >= farPlaneDistance then
       System.throw(System.ArgumentOutOfRangeException("nearPlaneDistance"))
     end
-
     local result = new(Matrix4x4)
 
     result.M11 = 2.0 * nearPlaneDistance / width
@@ -1087,6 +1087,10 @@ Matrix4x4.Invert = function (matrix, result)
     end
 
     local invDet = 1.0 / det
+
+    if result == nil then
+        result = new(Matrix4x4)
+    end
 
     result.M11 = a11 * invDet
     result.M21 = a12 * invDet
@@ -1573,7 +1577,7 @@ Matrix4x4.Decompose = function(matrix, scale, rotation, translation)
 
     -- divide by scale
 
-    local matTemp = matrix.__clone__()
+    local matTemp = matrix:__clone__()
 
     matTemp.M11 = matTemp.M11 / sx
     matTemp.M21 = matTemp.M21 / sx

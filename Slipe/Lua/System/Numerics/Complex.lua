@@ -10,7 +10,7 @@ local sqrt = math.sqrt
 local log = math.log
 local atan2 = math.atan2
 local exp = math.exp
-local power = math.pow
+local pow = math.pow
 local bitXor = bitXor
 local bitNot = bitNot
 
@@ -24,6 +24,9 @@ local Complex = {}
 Complex.__ctor__ = function (this, real, imaginary)
     this.m_real = real
     this.m_imaginary = imaginary
+    local mt = getmetatable(this)
+    mt.__unm = Complex.op_UnaryNegation
+    setmetatable(this, mt)
 end
 
 Complex.Zero = new(Complex, 0.0, 0.0)
@@ -47,27 +50,27 @@ Complex.getPhase = function (this)
 end
 
 Complex.FromPolarCoordinates = function (magnitude, phase)
-    return System.new(Complex, (magnitude * cos(phase)), (magnitude * sin(phase)))
+    return new(Complex, (magnitude * cos(phase)), (magnitude * sin(phase)))
 end
 
 Complex.Negate = function (value)
-    return - value
+    return Complex.op_UnaryNegation(value)
 end
 
 Complex.Add = function (left, right)
-    return op_Addition(left, right)
+    return Complex.op_Addition(left, right)
 end
 
 Complex.Subtract = function (left, right)
-    return op_Subtraction(left, right)
+    return Complex.op_Subtraction(left, right)
 end
 
 Complex.Multiply = function (left, right)
-    return op_Multiply(left, right)
+    return Complex.op_Multiply(left, right)
 end
 
 Complex.Divide = function (dividend, divisor)
-    return op_Division(dividend, divisor)
+    return Complex.op_Division(dividend, divisor)
 end
 
 Complex.op_UnaryNegation = function (value)
@@ -75,7 +78,8 @@ Complex.op_UnaryNegation = function (value)
 end
 
 Complex.op_Addition = function (left, right)
-    return new(Complex, (left.m_real + right.m_real), (left.m_imaginary + right.m_imaginary))
+    local rs = new(Complex, (left.m_real + right.m_real), (left.m_imaginary + right.m_imaginary))
+    return rs
 end
 
 Complex.op_Subtraction = function (left, right)
@@ -142,7 +146,7 @@ Complex.Reciprocal = function (value)
         return Complex.Zero
     end
 
-    return op_Division(Complex.One, value)
+    return Complex.op_Division(Complex.One, value)
 end
 
 Complex.op_Equality = function (left, right)
@@ -199,7 +203,7 @@ Complex.Sinh = function (value)
 end
 
 Complex.Asin = function (value)
-    return Complex.op_Multiply((- Complex.ImaginaryOne), Complex.Log(Complex.op_Addition(Complex.op_Multiply(Complex.ImaginaryOne, value), Complex.Sqrt(Complex.op_Subtraction(Complex.One, Complex.op_Multiply(value, value))))))
+    return Complex.op_Multiply((Complex.op_UnaryNegation(Complex.ImaginaryOne)), Complex.Log(Complex.op_Addition(Complex.op_Multiply(Complex.ImaginaryOne, value), Complex.Sqrt(Complex.op_Subtraction(Complex.One, Complex.op_Multiply(value, value))))))
 end
 
 Complex.Cos = function (value)
@@ -215,7 +219,7 @@ Complex.Cosh = function (value)
 end
 
 Complex.Acos = function (value)
-    return Complex.op_Multiply((- Complex.ImaginaryOne), Complex.Log(Complex.op_Addition(value, Complex.op_Multiply(Complex.ImaginaryOne, Complex.Sqrt(Complex.op_Subtraction(Complex.One, (Complex.op_Multiply(value, value))))))))
+    return Complex.op_Multiply((Complex.op_UnaryNegation(Complex.ImaginaryOne)), Complex.Log(Complex.op_Addition(value, Complex.op_Multiply(Complex.ImaginaryOne, Complex.Sqrt(Complex.op_Subtraction(Complex.One, (Complex.op_Multiply(value, value))))))))
 end
 
 Complex.Tan = function (value)
@@ -227,7 +231,7 @@ Complex.Tanh = function (value)
 end
 
 Complex.Atan = function (value)
-    local Two = System.new(Complex, 2.0, 0.0)
+    local Two = new(Complex, 2.0, 0.0)
     return Complex.op_Multiply((Complex.op_Division(Complex.ImaginaryOne, Two)), (Complex.op_Subtraction(Complex.Log(Complex.op_Subtraction(Complex.One, Complex.op_Multiply(Complex.ImaginaryOne, value))), Complex.Log(Complex.op_Addition(Complex.One, Complex.op_Multiply(Complex.ImaginaryOne, value))))))
 end
 

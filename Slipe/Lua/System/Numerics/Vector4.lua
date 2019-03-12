@@ -42,6 +42,9 @@ Vector4.__ctor__ = function(this, X, Y, Z, W)
         this.Z = Z or 0
         this.W = W or 0
     end
+    local mt = getmetatable(this)
+    mt.__unm = Vector4.op_UnaryNegation
+    setmetatable(this, mt)
 end
 
 Vector4.getOne = function() return new(Vector4, 1.0, 1.0, 1.0, 1.0) end
@@ -86,7 +89,7 @@ Vector4.Dot = function(vector1, vector2)
 end
 
 Vector4.Min = function(value1, value2)
-    return nww(Vector4, (value1.X < value2.X) and value1.X or value2.X, (value1.Y < value2.Y) and value1.Y or value2.Y, (value1.Z < value2.Z) and value1.Z or value2.Z, (value1.W < value2.W) and value1.W or value2.W)
+    return new(Vector4, (value1.X < value2.X) and value1.X or value2.X, (value1.Y < value2.Y) and value1.Y or value2.Y, (value1.Z < value2.Z) and value1.Z or value2.Z, (value1.W < value2.W) and value1.W or value2.W)
 end
 
 Vector4.Max = function(value1, value2)
@@ -113,7 +116,7 @@ Vector4.op_Subtraction = function(left, right)
     return new(Vector4, left.X - right.X, left.Y - right.Y, left.Z - right.Z, left.W - right.W)
 end
 
-Vector4.Substract = function(left, right)
+Vector4.Subtract = function(left, right)
     return Vector4.op_Subtraction(left, right)
 end
 
@@ -144,7 +147,7 @@ Vector4.Divide = function(left, right)
 end
 
 Vector4.op_UnaryNegation = function(value)
-    return op_Subtraction(Vector4.getZero(), value)
+    return Vector4.op_Subtraction(Vector4.getZero(), value)
 end
 
 Vector4.Negate = function(value)
@@ -215,7 +218,7 @@ Vector4.DistanceSquared = function(value1, value2)
     return dx * dx + dy * dy + dz * dz + dw * dw
 end
 
-Vector4.Normalize = function(this)
+Vector4.Normalize = function(vector)
     local ls = vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z + vector.W * vector.W
     local invNorm = 1.0 / System.ToSingle(sqrt(ls))
 
