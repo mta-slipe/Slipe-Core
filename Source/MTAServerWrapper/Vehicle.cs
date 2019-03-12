@@ -4,11 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
+using MultiTheftAuto;
 
 namespace MTAServerWrapper
 {
     public class Vehicle : SharedVehicle
     {
+        public Vehicle(MTAElement element): base(element)
+        {
+
+        }
+
         public Vehicle(VehicleModel model, Vector3 position) : base(model, position)
         {
 

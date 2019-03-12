@@ -9,7 +9,7 @@ namespace MTASharedWrapper
 {
     public class Element
     {
-        protected MTAElement element;
+        protected internal MTAElement element;
 
         public static Element Root { get { return ElementManager.Instance.Root; } }
 

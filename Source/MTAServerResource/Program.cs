@@ -13,6 +13,25 @@ namespace MTAServerResource
     {
         static void Main(string[] args)
         {
+            new ElementManager(new ElementHelper());
+            Quaternion q = new Quaternion(12, 41, 42, 10);
+            Quaternion p = new Quaternion(new Vector3(10, 20, 4), 6);
+            Console.WriteLine(q.GetHashCode());
+            Console.WriteLine((q * p).ToString());
+            Complex c = Complex.Zero;
+            Console.WriteLine(c.Imaginary);
+            Vector4 v3 = new Vector4(5);
+            Vector4 v4 = new Vector4(3);
+            Vector4 result = v3 * 2;
+            Vector4 result2 = 4 * v4;
+            Vector3 v1 = new Vector3(4, 5, 6);
+            Plane p1 = new Plane(v4);
+            Plane p2 = new Plane(v1, 39);
+            Console.WriteLine(p2.ToString());
+            Console.WriteLine(result2.X);
+            Console.WriteLine(v3.Length());
+            string asdf = "asdf";
+            Console.WriteLine(asdf[2]); // will print d ?
             new Program();
         }
 
@@ -47,15 +66,17 @@ namespace MTAServerResource
 
             Element.Root.AddEventHandler("onVehicleDamage");
 
-            Color color = new Color(0xff00aa55);
+            Color color = new Color(0x0000ff);
+            color = new Color(0xff00ffaa);
+            color = new Color((uint) 0x000000ff);
             Console.WriteLine("Color: " + color.R + ", " + color.G + ", " + color.B + ", " + color.A);
             // alpha.AddEventHandler("onVehicleDamage");
             alpha.OnDamage += (float loss) =>
             {
                 Console.WriteLine("Vehicle lost " + loss +" health");
 
-                //Player player = new Player(Server.GetRandomPlayer());
-                //player.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
+                //Player nano = (Player)Player.GetFromName("SAES>NanoBob");
+                //nano.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
             };
 
             Player player = new Player(Server.GetRandomPlayer());

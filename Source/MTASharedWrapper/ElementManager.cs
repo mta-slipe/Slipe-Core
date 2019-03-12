@@ -1,6 +1,8 @@
 ﻿using MultiTheftAuto;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace MTASharedWrapper
@@ -12,18 +14,24 @@ namespace MTASharedWrapper
         {
             get
             {
-                return instance ?? new ElementManager();
+                if (instance == null)
+                {
+                    throw new Exception("ElementManager was not defined. Please double check you have a call to `new ElementManager(new ElementHelper());` in your main");
+                }
+                return instance;
             }
         }
 
+        private IElementHelper elementHelper;
 
         private Element root;
         public Element Root { get { return root; } }
 
         private Dictionary<System.Object, Element> elements;
 
-        public ElementManager()
+        public ElementManager(IElementHelper helper)
         {
+            this.elementHelper = helper;
             instance = this;
             elements = new Dictionary<System.Object, Element>();
             root = new Element(Shared.GetRootElement());
@@ -34,12 +42,19 @@ namespace MTASharedWrapper
             elements.Add(element.MTAElement, element);
         }
 
-        public Element GetElement(MultiTheftAuto.MTAElement element)
+        public Element GetElement(MTAElement element)
         {
             if (!this.elements.ContainsKey(element))
             {
-                //TODO: Create new element of correct type
-                return null;
+                try
+                {
+                    string mtaElementType = Shared.GetElementType(element);
+                    Element wrapperElement = elementHelper.InstantiateElement(mtaElementType, element);
+                    return wrapperElement;
+                } catch(Exception)
+                {
+                    return null;
+                }
             }
             return this.elements[element];
         }

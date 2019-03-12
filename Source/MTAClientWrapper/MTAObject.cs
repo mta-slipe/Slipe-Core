@@ -40,6 +40,12 @@ namespace MTAClientWrapper
                 Client.ToggleObjectRespawn(element, value);
             }
         }
+
+        public MTAObject(MTAElement element): base(element)
+        {
+
+        }
+
         public MTAObject(int model, Vector3 position) : base(model, position)
         {
         }
