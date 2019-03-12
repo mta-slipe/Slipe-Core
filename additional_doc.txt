@@ -1,0 +1,5 @@
+SharedWrapper.Element
+QuaternionRotation (get, set)
+ForwardVector (get)
+RightVector (get)
+UpVector (get)

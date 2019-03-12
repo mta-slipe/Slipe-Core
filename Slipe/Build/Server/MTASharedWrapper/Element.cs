@@ -9,7 +9,7 @@ namespace MTASharedWrapper
 {
     public class Element
     {
-        protected MTAElement element;
+        protected internal MTAElement element;
 
         public static Element Root { get { return ElementManager.Instance.Root; } }
 
@@ -43,7 +43,83 @@ namespace MTASharedWrapper
             }
             set
             {
-                Shared.SetElementRotation(element, value.X, value.Y, value.Z, "default", false);
+                Shared.SetElementRotation(element, value.X, value.Y, value.Z, "default", true);
+            }
+        }
+
+        public Quaternion QuaternionRotation
+        {
+            get
+            {
+                Tuple<float, float, float> rotation = Shared.GetElementRotation(element, "ZYX");
+                return Quaternion.CreateFromYawPitchRoll(rotation.Item1, rotation.Item2, rotation.Item3);
+            }
+            set
+            {
+
+                // roll (x-axis rotation)
+                double sinr_cosp = 2.0 * (value.W * value.X + value.Y * value.Z);
+                double cosr_cosp = 1.0 - 2.0 * (value.X * value.X + value.Y * value.Y);
+                double roll = Math.Atan2(sinr_cosp, cosr_cosp);
+
+                // pitch (y-axis rotation)
+                double sinp = 2.0 * (value.W * value.Y - value.Z * value.X);
+                double pitch;
+                if (Math.Abs(sinp) >= 1)
+                    pitch = Math.Sign(sinp) > 0 ? Math.PI : -Math.PI;                   
+                else
+                    pitch = Math.Asin(sinp);
+
+                // yaw (z-axis rotation)
+                double siny_cosp = 2.0 * (value.W * value.Z + value.X * value.Y);
+                double cosy_cosp = 1.0 - 2.0 * (value.Y * value.Y + value.Z * value.Z);
+                double yaw = Math.Atan2(siny_cosp, cosy_cosp);
+
+                Shared.SetElementRotation(element, (float) yaw, (float) pitch, (float) roll, "ZYX", true);
+            }
+        }
+
+        public Matrix4x4 Matrix
+        {
+            get
+            {
+                Tuple<Tuple<float, float, float, float>, Tuple<float, float, float, float>, Tuple<float, float, float, float>, Tuple<float, float, float, float>> matrix = Shared.GetElementMatrix(element, false);
+                return new Matrix4x4(matrix.Item1.Item1, matrix.Item1.Item2, matrix.Item1.Item3, matrix.Item1.Item4,
+                                     matrix.Item2.Item1, matrix.Item2.Item2, matrix.Item2.Item3, matrix.Item2.Item4,
+                                     matrix.Item3.Item1, matrix.Item3.Item2, matrix.Item3.Item3, matrix.Item3.Item4,
+                                     matrix.Item4.Item1, matrix.Item4.Item2, matrix.Item4.Item3, matrix.Item4.Item4);
+            }
+            set
+            {
+                this.Position = new Vector3(value.M14, value.M24, value.M34);
+                this.QuaternionRotation = Quaternion.CreateFromRotationMatrix(value);
+            }
+        }
+
+        public Vector3 ForwardVector
+        {
+            get
+            {
+                Matrix4x4 m = this.Matrix;
+                return new Vector3(m.M12, m.M22, m.M32);
+            }
+        }
+
+        public Vector3 RightVector
+        {
+            get
+            {
+                Matrix4x4 m = this.Matrix;
+                return new Vector3(m.M11, m.M21, m.M31);
+            }
+        }
+
+        public Vector3 UpVector
+        {
+            get
+            {
+                Matrix4x4 m = this.Matrix;
+                return new Vector3(m.M13, m.M23, m.M33);
             }
         }
 

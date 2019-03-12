@@ -32,6 +32,9 @@ Vector3.__ctor__ = function(this, X, Y, Z)
         this.Y = Y or 0
         this.Z = Z or 0
     end
+    local mt = getmetatable(this)
+    mt.__unm = Vector3.op_UnaryNegation
+    setmetatable(this, mt)
 end
 
 -- https://docs.microsoft.com/en-us/dotnet/api/system.numerics.vector3?view=netframework-4.7.2#properties
@@ -94,7 +97,7 @@ end
 
 -- https://docs.microsoft.com/en-us/dotnet/api/system.numerics.vector3.squareroot?view=netframework-4.7.2#System_Numerics_Vector3_SquareRoot_System_Numerics_Vector3_
 Vector3.SquareRoot = function(value)
-    return new(class, System.ToSingle(math.Sqrt(value.X)), System.ToSingle(math.Sqrt(value.Y)), System.ToSingle(math.Sqrt(value.Z)))
+    return new(Vector3, System.ToSingle(math.Sqrt(value.X)), System.ToSingle(math.Sqrt(value.Y)), System.ToSingle(math.Sqrt(value.Z)))
 end
 
 -- https://docs.microsoft.com/en-us/dotnet/api/system.numerics.vector3.add?view=netframework-4.7.2#System_Numerics_Vector3_Add_System_Numerics_Vector3_System_Numerics_Vector3_
@@ -111,7 +114,7 @@ Vector3.op_Subtraction = function(left, right)
     return new(Vector3, left.X - right.X, left.Y - right.Y, left.Z - right.Z)
 end
 
-Vector3.Substract = function(left, right)
+Vector3.Subtract = function(left, right)
     return Vector3.op_Subtraction(left, right)
 end
 
@@ -145,7 +148,7 @@ end
 
 -- https://docs.microsoft.com/en-us/dotnet/api/system.numerics.vector3.negate?view=netframework-4.7.2#System_Numerics_Vector3_Negate_System_Numerics_Vector3_
 Vector3.op_UnaryNegation = function(value)
-    return op_Subtraction(Vector3.getZero(), value)
+    return Vector3.op_Subtraction(Vector3.getZero(), value)
 end
 
 Vector3.Negate = function(value)
@@ -217,7 +220,7 @@ Vector3.DistanceSquared = function(value1, value2)
 end
 
 -- https://docs.microsoft.com/en-us/dotnet/api/system.numerics.vector3.normalize?view=netframework-4.7.2#System_Numerics_Vector3_Normalize_System_Numerics_Vector3_
-Vector3.Normalize = function(this)
+Vector3.Normalize = function(value)
     local ls = value.X * value.X + value.Y * value.Y + value.Z * value.Z
     local length = System.ToSingle(sqrt(ls))
     return new(Vector3, value.X / length, value.Y / length, value.Z / length)

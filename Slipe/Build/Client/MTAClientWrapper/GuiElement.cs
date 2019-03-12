@@ -31,5 +31,15 @@ namespace MTAClientWrapper
                 Client.GuiSetAlpha(element, value);
             }
         }
+
+        public GUIElement()
+        {
+
+        }
+
+        public GUIElement(MTAElement element): base(element)
+        {
+
+        }
     }
 }

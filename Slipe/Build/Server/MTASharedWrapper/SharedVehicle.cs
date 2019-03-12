@@ -9,6 +9,11 @@ namespace MTASharedWrapper
 {
     public class SharedVehicle: Element
     {
+        public SharedVehicle(MTAElement element): base(element)
+        {
+
+        }
+
         public SharedVehicle(VehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1)
         {
             element = Shared.CreateVehicle((int)model, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, numberplate, false, variant1, variant2);

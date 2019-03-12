@@ -20,19 +20,22 @@ Vector2.__ctor__ = function(this, X, Y)
         this.X = X or 0
         this.Y = Y or 0
     end
+    local mt = getmetatable(this)
+    mt.__unm = Vector2.op_UnaryNegation
+    setmetatable(this, mt)
 end
 
 Vector2.getZero = function ()
     return new(Vector2, 0, 0, 0)
 end
 Vector2.getOne = function ()
-    return new(1.0, 1.0)
+    return new(Vector2, 1.0, 1.0)
 end
 Vector2.getUnitX = function ()
-    return new(1.0, 0.0)
+    return new(Vector2, 1.0, 0.0)
 end
 Vector2.getUnitY = function ()
-    return new(0.0, 1.0)
+    return new(Vector2, 0.0, 1.0)
 end
 
 Vector2.CopyTo = function(this, array, index)
@@ -127,7 +130,7 @@ Vector2.Divide = function (left, right)
 end
 
 Vector2.op_UnaryNegation = function (value)
-    return op_Subtraction(Vector2.getZero(), value)
+    return Vector2.op_Subtraction(Vector2.getZero(), value)
 end
 
 Vector2.Negate = function (value)

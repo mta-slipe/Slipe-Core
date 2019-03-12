@@ -6,13 +6,14 @@ using MultiTheftAuto;
 
 namespace MTAServerWrapper
 {
-    public class ElementHelper
+    public class ElementHelper: IElementHelper
     {
         private static Dictionary<Type, string> ElementTypeNames = new Dictionary<Type, string>
         {
             [typeof(Element)] = "element",
             [typeof(Vehicle)] = "vehicle",
             [typeof(Player)] = "player",
+            [typeof(MTAObject)] = "object",
         };
 
         public static List<T> GetByType<T>() where T : Element
@@ -36,5 +37,22 @@ namespace MTAServerWrapper
 
             return elements;
         }
+        
+        public Element InstantiateElement(string type, MTAElement element)
+        {
+            switch (type)
+            {
+                case "element":
+                    return new Element(element);
+                case "vehicle":
+                    return new Vehicle(element);
+                case "player":
+                    return new Player(element);
+                case "object":
+                    return new MTAObject(element);
+            }
+            return null;
+        }
+
     }
 }

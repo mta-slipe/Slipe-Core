@@ -21,6 +21,11 @@ namespace MTASharedWrapper
             }
         }
 
+        public SharedObject(MTAElement element): base(element)
+        {
+
+        }
+
         public SharedObject(int model, Vector3 position, Vector3 rotation, bool isLowLOD = false)
         {
             this.element = Shared.CreateObject(model, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, isLowLOD);

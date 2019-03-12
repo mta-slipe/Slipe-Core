@@ -32,6 +32,9 @@ Quaternion.__ctor__ = function(this, x, y, z, w)
         this.Z = z or 0
         this.W = w or 0
     end
+    local mt = getmetatable(this)
+    mt.__unm = Quaternion.op_UnaryNegation
+    setmetatable(this, mt)
 end
 
 Quaternion.getIdentity = function ()
@@ -232,8 +235,6 @@ Quaternion.Concatenate = function (value1, value2)
 end
 
 Quaternion.Negate = function (value)
-    local ans = System.default(class)
-
     return new(Quaternion, - value.X, - value.Y, - value.Z, - value.W)
 end
 

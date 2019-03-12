@@ -13,6 +13,7 @@ namespace MTAServerResource
     {
         static void Main(string[] args)
         {
+            new ElementManager(new ElementHelper());
             Quaternion q = new Quaternion(12, 41, 42, 10);
             Quaternion p = new Quaternion(new Vector3(10, 20, 4), 6);
             Console.WriteLine(q.GetHashCode());
@@ -65,15 +66,17 @@ namespace MTAServerResource
 
             Element.Root.AddEventHandler("onVehicleDamage");
 
-            Color color = new Color(0xff00aa55);
+            Color color = new Color(0x0000ff);
+            color = new Color(0xff00ffaa);
+            color = new Color((uint) 0x000000ff);
             Console.WriteLine("Color: " + color.R + ", " + color.G + ", " + color.B + ", " + color.A);
             // alpha.AddEventHandler("onVehicleDamage");
             alpha.OnDamage += (float loss) =>
             {
                 Console.WriteLine("Vehicle lost " + loss +" health");
 
-                //Player player = new Player(Server.GetRandomPlayer());
-                //player.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
+                //Player nano = (Player)Player.GetFromName("SAES>NanoBob");
+                //nano.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
             };
 
             // Console.WriteLine(File.ReadAllText("meta.xml"));
