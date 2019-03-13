@@ -1,5 +1,6 @@
 ﻿using MTAClientWrapper;
 using MTAClientWrapper.Javascript;
+using MTASharedWrapper;
 using System;
 using System.Numerics;
 
@@ -9,8 +10,9 @@ namespace MTAClientResource
     {
         static void Main(string[] args)
         {
+            new ElementManager(new ElementHelper());
             Console.WriteLine("Hello Client!");
-            // new Program();
+            new Program();
         }
 
         private GUIBrowser guiBrowser;
@@ -18,14 +20,15 @@ namespace MTAClientResource
 
         public Program()
         {
-            guiBrowser = new GUIBrowser(Vector2.Zero, 1, 1, false, true, true);
-            browser = guiBrowser.Browser;
+            //guiBrowser = new GUIBrowser(Vector2.Zero, 1, 1, false, true, true);
+            //browser = guiBrowser.Browser;
 
-            Browser.OnDomainRequestAccepted += OnDomainRequestAccepted;
-            browser.OnCreated += OnCreated;
-            browser.OnDocumentReady += OnReady;
+            //Browser.OnDomainRequestAccepted += OnDomainRequestAccepted;
+            //browser.OnCreated += OnCreated;
+            //browser.OnDocumentReady += OnReady;
 
-            browser.AddEventHandler("onClientBrowserCreated");
+            //browser.AddEventHandler("onClientBrowserCreated");
+            //Camera.Instance.SetGoggleEffect(MTAClientWrapper.Enums.GoggleEffects.NORMAL);
         }
 
         public void OnCreated()
