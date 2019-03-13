@@ -39,5 +39,12 @@ namespace MTASharedWrapper
         {
 
         }
+
+        private static readonly Color _red = new Color(255, 0, 0);
+
+        public static Color Red
+        {
+            get { return _red; }
+        }
     }
 }
