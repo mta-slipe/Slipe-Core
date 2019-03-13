@@ -78,9 +78,7 @@ namespace MTAServerResource
 
             RadarArea area = new RadarArea(new Vector2(200, 200), new Vector2(400, 400), new Color(40, 120, 255));
             area.Flashing = true;
-
-            MTAObject bin = new MTAObject(1337, player.Position + player.ForwardVector * 3 + player.UpVector * 2);
-            bin.QuaternionRotation = player.QuaternionRotation;
+                      
            
             // Console.WriteLine(File.ReadAllText("meta.xml"));
         }
