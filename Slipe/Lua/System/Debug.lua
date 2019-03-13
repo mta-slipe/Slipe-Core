@@ -21,32 +21,28 @@ local string = string
 local byte = string.byte
 local char = string.char
 
-local outputFunction = triggerServerEvent == nil and outputServerLog or outputConsole
+local Debug = {}
 
-local Console = {}
-
-function Console.Read()
-  return byte(0)
+function Debug.Write(...)
+  outputDebugString(System.String.Format(...))
 end
 
-function Console.ReadLine()
-  return ""
+function Debug.WriteIf(expression, ...)
+  if not expression then
+    return
+  end
+  outputDebugString(System.String.Format(...))
 end
 
-function Console.Write(...)
-  outputFunction(System.String.Format(...))
+function Debug.WriteLine(...)
+  outputDebugString(System.String.Format(...) .. "\n")
 end
 
-function Console.WriteChar(v)
-  outputFunction(v)
+function Debug.WriteLineIf(expression, ...)
+  if not expression then
+    return
+  end
+  outputDebugString(System.String.Format(...) .. "\n")
 end
 
-function Console.WriteLine(...)
-  outputFunction(System.String.Format(...) .. "\n")
-end
-
-function Console.WriteLineChar(v)
-  outputFunction(v .. "\n")      
-end
-
-System.define("System.Console", Console)
+System.define("System.Diagnostics.Debug", Debug)

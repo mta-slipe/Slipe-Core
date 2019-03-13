@@ -45,6 +45,7 @@
     "Random.lua",
     "Text/StringBuilder.lua",
     "Console.lua",
+    "Debug.lua",
     "IO/File.lua",
     "Reflection/Assembly.lua",
     "Threads/Timer.lua",

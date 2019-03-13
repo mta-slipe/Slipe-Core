@@ -4,6 +4,7 @@ using MTASharedWrapper.Enums;
 using MultiTheftAuto;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Numerics;
 
@@ -31,6 +32,7 @@ namespace MTAServerResource
             MTAObject dildo = new MTAObject(321, new Vector3(3, 3, 3));
             dildo.Scale = new Vector3(3, 3, 3);
             dildo.Move(5000, new Vector3(3, 3, 10));
+            Console.WriteLine("{0} is a pleb", "SAES>Dezzolation");
 
             vehicles[4].AttachTo(dildo, new Vector3(0, 0, 3));
 
@@ -52,7 +54,7 @@ namespace MTAServerResource
             Color color = new Color(0x0000ff);
             color = new Color(0xff00ffaa);
             color = new Color((uint) 0x000000ff);
-            Console.WriteLine("Color: " + color.R + ", " + color.G + ", " + color.B + ", " + color.A);
+            Debug.WriteLine("Color: {0}, {1}, {2}, {3}", color.R, color.G, color.B, color.A);
             // alpha.AddEventHandler("onVehicleDamage");
             alpha.OnDamage += (float loss) =>
             {
@@ -63,6 +65,11 @@ namespace MTAServerResource
             };
 
             Player player = (Player) Player.GetFromName("SAES>DezZolation");
+            if (player != null)
+            {
+                MTAObject bin = new MTAObject(1337, player.Position + player.ForwardVector * 3 + player.UpVector * 2);
+                bin.QuaternionRotation = player.QuaternionRotation;
+            }
 
 
             Blip blip2 = new Blip(new Vector3(0, 0, 0), BlipEnum.BURGERSHOT, Color.Red, 2);
