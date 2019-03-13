@@ -23,6 +23,7 @@ namespace MTAServerResource
             for (int i = 0; i < 10; i++)
             {
                 Vehicle rhino = new Vehicle(VehicleModel.RHINO, new Vector3(i * 15, 0, 3));
+                Blip blip = new Blip(rhino);
                 vehicles.Add(rhino);
             }
             vehicles[5].Rotation = new Vector3(0, 0, 45);
@@ -62,6 +63,9 @@ namespace MTAServerResource
             };
 
             Player player = (Player) Player.GetFromName("SAES>DezZolation");
+
+
+            Blip blip2 = new Blip(new Vector3(0, 0, 0), BlipEnum.BURGERSHOT, Color.Red, 2);
 
             MTAObject bin = new MTAObject(1337, player.Position + player.ForwardVector * 3 + player.UpVector * 2);
             bin.QuaternionRotation = player.QuaternionRotation;
