@@ -9,9 +9,8 @@ namespace MTASharedWrapper
 {
     public class PhysicalElement : Element
     {
-        public PhysicalElement() : base()
+        public PhysicalElement()
         {
-
         }
 
         public PhysicalElement(MTAElement mtaElement) : base(mtaElement)

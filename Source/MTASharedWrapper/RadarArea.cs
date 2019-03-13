@@ -8,11 +8,6 @@ namespace MTASharedWrapper
 {
     public class RadarArea : PhysicalElement
     {
-        public RadarArea() : base()
-        {
-
-        }
-
         public RadarArea(MTAElement element) : base(element)
         {
 

@@ -20,6 +20,7 @@ namespace MTASharedWrapper
             element = Shared.CreateVehicle((int)model, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, numberplate, false, variant1, variant2);
             ElementManager.Instance.RegisterElement(this);
         }
+
         public SharedVehicle(VehicleModel model, Vector3 position): this(model, position, new Vector3(0, 0, 0))
         {
         }

@@ -20,7 +20,7 @@ namespace MTAClientWrapper
             }
         }
 
-        public new float Alpha
+        public float Alpha
         {
             get
             {

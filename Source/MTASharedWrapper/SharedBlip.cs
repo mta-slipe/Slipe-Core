@@ -8,7 +8,7 @@ namespace MTASharedWrapper
 {
     public class SharedBlip : PhysicalElement
     {
-        public SharedBlip() : base()
+        protected SharedBlip()
         {
 
         }
