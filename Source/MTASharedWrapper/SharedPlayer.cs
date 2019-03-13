@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MTASharedWrapper
 {
-    public class SharedPlayer: Element
+    public class SharedPlayer: PhysicalElement
     {
         public SharedPlayer(MTAElement mtaElement) : base(mtaElement)
         {
