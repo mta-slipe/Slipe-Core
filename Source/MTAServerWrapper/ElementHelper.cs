@@ -24,7 +24,6 @@ namespace MTAServerWrapper
             {
                 return elements;
             }
-
             List<dynamic> mtaElements = Shared.GetListFromTable(Server.GetElementsByType(ElementTypeNames[typeof(T)], null));
             foreach (dynamic mtaElement in mtaElements)
             {
