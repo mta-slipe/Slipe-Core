@@ -82,7 +82,7 @@ Quaternion.CreateFromAxisAngle = function (axis, angle)
     local s = System.ToSingle(sin(halfAngle))
     local c = System.ToSingle(cos(halfAngle))
 
-    return new(Quaternion, axis.X * s, axis.Y * s, axis.Z * s, C)
+    return new(Quaternion, axis.X * s, axis.Y * s, axis.Z * s, c)
 end
 
 Quaternion.CreateFromYawPitchRoll = function (yaw, pitch, roll)

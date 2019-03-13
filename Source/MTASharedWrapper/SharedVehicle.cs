@@ -7,8 +7,9 @@ using System.Numerics;
 
 namespace MTASharedWrapper
 {
-    public class SharedVehicle: Element
+    public class SharedVehicle: PhysicalElement
     {
+    
         public SharedVehicle(MTAElement element): base(element)
         {
 

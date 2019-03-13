@@ -1510,7 +1510,7 @@ Matrix4x4.ToString = function (this)
     sb:Append(this.M11:ToString())
     sb:Append(" M12: ")
     sb:Append(this.M12:ToString())
-    sb:Append("M13: ")
+    sb:Append(" M13: ")
     sb:Append(this.M13:ToString())
     sb:Append(" M14: ")
     sb:Append(this.M14:ToString())
@@ -1520,7 +1520,7 @@ Matrix4x4.ToString = function (this)
     sb:Append(this.M21:ToString())
     sb:Append(" M22: ")
     sb:Append(this.M22:ToString())
-    sb:Append("M23: ")
+    sb:Append(" M23: ")
     sb:Append(this.M23:ToString())
     sb:Append(" M24: ")
     sb:Append(this.M24:ToString())
@@ -1530,7 +1530,7 @@ Matrix4x4.ToString = function (this)
     sb:Append(this.M31:ToString())
     sb:Append(" M32: ")
     sb:Append(this.M32:ToString())
-    sb:Append("M33: ")
+    sb:Append(" M33: ")
     sb:Append(this.M33:ToString())
     sb:Append(" M34: ")
     sb:Append(this.M34:ToString())
@@ -1540,7 +1540,7 @@ Matrix4x4.ToString = function (this)
     sb:Append(this.M41:ToString())
     sb:Append(" M42: ")
     sb:Append(this.M42:ToString())
-    sb:Append("M43: ")
+    sb:Append(" M43: ")
     sb:Append(this.M43:ToString())
     sb:Append(" M44: ")
     sb:Append(this.M44:ToString())
@@ -1560,7 +1560,7 @@ Matrix4x4.Decompose = function(matrix, scale, rotation, translation)
     -- throw(NotImplementedException("Matrix4x4.Decompose is not yet implemented"))
 
     -- Extract Translation
-    translation = SystemNumerics.Vector3(matrix.M14, matrix.M24, matrix.M34)
+    translation = SystemNumerics.Vector3(matrix.M41, matrix.M42, matrix.M43)
 
     -- Zero Translation
     matrix.M41 = 0
@@ -1569,9 +1569,9 @@ Matrix4x4.Decompose = function(matrix, scale, rotation, translation)
 
     -- Extract scales
 
-    local sx = SystemNumerics.Vector3(matrix.M11, matrix.M21, matrix.M31):Length()
-    local sy = SystemNumerics.Vector3(matrix.M12, matrix.M22, matrix.M32):Length()
-    local sz = SystemNumerics.Vector3(matrix.M13, matrix.M23, matrix.M33):Length()
+    local sx = SystemNumerics.Vector3(matrix.M11, matrix.M12, matrix.M13):Length()
+    local sy = SystemNumerics.Vector3(matrix.M21, matrix.M22, matrix.M23):Length()
+    local sz = SystemNumerics.Vector3(matrix.M31, matrix.M32, matrix.M33):Length()
 
     scale = SystemNumerics.Vector3(sx, sy, sz)
 
@@ -1580,15 +1580,15 @@ Matrix4x4.Decompose = function(matrix, scale, rotation, translation)
     local matTemp = matrix:__clone__()
 
     matTemp.M11 = matTemp.M11 / sx
-    matTemp.M21 = matTemp.M21 / sx
-    matTemp.M31 = matTemp.M31 / sx
+    matTemp.M12 = matTemp.M12 / sx
+    matTemp.M13 = matTemp.M13 / sx
 
-    matTemp.M12 = matTemp.M12 / sy
+    matTemp.M21 = matTemp.M21 / sy
     matTemp.M22 = matTemp.M22 / sy
-    matTemp.M32 = matTemp.M32 / sy
+    matTemp.M23 = matTemp.M23 / sy
 
-    matTemp.M13 = matTemp.M13 / sz
-    matTemp.M23 = matTemp.M23 / sz
+    matTemp.M31 = matTemp.M31 / sz
+    matTemp.M32 = matTemp.M32 / sz
     matTemp.M33 = matTemp.M33/ sz
 
     rotation = SystemNumerics.Quaternion.CreateFromRotationMatrix(matTemp)

@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace MTASharedWrapper
 {
-    public class SharedObject : Element
+    public class SharedObject : PhysicalElement
     {
         public Vector3 Scale
         {
