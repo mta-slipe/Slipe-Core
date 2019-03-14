@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Numerics;
+using MTASharedWrapper.Pickups;
 
 namespace MTAServerResource
 {
@@ -23,7 +24,7 @@ namespace MTAServerResource
             List<Vehicle> vehicles = new List<Vehicle>(); ;
             for (int i = 0; i < 10; i++)
             {
-                Vehicle rhino = new Vehicle(VehicleModel.RHINO, new Vector3(i * 15, 0, 3));
+                Vehicle rhino = new Vehicle(VehicleModel.BROWNSTREAKENGINE, new Vector3(i * 15, 0, 3));
                 Blip blip = new Blip(rhino);
                 vehicles.Add(rhino);
             }
@@ -67,8 +68,8 @@ namespace MTAServerResource
             Player player = (Player) Player.GetFromName("SAES>DezZolation");
             if (player != null)
             {
-                MTAObject bin = new MTAObject(1337, player.Position + player.ForwardVector * 3 + player.UpVector * 2);
-                bin.QuaternionRotation = player.QuaternionRotation;
+                WeaponPickup pickup = new WeaponPickup(player.Position + player.ForwardVector * 3, WeaponEnum.AK47, 200);
+                Console.WriteLine(pickup.GetRespawnInterval().ToString());
             }
 
 
@@ -78,6 +79,9 @@ namespace MTAServerResource
 
             RadarArea area = new RadarArea(new Vector2(200, 200), new Vector2(400, 400), new Color(40, 120, 255));
             area.Flashing = true;
+
+            Vector3 vect3 = area.ForwardVector;
+            Console.WriteLine(vect.ToString());
                       
            
             // Console.WriteLine(File.ReadAllText("meta.xml"));

@@ -8,10 +8,7 @@ namespace MTASharedWrapper
 {
     public class RadarArea : PhysicalElement
     {
-        public RadarArea(MTAElement element) : base(element)
-        {
-
-        }
+        public RadarArea(MTAElement element) : base(element) { }
 
         public RadarArea(Vector2 position, Vector2 dimensions, Color color, Element visibleTo = null)
         {
@@ -19,10 +16,7 @@ namespace MTASharedWrapper
             ElementManager.Instance.RegisterElement(this);
         }
 
-        public RadarArea(Vector2 position, Vector2 dimension) : this (position, dimension, Color.White)
-        {
-
-        }
+        public RadarArea(Vector2 position, Vector2 dimension) : this (position, dimension, Color.White) { }
 
         public Color Color
         {

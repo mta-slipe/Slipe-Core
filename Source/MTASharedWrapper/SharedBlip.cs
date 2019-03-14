@@ -8,15 +8,9 @@ namespace MTASharedWrapper
 {
     public class SharedBlip : PhysicalElement
     {
-        protected SharedBlip()
-        {
+        protected SharedBlip() { }
 
-        }
-
-        public SharedBlip(MTAElement element) : base(element)
-        {
-
-        }
+        public SharedBlip(MTAElement element) : base(element) { }
 
         public Color Color
         {
