@@ -1,6 +1,4 @@
-# Project Title
-
-Slipe-Core (Alpha)
+# Slipe-Core (Alpha)
 
 ## Getting Started
 
