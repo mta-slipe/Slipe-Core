@@ -55,6 +55,7 @@
     "Threads/Thread.lua",
     "Threads/Task.lua",
     "Utilities.lua",
+    "SystemExtensions.lua",
     "Numerics/HashCodeHelper.lua",
     "Numerics/Complex.lua",
     "Numerics/Matrix3x2.lua",
@@ -63,6 +64,9 @@
     "Numerics/Quaternion.lua",
     "Numerics/Vector2.lua",
     "Numerics/Vector3.lua",
-    "Numerics/Vector4.lua"
+    "Numerics/Vector4.lua",
+    "Component.lua",
+    "Timers/ElapsedEventArgs.lua",
+    "Timers/Timer.lua"
   ]
 }

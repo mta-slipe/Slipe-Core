@@ -1,3 +1,3 @@
 namespace MultiTheftAuto {
-	public class Ban{}
+	public class MTABan{}
 }

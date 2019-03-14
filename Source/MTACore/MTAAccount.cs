@@ -1,3 +1,3 @@
 namespace MultiTheftAuto {
-	public class Account{}
+	public class MTAAccount{}
 }
