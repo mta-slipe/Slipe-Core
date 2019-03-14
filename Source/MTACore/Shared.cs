@@ -237,29 +237,30 @@ namespace MultiTheftAuto {
 		public static Tuple<dynamic, dynamic> GetPerformanceStats (string category, string options, string filter){ throw new NotImplementedException(); }
 		public static string Hash (string algorithm, string dataToHash){ throw new NotImplementedException(); }
 		public static string Inspect (dynamic var, dynamic options){ throw new NotImplementedException(); }
+		public static Tuple<float, float, float> InterpolateBetween (float x1, float y1, float z1, float x2, float y2, float z2, float fProgress, string strEasingType, float fEasingPeriod, float fEasingAmplitude, float fEasingOvershoot){ throw new NotImplementedException(); }
+		public static bool Iprint (dynamic var1, dynamic var2, dynamic var3){ throw new NotImplementedException(); }
+		public static bool Killdynamic (dynamic theTimer){ throw new NotImplementedException(); }
+		public static bool IsOOPEnabled (){ throw new NotImplementedException(); }
+		public static string Md5 (string str){ throw new NotImplementedException(); }
 		public static string Gettok (string text, int tokenNumber, string parameter2){ throw new NotImplementedException(); }
 		public static bool PasswordVerify (string password, string hash, dynamic options, dynamic callback){ throw new NotImplementedException(); }
-		public static Tuple<float, float, float> InterpolateBetween (float x1, float y1, float z1, float x2, float y2, float z2, float fProgress, string strEasingType, float fEasingPeriod, float fEasingAmplitude, float fEasingOvershoot){ throw new NotImplementedException(); }
 		public static bool PregFind (string subject, string pattern, dynamic flags){ throw new NotImplementedException(); }
-		public static bool KillTimer (MTATimer theTimer){ throw new NotImplementedException(); }
-		public static bool IsTimer (MTATimer theTimer){ throw new NotImplementedException(); }
-		public static string Md5 (string str){ throw new NotImplementedException(); }
 		public static dynamic PregMatch (string argument_base, string pattern, dynamic flags, int maxResults){ throw new NotImplementedException(); }
-		public static string PasswordHash (string password, string algorithm, dynamic options, dynamic callback){ throw new NotImplementedException(); }
-		public static string PregReplace (string subject, string pattern, string replacement, dynamic flags){ throw new NotImplementedException(); }
-		public static bool ResetTimer (MTATimer theTimer){ throw new NotImplementedException(); }
-		public static bool RemoveDebugHook (string hookType, dynamic callbackFunction){ throw new NotImplementedException(); }
 		public static bool SetDevelopmentMode (bool enable, bool enableWeb){ throw new NotImplementedException(); }
-		public static MTATimer SetTimer (dynamic theFunction, int timeInterval, int timesToExecute, dynamic arguments){ throw new NotImplementedException(); }
+		public static bool Resetdynamic (dynamic theTimer){ throw new NotImplementedException(); }
+		public static bool RemoveDebugHook (string hookType, dynamic callbackFunction){ throw new NotImplementedException(); }
+		public static string PregReplace (string subject, string pattern, string replacement, dynamic flags){ throw new NotImplementedException(); }
+		public static dynamic Split (string stringToSplit, string parameter1){ throw new NotImplementedException(); }
+		public static string Sha256 (string str){ throw new NotImplementedException(); }
+		public static dynamic Setdynamic (dynamic theFunction, int timeInterval, int timesToExecute, dynamic arguments){ throw new NotImplementedException(); }
+		public static string TeaDecode (string data, string key){ throw new NotImplementedException(); }
+		public static string PasswordHash (string password, string algorithm, dynamic options, dynamic callback){ throw new NotImplementedException(); }
 		public static string TeaEncode (string text, string key){ throw new NotImplementedException(); }
 		public static string ToJSON (dynamic value, bool compact, string prettyType){ throw new NotImplementedException(); }
 		public static int Tocolor (int red, int green, int blue, int alpha){ throw new NotImplementedException(); }
-		public static string TeaDecode (string data, string key){ throw new NotImplementedException(); }
-		public static string Sha256 (string str){ throw new NotImplementedException(); }
 		public static int UtfLen (string theString){ throw new NotImplementedException(); }
 		public static string UtfChar (int characterCode){ throw new NotImplementedException(); }
 		public static int UtfCode (string theString){ throw new NotImplementedException(); }
-		public static dynamic Split (string stringToSplit, string parameter1){ throw new NotImplementedException(); }
 		public static dynamic Utf8_byte (string input, int i, int j){ throw new NotImplementedException(); }
 		public static int UtfSeek (string theString, int position){ throw new NotImplementedException(); }
 		public static string UtfSub (string theString, int Start, int End){ throw new NotImplementedException(); }
@@ -296,7 +297,6 @@ namespace MultiTheftAuto {
 		public static bool GetTrainDirection (MTAElement train){ throw new NotImplementedException(); }
 		public static dynamic GetOriginalHandling (int modelID){ throw new NotImplementedException(); }
 		public static Tuple<int, int, int, int> GetVehicleColor (MTAElement theVehicle){ throw new NotImplementedException(); }
-		public static Tuple<int, int, int> GetTimerDetails (MTATimer theTimer){ throw new NotImplementedException(); }
 		public static MTAElement GetVehicleController (MTAElement theVehicle){ throw new NotImplementedException(); }
 		public static float GetVehicleDoorOpenRatio (MTAElement theVehicle, int door){ throw new NotImplementedException(); }
 		public static int GetVehicleDoorState (MTAElement theVehicle, int door){ throw new NotImplementedException(); }
@@ -308,8 +308,6 @@ namespace MultiTheftAuto {
 		public static int GetVehicleLightState (MTAElement theVehicle, int light){ throw new NotImplementedException(); }
 		public static int GetVehicleMaxPassengers (MTAElement theVehicle){ throw new NotImplementedException(); }
 		public static bool GetVehicleLandingGearDown (MTAElement theVehicle){ throw new NotImplementedException(); }
-		public static bool Iprint (dynamic var1, dynamic var2, dynamic var3){ throw new NotImplementedException(); }
-		public static bool IsOOPEnabled (){ throw new NotImplementedException(); }
 		public static int GetVehicleModelFromName (string name){ throw new NotImplementedException(); }
 		public static string GetVehicleName (MTAElement theVehicle){ throw new NotImplementedException(); }
 		public static MTAElement GetVehicleOccupant (MTAElement theVehicle, int seat){ throw new NotImplementedException(); }

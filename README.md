@@ -8,11 +8,11 @@ To fully enhance your development workflow, use [Slipe-CLI](https://github.com/m
 
 ### Prerequisites
 
-```
-.NET Core 3.0
-```
 
-We also recommend using Visual Studio 2019
+* .[NET Core 3.0 (preview)](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+* [Visual studio 2019 (preview)](https://visualstudio.microsoft.com/vs/preview/)
+
+
 
 ### Installation
 
@@ -20,6 +20,9 @@ We also recommend using Visual Studio 2019
 * Clone this repository in your MTA server's resources folder
 * Open the Source/Resource.sln solution
 * Use the command ```slipe compile``` in the resource folder or simply build the project from Visual Studio
+
+## Wiki
+Additional information on the project can be found on the [github wiki](https://github.com/mta-slipe/Slipe-Core/wiki)
 
 ## Authors
 

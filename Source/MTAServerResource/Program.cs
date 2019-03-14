@@ -9,6 +9,7 @@ using System.IO;
 using System.Numerics;
 using MTASharedWrapper.Pickups;
 using RPCDefinitions;
+using System.Timers;
 
 namespace MTAServerResource
 {
@@ -17,7 +18,19 @@ namespace MTAServerResource
         static void Main(string[] args)
         {
             new ElementManager(new ElementHelper());
+            Timer aTimer = new Timer(2000);
+            Console.WriteLine(aTimer.AutoReset.ToString());
+            aTimer.Elapsed += OnTimedEvent;
+            aTimer.Enabled = true;
+            aTimer.Interval = 4000;
             new Program();
+        }
+
+        public static void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            Console.WriteLine("The elapsed event was raised at " + e.SignalTime.ToString());
+            Timer t = (Timer)source;
+            t.Enabled = false;
         }
 
         public Program()
