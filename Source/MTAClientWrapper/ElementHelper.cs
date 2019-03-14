@@ -14,6 +14,7 @@ namespace MTAClientWrapper
             [typeof(Player)] = "player",
             [typeof(MTAObject)] = "object",
             [typeof(GUIBrowser)] = "gui-browser",
+            [typeof(Team)] = "team",
         };
 
         public static List<T> GetByType<T>() where T : Element
@@ -52,6 +53,8 @@ namespace MTAClientWrapper
                     return new GUIBrowser(element);
                 case "browser":
                     return new Browser(element);
+                case "team":
+                    return new Team(element);
             }
             return null;
         }
