@@ -1,3 +1,3 @@
 namespace MultiTheftAuto {
-	public class Timer{}
+	public class MTAResource{}
 }

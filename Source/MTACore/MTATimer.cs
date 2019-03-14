@@ -1,3 +1,3 @@
 namespace MultiTheftAuto {
-	public class Acl{}
+	public class MTATimer{}
 }

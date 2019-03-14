@@ -1,3 +1,3 @@
 namespace MultiTheftAuto {
-	public class AclGroup{}
+	public class MTAAcl{}
 }

@@ -84,6 +84,12 @@ namespace MTAServerResource
             Vector3 vect3 = area.ForwardVector;
             Console.WriteLine(vect.ToString());
 
+            //new Ban("192.168.178.1", null, null, "Cunt", 0);
+            foreach(Ban ban in Ban.GetAll())
+            {
+                Console.WriteLine("Ban ip: {0}, serial: {1}", ban.Ip, ban.Serial);
+            }
+
             // Console.WriteLine(File.ReadAllText("meta.xml"));
             //RPCManager.Instance.TriggerRPC("testRPC", new TestRPCStruct()
             //{

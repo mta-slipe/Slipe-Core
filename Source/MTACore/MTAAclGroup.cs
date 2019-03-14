@@ -1,3 +1,3 @@
 namespace MultiTheftAuto {
-	public class Resource{}
+	public class MTAAclGroup{}
 }
