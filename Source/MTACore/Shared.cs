@@ -238,28 +238,28 @@ namespace MultiTheftAuto {
 		public static dynamic GetRealTime (int seconds, bool localTime){ throw new NotImplementedException(); }
 		public static int GetTickCount (){ throw new NotImplementedException(); }
 		public static dynamic GetTimers (int theTime){ throw new NotImplementedException(); }
-		public static Tuple<int, int, int> GetTimerDetails (Timer theTimer){ throw new NotImplementedException(); }
+		public static Tuple<int, int, int> GetTimerDetails (dynamic theTimer){ throw new NotImplementedException(); }
 		public static string Hash (string algorithm, string dataToHash){ throw new NotImplementedException(); }
 		public static string Gettok (string text, int tokenNumber, string parameter2){ throw new NotImplementedException(); }
 		public static string GetUserdataType (MTAElement value){ throw new NotImplementedException(); }
 		public static string Inspect (dynamic var, dynamic options){ throw new NotImplementedException(); }
 		public static Tuple<float, float, float> InterpolateBetween (float x1, float y1, float z1, float x2, float y2, float z2, float fProgress, string strEasingType, float fEasingPeriod, float fEasingAmplitude, float fEasingOvershoot){ throw new NotImplementedException(); }
 		public static bool Iprint (dynamic var1, dynamic var2, dynamic var3){ throw new NotImplementedException(); }
-		public static bool KillTimer (Timer theTimer){ throw new NotImplementedException(); }
+		public static bool Killdynamic (dynamic theTimer){ throw new NotImplementedException(); }
 		public static bool IsOOPEnabled (){ throw new NotImplementedException(); }
 		public static string Md5 (string str){ throw new NotImplementedException(); }
-		public static bool IsTimer (Timer theTimer){ throw new NotImplementedException(); }
+		public static bool Isdynamic (dynamic theTimer){ throw new NotImplementedException(); }
 		public static bool PasswordVerify (string password, string hash, dynamic options, dynamic callback){ throw new NotImplementedException(); }
 		public static bool PregFind (string subject, string pattern, dynamic flags){ throw new NotImplementedException(); }
 		public static string PasswordHash (string password, string algorithm, dynamic options, dynamic callback){ throw new NotImplementedException(); }
 		public static dynamic PregMatch (string argument_base, string pattern, dynamic flags, int maxResults){ throw new NotImplementedException(); }
 		public static bool SetDevelopmentMode (bool enable, bool enableWeb){ throw new NotImplementedException(); }
-		public static bool ResetTimer (Timer theTimer){ throw new NotImplementedException(); }
+		public static bool Resetdynamic (dynamic theTimer){ throw new NotImplementedException(); }
 		public static bool RemoveDebugHook (string hookType, dynamic callbackFunction){ throw new NotImplementedException(); }
 		public static string PregReplace (string subject, string pattern, string replacement, dynamic flags){ throw new NotImplementedException(); }
 		public static dynamic Split (string stringToSplit, string parameter1){ throw new NotImplementedException(); }
 		public static string Sha256 (string str){ throw new NotImplementedException(); }
-		public static Timer SetTimer (dynamic theFunction, int timeInterval, int timesToExecute, dynamic arguments){ throw new NotImplementedException(); }
+		public static dynamic Setdynamic (dynamic theFunction, int timeInterval, int timesToExecute, dynamic arguments){ throw new NotImplementedException(); }
 		public static string TeaDecode (string data, string key){ throw new NotImplementedException(); }
 		public static string TeaEncode (string text, string key){ throw new NotImplementedException(); }
 		public static string ToJSON (dynamic value, bool compact, string prettyType){ throw new NotImplementedException(); }
