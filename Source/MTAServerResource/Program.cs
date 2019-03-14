@@ -25,7 +25,7 @@ namespace MTAServerResource
             List<Vehicle> vehicles = new List<Vehicle>(); ;
             for (int i = 0; i < 10; i++)
             {
-                Vehicle rhino = new Vehicle(VehicleModel.BROWNSTREAKENGINE, new Vector3(i * 15, 0, 3));
+                Vehicle rhino = new Vehicle(VehicleModel.RHINO, new Vector3(i * 15, 0, 3));
                 Blip blip = new Blip(rhino);
                 vehicles.Add(rhino);
             }
@@ -63,7 +63,13 @@ namespace MTAServerResource
                 Console.WriteLine("Vehicle lost " + loss +" health");
 
                 Player nano = (Player) Player.GetFromName("SAES>Nanobob");
-                nano.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
+                //nano.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
+
+                RPCManager.Instance.TriggerRPC("testRPC", new TestRPCStruct()
+                {
+                    name = "Test rpc",
+                    x = 10
+                });
             };
 
             Player player = (Player) Player.GetFromName("SAES>DezZolation");
@@ -91,11 +97,6 @@ namespace MTAServerResource
             }
 
             // Console.WriteLine(File.ReadAllText("meta.xml"));
-            //RPCManager.Instance.TriggerRPC("testRPC", new TestRPCStruct()
-            //{
-            //    name = "Test rpc",
-            //    x = 10
-            //});
         }
     }
 }

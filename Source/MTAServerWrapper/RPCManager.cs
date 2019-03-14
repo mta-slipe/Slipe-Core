@@ -43,6 +43,7 @@ namespace MTAServerWrapper
                 callback.Invoke(player, (CallbackType)parameters);
             };
             Shared.AddEvent(key, true);
+            Element.Root.AddEventHandler(key);
         }
 
         public void TriggerRPC(Player target, string key, object argument)

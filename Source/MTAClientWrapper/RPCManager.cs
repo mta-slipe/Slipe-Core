@@ -29,6 +29,7 @@ namespace MTAClientWrapper
 
             Element.OnRootEvent += (string eventName, MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8) =>
             {
+                Console.WriteLine("CLIENT RPC TRIGGER");
                 if (RegisteredRPCs.ContainsKey(eventName))
                 {
                     RegisteredRPCs[eventName].Invoke(p1);
@@ -42,6 +43,7 @@ namespace MTAClientWrapper
                 callback.Invoke((CallbackType)parameters);
             };
             Shared.AddEvent(key, true);
+            Element.Root.AddEventHandler(key);
         }
 
         public void TriggerRPC(string key, object argument)

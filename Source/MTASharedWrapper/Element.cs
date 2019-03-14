@@ -4,6 +4,7 @@ using System.Text;
 using MTASharedWrapper.CollisionShapes;
 using MultiTheftAuto;
 using System.Numerics;
+using System.Diagnostics;
 
 namespace MTASharedWrapper
 {
@@ -54,7 +55,7 @@ namespace MTASharedWrapper
 
         public virtual void HandleEvent(string eventName, MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
-            Console.WriteLine(eventName + " has been triggered");
+            Debug.WriteLine(eventName + " has been triggered");
 
             if (this == Root)
             {
