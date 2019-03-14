@@ -1,7 +1,9 @@
 ﻿using MTAClientWrapper;
 using MTAClientWrapper.Javascript;
 using MTASharedWrapper;
+using RPCDefinitions;
 using System;
+using System.Diagnostics;
 using System.Numerics;
 
 namespace MTAClientResource
@@ -29,6 +31,16 @@ namespace MTAClientResource
 
             //browser.AddEventHandler("onClientBrowserCreated");
             //Camera.Instance.SetGoggleEffect(MTAClientWrapper.Enums.GoggleEffects.NORMAL);
+
+            RPCManager.Instance.RegisterRPC<TestRPCStruct>("testRPC", HandleTestRPC);
+            //RPCManager.Instance.RegisterRPC("testRPC", (TestRPCStruct arguments) => {
+            //    Debug.WriteLine("Handling testRPC, name: {0}, x: {1}", arguments.name, arguments.x);
+            //});
+        }
+
+        public void HandleTestRPC(TestRPCStruct arguments)
+        {
+            Debug.WriteLine("Handling testRPC, name: {0}, x: {1}", arguments.name, arguments.x);
         }
 
         public void OnCreated()

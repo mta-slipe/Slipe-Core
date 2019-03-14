@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MTAServerWrapper\MTAServerWrapper.csproj" />
+    <ProjectReference Include="..\RPCDefinitions\RPCDefinitions.csproj" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">

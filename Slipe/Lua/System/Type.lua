@@ -412,7 +412,8 @@ function System.cast(cls, obj)
     end
     throw(NullReferenceException(), 1)
   else 
-    if isTypeOf(obj, cls) then
+    -- workaround for RPCs, since metatables are not included during transfer
+    if isTypeOf(obj, cls) or getmetatable(obj) == nil then
       return obj
     end
     throw(InvalidCastException(), 1)

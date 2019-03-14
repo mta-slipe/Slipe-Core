@@ -1,11 +1,13 @@
 {
   "compileTargets": {
     "client": [
+      "RPCDefinitions",
       "MTASharedWrapper",
       "MTAClientWrapper",
       "MTAClientResource"
     ],
     "server": [
+      "RPCDefinitions",
       "MTASharedWrapper",
       "MTAServerWrapper",
       "MTAServerResource"
@@ -15,7 +17,8 @@
     "../../Source/MTAServerResource/bin/Debug/netcoreapp3.0/MTACore.dll",
     "../../Source/MTAServerResource/bin/Debug/netcoreapp3.0/MTASharedWrapper.dll",
     "../../Source/MTAServerResource/bin/Debug/netcoreapp3.0/MTAServerWrapper.dll",
-    "../../Source/MTAClientResource/bin/Debug/netcoreapp3.0/MTAClientWrapper.dll"
+    "../../Source/MTAClientResource/bin/Debug/netcoreapp3.0/MTAClientWrapper.dll",
+    "../../Source/MTAServerResource/bin/Debug/netcoreapp3.0/RPCDefinitions.dll"
   ],
   "systemComponents": [
     "Core.lua",

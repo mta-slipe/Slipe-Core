@@ -44,6 +44,10 @@ namespace MTASharedWrapper
 
         public Element GetElement(MTAElement element)
         {
+            if (element == null)
+            {
+                return null;
+            }
             if (!this.elements.ContainsKey(element))
             {
                 try

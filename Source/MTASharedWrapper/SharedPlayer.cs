@@ -26,7 +26,7 @@ namespace MTASharedWrapper
         public static SharedPlayer GetFromName(string name)
         {
             MTAElement mtaElement = Shared.GetPlayerFromName(name);
-            return (SharedPlayer) ElementManager.Instance.GetElement(mtaElement);
+            return (SharedPlayer)ElementManager.Instance.GetElement(mtaElement);
         }
     }
 }

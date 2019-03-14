@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Numerics;
 using MTASharedWrapper.Pickups;
+using RPCDefinitions;
 
 namespace MTAServerResource
 {
@@ -82,9 +83,13 @@ namespace MTAServerResource
 
             Vector3 vect3 = area.ForwardVector;
             Console.WriteLine(vect.ToString());
-                      
-           
+
             // Console.WriteLine(File.ReadAllText("meta.xml"));
+            //RPCManager.Instance.TriggerRPC("testRPC", new TestRPCStruct()
+            //{
+            //    name = "Test rpc",
+            //    x = 10
+            //});
         }
     }
 }
