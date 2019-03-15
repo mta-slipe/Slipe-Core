@@ -1,4 +1,4 @@
-System.define("MultiTheftAuto.Client", {
+System.define("Slipe.MTADefinitions.MTAClient", {
 	PlaySoundFrontEnd = playSoundFrontEnd,
 	CreateBlip = function(...) local results = {createBlip(...)} if results[1] == false then return end return unpack(results) end,
 	CreateBlipAttachedTo = function(...) local results = {createBlipAttachedTo(...)} if results[1] == false then return end return unpack(results) end,

@@ -2,23 +2,23 @@
   "compileTargets": {
     "client": [
       "RPCDefinitions",
-      "MTASharedWrapper",
-      "MTAClientWrapper",
-      "MTAClientResource"
+      "SlipeShared",
+      "SlipeClient",
+      "ClientTest"
     ],
     "server": [
       "RPCDefinitions",
-      "MTASharedWrapper",
-      "MTAServerWrapper",
-      "MTAServerResource"
+      "SlipeShared",
+      "SlipeServer",
+      "ServerTest"
     ]
   },
   "dlls": [
-    "../../Source/MTAServerResource/bin/Debug/netcoreapp3.0/MTACore.dll",
-    "../../Source/MTAServerResource/bin/Debug/netcoreapp3.0/MTASharedWrapper.dll",
-    "../../Source/MTAServerResource/bin/Debug/netcoreapp3.0/MTAServerWrapper.dll",
-    "../../Source/MTAClientResource/bin/Debug/netcoreapp3.0/MTAClientWrapper.dll",
-    "../../Source/MTAServerResource/bin/Debug/netcoreapp3.0/RPCDefinitions.dll"
+    "../../Source/ServerTest/bin/Debug/netcoreapp3.0/SlipeMTADefinitions.dll",
+    "../../Source/ServerTest/bin/Debug/netcoreapp3.0/SlipeShared.dll",
+    "../../Source/ServerTest/bin/Debug/netcoreapp3.0/SlipeServer.dll",
+    "../../Source/ServerTest/bin/Debug/netcoreapp3.0/RPCDefinitions.dll",
+    "../../Source/ClientTest/bin/Debug/netcoreapp3.0/SlipeClient.dll"
   ],
   "systemComponents": [
     "Core.lua",

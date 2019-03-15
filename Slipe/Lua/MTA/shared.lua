@@ -1,4 +1,4 @@
-System.define("MultiTheftAuto.Shared", {
+System.define("Slipe.MTADefinitions.MTAShared", {
 	GetBlipColor = function(...) return System.tuple(getBlipColor(...)) end,
 	GetBlipIcon = function(...) local results = {getBlipIcon(...)} if results[1] == false then return end return unpack(results) end,
 	GetBlipOrdering = function(...) local results = {getBlipOrdering(...)} if results[1] == false then return end return unpack(results) end,

@@ -9,7 +9,7 @@ local result = loadstring(content)
 result()()
 
 if triggerServerEvent == nil then
-	MTAServerResource.Program.Main()
+	ServerTest.Program.Main()
 else
-	MTAClientResource.Program.Main()
+	ClientTest.Program.Main()
 end

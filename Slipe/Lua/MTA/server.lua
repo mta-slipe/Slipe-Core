@@ -1,4 +1,4 @@
-System.define("MultiTheftAuto.Server", {
+System.define("Slipe.MTADefinitions.MTAServer", {
 	GetAccounts = function(...) local results = {getAccounts(...)} if results[1] == false then return end return unpack(results) end,
 	GetAccountID = function(...) local results = {getAccountID(...)} if results[1] == false then return end return unpack(results) end,
 	LogIn = logIn,

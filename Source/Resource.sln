@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28621.142
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTASharedWrapper", "MTASharedWrapper\MTASharedWrapper.csproj", "{143219F2-2E16-436D-BFAE-F415CE6D1ACB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlipeShared", "SlipeShared\SlipeShared.csproj", "{143219F2-2E16-436D-BFAE-F415CE6D1ACB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTACore", "MTACore\MTACore.csproj", "{861B0D58-6714-4270-88BF-6E88126C81B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlipeMTADefinitions", "SlipeMTADefinitions\SlipeMTADefinitions.csproj", "{861B0D58-6714-4270-88BF-6E88126C81B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTAServerWrapper", "MTAServerWrapper\MTAServerWrapper.csproj", "{C2699992-1877-4522-8BD1-30A573A950C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlipeServer", "SlipeServer\SlipeServer.csproj", "{C2699992-1877-4522-8BD1-30A573A950C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTAClientWrapper", "MTAClientWrapper\MTAClientWrapper.csproj", "{661AE4AE-A260-4ABA-923A-05C39D9396B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlipeClient", "SlipeClient\SlipeClient.csproj", "{661AE4AE-A260-4ABA-923A-05C39D9396B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTAServerResource", "MTAServerResource\MTAServerResource.csproj", "{C0F22D0D-3E17-4EDD-8D2F-5598238C7BF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerTest", "ServerTest\ServerTest.csproj", "{C0F22D0D-3E17-4EDD-8D2F-5598238C7BF5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MTAClientResource", "MTAClientResource\MTAClientResource.csproj", "{ABE9713E-8B2B-48F4-9156-820A0BDC3285}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientTest", "ClientTest\ClientTest.csproj", "{ABE9713E-8B2B-48F4-9156-820A0BDC3285}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resource", "Resource", "{3BAE3D07-C859-4665-B92B-786ECB449FE8}"
 EndProject
