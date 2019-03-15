@@ -12,9 +12,12 @@ namespace Slipe.Client
         {
             [typeof(Element)] = "element",
             [typeof(Player)] = "player",
-            [typeof(MTAObject)] = "object",
+            [typeof(WorldObject)] = "object",
             [typeof(GUIBrowser)] = "gui-browser",
             [typeof(Team)] = "team",
+            [typeof(Pickup)] = "pickup",
+            [typeof(Blip)] = "blip",
+            [typeof(RadarArea)] = "radararea"
         };
 
         public static List<T> GetByType<T>() where T : Element
@@ -48,13 +51,19 @@ namespace Slipe.Client
                 case "player":
                     return new Player(element);
                 case "object":
-                    return new MTAObject(element);
+                    return new WorldObject(element);
                 case "gui-browser":
                     return new GUIBrowser(element);
                 case "browser":
                     return new Browser(element);
                 case "team":
                     return new Team(element);
+                case "pickup":
+                    return new Pickup(element);
+                case "blip":
+                    return new Blip(element);
+                case "radararea":
+                    return new RadarArea(element);
             }
             return null;
         }

@@ -5,6 +5,7 @@ using RPCDefinitions;
 using System;
 using System.Diagnostics;
 using System.Numerics;
+using Slipe.Shared.Enums;
 
 namespace ClientTest
 {
@@ -13,7 +14,13 @@ namespace ClientTest
         static void Main(string[] args)
         {
             new ElementManager(new ElementHelper());
-            Console.WriteLine("Hello Client!");
+            Pickup pickup = new Pickup(new Vector3(4, 24, 3), PickupTypeEnum.ARMOUR, 50);
+            Debug.WriteLine(pickup.Ammo.ToString());
+            Debug.WriteLine(pickup.PickupType.ToString());
+            Debug.WriteLine(pickup.Weapon.ToString());
+            Debug.WriteLine(pickup.Amount.ToString());
+            pickup.Morph(1337);
+            Debug.WriteLine("Hello Client!");
             new Program();
         }
 

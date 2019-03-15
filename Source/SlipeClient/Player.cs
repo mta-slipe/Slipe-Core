@@ -17,6 +17,14 @@ namespace Slipe.Client
             }
         }
 
+        public static Player Local
+        {
+            get
+            {
+                return new Player(MTAClient.GetLocalPlayer());
+            }
+        }
+
         public Player(Slipe.MTADefinitions.MTAElement mtaElement) : base(mtaElement)
         {
         }

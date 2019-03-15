@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Numerics;
-using Slipe.Shared.Pickups;
 using RPCDefinitions;
 using System.Timers;
 
@@ -44,7 +43,7 @@ namespace ServerTest
             }
             vehicles[5].Rotation = new Vector3(0, 0, 45);
 
-            MTAObject dildo = new MTAObject(321, new Vector3(3, 3, 3));
+            WorldObject dildo = new WorldObject(321, new Vector3(3, 3, 3));
             dildo.Scale = new Vector3(3, 3, 3);
             dildo.Move(5000, new Vector3(3, 3, 10));
             Console.WriteLine("{0} is a pleb", "SAES>Dezzolation");
@@ -88,8 +87,9 @@ namespace ServerTest
             Player player = (Player) Player.GetFromName("SAES>DezZolation");
             if (player != null)
             {
-                WeaponPickup pickup = new WeaponPickup(player.Position + player.ForwardVector * 3, WeaponEnum.AK47, 200);
-                Console.WriteLine(pickup.GetRespawnInterval().ToString());
+                Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponEnum.COLT45, 200);
+                pickup.Use(player);
+                Console.WriteLine(pickup.RespawnInterval.ToString());
             }
 
 
@@ -98,6 +98,7 @@ namespace ServerTest
             Console.WriteLine(vect.ToString());
 
             RadarArea area = new RadarArea(new Vector2(200, 200), new Vector2(400, 400), new Color(40, 120, 255));
+            Debug.WriteLine(area.Type);
             area.Flashing = true;
 
             Vector3 vect3 = area.ForwardVector;

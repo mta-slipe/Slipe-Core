@@ -13,7 +13,10 @@ namespace Slipe.Server
             [typeof(Element)] = "element",
             [typeof(Vehicle)] = "vehicle",
             [typeof(Player)] = "player",
-            [typeof(MTAObject)] = "object",
+            [typeof(WorldObject)] = "object",
+            [typeof(Pickup)] = "pickup",
+            [typeof(Blip)] = "blip",
+            [typeof(RadarArea)] = "radararea"
         };
 
         public static List<T> GetByType<T>() where T : Element
@@ -48,7 +51,13 @@ namespace Slipe.Server
                 case "player":
                     return new Player(element);
                 case "object":
-                    return new MTAObject(element);
+                    return new WorldObject(element);
+                case "pickup":
+                    return new Pickup(element);
+                case "blip":
+                    return new Blip(element);
+                case "radararea":
+                    return new RadarArea(element);
             }
             return null;
         }
