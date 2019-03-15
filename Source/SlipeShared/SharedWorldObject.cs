@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace Slipe.Shared
 {
-    public class SharedObject : PhysicalElement
+    public class SharedWorldObject : PhysicalElement
     {
         public Vector3 Scale
         {
@@ -21,18 +21,18 @@ namespace Slipe.Shared
             }
         }
 
-        public SharedObject(MTAElement element): base(element)
+        public SharedWorldObject(MTAElement element): base(element)
         {
 
         }
 
-        public SharedObject(int model, Vector3 position, Vector3 rotation, bool isLowLOD = false)
+        public SharedWorldObject(int model, Vector3 position, Vector3 rotation, bool isLowLOD = false)
         {
             this.element = MTAShared.CreateObject(model, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, isLowLOD);
             ElementManager.Instance.RegisterElement(this);
         }
 
-        public SharedObject(int model, Vector3 position): this(model, position, new Vector3(0, 0, 0))
+        public SharedWorldObject(int model, Vector3 position): this(model, position, new Vector3(0, 0, 0))
         {
         }
 

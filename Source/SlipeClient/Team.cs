@@ -36,7 +36,7 @@ namespace Slipe.Client
 
 
 
-        internal Team(MTAElement team) : base(team)
+        public Team(MTAElement team) : base(team)
         {
 
         }
