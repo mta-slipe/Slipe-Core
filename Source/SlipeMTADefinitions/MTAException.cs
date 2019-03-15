@@ -1,3 +1,4 @@
-namespace Slipe.MTADefinitions {
-	public class MTAArgumentException: System.Exception{}
+namespace Slipe.MTADefinitions
+{
+	public class MTAException: System.Exception{}
 }

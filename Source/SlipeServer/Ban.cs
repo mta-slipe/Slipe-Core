@@ -36,7 +36,13 @@ namespace Slipe.Server
         {
             get
             {
-                return MTAServer.GetBanIP(ban);
+                try
+                {
+                    return MTAServer.GetBanIP(ban);
+                } catch (MTAException)
+                {
+                    return null;
+                }
             }
         }
 
@@ -44,7 +50,15 @@ namespace Slipe.Server
         {
             get
             {
-                return MTAServer.GetBanSerial(ban);
+                try
+                {
+                    return MTAServer.GetBanSerial(ban);
+                }
+                catch (MTAException)
+                {
+                    return null;
+                }
+                
             }
         }
 

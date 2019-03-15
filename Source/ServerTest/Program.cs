@@ -92,7 +92,6 @@ namespace ServerTest
                 Console.WriteLine(pickup.GetRespawnInterval().ToString());
             }
 
-
             Blip blip2 = new Blip(new Vector3(0, 0, 0), BlipEnum.BURGERSHOT, Color.Red, 2);
             Vector3 vect = blip2.ForwardVector;
             Console.WriteLine(vect.ToString());

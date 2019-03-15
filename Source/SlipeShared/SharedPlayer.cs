@@ -25,8 +25,15 @@ namespace Slipe.Shared
 
         public static SharedPlayer GetFromName(string name)
         {
-            MTAElement mtaElement = MTAShared.GetPlayerFromName(name);
-            return (SharedPlayer)ElementManager.Instance.GetElement(mtaElement);
+            try
+            {
+                MTAElement mtaElement = MTAShared.GetPlayerFromName(name);
+                return (SharedPlayer)ElementManager.Instance.GetElement(mtaElement);
+            } catch (MTAException)
+            {
+                Console.WriteLine("Exception has been thrown!");
+                return null;
+            }
         }
     }
 }
