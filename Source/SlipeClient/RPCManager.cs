@@ -3,6 +3,7 @@ using Slipe.MTADefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace Slipe.Client
 {
@@ -40,7 +41,14 @@ namespace Slipe.Client
         public void RegisterRPC<CallbackType>(string key, Action<CallbackType> callback)
         {
             RegisteredRPCs[key] = (object parameters) => {
-                callback.Invoke((CallbackType)parameters);
+                Debug.WriteLine(MTAShared.ToJSON(parameters, true, "none"));
+                //CallbackType type = (CallbackType) Activator.CreateInstance(typeof(CallbackType), parameters);
+                //callback.Invoke(type);
+                /*
+                [[
+                    callback(CallbackType(parameters))
+                ]]
+                 */
             };
             MTAShared.AddEvent(key, true);
             Element.Root.AddEventHandler(key);

@@ -40,7 +40,8 @@ namespace Slipe.Server
         public void RegisterRPC<CallbackType>(string key, Action<Player, CallbackType> callback)
         {
             RegisteredRPCs[key] = (Player player, object parameters) => {
-                callback.Invoke(player, (CallbackType)parameters);
+                CallbackType type = (CallbackType)Activator.CreateInstance(typeof(CallbackType), parameters);
+                callback.Invoke(player, type);
             };
             MTAShared.AddEvent(key, true);
             Element.Root.AddEventHandler(key);

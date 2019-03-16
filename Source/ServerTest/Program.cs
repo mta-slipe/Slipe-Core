@@ -77,11 +77,7 @@ namespace ServerTest
                 Player nano = (Player) Player.GetFromName("SAES>Nanobob");
                 //nano.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
 
-                RPCManager.Instance.TriggerRPC("testRPC", new TestRPCStruct()
-                {
-                    name = "Test rpc",
-                    x = 10
-                });
+                RPCManager.Instance.TriggerRPC("testRPC", new TestRPC("Test rpc", 10));
             };
 
             Player player = (Player) Player.GetFromName("SAES>DezZolation");
