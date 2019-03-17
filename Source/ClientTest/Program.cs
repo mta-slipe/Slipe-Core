@@ -42,7 +42,7 @@ namespace ClientTest
             //RPCManager.Instance.RegisterRPC("testRPC", (TestRPCStruct arguments) => {
             //    Debug.WriteLine("Handling testRPC, name: {0}, x: {1}", arguments.name, arguments.x);
             //});
-            RPCManager.Instance.RegisterRPC<TestRPC>("testRPC", HandleTestRPC);
+            /// RPCManager.Instance.RegisterRPC<TestRPC>("testRPC", HandleTestRPC);
         }
 
         public void HandleTestRPC(TestRPC arguments)

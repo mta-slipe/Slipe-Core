@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
+using Slipe.Shared.Enums;
 
 namespace Slipe.Shared
 {
@@ -56,9 +57,9 @@ namespace Slipe.Shared
         /// <summary>
         /// Moves a WorldObject to a position and rotation during a period, using an easing function
         /// </summary>
-        public bool Move(int milliseconds, Vector3 position, Vector3 rotationOffset, string easingType = null, float easingPeriod = 0, float easingAmplitude = 0, float easingOvershoot = 0)
+        public bool Move(int milliseconds, Vector3 position, Vector3 rotationOffset, EasingFunctionEnum easingType = EasingFunctionEnum.LINEAR, float easingPeriod = 0, float easingAmplitude = 0, float easingOvershoot = 0)
         {
-            return MTAShared.MoveObject(element, milliseconds, position.X, position.Y, position.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z, easingType, easingPeriod, easingAmplitude, easingOvershoot);
+            return MTAShared.MoveObject(element, milliseconds, position.X, position.Y, position.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z, EnumTranslator.Instance.TranslateEasingFunction(easingType), easingPeriod, easingAmplitude, easingOvershoot);
         }
 
         /// <summary>

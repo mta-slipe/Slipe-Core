@@ -18,7 +18,7 @@ namespace Slipe.Server
         /// </summary>
         public static bool Create(Vector3 position, ExplosionType type, Element creator = null)
         {
-            return MTAServer.CreateExplosion(position.X, position.Y, position.Z, (int) type, creator != null ? creator.MTAElement : null);
+            return MTAServer.CreateExplosion(position.X, position.Y, position.Z, (int) type, creator?.MTAElement);
         }
 
         private Explosion()

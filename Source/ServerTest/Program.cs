@@ -46,7 +46,7 @@ namespace ServerTest
 
             WorldObject dildo = new WorldObject(321, new Vector3(3, 3, 3));
             dildo.Scale = new Vector3(3, 3, 3);
-            dildo.Move(5000, new Vector3(3, 3, 10));
+            dildo.Move(5000, new Vector3(3, 3, 10), Vector3.Zero, EasingFunctionEnum.COSINECURVE, 0.4f, 0.5f);
             Console.WriteLine("{0} is a pleb", "SAES>Dezzolation");
 
             vehicles[4].AttachTo(dildo, new Vector3(0, 0, 3));
@@ -113,6 +113,9 @@ namespace ServerTest
                 Console.WriteLine("Ban ip: {0}, serial: {1}", ban.Ip, ban.Serial);
             }
 
+            Marker marker = new Marker(new Vector3(-10, 25, 4), MarkerTypeEnum.CHECKPOINT);
+            marker.Icon = MarkerIconEnum.ARROW;
+            marker.Target = Vector3.Zero;
             // Console.WriteLine(File.ReadAllText("meta.xml"));
         }
     }

@@ -22,7 +22,7 @@ namespace Slipe.Shared
         /// </summary>
         public SharedRadarArea(Vector2 position, Vector2 dimensions, Color color, Element visibleTo = null)
         {
-            element = MTAShared.CreateRadarArea(position.X, position.Y, dimensions.X, dimensions.Y, color.R, color.G, color.B, color.A, visibleTo == null ? null : visibleTo.MTAElement);
+            element = MTAShared.CreateRadarArea(position.X, position.Y, dimensions.X, dimensions.Y, color.R, color.G, color.B, color.A, visibleTo?.MTAElement);
             ElementManager.Instance.RegisterElement(this);
         }
 
