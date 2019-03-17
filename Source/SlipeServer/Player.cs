@@ -7,23 +7,42 @@ using System.Numerics;
 
 namespace Slipe.Server
 {
+    /// <summary>
+    /// Class for a player in the MTA server
+    /// </summary>
     public class Player : SharedPlayer
     {
-        public Player(Slipe.MTADefinitions.MTAElement mtaElement) : base(mtaElement)
+        /// <summary>
+        /// Creates a player from an MTA player element
+        /// </summary>
+        public Player(MTAElement mtaElement) : base(mtaElement)
         {
             Camera = new Camera(this);
         }
 
+        /// <summary>
+        /// Get the camera of the player
+        /// </summary>
         public Camera Camera { get; }
 
+        /// <summary>
+        /// Get and set the wanted level of the player
+        /// </summary>
         public int WantedLevel
         {
+            get
+            {
+                return MTAServer.GetPlayerWantedLevel(element);
+            }
             set
             {
                 MTAServer.SetPlayerWantedLevel(element, value);
             }
         }
 
+        /// <summary>
+        /// Get and set the name of the player
+        /// </summary>
         public override string Name
         {
             get
@@ -36,6 +55,9 @@ namespace Slipe.Server
             }
         }
 
+        /// <summary>
+        /// Get and set the team of the player
+        /// </summary>
         public Team Team
         {
             get
@@ -49,6 +71,9 @@ namespace Slipe.Server
             }
         }
 
+        /// <summary>
+        /// Spawn the player at a certain position
+        /// </summary>
         public void Spawn(Vector3 position, int rotation = 0, int skin = 0, int interior = 0, int dimension = 0, Team team = null)
         {
             MTAServer.SpawnPlayer(element, position.X, position.Y, position.Z, rotation, skin, interior, dimension, team == null ? null : team.MTAElement);

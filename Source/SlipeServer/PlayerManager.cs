@@ -5,9 +5,16 @@ using System.Text;
 
 namespace Slipe.Server
 {
+    /// <summary>
+    /// Class that manages events for players
+    /// </summary>
     public class PlayerManager
     {
         private static PlayerManager instance;
+
+        /// <summary>
+        /// Get the player manager singleton instance
+        /// </summary>
         public static PlayerManager Instance
         {
             get
@@ -16,6 +23,9 @@ namespace Slipe.Server
             }
         }
 
+        /// <summary>
+        /// Creates a playermanager instance
+        /// </summary>
         public PlayerManager()
         {
             instance = this;
@@ -24,6 +34,9 @@ namespace Slipe.Server
             Element.Root.AddEventHandler("onPlayerJoin");
         }
 
+        /// <summary>
+        /// Handles player events on the root element
+        /// </summary>
         public void HandleRootEvent(string eventName, Slipe.MTADefinitions.MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             switch (eventName)

@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Slipe.Server
 {
+    /// <summary>
+    /// Manager class that handles RPC's between server and clients
+    /// </summary>
     public class RPCManager
     {
         private static RPCManager instance;
@@ -37,6 +40,9 @@ namespace Slipe.Server
             };
         }
 
+        /// <summary>
+        /// Register an RPC
+        /// </summary>
         public void RegisterRPC<CallbackType>(string key, Action<Player, CallbackType> callback)
         {
             RegisteredRPCs[key] = (Player player, object parameters) => {
@@ -47,11 +53,17 @@ namespace Slipe.Server
             Element.Root.AddEventHandler(key);
         }
 
+        /// <summary>
+        /// Trigger an RPC on a player
+        /// </summary>
         public void TriggerRPC(Player target, string key, object argument)
         {
             MTAServer.TriggerClientEvent(target.MTAElement, key, Element.Root.MTAElement, argument);
         }
 
+        /// <summary>
+        /// Trigger an RPC
+        /// </summary>
         public void TriggerRPC(string key, object argument)
         {
             MTAServer.TriggerClientEvent(Element.Root.MTAElement, key, Element.Root.MTAElement, argument);

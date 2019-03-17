@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Slipe.Server.Enums
 {
+    /// <summary>
+    /// Represents different glitches in MTA 
+    /// </summary>
     public enum Glitch
     {
         QUICKRELOAD,
