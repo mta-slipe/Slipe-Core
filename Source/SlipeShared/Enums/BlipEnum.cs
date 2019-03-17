@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Slipe.Shared.Enums
 {
+    /// <summary>
+    /// Represents different icons for map blips
+    /// </summary>
     public enum BlipEnum
     {
         MARKER = 0,

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Slipe.Shared.Enums
 {
+    /// <summary>
+    /// Represents the different weapon types on GTA San Andreas
+    /// </summary>
     public enum WeaponEnum
     {
         FIST = 0,

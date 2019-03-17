@@ -1,6 +1,7 @@
 ﻿using Slipe.Server;
 using Slipe.Shared;
 using Slipe.Shared.Enums;
+using Slipe.Shared.Exceptions;
 using Slipe.MTADefinitions;
 using System;
 using System.Collections.Generic;
@@ -74,18 +75,25 @@ namespace ServerTest
             {
                 Console.WriteLine("Vehicle lost " + loss +" health");
 
-                Player nano = (Player) Player.GetFromName("SAES>Nanobob");
+                try
+                {
+                    Player nano = (Player)Player.GetFromName("SAES>Nanobob");
+                }
+                catch (NullElementException) { }
                 //nano.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
 
                 RPCManager.Instance.TriggerRPC("testRPC", new TestRPC("Test rpc", 10));
             };
-
-            Player player = (Player) Player.GetFromName("SAES>DezZolation");
-            if (player != null)
+            try
             {
+                Player player = (Player) Player.GetFromName("SAES>DezZolation");
                 Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponEnum.COLT45, 200);
                 pickup.Use(player);
                 Console.WriteLine(pickup.RespawnInterval.ToString());
+            }
+            catch(NullElementException)
+            {
+                Console.WriteLine("ha");
             }
 
             Blip blip2 = new Blip(new Vector3(0, 0, 0), BlipEnum.BURGERSHOT, Color.Red, 2);

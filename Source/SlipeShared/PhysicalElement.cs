@@ -7,6 +7,9 @@ using Slipe.Shared.CollisionShapes;
 
 namespace Slipe.Shared
 {
+    /// <summary>
+    /// Represents a physical element in the GTA world
+    /// </summary>
     public class PhysicalElement : Element
     {
         public PhysicalElement()
@@ -18,6 +21,9 @@ namespace Slipe.Shared
 
         }
 
+        /// <summary>
+        /// Gets and sets the position of the element
+        /// </summary>
         public Vector3 Position
         {
             get
@@ -31,6 +37,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets and sets the rotation of the element in Euler angles
+        /// </summary>
         public Vector3 Rotation
         {
             get
@@ -44,6 +53,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets and sets teh rotation of the element in quaternions
+        /// </summary>
         public Quaternion QuaternionRotation
         {
             get
@@ -96,6 +108,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets and sets the position,rotation,scale matrix of the element
+        /// </summary>
         public Matrix4x4 Matrix
         {
             get
@@ -113,6 +128,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets the vector that represents forward for the element
+        /// </summary>
         public Vector3 ForwardVector
         {
             get
@@ -122,6 +140,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets the vector that represents right for the element
+        /// </summary>
         public Vector3 RightVector
         {
             get
@@ -131,6 +152,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets the vector that represents up for the element
+        /// </summary>
         public Vector3 UpVector
         {
             get
@@ -140,6 +164,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets and sets the dimension of this element
+        /// </summary>
         public int Dimension
         {
             get
@@ -152,6 +179,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets and sets the interior of this element
+        /// </summary>
         public int Interior
         {
             get
@@ -165,6 +195,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets and sets if this element is frozen in place
+        /// </summary>
         public bool Frozen
         {
             get
@@ -177,6 +210,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets and sets the alpha value of this element
+        /// </summary>
         public int Alpha
         {
             get
@@ -189,6 +225,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets and sets the health of this element
+        /// </summary>
         public float Health
         {
             get
@@ -201,6 +240,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets and sets the velocity of this element
+        /// </summary>
         public Vector3 Velocity
         {
             get
@@ -214,6 +256,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets and sets the model of this element
+        /// </summary>
         public int Model
         {
             get
@@ -226,12 +271,31 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Gets the collision shape of this element. (Only applicable to some)
+        /// </summary>
         public CollisionShape CollisionShape
         {
             get
             {
                 return (CollisionShape)ElementManager.Instance.GetElement(MTAShared.GetElementColShape(element));
             }
+        }
+
+        /// <summary>
+        /// Attaches this element to another element given a certain offset and rotation
+        /// </summary>
+        public bool AttachTo(PhysicalElement element, Vector3 offset, Vector3 rotationOffset)
+        {
+            return MTAShared.AttachElements(this.element, element.element, offset.X, offset.Y, offset.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z);
+        }
+
+        /// <summary>
+        /// Attaches this element to another element given a certain offset
+        /// </summary>
+        public bool AttachTo(PhysicalElement element, Vector3 offset)
+        {
+            return AttachTo(element, offset, new Vector3(0, 0, 0));
         }
     }
 }

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Slipe.Shared.Enums
 {
+    /// <summary>
+    /// Represents different types of custom pickup models
+    /// </summary>
     public enum PickupModelEnum
     {
         CASHMONEY = 1212,

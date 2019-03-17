@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Slipe.Shared.Enums
 {
+    /// <summary>
+    /// Represents the different vehicle models in GTA San Andreas
+    /// </summary>
     public enum VehicleModel
     {
         CARGOBOB = 548,

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="SharedWorldObject">
+    <constructor>
+      <param name="isLowLOD">A bool value specifying if the object will be low LOD. A low LOD object has no collision and a longer draw distance.</param>
+    </constructor>
+    <move>
+      <param name="rotationOffset">The rotation relative to the current rotation</param>
+      <param name="easingType">The easing function to use for the interpolation (default is "Linear")</param>
+      <param name="easingPeriod">The period of the easing function (only some easing functions use this parameter)</param>
+      <param name="easingAmplitude">The amplitude of the easing function (only some easing functions use this parameter)</param>
+      <param name="easingOvershoot"> The overshoot of the easing function (only some easing functions use this parameter)</param>
+      <returns>True if the object moved succesfully, false otherwise</returns>
+    </move>
+  </members>
+  <members name="SharedPlayer">
+    <getfromname>
+      <returns>Returns a player class instance if succesful</returns>
+      <exception cref="Slipe.Shared.Exceptions.NullElementException">Thrown when no player with this name can be found</exception>
+    </getfromname>
+  </members>
+</docs>

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Slipe.Shared.Enums
 {
+    /// <summary>
+    /// Represents different types of explosions
+    /// </summary>
     public enum ExplosionType
     {
         GRENADE = 0,

@@ -1,16 +1,26 @@
 ﻿using Slipe.MTADefinitions;
 using System;
+using Slipe.Shared.Exceptions;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Slipe.Shared
 {
+    /// <summary>
+    /// Class representing a player on the server and the player ped
+    /// </summary>
     public class SharedPlayer: PhysicalElement
     {
+        /// <summary>
+        /// Creates or retrieves a player from an MTA player element
+        /// </summary>
         public SharedPlayer(MTAElement mtaElement) : base(mtaElement)
         {
         }
 
+        /// <summary>
+        /// Gets the name of the player
+        /// </summary>
         public virtual string Name
         {
             get
@@ -23,6 +33,9 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Retrieves a player class instance from a specified player name 
+        /// </summary>
         public static SharedPlayer GetFromName(string name)
         {
             try
@@ -31,8 +44,7 @@ namespace Slipe.Shared
                 return (SharedPlayer)ElementManager.Instance.GetElement(mtaElement);
             } catch (MTAException)
             {
-                Console.WriteLine("Exception has been thrown!");
-                return null;
+                throw new NullElementException("No player with the name " + name + " could be found.");
             }
         }
     }

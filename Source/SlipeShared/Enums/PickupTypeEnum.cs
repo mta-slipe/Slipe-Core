@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Slipe.Shared.Enums
 {
+    /// <summary>
+    /// Represents different types of pickups
+    /// </summary>
     public enum PickupTypeEnum
     {
         HEALTH = 0,

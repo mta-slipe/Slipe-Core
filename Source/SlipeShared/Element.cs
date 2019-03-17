@@ -8,12 +8,21 @@ using System.Diagnostics;
 
 namespace Slipe.Shared
 {
+    /// <summary>
+    /// The main Element class representing an OO version of MTA elements
+    /// </summary>
     public class Element
     {
         protected internal MTAElement element;
 
+        /// <summary>
+        /// Get the root element
+        /// </summary>
         public static Element Root { get { return ElementManager.Instance.Root; } }
 
+        /// <summary>
+        /// Get the MTAElement instance of this class instance
+        /// </summary>
         public MTAElement MTAElement
         {
             get
@@ -22,37 +31,44 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Get the type of the element
+        /// </summary>
         public string Type { get { return MTAShared.GetElementType(element); } }
 
         public Element()
         {
         }
 
+        /// <summary>
+        /// Create an element from a MTA element instance
+        /// </summary>
+        /// <param name="mtaElement"></param>
         public Element(MTAElement mtaElement)
         {
             element = mtaElement;
             ElementManager.Instance.RegisterElement(this);
         }
 
+        /// <summary>
+        /// Desetroys the element
+        /// </summary>
+        /// <returns></returns>
         public bool Destroy()
         {
             return MTAShared.DestroyElement(element);
         }
 
-        public bool AttachTo(Element element, Vector3 offset, Vector3 rotationOffset)
-        {
-            return MTAShared.AttachElements(this.element, element.element, offset.X, offset.Y, offset.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z);
-        }
-
-        public bool AttachTo(Element element, Vector3 offset)
-        {
-            return AttachTo(element, offset, new Vector3(0, 0, 0));
-        }
-
+        /// <summary>
+        /// Adds an eventhandler to this element
+        /// </summary>
         public void AddEventHandler(string eventName, bool propagated = true, string priorty = "normal") {
             ElementManager.Instance.AddEventHandler(this, eventName, propagated, priorty);
         }
 
+        /// <summary>
+        /// Used to handle events that are triggered on the attached MTA element
+        /// </summary>
         public virtual void HandleEvent(string eventName, MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             Debug.WriteLine(eventName + " has been triggered");
