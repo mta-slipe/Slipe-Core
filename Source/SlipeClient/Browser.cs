@@ -3,30 +3,49 @@ using Slipe.Client.Javascript;
 using Slipe.Shared;
 using Slipe.MTADefinitions;
 using System;
+using System.Numerics;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Slipe.Client
 {
+    /// <summary>
+    /// Class that wraps MTA browsers
+    /// </summary>
     public class Browser: Element
     {
+        /// <summary>
+        /// Get browser settings
+        /// </summary>
         public static dynamic Settings { get { return MTAClient.GetBrowserSettings(); } }
 
+        /// <summary>
+        /// Check if a specific domain is blocked
+        /// </summary>
         public static bool IsDomainBlocked(string domain, bool isURL = false)
         {
             return MTAClient.IsBrowserDomainBlocked(domain, isURL);
         }
 
+        /// <summary>
+        /// Opens a request window in order to accept the requested remote URLs
+        /// </summary>
         public static bool RequestDomains(string[] domains, bool isURL = false)
         {
             return MTAClient.RequestBrowserDomains(domains, isURL, HandleDomainRequest);
         }
 
+        /// <summary>
+        /// Opens a request window in order to accept a remote URL
+        /// </summary>
         public static bool RequestDomain(string domain, bool isURL = false)
         {
             return RequestDomains(new string[] { domain }, isURL);
         }
 
+        /// <summary>
+        /// Handler that is triggered after a domain request was done
+        /// </summary>
         public static void HandleDomainRequest(bool wasAccepted, string[] domains)
         {
             for (int i = 0; i < domains.Length; i++)
@@ -46,81 +65,153 @@ namespace Slipe.Client
         public static event Action<string> OnDomainRequestAccepted;
         public static event Action<string> OnDomainRequestDenied;
 
+        /// <summary>
+        /// Get if a browser can navigate back
+        /// </summary>
         public bool CanNavigateBack { get { return MTAClient.CanBrowserNavigateBack(element); } }
+
+        /// <summary>
+        /// Get if a browser can navigate forward
+        /// </summary>
         public bool CanNavigateForward { get { return MTAClient.CanBrowserNavigateForward(element); } }
+
+        /// <summary>
+        /// Get the title of this browser
+        /// </summary>
         public string Title { get { return MTAClient.GetBrowserTitle(element); } }
+
+        /// <summary>
+        /// Get the current URL of this browser
+        /// </summary>
         public string Url { get { return MTAClient.GetBrowserURL(element); } }
+
+        /// <summary>
+        /// Get if this browser is currently loading a page
+        /// </summary>
         public bool IsLoading { get { return MTAClient.IsBrowserLoading(element); } }
+
+        /// <summary>
+        /// Get if this browser is currently focussed on
+        /// </summary>
         public bool IsFocused { get { return MTAClient.IsBrowserFocused(element); } }
 
+        /// <summary>
+        /// Set the volume of this browser
+        /// </summary>
         public float Volume { set { MTAClient.SetBrowserVolume(element, value); } }
+
+        /// <summary>
+        /// Set the rendering of this browser enabled or disabled
+        /// </summary>
         public bool RenderingPaused { set { MTAClient.SetBrowserRenderingPaused(element, value); } }
+
+        /// <summary>
+        /// Set the devtools for this browser
+        /// </summary>
         public bool DevTools { set { MTAClient.ToggleBrowserDevTools(element, value); } }
 
-
+        /// <summary>
+        /// Create a browser from the createBrowser parameters
+        /// </summary>
         public Browser(int width, int height, bool isLocal, bool transparent = false)
         {
             this.element = MTAClient.CreateBrowser(width, height, isLocal, transparent);
             ElementManager.Instance.RegisterElement(this);
         }
 
-        internal Browser(Slipe.MTADefinitions.MTAElement element)
+        /// <summary>
+        /// Create a browser from a MTA browser element
+        /// </summary>
+        internal Browser(MTAElement element)
         {
             this.element = element;
             ElementManager.Instance.RegisterElement(this);
         }
 
+        /// <summary>
+        /// Reload the page of this browser
+        /// </summary>
         public bool ReloadPage()
         {
             return MTAClient.ReloadBrowserPage(element);
         }
 
+        /// <summary>
+        /// Load a specific browser URL
+        /// </summary>
         public bool LoadUrl(string url, string postData = null, bool urlEncoded = true)
         {
             return MTAClient.LoadBrowserURL(element, url, postData, urlEncoded);
         }
 
+        /// <summary>
+        /// Focus on this browser
+        /// </summary>
         public bool Focus()
         {
             return MTAClient.FocusBrowser(element);
         }
 
+        /// <summary>
+        /// Get a specific browser property
+        /// </summary>
         public dynamic GetProperty(string key)
         {
             return MTAClient.GetBrowserProperty(element, key);
         }
 
+        /// <summary>
+        /// Inject a mousedown event in the browser
+        /// </summary>
         public bool InjectMouseDown(MouseButton mouseButton)
         {
             return MTAClient.InjectBrowserMouseDown(element, mouseButton.ToString("f"));
         }
 
+        /// <summary>
+        /// Inject a mouseup event in the browser
+        /// </summary>
         public bool InjectMouseUp(MouseButton mouseButton)
         {
             return MTAClient.InjectBrowserMouseUp(element, mouseButton.ToString("f"));
         }
 
-        public bool InjectMouseMove(int x, int y)
+        /// <summary>
+        /// Inject a mousemove event to a specific position
+        /// </summary>
+        public bool InjectMouseMove(Vector2 position)
         {
-            return MTAClient.InjectBrowserMouseMove(element, x, y);
+            return MTAClient.InjectBrowserMouseMove(element, (int) position.X, (int) position.Y);
         }
 
+        /// <summary>
+        /// Inject a mouse scroll event
+        /// </summary>
         public bool InjectMouseWheel(int vertical, int horizontal)
         {
             return MTAClient.InjectBrowserMouseWheel(element, vertical, horizontal);
         }
 
-        public bool Resize(float x, float y)
+        /// <summary>
+        /// Resize the browser to specific dimensions
+        /// </summary>
+        public bool Resize(Vector2 dimensions)
         {
-            return MTAClient.ResizeBrowser(element, x, y);
+            return MTAClient.ResizeBrowser(element, dimensions.X, dimensions.Y);
         }
 
+        /// <summary>
+        /// Execute some javascript code
+        /// </summary>
         public bool ExecuteJavascript(string javascript)
         {
             Console.WriteLine("Executing " + javascript);
             return MTAClient.ExecuteBrowserJavascript(element, javascript);
         }
 
+        /// <summary>
+        /// Execute a javascript function using formatted js arguments
+        /// </summary>
         public bool ExecuteJavascript(string function, JavascriptVariable[] arguments)
         {
             string javascriptString = function + "(";
@@ -135,7 +226,9 @@ namespace Slipe.Client
             return ExecuteJavascript(javascriptString);
         }
         
-
+        /// <summary>
+        /// Handle an event on the browser
+        /// </summary>
         public override void HandleEvent(string eventName, MTAElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             switch (eventName)

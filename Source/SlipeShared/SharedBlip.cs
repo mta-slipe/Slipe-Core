@@ -16,7 +16,6 @@ namespace Slipe.Shared
         /// <summary>
         /// Creates or retrieves a blip from an MTA blip element
         /// </summary>
-        /// <param name="element"></param>
         public SharedBlip(MTAElement element) : base(element) { }
 
         /// <summary>

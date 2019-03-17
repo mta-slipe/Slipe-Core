@@ -8,6 +8,9 @@ namespace Slipe.Client
 {
     public abstract class GUIElement: Element
     {
+        /// <summary>
+        /// Get and set if this GUI element is visible
+        /// </summary>
         public bool Visible
         {
             get
@@ -20,6 +23,9 @@ namespace Slipe.Client
             }
         }
 
+        /// <summary>
+        /// Get and set the alpha of this GUI element
+        /// </summary>
         public float Alpha
         {
             get
@@ -37,6 +43,9 @@ namespace Slipe.Client
 
         }
 
+        /// <summary>
+        /// Create a GUI elemenet from an MTA GUI element
+        /// </summary>
         public GUIElement(MTAElement element): base(element)
         {
 

@@ -6,6 +6,9 @@ using Slipe.MTADefinitions;
 
 namespace Slipe.Client
 {
+    /// <summary>
+    /// Class that helps the element manager to cast MTA elements to their slip representation
+    /// </summary>
     public class ElementHelper: IElementHelper
     {
         private static Dictionary<Type, string> ElementTypeNames = new Dictionary<Type, string>
@@ -20,6 +23,9 @@ namespace Slipe.Client
             [typeof(RadarArea)] = "radararea"
         };
 
+        /// <summary>
+        /// Get a list of all classes of a specific element
+        /// </summary>
         public static List<T> GetByType<T>() where T : Element
         {
             List<T> elements = new List<T>();
@@ -42,6 +48,9 @@ namespace Slipe.Client
             return elements;
         }
         
+        /// <summary>
+        /// Instantiate an MTA element as a slipe class of the specific type
+        /// </summary>
         public Element InstantiateElement(string type, MTAElement element)
         {
             switch (type)
