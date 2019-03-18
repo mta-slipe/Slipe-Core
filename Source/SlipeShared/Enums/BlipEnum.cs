@@ -46,7 +46,7 @@ namespace Slipe.Shared.Enums
         RYDER,
         SAVEHOUSE,
         SCHOOl,
-        MYSTER,
+        MYSTERY,
         SWEET,
         TATTOO,
         TRUTH,
