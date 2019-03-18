@@ -116,6 +116,7 @@ namespace ServerTest
             Marker marker = new Marker(new Vector3(-10, 25, 4), MarkerTypeEnum.CHECKPOINT);
             marker.Icon = MarkerIconEnum.ARROW;
             marker.Target = Vector3.Zero;
+
             // Console.WriteLine(File.ReadAllText("meta.xml"));
         }
     }

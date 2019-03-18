@@ -21,7 +21,7 @@ namespace Slipe.Shared.Enums
             {
                 if (instance == null)
                 {
-                    return new EnumTranslator();
+                    instance = new EnumTranslator();
                 }
                 return instance;
             }

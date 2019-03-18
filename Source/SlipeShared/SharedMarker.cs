@@ -95,7 +95,7 @@ namespace Slipe.Shared
         /// <summary>
         /// Get and set the type of this marker
         /// </summary>
-        public MarkerTypeEnum Type
+        public MarkerTypeEnum MarkerType
         {
             get
             {
