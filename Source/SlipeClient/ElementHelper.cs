@@ -20,7 +20,10 @@ namespace Slipe.Client
             [typeof(Team)] = "team",
             [typeof(Pickup)] = "pickup",
             [typeof(Blip)] = "blip",
-            [typeof(RadarArea)] = "radararea"
+            [typeof(RadarArea)] = "radararea",
+            [typeof(Team)] = "team",
+            [typeof(Marker)] = "marker",
+            [typeof(Water)] = "water"
         };
 
         /// <summary>
@@ -73,6 +76,10 @@ namespace Slipe.Client
                     return new Blip(element);
                 case "radararea":
                     return new RadarArea(element);
+                case "marker":
+                    return new Marker(element);
+                case "water":
+                    return new Water(element);
             }
             return null;
         }
