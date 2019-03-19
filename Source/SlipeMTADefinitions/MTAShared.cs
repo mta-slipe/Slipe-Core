@@ -462,6 +462,10 @@ namespace Slipe.MTADefinitions {
 		public static float GetAircraftMaxHeight (){ throw new NotImplementedException(); }
 		public static bool SetAircraftMaxHeight (float Height){ throw new NotImplementedException(); }
 		public static bool SetJetpackMaxHeight (float Height){ throw new NotImplementedException(); }
-		public static System.Collections.Generic.List<dynamic> GetListFromTable (dynamic table){ throw new NotImplementedException(); }
+		public static System.Collections.Generic.List<dynamic> GetListFromTable (dynamic table, string listType){ throw new NotImplementedException(); }
+
+        public static dynamic[] GetArrayFromTable(dynamic table, string arrayType) { throw new NotImplementedException(); }
+
+        public static System.Collections.Generic.Dictionary<dynamic, dynamic> GetDictionaryFromTable(dynamic table, string tKey, string tValue) { throw new NotImplementedException(); }
 	}
 }

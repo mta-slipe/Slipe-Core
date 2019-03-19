@@ -66,41 +66,28 @@ namespace Slipe.Server
         }
 
         /// <summary>
-        /// Retrieve a list of all ACL entries on this server
+        /// Get an array of all ACL entries on this server
         /// </summary>
-        public static List<ACLEntry> List
+        public static ACLEntry[] All
         {
             get
             {
-                List<ACLEntry> list = new List<ACLEntry>();
-                List<dynamic> mtaList = MTAShared.GetListFromTable(MTAServer.AclList());
-                foreach (dynamic mtaACLEntry in mtaList)
+                MTAAcl[] mtaAcls = MTAShared.GetArrayFromTable(MTAServer.AclList(), "acl");
+                ACLEntry[] acls = new ACLEntry[mtaAcls.Length];
+                for (int i = 0; i < mtaAcls.Length; i++)
                 {
-                    ACLEntry aclEntry = new ACLEntry((MTAAcl) mtaACLEntry);
-                    if (aclEntry != null && aclEntry is ACLEntry)
-                    {
-                        list.Add(aclEntry);
-                    }
+                    acls[i] = new ACLEntry(mtaAcls[i]);
                 }
-
-                return list;
+                return acls;
             }
         }
 
         /// <summary>
-        /// Retrieve a list of all rights on this ACL entry
+        /// Get an array of all rights on this ACL entry
         /// </summary>
-        public List<string> ListRights(ACLRightEnum rightType)
+        public string[] GetRights(ACLRightEnum rightType)
         {
-            List<string> list = new List<string>();
-            List<dynamic> mtaList = MTAShared.GetListFromTable(MTAServer.AclListRights(entry, rightType.ToString().ToLower()));
-            foreach (dynamic mtaAclRight in mtaList)
-            {
-                string right = Convert.ToString(mtaAclRight);
-                list.Add(right);
-            }
-
-            return list;
+            return MTAShared.GetArrayFromTable(MTAServer.AclListRights(entry, rightType.ToString().ToLower()), "System.String");
         }
 
         /// <summary>

@@ -84,40 +84,16 @@ namespace ServerTest
 
                 RPCManager.Instance.TriggerRPC("testRPC", new TestRPC("Test rpc", 10));
             };
-            try
+
+            foreach(Account account in Account.All)
             {
-                Player player = (Player) Player.GetFromName("SAES>DezZolation");
-                Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponEnum.COLT45, 200);
-                pickup.Use(player);
-                Console.WriteLine(pickup.RespawnInterval.ToString());
+                account.SetData("Test", "Success");
+                foreach(KeyValuePair<string, string> pair in account.AllData)
+                {
+                    Debug.WriteLine(pair.Key);
+                    Debug.WriteLine(pair.Value);
+                }
             }
-            catch(NullElementException)
-            {
-                Console.WriteLine("ha");
-            }
-
-            Blip blip2 = new Blip(new Vector3(0, 0, 0), BlipEnum.BURGERSHOT, Color.Red, 2);
-            Vector3 vect = blip2.ForwardVector;
-            Console.WriteLine(vect.ToString());
-
-            RadarArea area = new RadarArea(new Vector2(200, 200), new Vector2(400, 400), new Color(40, 120, 255));
-            Debug.WriteLine(area.Type);
-            area.Flashing = true;
-
-            Vector3 vect3 = area.ForwardVector;
-            Console.WriteLine(vect.ToString());
-
-            //new Ban("192.168.178.1", null, null, "Cunt", 0);
-            foreach(Ban ban in Ban.GetAll())
-            {
-                Console.WriteLine("Ban ip: {0}, serial: {1}", ban.Ip, ban.Serial);
-            }
-
-            Marker marker = new Marker(new Vector3(-10, 25, 4), MarkerTypeEnum.CHECKPOINT);
-            marker.Icon = MarkerIconEnum.ARROW;
-            marker.Target = Vector3.Zero;
-
-            Water water = new Water(new Vector3(3, 13, 5), new Vector3(-7, -10, 4), new Vector3(-3, 29, 4), new Vector3(20, -7, 4));
 
             // Console.WriteLine(File.ReadAllText("meta.xml"));
         }

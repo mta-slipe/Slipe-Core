@@ -37,7 +37,7 @@ namespace Slipe.Server
             {
                 return elements;
             }
-            List<dynamic> mtaElements = MTAShared.GetListFromTable(MTAServer.GetElementsByType(ElementTypeNames[typeof(T)], null));
+            List<dynamic> mtaElements = MTAShared.GetListFromTable(MTAServer.GetElementsByType(ElementTypeNames[typeof(T)], null), "element");
             foreach (dynamic mtaElement in mtaElements)
             {
                 Element element = ElementManager.Instance.GetElement((MTAElement)mtaElement);
