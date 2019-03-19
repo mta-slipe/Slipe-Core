@@ -18,6 +18,8 @@ local System = System
 local throw = System.throw
 local define = System.define
 local trunc = System.trunc
+local sl = System.sl
+local bor = System.bor
 local TimeSpan = System.TimeSpan
 local ArgumentNullException = System.ArgumentNullException
 
@@ -31,10 +33,7 @@ local collectgarbage = collectgarbage
 define("System.Environment", {
   Exit = os.exit,
   getStackTrace = debug.traceback,
-
-  getTickCount = function ()
-    return trunc(clock() * 1000)
-  end
+  getTickCount = System.currentTimeMillis
 })
 
 define("System.GC", {
@@ -242,3 +241,35 @@ define("System.WeakReference", {
     return weaks[this]
   end
 })
+
+define("System.Guid", {
+  __ctor__ = function (this, ...)
+    local n = select("#", ...)
+    if n == 0 then
+      local b = ...
+      if b == nil then throw(ArgumentNullException()) end
+      if type(b) ~= "string" then
+        local get = b.get
+        local i = sl(get(b, 3), 24)
+        i = bor(i, sl(get(b, 2), 16))
+        i = bor(i, sl(get(b, 1), 8))
+        i = bor(i, get(b, 0))
+        this.a = i
+        this.b = bor(sl(get(b, 5), 8), get(b, 4))
+        this.c = bor(sl(get(b, 7), 8), get(b, 6))
+        this.d = get(b, 8)
+        this.e = get(b, 9)
+        this.f = get(b, 10)
+        this.g = get(b, 11)
+        this.h = get(b, 12)
+        this.i = get(b, 13)
+        this.j = get(b, 14)
+        this.k = get(b, 15)
+      else
+        assert(false)
+      end
+    end
+  end
+})
+
+

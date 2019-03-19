@@ -17,7 +17,6 @@ limitations under the License.
 local setmetatable = setmetatable
 local getmetatable = getmetatable
 local type = type
-local ipairs = ipairs
 local pairs  = pairs
 local assert = assert
 local table = table
@@ -134,32 +133,36 @@ local function set(className, cls)
   end
 end
 
-local function genericKey(t, k, ...) 
+local function multiKey(t, ...)
+  local k 
   for i = 1, select("#", ...) do
+    k = select(i, ...)
     local tk = t[k]
     if tk == nil then
       tk = {}
       t[k] = tk
     end
     t = tk
-    k = select(i, ...)
   end
   return t, k
 end
 
 local function genericName(name, ...)
-  local t = { name, "[" }  
+  local t = { name, "[" }
+  local count = 3
   local hascomma
   for i = 1, select("#", ...) do
     local cls = select(i, ...)
     if hascomma then
-      t[#t + 1] = ","
+      t[count] = ","
+      count = count + 1
     else
       hascomma = true
     end
-    t[#t + 1] = cls.__name__
+    t[count] = cls.__name__
+    count = count + 1
   end
-  t[#t + 1] = "]"
+  t[count] = "]"
   return tconcat(t)
 end
 
@@ -283,7 +286,7 @@ local function def(name, kind, cls, generic)
     end
     local mt = {}
     local fn = function(_, ...)
-      local gt, gk = genericKey(mt, ...)
+      local gt, gk = multiKey(mt, ...)
       local t = gt[gk]
       if t == nil then
         t = def(genericName(name, ...), kind, cls(...) or {}, true)
@@ -348,7 +351,7 @@ System = {
   try = try,
   throw = throw,
   getClass = set,
-  genericKey = genericKey,
+  multiKey = multiKey,
   define = defCls,
   defInf = defInf,
   defStc = defStc,
@@ -1039,8 +1042,8 @@ local ValueTuple = {
   end,
   Deconstruct = tupleDeconstruct,
   __eq = function (this, other)
-    for k, v in ipairs(this) do
-     if not equalsStatic(v, other[k]) then
+    for i = 1, #this do
+     if not equalsStatic(this[i], other[i]) then
         return false
       end
     end
@@ -1210,15 +1213,18 @@ end
 
 function System.init(namelist, conf)
   local classes = {}
-  for _, name in ipairs(namelist) do
+  local count = 1
+  for i = 1, #namelist do
+    local name = namelist[i]
     local cls = assert(modules[name], name)()
-    classes[#classes + 1] = cls
+    classes[count] = cls
+    count = count + 1
   end
-  for _, f in ipairs(usings) do
-    f(global)
+  for i = 1, #usings do
+    usings[i](global)
   end
-	for _, f in ipairs(metadatas) do
-		f(global)
+	for i = 1, #metadatas do
+		metadatas[i](global)
 	end
   if conf ~= nil then
     System.entryPoint = conf.Main
