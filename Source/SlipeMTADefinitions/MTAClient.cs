@@ -497,7 +497,7 @@ namespace Slipe.MTADefinitions {
 		public static float GetPedsLODDistance (){ throw new NotImplementedException(); }
 		public static bool ResetPedsLODDistance (){ throw new NotImplementedException(); }
 		public static bool SetPedsLODDistance (float distance){ throw new NotImplementedException(); }
-		public static Tuple<float, float, float> GetScreenFromWorldPosition (float x, float y, float z, float edgeTolerance, bool relative){ throw new NotImplementedException(); }
+		public static Tuple<float, float> GetScreenFromWorldPosition (float x, float y, float z, float edgeTolerance, bool relative){ throw new NotImplementedException(); }
 		public static Tuple<float, float> GetVehiclesLODDistance (){ throw new NotImplementedException(); }
 		public static Tuple<float, float, float> GetWorldFromScreenPosition (float x, float y, float depth){ throw new NotImplementedException(); }
 		public static bool IsWorldSoundEnabled (int group, int index){ throw new NotImplementedException(); }
@@ -514,8 +514,9 @@ namespace Slipe.MTADefinitions {
 		public static bool SetInteriorFurnitureEnabled (int roomID, bool enabled){ throw new NotImplementedException(); }
 		public static bool SetNearClipDistance (float distance){ throw new NotImplementedException(); }
 		public static bool SetVehiclesLODDistance (float vehiclesDistance, float trainsAndPlanesDistance){ throw new NotImplementedException(); }
-		public static bool SetWorldSoundEnabled (int group, int index){ throw new NotImplementedException(); }
-		public static bool SetWorldSpecialPropertyEnabled (string propname, bool enable){ throw new NotImplementedException(); }
+
+        public static bool SetWorldSoundEnabled(int group, int index, bool enable, bool immediate) { throw new NotImplementedException(); }
+        public static bool SetWorldSpecialPropertyEnabled (string propname, bool enable){ throw new NotImplementedException(); }
 		public static Tuple<bool, float, float, float> TestLineAgainstWater (float startX, float startY, float startZ, float endX, float endY, float endZ){ throw new NotImplementedException(); }
 	}
 }

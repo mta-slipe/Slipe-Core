@@ -431,8 +431,8 @@ namespace Slipe.MTADefinitions {
 		public static bool SetSunColor (int aRed, int aGreen, int aBlue, int bRed, int bGreen, int bBlue){ throw new NotImplementedException(); }
 		public static bool SetSkyGradient (int topRed, int topGreen, int topBlue, int bottomRed, int bottomGreen, int bottomBlue){ throw new NotImplementedException(); }
 		public static bool SetSunSize (int Size){ throw new NotImplementedException(); }
-		public static bool SetTrafficLightState (int state){ throw new NotImplementedException(); }
-		public static bool SetTime (int hour, int minute){ throw new NotImplementedException(); }
+		public static bool SetTrafficLightState (dynamic state){ throw new NotImplementedException(); }
+        public static bool SetTime (int hour, int minute){ throw new NotImplementedException(); }
 		public static bool SetTrafficLightsLocked (bool toggle){ throw new NotImplementedException(); }
 		public static bool SetWeather (int weatherID){ throw new NotImplementedException(); }
 		public static bool SetWeatherBlended (int weatherID){ throw new NotImplementedException(); }

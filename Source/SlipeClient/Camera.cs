@@ -62,6 +62,21 @@ namespace Slipe.Client
         }
 
         /// <summary>
+        /// This property sets the distance from the camera at which the world starts rendering. 
+        /// </summary>
+        public float NearClipDistance
+        {
+            get
+            {
+                return MTAClient.GetNearClipDistance();
+            }
+            set
+            {
+                MTAClient.SetNearClipDistance(value);
+            }
+        }
+
+        /// <summary>
         /// Get and set the viewmode of the camera
         /// </summary>
         public CameraViewMode ViewMode
@@ -203,6 +218,32 @@ namespace Slipe.Client
         public Tuple<bool, bool> GetCameraClip()
         {
             return MTAClient.GetCameraClip();
+        }
+
+        /// <summary>
+        /// This function gets the screen position of a point in the world.
+        /// </summary>
+        public Vector2 GetScreenFromWorldPosition(Vector3 position, float edgeTolerance = 0.0f, bool relative = true)
+        {
+            Tuple<float, float> result = MTAClient.GetScreenFromWorldPosition(position.X, position.Y, position.Z, edgeTolerance, relative);
+            return new Vector2(result.Item1, result.Item2);
+        }
+
+        /// <summary>
+        /// This function allows you to retrieve the world position corresponding to a 2D position on the screen, at a certain depth.
+        /// </summary>
+        public Vector3 GetWorldFromScreenPosition(Vector2 position, float depth)
+        {
+            Tuple<float, float, float> result = MTAClient.GetWorldFromScreenPosition(position.X, position.Y, depth);
+            return new Vector3(result.Item1, result.Item2, result.Item3);
+        }
+
+        /// <summary>
+        /// This function checks if there are obstacles between two points of the game world, optionally ignoring certain kinds of elements. Use processLineOfSight if you want more information about what the ray hits.
+        /// </summary>
+        public bool IsLineOfSightClear(Vector3 start, Vector3 end, bool checkBuildings = true, bool checkVehicles = true, bool checkPeds = true, bool checkObjects = true, bool checkDummies = true, bool seeThroughStuff = false, bool ignoreSomeObjectsForCamera = false, PhysicalElement ignoredElement = null)
+        {
+            return MTAClient.IsLineOfSightClear(start.X, start.Y, start.Z, end.X, end.Y, end.Z, checkBuildings, checkVehicles, checkPeds, checkObjects, checkDummies, seeThroughStuff, ignoreSomeObjectsForCamera, ignoredElement?.MTAElement);
         }
 
     }

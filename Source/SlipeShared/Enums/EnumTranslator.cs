@@ -59,5 +59,24 @@ namespace Slipe.Shared.Enums
         {
             return easingFunctionDictionary.TryGetValue(easing, out string result) ? result : "Linear";
         }
+
+        /// <summary>
+        /// Translates a weapon enum to a lowercase name, useful for the jetpack functions
+        /// </summary>
+        public string TranslateWeapon(WeaponEnum weaponEnum)
+        {
+            switch(weaponEnum)
+            {
+                case WeaponEnum.AK47:
+                    return "ak-47";
+                case WeaponEnum.COLT45:
+                    return "colt 45";
+                case WeaponEnum.TEC9:
+                    return "tec-9";
+                default:
+                    return weaponEnum.ToString().ToLower();
+            }
+
+        }
     }
 }
