@@ -364,13 +364,15 @@ namespace Slipe.MTADefinitions {
 		public static bool SetVehicleTurretPosition (MTAElement turretVehicle, float positionX, float positionY){ throw new NotImplementedException(); }
 		public static bool SetVehicleTaxiLightOn (MTAElement taxi, bool LightState){ throw new NotImplementedException(); }
 		public static bool SetVehicleWheelStates (MTAElement theVehicle, int frontLeft, int rearLeft, int frontRight, int rearRight){ throw new NotImplementedException(); }
-		public static MTAElement CreateWater (int x1, int y1, float z1, int x2, int y2, float z2, int x3, int y3, float z3, int x4, int y4, float z4, bool bShallow){ throw new NotImplementedException(); }
-		public static Tuple<int, int, float> GetWaterVertexPosition (MTAElement theWater, int vertexIndex){ throw new NotImplementedException(); }
+		public static MTAElement CreateWater (float x1, float y1, float z1, float x2, float y2, float z2, float x3, float y3, float z3, float x4, float y4, float z4, bool bShallow){ throw new NotImplementedException(); }
+        public static MTAElement CreateWater(float x1, float y1, float z1, float x2, float y2, float z2, float x3, float y3, float z3, bool bShallow) { throw new NotImplementedException(); }
+        public static Tuple<int, int, float> GetWaterVertexPosition (MTAElement theWater, int vertexIndex){ throw new NotImplementedException(); }
 		public static float GetWaveHeight (){ throw new NotImplementedException(); }
 		public static bool SetWaterColor (int red, int green, int blue, int alpha){ throw new NotImplementedException(); }
 		public static Tuple<int, int, int, int> GetWaterColor (){ throw new NotImplementedException(); }
 		public static bool SetWaterLevel (MTAElement theWater, float level){ throw new NotImplementedException(); }
-		public static bool ResetWaterColor (){ throw new NotImplementedException(); }
+        public static bool SetWaterLevel(float level, bool includeWaterFeatures, bool includeWaterElements) { throw new NotImplementedException(); }
+        public static bool ResetWaterColor (){ throw new NotImplementedException(); }
 		public static bool ResetWaterLevel (){ throw new NotImplementedException(); }
 		public static bool SetWaveHeight (float height){ throw new NotImplementedException(); }
 		public static bool SetWaterVertexPosition (MTAElement theWater, int vertexIndex, int x, int y, float z){ throw new NotImplementedException(); }
@@ -431,8 +433,8 @@ namespace Slipe.MTADefinitions {
 		public static bool SetSunColor (int aRed, int aGreen, int aBlue, int bRed, int bGreen, int bBlue){ throw new NotImplementedException(); }
 		public static bool SetSkyGradient (int topRed, int topGreen, int topBlue, int bottomRed, int bottomGreen, int bottomBlue){ throw new NotImplementedException(); }
 		public static bool SetSunSize (int Size){ throw new NotImplementedException(); }
-		public static bool SetTrafficLightState (int state){ throw new NotImplementedException(); }
-		public static bool SetTime (int hour, int minute){ throw new NotImplementedException(); }
+		public static bool SetTrafficLightState (dynamic state){ throw new NotImplementedException(); }
+        public static bool SetTime (int hour, int minute){ throw new NotImplementedException(); }
 		public static bool SetTrafficLightsLocked (bool toggle){ throw new NotImplementedException(); }
 		public static bool SetWeather (int weatherID){ throw new NotImplementedException(); }
 		public static bool SetWeatherBlended (int weatherID){ throw new NotImplementedException(); }

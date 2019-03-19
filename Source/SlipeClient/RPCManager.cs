@@ -38,6 +38,9 @@ namespace Slipe.Client
             };
         }
 
+        /// <summary>
+        /// Register an RPC
+        /// </summary>
         public void RegisterRPC<CallbackType>(string key, Action<CallbackType> callback)
         {
             RegisteredRPCs[key] = (object parameters) => {
@@ -52,6 +55,9 @@ namespace Slipe.Client
             Element.Root.AddEventHandler(key);
         }
 
+        /// <summary>
+        /// Trigger an RPC
+        /// </summary>
         public void TriggerRPC(string key, object argument)
         {
             MTAClient.TriggerServerEvent(key, Element.Root.MTAElement, argument);

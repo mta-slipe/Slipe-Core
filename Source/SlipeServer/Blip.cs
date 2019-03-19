@@ -8,29 +8,43 @@ using System.Numerics;
 
 namespace Slipe.Server
 {
+    /// <summary>
+    /// A class representing a blip on the minimap
+    /// </summary>
     public class Blip : SharedBlip
     {
+        /// <summary>
+        /// Creates a blip instance from an MTA blip element
+        /// </summary>
         public Blip(MTAElement element) : base (element) { }
+
+        /// <summary>
+        /// Creates a blip from all createBlip parameters
+        /// </summary>
         public Blip(Vector3 vector, BlipEnum icon, Color color, int size = 2, int ordering = 0, float visibleDistance = 16383.0f, Element visibleTo = null): base()
         {
-            element = MTAServer.CreateBlip(vector.X, vector.Y, vector.Z, (int) icon, size, color.R, color.G, color.B, color.A, ordering, visibleDistance, visibleTo == null ? null : visibleTo.MTAElement);
+            element = MTAServer.CreateBlip(vector.X, vector.Y, vector.Z, (int) icon, size, color.R, color.G, color.B, color.A, ordering, visibleDistance, visibleTo?.MTAElement);
             ElementManager.Instance.RegisterElement(this);
         }
 
-        public Blip(Vector3 vector) : this (vector, 0, Color.Red)
-        {
+        /// <summary>
+        /// Creates a standard red blip
+        /// </summary>
+        public Blip(Vector3 vector) : this (vector, 0, Color.Red) { }
 
-        }
-
+        /// <summary>
+        /// Creates a blip attached to an element in the world
+        /// </summary>
         public Blip(PhysicalElement physicalElement, BlipEnum icon, Color color, int size = 2, int ordering = 0, float visibleDistance = 16383.0f, Element visibleTo = null)
         {
-            element = MTAServer.CreateBlipAttachedTo(physicalElement.MTAElement, (int)icon, size, color.R, color.G, color.B, color.A, ordering, visibleDistance, visibleTo == null ? null : visibleTo.MTAElement);
+            element = MTAServer.CreateBlipAttachedTo(physicalElement.MTAElement, (int)icon, size, color.R, color.G, color.B, color.A, ordering, visibleDistance, visibleTo?.MTAElement);
             ElementManager.Instance.RegisterElement(this);
         }
 
-        public Blip(PhysicalElement physicalElement) : this(physicalElement, 0, Color.Red)
-        {
-
-        }
+        /// <summary>
+        /// Creates a red standard blip attached to an element in the world
+        /// </summary>
+        /// <param name="physicalElement"></param>
+        public Blip(PhysicalElement physicalElement) : this(physicalElement, 0, Color.Red) { }
     }
 }

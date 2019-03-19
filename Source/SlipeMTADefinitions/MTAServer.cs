@@ -119,7 +119,7 @@ namespace Slipe.MTADefinitions {
 		public static MTAElement LoadMapData (MTAElement node, MTAElement parent){ throw new NotImplementedException(); }
 		public static bool UnbindKey (MTAElement thePlayer, string key, string keyState, string command){ throw new NotImplementedException(); }
 		public static bool ResetMapInfo (MTAElement thePlayer){ throw new NotImplementedException(); }
-		public static MTAElement CreateMarker (float x, float y, float z, string theType, float size, int r, int g, int b, int a, bool visibleTo){ throw new NotImplementedException(); }
+		public static MTAElement CreateMarker (float x, float y, float z, string theType, float size, int r, int g, int b, int a, MTAElement visibleTo){ throw new NotImplementedException(); }
 		public static bool SaveMapData (MTAElement node, MTAElement baseElement, bool childrenOnly){ throw new NotImplementedException(); }
 		public static dynamic GetModuleInfo (string moduleName){ throw new NotImplementedException(); }
 		public static dynamic GetLoadedModules (){ throw new NotImplementedException(); }

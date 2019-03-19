@@ -7,9 +7,16 @@ using System.Text;
 
 namespace Slipe.Shared
 {
+    /// <summary>
+    /// Class that manages MTAElement functionality and 
+    /// </summary>
     public class ElementManager
     {
         private static ElementManager instance;
+
+        /// <summary>
+        /// Get the singleton instance of this class
+        /// </summary>
         public static ElementManager Instance
         {
             get
@@ -25,10 +32,18 @@ namespace Slipe.Shared
         private IElementHelper elementHelper;
 
         private Element root;
+
+        /// <summary>
+        /// Returns the root MTA element
+        /// </summary>
         public Element Root { get { return root; } }
 
         private Dictionary<System.Object, Element> elements;
 
+        /// <summary>
+        /// Creates the ElementManager given an IElementHelper class that maps MTA elements to classes
+        /// </summary>
+        /// <param name="helper"></param>
         public ElementManager(IElementHelper helper)
         {
             this.elementHelper = helper;
@@ -37,11 +52,17 @@ namespace Slipe.Shared
             root = new Element(MTAShared.GetRootElement());
         }
 
+        /// <summary>
+        /// Registers an element class
+        /// </summary>
         public void RegisterElement(Element element)
         {
             elements.Add(element.MTAElement, element);
         }
 
+        /// <summary>
+        /// Gets an element class instance given a certain MTA element
+        /// </summary>
         public Element GetElement(MTAElement element)
         {
             if (element == null)
@@ -68,6 +89,9 @@ namespace Slipe.Shared
             MTAShared.AddEventHandler(eventName, element.MTAElement, "Slipe.Shared.ElementManager.HandleEvent", propagated, priorty);
         }
 
+        /// <summary>
+        /// Handles an event when it's triggered on a specific MTA element
+        /// </summary>
         public static void HandleEvent(string eventString, MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             Element element = Instance.GetElement(source);

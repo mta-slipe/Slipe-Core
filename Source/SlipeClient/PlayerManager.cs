@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Slipe.Client
 {
+    /// <summary>
+    /// Manages player events
+    /// </summary>
     class PlayerManager
     {
         private static PlayerManager instance;
@@ -24,6 +27,9 @@ namespace Slipe.Client
             Element.Root.AddEventHandler("onClientPlayerJoin");
         }
 
+        /// <summary>
+        /// Handle root events for player elements
+        /// </summary>
         public void HandleRootEvent(string eventName, Slipe.MTADefinitions.MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             switch (eventName)

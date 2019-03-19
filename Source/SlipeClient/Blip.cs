@@ -8,23 +8,44 @@ using System.Numerics;
 
 namespace Slipe.Client
 {
+    /// <summary>
+    /// Class representing a minimap blip
+    /// </summary>
     public class Blip : SharedBlip
     {
+
+        /// <summary>
+        /// Creates or retrieves a blip from an MTA blip element
+        /// </summary>
         public Blip(MTAElement element) : base (element) { }
+
+        /// <summary>
+        /// Creates a blip from all the createBlip parameters
+        /// </summary>
         public Blip(Vector3 vector, BlipEnum icon, Color color, int size = 2, int ordering = 0, float visibleDistance = 16383.0f)
         {
             element = MTAClient.CreateBlip(vector.X, vector.Y, vector.Z, (int)icon, size, color.R, color.G, color.B, color.A, ordering, visibleDistance);
             ElementManager.Instance.RegisterElement(this);
         }
 
+        /// <summary>
+        /// Creates a standard red blip
+        /// </summary>
+        /// <param name="vector"></param>
         public Blip(Vector3 vector) : this(vector, 0, Color.Red) { }
 
+        /// <summary>
+        /// Creates a blip attached to an MTA element
+        /// </summary>
         public Blip(PhysicalElement physicalElement, BlipEnum icon, Color color, int size = 2, int ordering = 0, float visibleDistance = 16383.0f)
         {
             element = MTAClient.CreateBlipAttachedTo(physicalElement.MTAElement, (int)icon, size, color.R, color.G, color.B, color.A, ordering, visibleDistance);
             ElementManager.Instance.RegisterElement(this);
         }
 
+        /// <summary>
+        /// Creates a standard red blip attached to an  MTA element
+        /// </summary>
         public Blip(PhysicalElement physicalElement) : this(physicalElement, 0, Color.Red) { }
     }
 }

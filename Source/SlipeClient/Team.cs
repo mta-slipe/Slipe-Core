@@ -6,12 +6,29 @@ using System.Text;
 
 namespace Slipe.Client
 {
+    /// <summary>
+    /// Class representing a team of players
+    /// </summary>
     public class Team: Element
     {
+        /// <summary>
+        /// Get the name of the team
+        /// </summary>
         public string Name { get { return MTAShared.GetTeamName(MTAElement); } }
+
+        /// <summary>
+        /// Get if friendly fire is enabled
+        /// </summary>
         public bool FriendlyFire { get { return MTAShared.GetTeamFriendlyFire(MTAElement); } }
+
+        /// <summary>
+        /// Get the amount of players in this team
+        /// </summary>
         public int PlayerCount { get { return MTAShared.CountPlayersInTeam(MTAElement); } }
 
+        /// <summary>
+        /// Get the color of this team
+        /// </summary>
         public Color Color {
             get
             {
@@ -20,6 +37,9 @@ namespace Slipe.Client
             }
         }
 
+        /// <summary>
+        /// Get a list of all players in this team
+        /// </summary>
         public List<Player> Players
         {
             get
@@ -34,8 +54,10 @@ namespace Slipe.Client
             }
         }
 
-
-
+        /// <summary>
+        /// Create a team from an MTA team element
+        /// </summary>
+        /// <param name="team"></param>
         public Team(MTAElement team) : base(team)
         {
 

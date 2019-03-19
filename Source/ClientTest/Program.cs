@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics;
 using System.Numerics;
 using Slipe.Shared.Enums;
+using Slipe.Shared.Structs;
 
 namespace ClientTest
 {
@@ -14,6 +15,11 @@ namespace ClientTest
         static void Main(string[] args)
         {
             new ElementManager(new ElementHelper());
+
+            new SWATRope(Player.Local.Position + new Vector3(0, 0, 5), 5000);
+            World.Instance.Weather = new Weather(WeatherEnum.SUNNYCOUNTRYSIDE);
+            World.Instance.GetGarage(GarageEnum.PROPERTYPALOMINOCREEK).Open = true;
+
             Pickup pickup = new Pickup(new Vector3(4, 24, 3), PickupTypeEnum.ARMOUR, 50);
             Debug.WriteLine(pickup.Ammo.ToString());
             Debug.WriteLine(pickup.PickupType.ToString());

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Slipe.Client.Enums
 {
+    /// <summary>
+    /// Represents different google view effects
+    /// </summary>
     public enum GoggleEffects
     {
         NORMAL,
@@ -11,6 +14,9 @@ namespace Slipe.Client.Enums
         THERMALVISION
     }
 
+    /// <summary>
+    /// Represents different vehicle camera view modes
+    /// </summary>
     public enum CameraViewMode
     {
         BUMPER = 0,
@@ -21,6 +27,9 @@ namespace Slipe.Client.Enums
         CINEMATIC = 5
     }
 
+    /// <summary>
+    /// Represents different camera modes for the player
+    /// </summary>
     public enum CameraMode
     {
         PLAYER,

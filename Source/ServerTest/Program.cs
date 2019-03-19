@@ -1,6 +1,7 @@
 ﻿using Slipe.Server;
 using Slipe.Shared;
 using Slipe.Shared.Enums;
+using Slipe.Shared.Exceptions;
 using Slipe.MTADefinitions;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,7 @@ namespace ServerTest
 
             WorldObject dildo = new WorldObject(321, new Vector3(3, 3, 3));
             dildo.Scale = new Vector3(3, 3, 3);
-            dildo.Move(5000, new Vector3(3, 3, 10));
+            dildo.Move(5000, new Vector3(3, 3, 10), Vector3.Zero, EasingFunctionEnum.COSINECURVE, 0.4f, 0.5f);
             Console.WriteLine("{0} is a pleb", "SAES>Dezzolation");
 
             vehicles[4].AttachTo(dildo, new Vector3(0, 0, 3));
@@ -75,18 +76,27 @@ namespace ServerTest
             {
                 Console.WriteLine("Vehicle lost " + loss +" health");
 
-                Player nano = (Player) Player.GetFromName("SAES>Nanobob");
-                //nano.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
+                try
+                {
+                    Player nano = (Player)Player.GetFromName("SAES>Nanobob");
+                    //nano.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
 
-                RPCManager.Instance.TriggerRPC("testRPC", new BasicOutgoingRPC("Test rpc", 10, nano));
+                    RPCManager.Instance.TriggerRPC(nano, "testRPC", new BasicOutgoingRPC("Test rpc", 10, nano));
+                }
+                catch (NullElementException) { }
+
             };
-            
-            Player player = (Player) Player.GetFromName("SAES>DezZolation");
-            if (player != null)
+
+            try
             {
+                Player player = (Player) Player.GetFromName("SAES>DezZolation");
                 Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponEnum.COLT45, 200);
                 pickup.Use(player);
                 Console.WriteLine(pickup.RespawnInterval.ToString());
+            }
+            catch(NullElementException)
+            {
+                Console.WriteLine("ha");
             }
 
             Blip blip2 = new Blip(new Vector3(0, 0, 0), BlipEnum.BURGERSHOT, Color.Red, 2);
@@ -105,6 +115,12 @@ namespace ServerTest
             {
                 Console.WriteLine("Ban ip: {0}, serial: {1}", ban.Ip, ban.Serial);
             }
+
+            Marker marker = new Marker(new Vector3(-10, 25, 4), MarkerTypeEnum.CHECKPOINT);
+            marker.Icon = MarkerIconEnum.ARROW;
+            marker.Target = Vector3.Zero;
+
+            Water water = new Water(new Vector3(3, 13, 5), new Vector3(-7, -10, 4), new Vector3(-3, 29, 4), new Vector3(20, -7, 4));
 
             // Console.WriteLine(File.ReadAllText("meta.xml"));
         }

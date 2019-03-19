@@ -18,4 +18,3 @@ namespace Slipe.Shared.RPC
         }
     }
 }
-}

@@ -6,8 +6,14 @@ using System.Text;
 
 namespace Slipe.Client
 {
+    /// <summary>
+    /// Class of MTA player elements
+    /// </summary>
     public class Player : SharedPlayer
     {
+        /// <summary>
+        /// Get the team of a player
+        /// </summary>
         public Team Team
         {
             get
@@ -17,6 +23,9 @@ namespace Slipe.Client
             }
         }
 
+        /// <summary>
+        /// Returns the Local Player element
+        /// </summary>
         public static Player Local
         {
             get
@@ -25,7 +34,10 @@ namespace Slipe.Client
             }
         }
 
-        public Player(Slipe.MTADefinitions.MTAElement mtaElement) : base(mtaElement)
+        /// <summary>
+        /// Creates a player class from an MTA player element
+        /// </summary>
+        public Player(MTAElement mtaElement) : base(mtaElement)
         {
         }
     }

@@ -6,10 +6,19 @@ using System.Text;
 
 namespace Slipe.Server
 {
+    /// <summary>
+    /// Class representing a team of players
+    /// </summary>
     public class Team: Element
     {
+        /// <summary>
+        /// Get the amount of players on this team
+        /// </summary>
         public int PlayerCount { get { return MTAShared.CountPlayersInTeam(MTAElement); } }
 
+        /// <summary>
+        /// Get and set the name of this team
+        /// </summary>
         public string Name {
             get
             {
@@ -21,6 +30,9 @@ namespace Slipe.Server
             }
         }
 
+        /// <summary>
+        /// Get and set the friendly fire property of this team
+        /// </summary>
         public bool FriendlyFire {
             get
             {
@@ -32,6 +44,9 @@ namespace Slipe.Server
             }
         }
 
+        /// <summary>
+        /// Get and set the team color
+        /// </summary>
         public Color Color {
             get
             {
@@ -44,6 +59,9 @@ namespace Slipe.Server
             }
         }
 
+        /// <summary>
+        /// Get a list of players on this team
+        /// </summary>
         public List<Player> Players
         {
             get

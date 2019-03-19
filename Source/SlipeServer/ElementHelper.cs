@@ -6,8 +6,12 @@ using Slipe.MTADefinitions;
 
 namespace Slipe.Server
 {
+    /// <summary>
+    /// This class enables the server element manager to properly cast MTA elements to server class instances
+    /// </summary>
     public class ElementHelper: IElementHelper
     {
+
         private static Dictionary<Type, string> ElementTypeNames = new Dictionary<Type, string>
         {
             [typeof(Element)] = "element",
@@ -19,6 +23,9 @@ namespace Slipe.Server
             [typeof(RadarArea)] = "radararea"
         };
 
+        /// <summary>
+        /// Returns a list of all elements of type T
+        /// </summary>
         public static List<T> GetByType<T>() where T : Element
         {
             List<T> elements = new List<T>();
@@ -40,6 +47,9 @@ namespace Slipe.Server
             return elements;
         }
         
+        /// <summary>
+        /// Creates an instance of an element given a certain type
+        /// </summary>
         public Element InstantiateElement(string type, MTAElement element)
         {
             switch (type)

@@ -4,20 +4,23 @@ using System.Text;
 
 namespace Slipe.Shared.Enums
 {
+    /// <summary>
+    /// Represents different types of explosions
+    /// </summary>
     public enum ExplosionType
     {
-        GRENADE = 0,
-        MOLOTOV = 1,
-        ROCKET = 2,
-        ROCKET_WEAK = 3,
-        CAR = 4,
-        CARQUICK = 5,
-        BOAT = 6,
-        HELI = 7,
-        MINE = 8,
-        OBJECT = 9,
-        TANK_GRENADE = 10,
-        SMALL = 11,
-        TINY = 12
+        GRENADE,
+        MOLOTOV,
+        ROCKET,
+        ROCKET_WEAK,
+        CAR,
+        CARQUICK,
+        BOAT,
+        HELI,
+        MINE,
+        OBJECT,
+        TANK_GRENADE,
+        SMALL,
+        TINY
     }
 }
