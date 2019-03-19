@@ -33,11 +33,17 @@ namespace Slipe.Shared.CollisionShapes
         }
 
         /// <summary>
-        /// Gets a list of all elements inside the collision shape
+        /// Gets an array of all elements inside the collision shape
         /// </summary>
-        public List<PhysicalElement> GetElementsWithin()
+        public PhysicalElement[] GetElementsWithin()
         {
-            return MTAShared.GetListFromTable(MTAShared.GetElementsWithinColShape(element, null));
+            dynamic[] array = MTAShared.GetArrayFromTable(MTAShared.GetElementsWithinColShape(element, null), "element");
+            PhysicalElement[] elements = new PhysicalElement[array.Length];
+            for (int i = 0; i < array.Length; i++)
+            {
+                elements[i] = new PhysicalElement((MTAElement)array[i]);
+            }
+            return elements;
         }
 
         /// <summary>

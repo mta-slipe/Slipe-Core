@@ -143,17 +143,20 @@ namespace Slipe.Server
         }
 
         /// <summary>
-        /// Returns a list of all bans in this server
+        /// Get a list of all bans in this server
         /// </summary>
-        public static List<Ban> GetAll()
+        public static Ban[] All
         {
-            List<dynamic> bans = MTAShared.GetListFromTable(MTAServer.GetBans());
-            List<Ban> result = new List<Ban>();
-            foreach(dynamic ban in bans)
+            get
             {
-                result.Add(new Ban(ban));
+                dynamic[] mtaBans = MTAShared.GetArrayFromTable(MTAServer.GetBans(), "ban");
+                Ban[] bans = new Ban[mtaBans.Length];
+                for (int i = 0; i < mtaBans.Length; i++)
+                {
+                    bans[i] = new Ban((MTABan)mtaBans[i]);
+                }
+                return bans;
             }
-            return result;
         }
     }
 }

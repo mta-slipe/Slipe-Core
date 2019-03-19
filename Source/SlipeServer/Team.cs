@@ -62,15 +62,15 @@ namespace Slipe.Server
         /// <summary>
         /// Get a list of players on this team
         /// </summary>
-        public List<Player> Players
+        public Player[] Players
         {
             get
             {
-                List<Player> players = new List<Player>();
-                List<dynamic> mtaPlayers = MTAShared.GetListFromTable(MTAShared.GetPlayersInTeam(MTAElement));
-                foreach (dynamic player in mtaPlayers)
+                dynamic[] mtaPlayers = MTAShared.GetArrayFromTable(MTAShared.GetPlayersInTeam(MTAElement), "player");
+                Player[] players = new Player[mtaPlayers.Length];
+                for (int i = 0; i < mtaPlayers.Length; i++)
                 {
-                    players.Add((Player) ElementManager.Instance.GetElement((MTAElement)player));
+                    players[i] = new Player((MTAElement)mtaPlayers[i]);
                 }
                 return players;
             }

@@ -474,7 +474,9 @@ end,
 	GetAircraftMaxHeight = function(...) local results = {getAircraftMaxHeight(...)} if results[1] == false then System.throw(Slipe.MTADefinitions.MTAException()) return end return unpack(results) end,
 	SetJetpackMaxHeight = setJetpackMaxHeight,
 	SetAircraftMaxHeight = setAircraftMaxHeight,
-	GetListFromTable = function(table) return System.listFromTable(table, System.List) end,
+	GetListFromTable = function(table, listType) return System.listFromTable(table, listType) end,
+	GetArrayFromTable = function(table, arrayType) return System.arrayFromTable(table, arrayType) end,
+	GetDictionaryFromTable = function(table, tKey, tValue) return System.dictionaryFromTable(table, tKey, tValue) end,
 })
 System.define("Slipe.MTADefinitions.MTAException", {
   __tostring = function()

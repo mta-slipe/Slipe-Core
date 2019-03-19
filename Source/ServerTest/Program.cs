@@ -107,20 +107,15 @@ namespace ServerTest
             Debug.WriteLine(area.Type);
             area.Flashing = true;
 
-            Vector3 vect3 = area.ForwardVector;
-            Console.WriteLine(vect.ToString());
-
-            //new Ban("192.168.178.1", null, null, "Cunt", 0);
-            foreach(Ban ban in Ban.GetAll())
+            foreach(Account account in Account.All)
             {
-                Console.WriteLine("Ban ip: {0}, serial: {1}", ban.Ip, ban.Serial);
+                account.SetData("Test", "Success");
+                foreach(KeyValuePair<string, string> pair in account.AllData)
+                {
+                    Debug.WriteLine(pair.Key);
+                    Debug.WriteLine(pair.Value);
+                }
             }
-
-            Marker marker = new Marker(new Vector3(-10, 25, 4), MarkerTypeEnum.CHECKPOINT);
-            marker.Icon = MarkerIconEnum.ARROW;
-            marker.Target = Vector3.Zero;
-
-            Water water = new Water(new Vector3(3, 13, 5), new Vector3(-7, -10, 4), new Vector3(-3, 29, 4), new Vector3(20, -7, 4));
 
             // Console.WriteLine(File.ReadAllText("meta.xml"));
         }

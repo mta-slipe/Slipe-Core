@@ -27,6 +27,9 @@ namespace Slipe.Client
         /// </summary>
         public Water(Vector3 corner1, Vector3 corner2, Vector3 corner3, bool shallow = false) : base(corner1, corner2, corner3, shallow) { }
 
+        /// <summary>
+        /// Get and set the water level of this water body
+        /// </summary>
         public new float Level
         {
             get

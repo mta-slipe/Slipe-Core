@@ -72,6 +72,33 @@ namespace Slipe.Server
         }
 
         /// <summary>
+        /// This function returns the specified player's account object.
+        /// </summary>
+        public Account Account
+        {
+            get
+            {
+                return new Account(MTAServer.GetPlayerAccount(element));
+            }
+        }
+
+        /// <summary>
+        /// Logs the player into an account
+        /// </summary>
+        public bool Login(Account account, string password)
+        {
+            return MTAServer.LogIn(element, account.MTAAccount, password);
+        }
+
+        /// <summary>
+        /// Logs the player out of the account they're currently logged on
+        /// </summary>
+        public bool LogOut()
+        {
+            return MTAServer.LogOut(element);
+        }
+
+        /// <summary>
         /// Spawn the player at a certain position
         /// </summary>
         public void Spawn(Vector3 position, int rotation = 0, int skin = 0, int interior = 0, int dimension = 0, Team team = null)

@@ -66,65 +66,54 @@ namespace Slipe.Server
         }
 
         /// <summary>
-        /// Retrieve a list of all ACL groups on this server
+        /// Get all ACL groups on this server
         /// </summary>
-        public static List<ACLGroup> List
+        public static ACLGroup[] All
         {
             get
             {
-                List<ACLGroup> list = new List<ACLGroup>();
-                List<dynamic> mtaList = MTAShared.GetListFromTable(MTAServer.AclGroupList());
-                foreach (dynamic mtaACLGroupItem in mtaList)
+                MTAAclGroup[] mtagroups = MTAShared.GetArrayFromTable(MTAServer.AclGroupList(), "acl-group");
+                ACLGroup[] groups = new ACLGroup[mtagroups.Length];
+                for (int i = 0; i < mtagroups.Length; i++)
                 {
-                    ACLGroup aclGroup = new ACLGroup((MTAAclGroup) mtaACLGroupItem);
-                    if (aclGroup != null && aclGroup is ACLGroup)
-                    {
-                        list.Add(aclGroup);
-                    }
+                    groups[i] = new ACLGroup(mtagroups[i]);
                 }
-
-                return list;
-
+                return groups;
             }
         }
 
         /// <summary>
-        /// Retrieve a list of all ACL Entries in this group
+        /// Get an array of all ACL Entries in this group
         /// </summary>
-        public List<ACLEntry> Entries
+        public ACLEntry[] Entries
         {
             get
             {
-                List<ACLEntry> list = new List<ACLEntry>();
-                List<dynamic> mtaList = MTAShared.GetListFromTable(MTAServer.AclGroupListACL(group));
-                foreach (dynamic mtaACLEntry in mtaList)
+                MTAAcl[] mtaentires = MTAShared.GetArrayFromTable(MTAServer.AclGroupListACL(group), "acl");
+                ACLEntry[] entries = new ACLEntry[mtaentires.Length];
+                for (int i = 0; i < mtaentires.Length; i++)
                 {
-                    ACLEntry aclEntry = new ACLEntry((MTAAcl) mtaACLEntry);
-                    if (aclEntry != null && aclEntry is ACLEntry)
-                    {
-                        list.Add(aclEntry);
-                    }
+                    entries[i] = new ACLEntry(mtaentires[i]);
                 }
-
-                return list;
+                return entries;
             }
         }
 
         /// <summary>
-        /// Retrieve a list of all ACL objects in this group
+        /// Get an array of all ACL objects in this group
         /// </summary>
-        public List<IACLObject> Objects
+        public ACLObject[] Objects
         {
             get
             {
-                List<IACLObject> list = new List<IACLObject>();
-                List<dynamic> mtaList = MTAShared.GetListFromTable(MTAServer.AclGroupListObjects(group));
-                foreach (dynamic mtaACLObject in mtaList)
+                dynamic[] objects = MTAShared.GetArrayFromTable(MTAServer.AclGroupListObjects(group), "account");
+                ACLObject[] entries = new ACLObject[objects.Length];
+                for (int i = 0; i < objects.Length; i++)
                 {
                     //TODO: Once accounts and resources have been added, cast the objects to their respecive classes
+                    //entries[i] = new ACLObject((ACLObject)mtaentires[i]);
                 }
-
-                return list;
+                return entries;
             }
         }
 
