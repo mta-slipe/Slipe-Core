@@ -117,6 +117,8 @@ namespace ServerTest
             marker.Icon = MarkerIconEnum.ARROW;
             marker.Target = Vector3.Zero;
 
+            Water water = new Water(new Vector3(3, 13, 5), new Vector3(-7, -10, 4), new Vector3(-3, 29, 4), new Vector3(20, -7, 4));
+
             // Console.WriteLine(File.ReadAllText("meta.xml"));
         }
     }

@@ -16,8 +16,9 @@ namespace ClientTest
         {
             new ElementManager(new ElementHelper());
 
-            new SWATRope(Player.Local.UpVector * new Vector3(0, 0, 10), 10);
-            World.Instance.Weather = new Weather(WeatherEnum.EXTRASUNNYSMOGLA);
+            new SWATRope(Player.Local.Position + new Vector3(0, 0, 5), 5000);
+            World.Instance.Weather = new Weather(WeatherEnum.SUNNYCOUNTRYSIDE);
+            World.Instance.GetGarage(GarageEnum.PROPERTYPALOMINOCREEK).Open = true;
 
             Pickup pickup = new Pickup(new Vector3(4, 24, 3), PickupTypeEnum.ARMOUR, 50);
             Debug.WriteLine(pickup.Ammo.ToString());

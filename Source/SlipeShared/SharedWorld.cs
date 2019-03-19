@@ -494,5 +494,62 @@ namespace Slipe.Shared
             }
         }
 
+        /// <summary>
+        /// Changes the water color of the GTA world.
+        /// </summary>
+        public Color WaterColor
+        {
+            get
+            {
+                Tuple<int, int, int, int> result = MTAShared.GetWaterColor();
+                return new Color((byte) result.Item1, (byte) result.Item2, (byte) result.Item3, (byte) result.Item4);
+            }
+            set
+            {
+                MTAShared.SetWaterColor(value.R, value.G, value.B, value.A);
+            }
+        }
+
+        /// <summary>
+        /// This function reset the water color of the GTA world to default.
+        /// </summary>
+        public bool ResetWaterColor()
+        {
+            return MTAShared.ResetWaterColor();
+        }
+
+        /// <summary>
+        /// Get or sets the wave height to the desired value, the default is 0.
+        /// </summary>
+        public float WaveHeight
+        {
+            get
+            {
+                return MTAShared.GetWaveHeight();
+            }
+            set
+            {
+                MTAShared.SetWaveHeight(value);
+            }
+        }
+
+        /// <summary>
+        /// Sets the height of all the water in the game world.
+        /// </summary>
+        public bool SetWaterLevel(float level, bool includeWaterFeatures = true, bool includeWaterElements = true)
+        {
+            return MTAShared.SetWaterLevel(level, includeWaterFeatures, includeWaterElements);
+        }
+
+        /// <summary>
+        /// This function resets the water of the GTA world back to its default level. Water elements are not affected.
+        /// </summary>
+        public bool ResetWaterLevel()
+        {
+            return MTAShared.ResetWaterLevel();
+        }
+
+
+
     }
 }

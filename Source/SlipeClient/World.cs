@@ -218,5 +218,28 @@ namespace Slipe.Client
                 MTAClient.SetBirdsEnabled(value);
             }
         }
+
+        /// <summary>
+        /// This function allows you to retrieve the water level from a certain location. 
+        /// </summary>
+        public float GetWaterLevelAtPosition(Vector3 position, bool checkWaves = false)
+        {
+            return MTAClient.GetWaterLevel(position.X, position.Y, position.Z, checkWaves);
+        }
+
+        /// <summary>
+        /// This property changes the water rendering order.
+        /// </summary>
+        public bool WaterDrawnLast
+        {
+            get
+            {
+                return MTAClient.IsWaterDrawnLast();
+            }
+            set
+            {
+                MTAClient.SetWaterDrawnLast(value);
+            }
+        }
     }
 }

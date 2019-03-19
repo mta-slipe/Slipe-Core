@@ -467,7 +467,8 @@ namespace Slipe.MTADefinitions {
 		public static bool SetVehicleNitroLevel (MTAElement theVehicle, float level){ throw new NotImplementedException(); }
 		public static bool SetVehicleWindowOpen (MTAElement theVehicle, int window, bool open){ throw new NotImplementedException(); }
 		public static float GetWaterLevel (float posX, float posY, float posZ, bool bCheckWaves){ throw new NotImplementedException(); }
-		public static bool SetWaterDrawnLast (bool bEnabled){ throw new NotImplementedException(); }
+        public static float GetWaterLevel(MTAElement theWater) { throw new NotImplementedException(); }
+        public static bool SetWaterDrawnLast (bool bEnabled){ throw new NotImplementedException(); }
 		public static bool IsWaterDrawnLast (){ throw new NotImplementedException(); }
 		public static int GetWeaponClipAmmo (MTAElement theWeapon){ throw new NotImplementedException(); }
 		public static MTAElement CreateWeapon (string theType, float x, float y, float z){ throw new NotImplementedException(); }

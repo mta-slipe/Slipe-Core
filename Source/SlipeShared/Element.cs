@@ -43,7 +43,6 @@ namespace Slipe.Shared
         /// <summary>
         /// Create an element from a MTA element instance
         /// </summary>
-        /// <param name="mtaElement"></param>
         public Element(MTAElement mtaElement)
         {
             element = mtaElement;
