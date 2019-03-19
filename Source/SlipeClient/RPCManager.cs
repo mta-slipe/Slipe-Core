@@ -42,8 +42,6 @@ namespace Slipe.Client
         {
             RegisteredRPCs[key] = (object parameters) => {
                 Debug.WriteLine(MTAShared.ToJSON(parameters, true, "none"));
-                //CallbackType type = (CallbackType) Activator.CreateInstance(typeof(CallbackType), parameters);
-                //callback.Invoke(type);
                 /*
                 [[
                     callback(CallbackType(parameters))
