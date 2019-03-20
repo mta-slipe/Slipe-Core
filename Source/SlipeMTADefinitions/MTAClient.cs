@@ -425,13 +425,13 @@ namespace Slipe.MTADefinitions {
 		public static MTAElement GetResourceGUIElement (MTAResource theResource){ throw new NotImplementedException(); }
 		public static MTAElement CreateSearchLight (float startX, float startY, float startZ, float endX, float endY, float endZ, float startRadius, float endRadius, bool renderSpot){ throw new NotImplementedException(); }
 		public static Tuple<float, float, float> GetSearchLightEndPosition (MTAElement theSearchLight){ throw new NotImplementedException(); }
-		public static MTAElement SetSearchLightEndPosition (MTAElement theSearchLight, float endX, float endY, float endZ){ throw new NotImplementedException(); }
-		public static MTAElement GetSearchLightEndRadius (MTAElement theSearchLight){ throw new NotImplementedException(); }
-		public static MTAElement GetSearchLightStartRadius (MTAElement theSearchLight){ throw new NotImplementedException(); }
-		public static MTAElement GetSearchLightStartPosition (MTAElement theSearchLight){ throw new NotImplementedException(); }
-		public static MTAElement SetSearchLightEndRadius (MTAElement theSearchlight, float endRadius){ throw new NotImplementedException(); }
-		public static MTAElement SetSearchLightStartRadius (MTAElement theSearchlight, float startRadius){ throw new NotImplementedException(); }
-		public static MTAElement SetSearchLightStartPosition (MTAElement theSearchLight, float startX, float startY, float startZ){ throw new NotImplementedException(); }
+		public static bool SetSearchLightEndPosition (MTAElement theSearchLight, float endX, float endY, float endZ){ throw new NotImplementedException(); }
+		public static float GetSearchLightEndRadius (MTAElement theSearchLight){ throw new NotImplementedException(); }
+		public static float GetSearchLightStartRadius (MTAElement theSearchLight){ throw new NotImplementedException(); }
+		public static Tuple<float, float, float> GetSearchLightStartPosition (MTAElement theSearchLight){ throw new NotImplementedException(); }
+		public static bool SetSearchLightEndRadius (MTAElement theSearchlight, float endRadius){ throw new NotImplementedException(); }
+		public static bool SetSearchLightStartRadius (MTAElement theSearchlight, float startRadius){ throw new NotImplementedException(); }
+		public static bool SetSearchLightStartPosition (MTAElement theSearchLight, float startX, float startY, float startZ){ throw new NotImplementedException(); }
 		public static bool CreateTrayNotification (string notificationText, string iconType, bool useSound){ throw new NotImplementedException(); }
 		public static bool DownloadFile (string fileName){ throw new NotImplementedException(); }
 		public static dynamic GetLocalization (){ throw new NotImplementedException(); }
