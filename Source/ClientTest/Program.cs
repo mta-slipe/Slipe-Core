@@ -1,5 +1,6 @@
 ﻿using Slipe.Client;
 using Slipe.Client.Javascript;
+using Slipe.Client.Enums;
 using Slipe.Shared;
 using RPCDefinitions;
 using System;
@@ -39,6 +40,8 @@ namespace ClientTest
             //});
             RPCManager.Instance.RegisterRPC<TestRPC>("testRPC", HandleTestRPC);
             RPCManager.Instance.TriggerRPC("onPlayerReady", new EmptyOutgoingRPC());
+
+            Light l = new Light(LightTypeEnum.SPOT, Player.Local.Position, 4, Color.White, Player.Local.ForwardVector, true);
         }
 
         public void HandleTestRPC(TestRPC arguments)

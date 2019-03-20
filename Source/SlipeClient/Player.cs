@@ -11,6 +11,8 @@ namespace Slipe.Client
     /// </summary>
     public class Player : SharedPlayer
     {
+        private static Player localPlayer;
+
         /// <summary>
         /// Get the team of a player
         /// </summary>
@@ -30,7 +32,11 @@ namespace Slipe.Client
         {
             get
             {
-                return new Player(MTAClient.GetLocalPlayer());
+                if(localPlayer == null)
+                {
+                    localPlayer = new Player(MTAClient.GetLocalPlayer());
+                }
+                return localPlayer;
             }
         }
 
