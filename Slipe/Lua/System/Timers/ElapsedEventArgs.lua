@@ -8,7 +8,8 @@ local getSignalTime, __ctor__
 __ctor__ = function (this, low, high)
     System.base(this).__ctor__(this)
     --local fileTime = System.toInt64(bitOr(bitLShift(high, 32), bitAnd(low, 0xffffffff)))
-    this.signalTime = System.DateTime(getRealTime().timestamp * 10000 * 1000)--System.DateTime.FromFileTime(fileTime)
+    local res = getRealTime()
+    this.signalTime = System.DateTime(res.year + 1900, res.month, res.monthday, res.hour, res.minute, res.second)--System.DateTime.FromFileTime(fileTime)
 end
 
 getSignalTime = function (this)

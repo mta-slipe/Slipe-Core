@@ -477,6 +477,10 @@ end,
 	GetListFromTable = function(table, listType) return System.listFromTable(table, listType) end,
 	GetArrayFromTable = function(table, arrayType) return System.arrayFromTable(table, arrayType) end,
 	GetDictionaryFromTable = function(table, tKey, tValue) return System.dictionaryFromTable(table, tKey, tValue) end,
+	GetDateTimeFromSecondStamp = function(seconds) 
+		local ts = getRealTime(seconds)
+		return System.DateTime(ts.year + 1900, ts.month, ts.monthday, ts.hour, ts.minute, ts.second)
+	end,
 })
 System.define("Slipe.MTADefinitions.MTAException", {
   __tostring = function()

@@ -1,4 +1,5 @@
 using System;
+using System.Xml;
 
 namespace Slipe.MTADefinitions {
 	public class MTAServer {
@@ -174,10 +175,10 @@ namespace Slipe.MTADefinitions {
 		public static bool SetPlayerWantedLevel (MTAElement thePlayer, int stars){ throw new NotImplementedException(); }
 		public static MTAResource CreateResource (string resourceName, string organizationalDir){ throw new NotImplementedException(); }
 		public static MTAResource CopyResource (MTAResource theResource, string newResourceName, string organizationalDir){ throw new NotImplementedException(); }
-		public static MTAElement AddResourceConfig (string filePath, string filetype){ throw new NotImplementedException(); }
+		public static XmlNode AddResourceConfig (string filePath, string filetype){ throw new NotImplementedException(); }
 		public static bool DeleteResource (string resourceName){ throw new NotImplementedException(); }
 		public static bool CallRemote (string host, string queueName, int connectionAttempts, int connectTimeout, string resourceName, string functionName, dynamic callbackFunction){ throw new NotImplementedException(); }
-		public static MTAElement AddResourceMap (string filePath, int dimension){ throw new NotImplementedException(); }
+		public static XmlNode AddResourceMap (string filePath, int dimension){ throw new NotImplementedException(); }
 		public static dynamic GetResourceACLRequests (MTAResource theResource){ throw new NotImplementedException(); }
 		public static string GetResourceInfo (MTAResource theResource, string attribute){ throw new NotImplementedException(); }
 		public static int GetResourceLastStartTime (MTAResource theResource){ throw new NotImplementedException(); }

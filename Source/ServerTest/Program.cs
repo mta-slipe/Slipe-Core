@@ -95,6 +95,8 @@ namespace ServerTest
                 }
             }
 
+            Console.WriteLine(Resource.This.LoadTime.ToString());
+
             // Console.WriteLine(File.ReadAllText("meta.xml"));
         }
     }

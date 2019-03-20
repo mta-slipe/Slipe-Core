@@ -11,7 +11,7 @@ namespace Slipe.Server
     /// <summary>
     /// The account class represents a player's server account. 
     /// </summary>
-    public class Account : ACLObject, IACLObject
+    public class Account : IACLObject
     {
         private MTAAccount _account;
 
@@ -274,12 +274,28 @@ namespace Slipe.Server
         /// <summary>
         /// Returns the identifiable string user.{name}
         /// </summary>
-        public override string ACLIdentifier
+        public string ACLIdentifier
         {
             get
             {
                 return "user." + Name;
             }
+        }
+
+        /// <summary>
+        /// Check if the object has access to a given action
+        /// </summary>
+        public bool HasPermissionTo(string action, bool defaultPermission = true)
+        {
+            return MTAServer.HasObjectPermissionTo(ACLIdentifier, action, defaultPermission);
+        }
+
+        /// <summary>
+        /// Check if the object is in a certain ACL group
+        /// </summary>
+        public bool IsInACLGroup(ACLGroup group)
+        {
+            return MTAServer.IsObjectInACLGroup(ACLIdentifier, group.ACL);
         }
     }
 }
