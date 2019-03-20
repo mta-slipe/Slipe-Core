@@ -79,7 +79,7 @@ System.define("Slipe.MTADefinitions.MTAShared", {
 	SetElementInterior = setElementInterior,
 	GetEventHandlers = function(...) local results = {getEventHandlers(...)} if results[1] == false then System.throw(Slipe.MTADefinitions.MTAException()) return end return unpack(results) end,
 	AddEvent = addEvent,
-	AddEventHandler = function(event, src, handlerName, propagate, priorty) local splits = split(handlerName, ".") local result = _G for _, split in ipairs(splits) do result = result[split] end addEventHandler(event, src, function(...) result(event, source, ...) end, propagate, priorty) end,
+	AddEventHandler = function(event, src, handlerName, propagate, priorty) local splits = split(handlerName, ".") local result = _G for _, split in ipairs(splits) do result = result[split] end addEventHandler(event, src, function(...) result(event, client or source, ...) end, propagate, priorty) end,
 	SetElementParent = setElementParent,
 	TriggerEvent = triggerEvent,
 	FileDelete = fileDelete,

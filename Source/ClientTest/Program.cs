@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Numerics;
 using Slipe.Shared.Enums;
 using Slipe.Shared.Structs;
+using Slipe.Shared.RPC;
 
 namespace ClientTest
 {
@@ -37,6 +38,7 @@ namespace ClientTest
             //    Debug.WriteLine("Handling testRPC, name: {0}, x: {1}", arguments.name, arguments.x);
             //});
             RPCManager.Instance.RegisterRPC<TestRPC>("testRPC", HandleTestRPC);
+            RPCManager.Instance.TriggerRPC("onPlayerReady", new EmptyOutgoingRPC());
         }
 
         public void HandleTestRPC(TestRPC arguments)

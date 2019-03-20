@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Slipe.Shared.RPC
 {
-    class SingleElementIncomingRPC : IRPC
+    public class SingleElementIncomingRPC : IRPC
     {
         public Element element;
 

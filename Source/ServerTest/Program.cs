@@ -117,6 +117,11 @@ namespace ServerTest
                 }
             }
 
+            RPCManager.Instance.RegisterRPC<EmptyIncomingRPC>("onPlayerReady", (Player player, EmptyIncomingRPC rpc) =>
+            {
+                Console.WriteLine("{0} has sent the ready event", player.Name);
+            });
+
             // Console.WriteLine(File.ReadAllText("meta.xml"));
         }
     }

@@ -34,8 +34,9 @@ namespace Slipe.Server
             {
                 if (RegisteredRPCs.ContainsKey(eventName))
                 {
-                    Player element = (Player) ElementManager.Instance.GetElement(source);
-                    RegisteredRPCs[eventName].Invoke(element, p1);
+                    Element element = ElementManager.Instance.GetElement(source);
+                    Player player = (Player)element;
+                    RegisteredRPCs[eventName].Invoke(player, p1);
                 }
             };
         }
@@ -46,8 +47,11 @@ namespace Slipe.Server
         public void RegisterRPC<CallbackType>(string key, Action<Player, CallbackType> callback)
         {
             RegisteredRPCs[key] = (Player player, object parameters) => {
-                CallbackType type = (CallbackType)Activator.CreateInstance(typeof(CallbackType), parameters);
-                callback.Invoke(player, type);
+                /*
+                [[
+                    callback(player, CallbackType(parameters))
+                ]]
+                 */
             };
             MTAShared.AddEvent(key, true);
             Element.Root.AddEventHandler(key);
