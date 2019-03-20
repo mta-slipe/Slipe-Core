@@ -102,18 +102,11 @@ namespace Slipe.Server
         /// <summary>
         /// Get an array of all ACL objects in this group
         /// </summary>
-        public ACLObject[] Objects
+        public IACLObject[] Objects
         {
             get
             {
-                dynamic[] objects = MTAShared.GetArrayFromTable(MTAServer.AclGroupListObjects(group), "account");
-                ACLObject[] entries = new ACLObject[objects.Length];
-                for (int i = 0; i < objects.Length; i++)
-                {
-                    //TODO: Once accounts and resources have been added, cast the objects to their respecive classes
-                    //entries[i] = new ACLObject((ACLObject)mtaentires[i]);
-                }
-                return entries;
+                return MTAShared.GetArrayFromTable(MTAServer.AclGroupListObjects(group), "acl-object");
             }
         }
 

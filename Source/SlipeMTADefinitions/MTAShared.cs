@@ -1,4 +1,5 @@
 using System;
+using System.Xml;
 
 namespace Slipe.MTADefinitions {
 	public class MTAShared {
@@ -194,7 +195,7 @@ namespace Slipe.MTADefinitions {
 		public static dynamic Call (MTAResource theResource, string theFunction){ throw new NotImplementedException(); }
 		public static bool FetchRemote (string URL, string queueName, int connectionAttempts, int connectTimeout, dynamic callbackFunction, string postData, bool postIsBinary){ throw new NotImplementedException(); }
 		public static MTAElement GetResourceDynamicElementRoot (MTAResource theResource){ throw new NotImplementedException(); }
-		public static MTAElement GetResourceConfig (string filePath){ throw new NotImplementedException(); }
+		public static XmlNode GetResourceConfig (string filePath){ throw new NotImplementedException(); }
 		public static MTAResource GetResourceFromName (string resourceName){ throw new NotImplementedException(); }
 		public static dynamic GetResourceExportedFunctions (MTAResource theResource){ throw new NotImplementedException(); }
 		public static string GetResourceName (MTAResource res){ throw new NotImplementedException(); }
@@ -463,9 +464,9 @@ namespace Slipe.MTADefinitions {
 		public static bool SetAircraftMaxHeight (float Height){ throw new NotImplementedException(); }
 		public static bool SetJetpackMaxHeight (float Height){ throw new NotImplementedException(); }
 		public static System.Collections.Generic.List<dynamic> GetListFromTable (dynamic table, string listType){ throw new NotImplementedException(); }
-
         public static dynamic[] GetArrayFromTable(dynamic table, string arrayType) { throw new NotImplementedException(); }
-
         public static System.Collections.Generic.Dictionary<dynamic, dynamic> GetDictionaryFromTable(dynamic table, string tKey, string tValue) { throw new NotImplementedException(); }
-	}
+        public static DateTime GetDateTimeFromSecondStamp(int seconds = 0) { throw new NotImplementedException(); }
+
+    }
 }

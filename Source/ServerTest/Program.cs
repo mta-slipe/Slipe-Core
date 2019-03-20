@@ -121,6 +121,7 @@ namespace ServerTest
             {
                 Console.WriteLine("{0} has sent the ready event", player.Name);
             });
+            Console.WriteLine(Resource.This.LoadTime.ToString());
 
             // Console.WriteLine(File.ReadAllText("meta.xml"));
         }
