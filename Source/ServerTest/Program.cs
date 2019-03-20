@@ -10,6 +10,7 @@ using System.IO;
 using System.Numerics;
 using RPCDefinitions;
 using System.Timers;
+using Slipe.Shared.RPC;
 
 namespace ServerTest
 {
@@ -78,12 +79,33 @@ namespace ServerTest
                 try
                 {
                     Player nano = (Player)Player.GetFromName("SAES>Nanobob");
+                    //nano.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
+
+                    RPCManager.Instance.TriggerRPC(nano, "testRPC", new BasicOutgoingRPC("Test rpc", 10, nano));
                 }
                 catch (NullElementException) { }
-                //nano.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
 
-                RPCManager.Instance.TriggerRPC("testRPC", new TestRPC("Test rpc", 10));
             };
+
+            try
+            {
+                Player player = (Player) Player.GetFromName("SAES>DezZolation");
+                Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponEnum.COLT45, 200);
+                pickup.Use(player);
+                Console.WriteLine(pickup.RespawnInterval.ToString());
+            }
+            catch(NullElementException)
+            {
+                Console.WriteLine("ha");
+            }
+
+            Blip blip2 = new Blip(new Vector3(0, 0, 0), BlipEnum.BURGERSHOT, Color.Red, 2);
+            Vector3 vect = blip2.ForwardVector;
+            Console.WriteLine(vect.ToString());
+
+            RadarArea area = new RadarArea(new Vector2(200, 200), new Vector2(400, 400), new Color(40, 120, 255));
+            Debug.WriteLine(area.Type);
+            area.Flashing = true;
 
             foreach(Account account in Account.All)
             {
