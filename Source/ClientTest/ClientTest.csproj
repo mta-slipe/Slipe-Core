@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="cd ..\..\ &amp;&amp; slipe compile" />
+    <Exec Command="cd ..\..\ &amp;&amp; slipe compile -client-only" />
   </Target>
 
 </Project>
