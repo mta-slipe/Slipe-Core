@@ -50,4 +50,8 @@ HttpResponseMessage.setRequestMessage = function(this, requestMessage)
 	this.requestMessage = requestMessage
 end
 
+HttpResponseMessage.getIsSuccessStatusCode = function(this)
+	return (this.statusCode >= 200 and this.statusCode <= 300)
+end
+
 System.define("System.Net.Http.HttpResponseMessage", HttpResponseMessage)

@@ -141,13 +141,7 @@ namespace ServerTest
                     new KeyValuePair<string, string>("TestKey2", "TestValue2"),
                 })
             );
-            Console.WriteLine("Post request status code: {0}", postResponse.StatusCode);
-
-            IEnumerable<KeyValuePair<string, string>> kvPairs = new List<KeyValuePair<string, string>>();
-            foreach(var kvPair in kvPairs)
-            {
-
-            }
+            Console.WriteLine("Post request status code: {0}, sucess: {1}", postResponse.StatusCode, postResponse.IsSuccessStatusCode);
         }
 
         private async Task TestMethod()
