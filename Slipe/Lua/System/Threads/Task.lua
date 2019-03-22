@@ -380,6 +380,23 @@ Task = define("System.Task", {
 
     return t
   end,
+  Callback = function (callback)
+    local t = newWaitingTask()
+
+    local taskCallback = function(...)
+      local result = callback(...)
+      local success = trySetResult(t, result)
+    end
+
+    return t, taskCallback
+  end,
+  Instant = function (value)
+    local t = newWaitingTask()
+
+    trySetResult(t, value)
+
+    return t
+  end,
   ContinueWith = function (this, continuationAction)
     if continuationAction == nil then throw(ArgumentNullException("continuationAction")) end
     local t = newWaitingTask()
@@ -417,6 +434,16 @@ Task = define("System.Task", {
       return result
     end
     return awaitTask(this, task)
+  end,
+  Run = function(func, cancellationToken)
+    return System.async(function (async, this)
+      local returnValue = func(this)
+      if System.is(returnValue, System.Task) then
+        return returnValue
+      else
+        
+      end
+    end, nil, this)
   end
 })
 

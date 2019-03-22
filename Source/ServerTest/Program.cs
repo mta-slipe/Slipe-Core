@@ -11,6 +11,8 @@ using System.Numerics;
 using RPCDefinitions;
 using System.Timers;
 using Slipe.Shared.RPC;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace ServerTest
 {
@@ -124,6 +126,39 @@ namespace ServerTest
             Console.WriteLine(Resource.This.LoadTime.ToString());
 
             // Console.WriteLine(File.ReadAllText("meta.xml"));
+            Task.Run(TestMethod);
+            Console.WriteLine("10");
+            HttpTest();
+        }
+
+        private async Task HttpTest()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync("https://nanobob.net");
+            HttpResponseMessage postResponse = await client.PostAsync("https://nanobob.net/sendData/", new FormUrlEncodedContent(
+                new List<KeyValuePair<string, string>>() {
+                    new KeyValuePair<string, string>("TestKey", "TestValue"),
+                    new KeyValuePair<string, string>("TestKey2", "TestValue2"),
+                })
+            );
+            Console.WriteLine("Post request status code: {0}", postResponse.StatusCode);
+
+            IEnumerable<KeyValuePair<string, string>> kvPairs = new List<KeyValuePair<string, string>>();
+            foreach(var kvPair in kvPairs)
+            {
+
+            }
+        }
+
+        private async Task TestMethod()
+        {
+            Console.WriteLine(await TestMethodTwo());
+        }
+
+        private async Task<int> TestMethodTwo()
+        {
+            await Task.Delay(1000);
+            return 5;
         }
     }
 }

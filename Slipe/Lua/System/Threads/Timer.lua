@@ -25,8 +25,10 @@ local NotImplementedException = System.NotImplementedException
 local type = type
 
 local config = System.config
-local setTimeout = config.setTimeout
-local clearTimeout = config.clearTimeout
+local setTimeout = function(func, timeout) return 
+  setTimer(func, timeout < 50 and 50 or timeout, 1) 
+end --config.setTimeout
+local clearTimeout = killTimer --config.clearTimeout
 
 if setTimeout and clearTimeout then
 	System.post = function (fn) 

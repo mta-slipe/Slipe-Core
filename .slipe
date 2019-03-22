@@ -67,6 +67,11 @@
     "Numerics/Vector4.lua",
     "Component.lua",
     "Timers/ElapsedEventArgs.lua",
-    "Timers/Timer.lua"
+    "Timers/Timer.lua",
+    "Net/Http/HttpContent.lua",
+    "Net/Http/StringContent.lua",
+    "Net/Http/FormUrlEncodedContent.lua",
+    "Net/Http/HttpResponseMessage.lua",
+    "Net/Http/HttpClient.lua"
   ]
 }
