@@ -9,25 +9,13 @@ namespace Slipe.Server
     /// <summary>
     /// Class that handles methods on the global server
     /// </summary>
-    class Server
+    public static class Server
     {
-        private static Server instance;
-        public static Server Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new Server();
-                }
-                return instance;
-            }
-        }
 
         /// <summary>
         /// Get and set the server password
         /// </summary>
-        public string Password
+        public static string Password
         {
             get
             {
@@ -42,7 +30,7 @@ namespace Slipe.Server
         /// <summary>
         /// Get and set the player limit
         /// </summary>
-        public int MaxPlayers
+        public static int MaxPlayers
         {
             get
             {
@@ -57,7 +45,7 @@ namespace Slipe.Server
         /// <summary>
         /// Get and set the FPS limit
         /// </summary>
-        public int FPSLimit
+        public static int FPSLimit
         {
             get
             {
@@ -72,28 +60,28 @@ namespace Slipe.Server
         /// <summary>
         /// Get the current MTA version of this server
         /// </summary>
-        public string Version { get { return MTAShared.GetVersion(); } }
+        public static string Version { get { return MTAShared.GetVersion(); } }
 
         /// <summary>
         /// Get the port this server runs on
         /// </summary>
-        public int Port { get { return MTAServer.GetServerPort(); } }
+        public static int Port { get { return MTAServer.GetServerPort(); } }
 
         /// <summary>
         /// Get the HTTP port of this server
         /// </summary>
-        public int HTTPPort { get { return MTAServer.GetServerHttpPort(); } }
+        public static int HTTPPort { get { return MTAServer.GetServerHttpPort(); } }
 
         /// <summary>
         /// Get the name of this server
         /// </summary>
-        public string Name { get { return MTAServer.GetServerName(); } }
+        public static string Name { get { return MTAServer.GetServerName(); } }
 
 
         /// <summary>
         /// Enable or disable a certain known GTA glitch
         /// </summary>
-        public bool SetGlitchEnabled(Glitch glitch, bool enabled)
+        public static bool SetGlitchEnabled(Glitch glitch, bool enabled)
         {
             return MTAServer.SetGlitchEnabled(glitch.ToString("f").ToLower(), enabled);
         }
@@ -101,7 +89,7 @@ namespace Slipe.Server
         /// <summary>
         /// Check if a certain GTA glitch is enabled
         /// </summary>
-        public bool IsGlitchEnabled(Glitch glitch)
+        public static bool IsGlitchEnabled(Glitch glitch)
         {
             return MTAServer.IsGlitchEnabled(glitch.ToString("f").ToLower());
         }
@@ -109,7 +97,7 @@ namespace Slipe.Server
         /// <summary>
         /// Terminates the server process
         /// </summary>
-        public void Shutdown(string reason)
+        public static void Shutdown(string reason)
         {
             MTAServer.Shutdown(reason);
         }

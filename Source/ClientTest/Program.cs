@@ -43,6 +43,19 @@ namespace ClientTest
 
             Light l = new Light(LightTypeEnum.SPOT, Player.Local.Position, 4, Color.White, Player.Local.ForwardVector, true);
             SearchLight s = new SearchLight(Player.Local.Position + new Vector3(0, 0, 5), Player.Local.Position - new Vector3(0, 0, 1), 0, 10);
+
+            Vector2 start = new Vector2(100, 100);
+            Vector2 end = new Vector2(500, 500);
+            Vector2 end2 = new Vector2(100, 500);
+            Client.Renderer.OnRender += () =>
+            {
+                Client.Renderer.DrawLine(start, end, Color.Red);
+            };
+
+            Client.Renderer.OnRender += () =>
+            {
+                Client.Renderer.DrawLine(start, end2, Color.Red);
+            };
         }
 
         public void HandleTestRPC(TestRPC arguments)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Slipe.MTADefinitions;
 
 namespace Slipe.Shared
 {
@@ -28,6 +29,17 @@ namespace Slipe.Shared
         /// The alpha factor of the color
         /// </summary>
         public int A { get; set; }
+
+        /// <summary>
+        /// Returns the color as a hexadecimal integer
+        /// </summary>
+        public int Hex
+        {
+            get
+            {
+                return MTAShared.Tocolor(R, G, B, A);
+            }
+        }
 
 
         /// <summary>
