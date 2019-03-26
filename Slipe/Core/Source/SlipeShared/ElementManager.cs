@@ -57,6 +57,7 @@ namespace Slipe.Shared
         /// </summary>
         public void RegisterElement(Element element)
         {
+            Console.WriteLine("Registring element");
             elements.Add(element.MTAElement, element);
         }
 

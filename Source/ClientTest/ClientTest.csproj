@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SlipeClient\SlipeClient.csproj" />
+    <ProjectReference Include="..\..\Slipe\Core\Source\SlipeClient\SlipeClient.csproj" />
     <ProjectReference Include="..\RPCDefinitions\RPCDefinitions.csproj" />
   </ItemGroup>
 

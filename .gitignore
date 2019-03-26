@@ -1,5 +1,7 @@
 Dist/
 Slipe/Build/
+Build/
+InternalModules/
 meta.xml
 
 .vs/
@@ -15,3 +17,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+
+# The lines below are only meant to be here for the slipe core project
+Slipe/Core/Lua/Compiled/
+Slipe/Core/DLL

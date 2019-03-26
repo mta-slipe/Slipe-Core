@@ -2,14 +2,10 @@
   "compileTargets": {
     "client": [
       "RPCDefinitions",
-      "SlipeShared",
-      "SlipeClient",
       "ClientTest"
     ],
     "server": [
       "RPCDefinitions",
-      "SlipeShared",
-      "SlipeServer",
       "ServerTest"
     ]
   },
@@ -17,61 +13,99 @@
     "../../Source/ServerTest/bin/Debug/netcoreapp3.0/SlipeMTADefinitions.dll",
     "../../Source/ServerTest/bin/Debug/netcoreapp3.0/SlipeShared.dll",
     "../../Source/ServerTest/bin/Debug/netcoreapp3.0/SlipeServer.dll",
-    "../../Source/ServerTest/bin/Debug/netcoreapp3.0/RPCDefinitions.dll",
-    "../../Source/ClientTest/bin/Debug/netcoreapp3.0/SlipeClient.dll"
+    "../../Source/ClientTest/bin/Debug/netcoreapp3.0/SlipeClient.dll",
+    "../../Source/ServerTest/bin/Debug/netcoreapp3.0/RPCDefinitions.dll"
   ],
   "systemComponents": [
-    "Core.lua",
-    "Interfaces.lua",
-    "Exception.lua",
-    "Number.lua",
-    "Char.lua",
-    "String.lua",
-    "Boolean.lua",
-    "Delegate.lua",
-    "Enum.lua",
-    "TimeSpan.lua",
-    "DateTime.lua",
-    "Type.lua",
-    "Collections/EqualityComparer.lua",
-    "Collection.lua",
-    "Array.lua",
-    "Collections/List.lua",
-    "Collections/Dictionary.lua",
-    "Collections/Queue.lua",
-    "Collections/Stack.lua",
-    "Collections/HashSet.lua",
-    "Collections/LinkedList.lua",
-    "Collections/Linq.lua",
-    "Convert.lua",
-    "Math.lua",
-    "Random.lua",
-    "Text/StringBuilder.lua",
-    "Console.lua",
-    "Debug.lua",
-    "IO/File.lua",
-    "Reflection/Assembly.lua",
-    "Threads/Timer.lua",
-    "Threads/Thread.lua",
-    "Threads/Task.lua",
-    "Utilities.lua",
-    "SystemExtensions.lua",
-    "Numerics/HashCodeHelper.lua",
-    "Numerics/Complex.lua",
-    "Numerics/Matrix3x2.lua",
-    "Numerics/Matrix4x4.lua",
-    "Numerics/Plane.lua",
-    "Numerics/Quaternion.lua",
-    "Numerics/Vector2.lua",
-    "Numerics/Vector3.lua",
-    "Numerics/Vector4.lua",
-    "Component.lua",
-    "Timers/ElapsedEventArgs.lua",
-    "Timers/Timer.lua",
-    "Net/Http/HttpContent.lua",
-    "Net/Http/StringContent.lua",
-    "Net/Http/FormUrlEncodedContent.lua",
-    "Net/Http/HttpResponseMessage.lua",
-    "Net/Http/HttpClient.lua"
+  ],
+  "assetDirectories": [
+  ],
+  
+  "modules": [
+    {
+      "type": "internal",
+      "name": "SlipeCore",
+      "path": "Slipe/Core",
+      "dlls": [
+        "SlipeMTADefinitions.dll"
+      ],
+      "compileTargets": {
+        "client": [
+          "Source/SlipeShared",
+          "Source/SlipeClient"
+        ],
+        "server": [
+          "Source/SlipeShared",
+          "Source/SlipeServer"
+        ]
+      },
+      "systemComponents": [
+        "Core.lua",
+        "Interfaces.lua",
+        "Exception.lua",
+        "Number.lua",
+        "Char.lua",
+        "String.lua",
+        "Boolean.lua",
+        "Delegate.lua",
+        "Enum.lua",
+        "TimeSpan.lua",
+        "DateTime.lua",
+        "Type.lua",
+        "Collections/EqualityComparer.lua",
+        "Collection.lua",
+        "Array.lua",
+        "Collections/List.lua",
+        "Collections/Dictionary.lua",
+        "Collections/Queue.lua",
+        "Collections/Stack.lua",
+        "Collections/HashSet.lua",
+        "Collections/LinkedList.lua",
+        "Collections/Linq.lua",
+        "Convert.lua",
+        "Math.lua",
+        "Random.lua",
+        "Text/StringBuilder.lua",
+        "Console.lua",
+        "Debug.lua",
+        "IO/File.lua",
+        "Reflection/Assembly.lua",
+        "Threads/Timer.lua",
+        "Threads/Thread.lua",
+        "Threads/Task.lua",
+        "Utilities.lua",
+        "SystemExtensions.lua",
+        "Numerics/HashCodeHelper.lua",
+        "Numerics/Complex.lua",
+        "Numerics/Matrix3x2.lua",
+        "Numerics/Matrix4x4.lua",
+        "Numerics/Plane.lua",
+        "Numerics/Quaternion.lua",
+        "Numerics/Vector2.lua",
+        "Numerics/Vector3.lua",
+        "Numerics/Vector4.lua",
+        "Component.lua",
+        "Timers/ElapsedEventArgs.lua",
+        "Timers/Timer.lua",
+        "Net/Http/HttpContent.lua",
+        "Net/Http/StringContent.lua",
+        "Net/Http/FormUrlEncodedContent.lua",
+        "Net/Http/HttpResponseMessage.lua",
+        "Net/Http/HttpClient.lua"
+      ],
+      "backingLua": [
+        "shared.lua",
+        "server.lua",
+        "client.lua"
+      ],
+      "assetDirectories": [
+
+      ]
+    },
+    {
+      "type": "external",
+      "name": "RuntimeInspector",
+      "path": "Modules/RuntimeInspector"
+    }
   ]
 }
