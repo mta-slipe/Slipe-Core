@@ -65,7 +65,7 @@ namespace Slipe.Client.Dx
         {
             StartPosition = startPos;
             EndPosition = endPos;
-            relativeEndPosition = startPos - endPos;
+            relativeEndPosition = endPos - startPos;
             Color = color;
             Width = width;
             PostGUI = postGUI;
@@ -112,14 +112,9 @@ namespace Slipe.Client.Dx
 
         protected void Update()
         {
-            // TODO FIX ROTATION WITH ELEMENT
             StartPosition = attachElement.Position + AttachOffset;
-            if (RotateAlong)
-            {
-                EndPosition = StartPosition + relativeEndPosition;
-                Matrix4x4 m = Matrix4x4.CreateFromAxisAngle(EndPosition, (float) (0.5f * Math.PI));
-                EndPosition = m.Translation;
-            }
+            if(RotateAlong)
+                EndPosition = Vector3.Transform(relativeEndPosition, attachElement.Matrix * Matrix4x4.CreateTranslation(AttachOffset));
             else
                 EndPosition = StartPosition + relativeEndPosition;
         }

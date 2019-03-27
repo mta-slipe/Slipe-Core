@@ -53,7 +53,7 @@ namespace ClientTest
             DxText text = new DxText("Bob is a scuffed Programmer", end);
 
             Vector3 lineStart = Player.Local.Position;
-            Vector3 lineEnd = lineStart - new Vector3(3, 3, 3);
+            Vector3 lineEnd = lineStart + new Vector3(2, 2, 2);
             Dx3DLine dine = new Dx3DLine(lineStart, lineEnd);
             dine.AttachTo(Player.Local);
             dine.RotateAlong = true;
