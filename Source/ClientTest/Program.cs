@@ -43,7 +43,8 @@ namespace ClientTest
             RPCManager.Instance.TriggerRPC("onPlayerReady", new EmptyOutgoingRPC());
 
             Light l = new Light(LightTypeEnum.SPOT, Player.Local.Position, 4, Color.White, Player.Local.ForwardVector, true);
-            SearchLight s = new SearchLight(Player.Local.Position + new Vector3(0, 0, 5), Player.Local.Position - new Vector3(0, 0, 1), 0, 10);
+            SearchLight s = new SearchLight(new Vector3(0, 0, 5), new Vector3(0, 0, 0), 0, 10);
+            s.AttachTo(Player.Local, Matrix4x4.CreateTranslation(new Vector3(0, 0, 5)));
 
             Vector2 start = new Vector2(100, 100);
             Vector2 end = new Vector2(500, 500);
@@ -51,12 +52,12 @@ namespace ClientTest
             DxLine line = new DxLine(start, end, Color.Red);
             DxCircle circle = new DxCircle(end, 100, Color.Red);
             DxText text = new DxText("Bob is a scuffed Programmer", end);
+            text.AttachTo(Player.Local);
 
             Vector3 lineStart = Player.Local.Position;
             Vector3 lineEnd = lineStart + new Vector3(2, 2, 2);
             Dx3DLine dine = new Dx3DLine(lineStart, lineEnd);
             dine.AttachTo(Player.Local);
-            dine.RotateAlong = true;
 
             Client.Renderer.OnRender += () =>
             {
@@ -65,6 +66,8 @@ namespace ClientTest
                 text.Draw();
                 dine.Draw();
             };
+
+            
         }
 
         public void HandleTestRPC(TestRPC arguments)

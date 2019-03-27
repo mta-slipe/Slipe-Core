@@ -41,7 +41,7 @@ namespace Slipe.Client.Dx
         }
 
         /// <summary>
-        /// Get the heigh tof a GTA font
+        /// Get the height of a GTA font
         /// </summary>
         public static int GetHeight(StandardFontEnum font = StandardFontEnum.DEFAULT, float scale = 1)
         {

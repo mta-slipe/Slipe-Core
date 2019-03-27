@@ -48,6 +48,24 @@ namespace Slipe.Client
         }
 
         /// <summary>
+        /// Get the World position from a screen position
+        /// </summary>
+        public Vector3 WorldFromScreenPosition(Vector2 screenPosition, float depth)
+        {
+            Tuple<float, float, float> result = MTAClient.GetWorldFromScreenPosition(screenPosition.X, screenPosition.Y, depth);
+            return new Vector3(result.Item1, result.Item2, result.Item3);
+        }
+
+        /// <summary>
+        /// Get the screen position from a world position
+        /// </summary>
+        public Vector2 ScreenFromWorldPosition(Vector3 worldPosition, float edgeTolerance = 0.0f, bool relative = true)
+        {
+            Tuple<float, float> result = MTAClient.GetScreenFromWorldPosition(worldPosition.X, worldPosition.Y, worldPosition.Z, edgeTolerance, relative);
+            return new Vector2(result.Item1, result.Item2);
+        }
+
+        /// <summary>
         /// Handles player events on the root element
         /// </summary>
         public void HandleRootEvent(string eventName, Slipe.MTADefinitions.MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)

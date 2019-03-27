@@ -9,7 +9,7 @@ namespace Slipe.Client.Dx
     /// <summary>
     /// Class representing drawable objects
     /// </summary>
-    public abstract class Dx2DObject
+    public abstract class Dx2DObject : PreRenderAttachObject
     {
         /// <summary>
         /// The color that is used to draw this object
@@ -25,5 +25,13 @@ namespace Slipe.Client.Dx
         /// Boolean indicating whether this object is drawn before or after GUI's are drawn
         /// </summary>
         public bool PostGUI { get; set; }
+
+        /// <summary>
+        /// Updates this DxObject to the correct position on screen
+        /// </summary>
+        protected override void Update()
+        {
+            Position = Client.Renderer.ScreenFromWorldPosition(ToAttached.Position + Offset.Translation);
+        }
     }
 }

@@ -4,13 +4,14 @@ using System.Text;
 using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.CollisionShapes;
+using Slipe.Shared.Interfaces;
 
 namespace Slipe.Shared
 {
     /// <summary>
     /// Represents a physical element in the GTA world
     /// </summary>
-    public class PhysicalElement : Element
+    public class PhysicalElement : Element, IToAttachable
     {
         public PhysicalElement()
         {
@@ -102,8 +103,6 @@ namespace Slipe.Shared
                 if (roll < 0)
                     roll += 2 * Math.PI;
 
-                // Vector3 v = new Vector3((float) roll, (float) pitch, (float) yaw);
-                // Console.WriteLine(v.ToString());
                 MTAShared.SetElementRotation(element, (float)(yaw * (180.0 / Math.PI)), (float)(pitch * (180.0 / Math.PI)), (float)(roll * (180.0 / Math.PI)), "default", false);
             }
         }
