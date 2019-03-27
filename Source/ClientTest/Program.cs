@@ -9,6 +9,7 @@ using System.Numerics;
 using Slipe.Shared.Enums;
 using Slipe.Shared.Structs;
 using Slipe.Shared.RPC;
+using Slipe.Client.Dx;
 
 namespace ClientTest
 {
@@ -46,15 +47,23 @@ namespace ClientTest
 
             Vector2 start = new Vector2(100, 100);
             Vector2 end = new Vector2(500, 500);
-            Vector2 end2 = new Vector2(100, 500);
-            Client.Renderer.OnRender += () =>
-            {
-                Client.Renderer.DrawLine(start, end, Color.Red);
-            };
+
+            DxLine line = new DxLine(start, end, Color.Red);
+            DxCircle circle = new DxCircle(end, 100, Color.Red);
+            DxText text = new DxText("Bob is a scuffed Programmer", end);
+
+            Vector3 lineStart = Player.Local.Position;
+            Vector3 lineEnd = lineStart - new Vector3(3, 3, 3);
+            Dx3DLine dine = new Dx3DLine(lineStart, lineEnd);
+            dine.AttachTo(Player.Local);
+            dine.RotateAlong = true;
 
             Client.Renderer.OnRender += () =>
             {
-                Client.Renderer.DrawLine(start, end2, Color.Red);
+                line.Draw();
+                circle.Draw();
+                text.Draw();
+                dine.Draw();
             };
         }
 

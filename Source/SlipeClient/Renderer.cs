@@ -44,15 +44,7 @@ namespace Slipe.Client
             Element.OnRootEvent += HandleRootEvent;
             Element.Root.AddEventHandler("onClientRender");
             Element.Root.AddEventHandler("onClientPreRender");
-
-        }
-
-        /// <summary>
-        /// Draw a line between two points on screen
-        /// </summary>
-        public bool DrawLine(Vector2 start, Vector2 end, Color color, float width = 1.0f, bool postGui = false)
-        {
-            return MTAClient.DxDrawLine((int)start.X, (int)start.Y, (int)end.X, (int)end.Y, color.Hex, width, postGui);
+            Element.Root.AddEventHandler("onClientHUDRender");
         }
 
         /// <summary>
@@ -68,6 +60,9 @@ namespace Slipe.Client
                 case "onClientPreRender":
                     OnPreRender?.Invoke();
                     break;
+                case "OnClientHUDRender":
+                    OnHudRender?.Invoke();
+                    break;
             }
         }
 
@@ -75,5 +70,7 @@ namespace Slipe.Client
         public event OnRenderHandler OnRender;
         public delegate void OnPreRenderHandler();
         public event OnPreRenderHandler OnPreRender;
+        public delegate void OnHudRenderHandler();
+        public event OnHudRenderHandler OnHudRender;
     }
 }
