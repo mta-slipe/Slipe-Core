@@ -59,6 +59,14 @@ namespace Slipe.Client
         }
 
         /// <summary>
+        /// Create a searchlight attached to an element
+        /// </summary>
+        public SearchLight(IToAttachable attachTo, Vector3 relativeEnd, Matrix4x4 offset, float startRadius, float endRadius, bool renderSpot = true) : this(Vector3.Zero, relativeEnd, startRadius, endRadius, renderSpot)
+        {
+            AttachTo(attachTo, offset);
+        }
+
+        /// <summary>
         /// Get and set the start position of this searchlight
         /// </summary>
         public Vector3 StartPosition

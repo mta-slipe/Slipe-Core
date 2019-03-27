@@ -56,6 +56,14 @@ namespace Slipe.Client.Dx
         public Dx3DLine(Vector3 startPos, Vector3 endPos) : this(startPos, endPos, Color.Red) { }
 
         /// <summary>
+        /// Create a 3D line attached to a certain object
+        /// </summary>
+        public Dx3DLine(IToAttachable attachedTo, Vector3 relativeEndPos, Matrix4x4 offset) : this(Vector3.Zero, relativeEndPos)
+        {
+            AttachTo(attachedTo, offset);
+        }
+
+        /// <summary>
         /// Draw this line
         /// </summary>
         public bool Draw()

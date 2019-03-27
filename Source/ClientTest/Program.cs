@@ -44,7 +44,7 @@ namespace ClientTest
 
             Light l = new Light(LightTypeEnum.SPOT, Player.Local.Position, 4, Color.White, Player.Local.ForwardVector, true);
             SearchLight s = new SearchLight(new Vector3(0, 0, 5), new Vector3(0, 0, 0), 0, 10);
-            s.AttachTo(Player.Local, Matrix4x4.CreateTranslation(new Vector3(0, 0, 5)));
+            s.AttachTo(Player.Local);
 
             Vector2 start = new Vector2(100, 100);
             Vector2 end = new Vector2(500, 500);
