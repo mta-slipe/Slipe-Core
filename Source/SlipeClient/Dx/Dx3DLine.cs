@@ -66,7 +66,7 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// Draw this line
         /// </summary>
-        public bool Draw()
+        public virtual bool Draw()
         {
             return MTAClient.DxDrawLine3D(StartPosition.X, StartPosition.Y, StartPosition.Z, EndPosition.X, EndPosition.Y, EndPosition.Z, Color.Hex, Width, PostGUI);
         }

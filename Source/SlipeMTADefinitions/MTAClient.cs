@@ -134,16 +134,19 @@ namespace Slipe.MTADefinitions {
 		public static MTAElement DxCreateScreenSource (int width, int height){ throw new NotImplementedException(); }
 		public static Tuple<MTAElement, string> DxCreateShader (string filepath, float priority, float maxDistance, bool layered, string elementTypes){ throw new NotImplementedException(); }
 		public static MTAElement DxCreateTexture (string pixels, string textureFormat, bool mipmaps, string textureEdge){ throw new NotImplementedException(); }
-		public static bool DxDrawImageSection (float posX, float posY, float width, float height, float u, float v, float usize, float vsize, dynamic image, float rotation, float rotationCenterOffsetX, float rotationCenterOffsetY, int color, bool postGUI){ throw new NotImplementedException(); }
+        public static MTAElement DxCreateTexture(int width, int height, string textureFormat, string textureEdge, string textureType, int depth) { throw new NotImplementedException(); }
+        public static bool DxDrawImageSection (float posX, float posY, float width, float height, float u, float v, float usize, float vsize, dynamic image, float rotation, float rotationCenterOffsetX, float rotationCenterOffsetY, int color, bool postGUI){ throw new NotImplementedException(); }
 		public static bool DxDrawImage (float posX, float posY, float width, float height, dynamic image, float rotation, float rotationCenterOffsetX, float rotationCenterOffsetY, int color){ throw new NotImplementedException(); }
 		public static bool DxDrawCircle (float posX, float posY, float radius, float startAngle, float stopAngle, int theColor, int theCenterColor, int segments, int ratio, bool postGUI){ throw new NotImplementedException(); }
 		public static bool DxDrawLine (int startX, int startY, int endX, int endY, int color, float width, bool postGUI){ throw new NotImplementedException(); }
 		public static bool DxDrawLine3D (float startX, float startY, float startZ, float endX, float endY, float endZ, int color, float width, bool postGUI){ throw new NotImplementedException(); }
 		public static bool DxDrawMaterialLine3D (float startX, float startY, float startZ, float endX, float endY, float endZ, MTAElement material, float width, int color, bool postGUI, float faceTowardX, float faceTowardY, float faceTowardZ){ throw new NotImplementedException(); }
-		public static bool DxDrawMaterialPrimitive (MTAElement pType, dynamic material, bool postGUI, dynamic vertice1, dynamic vertice2){ throw new NotImplementedException(); }
+        public static bool DxDrawMaterialLine3D(float startX, float startY, float startZ, float endX, float endY, float endZ, MTAElement material, float width, int color, bool postGUI) { throw new NotImplementedException(); }
+        public static bool DxDrawMaterialPrimitive (MTAElement pType, dynamic material, bool postGUI, dynamic vertice1, dynamic vertice2){ throw new NotImplementedException(); }
 		public static bool DxDrawPrimitive (string pType, bool postGUI, dynamic vertice1, dynamic vertice2){ throw new NotImplementedException(); }
-		public static bool DxDrawMaterialSectionLine3D (float startX, float startY, float startZ, float endX, float endY, float endZ, float u, float v, float usize, float vsize, MTAElement material, int width, int color, bool postGUI, float faceTowardX, float faceTowardY, float faceTowardZ){ throw new NotImplementedException(); }
-		public static int DxGetFontHeight (float scale, dynamic font){ throw new NotImplementedException(); }
+		public static bool DxDrawMaterialSectionLine3D (float startX, float startY, float startZ, float endX, float endY, float endZ, float u, float v, float usize, float vsize, MTAElement material, float width, int color, bool postGUI, float faceTowardX, float faceTowardY, float faceTowardZ){ throw new NotImplementedException(); }
+        public static bool DxDrawMaterialSectionLine3D(float startX, float startY, float startZ, float endX, float endY, float endZ, float u, float v, float usize, float vsize, MTAElement material, float width, int color, bool postGUI) { throw new NotImplementedException(); }
+        public static int DxGetFontHeight (float scale, dynamic font){ throw new NotImplementedException(); }
 		public static bool DxDrawRectangle (float startX, float startY, float width, float height, int color, bool postGUI, bool subPixelPositioning){ throw new NotImplementedException(); }
 		public static Tuple<int, int> DxGetPixelsSize (string pixels){ throw new NotImplementedException(); }
 		public static string DxGetBlendMode (){ throw new NotImplementedException(); }
@@ -159,7 +162,8 @@ namespace Slipe.MTADefinitions {
 		public static bool DxSetPixelColor (string pixels, int x, int y, int r, int g, int b, int a){ throw new NotImplementedException(); }
 		public static bool DxSetShaderValue (MTAElement theShader, string parameterName, dynamic value){ throw new NotImplementedException(); }
 		public static bool DxSetRenderTarget (MTAElement renderTarget, bool clear){ throw new NotImplementedException(); }
-		public static bool DxUpdateScreenSource (MTAElement screenSource, bool resampleNow){ throw new NotImplementedException(); }
+        public static bool DxSetRenderTarget() { throw new NotImplementedException(); }
+        public static bool DxUpdateScreenSource (MTAElement screenSource, bool resampleNow){ throw new NotImplementedException(); }
 		public static bool DxSetTextureEdge (MTAElement theTexture, string textureEdge, int border){ throw new NotImplementedException(); }
 		public static bool DxSetTestMode (string testMode){ throw new NotImplementedException(); }
 		public static bool DxSetTexturePixels (int surfaceIndex, MTAElement texture, string pixels, int x, int y, int width, int height){ throw new NotImplementedException(); }

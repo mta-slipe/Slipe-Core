@@ -4,6 +4,8 @@ using System.Text;
 using Slipe.Shared;
 using System.Numerics;
 using Slipe.MTADefinitions;
+using Slipe.Client.Enums;
+using Slipe.Client.Dx;
 
 namespace Slipe.Client
 {
@@ -13,6 +15,7 @@ namespace Slipe.Client
     public class Renderer
     {
         protected static Renderer instance;
+        private DxStatus status;
 
         public static Renderer Instance
         {
@@ -32,6 +35,78 @@ namespace Slipe.Client
                 Tuple<float, float> size = MTAClient.GuiGetScreenSize();
                 return new Vector2(size.Item1, size.Item2);
             }
+        }
+
+        /// <summary>
+        /// Get and set the blendmode of the renderer
+        /// </summary>
+        public BlendMode BlendMode
+        {
+            get
+            {
+                return (BlendMode) Enum.Parse(typeof(BlendMode), MTAClient.DxGetBlendMode());
+            }
+            set
+            {
+                MTAClient.DxSetBlendMode(value.ToString());
+            }
+        }
+
+        /// <summary>
+        /// This function is used for testing scripts written using guiCreateFont, dxCreateFont, dxCreateShader and dxCreateRenderTarget.
+        /// </summary>
+        public TestMode TestMode
+        {
+            set
+            {
+                MTAClient.DxSetTestMode(value.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Gets information about various internal datum
+        /// </summary>
+        public DxStatus Status
+        {
+            get
+            {
+                if (status == null)
+                    UpdateStatus();
+                return status;
+            }
+        }
+
+        /// <summary>
+        /// Update the current status
+        /// </summary>
+        public void UpdateStatus()
+        {
+            status = new DxStatus(MTAClient.DxGetStatus());
+        }
+
+        /// <summary>
+        /// This function changes the drawing destination for the dx functions.
+        /// </summary>
+        public bool SetRenderTarget(RenderTarget target, bool clear = false)
+        {
+            return MTAClient.DxSetRenderTarget(target.MaterialElement, clear);
+        }
+
+        /// <summary>
+        /// Reverts the current rendertarget to the screen
+        /// </summary>
+        /// <returns></returns>
+        public bool RevertRenderTargetToScreen()
+        {
+            return MTAClient.DxSetRenderTarget();
+        }
+
+        /// <summary>
+        /// This function allows for the positioning of dxDraw calls to be automatically adjusted according to the client's aspect ratio setting. This lasts for a single execution of an event handler for one of the following events: onClientRender, onClientPreRender and onClientHUDRender. So the function has to be called every frame, just like dxDraws.
+        /// </summary>
+        public bool SetAspectRatioAdjustmentEnabled(bool enabled, float sourceRatio = 4/3)
+        {
+            return MTAClient.DxSetAspectRatioAdjustmentEnabled(enabled, sourceRatio);
         }
 
         /// <summary>

@@ -117,7 +117,7 @@ namespace Slipe.Client.Dx
             if (usePath)
                 return MTAClient.DxDrawImage(Position.X, Position.Y, Dimensions.X, Dimensions.Y, FilePath, Rotation, RotationCenter.X, RotationCenter.Y, Color.Hex);
             else
-                return MTAClient.DxDrawImage(Position.X, Position.Y, Dimensions.X, Dimensions.Y, Material, Rotation, RotationCenter.X, RotationCenter.Y, Color.Hex);
+                return MTAClient.DxDrawImage(Position.X, Position.Y, Dimensions.X, Dimensions.Y, Material?.MaterialElement, Rotation, RotationCenter.X, RotationCenter.Y, Color.Hex);
         }
     }
 }

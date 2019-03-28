@@ -66,7 +66,7 @@ namespace Slipe.Client.Dx
             if (usePath)
                 return MTAClient.DxDrawImageSection(Position.X, Position.Y, Dimensions.X, Dimensions.Y, SectionTopLeft.X, SectionTopLeft.Y, SectionDimensions.X, SectionDimensions.Y, FilePath, Rotation, RotationCenter.X, RotationCenter.Y, Color.Hex, PostGUI);
             else
-                return MTAClient.DxDrawImageSection(Position.X, Position.Y, Dimensions.X, Dimensions.Y, SectionTopLeft.X, SectionTopLeft.Y, SectionDimensions.X, SectionDimensions.Y, Material, Rotation, RotationCenter.X, RotationCenter.Y, Color.Hex, PostGUI);
+                return MTAClient.DxDrawImageSection(Position.X, Position.Y, Dimensions.X, Dimensions.Y, SectionTopLeft.X, SectionTopLeft.Y, SectionDimensions.X, SectionDimensions.Y, Material?.MaterialElement, Rotation, RotationCenter.X, RotationCenter.Y, Color.Hex, PostGUI);
         }
 
     }

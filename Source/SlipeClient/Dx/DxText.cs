@@ -177,6 +177,11 @@ namespace Slipe.Client.Dx
             else
                 return MTAClient.DxDrawText(Text, Position.X, Position.Y, BottomRight.X, BottomRight.Y, Color.Hex, Scale.X, Scale.Y, StandardFont.ToString().ToLower(), HorizontalAlignment.ToString().ToLower(), VerticalAlignment.ToString().ToLower(), Clip, WordBreak, PostGUI, ColorCoded, SubPixelPositioning, Rotation, RotationOrigin.X, RotationOrigin.Y);
         }
+
+        public static float GetTextWidth(string text, float scale = 1, StandardFontEnum font = StandardFontEnum.DEFAULT, bool colorCoded = false)
+        {
+            return MTAClient.DxGetTextWidth(text, scale, font.ToString().ToLower(), colorCoded);
+        }
     }
 
 
