@@ -663,19 +663,17 @@ local function toLuaTable(array)
   return t
 end
 
-local KeyValuePair
-KeyValuePair = System.defStc("System.KeyValuePair", {
-  __ctor__ = function (this, key, value)
-    this.Key, this.Value = key, value
+local KeyValuePairFn
+local KeyValuePair = {
+  __ctor__ = function (this, ...)
+    if select("#", ...) == 0 then
+      this.Key, this.Value = this.__genericTKey__:default(), this.__genericTValue__:default()
+    else
+      this.Key, this.Value = ...
+    end
   end,
-  __clone__ = function (this)
-    return setmetatable({ Key = this.Key, Value = this.Value }, KeyValuePair)
-  end,
-  default = function (T)
-    throw(System.NotSupportedException("KeyValuePair not support default(T)"))
-  end,
-  Create = function (key, value)
-    return setmetatable({ Key = key, Value = value }, KeyValuePair)
+  Create = function (key, value, TKey, TValue)
+    return setmetatable({ Key = key, Value = value }, KeyValuePairFn(TKey, TValue))
   end,
   Deconstruct = function (this)
     return this.Key, this.Value
@@ -697,7 +695,15 @@ KeyValuePair = System.defStc("System.KeyValuePair", {
     t[count] = "]"
     return tconcat(t)
   end
-})
+}
+
+KeyValuePairFn = System.defStc("System.KeyValuePair", function(TKey, TValue)
+  local cls = {
+    __genericTKey__ = TKey,
+    __genericTValue__ = TValue,
+  }
+  return cls
+end, KeyValuePair)
 
 local DictionaryEnumerator = {}
 DictionaryEnumerator.__index = DictionaryEnumerator
@@ -737,7 +743,7 @@ function Collection.dictionaryEnumerator(t, kind)
     dict = t,
     version = versions[t],
     kind = kind,
-    pair = kind == 0 and setmetatable({ Key = false, Value = false }, KeyValuePair) or nil
+    pair = kind == 0 and setmetatable({ Key = false, Value = false }, KeyValuePairFn(t.__genericTKey__, t.__genericTValue__)) or nil
   }
   setmetatable(en, DictionaryEnumerator)
   return en

@@ -9,7 +9,7 @@ __ctor__ = function (this, low, high)
     System.base(this).__ctor__(this)
     --local fileTime = System.toInt64(bitOr(bitLShift(high, 32), bitAnd(low, 0xffffffff)))
     local res = getRealTime()
-    this.signalTime = System.DateTime(res.year + 1900, res.month, res.monthday, res.hour, res.minute, res.second)--System.DateTime.FromFileTime(fileTime)
+    this.signalTime = System.DateTime(res.year + 1900, res.month + 1, res.monthday, res.hour, res.minute, res.second)--System.DateTime.FromFileTime(fileTime)
 end
 
 getSignalTime = function (this)

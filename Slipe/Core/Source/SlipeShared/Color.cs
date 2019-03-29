@@ -12,22 +12,42 @@ namespace Slipe.Shared
         /// <summary>
         /// The red factor of the color
         /// </summary>
-        public int R { get; set; }
+        private int r;
+        public int R
+        {
+            get { return r; }
+            set { r = value; }
+        }
 
         /// <summary>
         /// The green factor of the color
         /// </summary>
-        public int G { get; set; }
+        private int g;
+        public int G
+        {
+            get { return g; }
+            set { g = value; }
+        }
 
         /// <summary>
         /// The blue factor of the color
         /// </summary>
-        public int B { get; set; }
+        private int b;
+        public int B
+        {
+            get { return b; }
+            set { b = value; }
+        }
 
         /// <summary>
         /// The alpha factor of the color
         /// </summary>
-        public int A { get; set; }
+        private int a;
+        public int A
+        {
+            get { return a; }
+            set { a = value; }
+        }
 
 
         /// <summary>

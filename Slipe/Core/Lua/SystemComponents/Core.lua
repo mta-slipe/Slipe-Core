@@ -43,7 +43,9 @@ local zeroFn = function() return 0 end
 local equals = function(x, y) return x == y end
 local modules = {}
 local usings = {}
-local metadatas = {}
+local classes = {}
+local metadatas
+
 local Object, ValueType
 local isTrying = 0
 
@@ -356,7 +358,8 @@ System = {
   defInf = defInf,
   defStc = defStc,
   defEnum = defEnum,
-  global = global
+  global = global,
+  classes = classes
 }
 
 local System = System
@@ -1071,7 +1074,15 @@ debug.setmetatable(nil, {
       return a
     end
   end,
-  __add = emptyFn,
+  __add = function (a, b)
+    if a == nil then
+      if b == nil or type(b) == "number" then
+        return nil
+      end
+      return b
+    end
+    return nil
+  end,
   __sub = emptyFn,
   __mul = emptyFn,
   __div = emptyFn,
@@ -1212,8 +1223,9 @@ function System.namespace(name, f)
 end
 
 function System.init(namelist, conf)
-  local classes = {}
-  local count = 1
+  metadatas = {}
+
+  local count = #classes + 1
   for i = 1, #namelist do
     local name = namelist[i]
     local cls = assert(modules[name], name)()
@@ -1227,20 +1239,21 @@ function System.init(namelist, conf)
 		metadatas[i](global)
 	end
   if conf ~= nil then
-    System.entryPoint = conf.Main
+    local main = conf.Main
+    if main then
+      assert(not System.entryPoint)
+      System.entryPoint = main
+    end
   end
-	System.classes = classes
-	
-  modules = nil
-  usings = nil
-	metadatas = nil
 
-	namespace = nil
+  -- modules = {}
+  usings = {}
+	metadatas = nil
 	curCacheName = nil
-	defIn = nil
-  System.import = nil
-  System.namespace = nil
-	System.init = nil
 end
 
-System.config = config or {}
+System.config = config or {
+	time = function()
+		return getRealTime().timestamp
+	end
+}
