@@ -43,7 +43,7 @@ namespace Slipe.Server
             {
                 case "onPlayerJoin":
                     Player player = new Player(source);
-                    OnPlayerJoin(player);
+                    OnPlayerJoin?.Invoke(player);
                     break;
             }
         }

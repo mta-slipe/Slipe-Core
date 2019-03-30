@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Slipe.MTADefinitions;
 
 namespace Slipe.Shared
 {
@@ -47,6 +48,17 @@ namespace Slipe.Shared
         {
             get { return a; }
             set { a = value; }
+        }
+
+        /// <summary>
+        /// Returns the color as a hexadecimal integer
+        /// </summary>
+        public int Hex
+        {
+            get
+            {
+                return MTAShared.Tocolor(R, G, B, A);
+            }
         }
 
 

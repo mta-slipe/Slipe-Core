@@ -70,8 +70,6 @@ namespace Slipe.Shared
         /// </summary>
         public virtual void HandleEvent(string eventName, MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
-            Debug.WriteLine(eventName + " has been triggered");
-
             if (this == Root)
             {
                 OnRootEvent?.Invoke(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
