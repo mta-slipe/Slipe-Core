@@ -13,7 +13,6 @@ using System.Timers;
 using Slipe.Shared.RPC;
 using System.Net.Http;
 using System.Threading.Tasks;
-
 namespace ServerTest
 {
     class Program
@@ -65,7 +64,6 @@ namespace ServerTest
             }
 
 
-            Vehicle alpha = new Vehicle(VehicleModel.ALPHA, new Vector3(0, 10, 3));
 
             Element.Root.AddEventHandler("onVehicleDamage");
 
@@ -73,17 +71,16 @@ namespace ServerTest
             color = new Color(0xff00ffaa);
             color = new Color((uint) 0x000000ff);
             Debug.WriteLine("Color: {0}, {1}, {2}, {3}", color.R, color.G, color.B, color.A);
+
+            Vehicle alpha = new Vehicle(VehicleModel.ALPHA, new Vector3(0, 10, 3));
             // alpha.AddEventHandler("onVehicleDamage");
             alpha.OnDamage += (float loss) =>
             {
                 Console.WriteLine("Vehicle lost " + loss +" health");
-
                 try
                 {
                     Player nano = (Player)Player.GetFromName("SAES>Nanobob");
-                    //nano.Camera.Fade(CameraFade.OUT, new Color(0xff00aa));
-
-                    RPCManager.Instance.TriggerRPC(nano, "testRPC", new BasicOutgoingRPC("Test rpc", 10, nano));
+                    RPCManager.Instance.TriggerRPC(nano, "testRPC", new BasicOutgoingRPC("Vehicle damage", (int)loss, nano));
                 }
                 catch (NullElementException) { }
 
