@@ -10,11 +10,7 @@
     ]
   },
   "dlls": [
-    "../../Source/ServerTest/bin/Debug/netcoreapp3.0/SlipeMTADefinitions.dll",
-    "../../Source/ServerTest/bin/Debug/netcoreapp3.0/SlipeShared.dll",
-    "../../Source/ServerTest/bin/Debug/netcoreapp3.0/SlipeServer.dll",
-    "../../Source/ClientTest/bin/Debug/netcoreapp3.0/SlipeClient.dll",
-    "../../Source/ServerTest/bin/Debug/netcoreapp3.0/RPCDefinitions.dll"
+    
   ],
   "systemComponents": [
   ],

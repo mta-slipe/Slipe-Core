@@ -1247,7 +1247,7 @@ function System.init(namelist, conf)
   end
 
   -- modules = {}
-  usings = {}
+  -- usings = {}
 	metadatas = nil
 	curCacheName = nil
 end

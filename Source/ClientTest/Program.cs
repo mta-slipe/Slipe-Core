@@ -38,16 +38,16 @@ namespace ClientTest
             //RPCManager.Instance.RegisterRPC("testRPC", (TestRPCStruct arguments) => {
             //    Debug.WriteLine("Handling testRPC, name: {0}, x: {1}", arguments.name, arguments.x);
             //});
-            RPCManager.Instance.RegisterRPC<TestRPC>("testRPC", HandleTestRPC);
+            RPCManager.Instance.RegisterRPC<BasicIncomingRPC>("testRPC", HandleTestRPC);
             RPCManager.Instance.TriggerRPC("onPlayerReady", new EmptyOutgoingRPC());
 
             Light l = new Light(LightTypeEnum.SPOT, Player.Local.Position, 4, Color.White, Player.Local.ForwardVector, true);
             SearchLight s = new SearchLight(Player.Local.Position + new Vector3(0, 0, 5), Player.Local.Position - new Vector3(0, 0, 1), 0, 10);
         }
 
-        public void HandleTestRPC(TestRPC arguments)
+        public void HandleTestRPC(BasicIncomingRPC arguments)
         {
-            Debug.WriteLine("Handling testRPC, name: {0}, x: {1}", arguments.name, arguments.x);
+            Debug.WriteLine("Handling testRPC, name: {0}, x: {1}, player name: {2}", arguments.name, arguments.x, ((Player)arguments.element).Name);
         }
 
         public void OnCreated()

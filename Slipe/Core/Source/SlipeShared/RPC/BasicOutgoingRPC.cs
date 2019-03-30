@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Slipe.MTADefinitions;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,13 +9,13 @@ namespace Slipe.Shared.RPC
     {
         public string name;
         public int x;
-        public Element element;
+        public MTAElement element;
 
         public BasicOutgoingRPC(string name, int x, Element element)
         {
             this.name = name;
             this.x = x;
-            this.element = element;
+            this.element = element.MTAElement;
         }
     }
 }

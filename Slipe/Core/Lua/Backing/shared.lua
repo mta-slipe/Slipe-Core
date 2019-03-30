@@ -479,7 +479,7 @@ end,
 	GetDictionaryFromTable = function(table, tKey, tValue) return System.dictionaryFromTable(table, tKey, tValue) end,
 	GetDateTimeFromSecondStamp = function(seconds) 
 		local ts = getRealTime(seconds)
-		return System.DateTime(ts.year + 1900, ts.month, ts.monthday, ts.hour, ts.minute, ts.second)
+		return System.DateTime(ts.year + 1900, ts.month + 1, ts.monthday, ts.hour, ts.minute, ts.second)
 	end,
 })
 System.define("Slipe.MTADefinitions.MTAException", {
