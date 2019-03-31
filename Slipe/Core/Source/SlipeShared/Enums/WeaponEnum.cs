@@ -53,4 +53,24 @@ namespace Slipe.Shared.Enums
         INFRARED = 45,
         PARACHUTE = 46
     }
+
+    /// <summary>
+    /// Represents the slot of a weapon
+    /// </summary>
+    public enum WeaponSlot
+    {
+        Unarmed,
+        Melee,
+        Handgun,
+        Shotgun,
+        SMG,
+        Rifle,
+        Sniper,
+        Heavy,
+        Thrown,
+        Special,
+        Gift,
+        Parachute,
+        Detonator
+    }
 }

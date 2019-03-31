@@ -9,7 +9,7 @@ namespace Slipe.Shared
     /// <summary>
     /// Class representing a player on the server and the player ped
     /// </summary>
-    public class SharedPlayer: PhysicalElement
+    public class SharedPlayer: SharedPed
     {
         /// <summary>
         /// Creates or retrieves a player from an MTA player element
