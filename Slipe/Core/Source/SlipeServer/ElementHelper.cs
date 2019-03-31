@@ -29,7 +29,7 @@ namespace Slipe.Server
         /// <summary>
         /// Returns a list of all elements of type T
         /// </summary>
-        public static List<T> GetByType<T>() where T : Element
+        public static List<T> GetByType<T>(Element startAt) where T : Element
         {
             List<T> elements = new List<T>();
 
@@ -37,7 +37,7 @@ namespace Slipe.Server
             {
                 return elements;
             }
-            List<dynamic> mtaElements = MTAShared.GetListFromTable(MTAServer.GetElementsByType(ElementTypeNames[typeof(T)], null), "element");
+            List<dynamic> mtaElements = MTAShared.GetListFromTable(MTAServer.GetElementsByType(ElementTypeNames[typeof(T)], startAt.MTAElement), "element");
             foreach (dynamic mtaElement in mtaElements)
             {
                 Element element = ElementManager.Instance.GetElement((MTAElement)mtaElement);
@@ -49,7 +49,15 @@ namespace Slipe.Server
 
             return elements;
         }
-        
+
+        /// <summary>
+        /// Returns a list of all elements of type T
+        /// </summary>
+        public static List<T> GetByType<T>() where T : Element
+        {
+            return GetByType<T>(Element.Root);
+        }
+
         /// <summary>
         /// Creates an instance of an element given a certain type
         /// </summary>
@@ -77,8 +85,9 @@ namespace Slipe.Server
                     return new Marker(element);
                 case "water":
                     return new Water(element);
+                default:
+                    return new Element(element);
             }
-            return null;
         }
 
     }

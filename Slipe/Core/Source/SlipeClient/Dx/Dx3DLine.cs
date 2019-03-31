@@ -58,7 +58,7 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// Create a 3D line attached to a certain object
         /// </summary>
-        public Dx3DLine(IToAttachable attachedTo, Vector3 relativeEndPos, Matrix4x4 offset) : this(Vector3.Zero, relativeEndPos)
+        public Dx3DLine(PhysicalElement attachedTo, Vector3 relativeEndPos, Matrix4x4 offset) : this(Vector3.Zero, relativeEndPos)
         {
             AttachTo(attachedTo, offset);
         }

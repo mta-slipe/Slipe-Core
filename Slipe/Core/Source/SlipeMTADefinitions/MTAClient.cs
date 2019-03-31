@@ -15,7 +15,8 @@ namespace Slipe.MTADefinitions {
 		public static bool IsCursorShowing (){ throw new NotImplementedException(); }
 		public static bool ShowCursor (bool show, bool toggleControls){ throw new NotImplementedException(); }
 		public static dynamic GetElementsByType (string theType, MTAElement startat){ throw new NotImplementedException(); }
-		public static bool CancelEvent (){ throw new NotImplementedException(); }
+        public static dynamic GetElementsByType(string theType, MTAElement startat, bool streamedIn) { throw new NotImplementedException(); }
+        public static bool CancelEvent (){ throw new NotImplementedException(); }
 		public static bool CancelLatentEvent (int handle){ throw new NotImplementedException(); }
 		public static dynamic GetLatentEventHandles (){ throw new NotImplementedException(); }
 		public static dynamic GetLatentEventStatus (int handle){ throw new NotImplementedException(); }

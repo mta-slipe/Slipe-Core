@@ -11,8 +11,22 @@ namespace Slipe.Shared
     /// <summary>
     /// Represents a physical element in the GTA world
     /// </summary>
-    public class PhysicalElement : Element, IToAttachable
+    public class PhysicalElement : Element, IAttachable
     {
+        /// <summary>
+        /// This function is used to retrieve a list of all elements of specified type within a range of 3D coordinates.
+        /// </summary>
+        public static PhysicalElement[] GetWithinRange(Vector3 position, float range, string type = "")
+        {
+            MTAElement[] mtaElements = MTAShared.GetArrayFromTable(MTAShared.GetElementsWithinRange(position.X, position.Y, position.Z, range, type), "MTAElement");
+            PhysicalElement[] elements = new PhysicalElement[mtaElements.Length];
+            for (int i = 0; i < mtaElements.Length; i++)
+            {
+                elements[i] = new PhysicalElement(mtaElements[i]);
+            }
+            return elements;
+        }
+
         public PhysicalElement()
         {
         }
@@ -55,55 +69,17 @@ namespace Slipe.Shared
         }
 
         /// <summary>
-        /// Gets and sets teh rotation of the element in quaternions
+        /// Gets and sets the rotation of the element in quaternions
         /// </summary>
         public Quaternion QuaternionRotation
         {
             get
             {
-                // Default is XYZ
-                // Yaw = y-axis, Pitch = x-axis, Roll = z-axis
-                Tuple<float, float, float> rotation = MTAShared.GetElementRotation(element, "default");
-                float v1 = rotation.Item1 * (float)(Math.PI / 180.0);
-                float v2 = rotation.Item2 * (float)(Math.PI / 180.0);
-                float v3 = rotation.Item3 * (float)(Math.PI / 180.0);
-                return Quaternion.CreateFromYawPitchRoll(v1, v2, v3);
+                return NumericHelper.EulerToQuaternion(Rotation);
             }
             set
             {
-                float v1 = value.Z;
-                float v2 = value.X;
-                float v3 = value.Y;
-                float v4 = value.W;
-
-
-                double sinr_cosp = 2.0 * (v4 * v1 + v2 * v3);
-                double cosr_cosp = 1.0 - 2.0 * (v1 * v1 + v2 * v2);
-                double roll = Math.Atan2(sinr_cosp, cosr_cosp);
-
-
-                double sinp = 2.0 * (v4 * v2 - v3 * v1);
-                double pitch;
-                if (Math.Abs(sinp) >= 1)
-                    pitch = Math.Sign(sinp) > 0 ? Math.PI : -Math.PI;
-                else
-                    pitch = Math.Asin(sinp);
-
-
-                double siny_cosp = 2.0 * (v4 * v3 + v1 * v2);
-                double cosy_cosp = 1.0 - 2.0 * (v2 * v2 + v3 * v3);
-                double yaw = Math.Atan2(siny_cosp, cosy_cosp);
-
-                if (yaw < 0)
-                    yaw += 2 * Math.PI;
-
-                if (pitch < 0)
-                    pitch += 2 * Math.PI;
-
-                if (roll < 0)
-                    roll += 2 * Math.PI;
-
-                MTAShared.SetElementRotation(element, (float)(yaw * (180.0 / Math.PI)), (float)(pitch * (180.0 / Math.PI)), (float)(roll * (180.0 / Math.PI)), "default", false);
+                Rotation = NumericHelper.QuaternionToEuler(value);
             }
         }
 
@@ -256,6 +232,37 @@ namespace Slipe.Shared
         }
 
         /// <summary>
+        /// Gets and sets the current angular velocity of a specified, supported element.
+        /// </summary>
+        public Vector3 AngularVelocity
+        {
+            get
+            {
+                Tuple<float, float, float> velocity = MTAShared.GetElementAngularVelocity(element);
+                return new Vector3(velocity.Item1, velocity.Item2, velocity.Item3);
+            }
+            set
+            {
+                MTAShared.SetElementAngularVelocity(element, value.X, value.Y, value.Z);
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the angular velocity of the element in quaternions
+        /// </summary>
+        public Quaternion AngularQuaternionVelocity
+        {
+            get
+            {
+                return NumericHelper.EulerToQuaternion(AngularVelocity);
+            }
+            set
+            {
+                AngularVelocity = NumericHelper.QuaternionToEuler(value);
+            }
+        }
+
+        /// <summary>
         /// Gets and sets the model of this element
         /// </summary>
         public int Model
@@ -282,19 +289,169 @@ namespace Slipe.Shared
         }
 
         /// <summary>
-        /// Attaches this element to another element given a certain offset and rotation
+        /// Get and set if a specific element is set to have collisions disabled. An element without collisions does not interact with the physical environment and remains static.
         /// </summary>
-        public bool AttachTo(PhysicalElement element, Vector3 offset, Vector3 rotationOffset)
+        public bool CollisionsEnabled
         {
-            return MTAShared.AttachElements(this.element, element.element, offset.X, offset.Y, offset.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z);
+            get
+            {
+                return MTAShared.GetElementCollisionsEnabled(element);
+            }
+            set
+            {
+                MTAShared.SetElementCollisionsEnabled(element, value);
+            }
         }
 
         /// <summary>
-        /// Attaches this element to another element given a certain offset
+        /// Attach this attachable to a toAttachable using a matrix to describe the positional and rotational offset
         /// </summary>
-        public bool AttachTo(PhysicalElement element, Vector3 offset)
+        public void AttachTo(PhysicalElement toElement, Matrix4x4 offsetMatrix)
         {
-            return AttachTo(element, offset, new Vector3(0, 0, 0));
+            AttachTo(toElement, offsetMatrix.Translation, Quaternion.CreateFromRotationMatrix(offsetMatrix));
+        }
+
+        /// <summary>
+        /// Attach this attachable to a toAttachable with 2 vectors describing a position offset and a rotation offset
+        /// </summary>
+        public void AttachTo(PhysicalElement toElement, Vector3 positionOffset, Vector3 rotationOffset)
+        {
+            MTAShared.AttachElements(element, toElement.MTAElement, positionOffset.X, positionOffset.Y, positionOffset.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z);
+        }
+
+        /// <summary>
+        /// Attach this attachable to a toAttachable with a vector describing the position offset and a quaternion describing the rotation offset
+        /// </summary>
+        public void AttachTo(PhysicalElement toElement, Vector3 positionOffset, Quaternion rotationOffset)
+        {
+            AttachTo(toElement, positionOffset, NumericHelper.QuaternionToEuler(rotationOffset));
+        }
+
+        /// <summary>
+        /// Attach this attachable to a toAttachable without any offset
+        /// </summary>
+        public void AttachTo(PhysicalElement toElement)
+        {
+            AttachTo(toElement, Vector3.Zero, Vector3.Zero);
+        }
+
+        /// <summary>
+        /// Detach this attachable
+        /// </summary>
+        public void Detach()
+        {
+            MTAShared.DetachElements(element, null);
+        }
+
+        /// <summary>
+        /// A matrix describing the offset with which this attachable is attached
+        /// </summary>
+        public Matrix4x4 Offset
+        {
+            get
+            {
+                Tuple<float, float, float, float, float, float> offsets = MTAShared.GetElementAttachedOffsets(element);
+                Matrix4x4 m = Matrix4x4.CreateFromQuaternion(NumericHelper.EulerToQuaternion(new Vector3(offsets.Item4, offsets.Item5, offsets.Item6)));
+                m.Translation = new Vector3(offsets.Item1, offsets.Item2, offsets.Item3);
+                return m;
+            }
+            set
+            {
+                Vector3 translationOffset = value.Translation;
+                Vector3 rotationOffset = NumericHelper.QuaternionToEuler(Quaternion.CreateFromRotationMatrix(value));
+                MTAShared.SetElementAttachedOffsets(element, translationOffset.X, translationOffset.Y, translationOffset.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z);
+            }
+        }
+
+        /// <summary>
+        /// Get the toAttached to which this attachable is attached
+        /// </summary>
+        public PhysicalElement ToAttached
+        {
+            get
+            {
+                return (PhysicalElement) ElementManager.Instance.GetElement(MTAShared.GetElementAttachedTo(element));
+            }
+        }
+
+        /// <summary>
+        /// Get if this attachable is attached to a ToAttachable
+        /// </summary>
+        public bool IsAttached
+        {
+            get
+            {
+                return MTAShared.IsElementAttached(element);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the associated LOW LOD element
+        /// </summary>
+        public Element LowLODElement
+        {
+            get
+            {
+                return ElementManager.Instance.GetElement(MTAShared.GetLowLODElement(element));
+            }
+            set
+            {
+                MTAShared.SetLowLODElement(element, value.MTAElement);
+            }
+        }
+
+        /// <summary>
+        /// Get or set if this element is double sided
+        /// </summary>
+        public bool DoubleSided
+        {
+            get
+            {
+                return MTAShared.IsElementDoubleSided(element);
+            }
+            set
+            {
+                MTAShared.SetElementDoubleSided(element, value);
+            }
+        }
+
+        /// <summary>
+        /// Get if an element is submerged in water
+        /// </summary>
+        public bool IsInWater
+        {
+            get
+            {
+                return MTAShared.IsElementInWater(element);
+            }
+        }
+
+        /// <summary>
+        /// Get if this is a Low LOD element
+        /// </summary>
+        public bool IsLowLOD
+        {
+            get
+            {
+                return MTAShared.IsElementLowLOD(element);
+            }
+        }
+
+        /// <summary>
+        /// This function is used to determine if an element is within a collision shape
+        /// Please note that this function doesn't verify whether element is in the same dimension and interior, additional checks could be implemented manually if they are needed.
+        /// </summary>
+        public bool IsWithinCollisionShape(CollisionShape collisionShape)
+        {
+            return MTAShared.IsElementWithinColShape(element, collisionShape.MTAElement);
+        }
+
+        /// <summary>
+        /// This function is used to determine if this element is within a marker.
+        /// </summary>
+        public bool IsWithinMarker(SharedMarker marker)
+        {
+            return MTAShared.IsElementWithinMarker(element, marker.MTAElement);
         }
     }
 }

@@ -52,7 +52,7 @@ namespace ServerTest
             dildo.Move(5000, new Vector3(3, 3, 10), Vector3.Zero, EasingFunctionEnum.COSINECURVE, 0.4f, 0.5f);
             Console.WriteLine("{0} is a pleb", "SAES>Dezzolation");
 
-            vehicles[4].AttachTo(dildo, new Vector3(0, 0, 3));
+            vehicles[4].AttachTo(dildo, new Vector3(0, 0, 3), Vector3.Zero);
 
             Dictionary<string, Vehicle> vehicleDictionary = new Dictionary<string, Vehicle>();
             vehicleDictionary["best"] = vehicles[3];

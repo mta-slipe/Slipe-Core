@@ -64,7 +64,7 @@ namespace Slipe.MTADefinitions {
 		public static bool IsElementLowLOD (MTAElement theElement){ throw new NotImplementedException(); }
 		public static bool SetElementAlpha (MTAElement theElement, int alpha){ throw new NotImplementedException(); }
 		public static bool IsElementWithinMarker (MTAElement theElement, MTAElement theMarker){ throw new NotImplementedException(); }
-		public static bool GetElementAngularVelocity (MTAElement theElement){ throw new NotImplementedException(); }
+		public static Tuple<float, float, float> GetElementAngularVelocity (MTAElement theElement){ throw new NotImplementedException(); }
 		public static bool SetElementAngularVelocity (MTAElement theElement, float rx, float ry, float rz){ throw new NotImplementedException(); }
 		public static bool SetElementAttachedOffsets (MTAElement theElement, float xPosOffset, float yPosOffset, float zPosOffset, float xRotOffset, float yRotOffset, float zRotOffset){ throw new NotImplementedException(); }
 		public static bool SetElementCallPropagationEnabled (MTAElement theElement, bool enabled){ throw new NotImplementedException(); }

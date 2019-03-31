@@ -98,11 +98,7 @@ namespace Slipe.Client
                 piece = d.Rest.Item4;
                 WorldModelID = d.Rest.Item5;
 
-                float v1 = d.Rest.Rest.Item2 * (float)(Math.PI / 180.0);
-                float v2 = d.Rest.Rest.Item3 * (float)(Math.PI / 180.0);
-                float v3 = d.Rest.Rest.Item4 * (float)(Math.PI / 180.0);
-
-                WorldModelMatrix = Matrix4x4.CreateTranslation(d.Rest.Item6, d.Rest.Item7, d.Rest.Rest.Item1) + Matrix4x4.CreateFromQuaternion(Quaternion.CreateFromYawPitchRoll(v1, v2, v3));
+                WorldModelMatrix = Matrix4x4.CreateTranslation(d.Rest.Item6, d.Rest.Item7, d.Rest.Rest.Item1) + Matrix4x4.CreateFromQuaternion(NumericHelper.EulerToQuaternion(new Vector3(d.Rest.Rest.Item2, d.Rest.Rest.Item3, d.Rest.Rest.Item4)));
                 WorldLODModelID = d.Rest.Item5;
             }          
 

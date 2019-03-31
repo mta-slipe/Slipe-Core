@@ -13,7 +13,7 @@ namespace Slipe.Client
     /// </summary>
     public class SearchLight : Element, IAttachable
     {
-        protected IToAttachable toAttached;
+        protected PhysicalElement toAttached;
         protected Vector3 relativeEndPosition;
 
         /// <summary>
@@ -22,9 +22,9 @@ namespace Slipe.Client
         public Matrix4x4 Offset { get; set; }
 
         /// <summary>
-        /// Get the toAttached to which this attachable is attached
+        /// Get the physical element to which this attachable is attached
         /// </summary>
-        public IToAttachable ToAttached
+        public PhysicalElement ToAttached
         {
             get
             {
@@ -61,7 +61,7 @@ namespace Slipe.Client
         /// <summary>
         /// Create a searchlight attached to an element
         /// </summary>
-        public SearchLight(IToAttachable attachTo, Vector3 relativeEnd, Matrix4x4 offset, float startRadius, float endRadius, bool renderSpot = true) : this(Vector3.Zero, relativeEnd, startRadius, endRadius, renderSpot)
+        public SearchLight(PhysicalElement attachTo, Vector3 relativeEnd, Matrix4x4 offset, float startRadius, float endRadius, bool renderSpot = true) : this(Vector3.Zero, relativeEnd, startRadius, endRadius, renderSpot)
         {
             AttachTo(attachTo, offset);
         }
@@ -131,7 +131,7 @@ namespace Slipe.Client
         /// <summary>
         /// Attach this attachable to a toAttachable using a matrix to describe the positional and rotational offset
         /// </summary>
-        public void AttachTo(IToAttachable toElement, Matrix4x4 offsetMatrix)
+        public void AttachTo(PhysicalElement toElement, Matrix4x4 offsetMatrix)
         {
             toAttached = toElement;
             Offset = offsetMatrix;
@@ -141,18 +141,15 @@ namespace Slipe.Client
         /// <summary>
         /// Attach this attachable to a toAttachable with 2 vectors describing a position offset and a rotation offset
         /// </summary>
-        public void AttachTo(IToAttachable toElement, Vector3 positionOffset, Vector3 rotationOffset)
+        public void AttachTo(PhysicalElement toElement, Vector3 positionOffset, Vector3 rotationOffset)
         {
-            float v1 = rotationOffset.X * (float)(Math.PI / 180.0);
-            float v2 = rotationOffset.Y * (float)(Math.PI / 180.0);
-            float v3 = rotationOffset.Z * (float)(Math.PI / 180.0);
-            AttachTo(toElement, positionOffset, Quaternion.CreateFromYawPitchRoll(v1, v2, v3));
+            AttachTo(toElement, positionOffset, NumericHelper.EulerToQuaternion(rotationOffset));
         }
 
         /// <summary>
         /// Attach this attachable to a toAttachable with a vector describing the position offset and a quaternion describing the rotation offset
         /// </summary>
-        public void AttachTo(IToAttachable toElement, Vector3 positionOffset, Quaternion rotationOffset)
+        public void AttachTo(PhysicalElement toElement, Vector3 positionOffset, Quaternion rotationOffset)
         {
             AttachTo(toElement, Matrix4x4.Transform(Matrix4x4.CreateTranslation(positionOffset), rotationOffset));
         }
@@ -160,7 +157,7 @@ namespace Slipe.Client
         /// <summary>
         /// Attach this attachable to a toAttachable without any offset
         /// </summary>
-        public void AttachTo(IToAttachable toElement)
+        public void AttachTo(PhysicalElement toElement)
         {
             AttachTo(toElement, Matrix4x4.Identity);
         }

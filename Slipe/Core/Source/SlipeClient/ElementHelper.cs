@@ -24,13 +24,14 @@ namespace Slipe.Client
             [typeof(Team)] = "team",
             [typeof(Marker)] = "marker",
             [typeof(Water)] = "water",
-            [typeof(Light)] = "light"
+            [typeof(Light)] = "light",
+            [typeof(SearchLight)] = "searchlight"
         };
 
         /// <summary>
         /// Get a list of all classes of a specific element
         /// </summary>
-        public static List<T> GetByType<T>() where T : Element
+        public static List<T> GetByType<T>(Element startAt, bool streamedIn = false) where T : Element
         {
             List<T> elements = new List<T>();
 
@@ -39,7 +40,7 @@ namespace Slipe.Client
                 return elements;
             }
 
-            List<dynamic> mtaElements = MTAShared.GetListFromTable(MTAServer.GetElementsByType(ElementTypeNames[typeof(T)], null), "element");
+            List<dynamic> mtaElements = MTAShared.GetListFromTable(MTAClient.GetElementsByType(ElementTypeNames[typeof(T)], startAt.MTAElement, streamedIn), "element");
             foreach (dynamic mtaElement in mtaElements)
             {
                 Element element = ElementManager.Instance.GetElement((MTAElement)mtaElement);
@@ -51,7 +52,15 @@ namespace Slipe.Client
 
             return elements;
         }
-        
+
+        /// <summary>
+        /// Get a list of all classes of a specific element
+        /// </summary>
+        public static List<T> GetByType<T>() where T : Element
+        {
+            return GetByType<T>(Element.Root);
+        }
+
         /// <summary>
         /// Instantiate an MTA element as a slipe class of the specific type
         /// </summary>
@@ -83,8 +92,11 @@ namespace Slipe.Client
                     return new Water(element);
                 case "light":
                     return new Light(element);
+                case "searchlight":
+                    return new SearchLight(element);
+                default:
+                    return new Element(element);
             }
-            return null;
         }
 
     }

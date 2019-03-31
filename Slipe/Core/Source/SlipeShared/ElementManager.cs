@@ -43,7 +43,6 @@ namespace Slipe.Shared
         /// <summary>
         /// Creates the ElementManager given an IElementHelper class that maps MTA elements to classes
         /// </summary>
-        /// <param name="helper"></param>
         public ElementManager(IElementHelper helper)
         {
             this.elementHelper = helper;

@@ -84,7 +84,7 @@ namespace Slipe.Client
         /// <summary>
         /// Create a SightLine attached to a certain object
         /// </summary>
-        public SightLine(IToAttachable attachedTo, Vector3 relativeEndPos, Matrix4x4 offset, bool checkBuildings = true, bool checkVehicles = true, bool checkPeds = true, bool checkWorldObjects = true, bool seeThroughStuff = false, bool ignoreSomeObjectsForCamera = false, bool shootThroughStuff = false, bool includeWorldModelInformation = false, bool includeCarTyreHits = true, PhysicalElement ignoredElement = null) : base(attachedTo, relativeEndPos, offset)
+        public SightLine(PhysicalElement attachedTo, Vector3 relativeEndPos, Matrix4x4 offset, bool checkBuildings = true, bool checkVehicles = true, bool checkPeds = true, bool checkWorldObjects = true, bool seeThroughStuff = false, bool ignoreSomeObjectsForCamera = false, bool shootThroughStuff = false, bool includeWorldModelInformation = false, bool includeCarTyreHits = true, PhysicalElement ignoredElement = null) : base(attachedTo, relativeEndPos, offset)
         {
             CheckBuildings = checkBuildings;
             CheckVehicles = checkVehicles;
