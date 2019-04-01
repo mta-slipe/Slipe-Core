@@ -20,5 +20,16 @@ namespace Slipe.Client
                 return Slipe.Client.Renderer.Instance;
             }
         }
+
+        /// <summary>
+        /// Get if voice is currently enabled
+        /// </summary>
+        public static bool IsVoiceEnabled
+        {
+            get
+            {
+                return MTAShared.IsVoiceEnabled();
+            }
+        }
     }
 }
