@@ -9,22 +9,14 @@
       "ServerTest"
     ]
   },
-  "dlls": [
-    
-  ],
-  "systemComponents": [
-  ],
-  "assetDirectories": [
-  ],
-  
+  "dlls": [],
+  "systemComponents": [],
+  "assetDirectories": [],
   "modules": [
     {
       "type": "internal",
       "name": "SlipeCore",
       "path": "Slipe/Core",
-      "dlls": [
-        "SlipeMTADefinitions.dll"
-      ],
       "compileTargets": {
         "client": [
           "Source/SlipeShared",
@@ -35,6 +27,9 @@
           "Source/SlipeServer"
         ]
       },
+      "dlls": [
+        "SlipeMTADefinitions.dll"
+      ],
       "systemComponents": [
         "Core.lua",
         "Interfaces.lua",
@@ -94,14 +89,7 @@
         "server.lua",
         "client.lua"
       ],
-      "assetDirectories": [
-
-      ]
-    },
-    {
-      "type": "external",
-      "name": "RuntimeInspector",
-      "path": "Modules/RuntimeInspector"
+      "assetDirectories": []
     }
   ]
 }
