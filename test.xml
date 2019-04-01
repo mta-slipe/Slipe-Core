@@ -1,0 +1,11 @@
+<test>
+    <node>
+        <entry>1</entry>
+        <entry>2</entry>
+        <entry>3</entry>
+        <entry>4</entry>
+    </node>
+    <new>test</new>
+    <a:new>test</a:new>
+    <new>test</new>
+</test>

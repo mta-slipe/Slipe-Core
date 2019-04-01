@@ -82,7 +82,13 @@
         "Net/Http/StringContent.lua",
         "Net/Http/FormUrlEncodedContent.lua",
         "Net/Http/HttpResponseMessage.lua",
-        "Net/Http/HttpClient.lua"
+        "Net/Http/HttpClient.lua",
+        "Xml/XmlNodeList.lua",
+        "Xml/XmlNode.lua",
+        "Xml/XmlAttribute.lua",
+        "Xml/XmlAttributeCollection.lua",
+        "Xml/XmlElement.lua",
+        "Xml/XmlDocument.lua"
       ],
       "backingLua": [
         "shared.lua",

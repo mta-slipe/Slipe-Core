@@ -30,7 +30,7 @@ XmlNode.getName = function (this)
 end
 
 XmlNode.getNamespaceURI = function (this)
-	return ""
+	return this.namespaceURI
 end
 
 XmlNode.getNextSibling = function (this)
@@ -77,8 +77,16 @@ XmlNode.getValue = function (this)
 	return this.value
 end
 
+XmlNode.setValue = function (this, value)
+	this.value = value
+end
+
 XmlNode.getChildNodes = function (this)
-	return this.children
+	local list = System.Xml.XmlNodeList()
+	for _, child in ipairs(this.children) do
+		list.values[#list.values + 1] = child
+	end
+	return list
 end
 
 XmlNode.getBaseURI = function (this)
@@ -93,8 +101,27 @@ XmlNode.getPreviousText = function (this)
 	System.Throw(System.NotImplementedException())
 end
 
+local function updateSiblings(this, position)
+	local element = this.children[position]
+	local previous = this.children[position - 1]
+	if previous ~= nil then
+		previous.nextSibling = element
+		if element ~= nil then
+			element.previousSibling = previous
+		end
+	end
+	local next = this.children[position + 1]
+	if next ~= nil then
+		if element ~= nil then
+			element.nextSibling = next
+		end
+		next.previousSibling = element
+	end
+end
+
 XmlNode.AppendChild = function (this, element)
 	this.children[#this.children + 1] = element
+	updateSiblings(this, #this.children)
 	return element
 end
 
@@ -103,7 +130,7 @@ XmlNode.CloneNode = function (this, deep)
 end
 
 XmlNode.GetEnumerator = function (this)
-	System.Throw(System.NotImplementedException())
+	return System.Collection.arrayEnumerator(this.children)
 end
 
 XmlNode.GetNamespaceOfPrefix = function (this, prefix)
@@ -115,11 +142,23 @@ XmlNode.GetPrefixOfNamespace = function (this, namespace)
 end
 
 XmlNode.InsertAfter = function (this, newChild, refChild)
-	System.Throw(System.NotImplementedException())
+	for i = 1, #this.children do
+		if this.children[i] == refChild then
+			table.insert(this.children, i + 1, newChild)
+			updateSiblings(this, i + 1)
+			return newChild
+		end
+	end
 end
 
 XmlNode.InsertBefore = function (this, newChild, refChild)
-	System.Throw(System.NotImplementedException())
+	for i = 1, #this.children do
+		if this.children[i] == refChild then
+			table.insert(this.children, i, newChild)
+			updateSiblings(this, i)
+			return newChild
+		end
+	end
 end
 
 XmlNode.Normalize = function (this)
@@ -127,7 +166,9 @@ XmlNode.Normalize = function (this)
 end
 
 XmlNode.PrependChild = function (this, newChild)
-	System.Throw(System.NotImplementedException())
+	table.insert(this.children, 1, newChild)
+	updateSiblings(this, 1)
+	return newChild
 end
 
 XmlNode.RemoveAll = function (this)
@@ -136,31 +177,39 @@ XmlNode.RemoveAll = function (this)
 end
 
 XmlNode.RemoveChild = function (this, oldChild)
-	System.Throw(System.NotImplementedException())
+	for i = 1, #this.children do
+		if this.children[i] == oldChild then
+			table.remove(this.children, i)
+			updateSiblings(this, 	i)		
+			return oldChild
+		end
+	end
 end
 
-XmlNode.RepalceChild = function (this, newChild, oldChild)
-	System.Throw(System.NotImplementedException())
+XmlNode.Replace = function (this, newChild, oldChild)
+	for i = 1, #this.children do
+		if this.children[i] == oldChild then
+			table.remove(this.children, i)
+			table.insert(this.children, i, newChild)
+			updateSiblings(this, i)
+			return newChild
+		end
+	end
 end
 
 XmlNode.Supports = function (this, feature, version)
 	return false
 end
 
-XmlNode.GetEnumerator = function (this)
-	System.Throw(System.NotImplementedException())
-end
-
 XmlNode.RemoveChild = function (this, element)
 	for i = 1, #this.children do
 		if this.children[i] == element then
 			table.remove(i)
+			updateSiblings(this, i)
 			return
 		end
 	end
 	return element
 end
-
-
 
 System.define("System.Xml.XmlNode", XmlNode)
