@@ -101,5 +101,16 @@ namespace Slipe.Server
         {
             MTAServer.Shutdown(reason);
         }
+
+        /// <summary>
+        /// Get if voice is currently enabled
+        /// </summary>
+        public static bool IsVoiceEnabled
+        {
+            get
+            {
+                return MTAShared.IsVoiceEnabled();
+            }
+        }
     }
 }

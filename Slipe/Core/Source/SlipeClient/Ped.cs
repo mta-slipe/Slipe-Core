@@ -5,6 +5,9 @@ using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared;
 using Slipe.Shared.Enums;
+using Slipe.Client.Structs;
+using Slipe.Client.Enums;
+using Slipe.Shared.Structs;
 
 namespace Slipe.Client
 {
@@ -65,6 +68,14 @@ namespace Slipe.Client
         public bool SetAnalogControlState(AnalogControl control, float state)
         {
             return MTAClient.SetPedAnalogControlState(element, control.ToString(), state);
+        }
+
+        /// <summary>
+        /// Set the control state of a ped
+        /// </summary>
+        public bool SetControlState(AnalogControl control, bool state)
+        {
+            return MTAClient.SetPedControlState(element, control.ToString(), state);
         }
 
         /// <summary>
@@ -129,6 +140,22 @@ namespace Slipe.Client
         }
 
         /// <summary>
+        /// Get and set the voice of this ped
+        /// </summary>
+        public PedVoice PedVoice
+        {
+            get
+            {
+                Tuple<string, string> result = MTAClient.GetPedVoice(element);
+                return new PedVoice(result.Item1, result.Item2);
+            }
+            set
+            {
+                MTAClient.SetPedVoice(element, value.Group, value.Name);
+            }
+        }
+
+        /// <summary>
         /// This function allows retrieval of the position a ped's target range begins, when he is aiming with a weapon.
         /// </summary>
         public Vector3 TargetStart
@@ -173,6 +200,92 @@ namespace Slipe.Client
             {
                 Tuple<float, float, float> result = MTAClient.GetPedWeaponMuzzlePosition(element);
                 return new Vector3(result.Item1, result.Item2, result.Item3);
+            }
+        }
+
+        /// <summary>
+        /// Gives a weapon to this ped
+        /// </summary>
+        public bool GiveWeapon(WeaponEnum weapon, int ammo = 30, bool setAsCurrent = false)
+        {
+            return MTAClient.GivePedWeapon(element, (int)weapon, ammo, setAsCurrent);
+        }
+
+        /// <summary>
+        /// Check if this ped is doing a certain task
+        /// </summary>
+        public bool IsDoingTask(PedTask task)
+        {
+            return MTAClient.IsPedDoingTask(element, task.ToString());
+        }
+
+        /// <summary>
+        /// Get if the ped is reload their weapon
+        /// </summary>
+        public bool IsReloadingWeapon
+        {
+            get
+            {
+                return MTAClient.IsPedReloadingWeapon(element);
+            }
+        }
+
+        /// <summary>
+        /// Set the ped aiming at a certain position
+        /// </summary>
+        public bool AimAt(Vector3 position)
+        {
+            return MTAClient.SetPedAimTarget(element, position.X, position.Y, position.Z);
+        }
+
+        /// <summary>
+        /// Set the ped to target a specific physical element
+        /// </summary>
+        public bool AimAt(PhysicalElement targetElement)
+        {
+            return AimAt(targetElement.Position);
+        }
+
+        /// <summary>
+        /// Set the footblood state of this ped
+        /// </summary>
+        public bool FootBloodEnabled
+        {
+            set
+            {
+                MTAClient.SetPedFootBloodEnabled(element, value);
+            }
+        }
+
+        /// <summary>
+        /// Have the ped look at a specific position
+        /// </summary>
+        public bool LookAt(Vector3 position, int time = 3000, int blend = 1000)
+        {
+            return MTAClient.SetPedLookAt(element, position.X, position.Y, position.Z, time, blend, null);
+        }
+
+        /// <summary>
+        /// Have the ped look at a specific physical element
+        /// </summary>
+        public bool LookAt(PhysicalElement lookAt, int time = 3000, int blend = 1000)
+        {
+            return MTAClient.SetPedLookAt(element, 0, 0, 0, time, blend, lookAt.MTAElement);
+        }
+
+        /// <summary>
+        /// Get and set the current ped animation
+        /// </summary>
+        public Animation Animation
+        {
+            get
+            {
+                Tuple<string, string> result = MTAClient.GetPedAnimation(element);
+                return new Animation(result.Item1, result.Item2);
+            }
+            set
+            {
+                SetAnimation(value);
             }
         }
 

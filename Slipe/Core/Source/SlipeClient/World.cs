@@ -241,5 +241,20 @@ namespace Slipe.Client
                 MTAClient.SetWaterDrawnLast(value);
             }
         }
+
+        /// <summary>
+        /// Get and set if the targeting markers on all peds are enabled
+        /// </summary>
+        public bool PedTargetingMarkersEnabled
+        {
+            get
+            {
+                return MTAClient.IsPedTargetingMarkerEnabled();
+            }
+            set
+            {
+                MTAClient.SetPedTargetingMarkerEnabled(value);
+            }
+        }
     }
 }

@@ -25,7 +25,8 @@ namespace Slipe.Client
             [typeof(Marker)] = "marker",
             [typeof(Water)] = "water",
             [typeof(Light)] = "light",
-            [typeof(SearchLight)] = "searchlight"
+            [typeof(SearchLight)] = "searchlight",
+            [typeof(Ped)] = "ped"
         };
 
         /// <summary>
@@ -94,6 +95,8 @@ namespace Slipe.Client
                     return new Light(element);
                 case "searchlight":
                     return new SearchLight(element);
+                case "ped":
+                    return new Ped(element);
                 default:
                     return new Element(element);
             }

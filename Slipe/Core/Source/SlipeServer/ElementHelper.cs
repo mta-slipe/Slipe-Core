@@ -23,7 +23,8 @@ namespace Slipe.Server
             [typeof(RadarArea)] = "radararea",
             [typeof(Team)] = "team",
             [typeof(Marker)] = "marker",
-            [typeof(Water)] ="water"
+            [typeof(Water)] = "water",
+            [typeof(Ped)] = "ped"
         };
 
         /// <summary>
@@ -85,6 +86,8 @@ namespace Slipe.Server
                     return new Marker(element);
                 case "water":
                     return new Water(element);
+                case "ped":
+                    return new Ped(element);
                 default:
                     return new Element(element);
             }
