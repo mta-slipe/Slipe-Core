@@ -71,17 +71,9 @@ namespace Slipe.Client
             get
             {
                 if (status == null)
-                    UpdateStatus();
+                    status = new DxStatus();
                 return status;
             }
-        }
-
-        /// <summary>
-        /// Update the current status
-        /// </summary>
-        public void UpdateStatus()
-        {
-            status = new DxStatus(MTAClient.DxGetStatus());
         }
 
         /// <summary>

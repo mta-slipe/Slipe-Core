@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using Slipe.MTADefinitions;
+using Slipe.Server.Enums;
 
 namespace Slipe.Server
 {
@@ -34,6 +35,22 @@ namespace Slipe.Server
         /// </summary>
         public Vehicle(VehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
         {
+        }
+
+        /// <summary>
+        /// Add sirens to this vehicle
+        /// </summary>
+        public bool AddSirens(int sirenCount, Siren sirenType, bool threesixtyflag = false, bool checkLOSFlag = true, bool useRandomizer = true, bool silentFlag = false)
+        {
+            return MTAServer.AddVehicleSirens(element, sirenCount, (int)sirenType, threesixtyflag, checkLOSFlag, useRandomizer, silentFlag);
+        }
+
+        /// <summary>
+        /// Blow up this vehicle
+        /// </summary>
+        public bool Blow(bool explode = true)
+        {
+            return MTAServer.BlowVehicle(element, explode);
         }
 
         /// <summary>

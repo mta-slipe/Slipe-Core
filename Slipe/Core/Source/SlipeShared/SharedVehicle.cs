@@ -12,7 +12,8 @@ namespace Slipe.Shared
     /// </summary>
     public class SharedVehicle: PhysicalElement
     {
-    
+        private VehicleHandling handling;
+
         /// <summary>
         /// Creates or retrieves a vehicle from an MTA vehicle element
         /// </summary>
@@ -35,6 +36,59 @@ namespace Slipe.Shared
         /// </summary>
         public SharedVehicle(VehicleModel model, Vector3 position): this(model, position, Vector3.Zero)
         {
+        }
+
+        /// <summary>
+        /// Adds a vehicle upgrade to this vehicle
+        /// </summary>
+        public bool AddUpgrade(VehicleUpgrade upgrade)
+        {
+            return MTAShared.AddVehicleUpgrade(element, (int)upgrade);
+        }
+
+        /// <summary>
+        /// This function attaches a trailer type vehicle to this vehicle.
+        /// </summary>
+        public bool AttachTrailer(SharedVehicle theTrailer)
+        {
+            return MTAShared.AttachTrailerToVehicle(element, theTrailer.MTAElement);
+        }
+
+        /// <summary>
+        /// This function detaches an already attached trailer from this vehicle.
+        /// </summary>
+        public bool DetachTrailer(SharedVehicle theTrailer)
+        {
+            return MTAShared.DetachTrailerFromVehicle(element, theTrailer.MTAElement);
+        }
+
+        /// <summary>
+        /// This function detaches any already attached trailer from this vehicle.
+        /// </summary>
+        public bool DetachTrailer()
+        {
+            return MTAShared.DetachTrailerFromVehicle(element, null);
+        }
+
+        /// <summary>
+        /// This function will set a vehicle's health to full and fix its damage model. If you wish to only change the vehicle's health, without affecting its damage model, use Health.
+        /// </summary>
+        public bool Fix()
+        {
+            return MTAShared.FixVehicle(element);
+        }
+
+        /// <summary>
+        /// Get the vehicle handling of the current vehicle
+        /// </summary>
+        public VehicleHandling Handling
+        {
+            get
+            {
+                if (handling == null)
+                    handling = new VehicleHandling(this);
+                return handling;
+            }
         }
     }
 }
