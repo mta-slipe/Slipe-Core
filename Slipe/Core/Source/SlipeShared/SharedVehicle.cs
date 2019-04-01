@@ -81,10 +81,11 @@ namespace Slipe.Shared
         /// <summary>
         /// Get the original handling of a specific model
         /// </summary>
-        public static VehicleHandling GetOriginalHandling(VehicleModel model)
-        {
-            return new VehicleHandling(MTAShared.GetDictionaryFromTable(MTAShared.GetOriginalHandling((int)model), "System.String", "System.Dynamic"));
-        }
+        // TODO: This throws a CSharp.lua bug. Find out why
+        //public static VehicleHandling GetOriginalHandling(VehicleModel model)
+        //{
+        //    return new VehicleHandling(MTAShared.GetDictionaryFromTable(MTAShared.GetOriginalHandling((int)model), "System.String", "System.Dynamic"));
+        //}
 
         /// <summary>
         /// Get and set the primary color of this vehicle

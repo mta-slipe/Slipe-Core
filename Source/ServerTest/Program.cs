@@ -89,6 +89,12 @@ namespace ServerTest
 
             };
 
+            Player[] alives = Player.Alive;
+            foreach(Player p in alives)
+            {
+                Console.WriteLine(p.Name);
+            }
+
             Debug.WriteLine(alpha.Handling.Mass);
             alpha.Handling.Mass = alpha.Handling.Mass * 1.5f;
             Debug.WriteLine(alpha.Handling.Mass);

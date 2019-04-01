@@ -81,6 +81,18 @@ namespace Slipe.Server
         }
 
         /// <summary>
+        /// Get an array of players occupying this vehicle
+        /// </summary>
+        public Player[] Occupants
+        {
+            get
+            {
+                MTAElement[] elements = MTAShared.GetArrayFromTable(MTAShared.GetVehicleOccupants(element), "MTAElement");
+                return ElementManager.Instance.CastArray<Player>(elements);
+            }
+        }
+
+        /// <summary>
         /// Handles events for vehicles
         /// </summary>
         public override void HandleEvent(string eventName, MTAElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
