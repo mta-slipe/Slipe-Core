@@ -10,6 +10,7 @@ using Slipe.Shared.Enums;
 using Slipe.Shared.Structs;
 using Slipe.Shared.RPC;
 using Slipe.Client.Dx;
+using Slipe.Client.Assets;
 
 namespace ClientTest
 {
@@ -45,7 +46,8 @@ namespace ClientTest
             Element dummy = new Element("flag", "ab3x");
             Debug.WriteLine(dummy.Type);
 
-            
+            new Mod("Assets/m4.txd", "Assets/m4.dff").Apply(356);
+
         }
 
         public void HandleTestRPC(BasicIncomingRPC arguments)
