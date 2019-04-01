@@ -156,7 +156,7 @@ namespace Slipe.MTADefinitions {
 		public static bool IsPedWearingJetpack (MTAElement thePed){ throw new NotImplementedException(); }
 		public static bool RemovePedClothes (MTAElement thePed, int clothesType, string clothesTexture, string clothesModel){ throw new NotImplementedException(); }
 		public static bool RemovePedFromVehicle (MTAElement thePed){ throw new NotImplementedException(); }
-		public static bool SetPedAnimation (MTAElement thePed, string block, string anim, int time, bool freezeLastFrame, int blendTime){ throw new NotImplementedException(); }
+		public static bool SetPedAnimation (MTAElement thePed, string block, string anim, int time, bool loop, bool updatePosition, bool interruptable, bool freezeLastFrame, int blendTime){ throw new NotImplementedException(); }
 		public static bool SetPedAnimationSpeed (MTAElement thePed, string anim, float speed){ throw new NotImplementedException(); }
 		public static bool SetPedAnimationProgress (MTAElement thePed, string anim, float progress){ throw new NotImplementedException(); }
 		public static bool SetPedDoingGangDriveby (MTAElement thePed, bool state){ throw new NotImplementedException(); }

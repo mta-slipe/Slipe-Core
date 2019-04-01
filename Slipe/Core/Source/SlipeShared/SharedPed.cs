@@ -4,6 +4,7 @@ using System.Text;
 using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.Enums;
+using Slipe.Shared.Structs;
 
 namespace Slipe.Shared
 {
@@ -405,6 +406,38 @@ namespace Slipe.Shared
         public bool WarpIntoVehicle(SharedVehicle vehicle)
         {
             return MTAShared.WarpPedIntoVehicle(element, vehicle.MTAElement, 0);
+        }
+
+        /// <summary>
+        /// Sets the animation of this ped
+        /// </summary>
+        public bool SetAnimation(Animation animation, int time = -1, bool loop = true, bool updatePosition = true, bool interruptable = true, bool freeLastFrame = true, int blendTime = 250)
+        {
+            return MTAShared.SetPedAnimation(element, animation.Group, animation.Anim, time, loop, updatePosition, interruptable, freeLastFrame, blendTime);
+        }
+
+        /// <summary>
+        /// Resets the animation back to normal
+        /// </summary>
+        public bool ResetAnimation()
+        {
+            return MTAShared.SetPedAnimation(element, null, null, -1, true, true, true, true, 250);
+        }
+
+        /// <summary>
+        /// Sets the current animation progress of a player or ped.
+        /// </summary>
+        public bool SetAnimationProgress(Animation animation, float progress)
+        {
+            return MTAShared.SetPedAnimationProgress(element, animation.Anim, progress);
+        }
+
+        /// <summary>
+        /// Sets the current animation speed of a player or ped.
+        /// </summary>
+        public bool SetAnimationSpeed(Animation animation, float speed = 1.0f)
+        {
+            return MTAShared.SetPedAnimationSpeed(element, animation.Anim, speed);
         }
 
     }
