@@ -87,6 +87,10 @@ namespace ServerTest
 
             };
 
+            Debug.WriteLine(alpha.Handling.Mass);
+            alpha.Handling.Mass = alpha.Handling.Mass * 1.5f;
+            Debug.WriteLine(alpha.Handling.Mass);
+
             try
             {
                 Player player = (Player) Player.GetFromName("SAES>DezZolation");

@@ -45,7 +45,9 @@ namespace ClientTest
             Element dummy = new Element("flag", "ab3x");
             Debug.WriteLine(dummy.Type);
 
-            
+            Debug.WriteLine(Client.Renderer.Status.VideoCardName);
+            Debug.WriteLine(Client.Renderer.Status.VideoCardRAM);
+
         }
 
         public void HandleTestRPC(BasicIncomingRPC arguments)
