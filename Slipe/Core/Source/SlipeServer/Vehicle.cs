@@ -54,6 +54,33 @@ namespace Slipe.Server
         }
 
         /// <summary>
+        /// Get the model handling of a certain vehicle model
+        /// </summary>
+        public static ModelHandling GetModelHandling(VehicleModel model)
+        {
+            return new ModelHandling(model);
+        }
+
+        /// <summary>
+        /// Get the player controlling the vehicle in the drivers seat
+        /// </summary>
+        public Player Controler
+        {
+            get
+            {
+                return (Player)ElementManager.Instance.GetElement(MTAShared.GetVehicleController(element));
+            }
+        }
+
+        /// <summary>
+        /// This function gets the player sitting/trying to enter this vehicle.
+        /// </summary>
+        public Player GetOccupant(int seat = 0)
+        {
+            return (Player) ElementManager.Instance.GetElement(MTAShared.GetVehicleOccupant(element, seat));
+        }
+
+        /// <summary>
         /// Handles events for vehicles
         /// </summary>
         public override void HandleEvent(string eventName, MTAElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)

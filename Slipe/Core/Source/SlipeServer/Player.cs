@@ -131,12 +131,7 @@ namespace Slipe.Server
             get
             {
                 MTAElement[] elements = MTAShared.GetArrayFromTable(MTAServer.GetAlivePlayers(), "MTAElement");
-                Player[] players = new Player[elements.Length];
-                for (int i = 0; i < elements.Length; i++)
-                {
-                    players[i] = new Player(elements[i]);
-                }
-                return players;
+                return ElementManager.Instance.CastArray<Player>(elements);
             }
         }
 
@@ -148,12 +143,7 @@ namespace Slipe.Server
             get
             {
                 MTAElement[] elements = MTAShared.GetArrayFromTable(MTAServer.GetDeadPlayers(), "MTAElement");
-                Player[] players = new Player[elements.Length];
-                for (int i = 0; i < elements.Length; i++)
-                {
-                    players[i] = new Player(elements[i]);
-                }
-                return players;
+                return ElementManager.Instance.CastArray<Player>(elements);
             }
         }
 

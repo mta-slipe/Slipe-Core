@@ -43,5 +43,36 @@ namespace Slipe.Client
         {
             return MTAClient.BlowVehicle(element);
         }
+
+        /// <summary>
+        /// Get the player controlling the vehicle in the drivers seat
+        /// </summary>
+        public Player Controler
+        {
+            get
+            {
+                return (Player)ElementManager.Instance.GetElement(MTAShared.GetVehicleController(element));
+            }
+        }
+
+        /// <summary>
+        /// This function gets the player sitting/trying to enter this vehicle.
+        /// </summary>
+        public Player GetOccupant(int seat = 0)
+        {
+            return (Player)ElementManager.Instance.GetElement(MTAShared.GetVehicleOccupant(element, seat));
+        }
+
+        /// <summary>
+        /// Get an array of players occupying this vehicle
+        /// </summary>
+        public Player[] Occupants
+        {
+            get
+            {
+                MTAElement[] elements = MTAShared.GetArrayFromTable(MTAShared.GetVehicleOccupants(element), "MTAElement");
+                return ElementManager.Instance.CastArray<Player>(elements);
+            }
+        }
     }
 }

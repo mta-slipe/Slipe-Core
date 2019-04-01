@@ -19,12 +19,7 @@ namespace Slipe.Shared
         public static PhysicalElement[] GetWithinRange(Vector3 position, float range, string type = "")
         {
             MTAElement[] mtaElements = MTAShared.GetArrayFromTable(MTAShared.GetElementsWithinRange(position.X, position.Y, position.Z, range, type), "MTAElement");
-            PhysicalElement[] elements = new PhysicalElement[mtaElements.Length];
-            for (int i = 0; i < mtaElements.Length; i++)
-            {
-                elements[i] = new PhysicalElement(mtaElements[i]);
-            }
-            return elements;
+            return ElementManager.Instance.CastArray<PhysicalElement>(mtaElements);
         }
 
         public PhysicalElement()

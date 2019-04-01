@@ -66,13 +66,8 @@ namespace Slipe.Server
         {
             get
             {
-                dynamic[] mtaPlayers = MTAShared.GetArrayFromTable(MTAShared.GetPlayersInTeam(MTAElement), "player");
-                Player[] players = new Player[mtaPlayers.Length];
-                for (int i = 0; i < mtaPlayers.Length; i++)
-                {
-                    players[i] = new Player((MTAElement)mtaPlayers[i]);
-                }
-                return players;
+                MTAElement[] mtaPlayers = MTAShared.GetArrayFromTable(MTAShared.GetPlayersInTeam(MTAElement), "MTAElement");
+                return ElementManager.Instance.CastArray<Player>(mtaPlayers);
             }
         }
 

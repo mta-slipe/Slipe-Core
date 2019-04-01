@@ -130,9 +130,9 @@ namespace ServerTest
             Console.WriteLine(Resource.This.LoadTime.ToString());
 
             // Console.WriteLine(File.ReadAllText("meta.xml"));
-            Task.Run(TestMethod);
-            Console.WriteLine("10");
-            HttpTest();
+            // Task.Run(TestMethod);
+            // Console.WriteLine("10");
+            // HttpTest();
 
             //XmlDocument document = new XmlDocument();
             //document.Load("test.xml");

@@ -43,8 +43,8 @@ namespace Slipe.Shared
         protected int monetary;
         protected uint modelFlags;
         protected uint handlingFlags;
-        protected VehicleLight headLight;
-        protected VehicleLight tailLight;
+        protected VehicleLightType headLight;
+        protected VehicleLightType tailLight;
         protected int animGroup;
 
         /// <summary>
@@ -514,7 +514,7 @@ namespace Slipe.Shared
         /// <summary>
         /// Type of head lights of the vehicle.
         /// </summary>
-        public VehicleLight HeadLight
+        public VehicleLightType HeadLight
         {
             get
             {
@@ -530,7 +530,7 @@ namespace Slipe.Shared
         /// <summary>
         /// Same as above but for the tail lights.
         /// </summary>
-        public VehicleLight TailLight
+        public VehicleLightType TailLight
         {
             get
             {
@@ -591,8 +591,8 @@ namespace Slipe.Shared
             monetary = t["monetary"];
             modelFlags = t["modelFlags"];
             handlingFlags = t["handlingFlags"];
-            headLight = (VehicleLight)Enum.Parse(typeof(VehicleLight), t["headLight"], true);
-            tailLight = (VehicleLight)Enum.Parse(typeof(VehicleLight), t["tailLight"], true);
+            headLight = (VehicleLightType)Enum.Parse(typeof(VehicleLightType), t["headLight"], true);
+            tailLight = (VehicleLightType)Enum.Parse(typeof(VehicleLightType), t["tailLight"], true);
             animGroup = t["animGroup"];
         }
 
@@ -611,11 +611,19 @@ namespace Slipe.Shared
         protected VehicleHandling() { }
 
         /// <summary>
-        /// Builds vehicle handling from a raw dictionary
+        /// Builds vehicle handling from a vehicle
         /// </summary>
         public VehicleHandling(SharedVehicle vehicle)
         {
             vehicleElement = vehicle.MTAElement;
+        }
+
+        /// <summary>
+        /// Build a vehicle handling instance from a raw handling table
+        /// </summary>
+        public VehicleHandling(Dictionary<string, dynamic> raw)
+        {
+            BuildFromTable(raw);
         }
     }
 }

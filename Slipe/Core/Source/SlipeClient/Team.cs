@@ -45,12 +45,7 @@ namespace Slipe.Client
             get
             {
                 MTAElement[] mtaPlayers = MTAShared.GetArrayFromTable(MTAShared.GetPlayersInTeam(MTAElement), "element");
-                Player[] players = new Player[mtaPlayers.Length];
-                for (int i = 0; i < mtaPlayers.Length; i++)
-                {
-                    players[i] = new Player(mtaPlayers[i]);
-                }
-                return players;
+                return ElementManager.Instance.CastArray<Player>(mtaPlayers);
             }
         }
 
