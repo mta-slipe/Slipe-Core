@@ -13,6 +13,8 @@ using System.Timers;
 using Slipe.Shared.RPC;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Xml;
+
 namespace ServerTest
 {
     class Program
@@ -131,6 +133,19 @@ namespace ServerTest
             Task.Run(TestMethod);
             Console.WriteLine("10");
             HttpTest();
+
+            //XmlDocument document = new XmlDocument();
+            //document.Load("test.xml");
+
+            //foreach(XmlElement item in document.FirstChild.FirstChild.ChildNodes)
+            //{
+            //    Console.WriteLine(item.Value);
+            //}
+            //XmlElement newElement = document.CreateElement("new");
+            //newElement.Value = "test";
+            //document.FirstChild.AppendChild(newElement);
+            //document.Save("test.xml");
+            
         }
 
         private async Task HttpTest()
