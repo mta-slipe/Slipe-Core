@@ -11,7 +11,12 @@
   },
   "dlls": [],
   "systemComponents": [],
-  "assetDirectories": [],
+  "assetDirectories": [
+    {
+      "path": "Assets",
+      "downloads": false
+    }
+  ],
   "modules": [
     {
       "type": "internal",
