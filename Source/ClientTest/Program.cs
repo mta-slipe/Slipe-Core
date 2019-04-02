@@ -46,12 +46,22 @@ namespace ClientTest
             Element dummy = new Element("flag", "ab3x");
             Debug.WriteLine(dummy.Type);
 
-
+            Client.Engine.SetAsynchronousLoading(true);
             new Mod("Assets/m4.txd", "Assets/m4.dff").Apply(356);
+
+            new CustomAnimation("Assets/salute.ifp").Apply("salute");
+
+            Player.Local.SetAnimation(new Animation("salute", "mil_salutePrt"), -1, false);
 
             Debug.WriteLine(Client.Renderer.Status.VideoCardName);
             Debug.WriteLine(Client.Renderer.Status.VideoCardRAM);
 
+            string[] names = Client.Engine.GetModelTextureNames(321);
+            Debug.WriteLine("Texture count: {0}", names.Length);
+            foreach (string texture in names)
+            {
+                Debug.WriteLine(texture);
+            }
         }
 
         public void HandleTestRPC(BasicIncomingRPC arguments)

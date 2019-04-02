@@ -156,6 +156,29 @@ namespace ServerTest
             //document.Save("test.xml");
 
             DoSocket();
+
+
+            // JSON test
+            //string json = MTAShared.ToJSON(new JsonTestStruct()
+            //{
+            //    x = 5,
+            //    y = "Hello world",
+            //    struc = new JsonTestStruct2()
+            //    {
+            //        z = 50,
+            //        ints = new int[5]
+            //        {
+            //            1, 2, 3, 4, 5
+            //        }
+            //    }
+            //}, true, "none");
+
+            //JsonTestStruct unserializedJson = (JsonTestStruct)MTAShared.FromJSON(json);
+            //Console.WriteLine(unserializedJson.struc.z);
+            //foreach(int i in unserializedJson.struc.ints)
+            //{
+            //    Console.WriteLine(i);
+            //}
         }
 
         public async Task DoSocket()
@@ -217,5 +240,18 @@ namespace ServerTest
     {
         public Socket socket;
         public byte[] buffer;
+    }
+
+    struct JsonTestStruct
+    {
+        public int x;
+        public string y;
+        public JsonTestStruct2 struc;
+    }
+
+    struct JsonTestStruct2
+    {
+        public int z;
+        public int[] ints;
     }
 }
