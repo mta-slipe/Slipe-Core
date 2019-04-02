@@ -155,9 +155,6 @@ namespace ServerTest
             //document.FirstChild.AppendChild(newElement);
             //document.Save("test.xml");
 
-
-            OutTest(out int x);
-            Console.WriteLine(x);
             DoSocket();
         }
 
@@ -189,17 +186,6 @@ namespace ServerTest
             Console.WriteLine("We've received: {0}", message);
 
             socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, Receive, result.AsyncState);
-        }
-
-        public byte[] OutTest(out int x)
-        {
-            x = 100;
-            byte[] bytes = new byte[10];
-            foreach(byte bytey in bytes)
-            {
-                Console.WriteLine(bytey);
-            }
-            return bytes;
         }
 
         private async Task HttpTest()
