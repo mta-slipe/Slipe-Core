@@ -92,6 +92,12 @@ namespace ServerTest
 
             };
 
+            Player[] alives = Player.Alive;
+            foreach(Player p in alives)
+            {
+                Console.WriteLine(p.Name);
+            }
+
             Debug.WriteLine(alpha.Handling.Mass);
             alpha.Handling.Mass = alpha.Handling.Mass * 1.5f;
             Debug.WriteLine(alpha.Handling.Mass);
@@ -133,9 +139,9 @@ namespace ServerTest
             Console.WriteLine(Resource.This.LoadTime.ToString());
 
             // Console.WriteLine(File.ReadAllText("meta.xml"));
-            Task.Run(TestMethod);
-            Console.WriteLine("10");
-            HttpTest();
+            // Task.Run(TestMethod);
+            // Console.WriteLine("10");
+            // HttpTest();
 
             //XmlDocument document = new XmlDocument();
             //document.Load("test.xml");

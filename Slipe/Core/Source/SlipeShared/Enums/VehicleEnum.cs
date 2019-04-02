@@ -219,4 +219,49 @@ namespace Slipe.Shared.Enums
         SOLAIR = 458,
         STRATUM = 561,
     }
+
+    /// <summary>
+    /// Represents different doors of vehicles
+    /// </summary>
+    public enum VehicleDoor
+    {
+        Hood,
+        Trunk,
+        FrontLeft,
+        FrontRight,
+        RearLeft,
+        RearRight
+    }
+
+    /// <summary>
+    /// Represents different damage states a door can be in
+    /// </summary>
+    public enum VehicleDoorState
+    {
+        ShutIntact,
+        AjarIntact,
+        ShutDamaged,
+        AjarDamaged,
+        Missing
+    }
+
+    /// <summary>
+    /// Represents the positions of vehicle lights
+    /// </summary>
+    public enum VehicleLight
+    {
+        FrontLeft,
+        FrontRight,
+        RearRight,
+        RearLeft
+    }
+
+    /// <summary>
+    /// Represents the working state of vehicle lights
+    /// </summary>
+    public enum VehicleLightState
+    {
+        Working,
+        Broken
+    }
 }

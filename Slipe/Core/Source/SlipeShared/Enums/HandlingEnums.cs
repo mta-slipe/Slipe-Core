@@ -27,7 +27,7 @@ namespace Slipe.Shared.Enums
     /// <summary>
     /// Represents lights used in Vehicle Handling
     /// </summary>
-    public enum VehicleLight
+    public enum VehicleLightType
     {
         Long,
         Small,

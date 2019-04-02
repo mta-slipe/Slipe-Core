@@ -37,13 +37,8 @@ namespace Slipe.Shared.CollisionShapes
         /// </summary>
         public PhysicalElement[] GetElementsWithin()
         {
-            dynamic[] array = MTAShared.GetArrayFromTable(MTAShared.GetElementsWithinColShape(element, null), "element");
-            PhysicalElement[] elements = new PhysicalElement[array.Length];
-            for (int i = 0; i < array.Length; i++)
-            {
-                elements[i] = new PhysicalElement((MTAElement)array[i]);
-            }
-            return elements;
+            MTAElement[] array = MTAShared.GetArrayFromTable(MTAShared.GetElementsWithinColShape(element, null), "MTAElement");
+            return ElementManager.Instance.CastArray<PhysicalElement>(array);
         }
 
         /// <summary>

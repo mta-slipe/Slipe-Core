@@ -83,6 +83,19 @@ namespace Slipe.Shared
             return this.elements[element];
         }
 
+        /// <summary>
+        /// Cast an array of MTAElements to a desired type
+        /// </summary>
+        public T[] CastArray<T>(MTAElement[] elements) where T: Element
+        {
+            T[] result = new T[elements.Length];
+            for (int i = 0; i < elements.Length; i++)
+            {
+                result[i] = (T)ElementManager.Instance.GetElement(elements[i]);
+            }
+            return result;
+        }
+
         protected internal void AddEventHandler(Element element, string eventName, bool propagated = true, string priorty = "normal")
         {
             MTAShared.AddEventHandler(eventName, element.MTAElement, "Slipe.Shared.ElementManager.HandleEvent", propagated, priorty);

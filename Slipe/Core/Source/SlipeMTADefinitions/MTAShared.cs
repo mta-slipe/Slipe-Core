@@ -297,7 +297,7 @@ namespace Slipe.MTADefinitions {
 		public static int GetTrainTrack (MTAElement train){ throw new NotImplementedException(); }
 		public static bool GetTrainDirection (MTAElement train){ throw new NotImplementedException(); }
 		public static dynamic GetOriginalHandling (int modelID){ throw new NotImplementedException(); }
-		public static Tuple<int, int, int, int> GetVehicleColor (MTAElement theVehicle){ throw new NotImplementedException(); }
+		public static Tuple<int, int, int, int, int, int, int, Tuple<int, int, int, int, int>> GetVehicleColor (MTAElement theVehicle, bool bRGB){ throw new NotImplementedException(); }
 		public static MTAElement GetVehicleController (MTAElement theVehicle){ throw new NotImplementedException(); }
 		public static float GetVehicleDoorOpenRatio (MTAElement theVehicle, int door){ throw new NotImplementedException(); }
 		public static int GetVehicleDoorState (MTAElement theVehicle, int door){ throw new NotImplementedException(); }

@@ -90,12 +90,7 @@ namespace Slipe.Shared
         public Element[] GetChildren(string ofType = null)
         {
             MTAElement[] mtaElements = MTAShared.GetArrayFromTable(MTAShared.GetElementChildren(element, ofType), "MTAElement");
-            Element[] elements = new Element[mtaElements.Length];
-            for (int i = 0; i < mtaElements.Length; i++)
-            {
-                elements[i] = new Element(mtaElements[i]);
-            }
-            return elements;
+            return ElementManager.Instance.CastArray<Element>(mtaElements);
         }
 
         /// <summary>
