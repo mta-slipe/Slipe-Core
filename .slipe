@@ -51,6 +51,7 @@
         "Collections/EqualityComparer.lua",
         "Collection.lua",
         "Array.lua",
+        "ArraySegment.lua",
         "Collections/List.lua",
         "Collections/Dictionary.lua",
         "Collections/Queue.lua",
@@ -93,7 +94,11 @@
         "Xml/XmlAttribute.lua",
         "Xml/XmlAttributeCollection.lua",
         "Xml/XmlElement.lua",
-        "Xml/XmlDocument.lua"
+        "Xml/XmlDocument.lua",
+        "Text/Encoding.lua",
+        "Net/IPAddress.lua",
+        "Net/EndPoint.lua",
+        "Net/Sockets/Socket.lua"
       ],
       "backingLua": [
         "shared.lua",

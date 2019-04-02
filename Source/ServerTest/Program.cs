@@ -14,6 +14,9 @@ using Slipe.Shared.RPC;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Net.Sockets;
+using System.Net;
+using System.Text;
 
 namespace ServerTest
 {
@@ -145,7 +148,52 @@ namespace ServerTest
             //newElement.Value = "test";
             //document.FirstChild.AppendChild(newElement);
             //document.Save("test.xml");
-            
+
+
+            OutTest(out int x);
+            Console.WriteLine(x);
+            DoSocket();
+        }
+
+        public async Task DoSocket()
+        {
+            Socket socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
+            await socket.ConnectAsync(IPAddress.Parse("52.20.16.20"), 30000);
+
+            Console.WriteLine("We've connected");
+            string message = "Test message";
+            socket.Send(Encoding.ASCII.GetBytes(message));
+
+            byte[] buffer = new byte[1024];
+            socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, Receive, new SocketState()
+            {
+                buffer = buffer,
+                socket = socket
+            });
+        }
+
+        public void Receive(IAsyncResult result)
+        {
+            SocketState state = (SocketState)result.AsyncState;
+            Socket socket = state.socket;
+            byte[] buffer = state.buffer;
+
+            int bytesRead = socket.EndReceive(result);
+            string message = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+            Console.WriteLine("We've received: {0}", message);
+
+            socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, Receive, result.AsyncState);
+        }
+
+        public byte[] OutTest(out int x)
+        {
+            x = 100;
+            byte[] bytes = new byte[10];
+            foreach(byte bytey in bytes)
+            {
+                Console.WriteLine(bytey);
+            }
+            return bytes;
         }
 
         private async Task HttpTest()
@@ -171,5 +219,11 @@ namespace ServerTest
             await Task.Delay(1000);
             return 5;
         }
+    }
+
+    struct SocketState
+    {
+        public Socket socket;
+        public byte[] buffer;
     }
 }

@@ -33,7 +33,7 @@ local function requestCallback(data, responseInfo)
 end
 
 HttpClient.GetAsync = function(this, url)
-	local task, callback =  System.Task.Callback(requestCallback)
+	local task, callback = System.Task.Callback(requestCallback)
 	fetchRemote(url, {}, callback)
 	return task;
 end
