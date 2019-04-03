@@ -17,7 +17,7 @@ System.define("Slipe.MTADefinitions.MTAClient", {
 	CancelLatentEvent = cancelLatentEvent,
 	GetLatentEventHandles = function(...) local results = {getLatentEventHandles(...)} if results[1] == false then System.throw(Slipe.MTADefinitions.MTAException()) return end return unpack(results) end,
 	CreateExplosion = createExplosion,
-	AddCommandHandler = addCommandHandler,
+	AddCommandHandler = function(command, callback, ...) addCommandHandler(command, function(command, ...) callback(command, System.arrayFromTable({...}, 'System.String')) end, ...) end,
 	BindKey = bindKey,
 	GetFunctionsBoundToKey = function(...) local results = {getFunctionsBoundToKey(...)} if results[1] == false then System.throw(Slipe.MTADefinitions.MTAException()) return end return unpack(results) end,
 	IsControlEnabled = isControlEnabled,

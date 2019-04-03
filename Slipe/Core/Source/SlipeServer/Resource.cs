@@ -146,7 +146,16 @@ namespace Slipe.Server
         /// </summary>
         public XmlNode AddConfig(string filePath, string fileType = "server")
         {
-            return MTAServer.AddResourceConfig(filePath, fileType);
+            MTAElement mtaNode = MTAServer.AddResourceConfig(filePath, fileType);
+
+            XmlDocument document = new XmlDocument();
+            XmlNode xmlNode = document.CreateElement(MTAShared.XmlNodeGetName(mtaNode));
+            /*
+            [[
+            xmlNode:index(mtaNode)
+            ]]
+            */
+            return xmlNode;
         }
 
         /// <summary>
@@ -154,7 +163,16 @@ namespace Slipe.Server
         /// </summary>
         public XmlNode AddMap(string filePath, int dimension = 0)
         {
-            return MTAServer.AddResourceMap(filePath, dimension);
+            MTAElement mtaNode = MTAServer.AddResourceMap(filePath, dimension);
+
+            XmlDocument document = new XmlDocument();
+            XmlNode xmlNode = document.CreateElement(MTAShared.XmlNodeGetName(mtaNode));
+            /*
+            [[
+            xmlNode:index(mtaNode)
+            ]]
+            */
+            return xmlNode;
         }
 
         /// <summary>

@@ -4,6 +4,7 @@ using System.Text;
 using Slipe.Client.Enums;
 using Slipe.MTADefinitions;
 using System.Numerics;
+using Slipe.Shared;
 
 namespace Slipe.Client.Dx
 {
@@ -66,6 +67,28 @@ namespace Slipe.Client.Dx
         public bool SetTransform(Vector3 rotation)
         {
             return SetTransform(rotation, Vector3.Zero);
+        }
+
+        public bool Apply(string textureName, Element targetElement, bool appendLayers = false)
+        {
+
+            return MTAClient.EngineApplyShaderToWorldTexture(this.materialElement, textureName, targetElement.MTAElement, appendLayers);
+        }
+
+        public bool Apply(string textureName)
+        {
+
+            return Apply(textureName, Element.Root);
+        }
+
+        public bool Remove(string textureName, Element targetElement)
+        {
+            return MTAClient.EngineRemoveShaderFromWorldTexture(this.materialElement, textureName, targetElement.MTAElement);
+        }
+
+        public bool Remove(string textureName)
+        {
+            return Remove(textureName, Element.Root);
         }
     }
 }

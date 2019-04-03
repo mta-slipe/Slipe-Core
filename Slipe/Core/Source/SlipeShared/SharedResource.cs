@@ -98,7 +98,16 @@ namespace Slipe.Shared
         /// </summary>
         public XmlNode Config(string filePath)
         {
-            return MTAShared.GetResourceConfig(filePath);
+            MTAElement mtaNode = MTAShared.GetResourceConfig(filePath);
+
+            XmlDocument document = new XmlDocument();
+            XmlNode xmlNode = document.CreateElement(MTAShared.XmlNodeGetName(mtaNode));
+            /*
+            [[
+            xmlNode:index(mtaNode)
+            ]]
+            */
+            return xmlNode;
         }
 
         

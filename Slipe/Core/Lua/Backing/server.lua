@@ -103,7 +103,7 @@ System.define("Slipe.MTADefinitions.MTAServer", {
 	TriggerLatentClientEvent = triggerLatentClientEvent,
 	CreateExplosion = createExplosion,
 	TriggerClientEvent = triggerClientEvent,
-	AddCommandHandler = addCommandHandler,
+	AddCommandHandler = function(command, callback, ...) addCommandHandler(command, function(source, command, ...) callback(source, command, System.arrayFromTable({...}, 'System.String')) end, ...) end,
 	BindKey = bindKey,
 	GetControlState = getControlState,
 	GetFunctionsBoundToKey = function(...) local results = {getFunctionsBoundToKey(...)} if results[1] == false then System.throw(Slipe.MTADefinitions.MTAException()) return end return unpack(results) end,

@@ -41,20 +41,20 @@ namespace Slipe.Client
         {
             dynamic table = MTAClient.EngineGetModelTextureNames(model.ToString());
 
-            return MTAShared.GetArrayFromTable<string>(table, "System.String");
+            return MTAShared.GetArrayFromTable(table, "System.String");
         }
 
         public string[] GetModelTextureNames(string model)
         {
             dynamic table = MTAClient.EngineGetModelTextureNames(model);
 
-            return MTAShared.GetArrayFromTable<string>(table, "System.String");
+            return MTAShared.GetArrayFromTable(table, "System.String");
         }
 
         public string[] GetVisibleTextureNames(string nameFilter = null, string modelId = null)
         {
             dynamic table = MTAClient.EngineGetVisibleTextureNames(nameFilter, modelId);
-            return MTAShared.GetArrayFromTable<string>(table, "System.String");
+            return MTAShared.GetArrayFromTable(table, "System.String");
         }
 
         public bool SetAsynchronousLoading(bool value, bool forced = false)

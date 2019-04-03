@@ -179,6 +179,14 @@ namespace ServerTest
             //{
             //    Console.WriteLine(i);
             //}
+
+            new CommandHandler("testCommand", (string command, string[] parameters) =>
+            {
+                foreach(string parameter in parameters)
+                {
+                    Console.WriteLine(parameter);
+                }
+            });
         }
 
         public async Task DoSocket()
