@@ -335,4 +335,40 @@ namespace Slipe.Shared.Enums
         quadruple = 5,
         max = 6
     }
+
+    /// <summary>
+    /// Representing the state of vehicle wheels
+    /// </summary>
+    public enum WheelState
+    {
+        Inflated,
+        Flat,
+        FallenOff,
+        Collisionless
+    }
+
+    /// <summary>
+    /// Represents a vehicle wheel
+    /// </summary>
+    public enum VehicleWheel
+    {
+        FrontLeft,
+        RearLeft,
+        FrontRight,
+        RearRight
+    }
+
+    /// <summary>
+    /// Represents a vehicle window
+    /// </summary>
+    public enum VehicleWindow
+    {
+        MotorbikeShield,
+        RearWindow,
+        RightFrontWindow,
+        RightBackWindow,
+        LeftFrontWindow,
+        LeftBackWindow,
+        WindShield
+    }
 }

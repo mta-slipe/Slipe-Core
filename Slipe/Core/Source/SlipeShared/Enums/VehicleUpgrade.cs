@@ -203,6 +203,28 @@ namespace Slipe.Shared.Enums
         fbmp_lr_t1,
         rbmp_lr_t1,
         rbmp_lr_t2
-
+    }
+    
+    /// <summary>
+    /// Represents slots for different upgrades
+    /// </summary>
+    public enum VehicleUpgradeSlot
+    {
+        Hood,
+        Vent,
+        Spoiler,
+        Sideskirt,
+        FrontBullbar,
+        RearBullbar,
+        Headlights,
+        Roof,
+        Nitrous,
+        Hydraulics,
+        Stereo,
+        Wheels = 12,
+        Exhaust,
+        FrontBumper,
+        RearBumper,
+        Misc
     }
 }

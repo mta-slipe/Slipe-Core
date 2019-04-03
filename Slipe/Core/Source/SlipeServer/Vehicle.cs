@@ -39,6 +39,15 @@ namespace Slipe.Server
         }
 
         /// <summary>
+        /// Get all the vehicles of a specific model in the server
+        /// </summary>
+        public static Vehicle[] OfModel(VehicleModel model)
+        {
+            MTAElement[] mtaElements = MTAShared.GetArrayFromTable(MTAServer.GetVehiclesOfType((int) model), "MTAElement");
+            return ElementManager.Instance.CastArray<Vehicle>(mtaElements);
+        }
+
+        /// <summary>
         /// Blow up this vehicle
         /// </summary>
         public bool Blow(bool explode = true)
@@ -163,6 +172,72 @@ namespace Slipe.Server
                 if (value == null)
                     MTAServer.RemoveVehicleSirens(element);
                 s_sirens = value;
+            }
+        }
+
+        /// <summary>
+        /// Get and set the integers reprsenting the current variant. Check wiki for more info
+        /// </summary>
+        public new Tuple<int, int> Variant
+        {
+            get
+            {
+                return MTAShared.GetVehicleVariant(element);
+            }
+            set
+            {
+                MTAServer.SetVehicleVariant(element, value.Item1, value.Item2);
+            }
+        }
+
+        /// <summary>
+        /// Resets the vehicle explosion time. This is the point in time at which the vehicle last exploded: at this time plus the vehicle's respawn delay, the vehicle is respawned. You can use this function to prevent the vehicle from respawning.
+        /// </summary>
+        public bool ResetExplosionTime()
+        {
+            return MTAServer.ResetVehicleExplosionTime(element);
+        }
+
+        /// <summary>
+        /// Resets the vehicle idle time
+        /// </summary>
+        public bool ResetIdleTime()
+        {
+            return MTAServer.ResetVehicleIdleTime(element);
+        }
+
+        /// <summary>
+        /// Spawns the vehicle at a different position and rotation
+        /// </summary>
+        public bool Spawn(Vector3 position, Vector3 rotation)
+        {
+            return MTAServer.SpawnVehicle(element, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z);
+        }
+
+        /// <summary>
+        /// Spawns the vehicle at a different position
+        /// </summary>
+        public bool Spawn(Vector3 position)
+        {
+            return Spawn(position, Vector3.Zero);
+        }
+
+        /// <summary>
+        /// Respawns the vehicle
+        /// </summary>
+        public bool Respawn()
+        {
+            return MTAServer.RespawnVehicle(element);
+        }
+
+        /// <summary>
+        /// Set the respawn delay in milliseconds
+        /// </summary>
+        public int IdleRespawnDelay
+        {
+            set
+            {
+                MTAServer.SetVehicleIdleRespawnDelay(element, value);
             }
         }
 
