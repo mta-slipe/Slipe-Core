@@ -14,6 +14,7 @@ namespace Slipe.Server
     /// </summary>
     public class Vehicle : SharedVehicle
     {
+        private VehicleSirens s_sirens;
         /// <summary>
         /// Create a vehicle from an MTA vehicle element 
         /// </summary>
@@ -35,14 +36,6 @@ namespace Slipe.Server
         /// </summary>
         public Vehicle(VehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
         {
-        }
-
-        /// <summary>
-        /// Add sirens to this vehicle
-        /// </summary>
-        public bool AddSirens(int sirenCount, Siren sirenType, bool threesixtyflag = false, bool checkLOSFlag = true, bool useRandomizer = true, bool silentFlag = false)
-        {
-            return MTAServer.AddVehicleSirens(element, sirenCount, (int)sirenType, threesixtyflag, checkLOSFlag, useRandomizer, silentFlag);
         }
 
         /// <summary>
@@ -96,6 +89,80 @@ namespace Slipe.Server
                     dictionary.Add(s, p);
                 }
                 return dictionary;
+            }
+        }
+
+        /// <summary>
+        /// Set to true to have the vehicle respawn if it gets blown up
+        /// </summary>
+        public bool RespawnEnabled
+        {
+            set
+            {
+                MTAServer.ToggleVehicleRespawn(element, value);
+            }
+        }
+
+        /// <summary>
+        /// Set the respawn delay of this vehicle in milliseconds
+        /// </summary>
+        public int RespawnDelay
+        {
+            set
+            {
+                MTAServer.SetVehicleRespawnDelay(element, value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the respawn position
+        /// </summary>
+        public Vector3 RespawnPosition
+        {
+            get
+            {
+                Tuple<float, float, float> r = MTAServer.GetVehicleRespawnPosition(element);
+                return new Vector3(r.Item1, r.Item2, r.Item3);
+            }
+            set
+            {
+                Vector3 rotation = RespawnRotation;
+                MTAServer.SetVehicleRespawnPosition(element, value.X, value.Y, value.Z, rotation.X, rotation.Y, rotation.Z);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the respawn rotation
+        /// </summary>
+        public Vector3 RespawnRotation
+        {
+            get
+            {
+                Tuple<float, float, float> r = MTAServer.GetVehicleRespawnRotation(element);
+                return new Vector3(r.Item1, r.Item2, r.Item3);
+            }
+            set
+            {
+                MTAServer.SetVehicleRespawnRotation(element, value.X, value.Y, value.Z);
+            }
+        }
+
+        /// <summary>
+        /// The sirens of this vehicle
+        /// </summary>
+        public new VehicleSirens Sirens
+        {
+            get
+            {
+                if (s_sirens == null)
+                    s_sirens = new VehicleSirens(this);
+                return s_sirens;
+            }
+            set
+            {
+                if (value == null)
+                    MTAServer.RemoveVehicleSirens(element);
+                s_sirens = value;
             }
         }
 

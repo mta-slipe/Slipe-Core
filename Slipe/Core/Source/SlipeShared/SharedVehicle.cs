@@ -13,6 +13,7 @@ namespace Slipe.Shared
     public class SharedVehicle: PhysicalElement
     {
         private VehicleHandling handling;
+        private SharedVehicleSirens sirens;
 
         /// <summary>
         /// Creates or retrieves a vehicle from an MTA vehicle element
@@ -299,5 +300,80 @@ namespace Slipe.Shared
                 return handling;
             }
         }
+
+        /// <summary>
+        /// Get and set the override-lights setting
+        /// </summary>
+        public VehicleOverrideLightState OverrideLights
+        {
+            get
+            {
+                return (VehicleOverrideLightState) MTAShared.GetVehicleOverrideLights(element);
+            }
+            set
+            {
+                MTAShared.SetVehicleOverrideLights(element, (int)value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the paintjob
+        /// </summary>
+        public VehiclePaintjob Paintjob
+        {
+            get
+            {
+                return (VehiclePaintjob)MTAShared.GetVehiclePaintjob(element);
+            }
+            set
+            {
+                MTAShared.SetVehiclePaintjob(element, (int)value);
+            }
+        }
+
+        /// <summary>
+        /// Get the damage status of a particular vehicle panel
+        /// </summary>
+        public DamageLevel GetPanelDamage(VehiclePanel panel)
+        {
+            return (DamageLevel)MTAShared.GetVehiclePanelState(element, (int)panel);
+        }
+
+        /// <summary>
+        /// Set the damage status of a particular vehicle panel
+        /// </summary>
+        public bool SetPanelDamage(VehiclePanel panel, DamageLevel damage)
+        {
+            return MTAShared.SetVehiclePanelState(element, (int)panel, (int)damage);
+        }
+
+        /// <summary>
+        /// Get and set the numberplate text
+        /// </summary>
+        public string PlateText
+        {
+            get
+            {
+                return MTAShared.GetVehiclePlateText(element);
+            }
+            set
+            {
+                MTAShared.SetVehiclePlateText(element, value);
+            }
+        }
+
+        /// <summary>
+        /// The sirens of this vehicle
+        /// </summary>
+        public SharedVehicleSirens Sirens
+        {
+            get
+            {
+                if (sirens == null)
+                    sirens = new SharedVehicleSirens(this);
+                return sirens;
+            }
+        }
+
     }
 }

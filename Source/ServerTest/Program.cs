@@ -79,6 +79,12 @@ namespace ServerTest
             Debug.WriteLine("Color: {0}, {1}, {2}, {3}", color.R, color.G, color.B, color.A);
 
             Vehicle alpha = new Vehicle(VehicleModel.ALPHA, new Vector3(0, 10, 3));
+
+            // BROKEN UNTIL FIXED BY YUAN
+            //alpha.Sirens.Add(new Vector3(0, 0, 1), Color.Red, 100);
+            //alpha.Sirens.Type = SirenType.dual;
+            //alpha.Sirens.On = true;
+
             // alpha.AddEventHandler("onVehicleDamage");
             alpha.OnDamage += (float loss) =>
             {
