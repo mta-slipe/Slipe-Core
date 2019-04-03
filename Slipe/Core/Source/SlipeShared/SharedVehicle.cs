@@ -83,7 +83,7 @@ namespace Slipe.Shared
         /// </summary>
         public static VehicleHandling GetOriginalHandling(VehicleModel model)
         {
-            Dictionary<string, dynamic> d = MTAShared.GetDictionaryFromTable(MTAShared.GetOriginalHandling((int)model), "System.String", "System.Dynamic");
+            Dictionary<string, dynamic> d = MTAShared.GetDictionaryFromTable(MTAShared.GetOriginalHandling((int)model), "System.String", "dynamic");
             return new VehicleHandling(d);
         }
 

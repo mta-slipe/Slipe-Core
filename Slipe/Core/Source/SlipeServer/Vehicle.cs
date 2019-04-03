@@ -81,14 +81,21 @@ namespace Slipe.Server
         }
 
         /// <summary>
-        /// Get an array of players occupying this vehicle
+        /// Get a dictionary of players occupying this vehicle
         /// </summary>
-        public Player[] Occupants
+        public Dictionary<VehicleSeat, Player> Occupants
         {
             get
             {
-                MTAElement[] elements = MTAShared.GetArrayFromTable(MTAShared.GetVehicleOccupants(element), "MTAElement");
-                return ElementManager.Instance.CastArray<Player>(elements);
+                Dictionary<int, MTAElement> elements = MTAShared.GetDictionaryFromTable(MTAShared.GetVehicleOccupants(element), "System.Int32", "MTAElement");
+                Dictionary<VehicleSeat, Player> dictionary = new Dictionary<VehicleSeat, Player>();
+                foreach(KeyValuePair<int, MTAElement> entry in elements)
+                {
+                    Player p = (Player) ElementManager.Instance.GetElement(entry.Value);
+                    VehicleSeat s = (VehicleSeat)entry.Key;
+                    dictionary.Add(s, p);
+                }
+                return dictionary;
             }
         }
 

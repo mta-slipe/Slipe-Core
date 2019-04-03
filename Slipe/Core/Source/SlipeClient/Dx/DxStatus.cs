@@ -129,7 +129,7 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// The FOV setting
         /// </summary>
-        public string SettingFOV { get; set; }
+        public int SettingFOV { get; set; }
 
         /// <summary>
         /// High detail vehicles setting
@@ -166,33 +166,33 @@ namespace Slipe.Client.Dx
         {
             Dictionary<string, dynamic> t = MTAShared.GetDictionaryFromTable(MTAClient.DxGetStatus(), "System.String", "System.Dynamic");
             TestMode = (TestMode)Enum.Parse(typeof(TestMode), t["TestMode"]);
-            VideoCardName = t["VideoCardName"];
-            VideoCardRAM = t["VideoCardRAM"];
-            VideoCardPSVersion = t["VideoCardPSVersion"];
-            VideoCardNumRenderTargets = t["VideoCardNumRenderTargets"];
-            VideoCardMaxAnisotropy = t["VideoCardMaxAnisotropy"];
-            VideoMemoryFreeForMTA = t["VideoMemoryFreeForMTA"];
-            VideoMemoryUsedByFonts = t["VideoMemoryUsedByFonts"];
-            VideoMemoryUsedByTextures = t["VideoMemoryUsedByTextures"];
-            VideoMemoryUsedByRenderTargets = t["VideoMemoryUsedByRenderTargets"];
-            SettingWindowed = t["SettingWindowed"];
-            SettingFullScreenStyle = t["SettingFullScreenStyle"];
-            SettingFXQuality = t["SettingFXQuality"];
-            SettingDrawDistance = t["SettingDrawDistance"];
-            SettingVolumetricShadows = t["SettingVolumetricShadows"];
-            SettingStreamingVideoMemoryForGTA = t["SettingStreamingVideoMemoryForGTA"];
-            SettingAnisotropicFiltering = t["SettingAnisotropicFiltering"];
-            SettingAntiAliasing = t["SettingAntiAliasing"];
-            SettingHeatHaze = t["SettingHeatHaze"];
-            SettingGrassEffect = t["SettingGrassEffect"];
-            Setting32BitColor = t["Setting32BitColor"];
-            SettingHUDMatchAspectRatio = t["SettingHUDMatchAspectRatio"];
-            SettingAspectRatio = t["SettingAspectRatio"];
-            SettingFOV = t["SettingFOV"];
-            SettingHighDetailVehicles = t["SettingHighDetailVehicles"];
-            AllowScreenUpload = t["AllowScreenUpload"];
-            DepthBufferFormat = t["DepthBufferFormat"];
-            UsingDepthBuffer = t["UsingDepthBuffer"];
+            VideoCardName = (string) t["VideoCardName"];
+            VideoCardRAM = (int) t["VideoCardRAM"];
+            VideoCardPSVersion = (string)t["VideoCardPSVersion"];
+            VideoCardNumRenderTargets = (int)t["VideoCardNumRenderTargets"];
+            VideoCardMaxAnisotropy = (int)t["VideoCardMaxAnisotropy"];
+            VideoMemoryFreeForMTA = (int)t["VideoMemoryFreeForMTA"];
+            VideoMemoryUsedByFonts = (int)t["VideoMemoryUsedByFonts"];
+            VideoMemoryUsedByTextures = (int)t["VideoMemoryUsedByTextures"];
+            VideoMemoryUsedByRenderTargets = (int)t["VideoMemoryUsedByRenderTargets"];
+            SettingWindowed = (bool)t["SettingWindowed"];
+            SettingFullScreenStyle = (int)t["SettingFullScreenStyle"];
+            SettingFXQuality = (int)t["SettingFXQuality"];
+            SettingDrawDistance = (int)t["SettingDrawDistance"];
+            SettingVolumetricShadows = (bool)t["SettingVolumetricShadows"];
+            SettingStreamingVideoMemoryForGTA = (int)t["SettingStreamingVideoMemoryForGTA"];
+            SettingAnisotropicFiltering = (int)t["SettingAnisotropicFiltering"];
+            SettingAntiAliasing = (int)t["SettingAntiAliasing"];
+            SettingHeatHaze = (bool)t["SettingHeatHaze"];
+            SettingGrassEffect = (bool)t["SettingGrassEffect"];
+            Setting32BitColor = (bool)t["Setting32BitColor"];
+            SettingHUDMatchAspectRatio = (bool)t["SettingHUDMatchAspectRatio"];
+            SettingAspectRatio = (string)t["SettingAspectRatio"];
+            SettingFOV = (int)t["SettingFOV"];
+            SettingHighDetailVehicles = (bool)t["SettingHighDetailVehicles"];
+            AllowScreenUpload = (bool)t["AllowScreenUpload"];
+            DepthBufferFormat = (string)t["DepthBufferFormat"];
+            UsingDepthBuffer = (bool)t["UsingDepthBuffer"];
         }
     }
 }

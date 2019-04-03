@@ -82,7 +82,13 @@ namespace ServerTest
             // alpha.AddEventHandler("onVehicleDamage");
             alpha.OnDamage += (float loss) =>
             {
-                Console.WriteLine("Vehicle lost " + loss +" health");
+                Dictionary<VehicleSeat, Player> occupants = alpha.Occupants;
+                Debug.WriteLine(occupants.Count);
+                foreach(KeyValuePair<VehicleSeat, Player> oc in occupants)
+                {
+                    Debug.WriteLine(oc.Value.Name);
+                }
+                Debug.WriteLine("Vehicle lost " + loss +" health");
                 try
                 {
                     Player nano = (Player)Player.GetFromName("SAES>Nanobob");
