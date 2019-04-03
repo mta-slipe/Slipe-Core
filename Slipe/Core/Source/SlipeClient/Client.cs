@@ -22,6 +22,18 @@ namespace Slipe.Client
         }
 
         /// <summary>
+        /// Get the Engine object
+        /// </summary>
+        public static Engine Engine
+        {
+            get
+            {
+                return Engine.Instance;
+            }
+        }
+        
+
+        /// <summary>
         /// Get if voice is currently enabled
         /// </summary>
         public static bool IsVoiceEnabled

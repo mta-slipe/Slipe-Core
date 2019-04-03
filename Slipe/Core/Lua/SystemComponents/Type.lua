@@ -413,7 +413,7 @@ function System.cast(cls, obj)
     end
     if getmetatable(obj) == nil then
       setmetatable(obj, cls)
-      return
+      return obj
     end
     throw(InvalidCastException(), 1)
   end
