@@ -8,12 +8,12 @@ namespace Slipe.Server.Vehicles
 {
     public class ModelHandling : Handling
     {
-        protected Model model;
+        protected int model;
 
         /// <summary>
         /// Builds vehicle handling from a vehicle model
         /// </summary>
-        public ModelHandling(Model targetModel) : base()
+        public ModelHandling(int targetModel) : base()
         {
             model = targetModel;
         }
@@ -25,7 +25,7 @@ namespace Slipe.Server.Vehicles
 
         protected override void UpdateToGame(string key, dynamic value)
         {
-            MTAServer.SetModelHandling((int)model, key, value);
+            MTAServer.SetModelHandling(model, key, value);
         }
     }
 }

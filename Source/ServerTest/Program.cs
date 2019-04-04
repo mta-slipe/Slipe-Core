@@ -45,11 +45,11 @@ namespace ServerTest
 
         public Program()
         {
-            Debug.WriteLine(Slipe.Server.Server.Name);
-            List<Vehicle> vehicles = new List<Vehicle>(); ;
+            Debug.WriteLine(Server.Name);
+            List<TurretedVehicle> vehicles = new List<TurretedVehicle>(); ;
             for (int i = 0; i < 10; i++)
             {
-                Vehicle rhino = new Vehicle(Model.RHINO, new Vector3(i * 15, 0, 3));
+                TurretedVehicle rhino = new TurretedVehicle(TurretedModel.Rhino, new Vector3(i * 15, 0, 3));
                 Blip blip = new Blip(rhino);
                 vehicles.Add(rhino);
             }
@@ -62,7 +62,7 @@ namespace ServerTest
 
             vehicles[4].AttachTo(dildo, new Vector3(0, 0, 3), Vector3.Zero);
 
-            Dictionary<string, Vehicle> vehicleDictionary = new Dictionary<string, Vehicle>();
+            Dictionary<string, TurretedVehicle> vehicleDictionary = new Dictionary<string, TurretedVehicle>();
             vehicleDictionary["best"] = vehicles[3];
             vehicleDictionary["best"].Position = new Vector3(0, 0, 20);
             vehicleDictionary["best"].Frozen = true;
@@ -79,7 +79,7 @@ namespace ServerTest
             color = new Color((uint) 0x000000ff);
             Debug.WriteLine("Color: {0}, {1}, {2}, {3}", color.R, color.G, color.B, color.A);
 
-            Vehicle alpha = new Vehicle(Model.ALPHA, new Vector3(0, 10, 3));
+            Vehicle alpha = new Vehicle(VehicleModel.Alpha, new Vector3(0, 10, 3));
 
             // BROKEN UNTIL FIXED BY YUAN
             //alpha.Sirens.Add(new Vector3(0, 0, 1), Color.Red, 100);

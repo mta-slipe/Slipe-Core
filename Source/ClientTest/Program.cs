@@ -51,7 +51,7 @@ namespace ClientTest
 
             new CustomAnimation("Assets/salute.ifp").Apply("salute");
 
-            Player.Local.SetAnimation(new Animation("salute", "mil_salutePrt"), -1, false);
+            Player.Local.SetAnimation(new Animation("salute", "mil_salutePrt"), false);
 
             Debug.WriteLine(Client.Renderer.Status.VideoCardName);
             Debug.WriteLine(Client.Renderer.Status.VideoCardRAM);
