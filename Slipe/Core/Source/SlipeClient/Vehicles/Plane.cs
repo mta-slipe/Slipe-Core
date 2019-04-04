@@ -9,7 +9,7 @@ namespace Slipe.Client.Vehicles
     /// <summary>
     /// Planes as a special type of vehicle
     /// </summary>
-    public class Plane : BaseVehicle
+    public class Plane : Vehicle
     {
         /// <summary>
         /// Get and set if the Plane's landing gear is down or not

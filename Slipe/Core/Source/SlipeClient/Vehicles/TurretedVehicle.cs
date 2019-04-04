@@ -9,7 +9,7 @@ namespace Slipe.Client.Vehicles
     /// <summary>
     /// Represents vehicles with a turret (firetrucks, rhino etc)
     /// </summary>
-    public class TurretedVehicle : BaseVehicle
+    public class TurretedVehicle : Vehicle
     {
         /// <summary>
         /// Get and set the position of the turret in radians

@@ -9,7 +9,7 @@ namespace Slipe.Server.Vehicles
     /// <summary>
     /// Represents boats
     /// </summary>
-    public class Boat : BaseVehicle
+    public class Boat : Vehicle
     {
         #region Constructors
         /// <summary>

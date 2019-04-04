@@ -11,7 +11,7 @@ namespace Slipe.Client.Vehicles
     /// </summary>
     public class Component
     {
-        private BaseVehicle vehicle;
+        private Vehicle vehicle;
         private string component;
 
         #region Properties
@@ -67,7 +67,7 @@ namespace Slipe.Client.Vehicles
         /// <summary>
         /// Create a component instance from a vehicle
         /// </summary>
-        public Component(BaseVehicle vehicle, ComponentType type, ComponentBase relativeBase = ComponentBase.root)
+        public Component(Vehicle vehicle, ComponentType type, ComponentBase relativeBase = ComponentBase.root)
         {
             this.vehicle = vehicle;
             this.component = type.ToString().ToLower();
@@ -77,7 +77,7 @@ namespace Slipe.Client.Vehicles
         /// <summary>
         /// Create a component instance from a vehicle using a string as type
         /// </summary>
-        public Component(BaseVehicle vehicle, string type, ComponentBase relativeBase = ComponentBase.root)
+        public Component(Vehicle vehicle, string type, ComponentBase relativeBase = ComponentBase.root)
         {
             this.vehicle = vehicle;
             this.component = type;

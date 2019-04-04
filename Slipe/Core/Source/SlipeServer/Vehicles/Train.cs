@@ -9,7 +9,7 @@ namespace Slipe.Server.Vehicles
     /// <summary>
     /// A train
     /// </summary>
-    public class Train : BaseVehicle
+    public class Train : Vehicle
     {
         #region Properties
         /// <summary>

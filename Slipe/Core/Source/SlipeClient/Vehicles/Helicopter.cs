@@ -9,7 +9,7 @@ namespace Slipe.Client.Vehicles
     /// <summary>
     /// Represents helicopter vehicles
     /// </summary>
-    public class Helicopter : BaseVehicle
+    public class Helicopter : Vehicle
     {
         /// <summary>
         /// Get and set the rotor speed (between 0 and 0.2)

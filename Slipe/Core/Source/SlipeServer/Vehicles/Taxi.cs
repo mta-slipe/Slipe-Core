@@ -9,7 +9,7 @@ namespace Slipe.Server.Vehicles
     /// <summary>
     /// Represents a taxi vehicle
     /// </summary>
-    public class Taxi : BaseVehicle
+    public class Taxi : Vehicle
     {
         /// <summary>
         /// Get and set if the taxi light on in a taxi

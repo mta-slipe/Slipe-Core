@@ -46,10 +46,10 @@ namespace ServerTest
         public Program()
         {
             Debug.WriteLine(Server.Name);
-            List<TurretedVehicle> vehicles = new List<TurretedVehicle>(); ;
+            List<Vehicle> vehicles = new List<Vehicle>(); ;
             for (int i = 0; i < 10; i++)
             {
-                TurretedVehicle rhino = new TurretedVehicle(TurretedModel.Rhino, new Vector3(i * 15, 0, 3));
+                Vehicle rhino = new TurretedVehicle(TurretedModel.Rhino, new Vector3(i * 15, 0, 3));
                 Blip blip = new Blip(rhino);
                 vehicles.Add(rhino);
             }
@@ -62,7 +62,7 @@ namespace ServerTest
 
             vehicles[4].AttachTo(dildo, new Vector3(0, 0, 3), Vector3.Zero);
 
-            Dictionary<string, TurretedVehicle> vehicleDictionary = new Dictionary<string, TurretedVehicle>();
+            Dictionary<string, Vehicle> vehicleDictionary = new Dictionary<string, Vehicle>();
             vehicleDictionary["best"] = vehicles[3];
             vehicleDictionary["best"].Position = new Vector3(0, 0, 20);
             vehicleDictionary["best"].Frozen = true;
@@ -81,10 +81,9 @@ namespace ServerTest
 
             Vehicle alpha = new Vehicle(VehicleModel.Alpha, new Vector3(0, 10, 3));
 
-            // BROKEN UNTIL FIXED BY YUAN
-            //alpha.Sirens.Add(new Vector3(0, 0, 1), Color.Red, 100);
-            //alpha.Sirens.Type = SirenType.dual;
-            //alpha.Sirens.On = true;
+            alpha.Sirens.Add(new Vector3(0, 0, 2), Color.Red, 100);
+            alpha.Sirens.Type = SirenType.dual;
+            alpha.Sirens.On = true;
 
             // alpha.AddEventHandler("onVehicleDamage");
             alpha.OnDamage += (float loss) =>

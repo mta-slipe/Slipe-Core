@@ -10,7 +10,7 @@ namespace Slipe.Client.Vehicles
     /// <summary>
     /// Represents a towable trailer
     /// </summary>
-    public class Trailer : BaseVehicle
+    public class Trailer : Vehicle
     {
         /// <summary>
         /// Get and set the vehicle towing this trailer

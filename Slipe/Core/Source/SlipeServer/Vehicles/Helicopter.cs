@@ -9,7 +9,7 @@ namespace Slipe.Server.Vehicles
     /// <summary>
     /// Represents helicopter vehicles
     /// </summary>
-    public class Helicopter : BaseVehicle
+    public class Helicopter : Vehicle
     {
         #region Constructors
         /// <summary>
