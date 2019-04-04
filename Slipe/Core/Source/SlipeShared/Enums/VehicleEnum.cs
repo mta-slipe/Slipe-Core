@@ -264,4 +264,111 @@ namespace Slipe.Shared.Enums
         Working,
         Broken
     }
+
+    /// <summary>
+    /// Representing the state of vehicle lights
+    /// </summary>
+    public enum VehicleOverrideLightState
+    {
+        Default,
+        ForcedOff,
+        ForcedOn,
+    }
+
+    /// <summary>
+    /// Represents the paintjob on a vehicle
+    /// </summary>
+    public enum VehiclePaintjob
+    {
+        First,
+        Second,
+        Third,
+        Default
+    }
+
+    /// <summary>
+    /// Represents damagable panels on vehicles
+    /// </summary>
+    public enum VehiclePanel
+    {
+        FrontLeft,
+        FrontRight,
+        RearLeft,
+        RearRight,
+        Windscreen,
+        FrontBumper,
+        RearBumper
+    }
+
+    /// <summary>
+    /// Represents damagable plane parts
+    /// </summary>
+    public enum PlanePanel
+    {
+        EngineSmokeLeft,
+        EngineSmokeRight,
+        Rudder,
+        Elevators,
+        Ailerons
+    }
+
+    /// <summary>
+    /// Represents damage to a vehicle panel
+    /// </summary>
+    public enum DamageLevel
+    {
+        Undamaged,
+        SlightlyDamaged,
+        Damaged,
+        VeryDamaged
+    }
+
+    /// <summary>
+    /// Represents different types of sirens
+    /// </summary>
+    public enum SirenType
+    {
+        invisible = 1,
+        single = 2,
+        dual = 3,
+        triple = 4,
+        quadruple = 5,
+        max = 6
+    }
+
+    /// <summary>
+    /// Representing the state of vehicle wheels
+    /// </summary>
+    public enum WheelState
+    {
+        Inflated,
+        Flat,
+        FallenOff,
+        Collisionless
+    }
+
+    /// <summary>
+    /// Represents a vehicle wheel
+    /// </summary>
+    public enum VehicleWheel
+    {
+        FrontLeft,
+        RearLeft,
+        FrontRight,
+        RearRight
+    }
+
+    /// <summary>
+    /// Represents a vehicle window
+    /// </summary>
+    public enum VehicleWindow
+    {
+        MotorbikeShield,
+        RearWindow,
+        RightFrontWindow,
+        RightBackWindow,
+        LeftFrontWindow,
+        LeftBackWindow,
+        WindShield
+    }
 }

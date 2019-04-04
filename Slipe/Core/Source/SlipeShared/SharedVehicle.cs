@@ -13,6 +13,7 @@ namespace Slipe.Shared
     public class SharedVehicle: PhysicalElement
     {
         private VehicleHandling handling;
+        private SharedVehicleSirens sirens;
 
         /// <summary>
         /// Creates or retrieves a vehicle from an MTA vehicle element
@@ -83,7 +84,7 @@ namespace Slipe.Shared
         /// </summary>
         public static VehicleHandling GetOriginalHandling(VehicleModel model)
         {
-            Dictionary<string, dynamic> d = MTAShared.GetDictionaryFromTable(MTAShared.GetOriginalHandling((int)model), "System.String", "System.Dynamic");
+            Dictionary<string, dynamic> d = MTAShared.GetDictionaryFromTable(MTAShared.GetOriginalHandling((int)model), "System.String", "dynamic");
             return new VehicleHandling(d);
         }
 
@@ -160,9 +161,9 @@ namespace Slipe.Shared
         /// <summary>
         /// Get compatible upgrades for a specific upgrade slot
         /// </summary>
-        public VehicleUpgrade[] GetCompatibleUpgrades(int slot)
+        public VehicleUpgrade[] GetCompatibleUpgrades(VehicleUpgradeSlot slot)
         {
-            int[] upInts = MTAShared.GetArrayFromTable(MTAShared.GetVehicleCompatibleUpgrades(element, slot), "System.Int32");
+            int[] upInts = MTAShared.GetArrayFromTable(MTAShared.GetVehicleCompatibleUpgrades(element, (int) slot), "System.Int32");
             VehicleUpgrade[] upgrades = new VehicleUpgrade[upInts.Length];
             for (int i = 0; i < upInts.Length; i++)
             {
@@ -299,5 +300,244 @@ namespace Slipe.Shared
                 return handling;
             }
         }
+
+        /// <summary>
+        /// Get and set the override-lights setting
+        /// </summary>
+        public VehicleOverrideLightState OverrideLights
+        {
+            get
+            {
+                return (VehicleOverrideLightState) MTAShared.GetVehicleOverrideLights(element);
+            }
+            set
+            {
+                MTAShared.SetVehicleOverrideLights(element, (int)value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the paintjob
+        /// </summary>
+        public VehiclePaintjob Paintjob
+        {
+            get
+            {
+                return (VehiclePaintjob)MTAShared.GetVehiclePaintjob(element);
+            }
+            set
+            {
+                MTAShared.SetVehiclePaintjob(element, (int)value);
+            }
+        }
+
+        /// <summary>
+        /// Get the damage status of a particular vehicle panel
+        /// </summary>
+        public DamageLevel GetPanelDamage(VehiclePanel panel)
+        {
+            return (DamageLevel)MTAShared.GetVehiclePanelState(element, (int)panel);
+        }
+
+        /// <summary>
+        /// Set the damage status of a particular vehicle panel
+        /// </summary>
+        public bool SetPanelDamage(VehiclePanel panel, DamageLevel damage)
+        {
+            return MTAShared.SetVehiclePanelState(element, (int)panel, (int)damage);
+        }
+
+        /// <summary>
+        /// Get and set the numberplate text
+        /// </summary>
+        public string PlateText
+        {
+            get
+            {
+                return MTAShared.GetVehiclePlateText(element);
+            }
+            set
+            {
+                MTAShared.SetVehiclePlateText(element, value);
+            }
+        }
+
+        /// <summary>
+        /// The sirens of this vehicle
+        /// </summary>
+        public SharedVehicleSirens Sirens
+        {
+            get
+            {
+                if (sirens == null)
+                    sirens = new SharedVehicleSirens(this);
+                return sirens;
+            }
+        }
+
+        /// <summary>
+        /// Get a string representation of the type of this vehicle
+        /// </summary>
+        public string VehicleType
+        {
+            get
+            {
+                return MTAShared.GetVehicleType(element);
+            }
+        }
+
+        /// <summary>
+        /// This function returns the current upgrade id on the vehicle's 'upgrade slot' 
+        /// </summary>
+        public VehicleUpgrade GetUpgradeOnSlot(VehicleUpgradeSlot slot)
+        {
+            return (VehicleUpgrade)MTAShared.GetVehicleUpgradeOnSlot(element, (int)slot);
+        }
+
+        /// <summary>
+        /// Get a dictionary with the ugprades of upgraded slots
+        /// </summary>
+        public Dictionary<VehicleUpgradeSlot, VehicleUpgrade> Upgrades
+        {
+            get
+            {
+                Dictionary<int, int> d = (Dictionary<int, int>)MTAShared.GetDictionaryFromTable(MTAShared.GetVehicleUpgrades(element), "System.Int32", "System.Int32");
+                Dictionary<VehicleUpgradeSlot, VehicleUpgrade> r = new Dictionary<VehicleUpgradeSlot, VehicleUpgrade>();
+                foreach(KeyValuePair<int, int> upgrade in d)
+                {
+                    r.Add((VehicleUpgradeSlot) upgrade.Key, (VehicleUpgrade) upgrade.Value);
+                }
+                return r;
+            }
+        }
+
+        /// <summary>
+        /// Get the integers reprsenting the current variant. Check wiki for more info
+        /// </summary>
+        public Tuple<int, int> Variant
+        {
+            get
+            {
+                return MTAShared.GetVehicleVariant(element);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the state of all wheels (front left, rear left, front right, rear right)
+        /// </summary>
+        public Tuple<WheelState, WheelState, WheelState, WheelState> WheelState
+        {
+            get
+            {
+                Tuple<int, int, int, int> states = MTAShared.GetVehicleWheelStates(element);
+                return new Tuple<WheelState, WheelState, WheelState, WheelState>((WheelState)states.Item1, (WheelState)states.Item2, (WheelState)states.Item3, (WheelState)states.Item4);
+            }
+            set
+            {
+                MTAShared.SetVehicleWheelStates(element, (int)value.Item1, (int)value.Item2, (int)value.Item3, (int)value.Item4);
+            }
+        }
+
+        /// <summary>
+        /// Get if this vehicle is blown up
+        /// </summary>
+        public bool IsBlown
+        {
+            get
+            {
+                return MTAShared.IsVehicleBlown(element);
+            }
+        }
+
+        /// <summary>
+        /// Makes a vehicle damage proof, so it won't take damage from bullets, hits, explosions or fire. A damage proof's vehicle health can still be changed via script.
+        /// </summary>
+        public bool DamageProof
+        {
+            get
+            {
+                return MTAShared.IsVehicleDamageProof(element);
+            }
+            set
+            {
+                MTAShared.SetVehicleDamageProof(element, value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set if the fuel tank is explodable
+        /// </summary>
+        public bool FuelTankExplodable
+        {
+            get
+            {
+                return MTAShared.IsVehicleFuelTankExplodable(element);
+            }
+            set
+            {
+                MTAShared.SetVehicleFuelTankExplodable(element, value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set if the vehicle is locked
+        /// </summary>
+        public bool Locked
+        {
+            get
+            {
+                return MTAShared.IsVehicleLocked(element);
+            }
+            set
+            {
+                MTAShared.SetVehicleLocked(element, value);
+            }
+        }
+
+        /// <summary>
+        /// Get if the vehicle is touching the ground
+        /// </summary>
+        public bool IsOnGround
+        {
+            get
+            {
+                return MTAShared.IsVehicleOnGround(element);
+            }
+        }
+
+        /// <summary>
+        /// This function will set the taxi light on in a taxi (vehicle ID's 420 and 438)
+        /// </summary>
+        public bool TaxiLightOn
+        {
+            get
+            {
+                return MTAShared.IsVehicleTaxiLightOn(element);
+            }
+            set
+            {
+                MTAShared.SetVehicleTaxiLightOn(element, value);
+            }
+        }
+
+        /// <summary>
+        /// This function removes an already existing upgrade from the specified vehicle, eg: nos, hydraulics.
+        /// </summary>
+        public bool RemoveUpgrade(VehicleUpgrade upgrade)
+        {
+            return MTAShared.RemoveVehicleUpgrade(element, (int)upgrade);
+        }
+
+        /// <summary>
+        /// This function makes a vehicle's doors undamageable, so they won't fall off when they're hit.
+        /// </summary>
+        public bool DoorsUndamagable
+        {
+            set
+            {
+                MTAShared.SetVehicleDoorsUndamageable(element, value);
+            }
+        }
+
     }
 }

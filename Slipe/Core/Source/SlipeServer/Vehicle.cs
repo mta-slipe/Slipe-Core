@@ -14,6 +14,7 @@ namespace Slipe.Server
     /// </summary>
     public class Vehicle : SharedVehicle
     {
+        private VehicleSirens s_sirens;
         /// <summary>
         /// Create a vehicle from an MTA vehicle element 
         /// </summary>
@@ -38,11 +39,12 @@ namespace Slipe.Server
         }
 
         /// <summary>
-        /// Add sirens to this vehicle
+        /// Get all the vehicles of a specific model in the server
         /// </summary>
-        public bool AddSirens(int sirenCount, Siren sirenType, bool threesixtyflag = false, bool checkLOSFlag = true, bool useRandomizer = true, bool silentFlag = false)
+        public static Vehicle[] OfModel(VehicleModel model)
         {
-            return MTAServer.AddVehicleSirens(element, sirenCount, (int)sirenType, threesixtyflag, checkLOSFlag, useRandomizer, silentFlag);
+            MTAElement[] mtaElements = MTAShared.GetArrayFromTable(MTAServer.GetVehiclesOfType((int) model), "MTAElement");
+            return ElementManager.Instance.CastArray<Vehicle>(mtaElements);
         }
 
         /// <summary>
@@ -81,14 +83,161 @@ namespace Slipe.Server
         }
 
         /// <summary>
-        /// Get an array of players occupying this vehicle
+        /// Get a dictionary of players occupying this vehicle
         /// </summary>
-        public Player[] Occupants
+        public Dictionary<VehicleSeat, Player> Occupants
         {
             get
             {
-                MTAElement[] elements = MTAShared.GetArrayFromTable(MTAShared.GetVehicleOccupants(element), "MTAElement");
-                return ElementManager.Instance.CastArray<Player>(elements);
+                Dictionary<int, MTAElement> elements = MTAShared.GetDictionaryFromTable(MTAShared.GetVehicleOccupants(element), "System.Int32", "MTAElement");
+                Dictionary<VehicleSeat, Player> dictionary = new Dictionary<VehicleSeat, Player>();
+                foreach(KeyValuePair<int, MTAElement> entry in elements)
+                {
+                    Player p = (Player) ElementManager.Instance.GetElement(entry.Value);
+                    VehicleSeat s = (VehicleSeat)entry.Key;
+                    dictionary.Add(s, p);
+                }
+                return dictionary;
+            }
+        }
+
+        /// <summary>
+        /// Set to true to have the vehicle respawn if it gets blown up
+        /// </summary>
+        public bool RespawnEnabled
+        {
+            set
+            {
+                MTAServer.ToggleVehicleRespawn(element, value);
+            }
+        }
+
+        /// <summary>
+        /// Set the respawn delay of this vehicle in milliseconds
+        /// </summary>
+        public int RespawnDelay
+        {
+            set
+            {
+                MTAServer.SetVehicleRespawnDelay(element, value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the respawn position
+        /// </summary>
+        public Vector3 RespawnPosition
+        {
+            get
+            {
+                Tuple<float, float, float> r = MTAServer.GetVehicleRespawnPosition(element);
+                return new Vector3(r.Item1, r.Item2, r.Item3);
+            }
+            set
+            {
+                Vector3 rotation = RespawnRotation;
+                MTAServer.SetVehicleRespawnPosition(element, value.X, value.Y, value.Z, rotation.X, rotation.Y, rotation.Z);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the respawn rotation
+        /// </summary>
+        public Vector3 RespawnRotation
+        {
+            get
+            {
+                Tuple<float, float, float> r = MTAServer.GetVehicleRespawnRotation(element);
+                return new Vector3(r.Item1, r.Item2, r.Item3);
+            }
+            set
+            {
+                MTAServer.SetVehicleRespawnRotation(element, value.X, value.Y, value.Z);
+            }
+        }
+
+        /// <summary>
+        /// The sirens of this vehicle
+        /// </summary>
+        public new VehicleSirens Sirens
+        {
+            get
+            {
+                if (s_sirens == null)
+                    s_sirens = new VehicleSirens(this);
+                return s_sirens;
+            }
+            set
+            {
+                if (value == null)
+                    MTAServer.RemoveVehicleSirens(element);
+                s_sirens = value;
+            }
+        }
+
+        /// <summary>
+        /// Get and set the integers reprsenting the current variant. Check wiki for more info
+        /// </summary>
+        public new Tuple<int, int> Variant
+        {
+            get
+            {
+                return MTAShared.GetVehicleVariant(element);
+            }
+            set
+            {
+                MTAServer.SetVehicleVariant(element, value.Item1, value.Item2);
+            }
+        }
+
+        /// <summary>
+        /// Resets the vehicle explosion time. This is the point in time at which the vehicle last exploded: at this time plus the vehicle's respawn delay, the vehicle is respawned. You can use this function to prevent the vehicle from respawning.
+        /// </summary>
+        public bool ResetExplosionTime()
+        {
+            return MTAServer.ResetVehicleExplosionTime(element);
+        }
+
+        /// <summary>
+        /// Resets the vehicle idle time
+        /// </summary>
+        public bool ResetIdleTime()
+        {
+            return MTAServer.ResetVehicleIdleTime(element);
+        }
+
+        /// <summary>
+        /// Spawns the vehicle at a different position and rotation
+        /// </summary>
+        public bool Spawn(Vector3 position, Vector3 rotation)
+        {
+            return MTAServer.SpawnVehicle(element, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z);
+        }
+
+        /// <summary>
+        /// Spawns the vehicle at a different position
+        /// </summary>
+        public bool Spawn(Vector3 position)
+        {
+            return Spawn(position, Vector3.Zero);
+        }
+
+        /// <summary>
+        /// Respawns the vehicle
+        /// </summary>
+        public bool Respawn()
+        {
+            return MTAServer.RespawnVehicle(element);
+        }
+
+        /// <summary>
+        /// Set the respawn delay in milliseconds
+        /// </summary>
+        public int IdleRespawnDelay
+        {
+            set
+            {
+                MTAServer.SetVehicleIdleRespawnDelay(element, value);
             }
         }
 
