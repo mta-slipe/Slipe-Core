@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared;
 using Slipe.MTADefinitions;
-using Slipe.Shared.Enums;
+using Slipe.Shared.Vehicles;
 
-namespace Slipe.Server
+namespace Slipe.Server.Vehicles
 {
-    public class ModelHandling : VehicleHandling
+    public class ModelHandling : Handling
     {
-        protected VehicleModel model;
+        protected Model model;
 
         /// <summary>
         /// Builds vehicle handling from a vehicle model
         /// </summary>
-        public ModelHandling(VehicleModel targetModel) : base()
+        public ModelHandling(Model targetModel) : base()
         {
             model = targetModel;
         }

@@ -3,50 +3,19 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
 using System.Numerics;
-using Slipe.Shared.Enums;
 
-namespace Slipe.Shared
+namespace Slipe.Shared.Vehicles
 {
     /// <summary>
     /// Represents vehicle handling properties
     /// </summary>
-    public class VehicleHandling
+    public class Handling
     {
         private MTAElement vehicleElement;
 
-        protected float mass;
-        protected float turnMass;
-        protected float dragCoeff;
-        protected Vector3 centerOfMass;
-        protected int percentSubmerged;
-        protected float tractionMultiplier;
-        protected float tractionLoss;
-        protected float tractionBias;
-        protected int numberOfGears;
-        protected float maxVelocity;
-        protected float engineAcceleration;
-        protected float engineInertia;
-        protected DriveType driveType;
-        protected EngineType engineType;
-        protected float brakeDeceleration;
-        protected float brakeBias;
-        protected float steeringLock;
-        protected float suspensionForceLevel;
-        protected float suspensionDamping;
-        protected float suspensionHighSpeedDamping;
-        protected float suspensionUpperLimit;
-        protected float suspensionLowerLimit;
-        protected float suspensionFrontRearBias;
-        protected float suspensionAntiDiveMultiplier;
-        protected float seatOffsetDistance;
-        protected float collisionDamageMultiplier;
-        protected int monetary;
-        protected uint modelFlags;
-        protected uint handlingFlags;
-        protected VehicleLightType headLight;
-        protected VehicleLightType tailLight;
-        protected int animGroup;
+        #region Properties
 
+        protected float mass;
         /// <summary>
         /// Mass of the vehicle in kilograms.
         /// </summary>
@@ -63,6 +32,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float turnMass;
         /// <summary>
         /// Used to calculate motion effects.
         /// </summary>
@@ -79,6 +49,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float dragCoeff;
         /// <summary>
         /// Changes resistance to movement.
         /// </summary>
@@ -95,6 +66,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected Vector3 centerOfMass;
         /// <summary>
         /// Distance from the centre of the car in metres for the centre of mass.
         /// </summary>
@@ -115,6 +87,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected int percentSubmerged;
         /// <summary>
         /// Percentage of the vehicle height required to be submerged for the car to float.
         /// </summary>
@@ -131,6 +104,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float tractionMultiplier;
         /// <summary>
         /// Cornering grip of the vehicle as a multiplier of the tyre surface friction.
         /// </summary>
@@ -147,6 +121,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float tractionLoss;
         /// <summary>
         /// Accelerating/braking grip of the vehicle as a multiplier of the tyre surface friction.
         /// </summary>
@@ -163,6 +138,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float tractionBias;
         /// <summary>
         /// Ratio of front axle grip to rear axle grip; higher value shifts grip forwards.
         /// </summary>
@@ -179,6 +155,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected int numberOfGears;
         /// <summary>
         /// Number of gearchange animations and sound effects to use.
         /// </summary>
@@ -195,6 +172,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float maxVelocity;
         /// <summary>
         /// Limits the top speed.
         /// </summary>
@@ -211,6 +189,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float engineAcceleration;
         /// <summary>
         /// Basic rate of acceleration.
         /// </summary>
@@ -227,6 +206,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float engineInertia;
         /// <summary>
         /// Smooths or sharpens the acceleration curve.
         /// </summary>
@@ -243,6 +223,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected DriveType driveType;
         /// <summary>
         /// Assigns Front, Rear or 4 wheel drive.
         /// </summary>
@@ -255,10 +236,11 @@ namespace Slipe.Shared
             }
             set
             {
-                UpdateToGame("driveType", value.ToString());
+                UpdateToGame("driveType", value.ToString().ToLower());
             }
         }
 
+        protected EngineType engineType;
         /// <summary>
         /// Assigns Petrol, Diesel or Electric engine characteristics.
         /// </summary>
@@ -271,10 +253,12 @@ namespace Slipe.Shared
             }
             set
             {
-                UpdateToGame("engineType", value.ToString());
+                UpdateToGame("engineType", value.ToString().ToLower());
             }
         }
 
+
+        protected float brakeDeceleration;
         /// <summary>
         /// Overall decelerative force.
         /// </summary>
@@ -291,6 +275,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float brakeBias;
         /// <summary>
         /// Ratio of braking force of front compared to rear; higher values move bias forward.
         /// </summary>
@@ -307,6 +292,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float steeringLock;
         /// <summary>
         /// Maximum angle of steering in degrees.
         /// </summary>
@@ -323,6 +309,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float suspensionForceLevel;
         /// <summary>
         /// Force of suspension dampeners
         /// </summary>
@@ -339,6 +326,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float suspensionDamping;
         /// <summary>
         /// The inverse negative force of suspension dampeners
         /// </summary>
@@ -355,6 +343,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float suspensionHighSpeedDamping;
         /// <summary>
         /// Stiffens the dampening strength as speed increases.
         /// </summary>
@@ -371,6 +360,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float suspensionUpperLimit;
         /// <summary>
         /// Uppermost movement of wheels in metres.
         /// </summary>
@@ -387,6 +377,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float suspensionLowerLimit;
         /// <summary>
         /// Ride height of vehicle in metres.
         /// </summary>
@@ -403,6 +394,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float suspensionFrontRearBias;
         /// <summary>
         /// Ratio of suspension force to apply at the front compared to the rear.
         /// </summary>
@@ -419,6 +411,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float suspensionAntiDiveMultiplier;
         /// <summary>
         /// Changes the amount of body pitching under braking and acceleration.
         /// </summary>
@@ -435,6 +428,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float seatOffsetDistance;
         /// <summary>
         /// Distance from door position to seat postion.
         /// </summary>
@@ -451,6 +445,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected float collisionDamageMultiplier;
         /// <summary>
         /// Amount of engine damage vehicle gets from collisions. Higher value means more damage.
         /// </summary>
@@ -467,6 +462,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected int monetary;
         /// <summary>
         /// Used to calculate the Value of property damaged statistic.
         /// </summary>
@@ -479,6 +475,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected uint modelFlags;
         /// <summary>
         /// Special animations features of the which can be enabled or disabled.
         /// </summary>
@@ -495,6 +492,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected uint handlingFlags;
         /// <summary>
         /// Special performance features. 
         /// </summary>
@@ -511,6 +509,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected VehicleLightType headLight;
         /// <summary>
         /// Type of head lights of the vehicle.
         /// </summary>
@@ -527,6 +526,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected VehicleLightType tailLight;
         /// <summary>
         /// Same as above but for the tail lights.
         /// </summary>
@@ -543,6 +543,7 @@ namespace Slipe.Shared
             }
         }
 
+        protected int animGroup;
         /// <summary>
         /// Refers to an Animation ID number.
         /// </summary>
@@ -557,6 +558,25 @@ namespace Slipe.Shared
             {
                 UpdateToGame("animGroup", value);
             }
+        }
+        #endregion
+
+        protected Handling() { }
+
+        /// <summary>
+        /// Builds vehicle handling from a vehicle
+        /// </summary>
+        public Handling(SharedVehicle vehicle)
+        {
+            vehicleElement = vehicle.MTAElement;
+        }
+
+        /// <summary>
+        /// Build a vehicle handling instance from a raw handling table
+        /// </summary>
+        public Handling(Dictionary<string, dynamic> raw)
+        {
+            BuildFromTable(raw);
         }
 
         protected void BuildFromTable(Dictionary<string, dynamic> t)
@@ -574,8 +594,8 @@ namespace Slipe.Shared
             maxVelocity = (float)t["maxVelocity"];
             engineAcceleration = (float)t["engineAcceleration"];
             engineInertia = (float)t["engineInertia"];
-            driveType = (DriveType) Enum.Parse(typeof(DriveType), t["driveType"]);
-            engineType = (EngineType)Enum.Parse(typeof(EngineType), t["engineType"]);
+            driveType = (DriveType) Enum.Parse(typeof(DriveType), t["driveType"], true);
+            engineType = (EngineType)Enum.Parse(typeof(EngineType), t["engineType"], true);
             brakeDeceleration = (float)t["brakeDeceleration"];
             brakeBias = (float)t["brakeBias"];
             steeringLock = (float)t["steeringLock"];
@@ -608,22 +628,6 @@ namespace Slipe.Shared
                 MTAShared.SetVehicleHandling(vehicleElement, key, value);
         }
 
-        protected VehicleHandling() { }
 
-        /// <summary>
-        /// Builds vehicle handling from a vehicle
-        /// </summary>
-        public VehicleHandling(SharedVehicle vehicle)
-        {
-            vehicleElement = vehicle.MTAElement;
-        }
-
-        /// <summary>
-        /// Build a vehicle handling instance from a raw handling table
-        /// </summary>
-        public VehicleHandling(Dictionary<string, dynamic> raw)
-        {
-            BuildFromTable(raw);
-        }
     }
 }

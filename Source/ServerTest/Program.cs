@@ -18,6 +18,8 @@ using System.Net.Sockets;
 using System.Net;
 using System.Text;
 using Slipe.Server.IO;
+using Slipe.Server.Vehicles;
+using Slipe.Shared.Vehicles;
 
 namespace ServerTest
 {
@@ -47,7 +49,7 @@ namespace ServerTest
             List<Vehicle> vehicles = new List<Vehicle>(); ;
             for (int i = 0; i < 10; i++)
             {
-                Vehicle rhino = new Vehicle(VehicleModel.RHINO, new Vector3(i * 15, 0, 3));
+                Vehicle rhino = new Vehicle(Model.RHINO, new Vector3(i * 15, 0, 3));
                 Blip blip = new Blip(rhino);
                 vehicles.Add(rhino);
             }
@@ -70,8 +72,6 @@ namespace ServerTest
                 vehicle.Rotation = new Vector3(0, 0, 90);
             }
 
-
-
             Element.Root.AddEventHandler("onVehicleDamage");
 
             Color color = new Color(0x0000ff);
@@ -79,7 +79,7 @@ namespace ServerTest
             color = new Color((uint) 0x000000ff);
             Debug.WriteLine("Color: {0}, {1}, {2}, {3}", color.R, color.G, color.B, color.A);
 
-            Vehicle alpha = new Vehicle(VehicleModel.ALPHA, new Vector3(0, 10, 3));
+            Vehicle alpha = new Vehicle(Model.ALPHA, new Vector3(0, 10, 3));
 
             // BROKEN UNTIL FIXED BY YUAN
             //alpha.Sirens.Add(new Vector3(0, 0, 1), Color.Red, 100);
@@ -89,9 +89,9 @@ namespace ServerTest
             // alpha.AddEventHandler("onVehicleDamage");
             alpha.OnDamage += (float loss) =>
             {
-                Dictionary<VehicleSeat, Player> occupants = alpha.Occupants;
+                Dictionary<Seat, Player> occupants = alpha.Occupants;
                 Debug.WriteLine(occupants.Count);
-                foreach(KeyValuePair<VehicleSeat, Player> oc in occupants)
+                foreach(KeyValuePair<Seat, Player> oc in occupants)
                 {
                     Debug.WriteLine(oc.Value.Name);
                 }

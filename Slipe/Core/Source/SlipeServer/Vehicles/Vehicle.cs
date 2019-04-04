@@ -1,68 +1,21 @@
-﻿using Slipe.Shared;
-using Slipe.Shared.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using Slipe.MTADefinitions;
-using Slipe.Server.Enums;
+using Slipe.Shared.Vehicles;
+using Slipe.Shared;
 
-namespace Slipe.Server
+namespace Slipe.Server.Vehicles
 {
     /// <summary>
     /// Class that represents vehicles in the world
     /// </summary>
     public class Vehicle : SharedVehicle
     {
-        private VehicleSirens s_sirens;
-        /// <summary>
-        /// Create a vehicle from an MTA vehicle element 
-        /// </summary>
-        public Vehicle(MTAElement element): base(element)
-        {
+        private Sirens s_sirens;
 
-        }
-
-        /// <summary>
-        /// Create a vehicle from a model at a position
-        /// </summary>
-        public Vehicle(VehicleModel model, Vector3 position) : base(model, position)
-        {
-
-        }
-
-        /// <summary>
-        /// Create a vehicle model using all createVehicle arguments
-        /// </summary>
-        public Vehicle(VehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
-        {
-        }
-
-        /// <summary>
-        /// Get all the vehicles of a specific model in the server
-        /// </summary>
-        public static Vehicle[] OfModel(VehicleModel model)
-        {
-            MTAElement[] mtaElements = MTAShared.GetArrayFromTable(MTAServer.GetVehiclesOfType((int) model), "MTAElement");
-            return ElementManager.Instance.CastArray<Vehicle>(mtaElements);
-        }
-
-        /// <summary>
-        /// Blow up this vehicle
-        /// </summary>
-        public bool Blow(bool explode = true)
-        {
-            return MTAServer.BlowVehicle(element, explode);
-        }
-
-        /// <summary>
-        /// Get the model handling of a certain vehicle model
-        /// </summary>
-        public static ModelHandling GetModelHandling(VehicleModel model)
-        {
-            return new ModelHandling(model);
-        }
-
+        #region Misc. Properties
         /// <summary>
         /// Get the player controlling the vehicle in the drivers seat
         /// </summary>
@@ -75,32 +28,60 @@ namespace Slipe.Server
         }
 
         /// <summary>
-        /// This function gets the player sitting/trying to enter this vehicle.
-        /// </summary>
-        public Player GetOccupant(int seat = 0)
-        {
-            return (Player) ElementManager.Instance.GetElement(MTAShared.GetVehicleOccupant(element, seat));
-        }
-
-        /// <summary>
         /// Get a dictionary of players occupying this vehicle
         /// </summary>
-        public Dictionary<VehicleSeat, Player> Occupants
+        public Dictionary<Seat, Player> Occupants
         {
             get
             {
                 Dictionary<int, MTAElement> elements = MTAShared.GetDictionaryFromTable(MTAShared.GetVehicleOccupants(element), "System.Int32", "MTAElement");
-                Dictionary<VehicleSeat, Player> dictionary = new Dictionary<VehicleSeat, Player>();
-                foreach(KeyValuePair<int, MTAElement> entry in elements)
+                Dictionary<Seat, Player> dictionary = new Dictionary<Seat, Player>();
+                foreach (KeyValuePair<int, MTAElement> entry in elements)
                 {
-                    Player p = (Player) ElementManager.Instance.GetElement(entry.Value);
-                    VehicleSeat s = (VehicleSeat)entry.Key;
+                    Player p = (Player)ElementManager.Instance.GetElement(entry.Value);
+                    Seat s = (Seat)entry.Key;
                     dictionary.Add(s, p);
                 }
                 return dictionary;
             }
         }
 
+        /// <summary>
+        /// The sirens of this vehicle
+        /// </summary>
+        public new Sirens Sirens
+        {
+            get
+            {
+                if (s_sirens == null)
+                    s_sirens = new Sirens(this);
+                return s_sirens;
+            }
+            set
+            {
+                if (value == null)
+                    MTAServer.RemoveVehicleSirens(element);
+                s_sirens = value;
+            }
+        }
+
+        /// <summary>
+        /// Get and set the integers reprsenting the current variant. Check wiki for more info
+        /// </summary>
+        public new Tuple<int, int> Variant
+        {
+            get
+            {
+                return MTAShared.GetVehicleVariant(element);
+            }
+            set
+            {
+                MTAServer.SetVehicleVariant(element, value.Item1, value.Item2);
+            }
+        }
+        #endregion
+
+        #region Respawn Properties
         /// <summary>
         /// Set to true to have the vehicle respawn if it gets blown up
         /// </summary>
@@ -157,39 +138,76 @@ namespace Slipe.Server
         }
 
         /// <summary>
-        /// The sirens of this vehicle
+        /// Set the respawn delay in milliseconds
         /// </summary>
-        public new VehicleSirens Sirens
+        public int IdleRespawnDelay
         {
-            get
-            {
-                if (s_sirens == null)
-                    s_sirens = new VehicleSirens(this);
-                return s_sirens;
-            }
             set
             {
-                if (value == null)
-                    MTAServer.RemoveVehicleSirens(element);
-                s_sirens = value;
+                MTAServer.SetVehicleIdleRespawnDelay(element, value);
             }
+        }
+        #endregion
+
+        #region Static Properties
+        /// <summary>
+        /// Get all the vehicles of a specific model in the server
+        /// </summary>
+        public static Vehicle[] OfModel(Model model)
+        {
+            MTAElement[] mtaElements = MTAShared.GetArrayFromTable(MTAServer.GetVehiclesOfType((int)model), "MTAElement");
+            return ElementManager.Instance.CastArray<Vehicle>(mtaElements);
+        }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Create a vehicle from an MTA vehicle element 
+        /// </summary>
+        public Vehicle(MTAElement element): base(element)
+        {
+
         }
 
         /// <summary>
-        /// Get and set the integers reprsenting the current variant. Check wiki for more info
+        /// Create a vehicle from a model at a position
         /// </summary>
-        public new Tuple<int, int> Variant
+        public Vehicle(Model model, Vector3 position) : base(model, position)
         {
-            get
-            {
-                return MTAShared.GetVehicleVariant(element);
-            }
-            set
-            {
-                MTAServer.SetVehicleVariant(element, value.Item1, value.Item2);
-            }
+
         }
 
+        /// <summary>
+        /// Create a vehicle model using all createVehicle arguments
+        /// </summary>
+        public Vehicle(Model model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
+        {
+        }
+
+        #endregion
+
+        #region Misc. Methods
+        /// <summary>
+        /// Blow up this vehicle
+        /// </summary>
+        public bool Blow(bool explode = true)
+        {
+            return MTAServer.BlowVehicle(element, explode);
+        }
+
+        /// <summary>
+        /// This function gets the player sitting/trying to enter this vehicle.
+        /// </summary>
+        public Player GetOccupant(Seat seat = Seat.FrontLeft)
+        {
+            return (Player)ElementManager.Instance.GetElement(MTAShared.GetVehicleOccupant(element, (int)seat));
+        }
+
+        #endregion
+
+        #region Respawn Methods
         /// <summary>
         /// Resets the vehicle explosion time. This is the point in time at which the vehicle last exploded: at this time plus the vehicle's respawn delay, the vehicle is respawned. You can use this function to prevent the vehicle from respawning.
         /// </summary>
@@ -229,18 +247,19 @@ namespace Slipe.Server
         {
             return MTAServer.RespawnVehicle(element);
         }
+        #endregion
 
+        #region Static Methods
         /// <summary>
-        /// Set the respawn delay in milliseconds
+        /// Get the model handling of a certain vehicle model
         /// </summary>
-        public int IdleRespawnDelay
+        public static ModelHandling GetModelHandling(Model model)
         {
-            set
-            {
-                MTAServer.SetVehicleIdleRespawnDelay(element, value);
-            }
+            return new ModelHandling(model);
         }
+        #endregion
 
+        #region Events
         /// <summary>
         /// Handles events for vehicles
         /// </summary>
@@ -249,12 +268,14 @@ namespace Slipe.Server
             switch (eventName)
             {
                 case "onVehicleDamage":
-                    OnDamage?.Invoke((float) p1);
+                    OnDamage?.Invoke((float)p1);
                     break;
             }
         }
 
         public delegate void OnVehicleDamageHandler(float loss);
         public event OnVehicleDamageHandler OnDamage;
+        #endregion
+
     }
 }

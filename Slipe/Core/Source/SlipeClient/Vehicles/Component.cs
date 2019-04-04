@@ -3,43 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
 using System.Numerics;
-using Slipe.Client.Enums;
 
-namespace Slipe.Client
+namespace Slipe.Client.Vehicles
 {
     /// <summary>
     /// Represents a component of a vehicle
     /// </summary>
-    public class VehicleComponent
+    public class Component
     {
         private Vehicle vehicle;
         private string component;
 
-        /// <summary>
-        /// Create a component instance from a vehicle
-        /// </summary>
-        public VehicleComponent(Vehicle vehicle, ComponentType type, ComponentBase relativeBase = ComponentBase.root)
-        {
-            this.vehicle = vehicle;
-            this.component = type.ToString().ToLower();
-            Base = relativeBase;
-        }
-
-        /// <summary>
-        /// Create a component instance from a vehicle using a string as type
-        /// </summary>
-        public VehicleComponent(Vehicle vehicle, string type, ComponentBase relativeBase = ComponentBase.root)
-        {
-            this.vehicle = vehicle;
-            this.component = type;
-            Base = relativeBase;
-        }
-
-        /// <summary>
-        /// Set the base to which the position and rotation are relative
-        /// </summary>
-        public ComponentBase Base { get; set; }
-
+        #region Properties
         /// <summary>
         /// Get and set the position relative to the specified component base
         /// </summary>
@@ -73,6 +48,51 @@ namespace Slipe.Client
         }
 
         /// <summary>
+        /// Get and set if this component is visible
+        /// </summary>
+        public bool Visible
+        {
+            get
+            {
+                return MTAClient.GetVehicleComponentVisible(vehicle.MTAElement, component);
+            }
+            set
+            {
+                MTAClient.SetVehicleComponentVisible(vehicle.MTAElement, component, value);
+            }
+        }
+        #endregion
+
+        #region Constructors
+        /// <summary>
+        /// Create a component instance from a vehicle
+        /// </summary>
+        public Component(Vehicle vehicle, ComponentType type, ComponentBase relativeBase = ComponentBase.root)
+        {
+            this.vehicle = vehicle;
+            this.component = type.ToString().ToLower();
+            Base = relativeBase;
+        }
+
+        /// <summary>
+        /// Create a component instance from a vehicle using a string as type
+        /// </summary>
+        public Component(Vehicle vehicle, string type, ComponentBase relativeBase = ComponentBase.root)
+        {
+            this.vehicle = vehicle;
+            this.component = type;
+            Base = relativeBase;
+        }
+
+        /// <summary>
+        /// Set the base to which the position and rotation are relative
+        /// </summary>
+        public ComponentBase Base { get; set; }
+
+        #endregion
+
+        #region Methods
+        /// <summary>
         /// This function reset to default component position for vehicle.
         /// </summary>
         public bool ResetPosition()
@@ -88,19 +108,6 @@ namespace Slipe.Client
             return MTAClient.ResetVehicleComponentRotation(vehicle.MTAElement, component);
         }
 
-        /// <summary>
-        /// Get and set if this component is visible
-        /// </summary>
-        public bool Visible
-        {
-            get
-            {
-                return MTAClient.GetVehicleComponentVisible(vehicle.MTAElement, component);
-            }
-            set
-            {
-                MTAClient.SetVehicleComponentVisible(vehicle.MTAElement, component, value);
-            }
-        }
+        #endregion
     }
 }

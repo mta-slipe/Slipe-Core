@@ -1,45 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared;
 using System.Numerics;
 using Slipe.MTADefinitions;
-using Slipe.Shared.Enums;
+using Slipe.Shared.Vehicles;
+using Slipe.Shared;
 
-namespace Slipe.Server
+namespace Slipe.Server.Vehicles
 {
     /// <summary>
     /// Represents the set of all sirens on a vehicle
     /// </summary>
-    public class VehicleSirens : SharedVehicleSirens
+    public class Sirens : SharedSirens
     {
         private bool initialized = false;
 
-        /// <summary>
-        /// Create a sirens set attached to a vehicle
-        /// </summary>
-        public VehicleSirens(SharedVehicle vehicle) : base(vehicle) { }
-
-        private bool Reinitialize()
-        {
-            return MTAServer.AddVehicleSirens(vehicle.MTAElement, count, (int)type, visibleFromAllDirection, checkLOS, useRandomiser, silent);
-        }
-
-        /// <summary>
-        /// Add an individual siren point, returns false if the maximum amount of sirens is reached
-        /// </summary>
-        public bool Add(Vector3 position, Color color, float minAlpha)
-        {
-            if(count < 8)
-            {
-                count++;
-                new Siren(vehicle, count, position, color, minAlpha);
-                Reinitialize();
-                return true;
-            }
-            return false;
-        }
-
+        #region Properties
         /// <summary>
         /// Get the type of this siren set
         /// </summary>
@@ -131,7 +107,7 @@ namespace Slipe.Server
             }
             set
             {
-                if(!initialized)
+                if (!initialized)
                 {
                     Reinitialize();
                     initialized = true;
@@ -142,5 +118,32 @@ namespace Slipe.Server
                 MTAShared.SetVehicleSirensOn(vehicle.MTAElement, value);
             }
         }
+        #endregion
+
+        /// <summary>
+        /// Create a sirens set attached to a vehicle
+        /// </summary>
+        public Sirens(SharedVehicle vehicle) : base(vehicle) { }
+
+        /// <summary>
+        /// Add an individual siren point, returns false if the maximum amount of sirens is reached
+        /// </summary>
+        public bool Add(Vector3 position, Color color, float minAlpha)
+        {
+            if (count < 8)
+            {
+                count++;
+                new Siren(vehicle, count, position, color, minAlpha);
+                Reinitialize();
+                return true;
+            }
+            return false;
+        }
+
+        private bool Reinitialize()
+        {
+            return MTAServer.AddVehicleSirens(vehicle.MTAElement, count, (int)type, visibleFromAllDirection, checkLOS, useRandomiser, silent);
+        }
+        
     }
 }

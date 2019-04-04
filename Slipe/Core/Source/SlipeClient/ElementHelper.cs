@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
+using Slipe.Client.Vehicles;
 
 namespace Slipe.Client
 {
@@ -15,6 +16,7 @@ namespace Slipe.Client
         {
             [typeof(Element)] = "element",
             [typeof(Player)] = "player",
+            [typeof(Vehicle)] = "vehicle",
             [typeof(WorldObject)] = "object",
             [typeof(GUIBrowser)] = "gui-browser",
             [typeof(Team)] = "team",
@@ -73,6 +75,8 @@ namespace Slipe.Client
                     return new Element(element);
                 case "player":
                     return new Player(element);
+                case "vehicle":
+                    return new Vehicle(element);
                 case "object":
                     return new WorldObject(element);
                 case "gui-browser":
