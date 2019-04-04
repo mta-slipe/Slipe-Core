@@ -3,48 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using Slipe.MTADefinitions;
+using Slipe.Shared.Vehicles;
 using Slipe.Shared;
-using Slipe.Shared.Enums;
-using Slipe.Client.Enums;
 
-namespace Slipe.Client
+namespace Slipe.Client.Vehicles
 {
     /// <summary>
     /// Class that represents vehicles in the world
     /// </summary>
     public class Vehicle : SharedVehicle
     {
-        /// <summary>
-        /// Create a vehicle from an MTA vehicle element 
-        /// </summary>
-        public Vehicle(MTAElement element) : base(element)
-        {
-
-        }
-
-        /// <summary>
-        /// Create a vehicle from a model at a position
-        /// </summary>
-        public Vehicle(VehicleModel model, Vector3 position) : base(model, position)
-        {
-
-        }
-
-        /// <summary>
-        /// Create a vehicle model using all createVehicle arguments
-        /// </summary>
-        public Vehicle(VehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
-        {
-        }
-
-        /// <summary>
-        /// Blow up this vehicle
-        /// </summary>
-        public bool Blow()
-        {
-            return MTAClient.BlowVehicle(element);
-        }
-
+        #region Misc. Properties
         /// <summary>
         /// Get the player controlling the vehicle in the drivers seat
         /// </summary>
@@ -57,26 +26,18 @@ namespace Slipe.Client
         }
 
         /// <summary>
-        /// This function gets the player sitting/trying to enter this vehicle.
-        /// </summary>
-        public Player GetOccupant(int seat = 0)
-        {
-            return (Player)ElementManager.Instance.GetElement(MTAShared.GetVehicleOccupant(element, seat));
-        }
-
-        /// <summary>
         /// Get a dictionary of players occupying this vehicle
         /// </summary>
-        public Dictionary<VehicleSeat, Player> Occupants
+        public Dictionary<Seat, Player> Occupants
         {
             get
             {
                 Dictionary<int, MTAElement> elements = MTAShared.GetDictionaryFromTable(MTAShared.GetVehicleOccupants(element), "System.Int32", "MTAElement");
-                Dictionary<VehicleSeat, Player> dictionary = new Dictionary<VehicleSeat, Player>();
+                Dictionary<Seat, Player> dictionary = new Dictionary<Seat, Player>();
                 foreach (KeyValuePair<int, MTAElement> entry in elements)
                 {
                     Player p = (Player)ElementManager.Instance.GetElement(entry.Value);
-                    VehicleSeat s = (VehicleSeat)entry.Key;
+                    Seat s = (Seat)entry.Key;
                     dictionary.Add(s, p);
                 }
                 return dictionary;
@@ -99,26 +60,18 @@ namespace Slipe.Client
         }
 
         /// <summary>
-        /// Get a specific component of this vehicle
-        /// </summary>
-        public VehicleComponent GetComponent(ComponentType type, ComponentBase relativeTo = ComponentBase.root)
-        {
-            return new VehicleComponent(this, type, relativeTo);
-        }
-
-        /// <summary>
         /// Get an array of all the vehicle's components
         /// </summary>
-        public VehicleComponent[] Components
+        public Component[] Components
         {
             get
             {
                 Dictionary<string, bool> d = MTAShared.GetDictionaryFromTable(MTAClient.GetVehicleComponents(element), "System.String", "System.Boolean");
-                VehicleComponent[] r = new VehicleComponent[d.Count];
+                Component[] r = new Component[d.Count];
                 int count = 0;
-                foreach(KeyValuePair<string, bool> c in d)
+                foreach (KeyValuePair<string, bool> c in d)
                 {
-                    r[count] = new VehicleComponent(this, c.Key);
+                    r[count] = new Component(this, c.Key);
                     count++;
                 }
                 return r;
@@ -152,22 +105,9 @@ namespace Slipe.Client
             }
         }
 
-        /// <summary>
-        /// This function returns the position of the exhaust fumes the vehicle model emits.
-        /// </summary>
-        public static Vector3 GetExhaustFumesPosition(VehicleModel model)
-        {
-            Tuple<float, float, float> r = MTAClient.GetVehicleModelExhaustFumesPosition((int) model);
-            return new Vector3(r.Item1, r.Item2, r.Item3);
-        }
+        #endregion
 
-        /// <summary>
-        /// Set the position of exhaust fumes
-        /// </summary>
-        public static bool SetExhaustFumesPosition(VehicleModel model, Vector3 position)
-        {
-            return MTAClient.SetVehicleModelExhaustFumesPosition((int)model, position.X, position.Y, position.Z);
-        }
+        #region Nitro Properties
 
         /// <summary>
         /// Get and set the nitro count
@@ -225,10 +165,62 @@ namespace Slipe.Client
             }
         }
 
+        #endregion
+
+        #region Constructors
+        /// <summary>
+        /// Create a vehicle from an MTA vehicle element 
+        /// </summary>
+        public Vehicle(MTAElement element) : base(element)
+        {
+
+        }
+
+        /// <summary>
+        /// Create a vehicle from a model at a position
+        /// </summary>
+        public Vehicle(Model model, Vector3 position) : base(model, position)
+        {
+
+        }
+
+        /// <summary>
+        /// Create a vehicle model using all createVehicle arguments
+        /// </summary>
+        public Vehicle(Model model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
+        {
+        }
+        #endregion
+
+        #region Misc. Methods
+        /// <summary>
+        /// Blow up this vehicle
+        /// </summary>
+        public bool Blow()
+        {
+            return MTAClient.BlowVehicle(element);
+        }
+
+        /// <summary>
+        /// This function gets the player sitting/trying to enter this vehicle.
+        /// </summary>
+        public Player GetOccupant(Seat seat = Seat.FrontLeft)
+        {
+            return (Player)ElementManager.Instance.GetElement(MTAShared.GetVehicleOccupant(element, (int)seat));
+        }
+
+        /// <summary>
+        /// Get a specific component of this vehicle
+        /// </summary>
+        public Component GetComponent(ComponentType type, ComponentBase relativeTo = ComponentBase.root)
+        {
+            return new Component(this, type, relativeTo);
+        }
+
         /// <summary>
         /// Check if a wheel is touching the ground
         /// </summary>
-        public bool IsWheelOnGround(VehicleWheel wheel)
+        public bool IsWheelOnGround(Wheel wheel)
         {
             return MTAClient.IsVehicleWheelOnGround(element, (int)wheel);
         }
@@ -236,7 +228,7 @@ namespace Slipe.Client
         /// <summary>
         /// Check if a window is open
         /// </summary>
-        public bool isWindowOpen(VehicleWindow window)
+        public bool isWindowOpen(Window window)
         {
             return MTAClient.IsVehicleWindowOpen(element, (int)window);
         }
@@ -244,9 +236,30 @@ namespace Slipe.Client
         /// <summary>
         /// This function sets the vehicle window state.
         /// </summary>
-        public bool SetWindowOpen(VehicleWindow window, bool open)
+        public bool SetWindowOpen(Window window, bool open)
         {
             return MTAClient.SetVehicleWindowOpen(element, (int)window, open);
         }
+        #endregion
+
+        #region Static Methods
+        /// <summary>
+        /// This function returns the position of the exhaust fumes the vehicle model emits.
+        /// </summary>
+        public static Vector3 GetExhaustFumesPosition(Model model)
+        {
+            Tuple<float, float, float> r = MTAClient.GetVehicleModelExhaustFumesPosition((int)model);
+            return new Vector3(r.Item1, r.Item2, r.Item3);
+        }
+
+        /// <summary>
+        /// Set the position of exhaust fumes
+        /// </summary>
+        public static bool SetExhaustFumesPosition(Model model, Vector3 position)
+        {
+            return MTAClient.SetVehicleModelExhaustFumesPosition((int)model, position.X, position.Y, position.Z);
+        }
+        #endregion
+
     }
 }

@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Enums
+namespace Slipe.Shared.Vehicles
 {
     /// <summary>
     /// Represents different vehicle drive types
     /// </summary>
     public enum DriveType
     {
-        rwd,
-        fwd,
-        awd
+        Rwd,
+        Fwd,
+        Awd
     }
 
     /// <summary>
@@ -19,9 +19,9 @@ namespace Slipe.Shared.Enums
     /// </summary>
     public enum EngineType
     {
-        petrol,
-        diesel,
-        electric
+        Petrol,
+        Diesel,
+        Electric
     }
 
     /// <summary>

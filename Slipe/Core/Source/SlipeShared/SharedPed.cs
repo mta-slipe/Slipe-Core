@@ -5,6 +5,7 @@ using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.Enums;
 using Slipe.Shared.Structs;
+using Slipe.Shared.Vehicles;
 
 namespace Slipe.Shared
 {
@@ -146,11 +147,11 @@ namespace Slipe.Shared
         /// <summary>
         /// Get the seat the ped occupies
         /// </summary>
-        public VehicleSeat VehicleSeat
+        public Seat VehicleSeat
         {
             get
             {
-                return (VehicleSeat)MTAShared.GetPedOccupiedVehicleSeat(element);
+                return (Seat)MTAShared.GetPedOccupiedVehicleSeat(element);
             }
         }
 
@@ -395,7 +396,7 @@ namespace Slipe.Shared
         /// <summary>
         /// Warp this ped into a vehicle, specifying a seat
         /// </summary>
-        public bool WarpIntoVehicle(SharedVehicle vehicle, VehicleSeat seat)
+        public bool WarpIntoVehicle(SharedVehicle vehicle, Seat seat)
         {
             return MTAShared.WarpPedIntoVehicle(element, vehicle.MTAElement, (int)seat);
         }

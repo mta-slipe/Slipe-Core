@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
+using Slipe.Server.Vehicles;
 
 namespace Slipe.Server
 {

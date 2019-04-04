@@ -5,6 +5,7 @@ using Slipe.MTADefinitions;
 using System.Numerics;
 using Slipe.Shared;
 using Slipe.Shared.Enums;
+using Slipe.Shared.Vehicles;
 
 namespace Slipe.Client
 {
@@ -58,11 +59,11 @@ namespace Slipe.Client
         /// <summary>
         /// For vehicles, piece represents the vehicle part hit:
         /// </summary>
-        public VehiclePart VehiclePart
+        public Part VehiclePart
         {
             get
             {
-                return (VehiclePart)piece;
+                return (Part)piece;
             }
         }
 
