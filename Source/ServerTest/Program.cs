@@ -79,11 +79,14 @@ namespace ServerTest
             color = new Color((uint) 0x000000ff);
             Debug.WriteLine("Color: {0}, {1}, {2}, {3}", color.R, color.G, color.B, color.A);
 
-            Vehicle alpha = new Vehicle(VehicleModel.Alpha, new Vector3(0, 10, 3));
+            Vehicle patriot = new Vehicle(VehicleModel.Patriot, new Vector3(0, 15, 3));
 
-            alpha.Sirens.Add(new Vector3(0, 0, 2), Color.Red, 100);
-            alpha.Sirens.Type = SirenType.dual;
-            alpha.Sirens.On = true;
+            patriot.Sirens.Add(new Vector3(-0.6f, 1, 0.5f), Color.Red, 200);
+            patriot.Sirens.Add(new Vector3(0.6f, 1, 0.5f), new Color(0, 0, 255), 200);
+            patriot.Sirens.On = true;
+            patriot.Sirens.Silent = true;
+
+            Vehicle alpha = new Vehicle(VehicleModel.Alpha, new Vector3(0, 10, 3));
 
             // alpha.AddEventHandler("onVehicleDamage");
             alpha.OnDamage += (float loss) =>

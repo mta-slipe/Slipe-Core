@@ -13,7 +13,6 @@ namespace Slipe.Shared.Vehicles
     public class SharedSirens
     {
         protected SharedVehicle vehicle;
-        protected int count;
 
         #region Properties
         protected SirenType type;
@@ -100,9 +99,9 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                Siren[] result = new Siren[count];
                 dynamic[] ar = MTAShared.GetArrayFromTable(MTAShared.GetVehicleSirens(vehicle.MTAElement), "dynamic");
-                for (int i = 0; i < count; i++)
+                Siren[] result = new Siren[ar.Length];
+                for (int i = 0; i < ar.Length; i++)
                 {
                     Dictionary<string, float> d = (Dictionary<string, float>)MTAShared.GetDictionaryFromTable(ar[i], "System.String", "System.Single");
                     result[i] = new Siren(vehicle, i + 1, new Vector3(d["x"], d["y"], d["z"]), new Color((byte)d["Red"], (byte)d["Green"], (byte)d["Blue"], (byte)d["Alpha"]), d["Min_Alpha"], false);
@@ -121,10 +120,9 @@ namespace Slipe.Shared.Vehicles
             UpdateParams();
         }       
 
-        private void UpdateParams()
+        protected void UpdateParams()
         {
             Dictionary<string, dynamic> d = MTAShared.GetDictionaryFromTable(MTAShared.GetVehicleSirenParams(vehicle.MTAElement), "System.String", "dynamic");
-            count = (int)d["SirenCount"];
             type = (SirenType)d["SirenType"];
             Dictionary<string, bool> flags = MTAShared.GetDictionaryFromTable(d["Flags"], "System.String", "System.Boolean");
             visibleFromAllDirection = flags["360"];

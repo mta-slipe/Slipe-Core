@@ -13,7 +13,8 @@ namespace Slipe.Server.Vehicles
     /// </summary>
     public class Sirens : SharedSirens
     {
-        private bool initialized = false;
+        private bool initialized;
+        private int count;
 
         #region Properties
         /// <summary>
@@ -107,12 +108,6 @@ namespace Slipe.Server.Vehicles
             }
             set
             {
-                if (!initialized)
-                {
-                    Reinitialize();
-                    initialized = true;
-                }
-
                 // This is due to an MTA bug not turning on silent sirens that are off
                 MTAShared.SetVehicleSirensOn(vehicle.MTAElement, false);
                 MTAShared.SetVehicleSirensOn(vehicle.MTAElement, value);
@@ -123,18 +118,27 @@ namespace Slipe.Server.Vehicles
         /// <summary>
         /// Create a sirens set attached to a vehicle
         /// </summary>
-        public Sirens(SharedVehicle vehicle) : base(vehicle) { }
+        public Sirens(SharedVehicle vehicle) : base(vehicle)
+        {
+            type = SirenType.dual;
+            checkLOS = true;
+            useRandomiser = false;
+            initialized = false;
+            count = 1;
+        }
 
         /// <summary>
         /// Add an individual siren point, returns false if the maximum amount of sirens is reached
         /// </summary>
         public bool Add(Vector3 position, Color color, float minAlpha)
         {
+            if(!initialized)
+                Reinitialize();
+
             if (count < 8)
             {
-                count++;
                 new Siren(vehicle, count, position, color, minAlpha);
-                Reinitialize();
+                count++;
                 return true;
             }
             return false;
@@ -142,7 +146,8 @@ namespace Slipe.Server.Vehicles
 
         private bool Reinitialize()
         {
-            return MTAServer.AddVehicleSirens(vehicle.MTAElement, count, (int)type, visibleFromAllDirection, checkLOS, useRandomiser, silent);
+            initialized = MTAServer.AddVehicleSirens(vehicle.MTAElement, count, (int)type, visibleFromAllDirection, checkLOS, useRandomiser, silent);
+            return initialized;
         }
         
     }
