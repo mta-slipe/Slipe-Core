@@ -4,14 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client
+namespace Slipe.Client.IO
 {
+
     /// <summary>
     /// Represents a single command handler
     /// </summary>
     public class CommandHandler
     {
         private Action<string, string[]> callback;
+        private string command;
 
         /// <summary>
         /// Adds a command handler to be used by players
@@ -22,6 +24,7 @@ namespace Slipe.Client
         /// <param name="caseSensitive"></param>
         public CommandHandler(string command, Action<string, string[]> callback, bool restricted = false, bool caseSensitive = true)
         {
+            this.command = command;
             this.callback = callback;
             MTAClient.AddCommandHandler(command, CommandHandlerCallback, caseSensitive);
         }
@@ -29,6 +32,25 @@ namespace Slipe.Client
         private void CommandHandlerCallback(string command, string[] parameters)
         {
             this.callback?.Invoke(command, parameters);
+        }
+
+        /// <summary>
+        /// Executes the command handler
+        /// </summary>
+        /// <param name="args"></param>
+        public void Execute(string[] args)
+        {
+            MTAClient.ExecuteCommandHandler(this.command, string.Join(" ", args));
+        }
+
+        /// <summary>
+        /// Executes the command handler
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="args"></param>
+        public static void Execute(string command, string[] args)
+        {
+            MTAClient.ExecuteCommandHandler(command, string.Join(" ", args));
         }
     }
 }

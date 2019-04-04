@@ -17,6 +17,7 @@ using System.Xml;
 using System.Net.Sockets;
 using System.Net;
 using System.Text;
+using Slipe.Server.IO;
 
 namespace ServerTest
 {
@@ -155,7 +156,7 @@ namespace ServerTest
             //document.FirstChild.AppendChild(newElement);
             //document.Save("test.xml");
 
-            DoSocket();
+            Task _ = DoSocket();
 
 
             // JSON test

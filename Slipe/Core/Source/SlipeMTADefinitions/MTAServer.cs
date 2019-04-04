@@ -123,7 +123,7 @@ namespace Slipe.MTADefinitions {
 		public static MTAElement CreateMarker (float x, float y, float z, string theType, float size, int r, int g, int b, int a, MTAElement visibleTo){ throw new NotImplementedException(); }
 		public static dynamic GetLoadedModules (){ throw new NotImplementedException(); }
 		public static dynamic GetModuleInfo (string moduleName){ throw new NotImplementedException(); }
-		public static bool OutputChatBox (string text, MTAElement visibleTo){ throw new NotImplementedException(); }
+		public static bool OutputChatBox (string text, MTAElement visibleTo, int r, int g, int b, bool colorCoded){ throw new NotImplementedException(); }
 		public static bool ClearChatBox (MTAElement clearFor){ throw new NotImplementedException(); }
 		public static bool OutputConsole (string text, MTAElement visibleTo){ throw new NotImplementedException(); }
 		public static bool OutputServerLog (string text){ throw new NotImplementedException(); }

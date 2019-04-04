@@ -69,23 +69,47 @@ namespace Slipe.Client.Dx
             return SetTransform(rotation, Vector3.Zero);
         }
 
+        /// <summary>
+        /// Applies shader to a specific element
+        /// </summary>
+        /// <param name="textureName"></param>
+        /// <param name="targetElement"></param>
+        /// <param name="appendLayers"></param>
+        /// <returns></returns>
         public bool Apply(string textureName, Element targetElement, bool appendLayers = false)
         {
 
             return MTAClient.EngineApplyShaderToWorldTexture(this.materialElement, textureName, targetElement.MTAElement, appendLayers);
         }
 
-        public bool Apply(string textureName)
+        /// <summary>
+        /// Applies shader to all elements
+        /// </summary>
+        /// <param name="textureName"></param>
+        /// <param name="appendLayers"></param>
+        /// <returns></returns>
+        public bool Apply(string textureName, bool appendLayers = false)
         {
 
-            return Apply(textureName, Element.Root);
+            return Apply(textureName, Element.Root, appendLayers);
         }
 
+        /// <summary>
+        /// Removes shader from a specific element
+        /// </summary>
+        /// <param name="textureName"></param>
+        /// <param name="targetElement"></param>
+        /// <returns></returns>
         public bool Remove(string textureName, Element targetElement)
         {
             return MTAClient.EngineRemoveShaderFromWorldTexture(this.materialElement, textureName, targetElement.MTAElement);
         }
 
+        /// <summary>
+        /// Removes shader from all elements
+        /// </summary>
+        /// <param name="textureName"></param>
+        /// <returns></returns>
         public bool Remove(string textureName)
         {
             return Remove(textureName, Element.Root);

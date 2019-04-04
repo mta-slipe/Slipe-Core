@@ -9,10 +9,10 @@ To fully enhance your development workflow, use [Slipe-CLI](https://github.com/m
 ### Prerequisites
 
 
-* .[NET Core 3.0 (preview)](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-* [Visual studio 2019 (preview)](https://visualstudio.microsoft.com/vs/preview/)
+* [.NET Core 3.0 (preview)](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+* [Visual studio 2019](https://visualstudio.microsoft.com/downloads/)
 
-
+Since .NET Core 3.0 is still in preview you need to manually activate it in Visual Studio. You need to also go to Tools > Options > Projects and Solutions > .NET Core and check the Use previews of the .NET Core SDKs checkbox.
 
 ### Installation
 
