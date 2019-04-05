@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
 using Slipe.Client.Vehicles;
+using Slipe.Client.Effects;
 
 namespace Slipe.Client
 {
@@ -28,7 +29,8 @@ namespace Slipe.Client
             [typeof(Water)] = "water",
             [typeof(Light)] = "light",
             [typeof(SearchLight)] = "searchlight",
-            [typeof(Ped)] = "ped"
+            [typeof(Ped)] = "ped",
+            [typeof(Effect)] = "effect"
         };
 
         /// <summary>
@@ -101,6 +103,8 @@ namespace Slipe.Client
                     return new SearchLight(element);
                 case "ped":
                     return new Ped(element);
+                case "effect":
+                    return new Effect(element);
                 default:
                     return new Element(element);
             }

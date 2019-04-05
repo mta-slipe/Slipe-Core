@@ -11,6 +11,7 @@ using Slipe.Shared.Structs;
 using Slipe.Shared.RPC;
 using Slipe.Client.Dx;
 using Slipe.Client.Assets;
+using Slipe.Client.Effects;
 
 namespace ClientTest
 {
@@ -52,6 +53,17 @@ namespace ClientTest
             new CustomAnimation("Assets/salute.ifp").Apply("salute");
 
             Player.Local.SetAnimation(new Animation("salute", "mil_salutePrt"), false);
+
+            Vector3 pos = Player.Local.Position;
+            // BROKEN UNTIL FIXED BY YUAN
+            //Random r = new Random();
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    Vector3 newPos = new Vector3(pos.X + r.Next(-5, 5), pos.Y + r.Next(-5, 5), pos.Z + r.Next(-5, 5));
+            //    Fx.WaterHydrant(newPos);
+            //}
+
+            Effect ef = new Effect(EffectType.fire_large, pos, Vector3.Zero);
 
             Debug.WriteLine(Client.Renderer.Status.VideoCardName);
             Debug.WriteLine(Client.Renderer.Status.VideoCardRAM);
