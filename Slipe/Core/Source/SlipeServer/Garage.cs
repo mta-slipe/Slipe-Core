@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared;
-using Slipe.Shared.Enums;
+using Slipe.Shared.World;
 
 namespace Slipe.Server
 {
@@ -11,6 +10,6 @@ namespace Slipe.Server
     /// </summary>
     public class Garage : SharedGarage
     {
-        public Garage(GarageEnum garage) : base (garage) { }
+        public Garage(GarageLocation garage) : base (garage) { }
     }
 }

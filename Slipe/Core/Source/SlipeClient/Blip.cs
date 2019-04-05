@@ -1,10 +1,11 @@
-﻿using Slipe.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.Enums;
 using Slipe.MTADefinitions;
 using System.Numerics;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Utilities;
+using Slipe.Shared.Radar;
 
 namespace Slipe.Client
 {
@@ -22,7 +23,7 @@ namespace Slipe.Client
         /// <summary>
         /// Creates a blip from all the createBlip parameters
         /// </summary>
-        public Blip(Vector3 vector, BlipEnum icon, Color color, int size = 2, int ordering = 0, float visibleDistance = 16383.0f)
+        public Blip(Vector3 vector, BlipType icon, Color color, int size = 2, int ordering = 0, float visibleDistance = 16383.0f)
         {
             element = MTAClient.CreateBlip(vector.X, vector.Y, vector.Z, (int)icon, size, color.R, color.G, color.B, color.A, ordering, visibleDistance);
             ElementManager.Instance.RegisterElement(this);
@@ -37,7 +38,7 @@ namespace Slipe.Client
         /// <summary>
         /// Creates a blip attached to an MTA element
         /// </summary>
-        public Blip(PhysicalElement physicalElement, BlipEnum icon, Color color, int size = 2, int ordering = 0, float visibleDistance = 16383.0f)
+        public Blip(PhysicalElement physicalElement, BlipType icon, Color color, int size = 2, int ordering = 0, float visibleDistance = 16383.0f)
         {
             element = MTAClient.CreateBlipAttachedTo(physicalElement.MTAElement, (int)icon, size, color.R, color.G, color.B, color.A, ordering, visibleDistance);
             ElementManager.Instance.RegisterElement(this);

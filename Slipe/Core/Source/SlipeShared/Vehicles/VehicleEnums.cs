@@ -164,7 +164,8 @@ namespace Slipe.Shared.Vehicles
         FrontLeft,
         FrontRight,
         RearLeft,
-        RearRight
+        RearRight,
+        None
     }
 
     /// <summary>

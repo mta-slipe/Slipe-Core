@@ -4,8 +4,7 @@ using System.Text;
 using Slipe.MTADefinitions;
 using System.Numerics;
 using System.ComponentModel;
-using Slipe.Shared;
-using Slipe.Shared.Interfaces;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Client.Sounds
 {

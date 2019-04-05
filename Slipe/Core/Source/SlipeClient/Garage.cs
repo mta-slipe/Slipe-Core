@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared;
-using Slipe.Shared.Enums;
 using System.Numerics;
 using Slipe.MTADefinitions;
+using Slipe.Shared.World;
 
 namespace Slipe.Client
 {
@@ -13,7 +12,7 @@ namespace Slipe.Client
     /// </summary>
     public class Garage : SharedGarage
     {
-        public Garage(GarageEnum garage) : base(garage) { }
+        public Garage(GarageLocation garage) : base(garage) { }
 
         /// <summary>
         /// Get the bounding box of a garage.

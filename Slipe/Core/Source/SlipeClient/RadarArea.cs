@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared;
 using Slipe.MTADefinitions;
 using System.Numerics;
+using Slipe.Shared.Utilities;
+using Slipe.Shared.Radar;
 
 namespace Slipe.Client
 {

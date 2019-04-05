@@ -1,11 +1,11 @@
-﻿using Slipe.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
 using Slipe.Client.Vehicles;
 using Slipe.Client.Effects;
 using Slipe.Client.Sounds;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Client
 {

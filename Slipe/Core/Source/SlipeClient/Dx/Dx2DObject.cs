@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared;
 using System.Numerics;
+using Slipe.Shared.Utilities;
 
 namespace Slipe.Client.Dx
 {

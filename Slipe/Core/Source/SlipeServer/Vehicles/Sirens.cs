@@ -4,7 +4,7 @@ using System.Text;
 using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.Vehicles;
-using Slipe.Shared;
+using Slipe.Shared.Utilities;
 
 namespace Slipe.Server.Vehicles
 {

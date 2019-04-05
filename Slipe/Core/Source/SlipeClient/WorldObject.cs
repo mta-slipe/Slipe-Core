@@ -1,9 +1,9 @@
-﻿using Slipe.Shared;
-using Slipe.MTADefinitions;
+﻿using Slipe.MTADefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
+using Slipe.Shared.World;
 
 namespace Slipe.Client
 {

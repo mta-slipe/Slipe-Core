@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
-using Slipe.Shared.Structs;
 using Slipe.Shared.Enums;
 using System.Numerics;
+using Slipe.Shared.World;
+using Slipe.Shared.Utilities;
 
 namespace Slipe.Shared
 {
@@ -217,7 +218,7 @@ namespace Slipe.Shared
         /// <summary>
         /// Get a specific garage class instance from a garage ID
         /// </summary>
-        public SharedGarage GetGarage(GarageEnum garage)
+        public SharedGarage GetGarage(GarageLocation garage)
         {
             return new SharedGarage(garage);
         }
@@ -415,7 +416,7 @@ namespace Slipe.Shared
             get
             {
                 Tuple<int, int> result = MTAShared.GetWeather();
-                return new Weather((WeatherEnum)result.Item1, (WeatherEnum)result.Item2);
+                return new Weather((WeatherType)result.Item1, (WeatherType)result.Item2);
             }
             set
             {

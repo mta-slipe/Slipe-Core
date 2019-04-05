@@ -1,18 +1,18 @@
 ﻿using Slipe.Client;
 using Slipe.Client.Javascript;
 using Slipe.Client.Enums;
-using Slipe.Shared;
 using RPCDefinitions;
 using System;
 using System.Diagnostics;
 using System.Numerics;
 using Slipe.Shared.Enums;
-using Slipe.Shared.Structs;
 using Slipe.Shared.RPC;
 using Slipe.Client.Dx;
 using Slipe.Client.Assets;
 using Slipe.Client.Effects;
 using Slipe.Client.Sounds;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Peds;
 
 namespace ClientTest
 {

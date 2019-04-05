@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Slipe.Shared.Weapons;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -63,15 +64,15 @@ namespace Slipe.Shared.Enums
         /// <summary>
         /// Translates a weapon enum to a lowercase name, useful for the jetpack functions
         /// </summary>
-        public string TranslateWeapon(WeaponEnum weaponEnum)
+        public string TranslateWeapon(WeaponType weaponEnum)
         {
             switch(weaponEnum)
             {
-                case WeaponEnum.AK47:
+                case WeaponType.Ak47:
                     return "ak-47";
-                case WeaponEnum.COLT45:
+                case WeaponType.Colt45:
                     return "colt 45";
-                case WeaponEnum.TEC9:
+                case WeaponType.Tec9:
                     return "tec-9";
                 default:
                     return weaponEnum.ToString().ToLower();

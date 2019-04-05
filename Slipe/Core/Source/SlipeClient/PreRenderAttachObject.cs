@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared;
-using Slipe.Shared.Interfaces;
 using System.Numerics;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Helpers;
 
 namespace Slipe.Client
 {
-    public abstract class PreRenderAttachObject : IAttachable
+    public abstract class PreRenderAttachObject
     {
         protected PhysicalElement toAttached;
 

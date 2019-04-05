@@ -1,11 +1,11 @@
 ﻿using Slipe.Client.Enums;
 using Slipe.Client.Javascript;
-using Slipe.Shared;
 using Slipe.MTADefinitions;
 using System;
 using System.Numerics;
 using System.Collections.Generic;
 using System.Text;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Client
 {

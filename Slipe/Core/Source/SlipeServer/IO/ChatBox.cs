@@ -1,6 +1,7 @@
 ﻿using Slipe.MTADefinitions;
 using Slipe.Server;
-using Slipe.Shared;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;

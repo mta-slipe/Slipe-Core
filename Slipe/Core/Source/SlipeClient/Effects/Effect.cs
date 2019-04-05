@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
-using Slipe.Shared;
 using System.Numerics;
 using System.ComponentModel;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Client.Effects
 {

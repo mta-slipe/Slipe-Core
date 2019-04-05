@@ -1,5 +1,4 @@
 ﻿using Slipe.Server;
-using Slipe.Shared;
 using Slipe.Shared.Enums;
 using Slipe.Shared.Exceptions;
 using Slipe.MTADefinitions;
@@ -20,6 +19,10 @@ using System.Text;
 using Slipe.Server.IO;
 using Slipe.Server.Vehicles;
 using Slipe.Shared.Vehicles;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Weapons;
+using Slipe.Shared.Utilities;
+using Slipe.Shared.Radar;
 
 namespace ServerTest
 {
@@ -121,7 +124,7 @@ namespace ServerTest
             {
                 Player player = (Player) Player.GetFromName("SAES>DezZolation");
                 player.PlaySoundFrontEnd(FrontEndSound.RadioStatic);
-                Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponEnum.COLT45, 200);
+                Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponType.Colt45, 200);
                 pickup.Use(player);
                 Console.WriteLine(pickup.RespawnInterval.ToString());
             }
@@ -130,7 +133,7 @@ namespace ServerTest
                 Console.WriteLine("ha");
             }
 
-            Blip blip2 = new Blip(new Vector3(0, 0, 0), BlipEnum.BURGERSHOT, Color.Red, 2);
+            Blip blip2 = new Blip(new Vector3(0, 0, 0), BlipType.Burgershot, Color.Red, 2);
             Vector3 vect = blip2.ForwardVector;
             Console.WriteLine(vect.ToString());
 

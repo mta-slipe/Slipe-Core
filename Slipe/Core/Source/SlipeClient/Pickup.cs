@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared;
-using Slipe.Shared.Enums;
 using Slipe.MTADefinitions;
 using System.Numerics;
+using Slipe.Shared.Weapons;
+using Slipe.Shared.Pickups;
 
 namespace Slipe.Client
 {
@@ -21,21 +21,21 @@ namespace Slipe.Client
         /// <summary>
         /// Creates a pickup from the base createPickup paramters
         /// </summary>
-        public Pickup(Vector3 position, PickupTypeEnum type, int amount, int ammo = 50) : base (position, type, amount, 0, ammo) { }
+        public Pickup(Vector3 position, PickupType type, int amount, int ammo = 50) : base (position, type, amount, 0, ammo) { }
 
         /// <summary>
         /// Creates a weapon pickup
         /// </summary>
-        public Pickup(Vector3 position, WeaponEnum weapon, int ammo = 50) : base (position, PickupTypeEnum.WEAPON, (int)weapon, 0, ammo) { }
+        public Pickup(Vector3 position, WeaponType weapon, int ammo = 50) : base (position, PickupType.Weapon, (int)weapon, 0, ammo) { }
 
         /// <summary>
         /// Creates a custom model pickup
         /// </summary>
-        public Pickup(Vector3 position, PickupModelEnum model) : base (position, PickupTypeEnum.CUSTOM, (int) model) { }
+        public Pickup(Vector3 position, PickupModel model) : base (position, PickupType.Custom, (int) model) { }
 
         /// <summary>
         /// Creates a model pickup from any model ID
         /// </summary>
-        public Pickup(Vector3 position, int model) : base (position, PickupTypeEnum.CUSTOM, model) { }
+        public Pickup(Vector3 position, int model) : base (position, PickupType.Custom, model) { }
     }
 }

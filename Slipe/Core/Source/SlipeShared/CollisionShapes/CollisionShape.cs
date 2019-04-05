@@ -3,13 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Shared.CollisionShapes
 {
     /// <summary>
     /// Base class for collision shapes
     /// </summary>
-    public class CollisionShape: Element
+    public class CollisionShape: PhysicalElement
     {
         /// <summary>
         /// Gets the type of the collision shape

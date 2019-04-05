@@ -4,7 +4,7 @@ using System.Text;
 using Slipe.Client.Enums;
 using Slipe.MTADefinitions;
 using System.Numerics;
-using Slipe.Shared;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Client.Dx
 {
