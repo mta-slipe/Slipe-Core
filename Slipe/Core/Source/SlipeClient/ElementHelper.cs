@@ -5,6 +5,7 @@ using System.Text;
 using Slipe.MTADefinitions;
 using Slipe.Client.Vehicles;
 using Slipe.Client.Effects;
+using Slipe.Client.Sounds;
 
 namespace Slipe.Client
 {
@@ -30,7 +31,8 @@ namespace Slipe.Client
             [typeof(Light)] = "light",
             [typeof(SearchLight)] = "searchlight",
             [typeof(Ped)] = "ped",
-            [typeof(Effect)] = "effect"
+            [typeof(Effect)] = "effect",
+            [typeof(Sound)] = "sound"
         };
 
         /// <summary>
@@ -105,6 +107,8 @@ namespace Slipe.Client
                     return new Ped(element);
                 case "effect":
                     return new Effect(element);
+                case "sound":
+                    return new Sound(element);
                 default:
                     return new Element(element);
             }

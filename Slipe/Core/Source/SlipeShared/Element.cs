@@ -71,7 +71,7 @@ namespace Slipe.Shared
         /// Desetroys the element
         /// </summary>
         /// <returns></returns>
-        public bool Destroy()
+        public virtual bool Destroy()
         {
             return MTAShared.DestroyElement(element);
         }

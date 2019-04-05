@@ -120,6 +120,7 @@ namespace ServerTest
             try
             {
                 Player player = (Player) Player.GetFromName("SAES>DezZolation");
+                player.PlaySoundFrontEnd(FrontEndSound.RadioStatic);
                 Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponEnum.COLT45, 200);
                 pickup.Use(player);
                 Console.WriteLine(pickup.RespawnInterval.ToString());

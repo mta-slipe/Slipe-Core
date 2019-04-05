@@ -418,5 +418,13 @@ namespace Slipe.Server
             return MTAServer.TakePlayerScreenShot(element, (int) dimensions.X, (int) dimensions.Y, tag, quality, maxBandwith, maxPacketSize);
         }
 
+        /// <summary>
+        /// Play an internal GTA sound to this player
+        /// </summary>
+        public bool PlaySoundFrontEnd(FrontEndSound frontEndSound)
+        {
+            return MTAServer.PlaySoundFrontEnd(element, (int)frontEndSound);
+        }
+
     }
 }

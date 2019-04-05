@@ -4,15 +4,14 @@ using System.Text;
 using Slipe.MTADefinitions;
 using Slipe.Shared;
 using System.ComponentModel;
-using System.Numerics;
 using Slipe.Client;
 
 namespace Slipe.Client.Sounds
 {
     /// <summary>
-    /// Represents a sound played for the player or as a 3D element
+    /// Represents a sound played for the player
     /// </summary>
-    public class Sound : PhysicalElement
+    public class Sound : Element
     {
         #region Properties
 
@@ -74,21 +73,6 @@ namespace Slipe.Client.Sounds
             }
         }
 
-        /// <summary>
-        /// Get and set the max distance at which this sound stops
-        /// </summary>
-        public int MaxDistance
-        {
-            get
-            {
-                return MTAClient.GetSoundMaxDistance(element);
-            }
-            set
-            {
-                MTAClient.SetSoundMaxDistance(element, value);
-            }
-        }
-
         private SoundMeta meta;
         /// <summary>
         /// Used to get the meta tags attached to this sound. These provide information about the sound, for instance the title or the artist.
@@ -103,14 +87,105 @@ namespace Slipe.Client.Sounds
             }
         }
 
+        /// <summary>
+        /// Get and set the pan level of this sound element. (-1.0 (left) to 1.0 (right))
+        /// </summary>
+        public float Pan
+        {
+            get
+            {
+                return MTAClient.GetSoundPan(element);
+            }
+            set
+            {
+                MTAClient.SetSoundPan(element, value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the position in seconds on the sound track
+        /// </summary>
+        public float TrackPosition
+        {
+            get
+            {
+                return MTAClient.GetSoundPosition(element);
+            }
+            set
+            {
+                MTAClient.SetSoundPosition(element, value);
+            }
+        }
+
+        private SoundProperties properties;
+        /// <summary>
+        /// Get the properties of this sound
+        /// </summary>
+        public SoundProperties Properties
+        {
+            get
+            {
+                if (properties == null)
+                    properties = new SoundProperties(this);
+                return properties;
+            }
+        }
+
+        /// <summary>
+        /// Get and set the speed of this sound
+        /// </summary>
+        public float Speed
+        {
+            get
+            {
+                return MTAClient.GetSoundSpeed(element);
+            }
+            set
+            {
+                MTAClient.SetSoundSpeed(element, value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the volume. Range is from 0.0 to 1.0. This can go above 1.0 for amplification.
+        /// </summary>
+        public float Volume
+        {
+            get
+            {
+                return MTAClient.GetSoundVolume(element);
+            }
+            set
+            {
+                MTAClient.SetSoundVolume(element, value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set if the sound is paused
+        /// </summary>
+        public bool Paused
+        {
+            get
+            {
+                return MTAClient.IsSoundPaused(element);
+            }
+            set
+            {
+                MTAClient.SetSoundPaused(element, value);
+            }
+        }
+
         #endregion 
 
         #region Constructors
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Sound(MTAElement element) : base(element) { }
 
+        protected Sound() { }
+
         /// <summary>
-        /// Create a non 3D sound
+        /// Create sound
         /// </summary>
         public Sound(string pathOrUrl, bool looped = false, bool throttled = true)
         {
@@ -119,19 +194,11 @@ namespace Slipe.Client.Sounds
         }
 
         /// <summary>
-        /// Create a sound in the world at a certain position
-        /// </summary>
-        public Sound(string pathOrUrl, Vector3 position, bool looped = false, bool throttled = true)
-        {
-            element = MTAClient.PlaySound3D(pathOrUrl, position.X, position.Y, position.Z, looped, throttled);
-            ElementManager.Instance.RegisterElement(this);
-        }
-
-        /// <summary>
         /// Create a GTA Sfx
         /// </summary>
         public Sound(SoundContainer container, int bankId, int soundId, bool looped = false)
         {
+            //string containerBank = ((SoundContainer)container).ToString().ToLower();
             element = MTAClient.PlaySFX(container.ToString().ToLower(), bankId, soundId, looped);
             ElementManager.Instance.RegisterElement(this);
         }
@@ -155,40 +222,14 @@ namespace Slipe.Client.Sounds
             ElementManager.Instance.RegisterElement(this);
         }
 
-        /// <summary>
-        /// Create a GTA Sfx at a 3D position in the world
-        /// </summary>
-        public Sound(SoundContainer container, int bankId, int soundId, Vector3 position, bool looped = false)
-        {
-            element = MTAClient.PlaySFX3D(container.ToString().ToLower(), bankId, soundId, position.X, position.Y, position.Z, looped);
-            ElementManager.Instance.RegisterElement(this);
-        }
-
-        /// <summary>
-        /// Create a GTA radio station sound at a 3D position in the world
-        /// </summary>
-        public Sound(RadioStation station, int trackId, Vector3 position, bool looped = false)
-        {
-            string stationName = MTAClient.GetRadioChannelName((int)station);
-            element = MTAClient.PlaySFX3D("radio", stationName, trackId, position.X, position.Y, position.Z, looped);
-            ElementManager.Instance.RegisterElement(this);
-        }
-
-        /// <summary>
-        /// Create an extra GTA radio station sound at a 3D position in the world
-        /// </summary>
-        public Sound(ExtraStations station, int trackId, Vector3 position, bool looped = false)
-        {
-            element = MTAClient.PlaySFX3D("radio", station.ToString(), trackId, position.X, position.Y, position.Z, looped);
-            ElementManager.Instance.RegisterElement(this);
-        }
-
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Sound(Player player)
         {
             element = player.MTAElement;
         }
         #endregion
+
+        #region Methods
 
         /// <summary>
         /// This function gets the fast fourier transform data for an audio stream which is an array of floats representing the current audio frame. 
@@ -205,12 +246,21 @@ namespace Slipe.Client.Sounds
         }
 
         /// <summary>
+        /// Stop and destroy this sound
+        /// </summary>
+        public override bool Destroy()
+        {
+            return MTAClient.StopSound(element);
+        }
+        /// <summary>
         /// Check if a soundcontainer is available on this client
         /// </summary>
         public static bool GetSfxStatus(SoundContainer container)
         {
             return MTAClient.GetSFXStatus(container.ToString().ToLower());
         }
+
+        #endregion
 
     }
 }

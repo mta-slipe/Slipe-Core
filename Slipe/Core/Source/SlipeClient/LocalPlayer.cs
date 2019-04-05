@@ -143,5 +143,13 @@ namespace Slipe.Client
                 return new Tuple<Vector2, Vector2>(new Vector2(r.Item1, r.Item2), new Vector2(r.Item3, r.Item4));
             }
         }
+
+        /// <summary>
+        /// Play an internal GTA sound
+        /// </summary>
+        public bool PlaySoundFrontEnd(FrontEndSound frontEndSound)
+        {
+            return MTAClient.PlaySoundFrontEnd((int)frontEndSound);
+        }
     }
 }

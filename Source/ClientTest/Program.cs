@@ -53,6 +53,13 @@ namespace ClientTest
 
             new CustomAnimation("Assets/salute.ifp").Apply("salute");
 
+            new Sound(SoundContainer.spc_pa, 16, 9);
+            WorldSound deutschland = new WorldSound("http://www.noiseaddicts.com/samples_1w72b820/4192.mp3", new Vector3(-62, 46, 4), true);
+            Debug.WriteLine("Playing in the barn: " + deutschland.MetaTags.Title);
+            Debug.WriteLine("Tempo: " + deutschland.Properties.Tempo);
+            deutschland.Effects.Distorion = true;
+            new WorldSound(RadioStation.KDST, 1, new Vector3(0, 0, 4), true);
+
             Player.Local.SetAnimation(new Animation("salute", "mil_salutePrt"), false);
 
             Vector3 pos = Player.Local.Position;
