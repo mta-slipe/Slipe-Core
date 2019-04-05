@@ -12,6 +12,7 @@ using Slipe.Shared.RPC;
 using Slipe.Client.Dx;
 using Slipe.Client.Assets;
 using Slipe.Client.Effects;
+using Slipe.Client.Sounds;
 
 namespace ClientTest
 {

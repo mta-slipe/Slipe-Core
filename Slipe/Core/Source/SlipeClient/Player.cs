@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Slipe.Shared.Exceptions;
+using Slipe.Client.Sounds;
 
 namespace Slipe.Client
 {
@@ -123,6 +124,20 @@ namespace Slipe.Client
             get
             {
                 return MTAShared.GetPlayerPing(element);
+            }
+        }
+
+        private Sound voice;
+        /// <summary>
+        /// Get the sound element that represents the player's voice
+        /// </summary>
+        public Sound Voice
+        {
+            get
+            {
+                if (voice == null)
+                    voice = new Sound(this);
+                return voice;
             }
         }
 

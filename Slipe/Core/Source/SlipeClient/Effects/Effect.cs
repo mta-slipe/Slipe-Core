@@ -4,6 +4,7 @@ using System.Text;
 using Slipe.MTADefinitions;
 using Slipe.Shared;
 using System.Numerics;
+using System.ComponentModel;
 
 namespace Slipe.Client.Effects
 {
@@ -42,9 +43,7 @@ namespace Slipe.Client.Effects
             }
         }
 
-        /// <summary>
-        /// Create an effect from an MTAElement
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Effect(MTAElement element) : base(element) { }
 
         /// <summary>

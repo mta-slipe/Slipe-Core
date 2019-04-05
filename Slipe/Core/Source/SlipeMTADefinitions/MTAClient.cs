@@ -70,10 +70,12 @@ namespace Slipe.MTADefinitions {
 		public static dynamic GetSoundWaveData (MTAElement sound, int iSamples){ throw new NotImplementedException(); }
 		public static bool IsSoundPaused (MTAElement theSound){ throw new NotImplementedException(); }
 		public static MTAElement PlaySFX3D (string containerName, int bankId, int soundId, float x, float y, float z, bool looped){ throw new NotImplementedException(); }
-		public static bool SetRadioChannel (int ID){ throw new NotImplementedException(); }
+        public static MTAElement PlaySFX3D(string containerName, string radioStation, int trackId, float x, float y, float z, bool looped) { throw new NotImplementedException(); }
+        public static bool SetRadioChannel (int ID){ throw new NotImplementedException(); }
 		public static MTAElement PlaySound (string soundPath, bool looped, bool throttled){ throw new NotImplementedException(); }
 		public static MTAElement PlaySFX (string containerName, int bankId, int soundId, bool looped){ throw new NotImplementedException(); }
-		public static MTAElement PlaySound3D (string soundPath, float x, float y, float z, bool looped){ throw new NotImplementedException(); }
+        public static MTAElement PlaySFX(string containerName, string radioStation, int trackId, bool looped) { throw new NotImplementedException(); }
+        public static MTAElement PlaySound3D (string soundPath, float x, float y, float z, bool looped, bool throttled){ throw new NotImplementedException(); }
 		public static bool SetSoundMaxDistance (MTAElement sound, int distance){ throw new NotImplementedException(); }
 		public static bool SetSoundEffectEnabled (MTAElement sound, string effectName, bool bEnable){ throw new NotImplementedException(); }
 		public static bool SetSoundMinDistance (MTAElement sound, int distance){ throw new NotImplementedException(); }
