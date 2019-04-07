@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
 using System.Numerics;
+using System.ComponentModel;
 
 namespace Slipe.Client.Vehicles
 {
@@ -111,9 +112,7 @@ namespace Slipe.Client.Vehicles
         }
 
 
-        /// <summary>
-        /// Create a train from an MTA vehicle element 
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Train(MTAElement element) : base(element)
         {
 

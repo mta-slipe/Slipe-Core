@@ -179,6 +179,7 @@ namespace Slipe.Client.Sounds
         #endregion 
 
         #region Constructors
+
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Sound(MTAElement element) : base(element) { }
 

@@ -6,6 +6,7 @@ using Slipe.MTADefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
 using Slipe.Shared.Markers;
+using System.ComponentModel;
 
 namespace Slipe.Client
 {
@@ -14,9 +15,7 @@ namespace Slipe.Client
     /// </summary>
     public class Marker : SharedMarker
     {
-        /// <summary>
-        /// Creates a marker from an MTA marker element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Marker(MTAElement element) : base(element) { }
 
         /// <summary>

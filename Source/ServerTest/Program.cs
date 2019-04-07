@@ -174,7 +174,7 @@ namespace ServerTest
             //document.FirstChild.AppendChild(newElement);
             //document.Save("test.xml");
 
-            Task _ = DoSocket();
+            // Task _ = DoSocket();
 
 
             // JSON test

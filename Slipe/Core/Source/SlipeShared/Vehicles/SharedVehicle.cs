@@ -5,6 +5,7 @@ using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
+using System.ComponentModel;
 
 namespace Slipe.Shared.Vehicles
 {
@@ -345,13 +346,9 @@ namespace Slipe.Shared.Vehicles
         #endregion
 
         #region Constructors
-        /// <summary>
-        /// Creates or retrieves a vehicle from an MTA vehicle element
-        /// </summary>
-        public SharedVehicle(MTAElement element): base(element)
-        {
 
-        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public SharedVehicle(MTAElement element): base(element) { }
 
         /// <summary>
         /// Creates a vehicle from all MTA createVehicle variables

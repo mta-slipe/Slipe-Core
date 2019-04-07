@@ -5,6 +5,7 @@ using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
+using System.ComponentModel;
 
 namespace Slipe.Shared.Markers
 {
@@ -111,9 +112,7 @@ namespace Slipe.Shared.Markers
 
         protected SharedMarker() : base() { }
 
-        /// <summary>
-        /// Creates a marker from an MTA marker element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public SharedMarker(MTAElement element) : base(element) { }
 
         #endregion

@@ -5,6 +5,7 @@ using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Weapons;
+using System.ComponentModel;
 
 namespace Slipe.Shared.Pickups
 {
@@ -62,9 +63,8 @@ namespace Slipe.Shared.Pickups
         #endregion
 
         #region Constructors
-        /// <summary>
-        /// Creates or retrieves a pickup from an MTA pickup element
-        /// </summary>
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public SharedPickup(MTAElement element) : base(element) { }
 
         /// <summary>

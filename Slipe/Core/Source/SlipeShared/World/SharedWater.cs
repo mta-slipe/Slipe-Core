@@ -4,6 +4,7 @@ using System.Text;
 using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.Elements;
+using System.ComponentModel;
 
 namespace Slipe.Shared.World
 {
@@ -28,6 +29,7 @@ namespace Slipe.Shared.World
         /// <summary>
         /// Create water from an MTA water element
         /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public SharedWater(MTAElement element) : base(element) { }
 
         /// <summary>

@@ -5,6 +5,7 @@ using Slipe.MTADefinitions;
 using System.Numerics;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Helpers;
+using System.ComponentModel;
 
 namespace Slipe.Client
 {
@@ -43,9 +44,7 @@ namespace Slipe.Client
             }
         }
 
-        /// <summary>
-        /// Create a searchlight from an existing MTA searchlight element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public SearchLight(MTAElement element) : base(element) { }
 
         /// <summary>

@@ -9,6 +9,7 @@ using Slipe.Client.Enums;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Weapons;
 using Slipe.Shared.Peds;
+using System.ComponentModel;
 
 namespace Slipe.Client
 {
@@ -19,9 +20,7 @@ namespace Slipe.Client
     {
         public Ped() : base() { }
 
-        /// <summary>
-        /// Create a ped from an empty element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Ped(MTAElement element) : base(element) { }
 
         /// <summary>

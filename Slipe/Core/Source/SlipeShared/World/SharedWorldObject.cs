@@ -5,6 +5,7 @@ using System.Text;
 using System.Numerics;
 using Slipe.Shared.Enums;
 using Slipe.Shared.Elements;
+using System.ComponentModel;
 
 namespace Slipe.Shared.World
 {
@@ -34,10 +35,8 @@ namespace Slipe.Shared.World
         /// <summary>
         /// Creates or retrieves a SharedWorldObject using an MTAElement representing an object
         /// </summary>
-        public SharedWorldObject(MTAElement element) : base(element)
-        {
-
-        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public SharedWorldObject(MTAElement element) : base(element) { }
 
         /// <summary>
         /// Creates a SharedWorldObject from all CreateObject variables
@@ -52,9 +51,7 @@ namespace Slipe.Shared.World
         /// <summary>
         /// Creates a SharedWorldObject from a model ID and a position Vector3
         /// </summary>
-        public SharedWorldObject(int model, Vector3 position) : this(model, position, Vector3.Zero)
-        {
-        }
+        public SharedWorldObject(int model, Vector3 position) : this(model, position, Vector3.Zero) { }
 
         #endregion
 

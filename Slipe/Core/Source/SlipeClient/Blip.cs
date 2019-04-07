@@ -6,6 +6,7 @@ using System.Numerics;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
 using Slipe.Shared.Radar;
+using System.ComponentModel;
 
 namespace Slipe.Client
 {
@@ -15,9 +16,7 @@ namespace Slipe.Client
     public class Blip : SharedBlip
     {
 
-        /// <summary>
-        /// Creates or retrieves a blip from an MTA blip element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Blip(MTAElement element) : base (element) { }
 
         /// <summary>

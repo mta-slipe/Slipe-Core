@@ -5,6 +5,7 @@ using Slipe.MTADefinitions;
 using System.Numerics;
 using Slipe.Shared.Weapons;
 using Slipe.Shared.Pickups;
+using System.ComponentModel;
 
 namespace Slipe.Client
 {
@@ -13,9 +14,7 @@ namespace Slipe.Client
     /// </summary>
     public class Pickup : SharedPickup
     {
-        /// <summary>
-        /// Creates or retrieves a pickup from an MTA pickup element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Pickup(MTAElement element) : base(element) { }
 
         /// <summary>

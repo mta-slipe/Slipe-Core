@@ -99,7 +99,7 @@ namespace Slipe.Shared.Elements
 
         protected internal void AddEventHandler(Element element, string eventName, bool propagated = true, string priorty = "normal")
         {
-            MTAShared.AddEventHandler(eventName, element.MTAElement, "Slipe.Shared.ElementManager.HandleEvent", propagated, priorty);
+            MTAShared.AddEventHandler(eventName, element.MTAElement, "Slipe.Shared.Elements.ElementManager.HandleEvent", propagated, priorty);
         }
 
         /// <summary>

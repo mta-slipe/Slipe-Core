@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
+using System.ComponentModel;
 
 namespace Slipe.Client
 {
@@ -50,10 +51,7 @@ namespace Slipe.Client
             }
         }
 
-        /// <summary>
-        /// Create a team from an MTA team element
-        /// </summary>
-        /// <param name="team"></param>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Team(MTAElement team) : base(team)
         {
 

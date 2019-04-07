@@ -5,6 +5,7 @@ using Slipe.MTADefinitions;
 using System.Numerics;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
+using System.ComponentModel;
 
 namespace Slipe.Shared.Radar
 {
@@ -66,9 +67,7 @@ namespace Slipe.Shared.Radar
 
         #region Constructors
 
-        /// <summary>
-        /// Creates or retrieves a radar area from an MTA radar area element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public SharedRadarArea(MTAElement element) : base(element) { }
 
         /// <summary>

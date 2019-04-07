@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
 using System.Numerics;
+using System.ComponentModel;
 
 namespace Slipe.Server.Vehicles
 {
@@ -42,9 +43,7 @@ namespace Slipe.Server.Vehicles
         {
         }
 
-        /// <summary>
-        /// Create a plane from an MTA vehicle element 
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Plane(MTAElement element) : base(element)
         {
 

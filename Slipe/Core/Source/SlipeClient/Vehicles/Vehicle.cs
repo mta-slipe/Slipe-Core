@@ -5,6 +5,7 @@ using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.Vehicles;
 using Slipe.Shared.Elements;
+using System.ComponentModel;
 
 namespace Slipe.Client.Vehicles
 {
@@ -168,28 +169,19 @@ namespace Slipe.Client.Vehicles
         #endregion
 
         #region Constructors
-        /// <summary>
-        /// Create a vehicle from an MTA vehicle element 
-        /// </summary>
-        public Vehicle(MTAElement element) : base(element)
-        {
 
-        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Vehicle(MTAElement element) : base(element) { }
 
         /// <summary>
         /// Create a vehicle from a model at a position
         /// </summary>
-        public Vehicle(BaseVehicleModel model, Vector3 position) : base(model, position)
-        {
-
-        }
+        public Vehicle(BaseVehicleModel model, Vector3 position) : base(model, position) { }
 
         /// <summary>
         /// Create a vehicle model using all createVehicle arguments
         /// </summary>
-        public Vehicle(BaseVehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
-        {
-        }
+        public Vehicle(BaseVehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2) { }
         #endregion
 
         #region Misc. Methods

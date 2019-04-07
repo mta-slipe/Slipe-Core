@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using Slipe.MTADefinitions;
 
@@ -104,6 +105,7 @@ namespace Slipe.Shared.Elements
         /// <summary>
         /// Create an element from a MTA element instance
         /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Element(MTAElement mtaElement)
         {
             element = mtaElement;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
+using System.ComponentModel;
 
 namespace Slipe.Shared.Radar
 {
@@ -96,9 +97,7 @@ namespace Slipe.Shared.Radar
 
         protected SharedBlip() { }
 
-        /// <summary>
-        /// Creates or retrieves a blip from an MTA blip element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public SharedBlip(MTAElement element) : base(element) { }
 
         #endregion

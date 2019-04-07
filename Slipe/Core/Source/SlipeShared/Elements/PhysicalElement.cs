@@ -6,13 +6,14 @@ using Slipe.MTADefinitions;
 using Slipe.Shared.CollisionShapes;
 using Slipe.Shared.Helpers;
 using Slipe.Shared.Markers;
+using System.ComponentModel;
 
 namespace Slipe.Shared.Elements
 {
     /// <summary>
     /// Represents a physical element in the GTA world
     /// </summary>
-    public class PhysicalElement : Element
+    public abstract class PhysicalElement : Element
     {
         #region Properties
 
@@ -369,8 +370,10 @@ namespace Slipe.Shared.Elements
 
         #region Constructors
 
-        public PhysicalElement() { }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        protected PhysicalElement() { }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public PhysicalElement(MTAElement mtaElement) : base(mtaElement) { }
 
         #endregion

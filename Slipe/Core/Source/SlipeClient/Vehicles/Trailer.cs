@@ -4,6 +4,7 @@ using System.Text;
 using Slipe.MTADefinitions;
 using System.Numerics;
 using Slipe.Shared.Elements;
+using System.ComponentModel;
 
 namespace Slipe.Client.Vehicles
 {
@@ -42,9 +43,7 @@ namespace Slipe.Client.Vehicles
         {
         }
 
-        /// <summary>
-        /// Create a vehicle from an MTA vehicle element 
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Trailer(MTAElement element) : base(element)
         {
 

@@ -4,6 +4,7 @@ using System.Text;
 using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.Peds;
+using System.ComponentModel;
 
 namespace Slipe.Server
 {
@@ -14,9 +15,7 @@ namespace Slipe.Server
     {
         public Ped() : base() { }
 
-        /// <summary>
-        /// Create a ped from an empty element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Ped(MTAElement element) : base(element) { }
 
         /// <summary>

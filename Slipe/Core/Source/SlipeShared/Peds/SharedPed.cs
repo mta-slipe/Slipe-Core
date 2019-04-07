@@ -5,6 +5,7 @@ using Slipe.MTADefinitions;
 using Slipe.Shared.Vehicles;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Weapons;
+using System.ComponentModel;
 
 namespace Slipe.Shared.Peds
 {
@@ -293,9 +294,7 @@ namespace Slipe.Shared.Peds
 
         public SharedPed() : base() { }
 
-        /// <summary>
-        /// Create a ped from an empty element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public SharedPed(MTAElement element) : base(element) { }
 
         #endregion

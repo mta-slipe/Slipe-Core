@@ -5,6 +5,7 @@ using Slipe.Shared.Vehicles;
 using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.Elements;
+using System.ComponentModel;
 
 namespace Slipe.Server.Vehicles
 {
@@ -162,13 +163,8 @@ namespace Slipe.Server.Vehicles
         {
         }
 
-        /// <summary>
-        /// Create a plane from an MTA vehicle element 
-        /// </summary>
-        public Vehicle(MTAElement element) : base(element)
-        {
-
-        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Vehicle(MTAElement element) : base(element) { }
 
         #endregion
 

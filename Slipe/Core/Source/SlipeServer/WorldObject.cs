@@ -4,6 +4,7 @@ using System.Text;
 using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.World;
+using System.ComponentModel;
 
 namespace Slipe.Server
 {
@@ -13,9 +14,7 @@ namespace Slipe.Server
     public class WorldObject : SharedWorldObject
     {
 
-        /// <summary>
-        /// Creates a World object from an MTA object element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public WorldObject(MTAElement element): base(element)
         {
 
