@@ -6,7 +6,7 @@ using System;
 using System.Diagnostics;
 using System.Numerics;
 using Slipe.Shared.Enums;
-using Slipe.Shared.RPC;
+using Slipe.Shared.Rpc;
 using Slipe.Client.Dx;
 using Slipe.Client.Assets;
 using Slipe.Client.Effects;
@@ -42,8 +42,8 @@ namespace ClientTest
             //RPCManager.Instance.RegisterRPC("testRPC", (TestRPCStruct arguments) => {
             //    Debug.WriteLine("Handling testRPC, name: {0}, x: {1}", arguments.name, arguments.x);
             //});
-            RPCManager.Instance.RegisterRPC<BasicIncomingRPC>("testRPC", HandleTestRPC);
-            RPCManager.Instance.TriggerRPC("onPlayerReady", new EmptyOutgoingRPC());
+            RPCManager.Instance.RegisterRPC<BasicIncomingRpc>("testRPC", HandleTestRPC);
+            RPCManager.Instance.TriggerRPC("onPlayerReady", new EmptyOutgoingRpc());
 
             Element dummy = new Element("flag", "ab3x");
             Debug.WriteLine(dummy.Type);
@@ -84,7 +84,7 @@ namespace ClientTest
             }
         }
 
-        public void HandleTestRPC(BasicIncomingRPC arguments)
+        public void HandleTestRPC(BasicIncomingRpc arguments)
         {
             Debug.WriteLine("Handling testRPC, name: {0}, x: {1}, player name: {2}", arguments.name, arguments.x, ((Player)arguments.element).Name);
         }

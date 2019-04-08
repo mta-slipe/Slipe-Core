@@ -1,10 +1,10 @@
 ﻿using Slipe.Shared;
-using Slipe.Shared.Enums;
 using Slipe.MTADefinitions;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
+using Slipe.Shared.Explosions;
 
 namespace Slipe.Client
 {

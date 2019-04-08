@@ -1,6 +1,4 @@
-﻿using Slipe.Server;
-using Slipe.Shared.Enums;
-using Slipe.Shared.Exceptions;
+﻿using Slipe.Shared.Exceptions;
 using Slipe.MTADefinitions;
 using System;
 using System.Collections.Generic;
@@ -9,7 +7,7 @@ using System.IO;
 using System.Numerics;
 using RPCDefinitions;
 using System.Timers;
-using Slipe.Shared.RPC;
+using Slipe.Shared.Rpc;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml;
@@ -24,6 +22,16 @@ using Slipe.Shared.Weapons;
 using Slipe.Shared.Utilities;
 using Slipe.Shared.Radar;
 using Slipe.Server.Accounts;
+using Slipe.Server.Radar;
+using Slipe.Server.Elements;
+using Slipe.Server.GameWorld;
+using Slipe.Server.GameServer;
+using Slipe.Shared.Helpers;
+using Slipe.Server.Pickups;
+using Slipe.Server.Resources;
+using Slipe.Server.Rpc;
+using Slipe.Server.Peds;
+using Slipe.Shared.Peds;
 
 namespace ServerTest
 {
@@ -49,7 +57,7 @@ namespace ServerTest
 
         public Program()
         {
-            Debug.WriteLine(Slipe.Server.Server.Name);
+            Debug.WriteLine(Server.Name);
             List<Vehicle> vehicles = new List<Vehicle>(); ;
             for (int i = 0; i < 10; i++)
             {
@@ -61,7 +69,7 @@ namespace ServerTest
 
             WorldObject dildo = new WorldObject(321, new Vector3(3, 3, 3));
             dildo.Scale = new Vector3(3, 3, 3);
-            dildo.Move(5000, new Vector3(3, 3, 10), Vector3.Zero, EasingFunctionEnum.COSINECURVE, 0.4f, 0.5f);
+            dildo.Move(5000, new Vector3(3, 3, 10), Vector3.Zero, EasingFunction.CosineCurve, 0.4f, 0.5f);
             Console.WriteLine("{0} is a pleb", "SAES>Dezzolation");
 
             vehicles[4].AttachTo(dildo, new Vector3(0, 0, 3), Vector3.Zero);
@@ -105,14 +113,13 @@ namespace ServerTest
                 try
                 {
                     Player nano = (Player)Player.GetFromName("SAES>Nanobob");
-                    RPCManager.Instance.TriggerRPC(nano, "testRPC", new BasicOutgoingRPC("Vehicle damage", (int)loss, nano));
+                    RpcManager.Instance.TriggerRPC(nano, "testRPC", new BasicOutgoingRpc("Vehicle damage", (int)loss, nano));
                 }
                 catch (NullElementException) { }
 
             };
 
-            // BROKEN UNTIL FIXED BY YUAN
-            // SuperSwatTank swatTank = new SuperSwatTank(new Vector3(0, 25, 4));
+            SuperSwatTank swatTank = new SuperSwatTank(new Vector3(0, 25, 4));
 
             Player[] alives = Player.Alive;
             foreach(Player p in alives)
@@ -155,7 +162,7 @@ namespace ServerTest
                 }
             }
 
-            RPCManager.Instance.RegisterRPC<EmptyIncomingRPC>("onPlayerReady", (Player player, EmptyIncomingRPC rpc) =>
+            RpcManager.Instance.RegisterRPC<EmptyIncomingRpc>("onPlayerReady", (Player player, EmptyIncomingRpc rpc) =>
             {
                 Console.WriteLine("{0} has sent the ready event", player.Name);
             });

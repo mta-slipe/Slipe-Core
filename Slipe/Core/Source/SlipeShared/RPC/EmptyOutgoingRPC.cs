@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Slipe.Shared.Rpc;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.RPC
+namespace Slipe.Shared.Rpc
 {
-    public class EmptyOutgoingRPC: IRPC
+    public class EmptyOutgoingRpc : IRpc
     {
-        public EmptyOutgoingRPC()
+        public EmptyOutgoingRpc()
         {
 
         }

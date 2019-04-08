@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.RPC
+namespace Slipe.Shared.Rpc
 {
-    public interface IRPC
+    public interface IRpc
     {
 
     }

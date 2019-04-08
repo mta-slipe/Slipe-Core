@@ -1,17 +1,18 @@
 ﻿using Slipe.Shared.Elements;
+using Slipe.Shared.Rpc;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.RPC
+namespace Slipe.Shared.Rpc
 {
-    public class BasicIncomingRPC : IRPC
+    public class BasicIncomingRpc : IRpc
     {
         public string name;
         public int x;
         public Element element;
 
-        public BasicIncomingRPC(object value)
+        public BasicIncomingRpc(object value)
         {
             /*
             [[

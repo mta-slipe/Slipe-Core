@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.Shared.World;
 using System.ComponentModel;
+using Slipe.Shared.GameWorld;
 
 namespace Slipe.Client
 {

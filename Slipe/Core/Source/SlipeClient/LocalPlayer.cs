@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
-using Slipe.Shared.Enums;
 using System.Numerics;
+using Slipe.Shared.Peds;
 
 namespace Slipe.Client
 {
@@ -102,7 +102,7 @@ namespace Slipe.Client
         /// </summary>
         public bool SetHudComponentVisible(HudComponent component, bool visible)
         {
-            return MTAClient.SetPlayerHudComponentVisible(component.ToString(), visible);
+            return MTAClient.SetPlayerHudComponentVisible(component.ToString().ToLower(), visible);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Slipe.Client
         /// </summary>
         public bool IsHudComponentVisible(HudComponent component)
         {
-            return MTAClient.IsPlayerHudComponentVisible(component.ToString());
+            return MTAClient.IsPlayerHudComponentVisible(component.ToString().ToLower());
         }
 
         /// <summary>

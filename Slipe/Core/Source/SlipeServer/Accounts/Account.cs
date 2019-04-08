@@ -5,6 +5,7 @@ using Slipe.MTADefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Server.Acl;
 using System.ComponentModel;
+using Slipe.Server.Peds;
 
 namespace Slipe.Server.Accounts
 {

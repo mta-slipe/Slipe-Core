@@ -8,6 +8,7 @@ using Slipe.Shared.Vehicles;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Peds;
 using Slipe.Shared.Helpers;
+using Slipe.Client.Enums;
 
 namespace Slipe.Client
 {

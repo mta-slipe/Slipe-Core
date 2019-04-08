@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using Slipe.MTADefinitions;
-using Slipe.Shared.World;
+using Slipe.Shared.GameWorld;
 
 namespace Slipe.Client
 {

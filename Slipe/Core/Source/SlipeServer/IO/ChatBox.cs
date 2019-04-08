@@ -1,5 +1,5 @@
 ﻿using Slipe.MTADefinitions;
-using Slipe.Server;
+using Slipe.Server.Peds;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
 using System;

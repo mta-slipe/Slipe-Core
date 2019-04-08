@@ -3,6 +3,8 @@ using Slipe.MTADefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
+using Slipe.Server.Peds;
 
 namespace Slipe.Server.Accounts
 {
@@ -152,6 +154,7 @@ namespace Slipe.Server.Accounts
             ban = MTAServer.AddBan(ip, null, serial, banner == null ? null : banner.MTAElement, reason, seconds);
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         private Ban(MTABan ban)
         {
             this.ban = ban;

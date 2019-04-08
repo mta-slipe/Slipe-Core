@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared;
 using Slipe.MTADefinitions;
 using System.Numerics;
 using Slipe.Client.Enums;
-using Slipe.Shared.World;
+using Slipe.Shared.GameWorld;
 
 namespace Slipe.Client
 {

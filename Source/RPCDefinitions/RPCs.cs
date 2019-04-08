@@ -2,11 +2,11 @@
 using Slipe.Shared;
 using System;
 using System.Diagnostics;
-using Slipe.Shared.RPC;
+using Slipe.Shared.Rpc;
 
 namespace RPCDefinitions
 {
-    public class TestRPC: IRPC
+    public class TestRPC: IRpc
     {
         public string name;
         public int x;

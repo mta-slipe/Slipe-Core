@@ -1,5 +1,4 @@
 ﻿using Slipe.Client.Enums;
-using Slipe.Shared.Enums;
 using Slipe.MTADefinitions;
 using System;
 using System.Collections.Generic;
@@ -7,6 +6,7 @@ using System.Numerics;
 using System.Text;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
+using Slipe.Shared.Rendering;
 
 namespace Slipe.Client
 {
@@ -162,7 +162,7 @@ namespace Slipe.Client
         /// </summary>
         public bool Fade(CameraFade fade, Color color, int time = 1000)
         {
-            return MTAClient.FadeCamera(fade == CameraFade.IN ? true : false, time / 1000, color.R, color.G, color.B);
+            return MTAClient.FadeCamera(fade == CameraFade.In ? true : false, time / 1000, color.R, color.G, color.B);
         }
 
         /// <summary>

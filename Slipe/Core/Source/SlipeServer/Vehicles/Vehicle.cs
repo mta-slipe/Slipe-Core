@@ -6,6 +6,7 @@ using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.Elements;
 using System.ComponentModel;
+using Slipe.Server.Peds;
 
 namespace Slipe.Server.Vehicles
 {

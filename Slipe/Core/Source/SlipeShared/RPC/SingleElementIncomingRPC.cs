@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.RPC
+namespace Slipe.Shared.Rpc
 {
-    public class SingleElementIncomingRPC : IRPC
+    public class SingleElementIncomingRpc : IRpc
     {
         public Element element;
 
-        public SingleElementIncomingRPC(object value)
+        public SingleElementIncomingRpc(object value)
         {
             /*
             [[
