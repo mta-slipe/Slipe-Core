@@ -41,11 +41,11 @@ namespace Slipe.Shared.Pickups
         /// <summary>
         /// Gets the weapon type of the pickup if it's a weapon pickup
         /// </summary>
-        public WeaponType Weapon
+        public SharedWeaponModel WeaponModel
         {
             get
             {
-                return (WeaponType)MtaShared.GetPickupWeapon(element);
+                return new SharedWeaponModel(MtaShared.GetPickupWeapon(element));
             }
         }
 
@@ -78,7 +78,7 @@ namespace Slipe.Shared.Pickups
         /// <summary>
         /// Creates a weapon pickup
         /// </summary>
-        public SharedPickup(Vector3 position, WeaponType weapon, int ammo = 50, int respawnTime = 30000) : this(position, PickupType.Weapon, (int)weapon, respawnTime, ammo) { }
+        public SharedPickup(Vector3 position, SharedWeaponModel weapon, int ammo = 50, int respawnTime = 30000) : this(position, PickupType.Weapon, weapon.ID, respawnTime, ammo) { }
 
         /// <summary>
         /// Creates a custom pickup using GTA custom pickup models
@@ -105,9 +105,9 @@ namespace Slipe.Shared.Pickups
         /// <summary>
         /// Morphs the pickup into a weapon pickup
         /// </summary>
-        public bool Morph(WeaponType weapon, int ammo = 50)
+        public bool Morph(SharedWeaponModel weapon, int ammo = 50)
         {
-            return Morph(PickupType.Weapon, (int)weapon, ammo);
+            return Morph(PickupType.Weapon, weapon.ID, ammo);
         }
 
         /// <summary>

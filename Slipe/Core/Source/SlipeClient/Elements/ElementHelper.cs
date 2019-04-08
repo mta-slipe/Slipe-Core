@@ -15,6 +15,7 @@ using Slipe.Client.Pickups;
 using Slipe.Client.Markers;
 using Slipe.Client.GameWorld;
 using Slipe.Client.Peds;
+using Slipe.Client.Weapons;
 
 namespace Slipe.Client.Elements
 {
@@ -41,7 +42,9 @@ namespace Slipe.Client.Elements
             [typeof(SearchLight)] = "searchlight",
             [typeof(Ped)] = "ped",
             [typeof(Effect)] = "effect",
-            [typeof(Sound)] = "sound"
+            [typeof(Sound)] = "sound",
+            [typeof(CustomWeapon)] = "weapon",
+            [typeof(Projectile)] = "projectile"
         };
 
         /// <summary>
@@ -118,6 +121,10 @@ namespace Slipe.Client.Elements
                     return new Effect(element);
                 case "sound":
                     return new Sound(element);
+                case "weapon":
+                    return new CustomWeapon(element);
+                case "projectile":
+                    return new Projectile(element);
                 default:
                     return new Element(element);
             }

@@ -120,6 +120,14 @@ namespace Slipe.Client.Peds
         #region Methods
 
         /// <summary>
+        /// Detonate the satchels this player has laid
+        /// </summary>
+        public bool DetonateSatchels()
+        {
+            return MtaClient.DetonateSatchels();
+        }
+
+        /// <summary>
         /// Adds money to the player's money
         /// </summary>
         public bool GiveMoney(int amount)

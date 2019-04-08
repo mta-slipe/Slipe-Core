@@ -54,7 +54,7 @@ namespace Slipe.Server.Pickups
         /// <summary>
         /// Creates a weapon pickup
         /// </summary>
-        public Pickup(Vector3 position, WeaponType weapon, int ammo = 50, int respawnTime = 30000) : base(position, PickupType.Weapon, (int)weapon, respawnTime, ammo) { }
+        public Pickup(Vector3 position, SharedWeaponModel weapon, int ammo = 50, int respawnTime = 30000) : base(position, PickupType.Weapon, weapon.ID, respawnTime, ammo) { }
 
         /// <summary>
         /// Creates a custom model pickup

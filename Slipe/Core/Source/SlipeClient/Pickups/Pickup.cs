@@ -25,7 +25,7 @@ namespace Slipe.Client.Pickups
         /// <summary>
         /// Creates a weapon pickup
         /// </summary>
-        public Pickup(Vector3 position, WeaponType weapon, int ammo = 50) : base(position, PickupType.Weapon, (int)weapon, 0, ammo) { }
+        public Pickup(Vector3 position, SharedWeaponModel weapon, int ammo = 50) : base(position, PickupType.Weapon, weapon.ID, 0, ammo) { }
 
         /// <summary>
         /// Creates a custom model pickup

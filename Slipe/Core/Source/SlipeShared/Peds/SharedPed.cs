@@ -258,11 +258,11 @@ namespace Slipe.Shared.Peds
         /// <summary>
         /// Get the current weapon
         /// </summary>
-        public WeaponType Weapon
+        public SharedWeaponModel Weapon
         {
             get
             {
-                return (WeaponType)MtaShared.GetPedWeapon(element, (int)WeaponSlot);
+                return new SharedWeaponModel(MtaShared.GetPedWeapon(element, (int)WeaponSlot));
             }
         }
 
@@ -371,9 +371,9 @@ namespace Slipe.Shared.Peds
         /// <summary>
         /// Get the weapon in a specific slot
         /// </summary>
-        public WeaponType GetWeaponInSlot(WeaponSlot slot)
+        public SharedWeaponModel GetWeaponInSlot(WeaponSlot slot)
         {
-            return (WeaponType)MtaShared.GetPedWeapon(element, (int)slot);
+            return new SharedWeaponModel(MtaShared.GetPedWeapon(element, (int)slot));
         }
 
         /// <summary>
@@ -451,9 +451,9 @@ namespace Slipe.Shared.Peds
         /// <summary>
         /// Kill the ped with a killer, a weapon and a bodypart
         /// </summary>
-        public bool Kill(SharedPed killer, WeaponType weapon, BodyPart bodyPart, bool stealth = false)
+        public bool Kill(SharedPed killer, SharedWeaponModel weapon, BodyPart bodyPart, bool stealth = false)
         {
-            return MtaShared.KillPed(element, killer.MTAElement, (int)weapon, (int)bodyPart, stealth);
+            return MtaShared.KillPed(element, killer.MTAElement, weapon.ID, (int)bodyPart, stealth);
         }
 
         /// <summary>

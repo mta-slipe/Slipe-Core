@@ -410,4 +410,15 @@ namespace Slipe.Shared.Vehicles
         RearBumper,
         Misc
     }
+
+    /// <summary>
+    /// Represents a vehicle tire
+    /// </summary>
+    public enum Tire
+    {
+        FrontLeft,
+        FrontRight,
+        RearLeft,
+        RearRight
+    }
 }

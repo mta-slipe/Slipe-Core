@@ -5,6 +5,7 @@ using System.Numerics;
 using Slipe.MtaDefinitions;
 using Slipe.Shared.Peds;
 using System.ComponentModel;
+using Slipe.Shared.Weapons;
 
 namespace Slipe.Server.Peds
 {
@@ -109,6 +110,8 @@ namespace Slipe.Server.Peds
 
         #endregion
 
+        #region Methods
+
         /// <summary>
         /// This function reloads the weapon of this ped
         /// </summary>
@@ -116,6 +119,48 @@ namespace Slipe.Server.Peds
         {
             return MtaServer.ReloadPedWeapon(element);
         }
+
+        /// <summary>
+        /// Give a weapon to this ped
+        /// </summary>
+        public bool GiveWeapon(SharedWeaponModel model, int ammo = 30, bool setAsCurrent = false)
+        {
+            return MtaServer.GiveWeapon(element, model.ID, ammo, setAsCurrent);
+        }
+
+        /// <summary>
+        /// Set the total ammo of a weapon the ped has
+        /// </summary>
+        public bool SetAmmo(SharedWeaponModel model, int totalAmmo, int ammoInClip = 0)
+        {
+            return MtaShared.SetWeaponAmmo(element, model.ID, totalAmmo, ammoInClip);
+        }
+
+        /// <summary>
+        /// Take all weapons from this ped
+        /// </summary>
+        public bool TakeAllWeapons()
+        {
+            return MtaServer.TakeAllWeapons(element);
+        }
+
+        /// <summary>
+        /// Take a weapon from a player
+        /// </summary>
+        public bool TakeWeapon(SharedWeaponModel model)
+        {
+            return MtaServer.TakeWeapon(element, model.ID, -1);
+        }
+
+        /// <summary>
+        /// Take a certain amount of ammo from a player weapon
+        /// </summary>
+        public bool TakeAmmo(SharedWeaponModel model, int amount)
+        {
+            return MtaServer.TakeWeapon(element, model.ID, amount);
+        }
+
+        #endregion
     }
 
 }

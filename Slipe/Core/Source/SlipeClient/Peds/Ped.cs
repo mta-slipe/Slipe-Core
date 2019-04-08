@@ -251,9 +251,9 @@ namespace Slipe.Client.Peds
         /// <summary>
         /// Gives a weapon to this ped
         /// </summary>
-        public bool GiveWeapon(WeaponType weapon, int ammo = 30, bool setAsCurrent = false)
+        public bool GiveWeapon(SharedWeaponModel weapon, int ammo = 30, bool setAsCurrent = false)
         {
-            return MtaClient.GivePedWeapon(element, (int)weapon, ammo, setAsCurrent);
+            return MtaClient.GivePedWeapon(element, weapon.ID, ammo, setAsCurrent);
         }
 
         /// <summary>

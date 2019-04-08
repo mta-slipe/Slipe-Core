@@ -32,6 +32,7 @@ using Slipe.Server.Resources;
 using Slipe.Server.Rpc;
 using Slipe.Server.Peds;
 using Slipe.Shared.Peds;
+using Slipe.Server.Weapons;
 
 namespace ServerTest
 {
@@ -135,7 +136,7 @@ namespace ServerTest
             {
                 Player player = (Player) Player.GetFromName("SAES>DezZolation");
                 player.PlaySoundFrontEnd(FrontEndSound.RadioStatic);
-                Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponType.Colt45, 200);
+                Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponModel.Colt45, 200);
                 pickup.Use(player);
                 Console.WriteLine(pickup.RespawnInterval.ToString());
             }

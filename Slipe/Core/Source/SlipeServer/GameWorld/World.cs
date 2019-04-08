@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Weapons;
 using Slipe.Shared.GameWorld;
-using Slipe.Shared.Helpers;
 
 namespace Slipe.Server.GameWorld
 {
@@ -31,22 +28,6 @@ namespace Slipe.Server.GameWorld
 
         }
         #endregion
-
-        /// <summary>
-        /// Enable or disable the use of a weapon on a jetpack
-        /// </summary>
-        public bool SetJetPackWeaponEnabled(WeaponType weapon, bool enabled)
-        {
-            return MtaServer.SetJetpackWeaponEnabled(EnumTranslator.Instance.TranslateWeapon(weapon), enabled);
-        }
-
-        /// <summary>
-        /// Check if a certain weapon is enabled on the jetpack
-        /// </summary>
-        public bool getJetPackWeaponEnabled(WeaponType weapon)
-        {
-            return MtaServer.GetJetpackWeaponEnabled(EnumTranslator.Instance.TranslateWeapon(weapon));
-        }
 
         /// <summary>
         /// Get a specific garage class instance from a garage ID

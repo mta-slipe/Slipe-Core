@@ -434,6 +434,14 @@ namespace Slipe.Server.Peds
             return MtaServer.PlaySoundFrontEnd(element, (int)frontEndSound);
         }
 
+        /// <summary>
+        /// Detonate the satchels this player has laid
+        /// </summary>
+        public bool DetonateSatchels()
+        {
+            return MtaServer.DetonateSatchels(element);
+        }
+
         #endregion
 
         #region Static Methods

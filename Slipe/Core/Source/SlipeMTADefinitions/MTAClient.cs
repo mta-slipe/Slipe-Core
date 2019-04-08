@@ -526,5 +526,8 @@ namespace Slipe.MtaDefinitions {
 		public static bool DxDrawMaterialLine3D (float startX, float startY, float startZ, float endX, float endY, float endZ, MtaElement material, float width, int color, bool postGUI){ throw new NotImplementedException(); }
 		public static bool DxDrawMaterialSectionLine3D (float startX, float startY, float startZ, float endX, float endY, float endZ, float u, float v, float usize, float vsize, MtaElement material, float width, int color, bool postGUI){ throw new NotImplementedException(); }
 		public static bool DxSetRenderTarget (){ throw new NotImplementedException(); }
-	}
+        public static bool SetWeaponTarget(MtaElement theWeapon, MtaElement target, int component) { throw new NotImplementedException(); }
+        public static bool SetWeaponTarget(MtaElement theWeapon, float x, float y, float z) { throw new NotImplementedException(); }
+        public static bool SetWeaponTarget(MtaElement theWeapon) { throw new NotImplementedException(); }
+    }
 }
