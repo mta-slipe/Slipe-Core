@@ -5,6 +5,7 @@ using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.CollisionShapes;
 using Slipe.Shared.Interfaces;
+using System.ComponentModel;
 
 namespace Slipe.Shared
 {
@@ -26,6 +27,7 @@ namespace Slipe.Shared
         {
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public PhysicalElement(MTAElement mtaElement) : base(mtaElement)
         {
 
