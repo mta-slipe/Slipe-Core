@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
-using Slipe.Shared;
 using Slipe.Client.Enums;
 using System.Numerics;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Utilities;
+using System.ComponentModel;
 
 namespace Slipe.Client
 {
     public class Light : PhysicalElement
     {
-        /// <summary>
-        /// Create a light from an existing MTA light element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Light(MTAElement element) : base (element) { }
 
         /// <summary>

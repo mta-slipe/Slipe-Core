@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
 using System.Numerics;
-using Slipe.Shared;
 using Slipe.Shared.Enums;
 using Slipe.Shared.Vehicles;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Peds;
+using Slipe.Shared.Helpers;
 
 namespace Slipe.Client
 {

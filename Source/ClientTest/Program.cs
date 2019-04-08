@@ -1,16 +1,18 @@
 ﻿using Slipe.Client;
 using Slipe.Client.Javascript;
 using Slipe.Client.Enums;
-using Slipe.Shared;
 using RPCDefinitions;
 using System;
 using System.Diagnostics;
 using System.Numerics;
 using Slipe.Shared.Enums;
-using Slipe.Shared.Structs;
 using Slipe.Shared.RPC;
 using Slipe.Client.Dx;
 using Slipe.Client.Assets;
+using Slipe.Client.Effects;
+using Slipe.Client.Sounds;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Peds;
 
 namespace ClientTest
 {
@@ -51,7 +53,25 @@ namespace ClientTest
 
             new CustomAnimation("Assets/salute.ifp").Apply("salute");
 
-            Player.Local.SetAnimation(new Animation("salute", "mil_salutePrt"), -1, false);
+            new Sound(SoundContainer.spc_pa, 16, 9);
+            WorldSound deutschland = new WorldSound("http://www.noiseaddicts.com/samples_1w72b820/4192.mp3", new Vector3(-62, 46, 4), true);
+            Debug.WriteLine("Playing in the barn: " + deutschland.MetaTags.Title);
+            Debug.WriteLine("Tempo: " + deutschland.Properties.Tempo);
+            deutschland.Effects.Distorion = true;
+            new WorldSound(RadioStation.KDST, 1, new Vector3(0, 0, 4), true);
+
+            Player.Local.SetAnimation(new Animation("salute", "mil_salutePrt"), false);
+
+            Vector3 pos = Player.Local.Position;
+            // BROKEN UNTIL FIXED BY YUAN
+            //Random r = new Random();
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    Vector3 newPos = new Vector3(pos.X + r.Next(-5, 5), pos.Y + r.Next(-5, 5), pos.Z + r.Next(-5, 5));
+            //    Fx.WaterHydrant(newPos);
+            //}
+
+            Effect ef = new Effect(EffectType.fire_large, pos, Vector3.Zero);
 
             Debug.WriteLine(Client.Renderer.Status.VideoCardName);
             Debug.WriteLine(Client.Renderer.Status.VideoCardRAM);

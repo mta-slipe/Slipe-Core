@@ -1,12 +1,12 @@
-﻿using Slipe.Shared;
-using Slipe.MTADefinitions;
+﻿using Slipe.MTADefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using Slipe.Shared.Exceptions;
 using Slipe.Shared.Enums;
-using System.Numerics;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Utilities;
 
 namespace Slipe.Server
 {
@@ -416,6 +416,14 @@ namespace Slipe.Server
         public bool TakeScreenShot(Vector2 dimensions, string tag = "", int quality = 30, int maxBandwith = 5000, int maxPacketSize = 500)
         {
             return MTAServer.TakePlayerScreenShot(element, (int) dimensions.X, (int) dimensions.Y, tag, quality, maxBandwith, maxPacketSize);
+        }
+
+        /// <summary>
+        /// Play an internal GTA sound to this player
+        /// </summary>
+        public bool PlaySoundFrontEnd(FrontEndSound frontEndSound)
+        {
+            return MTAServer.PlaySoundFrontEnd(element, (int)frontEndSound);
         }
 
     }

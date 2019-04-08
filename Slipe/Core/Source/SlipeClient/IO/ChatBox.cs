@@ -1,5 +1,5 @@
 ﻿using Slipe.MTADefinitions;
-using Slipe.Shared;
+using Slipe.Shared.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
-using Slipe.Shared;
 using System.Numerics;
-using Slipe.Shared.Interfaces;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Helpers;
+using System.ComponentModel;
 
 namespace Slipe.Client
 {
     /// <summary>
     /// This function creates a searchlight. A searchlight is a spotlight which looks like the one available in the Police Maverick.
     /// </summary>
-    public class SearchLight : Element, IAttachable
+    public class SearchLight : Element
     {
         protected PhysicalElement toAttached;
         protected Vector3 relativeEndPosition;
@@ -43,9 +44,7 @@ namespace Slipe.Client
             }
         }
 
-        /// <summary>
-        /// Create a searchlight from an existing MTA searchlight element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public SearchLight(MTAElement element) : base(element) { }
 
         /// <summary>

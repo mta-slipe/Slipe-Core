@@ -1,8 +1,9 @@
-﻿using Slipe.Shared;
-using Slipe.MTADefinitions;
+﻿using Slipe.MTADefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Slipe.Shared.Elements;
+using System.ComponentModel;
 
 namespace Slipe.Client
 {
@@ -43,9 +44,7 @@ namespace Slipe.Client
 
         }
 
-        /// <summary>
-        /// Create a GUI elemenet from an MTA GUI element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public GUIElement(MTAElement element): base(element)
         {
 

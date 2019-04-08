@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Shared.CollisionShapes
 {

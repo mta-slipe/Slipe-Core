@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
-using Slipe.Shared;
 using System.Xml;
 using Slipe.Server.Structs;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Resources;
 
 namespace Slipe.Server
 {

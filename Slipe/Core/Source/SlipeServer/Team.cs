@@ -1,8 +1,10 @@
-﻿using Slipe.Shared;
-using Slipe.MTADefinitions;
+﻿using Slipe.MTADefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Utilities;
+using System.ComponentModel;
 
 namespace Slipe.Server
 {
@@ -72,8 +74,8 @@ namespace Slipe.Server
         }
 
 
-
-        internal Team(MTAElement team) : base(team)
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Team(MTAElement team) : base(team)
         {
 
         }

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
 using System.Numerics;
-using Slipe.Shared;
-
+using Slipe.Shared.Utilities;
 
 namespace Slipe.Client.Dx
 {

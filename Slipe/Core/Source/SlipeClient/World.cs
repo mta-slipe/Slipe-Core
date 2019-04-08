@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.Shared;
 using Slipe.MTADefinitions;
-using Slipe.Shared.Enums;
 using System.Numerics;
 using Slipe.Client.Enums;
+using Slipe.Shared.World;
 
 namespace Slipe.Client
 {
@@ -34,7 +34,7 @@ namespace Slipe.Client
         /// <summary>
         /// Get a specific garage class instance from a garage ID
         /// </summary>
-        public new Garage GetGarage(GarageEnum garage)
+        public new Garage GetGarage(GarageLocation garage)
         {
             return new Garage(garage);
         }

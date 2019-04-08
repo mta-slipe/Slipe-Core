@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using Slipe.MTADefinitions;
-using Slipe.Shared;
 using Slipe.Shared.Enums;
 using Slipe.Client.Structs;
 using Slipe.Client.Enums;
-using Slipe.Shared.Structs;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Weapons;
+using Slipe.Shared.Peds;
+using System.ComponentModel;
 
 namespace Slipe.Client
 {
@@ -18,9 +20,7 @@ namespace Slipe.Client
     {
         public Ped() : base() { }
 
-        /// <summary>
-        /// Create a ped from an empty element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Ped(MTAElement element) : base(element) { }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Slipe.Client
         /// <summary>
         /// Gives a weapon to this ped
         /// </summary>
-        public bool GiveWeapon(WeaponEnum weapon, int ammo = 30, bool setAsCurrent = false)
+        public bool GiveWeapon(WeaponType weapon, int ammo = 30, bool setAsCurrent = false)
         {
             return MTAClient.GivePedWeapon(element, (int)weapon, ammo, setAsCurrent);
         }

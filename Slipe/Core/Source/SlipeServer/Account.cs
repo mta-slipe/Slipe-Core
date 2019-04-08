@@ -4,7 +4,7 @@ using System.Text;
 using Slipe.Server.Interfaces;
 using Slipe.Server.Exceptions;
 using Slipe.MTADefinitions;
-using Slipe.Shared;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Server
 {

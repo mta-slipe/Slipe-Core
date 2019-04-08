@@ -1,9 +1,11 @@
-﻿using Slipe.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
 using Slipe.Client.Vehicles;
+using Slipe.Client.Effects;
+using Slipe.Client.Sounds;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Client
 {
@@ -28,7 +30,9 @@ namespace Slipe.Client
             [typeof(Water)] = "water",
             [typeof(Light)] = "light",
             [typeof(SearchLight)] = "searchlight",
-            [typeof(Ped)] = "ped"
+            [typeof(Ped)] = "ped",
+            [typeof(Effect)] = "effect",
+            [typeof(Sound)] = "sound"
         };
 
         /// <summary>
@@ -101,6 +105,10 @@ namespace Slipe.Client
                     return new SearchLight(element);
                 case "ped":
                     return new Ped(element);
+                case "effect":
+                    return new Effect(element);
+                case "sound":
+                    return new Sound(element);
                 default:
                     return new Element(element);
             }

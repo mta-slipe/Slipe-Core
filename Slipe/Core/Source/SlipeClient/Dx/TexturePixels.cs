@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared;
 using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Client.Enums;
+using Slipe.Shared.Utilities;
 
 namespace Slipe.Client.Dx
 {

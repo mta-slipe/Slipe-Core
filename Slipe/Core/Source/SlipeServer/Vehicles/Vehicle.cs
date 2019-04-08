@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Slipe.Shared.Vehicles;
 using System.Numerics;
 using Slipe.MTADefinitions;
-using Slipe.Shared.Vehicles;
-using Slipe.Shared;
+using Slipe.Shared.Elements;
+using System.ComponentModel;
 
 namespace Slipe.Server.Vehicles
 {
-    /// <summary>
-    /// Class that represents vehicles in the world
-    /// </summary>
     public class Vehicle : SharedVehicle
     {
         private Sirens s_sirens;
@@ -149,42 +147,24 @@ namespace Slipe.Server.Vehicles
         }
         #endregion
 
-        #region Static Properties
-        /// <summary>
-        /// Get all the vehicles of a specific model in the server
-        /// </summary>
-        public static Vehicle[] OfModel(Model model)
-        {
-            MTAElement[] mtaElements = MTAShared.GetArrayFromTable(MTAServer.GetVehiclesOfType((int)model), "MTAElement");
-            return ElementManager.Instance.CastArray<Vehicle>(mtaElements);
-        }
-
-        #endregion
-
         #region Constructors
-
         /// <summary>
-        /// Create a vehicle from an MTA vehicle element 
+        /// Create a plane from a model at a position
         /// </summary>
-        public Vehicle(MTAElement element): base(element)
+        public Vehicle(BaseVehicleModel model, Vector3 position) : base(model, position)
         {
 
         }
 
         /// <summary>
-        /// Create a vehicle from a model at a position
+        /// Create a plane using all createVehicle arguments
         /// </summary>
-        public Vehicle(Model model, Vector3 position) : base(model, position)
-        {
-
-        }
-
-        /// <summary>
-        /// Create a vehicle model using all createVehicle arguments
-        /// </summary>
-        public Vehicle(Model model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
+        public Vehicle(BaseVehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
         {
         }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Vehicle(MTAElement element) : base(element) { }
 
         #endregion
 
@@ -246,16 +226,6 @@ namespace Slipe.Server.Vehicles
         public bool Respawn()
         {
             return MTAServer.RespawnVehicle(element);
-        }
-        #endregion
-
-        #region Static Methods
-        /// <summary>
-        /// Get the model handling of a certain vehicle model
-        /// </summary>
-        public static ModelHandling GetModelHandling(Model model)
-        {
-            return new ModelHandling(model);
         }
         #endregion
 

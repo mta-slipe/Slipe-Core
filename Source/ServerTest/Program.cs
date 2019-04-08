@@ -1,5 +1,4 @@
 ﻿using Slipe.Server;
-using Slipe.Shared;
 using Slipe.Shared.Enums;
 using Slipe.Shared.Exceptions;
 using Slipe.MTADefinitions;
@@ -20,6 +19,10 @@ using System.Text;
 using Slipe.Server.IO;
 using Slipe.Server.Vehicles;
 using Slipe.Shared.Vehicles;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Weapons;
+using Slipe.Shared.Utilities;
+using Slipe.Shared.Radar;
 
 namespace ServerTest
 {
@@ -49,7 +52,7 @@ namespace ServerTest
             List<Vehicle> vehicles = new List<Vehicle>(); ;
             for (int i = 0; i < 10; i++)
             {
-                Vehicle rhino = new Vehicle(Model.RHINO, new Vector3(i * 15, 0, 3));
+                Vehicle rhino = new TurretedVehicle(TurretedModel.Rhino, new Vector3(i * 15, 0, 3));
                 Blip blip = new Blip(rhino);
                 vehicles.Add(rhino);
             }
@@ -79,12 +82,14 @@ namespace ServerTest
             color = new Color((uint) 0x000000ff);
             Debug.WriteLine("Color: {0}, {1}, {2}, {3}", color.R, color.G, color.B, color.A);
 
-            Vehicle alpha = new Vehicle(Model.ALPHA, new Vector3(0, 10, 3));
+            Vehicle patriot = new Vehicle(VehicleModel.Patriot, new Vector3(0, 15, 3));
 
-            // BROKEN UNTIL FIXED BY YUAN
-            //alpha.Sirens.Add(new Vector3(0, 0, 1), Color.Red, 100);
-            //alpha.Sirens.Type = SirenType.dual;
-            //alpha.Sirens.On = true;
+            patriot.Sirens.Add(new Vector3(-0.6f, 1, 0.5f), Color.Red, 200);
+            patriot.Sirens.Add(new Vector3(0.6f, 1, 0.5f), new Color(0, 0, 255), 200);
+            patriot.Sirens.On = true;
+            patriot.Sirens.Silent = true;
+
+            Vehicle alpha = new Vehicle(VehicleModel.Alpha, new Vector3(0, 10, 3));
 
             // alpha.AddEventHandler("onVehicleDamage");
             alpha.OnDamage += (float loss) =>
@@ -118,7 +123,8 @@ namespace ServerTest
             try
             {
                 Player player = (Player) Player.GetFromName("SAES>DezZolation");
-                Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponEnum.COLT45, 200);
+                player.PlaySoundFrontEnd(FrontEndSound.RadioStatic);
+                Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponType.Colt45, 200);
                 pickup.Use(player);
                 Console.WriteLine(pickup.RespawnInterval.ToString());
             }
@@ -127,7 +133,7 @@ namespace ServerTest
                 Console.WriteLine("ha");
             }
 
-            Blip blip2 = new Blip(new Vector3(0, 0, 0), BlipEnum.BURGERSHOT, Color.Red, 2);
+            Blip blip2 = new Blip(new Vector3(0, 0, 0), BlipType.Burgershot, Color.Red, 2);
             Vector3 vect = blip2.ForwardVector;
             Console.WriteLine(vect.ToString());
 
@@ -168,7 +174,7 @@ namespace ServerTest
             //document.FirstChild.AppendChild(newElement);
             //document.Save("test.xml");
 
-            Task _ = DoSocket();
+            // Task _ = DoSocket();
 
 
             // JSON test

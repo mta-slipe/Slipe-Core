@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
+using Slipe.Client.Sounds;
 
 namespace Slipe.Client
 {
@@ -41,6 +42,21 @@ namespace Slipe.Client
             get
             {
                 return MTAShared.IsVoiceEnabled();
+            }
+        }
+
+        /// <summary>
+        /// Get and set the radio channel that's playing on the client (even when not in a vehicle)
+        /// </summary>
+        public static RadioStation ActiveRadioStation
+        {
+            get
+            {
+                return (RadioStation)MTAClient.GetRadioChannel();
+            }
+            set
+            {
+                MTAClient.SetRadioChannel((int)value);
             }
         }
     }

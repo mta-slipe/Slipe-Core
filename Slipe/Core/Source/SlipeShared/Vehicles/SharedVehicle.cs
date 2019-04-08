@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using Slipe.MTADefinitions;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Utilities;
+using System.ComponentModel;
 
 namespace Slipe.Shared.Vehicles
 {
@@ -329,30 +332,37 @@ namespace Slipe.Shared.Vehicles
             }
         }
 
+        /// <summary>
+        /// Get the vehicle (trailer or regular vehicle) being towed by this vehicle
+        /// </summary>
+        public SharedVehicle VehicleTowedByThis
+        {
+            get
+            {
+                return (SharedVehicle)ElementManager.Instance.GetElement(MTAShared.GetVehicleTowedByVehicle(element));
+            }
+        }
+
         #endregion
 
         #region Constructors
-        /// <summary>
-        /// Creates or retrieves a vehicle from an MTA vehicle element
-        /// </summary>
-        public SharedVehicle(MTAElement element): base(element)
-        {
 
-        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public SharedVehicle(MTAElement element): base(element) { }
 
         /// <summary>
         /// Creates a vehicle from all MTA createVehicle variables
         /// </summary>
-        public SharedVehicle(Model model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1)
+        public SharedVehicle(SharedVehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1)
         {
-            element = MTAShared.CreateVehicle((int)model, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, numberplate, false, variant1, variant2);
+            element = MTAShared.CreateVehicle(model.ID, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, numberplate, false, variant1, variant2);
             ElementManager.Instance.RegisterElement(this);
         }
 
         /// <summary>
         /// Creates a specific model at a certain position
         /// </summary>
-        public SharedVehicle(Model model, Vector3 position): this(model, position, Vector3.Zero)
+        public SharedVehicle(SharedVehicleModel model, Vector3 position): this(model, position, Vector3.Zero)
         {
         }
         #endregion
@@ -364,6 +374,22 @@ namespace Slipe.Shared.Vehicles
         public bool Fix()
         {
             return MTAShared.FixVehicle(element);
+        }
+
+        /// <summary>
+        /// Detach a towed vehicle if any
+        /// </summary>
+        public bool DetachTowedVehicle(SharedVehicle attachedVehicle)
+        {
+            return MTAShared.DetachTrailerFromVehicle(element, attachedVehicle.MTAElement);
+        }
+
+        /// <summary>
+        /// Detach all vehicles that are towed by this vehicle
+        /// </summary>
+        public bool DetachAnyTowedVehicle()
+        {
+            return MTAShared.DetachTrailerFromVehicle(element, null);
         }
         #endregion
 
@@ -493,51 +519,7 @@ namespace Slipe.Shared.Vehicles
         {
             return MTAShared.SetVehiclePanelState(element, (int)panel, (int)damage);
         }
-        #endregion
-
-        #region Static Methods
-
-        /// <summary>
-        /// Get the original handling of a specific model
-        /// </summary>
-        public static Handling GetOriginalHandling(Model model)
-        {
-            Dictionary<string, dynamic> d = MTAShared.GetDictionaryFromTable(MTAShared.GetOriginalHandling((int)model), "System.String", "dynamic");
-            return new Handling(d);
-        }
-
-        /// <summary>
-        /// This function retrieves the model ID of a vehicle from its name.
-        /// </summary>
-        public static Model GetModelFromName(string name)
-        {
-            return (Model)MTAShared.GetVehicleModelFromName(name);
-        }
-
-        /// <summary>
-        /// Get the name of a certain model
-        /// </summary>
-        public static string GetNameFromModel(Model model)
-        {
-            return MTAShared.GetVehicleNameFromModel((int)model);
-        }
-
-        #endregion              
-
-        /// <summary>
-        /// This function will set the taxi light on in a taxi (vehicle ID's 420 and 438)
-        /// </summary>
-        public bool TaxiLightOn
-        {
-            get
-            {
-                return MTAShared.IsVehicleTaxiLightOn(element);
-            }
-            set
-            {
-                MTAShared.SetVehicleTaxiLightOn(element, value);
-            }
-        }
+        #endregion            
 
     }
 }

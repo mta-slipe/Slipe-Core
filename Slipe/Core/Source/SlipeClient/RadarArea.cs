@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared;
 using Slipe.MTADefinitions;
 using System.Numerics;
+using Slipe.Shared.Utilities;
+using Slipe.Shared.Radar;
+using System.ComponentModel;
 
 namespace Slipe.Client
 {
@@ -12,9 +14,7 @@ namespace Slipe.Client
     /// </summary>
     public class RadarArea : SharedRadarArea
     {
-        /// <summary>
-        /// Create a radar area from an MTA radar area element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public RadarArea(MTAElement element) : base(element) { }
 
         /// <summary>

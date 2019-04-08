@@ -11,7 +11,6 @@ namespace Slipe.Server
     /// </summary>
     public static class Server
     {
-
         /// <summary>
         /// Get and set the server password
         /// </summary>

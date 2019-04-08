@@ -1,10 +1,12 @@
-﻿using Slipe.Shared;
-using Slipe.Shared.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
 using System.Numerics;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Utilities;
+using Slipe.Shared.Radar;
+using System.ComponentModel;
 
 namespace Slipe.Server
 {
@@ -13,15 +15,13 @@ namespace Slipe.Server
     /// </summary>
     public class Blip : SharedBlip
     {
-        /// <summary>
-        /// Creates a blip instance from an MTA blip element
-        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public Blip(MTAElement element) : base (element) { }
 
         /// <summary>
         /// Creates a blip from all createBlip parameters
         /// </summary>
-        public Blip(Vector3 vector, BlipEnum icon, Color color, int size = 2, int ordering = 0, float visibleDistance = 16383.0f, Element visibleTo = null): base()
+        public Blip(Vector3 vector, BlipType icon, Color color, int size = 2, int ordering = 0, float visibleDistance = 16383.0f, Element visibleTo = null): base()
         {
             element = MTAServer.CreateBlip(vector.X, vector.Y, vector.Z, (int) icon, size, color.R, color.G, color.B, color.A, ordering, visibleDistance, visibleTo?.MTAElement);
             ElementManager.Instance.RegisterElement(this);
@@ -35,7 +35,7 @@ namespace Slipe.Server
         /// <summary>
         /// Creates a blip attached to an element in the world
         /// </summary>
-        public Blip(PhysicalElement physicalElement, BlipEnum icon, Color color, int size = 2, int ordering = 0, float visibleDistance = 16383.0f, Element visibleTo = null)
+        public Blip(PhysicalElement physicalElement, BlipType icon, Color color, int size = 2, int ordering = 0, float visibleDistance = 16383.0f, Element visibleTo = null)
         {
             element = MTAServer.CreateBlipAttachedTo(physicalElement.MTAElement, (int)icon, size, color.R, color.G, color.B, color.A, ordering, visibleDistance, visibleTo?.MTAElement);
             ElementManager.Instance.RegisterElement(this);

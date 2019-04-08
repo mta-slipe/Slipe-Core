@@ -4,7 +4,8 @@ using System.Text;
 using System.Numerics;
 using Slipe.MTADefinitions;
 using Slipe.Shared.Vehicles;
-using Slipe.Shared;
+using Slipe.Shared.Elements;
+using System.ComponentModel;
 
 namespace Slipe.Client.Vehicles
 {
@@ -168,28 +169,19 @@ namespace Slipe.Client.Vehicles
         #endregion
 
         #region Constructors
-        /// <summary>
-        /// Create a vehicle from an MTA vehicle element 
-        /// </summary>
-        public Vehicle(MTAElement element) : base(element)
-        {
 
-        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Vehicle(MTAElement element) : base(element) { }
 
         /// <summary>
         /// Create a vehicle from a model at a position
         /// </summary>
-        public Vehicle(Model model, Vector3 position) : base(model, position)
-        {
-
-        }
+        public Vehicle(BaseVehicleModel model, Vector3 position) : base(model, position) { }
 
         /// <summary>
         /// Create a vehicle model using all createVehicle arguments
         /// </summary>
-        public Vehicle(Model model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
-        {
-        }
+        public Vehicle(BaseVehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2) { }
         #endregion
 
         #region Misc. Methods
@@ -239,25 +231,6 @@ namespace Slipe.Client.Vehicles
         public bool SetWindowOpen(Window window, bool open)
         {
             return MTAClient.SetVehicleWindowOpen(element, (int)window, open);
-        }
-        #endregion
-
-        #region Static Methods
-        /// <summary>
-        /// This function returns the position of the exhaust fumes the vehicle model emits.
-        /// </summary>
-        public static Vector3 GetExhaustFumesPosition(Model model)
-        {
-            Tuple<float, float, float> r = MTAClient.GetVehicleModelExhaustFumesPosition((int)model);
-            return new Vector3(r.Item1, r.Item2, r.Item3);
-        }
-
-        /// <summary>
-        /// Set the position of exhaust fumes
-        /// </summary>
-        public static bool SetExhaustFumesPosition(Model model, Vector3 position)
-        {
-            return MTAClient.SetVehicleModelExhaustFumesPosition((int)model, position.X, position.Y, position.Z);
         }
         #endregion
 

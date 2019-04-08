@@ -2,6 +2,7 @@
 using Slipe.Shared;
 using System;
 using System.Diagnostics;
+using Slipe.Shared.RPC;
 
 namespace RPCDefinitions
 {
