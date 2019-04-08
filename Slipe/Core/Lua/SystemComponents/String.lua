@@ -16,6 +16,7 @@ limitations under the License.
 
 local System = System
 local throw = System.throw
+local emptyFn = System.emptyFn
 local ArgumentException = System.ArgumentException
 local ArgumentNullException = System.ArgumentNullException
 local ArgumentOutOfRangeException = System.ArgumentOutOfRangeException
@@ -42,11 +43,8 @@ local type = type
 local tonumber = tonumber
 
 local String = string
-String.traceback = System.emptyFn  -- make throw(str) not fail
-
-function String.getLength(this)
-  return #this
-end
+String.traceback = emptyFn  -- make throw(str) not fail
+String.getLength = System.lengthFn
 
 local function check(s, startIndex, count)
   local len = #s
@@ -475,7 +473,7 @@ function String.PadRight(this, totalWidth, paddingChar)
   end
 end
 
-local CharEnumerator = {}
+local CharEnumerator = { getCurrent = System.getCurrent, Dispose = emptyFn  }
 CharEnumerator.__index = CharEnumerator
 
 function CharEnumerator.MoveNext(this)
@@ -487,12 +485,6 @@ function CharEnumerator.MoveNext(this)
   end
   return false
 end
-
-function CharEnumerator.getCurrent(this)
-  return this.current
-end
-
-CharEnumerator.Dispose = System.emptyFn
 
 function String.GetEnumerator(this)
   return setmetatable({ s = this, index = 1 }, CharEnumerator)

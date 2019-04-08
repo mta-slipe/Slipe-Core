@@ -16,107 +16,83 @@ limitations under the License.
 
 local System = System
 local define = System.define
-local throw = System.throw
-local ArgumentException = System.ArgumentException
 
-local EqualityComparer = {}
+local EqualityComparer = {
+  __ctor__ = function (this)
+    local T = this.__genericT__
+    local equals = T.Equals or System.equals
+    local getHashCode = T.GetHashCode or System.identityFn
 
-function EqualityComparer.__ctor__(this)
-  local T = this.__genericT__
-  local equals = T.Equals or System.equals
-  local getHashCode = T.GetHashCode or System.identityFn
+    this.Equals = function(x, y)
+      if x ~= nil then
+        if y ~= nil then return equals(x, y) end
+        return false
+      end                 
+      if y ~= nil then return false end
+      return true
+    end
 
-  this.Equals = function(x, y)
-    if x ~= nil then
-      if y ~= nil then return equals(x, y) end
-      return false
-    end                 
-    if y ~= nil then return false end
-    return true
+    this.GetHashCode = function(x)
+      if x == nil then return 0 end
+      return getHashCode(x)
+    end
   end
-
-  this.GetHashCode = function(x)
-    if x == nil then return 0 end
-    return getHashCode(x)
-  end
-end
+}
 
 local EqualityComparer_1
 EqualityComparer_1 = define("System.EqualityComparer_1", function(T)
-  local cls = {
-    __inherits__ = { System.IEqualityComparer_1(T) }, 
-    __genericT__ = T,
-  }
   local defaultComparer
-  function cls.getDefault()
-    local comparer = defaultComparer 
-    if comparer == nil then
-      comparer = EqualityComparer_1(T)()
-      defaultComparer = comparer
+  return {
+    __genericT__ = T,
+    __inherits__ = { System.IEqualityComparer_1(T) }, 
+    getDefault = function ()
+      local comparer = defaultComparer 
+      if comparer == nil then
+        comparer = EqualityComparer_1(T)()
+        defaultComparer = comparer
+      end
+      return comparer
     end
-    return comparer
-  end
-  return cls
+  }
 end, EqualityComparer)
-
-local function compare(a, b)
-  if a == b then return 0 end
-  if a == nil then return -1 end
-  if b == nil then return 1 end
-  local ia = a.CompareToObj
-  if ia ~= nil then
-    return ia(a, b)
-  end
-  local ib = b.CompareToObj
-  if ib ~= nil then
-    return -ib(b, a)
-  end
-  throw(ArgumentException("Argument_ImplementIComparable"))
-end
-
-local Comparer = {}
-Comparer.Compare = compare
 
 local defaultComparerOfComparer
 
-function Comparer.getDefault()
-  local comparer = defaultComparerOfComparer
-  if comparer == nil then
-    comparer = Comparer()
-    defaultComparerOfComparer = comparer;
-  end
-  return comparer
-end
-
-function Comparer.__ctor__(this)
-  local T = this.__genericT__
-  if T then
-    local compareTo = T.CompareTo
-    if compareTo ~= nil then
-      this.Compare = function(x, y)
-        if x ~= nil then
-          if y ~= nil then 
-            return compareTo(x, y) 
-          end
-          return 1
-        end                 
-        if y ~= nil then return -1 end
-        return 0
+local Comparer
+Comparer = define("System.Comparer", {
+  __ctor__ = function (this)
+    local T = this.__genericT__
+    if T then
+      local compareTo = T.CompareTo
+      if compareTo ~= nil then
+        this.Compare = function(x, y)
+          if x ~= nil then
+            if y ~= nil then 
+              return compareTo(x, y) 
+            end
+            return 1
+          end                 
+          if y ~= nil then return -1 end
+          return 0
+        end
       end
     end
+  end,
+  Compare = System.compareObj,
+  getDefault = function ()
+    local comparer = defaultComparerOfComparer
+    if comparer == nil then
+      comparer = Comparer()
+      defaultComparerOfComparer = comparer;
+    end
+    return comparer
   end
-end
-
-define("System.Comparer", Comparer)
+})
 
 local Comparer_1
 Comparer_1 = define("System.Comparer_1", function(T)
-  local cls = {
-    __inherits__ = { System.IComparer_1(T) }, 
-    __genericT__ = T,
-  }
   local defaultComparer
-  function cls.getDefault()
+  local function getDefault()
     local comparer = defaultComparer 
     if comparer == nil then
       comparer = Comparer_1(T)()
@@ -124,5 +100,10 @@ Comparer_1 = define("System.Comparer_1", function(T)
     end
     return comparer
   end
-  return cls
+  return {
+    __genericT__ = T,
+    __inherits__ = { System.IComparer_1(T) }, 
+    getDefault = getDefault,
+    getDefaultInvariant = getDefault,
+  }
 end, Comparer)

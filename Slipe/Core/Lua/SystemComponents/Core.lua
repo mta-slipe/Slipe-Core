@@ -22,7 +22,6 @@ local assert = assert
 local table = table
 local tremove = table.remove
 local tconcat = table.concat
-local tunpack = table.unpack
 local floor = math.floor
 local ceil = math.ceil
 local error = error
@@ -35,17 +34,24 @@ local string = string
 local sfind = string.find
 local ssub = string.sub
 local global = _G
+local coroutine = coroutine
+local ccreate = coroutine.create
+local cresume = coroutine.resume
+local cyield = coroutine.yield
 
 local emptyFn = function() end
 local falseFn = function() return false end
+local trueFn = function() return true end
 local identityFn = function(x) return x end
+local lengthFn = function (t) return #t end
 local zeroFn = function() return 0 end
+local oneFn = function() return 1 end
 local equals = function(x, y) return x == y end
+local getCurrent = function(t) return t.current end
 local modules = {}
 local usings = {}
 local classes = {}
 local metadatas
-
 local Object, ValueType
 local isTrying = 0
 
@@ -139,6 +145,7 @@ local function multiKey(t, ...)
   local k 
   for i = 1, select("#", ...) do
     k = select(i, ...)
+    assert(k)
     local tk = t[k]
     if tk == nil then
       tk = {}
@@ -192,11 +199,11 @@ local function applyMetadata(cls)
   if metadata then
     if metadatas then
       metadatas[#metadatas + 1] = function (global)
-				cls.__metadata__ = metadata(global)
-			end
+        cls.__metadata__ = metadata(global)
+      end
     else
-			cls.__metadata__ = metadata(global)
-		end
+      cls.__metadata__ = metadata(global)
+    end
   end
 end
 
@@ -347,9 +354,13 @@ end
 System = {
   emptyFn = emptyFn,
   falseFn = falseFn,
+  trueFn = trueFn,
   identityFn = identityFn,
+  lengthFn = lengthFn,
   zeroFn = zeroFn,
+  oneFn = oneFn,
   equals = equals,
+  getCurrent = getCurrent,
   try = try,
   throw = throw,
   getClass = set,
@@ -359,6 +370,7 @@ System = {
   defStc = defStc,
   defEnum = defEnum,
   global = global,
+  yieldReturn = cyield,
   classes = classes
 }
 
@@ -606,9 +618,14 @@ if version < 5.3 then
     throw(System.InvalidCastException()) 
   end
 
+  if table.pack == nil then
+    table.pack = function(...)
+      return { n = select("#", ...), ... }
+    end
+  end
+
   if table.unpack == nil then
-    table.unpack = unpack
-    tunpack = unpack
+    table.unpack = assert(unpack)
   end
 
   if table.move == nil then
@@ -620,12 +637,6 @@ if version < 5.3 then
         t = t - 1
         e = e - 1
       end
-    end
-  end
-
-  if table.pack == nil then
-    table.pack = function(...)
-      return { n = select("#", ...), ... }
     end
   end
 else  
@@ -952,7 +963,7 @@ function System.base(this)
   return getmetatable(getmetatable(this))
 end
 
-local function equalsStatic(x, y)
+local function equalsObj(x, y)
   if x == y then
     return true
   end
@@ -970,6 +981,23 @@ local function equalsStatic(x, y)
   return false
 end
 
+local function compareObj(a, b)
+  if a == b then return 0 end
+  if a == nil then return -1 end
+  if b == nil then return 1 end
+  local ia = a.CompareToObj
+  if ia ~= nil then
+    return ia(a, b)
+  end
+  local ib = b.CompareToObj
+  if ib ~= nil then
+    return -ib(b, a)
+  end
+  throw(System.ArgumentException("Argument_ImplementIComparable"))
+end
+
+System.compareObj = compareObj
+
 Object = defCls("System.Object", {
   __call = new,
   __ctor__ = emptyFn,
@@ -978,7 +1006,7 @@ Object = defCls("System.Object", {
   EqualsObj = equals,
   ReferenceEquals = equals,
   GetHashCode = identityFn,
-  EqualsStatic = equalsStatic,
+  EqualsStatic = equalsObj,
   GetType = false,
   ToString = function(this) return this.__name__ end
 })
@@ -1009,7 +1037,7 @@ ValueType = {
   EqualsObj = function (this, obj)
     if getmetatable(this) ~= getmetatable(obj) then return false end
     for k, v in pairs(this) do
-      if not equalsStatic(v, obj[k]) then
+      if not equalsObj(v, obj[k]) then
         return false
       end
     end
@@ -1029,39 +1057,115 @@ function System.anonymousType(t)
   return setmetatable(t, AnonymousType)
 end
 
-local function tupleDeconstruct(tuple, count) 
-  return tunpack(tuple, 1, count)
+local pack, unpack = table.pack, table.unpack
+
+local function tupleDeconstruct(t) 
+  return unpack(t, 1, t.n)
 end
 
-local Tuple = { Deconstruct = tupleDeconstruct }
+local function tupleEquals(t, other)
+  for i = 1, t.n do
+    if not equalsObj(t[i], other[i]) then
+      return false
+    end
+  end
+  return true
+end
+
+local function tupleEqualsObj(t, obj)
+  if getmetatable(obj) ~= getmetatable(t) or t.n ~= obj.n then
+    return false
+  end
+  return tupleEquals(t, obj)
+end
+
+local function tupleCompareTo(t, other)
+  for i = 1, t.n do
+    local v = compareObj(t[i], other[i])
+    if v ~= 0 then
+      return v
+    end
+  end
+  return 0
+end
+
+local function tupleCompareToObj(t, obj)
+  if obj == nil then return 1 end
+  if getmetatable(obj) ~= getmetatable(t) or t.n ~= obj.n then
+    throw(System.ArgumentException())
+  end
+  return tupleCompareTo(t, obj)
+end
+
+local function tupleToString(t)
+  local a = { "(" }
+  local count = 2
+  for i = 1, t.n do
+    if i ~= 1 then
+      a[count] = ", "
+      count = count + 1
+    end
+    local v = t[i]
+    if v ~= nil then
+      a[count] = v:ToString()
+      count = count + 1
+    end
+  end
+  a[count] = ")"
+  return tconcat(a)
+end
+
+local function tupleLength(t)
+  return t.n
+end
+
+local function tupleGet(t, index)
+  if index < 0 or index >= t.n then
+    throw(System.IndexOutOfRangeException())
+  end
+  return t[index + 1]
+end
+
+local Tuple = { 
+  Deconstruct = tupleDeconstruct,
+  ToString = tupleToString,
+  EqualsObj = tupleEqualsObj,
+  CompareToObj = tupleCompareToObj,
+  getLength = tupleLength,
+  get = tupleGet
+}
+
 defCls("System.Tuple", Tuple)
 
 function System.tuple(...)
-  return setmetatable({...}, Tuple)
+  return setmetatable(pack(...), Tuple)
 end
 
 local ValueTuple = {
+  Deconstruct = tupleDeconstruct,
+  ToString = tupleToString,
+  __eq = tupleEquals,
+  Equals = tupleEquals,
+  EqualsObj = tupleEqualsObj,
+  CompareTo = tupleCompareTo,
+  CompareToObj = tupleCompareToObj,
+  getLength = tupleLength,
+  get = tupleGet,
   default = function()
     throw(System.NotSupportedException("not support default(T) when T is ValueTuple"))
-  end,
-  Deconstruct = tupleDeconstruct,
-  __eq = function (this, other)
-    for i = 1, #this do
-     if not equalsStatic(this[i], other[i]) then
-        return false
-      end
-    end
-    return true
   end
 }
 defStc("System.ValueTuple", ValueTuple)
 
-function System.valueTuple(t)
-  return setmetatable(t, ValueTuple)
+function System.valueTuple(...)
+  return setmetatable(pack(...), ValueTuple)
 end
 
 defCls("System.Attribute", {})
-defStc("System.Nullable", emptyFn)
+defStc("System.Nullable", {
+  Compare = compareObj,
+  Equals = equalsObj,
+})
 
 debug.setmetatable(nil, {
   __concat = function(a, b)
@@ -1137,6 +1241,81 @@ function System.GetValueOrDefault(this, defaultValue)
     return defaultValue
   end
   return this
+end
+
+local IEnumerable = defInf("System.IEnumerable")
+local IEnumerator = defInf("System.IEnumerator")
+
+local yieldCoroutinePool = {}
+local yieldCoroutineExit = {}
+
+local function yieldCoroutineCreate(f)
+  local co = tremove(yieldCoroutinePool)
+  if co == nil then
+    co = ccreate(function (...)
+      f(...)
+      while true do
+        f = nil
+        yieldCoroutinePool[#yieldCoroutinePool + 1] = co
+        f = cyield(yieldCoroutineExit)
+        f(cyield())
+      end
+    end)
+  else
+    cresume(co, f)
+  end
+  return co
+end
+
+local YieldEnumerator = defCls("System.YieldEnumerator", {
+  __inherits__ =  { IEnumerator },
+  getCurrent = getCurrent, 
+  Dispose = emptyFn,
+  MoveNext = function (this)
+    local co = this.co
+    if co == "exit" then
+      return false
+    end
+  
+    local ok, v
+    if co == nil then
+      co = yieldCoroutineCreate(this.f)
+      this.co = co
+      local args = this.args
+      ok, v = cresume(co, unpack(args, 1, args.n))
+      this.args = nil
+    else
+      ok, v = cresume(co)
+    end
+  
+    if ok then
+      if v == yieldCoroutineExit then
+        this.co = "exit"
+        this.current = nil
+        return false
+      else
+        this.current = v
+        return true
+      end
+    else
+      throw(v)
+    end
+  end
+})
+
+function System.yieldIEnumerator(f, T, ...)
+  return setmetatable({ f = f, __genericT__ = T, args = pack(...) }, YieldEnumerator)
+end
+
+local YieldEnumerable = defCls("System.YieldEnumerable", {
+  __inherits__ = { IEnumerable },
+  GetEnumerator = function (this)
+    return setmetatable({ f = this.f, __genericT__ = this.__genericT__, args = this.args }, YieldEnumerator)
+  end,
+})
+
+function System.yieldIEnumerable(f, T, ...)
+  return setmetatable({ f = f, __genericT__ = T, args = pack(...) }, YieldEnumerable)
 end
 
 local function pointerAddress(p)
@@ -1236,9 +1415,9 @@ function System.init(namelist, conf)
   for i = 1, #usings do
     usings[i](global)
   end
-	for i = 1, #metadatas do
-		metadatas[i](global)
-	end
+  for i = 1, #metadatas do
+    metadatas[i](global)
+  end
   if conf ~= nil then
     local main = conf.Main
     if main then
@@ -1249,8 +1428,8 @@ function System.init(namelist, conf)
 
   -- modules = {}
   -- usings = {}
-	metadatas = nil
-	curCacheName = nil
+  metadatas = nil
+  curCacheName = nil
 end
 
 System.config = config or {
