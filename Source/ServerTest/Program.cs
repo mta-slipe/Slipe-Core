@@ -23,6 +23,7 @@ using Slipe.Shared.Elements;
 using Slipe.Shared.Weapons;
 using Slipe.Shared.Utilities;
 using Slipe.Shared.Radar;
+using Slipe.Server.Accounts;
 
 namespace ServerTest
 {
@@ -110,6 +111,9 @@ namespace ServerTest
 
             };
 
+            // BROKEN UNTIL FIXED BY YUAN
+            // SuperSwatTank swatTank = new SuperSwatTank(new Vector3(0, 25, 4));
+
             Player[] alives = Player.Alive;
             foreach(Player p in alives)
             {
@@ -144,7 +148,7 @@ namespace ServerTest
             foreach(Account account in Account.All)
             {
                 account.SetData("Test", "Success");
-                foreach(KeyValuePair<string, string> pair in account.AllData)
+                foreach(KeyValuePair<string, string> pair in account.Data)
                 {
                     Debug.WriteLine(pair.Key);
                     Debug.WriteLine(pair.Value);
@@ -280,5 +284,23 @@ namespace ServerTest
     {
         public int z;
         public int[] ints;
+    }
+
+    public class SuperSwatTank : TurretedVehicle
+    {
+        public SuperSwatTank(Vector3 pos) : base(TurretedModel.Swat, pos)
+        {
+            this.OnDamage += PrintFoo;
+        }
+
+        public void PrintFoo(float loss)
+        {
+            Debug.WriteLine(Foo() + " " + loss.ToString());
+        }
+
+        public string Foo()
+        {
+            return "foo";
+        }
     }
 }

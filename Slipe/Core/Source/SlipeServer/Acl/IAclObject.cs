@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Interfaces
+namespace Slipe.Server.Acl
 {
     /// <summary>
     /// Interface representing objects that can be entries in an MTA ACL
     /// </summary>
-    public interface IACLObject
+    public interface IAclObject
     {
         /// <summary>
         /// Formatted ACL entry; example: user.{name} or resource.{name}
@@ -25,6 +25,6 @@ namespace Slipe.Server.Interfaces
         /// <summary>
         /// Check if the object is in a certain ACL group
         /// </summary>
-        bool IsInACLGroup(ACLGroup group);
+        bool IsInACLGroup(AclGroup group);
     }
 }

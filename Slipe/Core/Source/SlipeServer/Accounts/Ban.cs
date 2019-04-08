@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server
+namespace Slipe.Server.Accounts
 {
     /// <summary>
     /// A ban is a pointer that represents a banned player arbitrarily.
@@ -13,18 +13,7 @@ namespace Slipe.Server
     {
         private readonly MTABan ban;
 
-        /// <summary>
-        /// Add a ban of a specific IP and/or serial
-        /// </summary>
-        public Ban(string ip, string serial, Player banner, string reason, int seconds)
-        {
-            ban = MTAServer.AddBan(ip, null, serial, banner == null ? null : banner.MTAElement, reason, seconds);
-        }
-
-        private Ban(MTABan ban)
-        {
-            this.ban = ban;
-        }
+        #region Properties
 
         /// <summary>
         /// Get and set the nickname of the player that added this ban
@@ -51,7 +40,8 @@ namespace Slipe.Server
                 try
                 {
                     return MTAServer.GetBanIP(ban);
-                } catch (MTAException)
+                }
+                catch (MTAException)
                 {
                     return null;
                 }
@@ -73,7 +63,7 @@ namespace Slipe.Server
                 {
                     return null;
                 }
-                
+
             }
         }
 
@@ -133,14 +123,7 @@ namespace Slipe.Server
             }
         }
 
-
-        /// <summary>
-        /// Remove this ban
-        /// </summary>
-        public void Remove(Player player)
-        {
-            MTAServer.RemoveBan(ban, player == null ? null : player.MTAElement);
-        }
+        #endregion
 
         /// <summary>
         /// Get a list of all bans in this server
@@ -158,5 +141,40 @@ namespace Slipe.Server
                 return bans;
             }
         }
+
+        #region Constructors
+
+        /// <summary>
+        /// Add a ban of a specific IP and/or serial
+        /// </summary>
+        public Ban(string ip, string serial, Player banner, string reason, int seconds)
+        {
+            ban = MTAServer.AddBan(ip, null, serial, banner == null ? null : banner.MTAElement, reason, seconds);
+        }
+
+        private Ban(MTABan ban)
+        {
+            this.ban = ban;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Remove this ban
+        /// </summary>
+        public void Remove(Player player)
+        {
+            MTAServer.RemoveBan(ban, player == null ? null : player.MTAElement);
+        }
+
+        /// <summary>
+        /// Remove this ban without any unbanning player
+        /// </summary>
+        public void Remove()
+        {
+            Remove(null);
+        }
+
+
     }
 }

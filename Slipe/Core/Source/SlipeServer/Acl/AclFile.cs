@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
 
-namespace Slipe.Server
+namespace Slipe.Server.Acl
 {
     /// <summary>
     /// Class that wraps static ACL functions
     /// </summary>
-    public class ACL
+    public class AclFile
     {
         /// <summary>
         /// This function reloads the ACL's and the ACL groups from the ACL XML file. All ACL and ACL group elements are invalid after a call to this and should not be used anymore.

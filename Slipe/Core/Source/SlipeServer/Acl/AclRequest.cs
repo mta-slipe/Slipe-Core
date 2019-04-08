@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Structs
+namespace Slipe.Server.Acl
 {
     /// <summary>
     /// Struct representing a resource ACL request
     /// </summary>
-    public struct ACLRequest
+    public struct AclRequest
     {
         public string Name;
         public bool Access;
@@ -18,7 +18,7 @@ namespace Slipe.Server.Structs
         /// <summary>
         /// Create a new ACLRequest
         /// </summary>
-        public ACLRequest(string name, bool access, bool pending, string who, string date)
+        public AclRequest(string name, bool access, bool pending, string who, string date)
         {
             Name = name;
             Access = access;
@@ -30,7 +30,7 @@ namespace Slipe.Server.Structs
         /// <summary>
         /// Create an ACLRequest from an mta request table
         /// </summary>
-        public ACLRequest(dynamic request)
+        public AclRequest(dynamic request)
         {
             Name = request.name;
             Access = request.access;

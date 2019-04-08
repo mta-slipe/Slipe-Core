@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Exceptions
+namespace Slipe.Server.Accounts
 {
-    public class AccountException : System.Exception
+    public class AccountException : Exception
     {
         public AccountException(string message) : base(message) { }
     }

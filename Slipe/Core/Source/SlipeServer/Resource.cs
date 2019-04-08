@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.MTADefinitions;
 using System.Xml;
-using Slipe.Server.Structs;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Resources;
+using Slipe.Server.Acl;
 
 namespace Slipe.Server
 {
@@ -63,7 +63,7 @@ namespace Slipe.Server
         /// <summary>
         /// This function retrieves the ACL request section from the meta.xml file of the given resource.
         /// </summary>
-        public ACLRequest[] ACLRequests
+        public AclRequest[] ACLRequests
         {
             get
             {
