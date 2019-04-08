@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.Client.Enums;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 
 namespace Slipe.Client.Dx
 {
@@ -11,12 +11,12 @@ namespace Slipe.Client.Dx
     /// </summary>
     public class Font
     {
-        private MTAElement _font;
+        private MtaElement _font;
 
         /// <summary>
         /// Get the MTA font element used
         /// </summary>
-        public MTAElement MTAFont
+        public MtaElement MTAFont
         {
             get
             {
@@ -27,9 +27,9 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// Create a new font from a path
         /// </summary>
-        public Font(string filePath, int size = 9, bool bold = false, FontQualityEnum quality = FontQualityEnum.DEFAULT)
+        public Font(string filePath, int size = 9, bool bold = false, FontQuality quality = FontQuality.Default)
         {
-            _font = MTAClient.DxCreateFont(filePath, size, bold, quality.ToString().ToLower());
+            _font = MtaClient.DxCreateFont(filePath, size, bold, quality.ToString().ToLower());
         }
 
         /// <summary>
@@ -37,15 +37,15 @@ namespace Slipe.Client.Dx
         /// </summary>
         public int GetHeight(float scale = 1)
         {
-            return MTAClient.DxGetFontHeight(scale, _font);
+            return MtaClient.DxGetFontHeight(scale, _font);
         }
 
         /// <summary>
         /// Get the height of a GTA font
         /// </summary>
-        public static int GetHeight(StandardFontEnum font = StandardFontEnum.DEFAULT, float scale = 1)
+        public static int GetHeight(StandardFont font = StandardFont.Default, float scale = 1)
         {
-            return MTAClient.DxGetFontHeight(scale, font.ToString().ToLower());
+            return MtaClient.DxGetFontHeight(scale, font.ToString().ToLower());
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Slipe.Client.Dx
         /// </summary>
         public static int GetHeight(Font font, float scale = 1)
         {
-            return MTAClient.DxGetFontHeight(scale, font.MTAFont);
+            return MtaClient.DxGetFontHeight(scale, font.MTAFont);
         }
     }
 }

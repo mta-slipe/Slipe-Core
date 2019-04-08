@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -18,7 +18,7 @@ namespace Slipe.Server.Explosions
         /// </summary>
         public static bool Create(Vector3 position, ExplosionType type, Element creator = null)
         {
-            return MTAServer.CreateExplosion(position.X, position.Y, position.Z, (int)type, creator?.MTAElement);
+            return MtaServer.CreateExplosion(position.X, position.Y, position.Z, (int)type, creator?.MTAElement);
         }
 
         private Explosion()

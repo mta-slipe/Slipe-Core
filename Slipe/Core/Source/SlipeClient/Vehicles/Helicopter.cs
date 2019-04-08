@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.ComponentModel;
 
 namespace Slipe.Client.Vehicles
@@ -19,11 +19,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAClient.GetHelicopterRotorSpeed(element);
+                return MtaClient.GetHelicopterRotorSpeed(element);
             }
             set
             {
-                MTAClient.SetHelicopterRotorSpeed(element, value);
+                MtaClient.SetHelicopterRotorSpeed(element, value);
             }
         }
 
@@ -34,11 +34,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAClient.GetHeliBladeCollisionsEnabled(element);
+                return MtaClient.GetHeliBladeCollisionsEnabled(element);
             }
             set
             {
-                MTAClient.SetHeliBladeCollisionsEnabled(element, value);
+                MtaClient.SetHeliBladeCollisionsEnabled(element, value);
             }
         }
 
@@ -59,7 +59,7 @@ namespace Slipe.Client.Vehicles
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Helicopter(MTAElement element) : base(element)
+        public Helicopter(MtaElement element) : base(element)
         {
 
         }

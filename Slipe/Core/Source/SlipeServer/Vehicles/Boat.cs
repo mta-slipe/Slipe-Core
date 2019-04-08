@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.ComponentModel;
 
 namespace Slipe.Server.Vehicles
@@ -29,7 +29,7 @@ namespace Slipe.Server.Vehicles
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Boat(MTAElement element) : base(element) { }
+        public Boat(MtaElement element) : base(element) { }
 
         #endregion
     }

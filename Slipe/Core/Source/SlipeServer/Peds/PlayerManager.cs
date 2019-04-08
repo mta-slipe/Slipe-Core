@@ -37,7 +37,7 @@ namespace Slipe.Server.Peds
         /// <summary>
         /// Handles player events on the root element
         /// </summary>
-        public void HandleRootEvent(string eventName, MTADefinitions.MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public void HandleRootEvent(string eventName, MtaDefinitions.MtaElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             switch (eventName)
             {

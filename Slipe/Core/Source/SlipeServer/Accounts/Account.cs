@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Server.Acl;
 using System.ComponentModel;
@@ -14,11 +14,11 @@ namespace Slipe.Server.Accounts
     /// </summary>
     public class Account : IAclObject
     {
-        private MTAAccount _account;
+        private MtaAccount _account;
 
         #region Properties
 
-        public MTAAccount MTAAccount { get; }
+        public MtaAccount MTAAccount { get; }
 
         /// <summary>
         /// This function checks to see if an account is a guest account. 
@@ -27,7 +27,7 @@ namespace Slipe.Server.Accounts
         {
             get
             {
-                return MTAServer.IsGuestAccount(_account);
+                return MtaServer.IsGuestAccount(_account);
             }
         }
 
@@ -38,7 +38,7 @@ namespace Slipe.Server.Accounts
         {
             get
             {
-                return MTAServer.GetAccountName(_account);
+                return MtaServer.GetAccountName(_account);
             }
         }
 
@@ -49,7 +49,7 @@ namespace Slipe.Server.Accounts
         {
             get
             {
-                return MTAServer.GetAccountID(_account);
+                return MtaServer.GetAccountID(_account);
             }
         }
 
@@ -60,7 +60,7 @@ namespace Slipe.Server.Accounts
         {
             get
             {
-                return MTAServer.GetAccountIP(_account);
+                return MtaServer.GetAccountIP(_account);
             }
         }
 
@@ -71,7 +71,7 @@ namespace Slipe.Server.Accounts
         {
             get
             {
-                return MTAServer.GetAccountSerial(_account);
+                return MtaServer.GetAccountSerial(_account);
             }
         }
 
@@ -84,9 +84,9 @@ namespace Slipe.Server.Accounts
             {
                 try
                 {
-                    return (Player)ElementManager.Instance.GetElement(MTAServer.GetAccountPlayer(_account));
+                    return (Player)ElementManager.Instance.GetElement(MtaServer.GetAccountPlayer(_account));
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     throw new AccountException("No player can be found using this account");
                 }
@@ -111,7 +111,7 @@ namespace Slipe.Server.Accounts
         {
             get
             {
-                return MTAShared.GetDictionaryFromTable(MTAServer.GetAllAccountData(_account), "System.String", "System.String");
+                return MtaShared.GetDictionaryFromTable(MtaServer.GetAllAccountData(_account), "System.String", "System.String");
             }
         }
 
@@ -126,7 +126,7 @@ namespace Slipe.Server.Accounts
         {
             get
             {
-                MTAAccount[] array = MTAShared.GetArrayFromTable(MTAServer.GetAccounts(), "account");
+                MtaAccount[] array = MtaShared.GetArrayFromTable(MtaServer.GetAccounts(), "account");
                 Account[] accounts = new Account[array.Length];
                 for (int i = 0; i < array.Length; i++)
                 {
@@ -141,11 +141,11 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public static Account[] GetAccountsBySerial(string serial)
         {
-            dynamic[] array = MTAShared.GetArrayFromTable(MTAServer.GetAccountsBySerial(serial), "account");
+            dynamic[] array = MtaShared.GetArrayFromTable(MtaServer.GetAccountsBySerial(serial), "account");
             Account[] accounts = new Account[array.Length];
             for (int i = 0; i < array.Length; i++)
             {
-                accounts[i] = new Account((MTAAccount)array[i]);
+                accounts[i] = new Account((MtaAccount)array[i]);
             }
             return accounts;
         }
@@ -155,11 +155,11 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public static Account[] GetAccountsByIP(string ip)
         {
-            dynamic[] array = MTAShared.GetArrayFromTable(MTAServer.GetAccountsByIP(ip), "account");
+            dynamic[] array = MtaShared.GetArrayFromTable(MtaServer.GetAccountsByIP(ip), "account");
             Account[] accounts = new Account[array.Length];
             for (int i = 0; i < array.Length; i++)
             {
-                accounts[i] = new Account((MTAAccount)array[i]);
+                accounts[i] = new Account((MtaAccount)array[i]);
             }
             return accounts;
         }
@@ -169,11 +169,11 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public static Account[] GetAccountsByData(string key, string value)
         {
-            dynamic[] array = MTAShared.GetArrayFromTable(MTAServer.GetAccountsByData(key, value), "account");
+            dynamic[] array = MtaShared.GetArrayFromTable(MtaServer.GetAccountsByData(key, value), "account");
             Account[] accounts = new Account[array.Length];
             for (int i = 0; i < array.Length; i++)
             {
-                accounts[i] = new Account((MTAAccount)array[i]);
+                accounts[i] = new Account((MtaAccount)array[i]);
             }
             return accounts;
         }
@@ -183,7 +183,7 @@ namespace Slipe.Server.Accounts
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Account(MTAAccount MTAAccount)
+        public Account(MtaAccount MTAAccount)
         {
             _account = MTAAccount;
         }
@@ -195,9 +195,9 @@ namespace Slipe.Server.Accounts
         {
             try
             {
-                _account = MTAServer.AddAccount(name, password, caseSensitive);
+                _account = MtaServer.AddAccount(name, password, caseSensitive);
             }
-            catch (MTAException)
+            catch (MtaException)
             {
                 throw new AccountException("The account with the specified name already exists");
             }
@@ -212,7 +212,7 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public bool CopyFrom(Account fromAccount)
         {
-            return MTAServer.CopyAccountData(_account, fromAccount.MTAAccount);
+            return MtaServer.CopyAccountData(_account, fromAccount.MTAAccount);
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public string GetData(string key)
         {
-            return MTAServer.GetAccountData(_account, key);
+            return MtaServer.GetAccountData(_account, key);
         }
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public bool SetData(string key, string value)
         {
-            return MTAServer.SetAccountData(_account, key, value);
+            return MtaServer.SetAccountData(_account, key, value);
         }
 
         /// <summary>
@@ -236,7 +236,7 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public bool Remove()
         {
-            return MTAServer.RemoveAccount(_account);
+            return MtaServer.RemoveAccount(_account);
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public bool SetName(string name, bool caseSensitive = false)
         {
-            return MTAServer.SetAccountName(_account, name, caseSensitive);
+            return MtaServer.SetAccountName(_account, name, caseSensitive);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public bool SetPassword(string value)
         {
-            return MTAServer.SetAccountPassword(_account, value);
+            return MtaServer.SetAccountPassword(_account, value);
         }
 
         /// <summary>
@@ -260,7 +260,7 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public bool HasPermissionTo(string action, bool defaultPermission = true)
         {
-            return MTAServer.HasObjectPermissionTo(ACLIdentifier, action, defaultPermission);
+            return MtaServer.HasObjectPermissionTo(ACLIdentifier, action, defaultPermission);
         }
 
         /// <summary>
@@ -268,7 +268,7 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public bool IsInACLGroup(AclGroup group)
         {
-            return MTAServer.IsObjectInACLGroup(ACLIdentifier, group.ACL);
+            return MtaServer.IsObjectInACLGroup(ACLIdentifier, group.ACL);
         }
 
         #endregion
@@ -282,9 +282,9 @@ namespace Slipe.Server.Accounts
         {
             try
             {
-                return new Account(MTAServer.GetAccount(username, password, caseSensitive));
+                return new Account(MtaServer.GetAccount(username, password, caseSensitive));
             }
-            catch (MTAException)
+            catch (MtaException)
             {
                 throw new AccountException("No account with these credentials could be found");
             }
@@ -297,9 +297,9 @@ namespace Slipe.Server.Accounts
         {
             try
             {
-                return new Account(MTAServer.GetAccountByID(ID));
+                return new Account(MtaServer.GetAccountByID(ID));
             }
-            catch (MTAException)
+            catch (MtaException)
             {
                 throw new AccountException("No account with this ID found");
             }

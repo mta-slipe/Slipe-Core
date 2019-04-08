@@ -1,5 +1,5 @@
 ﻿using Slipe.Shared.Exceptions;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

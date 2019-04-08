@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using Slipe.Server.Peds;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
@@ -22,7 +22,7 @@ namespace Slipe.Client.IO
         /// <param name="colorCoded"></param>
         public static void WriteLine(string message, Player player, Color color, bool colorCoded = false)
         {
-            MTAServer.OutputChatBox(message, player.MTAElement, color.R, color.G, color.B, colorCoded);
+            MtaServer.OutputChatBox(message, player.MTAElement, color.R, color.G, color.B, colorCoded);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Slipe.Client.IO
         /// <param name="colorCoded"></param>
         public static void WriteLine(string message, Color color, bool colorCoded = false)
         {
-            MTAServer.OutputChatBox(message, Element.Root.MTAElement, color.R, color.G, color.B, colorCoded);
+            MtaServer.OutputChatBox(message, Element.Root.MTAElement, color.R, color.G, color.B, colorCoded);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Slipe.Client.IO
         /// <param name="player"></param>
         public static void Clear(Player player = null)
         {
-            MTAServer.ClearChatBox(player == null ? Element.Root.MTAElement : player.MTAElement);
+            MtaServer.ClearChatBox(player == null ? Element.Root.MTAElement : player.MTAElement);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Slipe.Client.IO
         /// <returns></returns>
         public static bool SetVisible(bool visible, Player player = null)
         {
-            return MTAServer.ShowChat(player == null ? Element.Root.MTAElement : player.MTAElement, visible);
+            return MtaServer.ShowChat(player == null ? Element.Root.MTAElement : player.MTAElement, visible);
         }
     }
 }

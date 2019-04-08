@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.ComponentModel;
 using Slipe.Shared.GameWorld;
 
@@ -15,7 +15,7 @@ namespace Slipe.Server.GameWorld
     {
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public WorldObject(MTAElement element) : base(element)
+        public WorldObject(MtaElement element) : base(element)
         {
 
         }

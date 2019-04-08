@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 
 namespace Slipe.Server.Acl
 {
@@ -15,7 +15,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public static bool Reload()
         {
-            return MTAServer.AclReload();
+            return MtaServer.AclReload();
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public static bool Save()
         {
-            return MTAServer.AclSave();
+            return MtaServer.AclSave();
         }
     }
 }

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Client.Enums;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Utilities;
 
@@ -18,15 +17,15 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// Create a texture element from a file or raw image string
         /// </summary>
-        public Texture(string filePathOrPixels, TextureFormat textureFormat = TextureFormat.argb, bool mipmaps = true, TextureEdge textureEdge = TextureEdge.wrap)
+        public Texture(string filePathOrPixels, TextureFormat textureFormat = TextureFormat.Argb, bool mipmaps = true, TextureEdge textureEdge = TextureEdge.Wrap)
         {
-            materialElement = MTAClient.DxCreateTexture(filePathOrPixels, textureFormat.ToString(), mipmaps, textureEdge.ToString());
+            materialElement = MtaClient.DxCreateTexture(filePathOrPixels, textureFormat.ToString().ToLower(), mipmaps, textureEdge.ToString().ToLower());
         }
 
         /// <summary>
         /// Create an empty texture
         /// </summary>
-        public Texture(Vector2 dimensions, TextureFormat textureFormat = TextureFormat.argb, TextureEdge textureEdge = TextureEdge.wrap, TextureType textureType = TextureType.TwoDimensional, int depth = 1)
+        public Texture(Vector2 dimensions, TextureFormat textureFormat = TextureFormat.Argb, TextureEdge textureEdge = TextureEdge.Wrap, TextureType textureType = TextureType.TwoDimensional, int depth = 1)
         {
             string textureTypeString = "cube";
             if (textureType == TextureType.TwoDimensional)
@@ -34,7 +33,7 @@ namespace Slipe.Client.Dx
             else if (textureType == TextureType.ThreeDimensional)
                 textureTypeString = "3d";
 
-            materialElement = MTAClient.DxCreateTexture((int)dimensions.X, (int)dimensions.Y, textureFormat.ToString(), textureEdge.ToString(), textureTypeString, depth);
+            materialElement = MtaClient.DxCreateTexture((int)dimensions.X, (int)dimensions.Y, textureFormat.ToString().ToLower(), textureEdge.ToString().ToLower(), textureTypeString, depth);
         }
 
         /// <summary>
@@ -42,7 +41,7 @@ namespace Slipe.Client.Dx
         /// </summary>
         public TexturePixels GetPixels(Vector2 topLeft, Vector2 dimensions, int surfaceIndex = 0)
         {
-            return new TexturePixels(MTAClient.DxGetTexturePixels(surfaceIndex, materialElement, (int) topLeft.X, (int)topLeft.Y, (int)dimensions.X, (int)dimensions.Y));
+            return new TexturePixels(MtaClient.DxGetTexturePixels(surfaceIndex, materialElement, (int) topLeft.X, (int)topLeft.Y, (int)dimensions.X, (int)dimensions.Y));
         }
 
         /// <summary>
@@ -58,7 +57,7 @@ namespace Slipe.Client.Dx
         /// </summary>
         public bool SetEdge(TextureEdge edge, Color borderColor)
         {
-            return MTAClient.DxSetTextureEdge(materialElement, edge == TextureEdge.mirror_once ? "mirror-once" : edge.ToString(), borderColor.Hex);
+            return MtaClient.DxSetTextureEdge(materialElement, edge == TextureEdge.MirrorOnce ? "mirror-once" : edge.ToString(), borderColor.Hex);
         }
 
         /// <summary>
@@ -75,7 +74,7 @@ namespace Slipe.Client.Dx
         public bool SetPixels(TexturePixels pixels, Vector2 topLeft, Vector2 dimensions, int surfaceIndex = 0)
         {
             string p = pixels.Convert(ImageFormat.plain);
-            return MTAClient.DxSetTexturePixels(surfaceIndex, materialElement, p, (int) topLeft.X, (int)topLeft.Y, (int)dimensions.X, (int)dimensions.Y);
+            return MtaClient.DxSetTexturePixels(surfaceIndex, materialElement, p, (int) topLeft.X, (int)topLeft.Y, (int)dimensions.X, (int)dimensions.Y);
         }
     }
 }

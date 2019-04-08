@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Vehicles;
 using Slipe.Shared.Elements;
 using System.ComponentModel;
+using Slipe.Client.Peds;
 
 namespace Slipe.Client.Vehicles
 {
@@ -22,7 +23,7 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return (Player)ElementManager.Instance.GetElement(MTAShared.GetVehicleController(element));
+                return (Player)ElementManager.Instance.GetElement(MtaShared.GetVehicleController(element));
             }
         }
 
@@ -33,9 +34,9 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                Dictionary<int, MTAElement> elements = MTAShared.GetDictionaryFromTable(MTAShared.GetVehicleOccupants(element), "System.Int32", "MTAElement");
+                Dictionary<int, MtaElement> elements = MtaShared.GetDictionaryFromTable(MtaShared.GetVehicleOccupants(element), "System.Int32", "MTAElement");
                 Dictionary<Seat, Player> dictionary = new Dictionary<Seat, Player>();
-                foreach (KeyValuePair<int, MTAElement> entry in elements)
+                foreach (KeyValuePair<int, MtaElement> entry in elements)
                 {
                     Player p = (Player)ElementManager.Instance.GetElement(entry.Value);
                     Seat s = (Seat)entry.Key;
@@ -52,11 +53,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAClient.GetVehicleAdjustableProperty(element);
+                return MtaClient.GetVehicleAdjustableProperty(element);
             }
             set
             {
-                MTAClient.SetVehicleAdjustableProperty(element, value);
+                MtaClient.SetVehicleAdjustableProperty(element, value);
             }
         }
 
@@ -67,7 +68,7 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                Dictionary<string, bool> d = MTAShared.GetDictionaryFromTable(MTAClient.GetVehicleComponents(element), "System.String", "System.Boolean");
+                Dictionary<string, bool> d = MtaShared.GetDictionaryFromTable(MtaClient.GetVehicleComponents(element), "System.String", "System.Boolean");
                 Component[] r = new Component[d.Count];
                 int count = 0;
                 foreach (KeyValuePair<string, bool> c in d)
@@ -86,7 +87,7 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAClient.GetVehicleCurrentGear(element);
+                return MtaClient.GetVehicleCurrentGear(element);
             }
         }
 
@@ -97,12 +98,12 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                Tuple<float, float, float> r = MTAClient.GetVehicleGravity(element);
+                Tuple<float, float, float> r = MtaClient.GetVehicleGravity(element);
                 return new Vector3(r.Item1, r.Item2, r.Item3);
             }
             set
             {
-                MTAClient.SetVehicleGravity(element, value.X, value.Y, value.Z);
+                MtaClient.SetVehicleGravity(element, value.X, value.Y, value.Z);
             }
         }
 
@@ -117,11 +118,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAClient.GetVehicleNitroCount(element);
+                return MtaClient.GetVehicleNitroCount(element);
             }
             set
             {
-                MTAClient.SetVehicleNitroCount(element, value);
+                MtaClient.SetVehicleNitroCount(element, value);
             }
         }
 
@@ -132,11 +133,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAClient.GetVehicleNitroLevel(element);
+                return MtaClient.GetVehicleNitroLevel(element);
             }
             set
             {
-                MTAClient.SetVehicleNitroLevel(element, value);
+                MtaClient.SetVehicleNitroLevel(element, value);
             }
         }
 
@@ -147,11 +148,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAClient.IsVehicleNitroActivated(element);
+                return MtaClient.IsVehicleNitroActivated(element);
             }
             set
             {
-                MTAClient.SetVehicleNitroActivated(element, value);
+                MtaClient.SetVehicleNitroActivated(element, value);
             }
         }
 
@@ -162,7 +163,7 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAClient.IsVehicleNitroRecharging(element);
+                return MtaClient.IsVehicleNitroRecharging(element);
             }
         }
 
@@ -171,7 +172,7 @@ namespace Slipe.Client.Vehicles
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Vehicle(MTAElement element) : base(element) { }
+        public Vehicle(MtaElement element) : base(element) { }
 
         /// <summary>
         /// Create a vehicle from a model at a position
@@ -190,7 +191,7 @@ namespace Slipe.Client.Vehicles
         /// </summary>
         public bool Blow()
         {
-            return MTAClient.BlowVehicle(element);
+            return MtaClient.BlowVehicle(element);
         }
 
         /// <summary>
@@ -198,7 +199,7 @@ namespace Slipe.Client.Vehicles
         /// </summary>
         public Player GetOccupant(Seat seat = Seat.FrontLeft)
         {
-            return (Player)ElementManager.Instance.GetElement(MTAShared.GetVehicleOccupant(element, (int)seat));
+            return (Player)ElementManager.Instance.GetElement(MtaShared.GetVehicleOccupant(element, (int)seat));
         }
 
         /// <summary>
@@ -214,7 +215,7 @@ namespace Slipe.Client.Vehicles
         /// </summary>
         public bool IsWheelOnGround(Wheel wheel)
         {
-            return MTAClient.IsVehicleWheelOnGround(element, (int)wheel);
+            return MtaClient.IsVehicleWheelOnGround(element, (int)wheel);
         }
 
         /// <summary>
@@ -222,7 +223,7 @@ namespace Slipe.Client.Vehicles
         /// </summary>
         public bool isWindowOpen(Window window)
         {
-            return MTAClient.IsVehicleWindowOpen(element, (int)window);
+            return MtaClient.IsVehicleWindowOpen(element, (int)window);
         }
 
         /// <summary>
@@ -230,7 +231,7 @@ namespace Slipe.Client.Vehicles
         /// </summary>
         public bool SetWindowOpen(Window window, bool open)
         {
-            return MTAClient.SetVehicleWindowOpen(element, (int)window, open);
+            return MtaClient.SetVehicleWindowOpen(element, (int)window, open);
         }
         #endregion
 

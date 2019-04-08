@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using Slipe.Shared.Utilities;
+using Slipe.Client.Helpers;
 
 namespace Slipe.Client.Dx
 {
     /// <summary>
     /// Class representing drawable objects
     /// </summary>
-    public abstract class Dx2DObject : PreRenderAttachObject
+    public abstract class Dx2DObject : LazyAttachableObject
     {
         /// <summary>
         /// The color that is used to draw this object
@@ -19,7 +20,19 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// The start or center position of the object
         /// </summary>
-        public Vector2 Position { get; set; }
+        private Vector2 pos;
+        public Vector2 Position
+        {
+            get
+            {
+                Update();
+                return pos;
+            }
+            set
+            {
+                pos = value;
+            }
+        }
 
         /// <summary>
         /// Boolean indicating whether this object is drawn before or after GUI's are drawn
@@ -31,7 +44,7 @@ namespace Slipe.Client.Dx
         /// </summary>
         protected override void Update()
         {
-            Position = Client.Renderer.ScreenFromWorldPosition(ToAttached.Position + Offset.Translation);
+            pos = GameClient.Client.Renderer.ScreenFromWorldPosition(ToAttached.Position + Offset.Translation);
         }
     }
 }

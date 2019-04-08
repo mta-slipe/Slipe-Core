@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 
 namespace Slipe.Shared.Vehicles
@@ -11,7 +11,7 @@ namespace Slipe.Shared.Vehicles
     /// </summary>
     public class Handling
     {
-        private MTAElement vehicleElement;
+        private MtaElement vehicleElement;
 
         #region Properties
 
@@ -584,7 +584,7 @@ namespace Slipe.Shared.Vehicles
             mass = (float) t["mass"];
             turnMass = (float)t["turnMass"];
             dragCoeff = (float)t["dragCoeff"];
-            float[] c = MTAShared.GetArrayFromTable(t["centerOfMass"], "System.Single");
+            float[] c = MtaShared.GetArrayFromTable(t["centerOfMass"], "System.Single");
             centerOfMass = new Vector3(c[0], c[1], c[2]);
             percentSubmerged = (int)t["percentSubmerged"];
             tractionMultiplier = (float)t["tractionMultiplier"];
@@ -619,13 +619,13 @@ namespace Slipe.Shared.Vehicles
         protected virtual void UpdateFromGame()
         {
             if (vehicleElement != null)
-                BuildFromTable(MTAShared.GetDictionaryFromTable(MTAShared.GetVehicleHandling(vehicleElement), "System.String", "System.Dynamic"));
+                BuildFromTable(MtaShared.GetDictionaryFromTable(MtaShared.GetVehicleHandling(vehicleElement), "System.String", "System.Dynamic"));
         }
 
         protected virtual void UpdateToGame(string key, dynamic value)
         {
             if (vehicleElement != null)
-                MTAShared.SetVehicleHandling(vehicleElement, key, value);
+                MtaShared.SetVehicleHandling(vehicleElement, key, value);
         }
 
 

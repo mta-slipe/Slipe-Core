@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
 
@@ -19,11 +19,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAShared.GetVehicleLandingGearDown(element);
+                return MtaShared.GetVehicleLandingGearDown(element);
             }
             set
             {
-                MTAShared.SetVehicleLandingGearDown(element, value);
+                MtaShared.SetVehicleLandingGearDown(element, value);
             }
         }
 
@@ -44,7 +44,7 @@ namespace Slipe.Client.Vehicles
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Plane(MTAElement element) : base(element)
+        public Plane(MtaElement element) : base(element)
         {
 
         }

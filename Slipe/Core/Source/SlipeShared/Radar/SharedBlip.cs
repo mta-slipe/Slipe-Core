@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,12 +22,12 @@ namespace Slipe.Shared.Radar
         {
             get
             {
-                Tuple<int, int, int, int> tuple = MTAShared.GetBlipColor(element);
+                Tuple<int, int, int, int> tuple = MtaShared.GetBlipColor(element);
                 return new Color((byte)tuple.Item1, (byte)tuple.Item2, (byte)tuple.Item3, (byte)tuple.Item4);
             }
             set
             {
-                MTAShared.SetBlipColor(element, value.R, value.G, value.B, value.A);
+                MtaShared.SetBlipColor(element, value.R, value.G, value.B, value.A);
             }
         }
 
@@ -38,11 +38,11 @@ namespace Slipe.Shared.Radar
         {
             get
             {
-                return (BlipType)MTAShared.GetBlipIcon(element);
+                return (BlipType)MtaShared.GetBlipIcon(element);
             }
             set
             {
-                MTAShared.SetBlipIcon(element, (int)value);
+                MtaShared.SetBlipIcon(element, (int)value);
             }
         }
 
@@ -53,11 +53,11 @@ namespace Slipe.Shared.Radar
         {
             get
             {
-                return MTAShared.GetBlipOrdering(element);
+                return MtaShared.GetBlipOrdering(element);
             }
             set
             {
-                MTAShared.SetBlipOrdering(element, value);
+                MtaShared.SetBlipOrdering(element, value);
             }
         }
 
@@ -68,11 +68,11 @@ namespace Slipe.Shared.Radar
         {
             get
             {
-                return MTAShared.GetBlipSize(element);
+                return MtaShared.GetBlipSize(element);
             }
             set
             {
-                MTAShared.SetBlipSize(element, value);
+                MtaShared.SetBlipSize(element, value);
             }
         }
 
@@ -83,11 +83,11 @@ namespace Slipe.Shared.Radar
         {
             get
             {
-                return MTAShared.GetBlipVisibleDistance(element);
+                return MtaShared.GetBlipVisibleDistance(element);
             }
             set
             {
-                MTAShared.SetBlipVisibleDistance(element, value);
+                MtaShared.SetBlipVisibleDistance(element, value);
             }
         }
 
@@ -98,7 +98,7 @@ namespace Slipe.Shared.Radar
         protected SharedBlip() { }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public SharedBlip(MTAElement element) : base(element) { }
+        public SharedBlip(MtaElement element) : base(element) { }
 
         #endregion
 

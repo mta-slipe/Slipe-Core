@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Exceptions;
 using System.ComponentModel;
 
@@ -12,14 +12,14 @@ namespace Slipe.Server.Acl
     /// </summary>
     public class AclEntry
     {
-        protected internal MTAAcl entry;
+        protected internal MtaAcl entry;
 
         #region Properties
 
         /// <summary>
         /// Returns the MTA ACL class instance
         /// </summary>
-        public MTAAcl ACL
+        public MtaAcl ACL
         {
             get
             {
@@ -34,7 +34,7 @@ namespace Slipe.Server.Acl
         {
             get
             {
-                return MTAServer.AclGetName(entry);
+                return MtaServer.AclGetName(entry);
             }
         }
 
@@ -45,7 +45,7 @@ namespace Slipe.Server.Acl
         {
             get
             {
-                MTAAcl[] mtaAcls = MTAShared.GetArrayFromTable(MTAServer.AclList(), "acl");
+                MtaAcl[] mtaAcls = MtaShared.GetArrayFromTable(MtaServer.AclList(), "acl");
                 AclEntry[] acls = new AclEntry[mtaAcls.Length];
                 for (int i = 0; i < mtaAcls.Length; i++)
                 {
@@ -60,7 +60,7 @@ namespace Slipe.Server.Acl
         #region Constructors 
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public AclEntry(MTAAcl mtaAclEntry)
+        public AclEntry(MtaAcl mtaAclEntry)
         {
             entry = mtaAclEntry;
         }
@@ -70,7 +70,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public AclEntry(string name)
         {
-            entry = MTAServer.AclCreate(name);
+            entry = MtaServer.AclCreate(name);
         }
 
         #endregion
@@ -82,7 +82,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public string[] GetRights(AclRightEnum rightType)
         {
-            return MTAShared.GetArrayFromTable(MTAServer.AclListRights(entry, rightType.ToString().ToLower()), "System.String");
+            return MtaShared.GetArrayFromTable(MtaServer.AclListRights(entry, rightType.ToString().ToLower()), "System.String");
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public bool GetRight(string right)
         {
-            return MTAServer.AclGetRight(entry, right);
+            return MtaServer.AclGetRight(entry, right);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public bool SetRight(string right, bool hasAccess)
         {
-            return MTAServer.AclSetRight(entry, right, hasAccess);
+            return MtaServer.AclSetRight(entry, right, hasAccess);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public bool RemoveRight(string right)
         {
-            return MTAServer.AclRemoveRight(entry, right);
+            return MtaServer.AclRemoveRight(entry, right);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public bool Destroy()
         {
-            return MTAServer.AclDestroy(entry);
+            return MtaServer.AclDestroy(entry);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public static AclEntry Get(string name)
         {
-            MTAAcl result = MTAServer.AclGet(name);
+            MtaAcl result = MtaServer.AclGet(name);
             if (result == null)
             {
                 throw new NullElementException("No ACL entry with the name " + name + " can be found");

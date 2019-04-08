@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Utilities;
 
 namespace Slipe.Client.Effects
@@ -17,7 +17,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool Blood(Vector3 position, Vector3 direction, int count = 1, float brightness = 1.0f)
         {
-            return MTAClient.FxAddBlood(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z, count, brightness);
+            return MtaClient.FxAddBlood(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z, count, brightness);
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool BulletImpact(Vector3 position, Vector3 direction, int smokeSize = 1, int sparkCount = 1, float smokeIntensity = 1.0f)
         {
-            return MTAClient.FxAddBulletImpact(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z, smokeSize, sparkCount, smokeIntensity);
+            return MtaClient.FxAddBulletImpact(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z, smokeSize, sparkCount, smokeIntensity);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool BulletSplash(Vector3 position)
         {
-            return MTAClient.FxAddBulletSplash(position.X, position.Y, position.Z);
+            return MtaClient.FxAddBulletSplash(position.X, position.Y, position.Z);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool Debris(Vector3 position, Color color, float scale = 1.0f, int count = 1)
         {
-            return MTAClient.FxAddDebris(position.X, position.Y, position.Z, color.R, color.G, color.B, color.A, scale, count);
+            return MtaClient.FxAddDebris(position.X, position.Y, position.Z, color.R, color.G, color.B, color.A, scale, count);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool FootSplash(Vector3 position)
         {
-            return MTAClient.FxAddFootSplash(position.X, position.Y, position.Z);
+            return MtaClient.FxAddFootSplash(position.X, position.Y, position.Z);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool Glass(Vector3 position, Color color, float scale = 1.0f, int count = 1)
         {
-            return MTAClient.FxAddGlass(position.X, position.Y, position.Z, color.R, color.G, color.B, color.A, scale, count);
+            return MtaClient.FxAddGlass(position.X, position.Y, position.Z, color.R, color.G, color.B, color.A, scale, count);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool Gunshot(Vector3 position, Vector3 direction, bool includeSparks = true)
         {
-            return MTAClient.FxAddGunshot(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z, includeSparks);
+            return MtaClient.FxAddGunshot(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z, includeSparks);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool PunchImpact(Vector3 position, Vector3 direction)
         {
-            return MTAClient.FxAddPunchImpact(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z);
+            return MtaClient.FxAddPunchImpact(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool Sparks(Vector3 position, Vector3 direction, float force = 1, int count = 1, bool blur = false, float spread = 1, float life = 1)
         {
-            return MTAClient.FxAddSparks(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z, force, count, 0, 0, 0, blur, spread, life);
+            return MtaClient.FxAddSparks(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z, force, count, 0, 0, 0, blur, spread, life);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool Sparks(Vector3 lineStart, Vector3 lineEnd, Vector3 direction, float force = 1, int count = 1, bool blur = false, float spread = 1, float life = 1)
         {
-            return MTAClient.FxAddSparks(lineStart.X, lineStart.Y, lineStart.Z, direction.X, direction.Y, direction.Z, force, count, lineEnd.X, lineEnd.Y, lineEnd.Z, blur, spread, life);
+            return MtaClient.FxAddSparks(lineStart.X, lineStart.Y, lineStart.Z, direction.X, direction.Y, direction.Z, force, count, lineEnd.X, lineEnd.Y, lineEnd.Z, blur, spread, life);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool TankFire(Vector3 position, Vector3 direction)
         {
-            return MTAClient.FxAddTankFire(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z);
+            return MtaClient.FxAddTankFire(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool TyreBurst(Vector3 position, Vector3 direction)
         {
-            return MTAClient.FxAddTyreBurst(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z);
+            return MtaClient.FxAddTyreBurst(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool WaterHydrant(Vector3 position)
         {
-            return MTAClient.FxAddWaterHydrant(position.X, position.Y, position.Z);
+            return MtaClient.FxAddWaterHydrant(position.X, position.Y, position.Z);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool WaterSplash(Vector3 position)
         {
-            return MTAClient.FxAddWaterSplash(position.X, position.Y, position.Z);
+            return MtaClient.FxAddWaterSplash(position.X, position.Y, position.Z);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Slipe.Client.Effects
         /// </summary>
         public static bool Wood(Vector3 position, Vector3 direction, int count = 1, float brightness = 1.0f)
         {
-            return MTAClient.FxAddWood(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z, count, brightness);
+            return MtaClient.FxAddWood(position.X, position.Y, position.Z, direction.X, direction.Y, direction.Z, count, brightness);
 
         }
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using System.ComponentModel;
 
@@ -20,7 +20,7 @@ namespace Slipe.Shared.GameWorld
         {
             set
             {
-                MTAShared.SetWaterLevel(element, value);
+                MtaShared.SetWaterLevel(element, value);
             }
         }
 
@@ -30,7 +30,7 @@ namespace Slipe.Shared.GameWorld
         /// Create water from an MTA water element
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public SharedWater(MTAElement element) : base(element) { }
+        public SharedWater(MtaElement element) : base(element) { }
 
         /// <summary>
         /// Creates a body of water from 4 corners. The order of the input vectors doesn't matter
@@ -60,7 +60,7 @@ namespace Slipe.Shared.GameWorld
                     southEast = v;
             }
 
-            element = MTAShared.CreateWater(southWest.X, southWest.Y, southWest.Z, southEast.X, southEast.Y, southEast.Z, northWest.X, northWest.Y, northWest.Z, northEast.X, northEast.Y, northEast.Z, shallow);
+            element = MtaShared.CreateWater(southWest.X, southWest.Y, southWest.Z, southEast.X, southEast.Y, southEast.Z, northWest.X, northWest.Y, northWest.Z, northEast.X, northEast.Y, northEast.Z, shallow);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -88,7 +88,7 @@ namespace Slipe.Shared.GameWorld
                     southEast = v;
             }
 
-            element = MTAShared.CreateWater(southWest.X, southWest.Y, southWest.Z, southEast.X, southEast.Y, southEast.Z, northWest.X, northWest.Y, northWest.Z, shallow);
+            element = MtaShared.CreateWater(southWest.X, southWest.Y, southWest.Z, southEast.X, southEast.Y, southEast.Z, northWest.X, northWest.Y, northWest.Z, shallow);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -99,7 +99,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool SetVertexPosition(int vertexIndex, Vector3 position)
         {
-            return MTAShared.SetWaterVertexPosition(element, vertexIndex, (int)position.X, (int)position.Y, position.Z);
+            return MtaShared.SetWaterVertexPosition(element, vertexIndex, (int)position.X, (int)position.Y, position.Z);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public Vector3 GetVertexPosition(int vertexIndex)
         {
-            Tuple<int, int, float> result = MTAShared.GetWaterVertexPosition(element, vertexIndex);
+            Tuple<int, int, float> result = MtaShared.GetWaterVertexPosition(element, vertexIndex);
             return new Vector3(result.Item1, result.Item2, result.Item3);
         }
     }

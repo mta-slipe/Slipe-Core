@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
 using System.ComponentModel;
@@ -25,12 +25,12 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                Tuple<int, int, int, int, int, int, int, Tuple<int, int, int, int, int>> r = MTAShared.GetVehicleColor(element, true);
+                Tuple<int, int, int, int, int, int, int, Tuple<int, int, int, int, int>> r = MtaShared.GetVehicleColor(element, true);
                 return new Color((byte)r.Item1, (byte)r.Item2, (byte)r.Item3);
             }
             set
             {
-                MTAShared.SetVehicleColor(element, value.R, value.G, value.B, SecondaryColor.R, SecondaryColor.G, SecondaryColor.B, -1, -1, -1, -1, -1, -1);
+                MtaShared.SetVehicleColor(element, value.R, value.G, value.B, SecondaryColor.R, SecondaryColor.G, SecondaryColor.B, -1, -1, -1, -1, -1, -1);
             }
         }
 
@@ -41,12 +41,12 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                Tuple<int, int, int, int, int, int, int, Tuple<int, int, int, int, int>> r = MTAShared.GetVehicleColor(element, true);
+                Tuple<int, int, int, int, int, int, int, Tuple<int, int, int, int, int>> r = MtaShared.GetVehicleColor(element, true);
                 return new Color((byte)r.Item3, (byte)r.Item5, (byte)r.Item6);
             }
             set
             {
-                MTAShared.SetVehicleColor(element, PrimaryColor.R, PrimaryColor.G, PrimaryColor.B, value.R, value.G, value.B, -1, -1, -1, -1, -1, -1);
+                MtaShared.SetVehicleColor(element, PrimaryColor.R, PrimaryColor.G, PrimaryColor.B, value.R, value.G, value.B, -1, -1, -1, -1, -1, -1);
             }
         }
 
@@ -57,7 +57,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                Tuple<int, int, int, int, int, int, int, Tuple<int, int, int, int, int>> r = MTAShared.GetVehicleColor(element, true);
+                Tuple<int, int, int, int, int, int, int, Tuple<int, int, int, int, int>> r = MtaShared.GetVehicleColor(element, true);
                 Color[] c = new Color[4];
                 c[0] = new Color((byte)r.Item1, (byte)r.Item2, (byte)r.Item3);
                 c[1] = new Color((byte)r.Item4, (byte)r.Item5, (byte)r.Item6);
@@ -68,7 +68,7 @@ namespace Slipe.Shared.Vehicles
             set
             {
 
-                MTAShared.SetVehicleColor(element, value[0].R, value[0].G, value[0].B, value[1].R, value[1].G, value[1].B, value[2].R, value[2].G, value[2].B, value[3].R, value[3].G, value[3].B);
+                MtaShared.SetVehicleColor(element, value[0].R, value[0].G, value[0].B, value[1].R, value[1].G, value[1].B, value[2].R, value[2].G, value[2].B, value[3].R, value[3].G, value[3].B);
             }
         }
 
@@ -79,12 +79,12 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                Tuple<int, int, int> r = MTAShared.GetVehicleHeadLightColor(element);
+                Tuple<int, int, int> r = MtaShared.GetVehicleHeadLightColor(element);
                 return new Color((byte)r.Item1, (byte)r.Item2, (byte)r.Item3);
             }
             set
             {
-                MTAShared.SetVehicleHeadLightColor(element, value.R, value.G, value.B);
+                MtaShared.SetVehicleHeadLightColor(element, value.R, value.G, value.B);
             }
         }
         #endregion
@@ -98,7 +98,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MTAShared.GetVehicleName(element);
+                return MtaShared.GetVehicleName(element);
             }
         }
 
@@ -109,7 +109,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MTAShared.GetVehicleMaxPassengers(element);
+                return MtaShared.GetVehicleMaxPassengers(element);
             }
         }
 
@@ -120,11 +120,11 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MTAShared.GetVehicleEngineState(element);
+                return MtaShared.GetVehicleEngineState(element);
             }
             set
             {
-                MTAShared.SetVehicleEngineState(element, value);
+                MtaShared.SetVehicleEngineState(element, value);
             }
         }
 
@@ -148,11 +148,11 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return (OverrideLightState)MTAShared.GetVehicleOverrideLights(element);
+                return (OverrideLightState)MtaShared.GetVehicleOverrideLights(element);
             }
             set
             {
-                MTAShared.SetVehicleOverrideLights(element, (int)value);
+                MtaShared.SetVehicleOverrideLights(element, (int)value);
             }
         }
 
@@ -163,11 +163,11 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return (Paintjob)MTAShared.GetVehiclePaintjob(element);
+                return (Paintjob)MtaShared.GetVehiclePaintjob(element);
             }
             set
             {
-                MTAShared.SetVehiclePaintjob(element, (int)value);
+                MtaShared.SetVehiclePaintjob(element, (int)value);
             }
         }
 
@@ -178,11 +178,11 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MTAShared.GetVehiclePlateText(element);
+                return MtaShared.GetVehiclePlateText(element);
             }
             set
             {
-                MTAShared.SetVehiclePlateText(element, value);
+                MtaShared.SetVehiclePlateText(element, value);
             }
         }
 
@@ -206,7 +206,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MTAShared.GetVehicleType(element);
+                return MtaShared.GetVehicleType(element);
             }
         }
 
@@ -217,7 +217,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                Dictionary<int, int> d = (Dictionary<int, int>)MTAShared.GetDictionaryFromTable(MTAShared.GetVehicleUpgrades(element), "System.Int32", "System.Int32");
+                Dictionary<int, int> d = (Dictionary<int, int>)MtaShared.GetDictionaryFromTable(MtaShared.GetVehicleUpgrades(element), "System.Int32", "System.Int32");
                 Dictionary<UpgradeSlot, Upgrade> r = new Dictionary<UpgradeSlot, Upgrade>();
                 foreach (KeyValuePair<int, int> upgrade in d)
                 {
@@ -234,7 +234,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MTAShared.IsVehicleBlown(element);
+                return MtaShared.IsVehicleBlown(element);
             }
         }
 
@@ -245,11 +245,11 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MTAShared.IsVehicleDamageProof(element);
+                return MtaShared.IsVehicleDamageProof(element);
             }
             set
             {
-                MTAShared.SetVehicleDamageProof(element, value);
+                MtaShared.SetVehicleDamageProof(element, value);
             }
         }
 
@@ -260,11 +260,11 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MTAShared.IsVehicleFuelTankExplodable(element);
+                return MtaShared.IsVehicleFuelTankExplodable(element);
             }
             set
             {
-                MTAShared.SetVehicleFuelTankExplodable(element, value);
+                MtaShared.SetVehicleFuelTankExplodable(element, value);
             }
         }
 
@@ -275,11 +275,11 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MTAShared.IsVehicleLocked(element);
+                return MtaShared.IsVehicleLocked(element);
             }
             set
             {
-                MTAShared.SetVehicleLocked(element, value);
+                MtaShared.SetVehicleLocked(element, value);
             }
         }
 
@@ -290,7 +290,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MTAShared.IsVehicleOnGround(element);
+                return MtaShared.IsVehicleOnGround(element);
             }
         }
 
@@ -301,7 +301,7 @@ namespace Slipe.Shared.Vehicles
         {
             set
             {
-                MTAShared.SetVehicleDoorsUndamageable(element, value);
+                MtaShared.SetVehicleDoorsUndamageable(element, value);
             }
         }
 
@@ -312,7 +312,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MTAShared.GetVehicleVariant(element);
+                return MtaShared.GetVehicleVariant(element);
             }
         }
 
@@ -323,12 +323,12 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                Tuple<int, int, int, int> states = MTAShared.GetVehicleWheelStates(element);
+                Tuple<int, int, int, int> states = MtaShared.GetVehicleWheelStates(element);
                 return new Tuple<WheelState, WheelState, WheelState, WheelState>((WheelState)states.Item1, (WheelState)states.Item2, (WheelState)states.Item3, (WheelState)states.Item4);
             }
             set
             {
-                MTAShared.SetVehicleWheelStates(element, (int)value.Item1, (int)value.Item2, (int)value.Item3, (int)value.Item4);
+                MtaShared.SetVehicleWheelStates(element, (int)value.Item1, (int)value.Item2, (int)value.Item3, (int)value.Item4);
             }
         }
 
@@ -339,7 +339,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return (SharedVehicle)ElementManager.Instance.GetElement(MTAShared.GetVehicleTowedByVehicle(element));
+                return (SharedVehicle)ElementManager.Instance.GetElement(MtaShared.GetVehicleTowedByVehicle(element));
             }
         }
 
@@ -348,14 +348,14 @@ namespace Slipe.Shared.Vehicles
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public SharedVehicle(MTAElement element): base(element) { }
+        public SharedVehicle(MtaElement element): base(element) { }
 
         /// <summary>
         /// Creates a vehicle from all MTA createVehicle variables
         /// </summary>
         public SharedVehicle(SharedVehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1)
         {
-            element = MTAShared.CreateVehicle(model.ID, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, numberplate, false, variant1, variant2);
+            element = MtaShared.CreateVehicle(model.ID, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, numberplate, false, variant1, variant2);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -373,7 +373,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public bool Fix()
         {
-            return MTAShared.FixVehicle(element);
+            return MtaShared.FixVehicle(element);
         }
 
         /// <summary>
@@ -381,7 +381,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public bool DetachTowedVehicle(SharedVehicle attachedVehicle)
         {
-            return MTAShared.DetachTrailerFromVehicle(element, attachedVehicle.MTAElement);
+            return MtaShared.DetachTrailerFromVehicle(element, attachedVehicle.MTAElement);
         }
 
         /// <summary>
@@ -389,7 +389,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public bool DetachAnyTowedVehicle()
         {
-            return MTAShared.DetachTrailerFromVehicle(element, null);
+            return MtaShared.DetachTrailerFromVehicle(element, null);
         }
         #endregion
 
@@ -399,7 +399,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public bool AddUpgrade(Upgrade upgrade)
         {
-            return MTAShared.AddVehicleUpgrade(element, (int)upgrade);
+            return MtaShared.AddVehicleUpgrade(element, (int)upgrade);
         }
 
         /// <summary>
@@ -407,7 +407,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public Upgrade[] GetCompatibleUpgrades(UpgradeSlot slot)
         {
-            int[] upInts = MTAShared.GetArrayFromTable(MTAShared.GetVehicleCompatibleUpgrades(element, (int)slot), "System.Int32");
+            int[] upInts = MtaShared.GetArrayFromTable(MtaShared.GetVehicleCompatibleUpgrades(element, (int)slot), "System.Int32");
             Upgrade[] upgrades = new Upgrade[upInts.Length];
             for (int i = 0; i < upInts.Length; i++)
             {
@@ -422,7 +422,7 @@ namespace Slipe.Shared.Vehicles
         /// <returns></returns>
         public Upgrade[] GetCompatibleUpgrades()
         {
-            int[] upInts = MTAShared.GetArrayFromTable(MTAShared.GetVehicleCompatibleUpgrades(element, -1), "System.Int32");
+            int[] upInts = MtaShared.GetArrayFromTable(MtaShared.GetVehicleCompatibleUpgrades(element, -1), "System.Int32");
             Upgrade[] upgrades = new Upgrade[upInts.Length];
             for (int i = 0; i < upInts.Length; i++)
             {
@@ -436,7 +436,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public Upgrade GetUpgradeOnSlot(UpgradeSlot slot)
         {
-            return (Upgrade)MTAShared.GetVehicleUpgradeOnSlot(element, (int)slot);
+            return (Upgrade)MtaShared.GetVehicleUpgradeOnSlot(element, (int)slot);
         }
 
         /// <summary>
@@ -444,7 +444,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public bool RemoveUpgrade(Upgrade upgrade)
         {
-            return MTAShared.RemoveVehicleUpgrade(element, (int)upgrade);
+            return MtaShared.RemoveVehicleUpgrade(element, (int)upgrade);
         }
 
         #endregion
@@ -456,7 +456,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public float GetDoorOpenRatio(Door door)
         {
-            return MTAShared.GetVehicleDoorOpenRatio(element, (int)door);
+            return MtaShared.GetVehicleDoorOpenRatio(element, (int)door);
         }
 
         /// <summary>
@@ -464,7 +464,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public bool SetDoorOpenRatio(Door door, float ratio, int time = 0)
         {
-            return MTAShared.SetVehicleDoorOpenRatio(element, (int)door, ratio, time);
+            return MtaShared.SetVehicleDoorOpenRatio(element, (int)door, ratio, time);
         }
 
         /// <summary>
@@ -472,7 +472,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public DoorState GetDoorState(Door door)
         {
-            return (DoorState)MTAShared.GetVehicleDoorState(element, (int)door);
+            return (DoorState)MtaShared.GetVehicleDoorState(element, (int)door);
         }
 
         /// <summary>
@@ -480,7 +480,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public bool SetDoorState(Door door, DoorState state)
         {
-            return MTAShared.SetVehicleDoorState(element, (int)door, (int)state);
+            return MtaShared.SetVehicleDoorState(element, (int)door, (int)state);
         }
 
         #endregion
@@ -491,7 +491,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public LightState GetLightState(Light light)
         {
-            return (LightState)MTAShared.GetVehicleLightState(element, (int)light);
+            return (LightState)MtaShared.GetVehicleLightState(element, (int)light);
         }
 
         /// <summary>
@@ -499,7 +499,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public bool SetLightState(Light light, LightState state)
         {
-            return MTAShared.SetVehicleLightState(element, (int)light, (int)state);
+            return MtaShared.SetVehicleLightState(element, (int)light, (int)state);
         }
         #endregion
 
@@ -509,7 +509,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public DamageLevel GetPanelDamage(Panel panel)
         {
-            return (DamageLevel)MTAShared.GetVehiclePanelState(element, (int)panel);
+            return (DamageLevel)MtaShared.GetVehiclePanelState(element, (int)panel);
         }
 
         /// <summary>
@@ -517,7 +517,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public bool SetPanelDamage(Panel panel, DamageLevel damage)
         {
-            return MTAShared.SetVehiclePanelState(element, (int)panel, (int)damage);
+            return MtaShared.SetVehiclePanelState(element, (int)panel, (int)damage);
         }
         #endregion            
 

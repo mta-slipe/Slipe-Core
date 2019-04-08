@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,7 +17,7 @@ namespace Slipe.Shared.CollisionShapes
         /// </summary>
         public CollisionTube(Vector3 position, float radius, float height)
         {
-            element = MTAShared.CreateColTube(position.X, position.Y, position.Z, radius, height);
+            element = MtaShared.CreateColTube(position.X, position.Y, position.Z, radius, height);
             ElementManager.Instance.RegisterElement(this);
         }
     }

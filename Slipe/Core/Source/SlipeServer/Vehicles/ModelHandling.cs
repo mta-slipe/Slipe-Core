@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Vehicles;
 
 namespace Slipe.Server.Vehicles
@@ -20,12 +20,12 @@ namespace Slipe.Server.Vehicles
 
         protected override void UpdateFromGame()
         {
-            BuildFromTable(MTAShared.GetDictionaryFromTable(MTAServer.GetModelHandling((int) model), "System.String", "System.Dynamic"));
+            BuildFromTable(MtaShared.GetDictionaryFromTable(MtaServer.GetModelHandling((int) model), "System.String", "System.Dynamic"));
         }
 
         protected override void UpdateToGame(string key, dynamic value)
         {
-            MTAServer.SetModelHandling(model, key, value);
+            MtaServer.SetModelHandling(model, key, value);
         }
     }
 }

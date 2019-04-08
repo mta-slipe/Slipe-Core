@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -33,11 +33,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAServer.GetPlayerWantedLevel(element);
+                return MtaServer.GetPlayerWantedLevel(element);
             }
             set
             {
-                MTAServer.SetPlayerWantedLevel(element, value);
+                MtaServer.SetPlayerWantedLevel(element, value);
             }
         }
 
@@ -48,11 +48,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAShared.GetPlayerName(element);
+                return MtaShared.GetPlayerName(element);
             }
             set
             {
-                MTAServer.SetPlayerName(element, value);
+                MtaServer.SetPlayerName(element, value);
             }
         }
 
@@ -63,11 +63,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return (Team)ElementManager.Instance.GetElement(MTAShared.GetPlayerTeam(element));
+                return (Team)ElementManager.Instance.GetElement(MtaShared.GetPlayerTeam(element));
             }
             set
             {
-                MTAServer.SetPlayerTeam(MTAElement, value.MTAElement);
+                MtaServer.SetPlayerTeam(MTAElement, value.MTAElement);
             }
         }
 
@@ -78,7 +78,7 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return new Account(MTAServer.GetPlayerAccount(element));
+                return new Account(MtaServer.GetPlayerAccount(element));
             }
         }
 
@@ -89,11 +89,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAServer.IsPlayerMapForced(element);
+                return MtaServer.IsPlayerMapForced(element);
             }
             set
             {
-                MTAServer.ForcePlayerMap(element, value);
+                MtaServer.ForcePlayerMap(element, value);
             }
         }
 
@@ -104,11 +104,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAServer.GetPlayerBlurLevel(element);
+                return MtaServer.GetPlayerBlurLevel(element);
             }
             set
             {
-                MTAServer.SetPlayerBlurLevel(element, value);
+                MtaServer.SetPlayerBlurLevel(element, value);
             }
         }
 
@@ -119,7 +119,7 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAServer.GetPlayerIdleTime(element);
+                return MtaServer.GetPlayerIdleTime(element);
             }
         }
 
@@ -130,7 +130,7 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAServer.GetPlayerIP(element);
+                return MtaServer.GetPlayerIP(element);
             }
         }
 
@@ -141,11 +141,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAServer.GetPlayerMoney(element);
+                return MtaServer.GetPlayerMoney(element);
             }
             set
             {
-                MTAServer.SetPlayerMoney(element, value, false);
+                MtaServer.SetPlayerMoney(element, value, false);
             }
         }
 
@@ -156,12 +156,12 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                Tuple<int, int, int> r = MTAShared.GetPlayerNametagColor(element);
+                Tuple<int, int, int> r = MtaShared.GetPlayerNametagColor(element);
                 return new Color((byte)r.Item1, (byte)r.Item2, (byte)r.Item3);
             }
             set
             {
-                MTAShared.SetPlayerNametagColor(element, value.R, value.G, value.B);
+                MtaShared.SetPlayerNametagColor(element, value.R, value.G, value.B);
             }
         }
 
@@ -172,11 +172,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAShared.GetPlayerNametagText(element);
+                return MtaShared.GetPlayerNametagText(element);
             }
             set
             {
-                MTAShared.SetPlayerNametagText(element, value);
+                MtaShared.SetPlayerNametagText(element, value);
             }
         }
 
@@ -187,11 +187,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAShared.IsPlayerNametagShowing(element);
+                return MtaShared.IsPlayerNametagShowing(element);
             }
             set
             {
-                MTAShared.SetPlayerNametagShowing(element, value);
+                MtaShared.SetPlayerNametagShowing(element, value);
             }
         }
 
@@ -202,7 +202,7 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAShared.GetPlayerPing(element);
+                return MtaShared.GetPlayerPing(element);
             }
         }
 
@@ -213,7 +213,7 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAServer.GetPlayerSerial(element);
+                return MtaServer.GetPlayerSerial(element);
             }
         }
 
@@ -224,7 +224,7 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAServer.GetPlayerVersion(element);
+                return MtaServer.GetPlayerVersion(element);
             }
         }
 
@@ -235,11 +235,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAServer.IsPlayerMuted(element);
+                return MtaServer.IsPlayerMuted(element);
             }
             set
             {
-                MTAServer.SetPlayerMuted(element, value);
+                MtaServer.SetPlayerMuted(element, value);
             }
         }
 
@@ -254,7 +254,7 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                MTAElement[] elements = MTAShared.GetArrayFromTable(MTAServer.GetAlivePlayers(), "MTAElement");
+                MtaElement[] elements = MtaShared.GetArrayFromTable(MtaServer.GetAlivePlayers(), "MTAElement");
                 return ElementManager.Instance.CastArray<Player>(elements);
             }
         }
@@ -266,7 +266,7 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                MTAElement[] elements = MTAShared.GetArrayFromTable(MTAServer.GetDeadPlayers(), "MTAElement");
+                MtaElement[] elements = MtaShared.GetArrayFromTable(MtaServer.GetDeadPlayers(), "MTAElement");
                 return ElementManager.Instance.CastArray<Player>(elements);
             }
         }
@@ -280,8 +280,8 @@ namespace Slipe.Server.Peds
             {
                 try
                 {
-                    return (Player)ElementManager.Instance.GetElement(MTAServer.GetRandomPlayer());
-                }catch(MTAException)
+                    return (Player)ElementManager.Instance.GetElement(MtaServer.GetRandomPlayer());
+                }catch(MtaException)
                 {
                     return null;
                 }
@@ -296,7 +296,7 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAServer.GetPlayerCount();
+                return MtaServer.GetPlayerCount();
             }
         }
 
@@ -305,7 +305,7 @@ namespace Slipe.Server.Peds
         #region Constructor
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Player(MTAElement mtaElement) : base(mtaElement)
+        public Player(MtaElement mtaElement) : base(mtaElement)
         {
             Camera = new Camera(this);
         }
@@ -319,7 +319,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool Login(Account account, string password)
         {
-            return MTAServer.LogIn(element, account.MTAAccount, password);
+            return MtaServer.LogIn(element, account.MTAAccount, password);
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool LogOut()
         {
-            return MTAServer.LogOut(element);
+            return MtaServer.LogOut(element);
         }
 
         /// <summary>
@@ -335,7 +335,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public void Spawn(Vector3 position, int rotation = 0, int skin = 0, int interior = 0, int dimension = 0, Team team = null)
         {
-            MTAServer.SpawnPlayer(element, position.X, position.Y, position.Z, rotation, skin, interior, dimension, team == null ? null : team.MTAElement);
+            MtaServer.SpawnPlayer(element, position.X, position.Y, position.Z, rotation, skin, interior, dimension, team == null ? null : team.MTAElement);
         }
 
         /// <summary>
@@ -343,7 +343,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool SetAnnounceValue(string key, string value)
         {
-            return MTAServer.SetPlayerAnnounceValue(element, key, value);
+            return MtaServer.SetPlayerAnnounceValue(element, key, value);
         }
 
         /// <summary>
@@ -351,7 +351,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public string GetAnnounceValue(string key)
         {
-            return MTAServer.GetPlayerAnnounceValue(element, key);
+            return MtaServer.GetPlayerAnnounceValue(element, key);
         }
 
         /// <summary>
@@ -359,7 +359,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool GiveMoney(int amount)
         {
-            return MTAServer.GivePlayerMoney(element, amount);
+            return MtaServer.GivePlayerMoney(element, amount);
         }
 
         /// <summary>
@@ -367,7 +367,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool Redirect(string serverIP, int serverPort = 0, string serverPassword = "")
         {
-            return MTAServer.RedirectPlayer(element, serverIP, serverPort, serverPassword);
+            return MtaServer.RedirectPlayer(element, serverIP, serverPort, serverPassword);
         }
 
         /// <summary>
@@ -375,7 +375,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool ResendACInfo()
         {
-            return MTAServer.ResendPlayerACInfo(element);
+            return MtaServer.ResendPlayerACInfo(element);
         }
 
         /// <summary>
@@ -383,7 +383,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool ResendModInfo()
         {
-            return MTAServer.ResendPlayerModInfo(element);
+            return MtaServer.ResendPlayerModInfo(element);
         }
 
         /// <summary>
@@ -391,7 +391,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool SetHudComponentVisible(HudComponent component, bool visible)
         {
-            return MTAServer.SetPlayerHudComponentVisible(element, component.ToString().ToLower(), visible);
+            return MtaServer.SetPlayerHudComponentVisible(element, component.ToString().ToLower(), visible);
         }
 
         /// <summary>
@@ -399,7 +399,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool SetVoiceBroadCastTo(Element[] targets)
         {
-            return MTAServer.SetPlayerVoiceBroadcastTo(element, targets);
+            return MtaServer.SetPlayerVoiceBroadcastTo(element, targets);
         }
 
         /// <summary>
@@ -407,7 +407,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool SetVoiceIgnoreFrom(Element[] targets)
         {
-            return MTAServer.SetPlayerVoiceIgnoreFrom(element, targets);
+            return MtaServer.SetPlayerVoiceIgnoreFrom(element, targets);
         }
 
         /// <summary>
@@ -415,7 +415,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool TakeMoney(int amount)
         {
-            return MTAServer.TakePlayerMoney(element, amount);
+            return MtaServer.TakePlayerMoney(element, amount);
         }
 
         /// <summary>
@@ -423,7 +423,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool TakeScreenShot(Vector2 dimensions, string tag = "", int quality = 30, int maxBandwith = 5000, int maxPacketSize = 500)
         {
-            return MTAServer.TakePlayerScreenShot(element, (int)dimensions.X, (int)dimensions.Y, tag, quality, maxBandwith, maxPacketSize);
+            return MtaServer.TakePlayerScreenShot(element, (int)dimensions.X, (int)dimensions.Y, tag, quality, maxBandwith, maxPacketSize);
         }
 
         /// <summary>
@@ -431,7 +431,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool PlaySoundFrontEnd(FrontEndSound frontEndSound)
         {
-            return MTAServer.PlaySoundFrontEnd(element, (int)frontEndSound);
+            return MtaServer.PlaySoundFrontEnd(element, (int)frontEndSound);
         }
 
         #endregion
@@ -445,9 +445,9 @@ namespace Slipe.Server.Peds
         {
             try
             {
-                return (Player)ElementManager.Instance.GetElement(MTAShared.GetPlayerFromName(name));
+                return (Player)ElementManager.Instance.GetElement(MtaShared.GetPlayerFromName(name));
             }
-            catch (MTAException)
+            catch (MtaException)
             {
                 throw new NullElementException("No player with the name " + name + " could be found.");
             }

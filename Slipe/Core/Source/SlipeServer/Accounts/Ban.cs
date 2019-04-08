@@ -1,5 +1,5 @@
 ﻿using Slipe.Shared;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +13,7 @@ namespace Slipe.Server.Accounts
     /// </summary>
     public class Ban
     {
-        private readonly MTABan ban;
+        private readonly MtaBan ban;
 
         #region Properties
 
@@ -24,11 +24,11 @@ namespace Slipe.Server.Accounts
         {
             get
             {
-                return MTAServer.GetBanAdmin(ban);
+                return MtaServer.GetBanAdmin(ban);
             }
             set
             {
-                MTAServer.SetBanAdmin(ban, value);
+                MtaServer.SetBanAdmin(ban, value);
             }
         }
 
@@ -41,9 +41,9 @@ namespace Slipe.Server.Accounts
             {
                 try
                 {
-                    return MTAServer.GetBanIP(ban);
+                    return MtaServer.GetBanIP(ban);
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -59,9 +59,9 @@ namespace Slipe.Server.Accounts
             {
                 try
                 {
-                    return MTAServer.GetBanSerial(ban);
+                    return MtaServer.GetBanSerial(ban);
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -76,11 +76,11 @@ namespace Slipe.Server.Accounts
         {
             get
             {
-                return MTAServer.GetBanReason(ban);
+                return MtaServer.GetBanReason(ban);
             }
             set
             {
-                MTAServer.SetBanReason(ban, value);
+                MtaServer.SetBanReason(ban, value);
             }
         }
 
@@ -91,11 +91,11 @@ namespace Slipe.Server.Accounts
         {
             get
             {
-                return MTAServer.GetBanNick(ban);
+                return MtaServer.GetBanNick(ban);
             }
             set
             {
-                MTAServer.SetBanNick(ban, value);
+                MtaServer.SetBanNick(ban, value);
             }
         }
 
@@ -106,7 +106,7 @@ namespace Slipe.Server.Accounts
         {
             get
             {
-                return MTAServer.GetBanTime(ban);
+                return MtaServer.GetBanTime(ban);
             }
         }
 
@@ -117,11 +117,11 @@ namespace Slipe.Server.Accounts
         {
             get
             {
-                return MTAServer.GetUnbanTime(ban);
+                return MtaServer.GetUnbanTime(ban);
             }
             set
             {
-                MTAServer.SetUnbanTime(ban, value);
+                MtaServer.SetUnbanTime(ban, value);
             }
         }
 
@@ -134,11 +134,11 @@ namespace Slipe.Server.Accounts
         {
             get
             {
-                dynamic[] mtaBans = MTAShared.GetArrayFromTable(MTAServer.GetBans(), "ban");
+                dynamic[] mtaBans = MtaShared.GetArrayFromTable(MtaServer.GetBans(), "ban");
                 Ban[] bans = new Ban[mtaBans.Length];
                 for (int i = 0; i < mtaBans.Length; i++)
                 {
-                    bans[i] = new Ban((MTABan)mtaBans[i]);
+                    bans[i] = new Ban((MtaBan)mtaBans[i]);
                 }
                 return bans;
             }
@@ -151,11 +151,11 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public Ban(string ip, string serial, Player banner, string reason, int seconds)
         {
-            ban = MTAServer.AddBan(ip, null, serial, banner == null ? null : banner.MTAElement, reason, seconds);
+            ban = MtaServer.AddBan(ip, null, serial, banner == null ? null : banner.MTAElement, reason, seconds);
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        private Ban(MTABan ban)
+        private Ban(MtaBan ban)
         {
             this.ban = ban;
         }
@@ -167,7 +167,7 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public void Remove(Player player)
         {
-            MTAServer.RemoveBan(ban, player == null ? null : player.MTAElement);
+            MtaServer.RemoveBan(ban, player == null ? null : player.MTAElement);
         }
 
         /// <summary>

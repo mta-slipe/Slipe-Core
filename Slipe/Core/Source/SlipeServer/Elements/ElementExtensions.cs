@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Server.Peds;
 using Slipe.Shared.Elements;
 
@@ -18,7 +18,7 @@ namespace Slipe.Server.Elements
         /// </summary>
         public static bool SetVisibleTo(this Element source, Element target, bool visible)
         {
-            return MTAServer.SetElementVisibleTo(source.MTAElement, target.MTAElement, visible);
+            return MtaServer.SetElementVisibleTo(source.MTAElement, target.MTAElement, visible);
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Slipe.Server.Elements
         /// </summary>
         public static bool ClearVisibleTo(this Element source)
         {
-            return MTAServer.ClearElementVisibleTo(source.MTAElement);
+            return MtaServer.ClearElementVisibleTo(source.MTAElement);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Slipe.Server.Elements
         /// </summary>
         public static bool IsVisibleTo(this Element source, Element target)
         {
-            return MTAServer.IsElementVisibleTo(source.MTAElement, target.MTAElement);
+            return MtaServer.IsElementVisibleTo(source.MTAElement, target.MTAElement);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Slipe.Server.Elements
         /// </summary>
         public static Element Clone(this Element source, Vector3 position)
         {
-            MTAElement mtaElement = MTAServer.CloneElement(source.MTAElement, position.X, position.Y, position.Z, false);
+            MtaElement mtaElement = MtaServer.CloneElement(source.MTAElement, position.X, position.Y, position.Z, false);
             return ElementManager.Instance.GetElement(mtaElement);
         }
 
@@ -51,7 +51,7 @@ namespace Slipe.Server.Elements
         /// </summary>
         public static string GetZoneName(this Element source, bool citiesOnly = false)
         {
-            return MTAServer.GetElementZoneName(source.MTAElement, citiesOnly);
+            return MtaServer.GetElementZoneName(source.MTAElement, citiesOnly);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Slipe.Server.Elements
         /// </summary>
         public static Player GetSyncer(this Element source)
         {
-            return (Player)ElementManager.Instance.GetElement(MTAServer.GetElementSyncer(source.MTAElement));
+            return (Player)ElementManager.Instance.GetElement(MtaServer.GetElementSyncer(source.MTAElement));
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Slipe.Server.Elements
         /// </summary>
         public static bool SetSyncer(this Element source, Player target)
         {
-            return MTAServer.SetElementSyncer(source.MTAElement, target.MTAElement);
+            return MtaServer.SetElementSyncer(source.MTAElement, target.MTAElement);
         }
 
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
 
@@ -20,11 +20,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAShared.GetTrainDirection(element);
+                return MtaShared.GetTrainDirection(element);
             }
             set
             {
-                MTAShared.SetTrainDirection(element, value);
+                MtaShared.SetTrainDirection(element, value);
             }
         }
 
@@ -35,11 +35,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAShared.GetTrainPosition(element);
+                return MtaShared.GetTrainPosition(element);
             }
             set
             {
-                MTAShared.SetTrainPosition(element, value);
+                MtaShared.SetTrainPosition(element, value);
             }
         }
 
@@ -50,11 +50,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAShared.GetTrainSpeed(element);
+                return MtaShared.GetTrainSpeed(element);
             }
             set
             {
-                MTAShared.SetTrainSpeed(element, value);
+                MtaShared.SetTrainSpeed(element, value);
             }
         }
 
@@ -65,11 +65,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAShared.IsTrainDerailable(element);
+                return MtaShared.IsTrainDerailable(element);
             }
             set
             {
-                MTAShared.SetTrainDerailable(element, value);
+                MtaShared.SetTrainDerailable(element, value);
             }
         }
 
@@ -80,11 +80,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAShared.IsTrainDerailed(element);
+                return MtaShared.IsTrainDerailed(element);
             }
             set
             {
-                MTAShared.SetTrainDerailable(element, value);
+                MtaShared.SetTrainDerailable(element, value);
             }
         }
 
@@ -95,7 +95,7 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAClient.IsTrainChainEngine(element);
+                return MtaClient.IsTrainChainEngine(element);
             }
         }
 
@@ -113,7 +113,7 @@ namespace Slipe.Client.Vehicles
 
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Train(MTAElement element) : base(element)
+        public Train(MtaElement element) : base(element)
         {
 
         }

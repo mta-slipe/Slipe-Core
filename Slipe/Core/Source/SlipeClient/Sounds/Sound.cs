@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.ComponentModel;
-using Slipe.Client;
 using Slipe.Shared.Elements;
+using Slipe.Client.Peds;
 
 namespace Slipe.Client.Sounds
 {
@@ -22,7 +22,7 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAClient.GetSoundBPM(element);
+                return MtaClient.GetSoundBPM(element);
             }
         }
 
@@ -33,7 +33,7 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAClient.GetSoundBufferLength(element);
+                return MtaClient.GetSoundBufferLength(element);
             }
         }
 
@@ -58,7 +58,7 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAClient.GetSoundLength(element);
+                return MtaClient.GetSoundLength(element);
             }
         }
 
@@ -69,7 +69,7 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAClient.GetSoundLevelData(element);
+                return MtaClient.GetSoundLevelData(element);
             }
         }
 
@@ -94,11 +94,11 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAClient.GetSoundPan(element);
+                return MtaClient.GetSoundPan(element);
             }
             set
             {
-                MTAClient.SetSoundPan(element, value);
+                MtaClient.SetSoundPan(element, value);
             }
         }
 
@@ -109,11 +109,11 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAClient.GetSoundPosition(element);
+                return MtaClient.GetSoundPosition(element);
             }
             set
             {
-                MTAClient.SetSoundPosition(element, value);
+                MtaClient.SetSoundPosition(element, value);
             }
         }
 
@@ -138,11 +138,11 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAClient.GetSoundSpeed(element);
+                return MtaClient.GetSoundSpeed(element);
             }
             set
             {
-                MTAClient.SetSoundSpeed(element, value);
+                MtaClient.SetSoundSpeed(element, value);
             }
         }
 
@@ -153,11 +153,11 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAClient.GetSoundVolume(element);
+                return MtaClient.GetSoundVolume(element);
             }
             set
             {
-                MTAClient.SetSoundVolume(element, value);
+                MtaClient.SetSoundVolume(element, value);
             }
         }
 
@@ -168,11 +168,11 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAClient.IsSoundPaused(element);
+                return MtaClient.IsSoundPaused(element);
             }
             set
             {
-                MTAClient.SetSoundPaused(element, value);
+                MtaClient.SetSoundPaused(element, value);
             }
         }
 
@@ -181,7 +181,7 @@ namespace Slipe.Client.Sounds
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Sound(MTAElement element) : base(element) { }
+        public Sound(MtaElement element) : base(element) { }
 
         protected Sound() { }
 
@@ -190,7 +190,7 @@ namespace Slipe.Client.Sounds
         /// </summary>
         public Sound(string pathOrUrl, bool looped = false, bool throttled = true)
         {
-            element = MTAClient.PlaySound(pathOrUrl, looped, throttled);
+            element = MtaClient.PlaySound(pathOrUrl, looped, throttled);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -200,7 +200,7 @@ namespace Slipe.Client.Sounds
         public Sound(SoundContainer container, int bankId, int soundId, bool looped = false)
         {
             //string containerBank = ((SoundContainer)container).ToString().ToLower();
-            element = MTAClient.PlaySFX(container.ToString().ToLower(), bankId, soundId, looped);
+            element = MtaClient.PlaySFX(container.ToString().ToLower(), bankId, soundId, looped);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -209,8 +209,8 @@ namespace Slipe.Client.Sounds
         /// </summary>
         public Sound(RadioStation station, int trackId, bool looped = false)
         {
-            string stationName = MTAClient.GetRadioChannelName((int)station);
-            element = MTAClient.PlaySFX("radio", stationName, trackId, looped);
+            string stationName = MtaClient.GetRadioChannelName((int)station);
+            element = MtaClient.PlaySFX("radio", stationName, trackId, looped);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -219,7 +219,7 @@ namespace Slipe.Client.Sounds
         /// </summary>
         public Sound(ExtraStations station, int trackId, bool looped = false)
         {
-            element = MTAClient.PlaySFX("radio", station.ToString(), trackId, looped);
+            element = MtaClient.PlaySFX("radio", station.ToString(), trackId, looped);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -237,7 +237,7 @@ namespace Slipe.Client.Sounds
         /// </summary>
         public float[] GetFftData(int iSamples = 512, int iBands = 0)
         {
-            Dictionary<int, float> raw = MTAShared.GetDictionaryFromTable(MTAClient.GetSoundFFTData(element, iSamples, iBands), "System.Int32", "System.Single");
+            Dictionary<int, float> raw = MtaShared.GetDictionaryFromTable(MtaClient.GetSoundFFTData(element, iSamples, iBands), "System.Int32", "System.Single");
             float[] fftData = new float[raw.Count];
             foreach(KeyValuePair<int, float> pair in raw)
             {
@@ -251,14 +251,14 @@ namespace Slipe.Client.Sounds
         /// </summary>
         public override bool Destroy()
         {
-            return MTAClient.StopSound(element);
+            return MtaClient.StopSound(element);
         }
         /// <summary>
         /// Check if a soundcontainer is available on this client
         /// </summary>
         public static bool GetSfxStatus(SoundContainer container)
         {
-            return MTAClient.GetSFXStatus(container.ToString().ToLower());
+            return MtaClient.GetSFXStatus(container.ToString().ToLower());
         }
 
         #endregion

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Weapons;
 using Slipe.Shared.GameWorld;
 using Slipe.Shared.Helpers;
@@ -37,7 +37,7 @@ namespace Slipe.Server.GameWorld
         /// </summary>
         public bool SetJetPackWeaponEnabled(WeaponType weapon, bool enabled)
         {
-            return MTAServer.SetJetpackWeaponEnabled(EnumTranslator.Instance.TranslateWeapon(weapon), enabled);
+            return MtaServer.SetJetpackWeaponEnabled(EnumTranslator.Instance.TranslateWeapon(weapon), enabled);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Slipe.Server.GameWorld
         /// </summary>
         public bool getJetPackWeaponEnabled(WeaponType weapon)
         {
-            return MTAServer.GetJetpackWeaponEnabled(EnumTranslator.Instance.TranslateWeapon(weapon));
+            return MtaServer.GetJetpackWeaponEnabled(EnumTranslator.Instance.TranslateWeapon(weapon));
         }
 
         /// <summary>

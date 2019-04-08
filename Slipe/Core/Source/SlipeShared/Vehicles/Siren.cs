@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Utilities;
 
 namespace Slipe.Shared.Vehicles
@@ -85,7 +85,7 @@ namespace Slipe.Shared.Vehicles
 
         protected void UpdateThisSiren()
         {
-            MTAShared.SetVehicleSirens(vehicle.MTAElement, point, position.X, position.Y, position.Z, color.R, color.G, color.B, color.A, minAlpha);
+            MtaShared.SetVehicleSirens(vehicle.MTAElement, point, position.X, position.Y, position.Z, color.R, color.G, color.B, color.A, minAlpha);
         }  
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 
 namespace Slipe.Client.Dx
 {
@@ -16,7 +16,7 @@ namespace Slipe.Client.Dx
         /// </summary>
         public ScreenSource(Vector2 dimensions)
         {
-            materialElement = MTAClient.DxCreateScreenSource((int)dimensions.X, (int)dimensions.Y);
+            materialElement = MtaClient.DxCreateScreenSource((int)dimensions.X, (int)dimensions.Y);
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Slipe.Client.Dx
         /// </summary>
         public bool Update(bool resampleNow = false)
         {
-            return MTAClient.DxUpdateScreenSource(materialElement, resampleNow);
+            return MtaClient.DxUpdateScreenSource(materialElement, resampleNow);
         }
     }
 }

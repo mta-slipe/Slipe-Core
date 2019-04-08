@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
 using Slipe.Shared.Elements;
@@ -22,12 +22,12 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                Tuple<float, float, float> position = MTAShared.GetElementPosition(element);
+                Tuple<float, float, float> position = MtaShared.GetElementPosition(element);
                 return new Vector3(position.Item1, position.Item2, position.Item3);
             }
             set
             {
-                MTAShared.SetElementPosition(element, value.X, value.Y, value.Z, false);
+                MtaShared.SetElementPosition(element, value.X, value.Y, value.Z, false);
             }
         }
 
@@ -38,11 +38,11 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAShared.GetElementDimension(element);
+                return MtaShared.GetElementDimension(element);
             }
             set
             {
-                MTAShared.SetElementDimension(element, value);
+                MtaShared.SetElementDimension(element, value);
             }
         }
 
@@ -53,11 +53,11 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAClient.GetSoundMaxDistance(element);
+                return MtaClient.GetSoundMaxDistance(element);
             }
             set
             {
-                MTAClient.SetSoundMaxDistance(element, value);
+                MtaClient.SetSoundMaxDistance(element, value);
             }
         }
 
@@ -68,11 +68,11 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAClient.GetSoundMinDistance(element);
+                return MtaClient.GetSoundMinDistance(element);
             }
             set
             {
-                MTAClient.SetSoundMinDistance(element, value);
+                MtaClient.SetSoundMinDistance(element, value);
             }
         }
 
@@ -83,11 +83,11 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAClient.IsSoundPanningEnabled(element);
+                return MtaClient.IsSoundPanningEnabled(element);
             }
             set
             {
-                MTAClient.SetSoundPanningEnabled(element, value);
+                MtaClient.SetSoundPanningEnabled(element, value);
             }
         }
 
@@ -96,14 +96,14 @@ namespace Slipe.Client.Sounds
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public WorldSound(MTAElement element) : base(element) { }
+        public WorldSound(MtaElement element) : base(element) { }
 
         /// <summary>
         /// Create a sound in the world at a certain position
         /// </summary>
         public WorldSound(string pathOrUrl, Vector3 position, bool looped = false, bool throttled = true)
         {
-            element = MTAClient.PlaySound3D(pathOrUrl, position.X, position.Y, position.Z, looped, throttled);
+            element = MtaClient.PlaySound3D(pathOrUrl, position.X, position.Y, position.Z, looped, throttled);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -112,7 +112,7 @@ namespace Slipe.Client.Sounds
         /// </summary>
         public WorldSound(SoundContainer container, int bankId, int soundId, Vector3 position, bool looped = false)
         {
-            element = MTAClient.PlaySFX3D(container.ToString().ToLower(), bankId, soundId, position.X, position.Y, position.Z, looped);
+            element = MtaClient.PlaySFX3D(container.ToString().ToLower(), bankId, soundId, position.X, position.Y, position.Z, looped);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -121,8 +121,8 @@ namespace Slipe.Client.Sounds
         /// </summary>
         public WorldSound(RadioStation station, int trackId, Vector3 position, bool looped = false)
         {
-            string stationName = MTAClient.GetRadioChannelName((int)station);
-            element = MTAClient.PlaySFX3D("radio", stationName, trackId, position.X, position.Y, position.Z, looped);
+            string stationName = MtaClient.GetRadioChannelName((int)station);
+            element = MtaClient.PlaySFX3D("radio", stationName, trackId, position.X, position.Y, position.Z, looped);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -131,7 +131,7 @@ namespace Slipe.Client.Sounds
         /// </summary>
         public WorldSound(ExtraStations station, int trackId, Vector3 position, bool looped = false)
         {
-            element = MTAClient.PlaySFX3D("radio", station.ToString(), trackId, position.X, position.Y, position.Z, looped);
+            element = MtaClient.PlaySFX3D("radio", station.ToString(), trackId, position.X, position.Y, position.Z, looped);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -144,7 +144,7 @@ namespace Slipe.Client.Sounds
         /// </summary>
         public void AttachTo(PhysicalElement toElement, Vector3 offset)
         {
-            MTAShared.AttachElements(element, toElement.MTAElement, offset.X, offset.Y, offset.Z, 0, 0, 0);
+            MtaShared.AttachElements(element, toElement.MTAElement, offset.X, offset.Y, offset.Z, 0, 0, 0);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Slipe.Client.Sounds
         /// </summary>
         public void Detach()
         {
-            MTAShared.DetachElements(element, null);
+            MtaShared.DetachElements(element, null);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return (PhysicalElement)ElementManager.Instance.GetElement(MTAShared.GetElementAttachedTo(element));
+                return (PhysicalElement)ElementManager.Instance.GetElement(MtaShared.GetElementAttachedTo(element));
             }
         }
 
@@ -181,7 +181,7 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return MTAShared.IsElementAttached(element);
+                return MtaShared.IsElementAttached(element);
             }
         }
 

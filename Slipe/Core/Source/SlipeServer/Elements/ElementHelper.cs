@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Server.GameServer;
 using Slipe.Server.GameWorld;
 using Slipe.Server.Markers;
@@ -45,10 +45,10 @@ namespace Slipe.Server.Elements
             {
                 return elements;
             }
-            List<dynamic> mtaElements = MTAShared.GetListFromTable(MTAServer.GetElementsByType(ElementTypeNames[typeof(T)], startAt.MTAElement), "element");
+            List<dynamic> mtaElements = MtaShared.GetListFromTable(MtaServer.GetElementsByType(ElementTypeNames[typeof(T)], startAt.MTAElement), "element");
             foreach (dynamic mtaElement in mtaElements)
             {
-                Element element = ElementManager.Instance.GetElement((MTAElement)mtaElement);
+                Element element = ElementManager.Instance.GetElement((MtaElement)mtaElement);
                 if (element != null && element is T)
                 {
                     elements.Add((T)element);
@@ -69,7 +69,7 @@ namespace Slipe.Server.Elements
         /// <summary>
         /// Creates an instance of an element given a certain type
         /// </summary>
-        public Element InstantiateElement(string type, MTAElement element)
+        public Element InstantiateElement(string type, MtaElement element)
         {
             switch (type)
             {

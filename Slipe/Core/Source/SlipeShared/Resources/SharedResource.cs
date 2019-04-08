@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Xml;
 using Slipe.Shared.Elements;
 
@@ -12,7 +12,7 @@ namespace Slipe.Shared.Resources
     /// </summary>
     public class SharedResource
     {
-        protected MTAResource _resource;
+        protected MtaResource _resource;
 
         #region Properties
 
@@ -23,7 +23,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return MTAShared.GetResourceName(_resource);
+                return MtaShared.GetResourceName(_resource);
             }
         }
 
@@ -35,7 +35,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return ElementManager.Instance.GetElement(MTAShared.GetResourceDynamicElementRoot(_resource));
+                return ElementManager.Instance.GetElement(MtaShared.GetResourceDynamicElementRoot(_resource));
             }
         }
 
@@ -46,7 +46,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return ElementManager.Instance.GetElement(MTAShared.GetResourceRootElement(_resource));
+                return ElementManager.Instance.GetElement(MtaShared.GetResourceRootElement(_resource));
             }
         }
 
@@ -57,7 +57,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return MTAShared.GetResourceState(_resource);
+                return MtaShared.GetResourceState(_resource);
             }
         }
 
@@ -68,7 +68,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return MTAShared.GetArrayFromTable(MTAShared.GetResourceExportedFunctions(_resource), "System.String");
+                return MtaShared.GetArrayFromTable(MtaShared.GetResourceExportedFunctions(_resource), "System.String");
             }
         }
 
@@ -77,10 +77,10 @@ namespace Slipe.Shared.Resources
         /// </summary>
         public XmlNode Config(string filePath)
         {
-            MTAElement mtaNode = MTAShared.GetResourceConfig(filePath);
+            MtaElement mtaNode = MtaShared.GetResourceConfig(filePath);
 
             XmlDocument document = new XmlDocument();
-            XmlNode xmlNode = document.CreateElement(MTAShared.XmlNodeGetName(mtaNode));
+            XmlNode xmlNode = document.CreateElement(MtaShared.XmlNodeGetName(mtaNode));
             /*
             [[
             xmlNode:index(mtaNode)
@@ -92,7 +92,7 @@ namespace Slipe.Shared.Resources
         #endregion
 
         #region Constructors
-        public MTAResource MTAResource
+        public MtaResource MTAResource
         {
             get
             {
@@ -103,7 +103,7 @@ namespace Slipe.Shared.Resources
         /// <summary>
         /// Create a resource from an MTA resource element
         /// </summary>
-        public SharedResource(MTAResource resource)
+        public SharedResource(MtaResource resource)
         {
             _resource = resource;
         }
@@ -115,7 +115,7 @@ namespace Slipe.Shared.Resources
         /// </summary>
         public static SharedResource FromName(string name)
         {
-            return new SharedResource(MTAShared.GetResourceFromName(name));
+            return new SharedResource(MtaShared.GetResourceFromName(name));
         }
     }
 }

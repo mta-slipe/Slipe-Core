@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using Slipe.Shared.Utilities;
 using System;
 using System.Collections.Generic;
@@ -18,11 +18,11 @@ namespace Slipe.Client.IO
         {
             get
             {
-                return MTAClient.IsChatVisible();
+                return MtaClient.IsChatVisible();
             }
             set
             {
-                MTAClient.ShowChat(value);
+                MtaClient.ShowChat(value);
             }
         }
 
@@ -33,7 +33,7 @@ namespace Slipe.Client.IO
         {
             get
             {
-                return MTAClient.IsChatBoxInputActive();
+                return MtaClient.IsChatBoxInputActive();
             }
         }
 
@@ -45,7 +45,7 @@ namespace Slipe.Client.IO
         /// <param name="colorCoded"></param>
         public static void WriteLine(string message, Color color, bool colorCoded = false)
         {
-            MTAClient.OutputChatBox(message, color.R, color.G, color.B, colorCoded);
+            MtaClient.OutputChatBox(message, color.R, color.G, color.B, colorCoded);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Slipe.Client.IO
         /// </summary>
         public static void Clear()
         {
-            MTAClient.ClearChatBox();
+            MtaClient.ClearChatBox();
         }
     }
 }

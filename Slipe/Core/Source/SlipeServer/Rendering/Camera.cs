@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -32,11 +32,11 @@ namespace Slipe.Server.Rendering
         {
             get
             {
-                return ElementManager.Instance.GetElement(MTAServer.GetCameraTarget(player.MTAElement));
+                return ElementManager.Instance.GetElement(MtaServer.GetCameraTarget(player.MTAElement));
             }
             set
             {
-                MTAServer.SetCameraTarget(player.MTAElement, value.MTAElement);
+                MtaServer.SetCameraTarget(player.MTAElement, value.MTAElement);
             }
         }
 
@@ -47,11 +47,11 @@ namespace Slipe.Server.Rendering
         {
             get
             {
-                return MTAServer.GetCameraInterior(player.MTAElement);
+                return MtaServer.GetCameraInterior(player.MTAElement);
             }
             set
             {
-                MTAServer.SetCameraInterior(player.MTAElement, value);
+                MtaServer.SetCameraInterior(player.MTAElement, value);
             }
         }
 
@@ -74,7 +74,7 @@ namespace Slipe.Server.Rendering
         /// </summary>
         public bool SetMatrix(Vector3 position, Vector3 lookAt, float roll = 0, float fov = 70)
         {
-            return MTAServer.SetCameraMatrix(player.MTAElement, position.X, position.Y, position.Z, lookAt.X, lookAt.Y, lookAt.Z, roll, fov);
+            return MtaServer.SetCameraMatrix(player.MTAElement, position.X, position.Y, position.Z, lookAt.X, lookAt.Y, lookAt.Z, roll, fov);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Slipe.Server.Rendering
         /// </summary>
         public Tuple<Vector3, Vector3, float, float> GetFullCameraMatrix()
         {
-            Tuple<float, float, float, float, float, float, float, float> result = MTAServer.GetCameraMatrix(player.MTAElement);
+            Tuple<float, float, float, float, float, float, float, float> result = MtaServer.GetCameraMatrix(player.MTAElement);
             Vector3 position = new Vector3(result.Item1, result.Item2, result.Item3);
             Vector3 rotation = new Vector3(result.Item4, result.Item5, result.Item6);
             float roll = result.Item7;
@@ -110,7 +110,7 @@ namespace Slipe.Server.Rendering
         /// </summary>
         public bool Fade(CameraFade fade, Color color, int time = 1000)
         {
-            return MTAServer.FadeCamera(player.MTAElement, fade == CameraFade.In ? true : false, time / 1000, color.R, color.G, color.B);
+            return MtaServer.FadeCamera(player.MTAElement, fade == CameraFade.In ? true : false, time / 1000, color.R, color.G, color.B);
         }
 
         /// <summary>

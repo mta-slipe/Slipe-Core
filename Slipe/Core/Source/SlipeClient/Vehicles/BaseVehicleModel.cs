@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.Shared.Vehicles;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 
 namespace Slipe.Client.Vehicles
@@ -16,12 +16,12 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                Tuple<float, float, float> r = MTAClient.GetVehicleModelExhaustFumesPosition(id);
+                Tuple<float, float, float> r = MtaClient.GetVehicleModelExhaustFumesPosition(id);
                 return new Vector3(r.Item1, r.Item2, r.Item3);
             }
             set
             {
-                MTAClient.SetVehicleModelExhaustFumesPosition(id, value.X, value.Y, value.Z);
+                MtaClient.SetVehicleModelExhaustFumesPosition(id, value.X, value.Y, value.Z);
             }
         }
 

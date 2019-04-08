@@ -2,25 +2,50 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
+using Slipe.Client.Helpers;
 
 namespace Slipe.Client.Dx
 {
-    public class Dx3DLine : PreRenderAttachObject, IDrawable
+    public class Dx3DLine : LazyAttachableObject, IDrawable
     {
         protected Vector3 relativeEndPosition;
 
         /// <summary>
         /// The start position of the 3D line
         /// </summary>
-        public Vector3 StartPosition { get; set; }
+        public Vector3 startPos;
+        public Vector3 StartPosition
+        {
+            get
+            {
+                Update();
+                return startPos;
+            }
+            set
+            {
+                startPos = value;
+            }
+        }
 
         /// <summary>
         /// The end position of the 3D line
         /// </summary>
-        public Vector3 EndPosition { get; set; }
+        public Vector3 endPos;
+        public Vector3 EndPosition
+        {
+            get
+            {
+                Update();
+                return endPos;
+            }
+            set
+            {
+                endPos = value;
+            }
+        }
 
         /// <summary>
         /// The color of the 3D line
@@ -36,6 +61,11 @@ namespace Slipe.Client.Dx
         /// Wether to draw the line behind or in front of GUI elements
         /// </summary>
         public bool PostGUI { get; set; }
+
+        /// <summary>
+        /// Get and set if this line is currently visible
+        /// </summary>
+        public bool Visible { get; set; }
 
         /// <summary>
         /// Create a new 3D line
@@ -68,13 +98,15 @@ namespace Slipe.Client.Dx
         /// </summary>
         public virtual bool Draw()
         {
-            return MTAClient.DxDrawLine3D(StartPosition.X, StartPosition.Y, StartPosition.Z, EndPosition.X, EndPosition.Y, EndPosition.Z, Color.Hex, Width, PostGUI);
+            if(Visible)
+                return MtaClient.DxDrawLine3D(StartPosition.X, StartPosition.Y, StartPosition.Z, EndPosition.X, EndPosition.Y, EndPosition.Z, Color.Hex, Width, PostGUI);
+            return false;
         }
 
         protected override void Update()
         {
-            StartPosition = ToAttached.Position + Offset.Translation;
-            EndPosition = Vector3.Transform(relativeEndPosition, ToAttached.Matrix * Offset);
+            startPos = ToAttached.Position + Offset.Translation;
+            endPos = Vector3.Transform(relativeEndPosition, ToAttached.Matrix * Offset);
         }
     }
 }

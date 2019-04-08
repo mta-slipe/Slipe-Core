@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 
 namespace Slipe.Server.GameServer
 {
@@ -19,11 +19,11 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return MTAServer.GetServerPassword();
+                return MtaServer.GetServerPassword();
             }
             set
             {
-                MTAServer.SetServerPassword(value);
+                MtaServer.SetServerPassword(value);
             }
         }
 
@@ -34,11 +34,11 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return MTAServer.GetMaxPlayers();
+                return MtaServer.GetMaxPlayers();
             }
             set
             {
-                MTAServer.SetMaxPlayers(value);
+                MtaServer.SetMaxPlayers(value);
             }
         }
 
@@ -49,33 +49,33 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return MTAShared.GetFPSLimit();
+                return MtaShared.GetFPSLimit();
             }
             set
             {
-                MTAShared.SetFPSLimit(value);
+                MtaShared.SetFPSLimit(value);
             }
         }
 
         /// <summary>
         /// Get the current MTA version of this server
         /// </summary>
-        public static string Version { get { return MTAShared.GetVersion(); } }
+        public static string Version { get { return MtaShared.GetVersion(); } }
 
         /// <summary>
         /// Get the port this server runs on
         /// </summary>
-        public static int Port { get { return MTAServer.GetServerPort(); } }
+        public static int Port { get { return MtaServer.GetServerPort(); } }
 
         /// <summary>
         /// Get the HTTP port of this server
         /// </summary>
-        public static int HTTPPort { get { return MTAServer.GetServerHttpPort(); } }
+        public static int HTTPPort { get { return MtaServer.GetServerHttpPort(); } }
 
         /// <summary>
         /// Get the name of this server
         /// </summary>
-        public static string Name { get { return MTAServer.GetServerName(); } }
+        public static string Name { get { return MtaServer.GetServerName(); } }
 
         /// <summary>
         /// Get if voice is currently enabled
@@ -84,7 +84,7 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return MTAShared.IsVoiceEnabled();
+                return MtaShared.IsVoiceEnabled();
             }
         }
 
@@ -95,7 +95,7 @@ namespace Slipe.Server.GameServer
         /// </summary>
         public static bool SetGlitchEnabled(Glitch glitch, bool enabled)
         {
-            return MTAServer.SetGlitchEnabled(glitch.ToString().ToLower(), enabled);
+            return MtaServer.SetGlitchEnabled(glitch.ToString().ToLower(), enabled);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Slipe.Server.GameServer
         /// </summary>
         public static bool IsGlitchEnabled(Glitch glitch)
         {
-            return MTAServer.IsGlitchEnabled(glitch.ToString().ToLower());
+            return MtaServer.IsGlitchEnabled(glitch.ToString().ToLower());
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Slipe.Server.GameServer
         /// </summary>
         public static void Shutdown(string reason)
         {
-            MTAServer.Shutdown(reason);
+            MtaServer.Shutdown(reason);
         }
     }
 }

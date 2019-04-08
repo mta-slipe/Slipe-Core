@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
 using System.ComponentModel;
@@ -23,7 +23,7 @@ namespace Slipe.Shared.Markers
         {
             get
             {
-                return MTAShared.GetMarkerCount();
+                return MtaShared.GetMarkerCount();
             }
         }
 
@@ -34,12 +34,12 @@ namespace Slipe.Shared.Markers
         {
             get
             {
-                Tuple<int, int, int, int> tuple = MTAShared.GetMarkerColor(element);
+                Tuple<int, int, int, int> tuple = MtaShared.GetMarkerColor(element);
                 return new Color((byte)tuple.Item1, (byte)tuple.Item2, (byte)tuple.Item3, (byte)tuple.Item4);
             }
             set
             {
-                MTAShared.SetMarkerColor(element, value.R, value.G, value.B, value.A);
+                MtaShared.SetMarkerColor(element, value.R, value.G, value.B, value.A);
             }
         }
 
@@ -50,12 +50,12 @@ namespace Slipe.Shared.Markers
         {
             get
             {
-                Enum.TryParse(MTAShared.GetMarkerIcon(element), true, out MarkerIcon result);
+                Enum.TryParse(MtaShared.GetMarkerIcon(element), true, out MarkerIcon result);
                 return result;
             }
             set
             {
-                MTAShared.SetMarkerIcon(element, value.ToString().ToLower());
+                MtaShared.SetMarkerIcon(element, value.ToString().ToLower());
             }
         }
 
@@ -66,11 +66,11 @@ namespace Slipe.Shared.Markers
         {
             get
             {
-                return MTAShared.GetMarkerSize(element);
+                return MtaShared.GetMarkerSize(element);
             }
             set
             {
-                MTAShared.SetMarkerSize(element, value);
+                MtaShared.SetMarkerSize(element, value);
             }
         }
 
@@ -81,12 +81,12 @@ namespace Slipe.Shared.Markers
         {
             get
             {
-                Tuple<float, float, float> result = MTAShared.GetMarkerTarget(element);
+                Tuple<float, float, float> result = MtaShared.GetMarkerTarget(element);
                 return new Vector3(result.Item1, result.Item2, result.Item3);
             }
             set
             {
-                MTAShared.SetMarkerTarget(element, value.X, value.Y, value.Z);
+                MtaShared.SetMarkerTarget(element, value.X, value.Y, value.Z);
             }
         }
 
@@ -97,12 +97,12 @@ namespace Slipe.Shared.Markers
         {
             get
             {
-                Enum.TryParse(MTAShared.GetMarkerType(element), true, out MarkerType result);
+                Enum.TryParse(MtaShared.GetMarkerType(element), true, out MarkerType result);
                 return result;
             }
             set
             {
-                MTAShared.SetMarkerType(element, value.ToString().ToLower());
+                MtaShared.SetMarkerType(element, value.ToString().ToLower());
             }
         }
 
@@ -113,7 +113,7 @@ namespace Slipe.Shared.Markers
         protected SharedMarker() : base() { }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public SharedMarker(MTAElement element) : base(element) { }
+        public SharedMarker(MtaElement element) : base(element) { }
 
         #endregion
 

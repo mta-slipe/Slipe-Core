@@ -1,15 +1,15 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Slipe.Client.Assets
 {
-    public class TXD: Asset
+    public class Txd : Asset
     {
-        private MTAElement txd;
+        private MtaElement txd;
 
-        public TXD(string filepath): base(filepath)
+        public Txd(string filepath): base(filepath)
         {
 
         }
@@ -20,21 +20,21 @@ namespace Slipe.Client.Assets
         /// <param name="filteringEnabled"></param>
         public void Load(bool filteringEnabled = true)
         {
-            this.txd = MTAClient.EngineLoadTXD(this.filepath, filteringEnabled);
+            this.txd = MtaClient.EngineLoadTXD(this.filepath, filteringEnabled);
         }
 
         /// <summary>
         /// Applies the TXD to the game
         /// </summary>
         /// <param name="model"></param>
-        public void Apply(int model)
+        public void ApplyTo(int model)
         {
             if (this.txd == null)
             {
                 throw new Exception(string.Format("TXD file {0} has not yet been loaded", this.filepath));
             }
 
-            MTAClient.EngineImportTXD(this.txd, model);
+            MtaClient.EngineImportTXD(this.txd, model);
         }
     }
 }

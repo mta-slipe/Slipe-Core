@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,12 +21,12 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                Tuple<float, float, float> scale = MTAShared.GetObjectScale(element);
+                Tuple<float, float, float> scale = MtaShared.GetObjectScale(element);
                 return new Vector3(scale.Item1, scale.Item2, scale.Item3);
             }
             set
             {
-                MTAShared.SetObjectScale(element, value.X, value.Y, value.Z);
+                MtaShared.SetObjectScale(element, value.X, value.Y, value.Z);
             }
         }
 
@@ -36,7 +36,7 @@ namespace Slipe.Shared.GameWorld
         /// Creates or retrieves a SharedWorldObject using an MTAElement representing an object
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public SharedWorldObject(MTAElement element) : base(element) { }
+        public SharedWorldObject(MtaElement element) : base(element) { }
 
         /// <summary>
         /// Creates a SharedWorldObject from all CreateObject variables
@@ -44,7 +44,7 @@ namespace Slipe.Shared.GameWorld
         /// <include file='doc.xml' path='docs/members[@name="SharedWorldObject"]/constructor/*'/>
         public SharedWorldObject(int model, Vector3 position, Vector3 rotation, bool isLowLOD = false)
         {
-            element = MTAShared.CreateObject(model, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, isLowLOD);
+            element = MtaShared.CreateObject(model, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, isLowLOD);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -60,7 +60,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool Move(int milliseconds, Vector3 position, Vector3 rotationOffset, EasingFunction easingType = EasingFunction.Linear, float easingPeriod = 0, float easingAmplitude = 0, float easingOvershoot = 0)
         {
-            return MTAShared.MoveObject(element, milliseconds, position.X, position.Y, position.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z, easingType.ToString(), easingPeriod, easingAmplitude, easingOvershoot);
+            return MtaShared.MoveObject(element, milliseconds, position.X, position.Y, position.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z, easingType.ToString(), easingPeriod, easingAmplitude, easingOvershoot);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool Stop()
         {
-            return MTAShared.StopObject(element);
+            return MtaShared.StopObject(element);
         }
     }
 }

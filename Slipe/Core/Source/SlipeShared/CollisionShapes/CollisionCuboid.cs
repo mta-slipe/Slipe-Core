@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,7 +17,7 @@ namespace Slipe.Shared.CollisionShapes
         /// </summary>
         public CollisionCuboid(Vector3 position, float width, float depth, float height)
         {
-            element = MTAShared.CreateColCuboid(position.X, position.Y, position.Z, width, depth, height);
+            element = MtaShared.CreateColCuboid(position.X, position.Y, position.Z, width, depth, height);
             ElementManager.Instance.RegisterElement(this);
         }
     }

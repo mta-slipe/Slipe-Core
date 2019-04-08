@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Peds;
 using System.ComponentModel;
 
@@ -22,11 +22,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAShared.GetPedArmor(element);
+                return MtaShared.GetPedArmor(element);
             }
             set
             {
-                MTAServer.SetPedArmor(element, value);
+                MtaServer.SetPedArmor(element, value);
             }
         }
 
@@ -37,11 +37,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return (FightingStyle)MTAShared.GetPedFightingStyle(element);
+                return (FightingStyle)MtaShared.GetPedFightingStyle(element);
             }
             set
             {
-                MTAServer.SetPedFightingStyle(element, (int)value);
+                MtaServer.SetPedFightingStyle(element, (int)value);
             }
         }
 
@@ -52,11 +52,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAServer.GetPedGravity(element);
+                return MtaServer.GetPedGravity(element);
             }
             set
             {
-                MTAServer.SetPedGravity(element, value);
+                MtaServer.SetPedGravity(element, value);
             }
         }
 
@@ -67,11 +67,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAShared.IsPedChoking(element);
+                return MtaShared.IsPedChoking(element);
             }
             set
             {
-                MTAServer.SetPedChoking(element, value);
+                MtaServer.SetPedChoking(element, value);
             }
         }
 
@@ -82,11 +82,11 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return MTAShared.IsPedWearingJetpack(element);
+                return MtaShared.IsPedWearingJetpack(element);
             }
             set
             {
-                MTAServer.SetPedWearingJetpack(element, value);
+                MtaServer.SetPedWearingJetpack(element, value);
             }
         }
 
@@ -97,14 +97,14 @@ namespace Slipe.Server.Peds
         public Ped() : base() { }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Ped(MTAElement element) : base(element) { }
+        public Ped(MtaElement element) : base(element) { }
 
         /// <summary>
         /// Create a new ped
         /// </summary>
         public Ped(PedModel model, Vector3 position, float rotation = 0.0f, bool synced = true)
         {
-            element = MTAServer.CreatePed((int)model, position.X, position.Y, position.Z, rotation, synced);
+            element = MtaServer.CreatePed((int)model, position.X, position.Y, position.Z, rotation, synced);
         }
 
         #endregion
@@ -114,7 +114,7 @@ namespace Slipe.Server.Peds
         /// </summary>
         public bool ReloadWeapon()
         {
-            return MTAServer.ReloadPedWeapon(element);
+            return MtaServer.ReloadPedWeapon(element);
         }
     }
 

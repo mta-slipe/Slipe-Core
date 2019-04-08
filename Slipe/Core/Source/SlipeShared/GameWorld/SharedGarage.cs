@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 
 namespace Slipe.Shared.GameWorld
 {
@@ -19,11 +19,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.IsGarageOpen(_garageID);
+                return MtaShared.IsGarageOpen(_garageID);
             }
             set
             {
-                MTAShared.SetGarageOpen(_garageID, value);
+                MtaShared.SetGarageOpen(_garageID, value);
             }
         }
 

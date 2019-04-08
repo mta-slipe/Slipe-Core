@@ -10,9 +10,9 @@ namespace Slipe.Client.Assets
     /// </summary>
     public class Mod
     {
-        private DFF dff;
-        private TXD txd;
-        private COL col;
+        private Dff dff;
+        private Txd txd;
+        private Col col;
         private List<int> modelsToApply;
 
         private DownloadState state;
@@ -23,7 +23,7 @@ namespace Slipe.Client.Assets
         /// <param name="txd"></param>
         /// <param name="dff"></param>
         /// <param name="col"></param>
-        public Mod(TXD txd = null, DFF dff = null, COL col = null)
+        public Mod(Txd txd = null, Dff dff = null, Col col = null)
         {
             this.txd = txd;
             this.dff = dff;
@@ -40,14 +40,14 @@ namespace Slipe.Client.Assets
         /// <param name="colFilepath"></param>
         public Mod(string txdFilepath, string dffFilepath = null, string colFilepath = null)
         {
-            this.txd = new TXD(txdFilepath);
+            this.txd = new Txd(txdFilepath);
             if (dffFilepath != null)
             {
-                this.dff = new DFF(dffFilepath);
+                this.dff = new Dff(dffFilepath);
             }
             if (colFilepath != null)
             {
-                this.col = new COL(colFilepath);
+                this.col = new Col(colFilepath);
             }
             this.state = DownloadState.Default;
             this.modelsToApply = new List<int>();
@@ -56,7 +56,7 @@ namespace Slipe.Client.Assets
         /// <summary>
         /// Downloads, loads and applies all files required for this mod.
         /// </summary>
-        public void Apply(int model)
+        public void ApplyTo(int model)
         {
             if (this.state == DownloadState.Downloaded)
             {
@@ -113,17 +113,17 @@ namespace Slipe.Client.Assets
                 return;
             }
             this.txd.Load();
-            this.txd.Apply(model);
+            this.txd.ApplyTo(model);
             if (this.dff != null)
             {
                 this.dff.Load();
-                this.dff.Apply(model);
+                this.dff.ApplyTo(model);
             }
 
             if (this.col != null)
             {
                 this.col.Load();
-                this.col.Apply(model);
+                this.col.ApplyTo(model);
             }
         }
     }

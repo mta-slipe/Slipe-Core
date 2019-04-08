@@ -1,11 +1,8 @@
-﻿using Slipe.Client;
-using Slipe.Client.Javascript;
-using Slipe.Client.Enums;
+﻿using Slipe.Client.Enums;
 using RPCDefinitions;
 using System;
 using System.Diagnostics;
 using System.Numerics;
-using Slipe.Shared.Enums;
 using Slipe.Shared.Rpc;
 using Slipe.Client.Dx;
 using Slipe.Client.Assets;
@@ -13,6 +10,13 @@ using Slipe.Client.Effects;
 using Slipe.Client.Sounds;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Peds;
+using Slipe.Client.Elements;
+using Slipe.Client.GameClient;
+using Slipe.Client.Browsers;
+using Slipe.Client.IO;
+using Slipe.Client.Gui;
+using Slipe.Client.Rpc;
+using Slipe.Client.Peds;
 
 namespace ClientTest
 {
@@ -24,7 +28,7 @@ namespace ClientTest
             new Program();
         }
 
-        private GUIBrowser guiBrowser;
+        private GuiBrowser guiBrowser;
         private Browser browser;
 
         public Program()
@@ -42,16 +46,16 @@ namespace ClientTest
             //RPCManager.Instance.RegisterRPC("testRPC", (TestRPCStruct arguments) => {
             //    Debug.WriteLine("Handling testRPC, name: {0}, x: {1}", arguments.name, arguments.x);
             //});
-            RPCManager.Instance.RegisterRPC<BasicIncomingRpc>("testRPC", HandleTestRPC);
-            RPCManager.Instance.TriggerRPC("onPlayerReady", new EmptyOutgoingRpc());
+            RpcManager.Instance.RegisterRPC<BasicIncomingRpc>("testRPC", HandleTestRPC);
+            RpcManager.Instance.TriggerRPC("onPlayerReady", new EmptyOutgoingRpc());
 
             Element dummy = new Element("flag", "ab3x");
             Debug.WriteLine(dummy.Type);
 
             Client.Engine.SetAsynchronousLoading(true);
-            new Mod("Assets/m4.txd", "Assets/m4.dff").Apply(356);
+            new Mod("Assets/m4.txd", "Assets/m4.dff").ApplyTo(356);
 
-            new CustomAnimation("Assets/salute.ifp").Apply("salute");
+            new CustomAnimation("Assets/salute.ifp").ApplyTo("salute");
 
             new Sound(SoundContainer.spc_pa, 16, 9);
             WorldSound deutschland = new WorldSound("http://www.noiseaddicts.com/samples_1w72b820/4192.mp3", new Vector3(-62, 46, 4), true);

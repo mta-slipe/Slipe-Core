@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 
 namespace Slipe.Shared.Vehicles
 {
@@ -31,7 +31,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MTAShared.GetVehicleNameFromModel(id);
+                return MtaShared.GetVehicleNameFromModel(id);
             }
         }
 
@@ -42,7 +42,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                Dictionary<string, dynamic> d = MTAShared.GetDictionaryFromTable(MTAShared.GetOriginalHandling(id), "System.String", "dynamic");
+                Dictionary<string, dynamic> d = MtaShared.GetDictionaryFromTable(MtaShared.GetOriginalHandling(id), "System.String", "dynamic");
                 return new Handling(d);
             }
         }
@@ -59,7 +59,7 @@ namespace Slipe.Shared.Vehicles
         /// </summary>
         public static SharedVehicleModel FromName(string name)
         {
-            int id = MTAShared.GetVehicleModelFromName(name);
+            int id = MtaShared.GetVehicleModelFromName(name);
             return new SharedVehicleModel(id);
         }
 

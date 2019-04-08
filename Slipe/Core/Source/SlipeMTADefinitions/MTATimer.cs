@@ -1,3 +1,3 @@
-namespace Slipe.MTADefinitions {
-	public class MTATimer{}
+namespace Slipe.MtaDefinitions {
+	public class MtaTimer{}
 }

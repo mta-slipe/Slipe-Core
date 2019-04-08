@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 
 namespace Slipe.Shared.Elements
 {
@@ -11,7 +11,7 @@ namespace Slipe.Shared.Elements
     /// </summary>
     public class Element
     {
-        protected internal MTAElement element;
+        protected internal MtaElement element;
 
         #region Properties
 
@@ -23,7 +23,7 @@ namespace Slipe.Shared.Elements
         /// <summary>
         /// Get the MTAElement instance of this class instance
         /// </summary>
-        public MTAElement MTAElement
+        public MtaElement MTAElement
         {
             get
             {
@@ -34,7 +34,7 @@ namespace Slipe.Shared.Elements
         /// <summary>
         /// Get the type of the element
         /// </summary>
-        public string Type { get { return MTAShared.GetElementType(element); } }
+        public string Type { get { return MtaShared.GetElementType(element); } }
 
         /// <summary>
         /// This function gets the ID of an element. This is the "id" attribute of the element and is a string, NOT a number like a model ID, weapons ID or similar.
@@ -43,11 +43,11 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.GetElementID(element);
+                return MtaShared.GetElementID(element);
             }
             set
             {
-                MTAShared.SetElementID(element, value);
+                MtaShared.SetElementID(element, value);
             }
         }
 
@@ -62,7 +62,7 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.GetElementChildrenCount(element);
+                return MtaShared.GetElementChildrenCount(element);
             }
         }
 
@@ -73,11 +73,11 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return ElementManager.Instance.GetElement(MTAShared.GetElementParent(element));
+                return ElementManager.Instance.GetElement(MtaShared.GetElementParent(element));
             }
             set
             {
-                MTAShared.SetElementParent(element, value.MTAElement);
+                MtaShared.SetElementParent(element, value.MTAElement);
             }
         }
 
@@ -88,11 +88,11 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.IsElementCallPropagationEnabled(element);
+                return MtaShared.IsElementCallPropagationEnabled(element);
             }
             set
             {
-                MTAShared.SetElementCallPropagationEnabled(element, value);
+                MtaShared.SetElementCallPropagationEnabled(element, value);
             }
         }
 
@@ -106,7 +106,7 @@ namespace Slipe.Shared.Elements
         /// Create an element from a MTA element instance
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Element(MTAElement mtaElement)
+        public Element(MtaElement mtaElement)
         {
             element = mtaElement;
             ElementManager.Instance.RegisterElement(this);
@@ -117,7 +117,7 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public Element(string elementType, string elementID = null)
         {
-            element = MTAShared.CreateElement(elementType, elementID);
+            element = MtaShared.CreateElement(elementType, elementID);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -130,7 +130,7 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public virtual bool Destroy()
         {
-            return MTAShared.DestroyElement(element);
+            return MtaShared.DestroyElement(element);
         }
 
         #endregion
@@ -142,7 +142,7 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public Element GetChild(int index = 0)
         {
-            return ElementManager.Instance.GetElement(MTAShared.GetElementChild(element, index));
+            return ElementManager.Instance.GetElement(MtaShared.GetElementChild(element, index));
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public Element[] GetChildren(string ofType = null)
         {
-            MTAElement[] mtaElements = MTAShared.GetArrayFromTable(MTAShared.GetElementChildren(element, ofType), "MTAElement");
+            MtaElement[] mtaElements = MtaShared.GetArrayFromTable(MtaShared.GetElementChildren(element, ofType), "MTAElement");
             return ElementManager.Instance.CastArray<Element>(mtaElements);
         }
 
@@ -164,7 +164,7 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public static Element GetByID(string id, int index = 0)
         {
-            return ElementManager.Instance.GetElement(MTAShared.GetElementByID(id, index));
+            return ElementManager.Instance.GetElement(MtaShared.GetElementByID(id, index));
         }
 
         #endregion
@@ -182,7 +182,7 @@ namespace Slipe.Shared.Elements
         /// <summary>
         /// Used to handle events that are triggered on the attached MTA element
         /// </summary>
-        public virtual void HandleEvent(string eventName, MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public virtual void HandleEvent(string eventName, MtaElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             if (this == Root)
             {
@@ -190,7 +190,7 @@ namespace Slipe.Shared.Elements
             }
         }
 
-        public delegate void OnRootEventHandler(string eventName, MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8);
+        public delegate void OnRootEventHandler(string eventName, MtaElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8);
         public static event OnRootEventHandler OnRootEvent;
 
         #endregion

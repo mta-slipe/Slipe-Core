@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 
 namespace Slipe.Client.Sounds
 {
@@ -24,7 +24,7 @@ namespace Slipe.Client.Sounds
             }
             set
             {
-                MTAClient.SetSoundEffectEnabled(sound.MTAElement, "gargle", value);
+                MtaClient.SetSoundEffectEnabled(sound.MTAElement, "gargle", value);
             }
         }
 
@@ -38,7 +38,7 @@ namespace Slipe.Client.Sounds
             }
             set
             {
-                MTAClient.SetSoundEffectEnabled(sound.MTAElement, "compressor", value);
+                MtaClient.SetSoundEffectEnabled(sound.MTAElement, "compressor", value);
             }
         }
 
@@ -52,7 +52,7 @@ namespace Slipe.Client.Sounds
             }
             set
             {
-                MTAClient.SetSoundEffectEnabled(sound.MTAElement, "echo", value);
+                MtaClient.SetSoundEffectEnabled(sound.MTAElement, "echo", value);
             }
         }
 
@@ -66,7 +66,7 @@ namespace Slipe.Client.Sounds
             }
             set
             {
-                MTAClient.SetSoundEffectEnabled(sound.MTAElement, "i3dl2reverb", value);
+                MtaClient.SetSoundEffectEnabled(sound.MTAElement, "i3dl2reverb", value);
             }
         }
 
@@ -80,7 +80,7 @@ namespace Slipe.Client.Sounds
             }
             set
             {
-                MTAClient.SetSoundEffectEnabled(sound.MTAElement, "distortion", value);
+                MtaClient.SetSoundEffectEnabled(sound.MTAElement, "distortion", value);
             }
         }
 
@@ -94,7 +94,7 @@ namespace Slipe.Client.Sounds
             }
             set
             {
-                MTAClient.SetSoundEffectEnabled(sound.MTAElement, "chorus", value);
+                MtaClient.SetSoundEffectEnabled(sound.MTAElement, "chorus", value);
             }
         }
 
@@ -108,7 +108,7 @@ namespace Slipe.Client.Sounds
             }
             set
             {
-                MTAClient.SetSoundEffectEnabled(sound.MTAElement, "parameq", value);
+                MtaClient.SetSoundEffectEnabled(sound.MTAElement, "parameq", value);
             }
         }
 
@@ -122,7 +122,7 @@ namespace Slipe.Client.Sounds
             }
             set
             {
-                MTAClient.SetSoundEffectEnabled(sound.MTAElement, "reverb", value);
+                MtaClient.SetSoundEffectEnabled(sound.MTAElement, "reverb", value);
             }
         }
 
@@ -136,7 +136,7 @@ namespace Slipe.Client.Sounds
             }
             set
             {
-                MTAClient.SetSoundEffectEnabled(sound.MTAElement, "flanger", value);
+                MtaClient.SetSoundEffectEnabled(sound.MTAElement, "flanger", value);
             }
         }
 
@@ -149,7 +149,7 @@ namespace Slipe.Client.Sounds
 
         private void updateSoundEffects()
         {
-            Dictionary<string, bool> soundEffects = MTAShared.GetDictionaryFromTable(MTAClient.GetSoundEffects(sound.MTAElement), "System.String", "System.Boolean");
+            Dictionary<string, bool> soundEffects = MtaShared.GetDictionaryFromTable(MtaClient.GetSoundEffects(sound.MTAElement), "System.String", "System.Boolean");
             gargle = soundEffects["gargle"];
             compressor = soundEffects["compressor"];
             echo = soundEffects["echo"];

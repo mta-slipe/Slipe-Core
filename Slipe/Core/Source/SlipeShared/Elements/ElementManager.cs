@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 
 namespace Slipe.Shared.Elements
 {
@@ -48,7 +48,7 @@ namespace Slipe.Shared.Elements
             elementHelper = helper;
             instance = this;
             elements = new Dictionary<object, Element>();
-            root = new Element(MTAShared.GetRootElement());
+            root = new Element(MtaShared.GetRootElement());
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Slipe.Shared.Elements
         /// <summary>
         /// Gets an element class instance given a certain MTA element
         /// </summary>
-        public Element GetElement(MTAElement element)
+        public Element GetElement(MtaElement element)
         {
             if (element == null)
             {
@@ -72,7 +72,7 @@ namespace Slipe.Shared.Elements
             {
                 try
                 {
-                    string mtaElementType = MTAShared.GetElementType(element);
+                    string mtaElementType = MtaShared.GetElementType(element);
                     Element wrapperElement = elementHelper.InstantiateElement(mtaElementType, element);
                     return wrapperElement;
                 }
@@ -87,7 +87,7 @@ namespace Slipe.Shared.Elements
         /// <summary>
         /// Cast an array of MTAElements to a desired type
         /// </summary>
-        public T[] CastArray<T>(MTAElement[] elements) where T : Element
+        public T[] CastArray<T>(MtaElement[] elements) where T : Element
         {
             T[] result = new T[elements.Length];
             for (int i = 0; i < elements.Length; i++)
@@ -99,13 +99,13 @@ namespace Slipe.Shared.Elements
 
         protected internal void AddEventHandler(Element element, string eventName, bool propagated = true, string priorty = "normal")
         {
-            MTAShared.AddEventHandler(eventName, element.MTAElement, "Slipe.Shared.Elements.ElementManager.HandleEvent", propagated, priorty);
+            MtaShared.AddEventHandler(eventName, element.MTAElement, "Slipe.Shared.Elements.ElementManager.HandleEvent", propagated, priorty);
         }
 
         /// <summary>
         /// Handles an event when it's triggered on a specific MTA element
         /// </summary>
-        public static void HandleEvent(string eventString, MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public static void HandleEvent(string eventString, MtaElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             Element element = Instance.GetElement(source);
             //if (element == null)

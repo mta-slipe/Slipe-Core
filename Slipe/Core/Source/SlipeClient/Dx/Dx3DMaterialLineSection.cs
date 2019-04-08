@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Utilities;
 
 namespace Slipe.Client.Dx
@@ -47,9 +47,9 @@ namespace Slipe.Client.Dx
         public override bool Draw()
         {
             if (FaceToward == Vector3.Zero)
-                return MTAClient.DxDrawMaterialSectionLine3D(StartPosition.X, StartPosition.Y, StartPosition.Z, EndPosition.X, EndPosition.Y, EndPosition.Z, UV.X, UV.Y, UVDimensions.X, UVDimensions.Y, Material?.MaterialElement, Width, Color.Hex, PostGUI);
+                return MtaClient.DxDrawMaterialSectionLine3D(StartPosition.X, StartPosition.Y, StartPosition.Z, EndPosition.X, EndPosition.Y, EndPosition.Z, UV.X, UV.Y, UVDimensions.X, UVDimensions.Y, Material?.MaterialElement, Width, Color.Hex, PostGUI);
             else
-                return MTAClient.DxDrawMaterialSectionLine3D(StartPosition.X, StartPosition.Y, StartPosition.Z, EndPosition.X, EndPosition.Y, EndPosition.Z, UV.X, UV.Y, UVDimensions.X, UVDimensions.Y, Material?.MaterialElement, Width, Color.Hex, PostGUI, FaceToward.X, FaceToward.Y, FaceToward.Z);
+                return MtaClient.DxDrawMaterialSectionLine3D(StartPosition.X, StartPosition.Y, StartPosition.Z, EndPosition.X, EndPosition.Y, EndPosition.Z, UV.X, UV.Y, UVDimensions.X, UVDimensions.Y, Material?.MaterialElement, Width, Color.Hex, PostGUI, FaceToward.X, FaceToward.Y, FaceToward.Z);
         }
     }
 }

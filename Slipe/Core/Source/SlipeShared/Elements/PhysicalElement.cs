@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.CollisionShapes;
 using Slipe.Shared.Helpers;
 using Slipe.Shared.Markers;
@@ -24,11 +24,11 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.GetElementDimension(element);
+                return MtaShared.GetElementDimension(element);
             }
             set
             {
-                MTAShared.SetElementDimension(element, value);
+                MtaShared.SetElementDimension(element, value);
             }
         }
 
@@ -39,12 +39,12 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.GetElementInterior(element);
+                return MtaShared.GetElementInterior(element);
             }
             set
             {
                 Vector3 position = Position;
-                MTAShared.SetElementInterior(element, value, position.X, position.Y, position.Z);
+                MtaShared.SetElementInterior(element, value, position.X, position.Y, position.Z);
             }
         }
                 
@@ -55,11 +55,11 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.IsElementFrozen(element);
+                return MtaShared.IsElementFrozen(element);
             }
             set
             {
-                MTAShared.SetElementFrozen(element, value);
+                MtaShared.SetElementFrozen(element, value);
             }
         }
 
@@ -70,11 +70,11 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.GetElementAlpha(element);
+                return MtaShared.GetElementAlpha(element);
             }
             set
             {
-                MTAShared.SetElementAlpha(element, value);
+                MtaShared.SetElementAlpha(element, value);
             }
         }
 
@@ -85,11 +85,11 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.GetElementHealth(element);
+                return MtaShared.GetElementHealth(element);
             }
             set
             {
-                MTAShared.SetElementHealth(element, value);
+                MtaShared.SetElementHealth(element, value);
             }
         }
 
@@ -100,11 +100,11 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.GetElementModel(element);
+                return MtaShared.GetElementModel(element);
             }
             set
             {
-                MTAShared.SetElementModel(element, value);
+                MtaShared.SetElementModel(element, value);
             }
         }
 
@@ -115,7 +115,7 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return (CollisionShape)ElementManager.Instance.GetElement(MTAShared.GetElementColShape(element));
+                return (CollisionShape)ElementManager.Instance.GetElement(MtaShared.GetElementColShape(element));
             }
         }
 
@@ -126,11 +126,11 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.GetElementCollisionsEnabled(element);
+                return MtaShared.GetElementCollisionsEnabled(element);
             }
             set
             {
-                MTAShared.SetElementCollisionsEnabled(element, value);
+                MtaShared.SetElementCollisionsEnabled(element, value);
             }
         }
 
@@ -141,11 +141,11 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return (PhysicalElement)ElementManager.Instance.GetElement(MTAShared.GetLowLODElement(element));
+                return (PhysicalElement)ElementManager.Instance.GetElement(MtaShared.GetLowLODElement(element));
             }
             set
             {
-                MTAShared.SetLowLODElement(element, value.MTAElement);
+                MtaShared.SetLowLODElement(element, value.MTAElement);
             }
         }
 
@@ -156,11 +156,11 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.IsElementDoubleSided(element);
+                return MtaShared.IsElementDoubleSided(element);
             }
             set
             {
-                MTAShared.SetElementDoubleSided(element, value);
+                MtaShared.SetElementDoubleSided(element, value);
             }
         }
 
@@ -171,7 +171,7 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.IsElementInWater(element);
+                return MtaShared.IsElementInWater(element);
             }
         }
 
@@ -182,7 +182,7 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.IsElementLowLOD(element);
+                return MtaShared.IsElementLowLOD(element);
             }
         }
 
@@ -197,12 +197,12 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                Tuple<float, float, float> position = MTAShared.GetElementPosition(element);
+                Tuple<float, float, float> position = MtaShared.GetElementPosition(element);
                 return new Vector3(position.Item1, position.Item2, position.Item3);
             }
             set
             {
-                MTAShared.SetElementPosition(element, value.X, value.Y, value.Z, false);
+                MtaShared.SetElementPosition(element, value.X, value.Y, value.Z, false);
             }
         }
 
@@ -213,12 +213,12 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                Tuple<float, float, float> rotation = MTAShared.GetElementRotation(element, "default");
+                Tuple<float, float, float> rotation = MtaShared.GetElementRotation(element, "default");
                 return new Vector3(rotation.Item1, rotation.Item2, rotation.Item3);
             }
             set
             {
-                MTAShared.SetElementRotation(element, value.X, value.Y, value.Z, "default", true);
+                MtaShared.SetElementRotation(element, value.X, value.Y, value.Z, "default", true);
             }
         }
 
@@ -244,7 +244,7 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                Tuple<Tuple<float, float, float, float>, Tuple<float, float, float, float>, Tuple<float, float, float, float>, Tuple<float, float, float, float>> matrix = MTAShared.GetElementMatrix(element, false);
+                Tuple<Tuple<float, float, float, float>, Tuple<float, float, float, float>, Tuple<float, float, float, float>, Tuple<float, float, float, float>> matrix = MtaShared.GetElementMatrix(element, false);
                 return new Matrix4x4(matrix.Item1.Item1, matrix.Item1.Item2, matrix.Item1.Item3, matrix.Item1.Item4,
                                      matrix.Item2.Item1, matrix.Item2.Item2, matrix.Item2.Item3, matrix.Item2.Item4,
                                      matrix.Item3.Item1, matrix.Item3.Item2, matrix.Item3.Item3, matrix.Item3.Item4,
@@ -300,12 +300,12 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                Tuple<float, float, float> velocity = MTAShared.GetElementVelocity(element);
+                Tuple<float, float, float> velocity = MtaShared.GetElementVelocity(element);
                 return new Vector3(velocity.Item1, velocity.Item2, velocity.Item3);
             }
             set
             {
-                MTAShared.SetElementVelocity(element, value.X, value.Y, value.Z);
+                MtaShared.SetElementVelocity(element, value.X, value.Y, value.Z);
             }
         }
 
@@ -316,12 +316,12 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                Tuple<float, float, float> velocity = MTAShared.GetElementAngularVelocity(element);
+                Tuple<float, float, float> velocity = MtaShared.GetElementAngularVelocity(element);
                 return new Vector3(velocity.Item1, velocity.Item2, velocity.Item3);
             }
             set
             {
-                MTAShared.SetElementAngularVelocity(element, value.X, value.Y, value.Z);
+                MtaShared.SetElementAngularVelocity(element, value.X, value.Y, value.Z);
             }
         }
 
@@ -351,7 +351,7 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return (PhysicalElement)ElementManager.Instance.GetElement(MTAShared.GetElementAttachedTo(element));
+                return (PhysicalElement)ElementManager.Instance.GetElement(MtaShared.GetElementAttachedTo(element));
             }
         }
 
@@ -362,7 +362,7 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return MTAShared.IsElementAttached(element);
+                return MtaShared.IsElementAttached(element);
             }
         }
 
@@ -374,7 +374,7 @@ namespace Slipe.Shared.Elements
         protected PhysicalElement() { }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public PhysicalElement(MTAElement mtaElement) : base(mtaElement) { }
+        public PhysicalElement(MtaElement mtaElement) : base(mtaElement) { }
 
         #endregion
 
@@ -386,7 +386,7 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public bool IsWithinCollisionShape(CollisionShape collisionShape)
         {
-            return MTAShared.IsElementWithinColShape(element, collisionShape.MTAElement);
+            return MtaShared.IsElementWithinColShape(element, collisionShape.MTAElement);
         }
 
         /// <summary>
@@ -394,7 +394,7 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public bool IsWithinMarker(SharedMarker marker)
         {
-            return MTAShared.IsElementWithinMarker(element, marker.MTAElement);
+            return MtaShared.IsElementWithinMarker(element, marker.MTAElement);
         }
 
         #endregion
@@ -414,7 +414,7 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public void AttachTo(PhysicalElement toElement, Vector3 positionOffset, Vector3 rotationOffset)
         {
-            MTAShared.AttachElements(element, toElement.MTAElement, positionOffset.X, positionOffset.Y, positionOffset.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z);
+            MtaShared.AttachElements(element, toElement.MTAElement, positionOffset.X, positionOffset.Y, positionOffset.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z);
         }
 
         /// <summary>
@@ -438,7 +438,7 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public void Detach()
         {
-            MTAShared.DetachElements(element, null);
+            MtaShared.DetachElements(element, null);
         }
 
         /// <summary>
@@ -448,7 +448,7 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                Tuple<float, float, float, float, float, float> offsets = MTAShared.GetElementAttachedOffsets(element);
+                Tuple<float, float, float, float, float, float> offsets = MtaShared.GetElementAttachedOffsets(element);
                 Matrix4x4 m = Matrix4x4.CreateFromQuaternion(NumericHelper.EulerToQuaternion(new Vector3(offsets.Item4, offsets.Item5, offsets.Item6)));
                 m.Translation = new Vector3(offsets.Item1, offsets.Item2, offsets.Item3);
                 return m;
@@ -457,7 +457,7 @@ namespace Slipe.Shared.Elements
             {
                 Vector3 translationOffset = value.Translation;
                 Vector3 rotationOffset = NumericHelper.QuaternionToEuler(Quaternion.CreateFromRotationMatrix(value));
-                MTAShared.SetElementAttachedOffsets(element, translationOffset.X, translationOffset.Y, translationOffset.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z);
+                MtaShared.SetElementAttachedOffsets(element, translationOffset.X, translationOffset.Y, translationOffset.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z);
             }
         }
 
@@ -470,7 +470,7 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public static PhysicalElement[] GetWithinRange(Vector3 position, float range, string type = "")
         {
-            MTAElement[] mtaElements = MTAShared.GetArrayFromTable(MTAShared.GetElementsWithinRange(position.X, position.Y, position.Z, range, type), "MTAElement");
+            MtaElement[] mtaElements = MtaShared.GetArrayFromTable(MtaShared.GetElementsWithinRange(position.X, position.Y, position.Z, range, type), "MTAElement");
             return ElementManager.Instance.CastArray<PhysicalElement>(mtaElements);
         }
 

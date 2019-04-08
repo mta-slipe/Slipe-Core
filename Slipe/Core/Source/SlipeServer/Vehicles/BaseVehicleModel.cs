@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.Shared.Vehicles;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 
 namespace Slipe.Server.Vehicles
@@ -28,7 +28,7 @@ namespace Slipe.Server.Vehicles
         {
             get
             {
-                MTAElement[] mtaElements = MTAShared.GetArrayFromTable(MTAServer.GetVehiclesOfType(id), "MTAElement");
+                MtaElement[] mtaElements = MtaShared.GetArrayFromTable(MtaServer.GetVehiclesOfType(id), "MTAElement");
                 return ElementManager.Instance.CastArray<Vehicle>(mtaElements);
             }
         }

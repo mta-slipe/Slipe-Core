@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,7 +17,7 @@ namespace Slipe.Shared.CollisionShapes
         /// </summary>
         public CollisionSphere(Vector3 position, float radius)
         {
-            element = MTAShared.CreateColSphere(position.X, position.Y, position.Z, radius);
+            element = MtaShared.CreateColSphere(position.X, position.Y, position.Z, radius);
             ElementManager.Instance.RegisterElement(this);
         }
     }

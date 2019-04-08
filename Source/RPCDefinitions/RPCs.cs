@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using Slipe.Shared;
 using System;
 using System.Diagnostics;

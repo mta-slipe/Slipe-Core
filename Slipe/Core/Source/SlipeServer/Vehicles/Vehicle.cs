@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.Shared.Vehicles;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using System.ComponentModel;
 using Slipe.Server.Peds;
@@ -22,7 +22,7 @@ namespace Slipe.Server.Vehicles
         {
             get
             {
-                return (Player)ElementManager.Instance.GetElement(MTAShared.GetVehicleController(element));
+                return (Player)ElementManager.Instance.GetElement(MtaShared.GetVehicleController(element));
             }
         }
 
@@ -33,9 +33,9 @@ namespace Slipe.Server.Vehicles
         {
             get
             {
-                Dictionary<int, MTAElement> elements = MTAShared.GetDictionaryFromTable(MTAShared.GetVehicleOccupants(element), "System.Int32", "MTAElement");
+                Dictionary<int, MtaElement> elements = MtaShared.GetDictionaryFromTable(MtaShared.GetVehicleOccupants(element), "System.Int32", "MTAElement");
                 Dictionary<Seat, Player> dictionary = new Dictionary<Seat, Player>();
-                foreach (KeyValuePair<int, MTAElement> entry in elements)
+                foreach (KeyValuePair<int, MtaElement> entry in elements)
                 {
                     Player p = (Player)ElementManager.Instance.GetElement(entry.Value);
                     Seat s = (Seat)entry.Key;
@@ -59,7 +59,7 @@ namespace Slipe.Server.Vehicles
             set
             {
                 if (value == null)
-                    MTAServer.RemoveVehicleSirens(element);
+                    MtaServer.RemoveVehicleSirens(element);
                 s_sirens = value;
             }
         }
@@ -71,11 +71,11 @@ namespace Slipe.Server.Vehicles
         {
             get
             {
-                return MTAShared.GetVehicleVariant(element);
+                return MtaShared.GetVehicleVariant(element);
             }
             set
             {
-                MTAServer.SetVehicleVariant(element, value.Item1, value.Item2);
+                MtaServer.SetVehicleVariant(element, value.Item1, value.Item2);
             }
         }
         #endregion
@@ -88,7 +88,7 @@ namespace Slipe.Server.Vehicles
         {
             set
             {
-                MTAServer.ToggleVehicleRespawn(element, value);
+                MtaServer.ToggleVehicleRespawn(element, value);
             }
         }
 
@@ -99,7 +99,7 @@ namespace Slipe.Server.Vehicles
         {
             set
             {
-                MTAServer.SetVehicleRespawnDelay(element, value);
+                MtaServer.SetVehicleRespawnDelay(element, value);
             }
         }
 
@@ -110,13 +110,13 @@ namespace Slipe.Server.Vehicles
         {
             get
             {
-                Tuple<float, float, float> r = MTAServer.GetVehicleRespawnPosition(element);
+                Tuple<float, float, float> r = MtaServer.GetVehicleRespawnPosition(element);
                 return new Vector3(r.Item1, r.Item2, r.Item3);
             }
             set
             {
                 Vector3 rotation = RespawnRotation;
-                MTAServer.SetVehicleRespawnPosition(element, value.X, value.Y, value.Z, rotation.X, rotation.Y, rotation.Z);
+                MtaServer.SetVehicleRespawnPosition(element, value.X, value.Y, value.Z, rotation.X, rotation.Y, rotation.Z);
             }
         }
 
@@ -127,12 +127,12 @@ namespace Slipe.Server.Vehicles
         {
             get
             {
-                Tuple<float, float, float> r = MTAServer.GetVehicleRespawnRotation(element);
+                Tuple<float, float, float> r = MtaServer.GetVehicleRespawnRotation(element);
                 return new Vector3(r.Item1, r.Item2, r.Item3);
             }
             set
             {
-                MTAServer.SetVehicleRespawnRotation(element, value.X, value.Y, value.Z);
+                MtaServer.SetVehicleRespawnRotation(element, value.X, value.Y, value.Z);
             }
         }
 
@@ -143,7 +143,7 @@ namespace Slipe.Server.Vehicles
         {
             set
             {
-                MTAServer.SetVehicleIdleRespawnDelay(element, value);
+                MtaServer.SetVehicleIdleRespawnDelay(element, value);
             }
         }
         #endregion
@@ -165,7 +165,7 @@ namespace Slipe.Server.Vehicles
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Vehicle(MTAElement element) : base(element) { }
+        public Vehicle(MtaElement element) : base(element) { }
 
         #endregion
 
@@ -175,7 +175,7 @@ namespace Slipe.Server.Vehicles
         /// </summary>
         public bool Blow(bool explode = true)
         {
-            return MTAServer.BlowVehicle(element, explode);
+            return MtaServer.BlowVehicle(element, explode);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Slipe.Server.Vehicles
         /// </summary>
         public Player GetOccupant(Seat seat = Seat.FrontLeft)
         {
-            return (Player)ElementManager.Instance.GetElement(MTAShared.GetVehicleOccupant(element, (int)seat));
+            return (Player)ElementManager.Instance.GetElement(MtaShared.GetVehicleOccupant(element, (int)seat));
         }
 
         #endregion
@@ -194,7 +194,7 @@ namespace Slipe.Server.Vehicles
         /// </summary>
         public bool ResetExplosionTime()
         {
-            return MTAServer.ResetVehicleExplosionTime(element);
+            return MtaServer.ResetVehicleExplosionTime(element);
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Slipe.Server.Vehicles
         /// </summary>
         public bool ResetIdleTime()
         {
-            return MTAServer.ResetVehicleIdleTime(element);
+            return MtaServer.ResetVehicleIdleTime(element);
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace Slipe.Server.Vehicles
         /// </summary>
         public bool Spawn(Vector3 position, Vector3 rotation)
         {
-            return MTAServer.SpawnVehicle(element, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z);
+            return MtaServer.SpawnVehicle(element, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z);
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace Slipe.Server.Vehicles
         /// </summary>
         public bool Respawn()
         {
-            return MTAServer.RespawnVehicle(element);
+            return MtaServer.RespawnVehicle(element);
         }
         #endregion
 
@@ -234,7 +234,7 @@ namespace Slipe.Server.Vehicles
         /// <summary>
         /// Handles events for vehicles
         /// </summary>
-        public override void HandleEvent(string eventName, MTAElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public override void HandleEvent(string eventName, MtaElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             switch (eventName)
             {

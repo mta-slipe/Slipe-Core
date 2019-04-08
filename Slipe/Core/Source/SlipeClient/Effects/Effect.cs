@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
 using Slipe.Shared.Elements;
@@ -20,11 +20,11 @@ namespace Slipe.Client.Effects
         {
             get
             {
-                return MTAClient.GetEffectDensity(element);
+                return MtaClient.GetEffectDensity(element);
             }
             set
             {
-                MTAClient.SetEffectDensity(element, value);
+                MtaClient.SetEffectDensity(element, value);
             }
         }
 
@@ -35,23 +35,23 @@ namespace Slipe.Client.Effects
         {
             get
             {
-                return MTAClient.GetEffectSpeed(element);
+                return MtaClient.GetEffectSpeed(element);
             }
             set
             {
-                MTAClient.SetEffectSpeed(element, value);
+                MtaClient.SetEffectSpeed(element, value);
             }
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Effect(MTAElement element) : base(element) { }
+        public Effect(MtaElement element) : base(element) { }
 
         /// <summary>
         /// Create an effect of a type
         /// </summary>
         public Effect(EffectType type, Vector3 position, Vector3 rotation, float drawDistance = 0, bool enableSound = false)
         {
-            element = MTAClient.CreateEffect(type.ToString(), position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, drawDistance, enableSound);
+            element = MtaClient.CreateEffect(type.ToString(), position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, drawDistance, enableSound);
             ElementManager.Instance.RegisterElement(this);
         }
     }

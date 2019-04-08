@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using Slipe.Shared;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,7 @@ namespace Slipe.Client.IO
         {
             this.command = command;
             this.callback = callback;
-            MTAClient.AddCommandHandler(command, CommandHandlerCallback, caseSensitive);
+            MtaClient.AddCommandHandler(command, CommandHandlerCallback, caseSensitive);
         }
 
         private void CommandHandlerCallback(string command, string[] parameters)
@@ -40,7 +40,7 @@ namespace Slipe.Client.IO
         /// <param name="args"></param>
         public void Execute(string[] args)
         {
-            MTAClient.ExecuteCommandHandler(this.command, string.Join(" ", args));
+            MtaClient.ExecuteCommandHandler(this.command, string.Join(" ", args));
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Slipe.Client.IO
         /// <param name="args"></param>
         public static void Execute(string command, string[] args)
         {
-            MTAClient.ExecuteCommandHandler(command, string.Join(" ", args));
+            MtaClient.ExecuteCommandHandler(command, string.Join(" ", args));
         }
     }
 }

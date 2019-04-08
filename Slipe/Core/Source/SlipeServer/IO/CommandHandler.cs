@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using Slipe.Server.Peds;
 using Slipe.Shared.Elements;
 using System;
@@ -27,7 +27,7 @@ namespace Slipe.Server.IO
         {
             this.command = command;
             this.callback = callback;
-            MTAServer.AddCommandHandler(command, CommandHandlerCallback, restricted, caseSensitive);
+            MtaServer.AddCommandHandler(command, CommandHandlerCallback, restricted, caseSensitive);
         }
 
         /// <summary>
@@ -40,12 +40,12 @@ namespace Slipe.Server.IO
         public CommandHandler(string command, Action<string, string[]> consoleCallback, bool restricted = false, bool caseSensitive = true)
         {
             this.consoleCallback = consoleCallback;
-            MTAServer.AddCommandHandler(command, CommandHandlerCallback, restricted, caseSensitive);
+            MtaServer.AddCommandHandler(command, CommandHandlerCallback, restricted, caseSensitive);
         }
 
-        private void CommandHandlerCallback(MTAElement element, string command, string[] parameters)
+        private void CommandHandlerCallback(MtaElement element, string command, string[] parameters)
         {
-            if (MTAShared.GetElementType(element) == "console")
+            if (MtaShared.GetElementType(element) == "console")
             {
                 this.consoleCallback?.Invoke(command, parameters);
             } else
@@ -61,7 +61,7 @@ namespace Slipe.Server.IO
         /// <param name="args"></param>
         public void Execute(Player player, string[] args)
         {
-            MTAServer.ExecuteCommandHandler(this.command, player.MTAElement, string.Join(" ", args));
+            MtaServer.ExecuteCommandHandler(this.command, player.MTAElement, string.Join(" ", args));
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Slipe.Server.IO
         /// <param name="args"></param>
         public static void Execute(Player player, string command, string[] args)
         {
-            MTAServer.ExecuteCommandHandler(command, player.MTAElement, string.Join(" ", args));
+            MtaServer.ExecuteCommandHandler(command, player.MTAElement, string.Join(" ", args));
         }
     }
 }

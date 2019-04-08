@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,14 +15,14 @@ namespace Slipe.Shared.CollisionShapes
         /// <summary>
         /// Gets the type of the collision shape
         /// </summary>
-        public string ShapeType { get { return MTAShared.GetColShapeType(element); } }
+        public string ShapeType { get { return MtaShared.GetColShapeType(element); } }
         
         /// <summary>
         /// Checks whether a certain position is inside a collision shape
         /// </summary>
         public bool IsInside(Vector3 position)
         {
-            return MTAShared.IsInsideColShape(element, position.X, position.Y, position.Z);
+            return MtaShared.IsInsideColShape(element, position.X, position.Y, position.Z);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Slipe.Shared.CollisionShapes
         /// </summary>
         public bool IsElementWithin(PhysicalElement element)
         {
-            return MTAShared.IsElementWithinColShape(this.element, element.MTAElement);
+            return MtaShared.IsElementWithinColShape(this.element, element.MTAElement);
         }
 
         /// <summary>
@@ -38,14 +38,14 @@ namespace Slipe.Shared.CollisionShapes
         /// </summary>
         public PhysicalElement[] GetElementsWithin()
         {
-            MTAElement[] array = MTAShared.GetArrayFromTable(MTAShared.GetElementsWithinColShape(element, null), "MTAElement");
+            MtaElement[] array = MtaShared.GetArrayFromTable(MtaShared.GetElementsWithinColShape(element, null), "MTAElement");
             return ElementManager.Instance.CastArray<PhysicalElement>(array);
         }
 
         /// <summary>
         /// Handles certain hit and leave events for collision shapes
         /// </summary>
-        public override void HandleEvent(string eventName, Slipe.MTADefinitions.MTAElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public override void HandleEvent(string eventName, Slipe.MtaDefinitions.MtaElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             switch (eventName)
             {

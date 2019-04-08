@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using System;
 using System.Collections.Generic;
@@ -37,7 +37,7 @@ namespace Slipe.Client.Assets
             Element.OnRootEvent += HandleRootEvent;
         }
 
-        private void HandleRootEvent(string eventName, MTAElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        private void HandleRootEvent(string eventName, MtaElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
             if (eventName == "onClientFileDownloadComplete")
             {
@@ -57,7 +57,7 @@ namespace Slipe.Client.Assets
         public void Download()
         {
             this.state = DownloadState.Downloading;
-            MTAClient.DownloadFile(this.filepath);
+            MtaClient.DownloadFile(this.filepath);
         }
 
         public delegate void OnDownloadCompleteHandler();

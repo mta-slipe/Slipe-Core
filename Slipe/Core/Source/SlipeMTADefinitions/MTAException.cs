@@ -1,3 +1,3 @@
-namespace Slipe.MTADefinitions {
-	public class MTAException: System.Exception{}
+namespace Slipe.MtaDefinitions {
+	public class MtaException: System.Exception{}
 }

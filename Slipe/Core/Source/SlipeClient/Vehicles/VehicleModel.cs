@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.Shared.Vehicles;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 
 namespace Slipe.Client.Vehicles
 {

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
-using Slipe.Client.Enums;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Utilities;
 
 namespace Slipe.Client.Dx
@@ -28,7 +27,7 @@ namespace Slipe.Client.Dx
         /// </summary>
         public string Convert(ImageFormat format, int quality = 80)
         {
-            return MTAClient.DxConvertPixels(pixels, format.ToString(), quality);
+            return MtaClient.DxConvertPixels(pixels, format.ToString(), quality);
         }
 
         /// <summary>
@@ -40,7 +39,7 @@ namespace Slipe.Client.Dx
             if (Format != ImageFormat.plain)
                 p = Convert(ImageFormat.plain);
 
-            Tuple<int, int, int, int> result = MTAClient.DxGetPixelColor(p, (int) coordinate.X, (int) coordinate.Y);
+            Tuple<int, int, int, int> result = MtaClient.DxGetPixelColor(p, (int) coordinate.X, (int) coordinate.Y);
             return new Color((byte) result.Item1, (byte)result.Item2, (byte)result.Item3, (byte)result.Item4);
         }
 
@@ -52,7 +51,7 @@ namespace Slipe.Client.Dx
             if (Format != ImageFormat.plain)
                 pixels = Convert(ImageFormat.plain);
 
-            return MTAClient.DxSetPixelColor(pixels, (int) coordinate.X, (int) coordinate.Y, color.R, color.G, color.B, color.A);
+            return MtaClient.DxSetPixelColor(pixels, (int) coordinate.X, (int) coordinate.Y, color.R, color.G, color.B, color.A);
         }
 
         /// <summary>
@@ -62,7 +61,7 @@ namespace Slipe.Client.Dx
         {
             get
             {
-                Tuple<int, int> result = MTAClient.DxGetPixelsSize(pixels);
+                Tuple<int, int> result = MtaClient.DxGetPixelsSize(pixels);
                 return new Vector2(result.Item1, result.Item2);
             }
         }
@@ -74,7 +73,7 @@ namespace Slipe.Client.Dx
         {
             get
             {
-                return (ImageFormat) Enum.Parse(typeof(ImageFormat), MTAClient.DxGetPixelsFormat(pixels));
+                return (ImageFormat) Enum.Parse(typeof(ImageFormat), MtaClient.DxGetPixelsFormat(pixels));
             }
         }
     }

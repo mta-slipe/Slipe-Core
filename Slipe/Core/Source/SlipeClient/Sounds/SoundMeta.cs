@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 
 namespace Slipe.Client.Sounds
 {
@@ -19,9 +19,9 @@ namespace Slipe.Client.Sounds
             {
                 try
                 {
-                    return MTAClient.GetSoundMetaTags(sound.MTAElement, "title");
+                    return MtaClient.GetSoundMetaTags(sound.MTAElement, "title");
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -34,9 +34,9 @@ namespace Slipe.Client.Sounds
             {
                 try
                 {
-                    return MTAClient.GetSoundMetaTags(sound.MTAElement, "artist");
+                    return MtaClient.GetSoundMetaTags(sound.MTAElement, "artist");
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -49,9 +49,9 @@ namespace Slipe.Client.Sounds
             {
                 try
                 {
-                    return MTAClient.GetSoundMetaTags(sound.MTAElement, "album");
+                    return MtaClient.GetSoundMetaTags(sound.MTAElement, "album");
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -64,9 +64,9 @@ namespace Slipe.Client.Sounds
             {
                 try
                 {
-                    return MTAClient.GetSoundMetaTags(sound.MTAElement, "genre");
+                    return MtaClient.GetSoundMetaTags(sound.MTAElement, "genre");
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -79,9 +79,9 @@ namespace Slipe.Client.Sounds
             {
                 try
                 {
-                    return MTAClient.GetSoundMetaTags(sound.MTAElement, "year");
+                    return MtaClient.GetSoundMetaTags(sound.MTAElement, "year");
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -94,9 +94,9 @@ namespace Slipe.Client.Sounds
             {
                 try
                 {
-                    return MTAClient.GetSoundMetaTags(sound.MTAElement, "comment");
+                    return MtaClient.GetSoundMetaTags(sound.MTAElement, "comment");
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -109,9 +109,9 @@ namespace Slipe.Client.Sounds
             {
                 try
                 {
-                    return MTAClient.GetSoundMetaTags(sound.MTAElement, "track");
+                    return MtaClient.GetSoundMetaTags(sound.MTAElement, "track");
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -124,9 +124,9 @@ namespace Slipe.Client.Sounds
             {
                 try
                 {
-                    return MTAClient.GetSoundMetaTags(sound.MTAElement, "composer");
+                    return MtaClient.GetSoundMetaTags(sound.MTAElement, "composer");
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -139,9 +139,9 @@ namespace Slipe.Client.Sounds
             {
                 try
                 {
-                    return MTAClient.GetSoundMetaTags(sound.MTAElement, "copyright");
+                    return MtaClient.GetSoundMetaTags(sound.MTAElement, "copyright");
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -154,9 +154,9 @@ namespace Slipe.Client.Sounds
             {
                 try
                 {
-                    return MTAClient.GetSoundMetaTags(sound.MTAElement, "subtitle");
+                    return MtaClient.GetSoundMetaTags(sound.MTAElement, "subtitle");
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -169,9 +169,9 @@ namespace Slipe.Client.Sounds
             {
                 try
                 {
-                    return MTAClient.GetSoundMetaTags(sound.MTAElement, "album_artist");
+                    return MtaClient.GetSoundMetaTags(sound.MTAElement, "album_artist");
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -184,9 +184,9 @@ namespace Slipe.Client.Sounds
             {
                 try
                 {
-                    return MTAClient.GetSoundMetaTags(sound.MTAElement, "stream_name");
+                    return MtaClient.GetSoundMetaTags(sound.MTAElement, "stream_name");
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -199,9 +199,9 @@ namespace Slipe.Client.Sounds
             {
                 try
                 {
-                    return MTAClient.GetSoundMetaTags(sound.MTAElement, "stream_title");
+                    return MtaClient.GetSoundMetaTags(sound.MTAElement, "stream_title");
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }

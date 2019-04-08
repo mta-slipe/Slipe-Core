@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -55,7 +55,7 @@ namespace Slipe.Server.Rpc
                 ]]
                  */
             };
-            MTAShared.AddEvent(key, true);
+            MtaShared.AddEvent(key, true);
             Element.Root.AddEventHandler(key);
         }
 
@@ -64,7 +64,7 @@ namespace Slipe.Server.Rpc
         /// </summary>
         public void TriggerRPC(Player target, string key, object argument)
         {
-            MTAServer.TriggerClientEvent(target.MTAElement, key, Element.Root.MTAElement, argument);
+            MtaServer.TriggerClientEvent(target.MTAElement, key, Element.Root.MTAElement, argument);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Slipe.Server.Rpc
         /// </summary>
         public void TriggerRPC(string key, object argument)
         {
-            MTAServer.TriggerClientEvent(Element.Root.MTAElement, key, Element.Root.MTAElement, argument);
+            MtaServer.TriggerClientEvent(Element.Root.MTAElement, key, Element.Root.MTAElement, argument);
         }
     }
 }

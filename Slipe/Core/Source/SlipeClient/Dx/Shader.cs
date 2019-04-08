@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Client.Enums;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Elements;
 
@@ -23,7 +22,7 @@ namespace Slipe.Client.Dx
         /// </summary>
         public Shader(string filePathOrRaw, float priority = 0, float maxDistance = 0, bool layered = false, ShaderElementType shaderElementType = ShaderElementType.All)
         {
-            Tuple<MTAElement, string> result = MTAClient.DxCreateShader(filePathOrRaw, priority, maxDistance, layered, shaderElementType.ToString().ToLower());
+            Tuple<MtaElement, string> result = MtaClient.DxCreateShader(filePathOrRaw, priority, maxDistance, layered, shaderElementType.ToString().ToLower());
             materialElement = result.Item1;
             TechniqueName = result.Item2;
         }
@@ -33,7 +32,7 @@ namespace Slipe.Client.Dx
         /// </summary>
         public bool SetValue(string parameterName, dynamic value)
         {
-            return MTAClient.DxSetShaderValue(materialElement, parameterName, value);
+            return MtaClient.DxSetShaderValue(materialElement, parameterName, value);
         }
 
         /// <summary>
@@ -41,7 +40,7 @@ namespace Slipe.Client.Dx
         /// </summary>
         public bool SetTessellation(Vector2 tesselation)
         {
-            return MTAClient.DxSetShaderTessellation(materialElement, (int) tesselation.X, (int) tesselation.Y);
+            return MtaClient.DxSetShaderTessellation(materialElement, (int) tesselation.X, (int) tesselation.Y);
         }
 
         /// <summary>
@@ -49,7 +48,7 @@ namespace Slipe.Client.Dx
         /// </summary>
         public bool SetTransform(Vector3 rotation, Vector3 rotationCenterOffset, Vector2 perspectiveCenterOffset, bool rotationCenterOffsetOriginIsScreen = false, bool perspectiveCenterOffsetOriginIsScren = false)
         {
-            return MTAClient.DxSetShaderTransform(materialElement, rotation.X, rotation.Y, rotation.Z, rotationCenterOffset.X, rotationCenterOffset.Y, rotationCenterOffset.Z, rotationCenterOffsetOriginIsScreen, perspectiveCenterOffset.X, perspectiveCenterOffset.Y, perspectiveCenterOffsetOriginIsScren);
+            return MtaClient.DxSetShaderTransform(materialElement, rotation.X, rotation.Y, rotation.Z, rotationCenterOffset.X, rotationCenterOffset.Y, rotationCenterOffset.Z, rotationCenterOffsetOriginIsScreen, perspectiveCenterOffset.X, perspectiveCenterOffset.Y, perspectiveCenterOffsetOriginIsScren);
         }
 
         /// <summary>
@@ -79,7 +78,7 @@ namespace Slipe.Client.Dx
         public bool Apply(string textureName, Element targetElement, bool appendLayers = false)
         {
 
-            return MTAClient.EngineApplyShaderToWorldTexture(this.materialElement, textureName, targetElement.MTAElement, appendLayers);
+            return MtaClient.EngineApplyShaderToWorldTexture(this.materialElement, textureName, targetElement.MTAElement, appendLayers);
         }
 
         /// <summary>
@@ -102,7 +101,7 @@ namespace Slipe.Client.Dx
         /// <returns></returns>
         public bool Remove(string textureName, Element targetElement)
         {
-            return MTAClient.EngineRemoveShaderFromWorldTexture(this.materialElement, textureName, targetElement.MTAElement);
+            return MtaClient.EngineRemoveShaderFromWorldTexture(this.materialElement, textureName, targetElement.MTAElement);
         }
 
         /// <summary>

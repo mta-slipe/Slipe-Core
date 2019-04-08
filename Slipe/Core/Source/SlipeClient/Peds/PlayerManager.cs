@@ -1,0 +1,47 @@
+﻿using Slipe.Shared.Elements;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Slipe.Client.Peds
+{
+    /// <summary>
+    /// Manages player events
+    /// </summary>
+    class PlayerManager
+    {
+        private static PlayerManager instance;
+        public static PlayerManager Instance
+        {
+            get
+            {
+                return instance ?? new PlayerManager();
+            }
+        }
+
+        public PlayerManager()
+        {
+            instance = this;
+
+            Element.OnRootEvent += HandleRootEvent;
+            Element.Root.AddEventHandler("onClientPlayerJoin");
+        }
+
+        /// <summary>
+        /// Handle root events for player elements
+        /// </summary>
+        public void HandleRootEvent(string eventName, MtaDefinitions.MtaElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        {
+            switch (eventName)
+            {
+                case "onClientPlayerJoin":
+                    Player player = new Player(source);
+                    OnPlayerJoin(player);
+                    break;
+            }
+        }
+
+        public delegate void OnPlayerJoinHandler(Player player);
+        public event OnPlayerJoinHandler OnPlayerJoin;
+    }
+}

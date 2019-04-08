@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Vehicles;
 using Slipe.Shared.Utilities;
 
@@ -104,13 +104,13 @@ namespace Slipe.Server.Vehicles
         {
             get
             {
-                return MTAShared.GetVehicleSirensOn(vehicle.MTAElement);
+                return MtaShared.GetVehicleSirensOn(vehicle.MTAElement);
             }
             set
             {
                 // This is due to an MTA bug not turning on silent sirens that are off
-                MTAShared.SetVehicleSirensOn(vehicle.MTAElement, false);
-                MTAShared.SetVehicleSirensOn(vehicle.MTAElement, value);
+                MtaShared.SetVehicleSirensOn(vehicle.MTAElement, false);
+                MtaShared.SetVehicleSirensOn(vehicle.MTAElement, value);
             }
         }
         #endregion
@@ -146,7 +146,7 @@ namespace Slipe.Server.Vehicles
 
         private bool Reinitialize()
         {
-            initialized = MTAServer.AddVehicleSirens(vehicle.MTAElement, count, (int)type, visibleFromAllDirection, checkLOS, useRandomiser, silent);
+            initialized = MtaServer.AddVehicleSirens(vehicle.MTAElement, count, (int)type, visibleFromAllDirection, checkLOS, useRandomiser, silent);
             return initialized;
         }
         

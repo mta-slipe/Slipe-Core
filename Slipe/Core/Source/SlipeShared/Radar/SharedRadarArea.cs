@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
@@ -23,12 +23,12 @@ namespace Slipe.Shared.Radar
         {
             get
             {
-                Tuple<int, int, int, int> tuple = MTAShared.GetRadarAreaColor(element);
+                Tuple<int, int, int, int> tuple = MtaShared.GetRadarAreaColor(element);
                 return new Color((byte)tuple.Item1, (byte)tuple.Item2, (byte)tuple.Item3, (byte)tuple.Item4);
             }
             set
             {
-                MTAShared.SetRadarAreaColor(element, value.R, value.G, value.B, value.A);
+                MtaShared.SetRadarAreaColor(element, value.R, value.G, value.B, value.A);
             }
         }
 
@@ -39,12 +39,12 @@ namespace Slipe.Shared.Radar
         {
             get
             {
-                Tuple<float, float> tuple = MTAShared.GetRadarAreaSize(element);
+                Tuple<float, float> tuple = MtaShared.GetRadarAreaSize(element);
                 return new Vector2(tuple.Item1, tuple.Item2);
             }
             set
             {
-                MTAShared.SetRadarAreaSize(element, value.X, value.Y);
+                MtaShared.SetRadarAreaSize(element, value.X, value.Y);
             }
         }
 
@@ -55,11 +55,11 @@ namespace Slipe.Shared.Radar
         {
             get
             {
-                return MTAShared.IsRadarAreaFlashing(element);
+                return MtaShared.IsRadarAreaFlashing(element);
             }
             set
             {
-                MTAShared.SetRadarAreaFlashing(element, value);
+                MtaShared.SetRadarAreaFlashing(element, value);
             }
         }
 
@@ -68,14 +68,14 @@ namespace Slipe.Shared.Radar
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public SharedRadarArea(MTAElement element) : base(element) { }
+        public SharedRadarArea(MtaElement element) : base(element) { }
 
         /// <summary>
         /// Creates a radar area from the createRadarArea parameters
         /// </summary>
         public SharedRadarArea(Vector2 position, Vector2 dimensions, Color color, Element visibleTo = null)
         {
-            element = MTAShared.CreateRadarArea(position.X, position.Y, dimensions.X, dimensions.Y, color.R, color.G, color.B, color.A, visibleTo?.MTAElement);
+            element = MtaShared.CreateRadarArea(position.X, position.Y, dimensions.X, dimensions.Y, color.R, color.G, color.B, color.A, visibleTo?.MTAElement);
             ElementManager.Instance.RegisterElement(this);
         }
 
@@ -91,7 +91,7 @@ namespace Slipe.Shared.Radar
         /// </summary>
         public bool IsInside(Vector2 position)
         {
-            return MTAShared.IsInsideRadarArea(element, position.X, position.Y);
+            return MtaShared.IsInsideRadarArea(element, position.X, position.Y);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Slipe.Shared.Radar
         /// </summary>
         public bool IsInside(Vector3 position)
         {
-            return MTAShared.IsInsideRadarArea(element, position.X, position.Y);
+            return MtaShared.IsInsideRadarArea(element, position.X, position.Y);
         }
 
 

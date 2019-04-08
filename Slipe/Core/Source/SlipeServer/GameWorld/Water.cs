@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
 using Slipe.Shared.GameWorld;
@@ -14,7 +14,7 @@ namespace Slipe.Server.GameWorld
     public class Water : SharedWater
     {
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Water(MTAElement element) : base(element) { }
+        public Water(MtaElement element) : base(element) { }
 
         /// <summary>
         /// Creates a body of water from 4 corners. The order of the input vectors doesn't matter

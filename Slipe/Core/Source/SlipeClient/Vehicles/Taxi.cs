@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
 
@@ -19,11 +19,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAShared.IsVehicleTaxiLightOn(element);
+                return MtaShared.IsVehicleTaxiLightOn(element);
             }
             set
             {
-                MTAShared.SetVehicleTaxiLightOn(element, value);
+                MtaShared.SetVehicleTaxiLightOn(element, value);
             }
         }
 
@@ -43,7 +43,7 @@ namespace Slipe.Client.Vehicles
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Taxi(MTAElement element) : base(element)
+        public Taxi(MtaElement element) : base(element)
         {
 
         }

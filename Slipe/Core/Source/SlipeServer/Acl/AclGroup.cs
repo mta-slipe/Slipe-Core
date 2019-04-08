@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Exceptions;
 
 namespace Slipe.Server.Acl
@@ -12,14 +12,14 @@ namespace Slipe.Server.Acl
     /// </summary>
     public class AclGroup
     {
-        protected internal MTAAclGroup group;
+        protected internal MtaAclGroup group;
 
         #region Properties
 
         /// <summary>
         /// Return the MTAAClgroup class instance
         /// </summary>
-        public MTAAclGroup ACL
+        public MtaAclGroup ACL
         {
             get
             {
@@ -34,7 +34,7 @@ namespace Slipe.Server.Acl
         {
             get
             {
-                return MTAServer.AclGroupGetName(group);
+                return MtaServer.AclGroupGetName(group);
             }
         }
 
@@ -45,7 +45,7 @@ namespace Slipe.Server.Acl
         {
             get
             {
-                MTAAcl[] mtaentires = MTAShared.GetArrayFromTable(MTAServer.AclGroupListACL(group), "acl");
+                MtaAcl[] mtaentires = MtaShared.GetArrayFromTable(MtaServer.AclGroupListACL(group), "acl");
                 AclEntry[] entries = new AclEntry[mtaentires.Length];
                 for (int i = 0; i < mtaentires.Length; i++)
                 {
@@ -62,7 +62,7 @@ namespace Slipe.Server.Acl
         {
             get
             {
-                return MTAShared.GetArrayFromTable(MTAServer.AclGroupListObjects(group), "acl-object");
+                return MtaShared.GetArrayFromTable(MtaServer.AclGroupListObjects(group), "acl-object");
             }
         }
 
@@ -73,7 +73,7 @@ namespace Slipe.Server.Acl
         {
             get
             {
-                MTAAclGroup[] mtagroups = MTAShared.GetArrayFromTable(MTAServer.AclGroupList(), "acl-group");
+                MtaAclGroup[] mtagroups = MtaShared.GetArrayFromTable(MtaServer.AclGroupList(), "acl-group");
                 AclGroup[] groups = new AclGroup[mtagroups.Length];
                 for (int i = 0; i < mtagroups.Length; i++)
                 {
@@ -87,7 +87,7 @@ namespace Slipe.Server.Acl
 
         #region Constructors
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public AclGroup(MTAAclGroup mtaAclGroup)
+        public AclGroup(MtaAclGroup mtaAclGroup)
         {
             group = mtaAclGroup;
         }
@@ -97,7 +97,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public AclGroup(string name)
         {
-            group = MTAServer.AclCreateGroup(name);
+            group = MtaServer.AclCreateGroup(name);
         }
 
         #endregion
@@ -109,7 +109,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public static AclGroup Get(string name)
         {
-            MTAAclGroup result = MTAServer.AclGetGroup(name);
+            MtaAclGroup result = MtaServer.AclGetGroup(name);
             if (result == null)
             {
                 throw new NullElementException("No ACL entry with the name " + name + " can be found");
@@ -122,7 +122,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public bool AddEntry(AclEntry entry)
         {
-            return MTAServer.AclGroupAddACL(group, entry.ACL);
+            return MtaServer.AclGroupAddACL(group, entry.ACL);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public bool AddObject(IAclObject obj)
         {
-            return MTAServer.AclGroupAddObject(group, obj.ACLIdentifier);
+            return MtaServer.AclGroupAddObject(group, obj.ACLIdentifier);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public bool RemoveEntry(AclEntry entry)
         {
-            return MTAServer.AclGroupRemoveACL(group, entry.ACL);
+            return MtaServer.AclGroupRemoveACL(group, entry.ACL);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public bool RemoveObject(IAclObject obj)
         {
-            return MTAServer.AclGroupRemoveObject(group, obj.ACLIdentifier);
+            return MtaServer.AclGroupRemoveObject(group, obj.ACLIdentifier);
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public bool Destroy()
         {
-            return MTAServer.AclDestroyGroup(group);
+            return MtaServer.AclDestroyGroup(group);
         }
 
         #endregion

@@ -1,15 +1,15 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Slipe.Client.Assets
 {
-    public class IFP: Asset
+    public class Ifp : Asset
     {
-        private MTAElement ifp;
+        private MtaElement ifp;
 
-        public IFP(string filepath): base(filepath)
+        public Ifp(string filepath): base(filepath)
         {
 
         }
@@ -20,7 +20,7 @@ namespace Slipe.Client.Assets
         /// <param name="filteringEnabled"></param>
         public void Load(string customBlockName)
         {
-            this.ifp = MTAClient.EngineLoadIFP(this.filepath, customBlockName);
+            this.ifp = MtaClient.EngineLoadIFP(this.filepath, customBlockName);
         }
     }
 }

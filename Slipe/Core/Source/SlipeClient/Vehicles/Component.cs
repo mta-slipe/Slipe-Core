@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 
 namespace Slipe.Client.Vehicles
@@ -22,12 +22,12 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                Tuple<float, float, float> r = MTAClient.GetVehicleComponentPosition(vehicle.MTAElement, component, Base.ToString().ToLower());
+                Tuple<float, float, float> r = MtaClient.GetVehicleComponentPosition(vehicle.MTAElement, component, Base.ToString().ToLower());
                 return new Vector3(r.Item1, r.Item2, r.Item3);
             }
             set
             {
-                MTAClient.SetVehicleComponentPosition(vehicle.MTAElement, component, value.X, value.Y, value.Z, Base.ToString().ToLower());
+                MtaClient.SetVehicleComponentPosition(vehicle.MTAElement, component, value.X, value.Y, value.Z, Base.ToString().ToLower());
             }
         }
 
@@ -38,12 +38,12 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                Tuple<float, float, float> r = MTAClient.GetVehicleComponentRotation(vehicle.MTAElement, component, Base.ToString().ToLower());
+                Tuple<float, float, float> r = MtaClient.GetVehicleComponentRotation(vehicle.MTAElement, component, Base.ToString().ToLower());
                 return new Vector3(r.Item1, r.Item2, r.Item3);
             }
             set
             {
-                MTAClient.SetVehicleComponentRotation(vehicle.MTAElement, component, value.X, value.Y, value.Z, Base.ToString().ToLower());
+                MtaClient.SetVehicleComponentRotation(vehicle.MTAElement, component, value.X, value.Y, value.Z, Base.ToString().ToLower());
             }
         }
 
@@ -54,11 +54,11 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return MTAClient.GetVehicleComponentVisible(vehicle.MTAElement, component);
+                return MtaClient.GetVehicleComponentVisible(vehicle.MTAElement, component);
             }
             set
             {
-                MTAClient.SetVehicleComponentVisible(vehicle.MTAElement, component, value);
+                MtaClient.SetVehicleComponentVisible(vehicle.MTAElement, component, value);
             }
         }
         #endregion
@@ -97,7 +97,7 @@ namespace Slipe.Client.Vehicles
         /// </summary>
         public bool ResetPosition()
         {
-            return MTAClient.ResetVehicleComponentPosition(vehicle.MTAElement, component);
+            return MtaClient.ResetVehicleComponentPosition(vehicle.MTAElement, component);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Slipe.Client.Vehicles
         /// </summary>
         public bool ResetRotation()
         {
-            return MTAClient.ResetVehicleComponentRotation(vehicle.MTAElement, component);
+            return MtaClient.ResetVehicleComponentRotation(vehicle.MTAElement, component);
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,7 +19,7 @@ namespace Slipe.Server.GameServer
         /// <summary>
         /// Get the amount of players on this team
         /// </summary>
-        public int PlayerCount { get { return MTAShared.CountPlayersInTeam(MTAElement); } }
+        public int PlayerCount { get { return MtaShared.CountPlayersInTeam(MTAElement); } }
 
         /// <summary>
         /// Get and set the name of this team
@@ -28,11 +28,11 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return MTAShared.GetTeamName(MTAElement);
+                return MtaShared.GetTeamName(MTAElement);
             }
             set
             {
-                MTAServer.SetTeamName(MTAElement, value);
+                MtaServer.SetTeamName(MTAElement, value);
             }
         }
 
@@ -43,11 +43,11 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return MTAShared.GetTeamFriendlyFire(MTAElement);
+                return MtaShared.GetTeamFriendlyFire(MTAElement);
             }
             set
             {
-                MTAServer.SetTeamFriendlyFire(MTAElement, value);
+                MtaServer.SetTeamFriendlyFire(MTAElement, value);
             }
         }
 
@@ -58,12 +58,12 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                Tuple<int, int, int> color = MTAShared.GetTeamColor(MTAElement);
+                Tuple<int, int, int> color = MtaShared.GetTeamColor(MTAElement);
                 return new Color((byte)color.Item1, (byte)color.Item2, (byte)color.Item3);
             }
             set
             {
-                MTAServer.SetTeamColor(MTAElement, value.R, value.G, value.B);
+                MtaServer.SetTeamColor(MTAElement, value.R, value.G, value.B);
             }
         }
 
@@ -74,7 +74,7 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                MTAElement[] mtaPlayers = MTAShared.GetArrayFromTable(MTAShared.GetPlayersInTeam(MTAElement), "MTAElement");
+                MtaElement[] mtaPlayers = MtaShared.GetArrayFromTable(MtaShared.GetPlayersInTeam(MTAElement), "MTAElement");
                 return ElementManager.Instance.CastArray<Player>(mtaPlayers);
             }
         }
@@ -83,7 +83,7 @@ namespace Slipe.Server.GameServer
 
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Team(MTAElement team) : base(team)
+        public Team(MtaElement team) : base(team)
         {
 
         }

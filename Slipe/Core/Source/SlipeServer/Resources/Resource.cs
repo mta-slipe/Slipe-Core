@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Xml;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Resources;
@@ -24,7 +24,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                return MTAShared.GetDateTimeFromSecondStamp(MTAServer.GetResourceLastStartTime(_resource));
+                return MtaShared.GetDateTimeFromSecondStamp(MtaServer.GetResourceLastStartTime(_resource));
             }
         }
 
@@ -35,7 +35,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                return MTAServer.GetResourceLoadFailureReason(_resource);
+                return MtaServer.GetResourceLoadFailureReason(_resource);
             }
         }
 
@@ -46,7 +46,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                return MTAShared.GetDateTimeFromSecondStamp(MTAServer.GetResourceLoadTime(_resource));
+                return MtaShared.GetDateTimeFromSecondStamp(MtaServer.GetResourceLoadTime(_resource));
             }
         }
 
@@ -57,7 +57,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                return MTAServer.GetResourceOrganizationalPath(_resource);
+                return MtaServer.GetResourceOrganizationalPath(_resource);
             }
         }
 
@@ -68,7 +68,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                return MTAServer.IsResourceArchived(_resource);
+                return MtaServer.IsResourceArchived(_resource);
             }
         }
 
@@ -79,7 +79,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                return MTAShared.GetArrayFromTable(MTAServer.GetResourceACLRequests(_resource), "acl-request");
+                return MtaShared.GetArrayFromTable(MtaServer.GetResourceACLRequests(_resource), "acl-request");
             }
         }
 
@@ -90,7 +90,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                return new Resource(MTAShared.GetThisResource());
+                return new Resource(MtaShared.GetThisResource());
             }
         }
 
@@ -101,7 +101,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                MTAResource[] resourceList = MTAShared.GetArrayFromTable(MTAServer.GetResources(), "mta-resource");
+                MtaResource[] resourceList = MtaShared.GetArrayFromTable(MtaServer.GetResources(), "mta-resource");
                 Resource[] resources = new Resource[resourceList.Length];
                 for (int i = 0; i < resourceList.Length; i++)
                 {
@@ -119,12 +119,12 @@ namespace Slipe.Server.Resources
         /// Create a resource from an MTA resource element
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Resource(MTAResource resource) : base(resource) { }
+        public Resource(MtaResource resource) : base(resource) { }
 
         /// <summary>
         /// Create a new empty resource
         /// </summary>
-        public Resource(string name, string organizationalDir = null) : base(MTAServer.CreateResource(name, organizationalDir)) { }
+        public Resource(string name, string organizationalDir = null) : base(MtaServer.CreateResource(name, organizationalDir)) { }
 
         #endregion
 
@@ -135,7 +135,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool UpdateACLRequest(string rightName, bool access, string byWho = "")
         {
-            return MTAServer.UpdateResourceACLRequest(_resource, rightName, access, byWho);
+            return MtaServer.UpdateResourceACLRequest(_resource, rightName, access, byWho);
         }        
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public Element MapRoot(string mapName)
         {
-            return ElementManager.Instance.GetElement(MTAServer.GetResourceMapRootElement(_resource, mapName));
+            return ElementManager.Instance.GetElement(MtaServer.GetResourceMapRootElement(_resource, mapName));
         }
 
         /// <summary>
@@ -151,10 +151,10 @@ namespace Slipe.Server.Resources
         /// </summary>
         public XmlNode AddConfig(string filePath, string fileType = "server")
         {
-            MTAElement mtaNode = MTAServer.AddResourceConfig(filePath, fileType);
+            MtaElement mtaNode = MtaServer.AddResourceConfig(filePath, fileType);
 
             XmlDocument document = new XmlDocument();
-            XmlNode xmlNode = document.CreateElement(MTAShared.XmlNodeGetName(mtaNode));
+            XmlNode xmlNode = document.CreateElement(MtaShared.XmlNodeGetName(mtaNode));
             /*
             [[
             xmlNode:index(mtaNode)
@@ -168,10 +168,10 @@ namespace Slipe.Server.Resources
         /// </summary>
         public XmlNode AddMap(string filePath, int dimension = 0)
         {
-            MTAElement mtaNode = MTAServer.AddResourceMap(filePath, dimension);
+            MtaElement mtaNode = MtaServer.AddResourceMap(filePath, dimension);
 
             XmlDocument document = new XmlDocument();
-            XmlNode xmlNode = document.CreateElement(MTAShared.XmlNodeGetName(mtaNode));
+            XmlNode xmlNode = document.CreateElement(MtaShared.XmlNodeGetName(mtaNode));
             /*
             [[
             xmlNode:index(mtaNode)
@@ -185,7 +185,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool Delete()
         {
-            return MTAServer.DeleteResource(Name);
+            return MtaServer.DeleteResource(Name);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool Refresh()
         {
-            return MTAServer.RefreshResources(true, _resource);
+            return MtaServer.RefreshResources(true, _resource);
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool RemoveFile(string fileName)
         {
-            return MTAServer.RemoveResourceFile(_resource, fileName);
+            return MtaServer.RemoveResourceFile(_resource, fileName);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool Rename(string newName, string organizationalPath)
         {
-            return MTAServer.RenameResource(Name, newName, organizationalPath);
+            return MtaServer.RenameResource(Name, newName, organizationalPath);
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool Restart(bool persistent = true, bool configs = true, bool maps = true, bool scripts = true, bool html = true, bool clientConfigs = true, bool clientScripts = true, bool clientFiles = true)
         {
-            return MTAServer.RestartResource(_resource, persistent, configs, maps, scripts, html, clientConfigs, clientScripts, clientFiles);
+            return MtaServer.RestartResource(_resource, persistent, configs, maps, scripts, html, clientConfigs, clientScripts, clientFiles);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public string GetInfo(string attribute)
         {
-            return MTAServer.GetResourceInfo(_resource, attribute);
+            return MtaServer.GetResourceInfo(_resource, attribute);
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool SetInfo(string attribute, string value)
         {
-            return MTAServer.SetResourceInfo(_resource, attribute, value);
+            return MtaServer.SetResourceInfo(_resource, attribute, value);
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool Start(bool persistent = false, bool includedResources = true, bool configs = true, bool maps = true, bool scripts = true, bool html = true, bool clientConfigs = true, bool clientScripts = true, bool clientFiles = true)
         {
-            return MTAServer.StartResource(_resource, persistent, includedResources, configs, maps, scripts, html, clientConfigs, clientScripts, clientFiles);
+            return MtaServer.StartResource(_resource, persistent, includedResources, configs, maps, scripts, html, clientConfigs, clientScripts, clientFiles);
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool Stop()
         {
-            return MTAServer.StopResource(_resource);
+            return MtaServer.StopResource(_resource);
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public static Resource CopyFrom(Resource resource, string name, string organizationalDir = null)
         {
-            return new Resource(MTAServer.CopyResource(resource.MTAResource, name, organizationalDir));
+            return new Resource(MtaServer.CopyResource(resource.MTAResource, name, organizationalDir));
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public static bool RefreshAll()
         {
-            return MTAServer.RefreshResources(true, null);
+            return MtaServer.RefreshResources(true, null);
         }
 
         #endregion

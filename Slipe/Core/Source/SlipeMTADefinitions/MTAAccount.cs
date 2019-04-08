@@ -1,3 +1,3 @@
-namespace Slipe.MTADefinitions {
-	public class MTAAccount{}
+namespace Slipe.MtaDefinitions {
+	public class MtaAccount{}
 }

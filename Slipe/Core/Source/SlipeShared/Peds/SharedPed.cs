@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Vehicles;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Weapons;
@@ -23,11 +23,11 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return (WeaponSlot)MTAShared.GetPedWeaponSlot(element);
+                return (WeaponSlot)MtaShared.GetPedWeaponSlot(element);
             }
             set
             {
-                MTAShared.SetPedWeaponSlot(element, (int)value);
+                MtaShared.SetPedWeaponSlot(element, (int)value);
             }
         }
 
@@ -38,7 +38,7 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return MTAShared.GetPedArmor(element);
+                return MtaShared.GetPedArmor(element);
             }
         }
 
@@ -51,9 +51,9 @@ namespace Slipe.Shared.Peds
             {
                 try
                 {
-                    return (PhysicalElement)ElementManager.Instance.GetElement(MTAShared.GetPedContactElement(element));
+                    return (PhysicalElement)ElementManager.Instance.GetElement(MtaShared.GetPedContactElement(element));
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -68,7 +68,7 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return (FightingStyle)MTAShared.GetPedFightingStyle(element);
+                return (FightingStyle)MtaShared.GetPedFightingStyle(element);
             }
         }
 
@@ -81,9 +81,9 @@ namespace Slipe.Shared.Peds
             {
                 try
                 {
-                    return (SharedVehicle)ElementManager.Instance.GetElement(MTAShared.GetPedOccupiedVehicle(element));
+                    return (SharedVehicle)ElementManager.Instance.GetElement(MtaShared.GetPedOccupiedVehicle(element));
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -100,9 +100,9 @@ namespace Slipe.Shared.Peds
             {
                 try
                 {
-                    return (Seat)MTAShared.GetPedOccupiedVehicleSeat(element);
+                    return (Seat)MtaShared.GetPedOccupiedVehicleSeat(element);
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return Seat.None;
                 }
@@ -117,7 +117,7 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return MTAShared.IsPedChoking(element);
+                return MtaShared.IsPedChoking(element);
             }
         }
 
@@ -128,7 +128,7 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return MTAShared.IsPedDead(element);
+                return MtaShared.IsPedDead(element);
             }
         }
 
@@ -139,11 +139,11 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return MTAShared.IsPedDoingGangDriveby(element);
+                return MtaShared.IsPedDoingGangDriveby(element);
             }
             set
             {
-                MTAShared.SetPedDoingGangDriveby(element, value);
+                MtaShared.SetPedDoingGangDriveby(element, value);
             }
         }
 
@@ -154,7 +154,7 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return MTAShared.IsPedDucked(element);
+                return MtaShared.IsPedDucked(element);
             }
         }
 
@@ -165,11 +165,11 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return MTAShared.IsPedHeadless(element);
+                return MtaShared.IsPedHeadless(element);
             }
             set
             {
-                MTAShared.SetPedHeadless(element, value);
+                MtaShared.SetPedHeadless(element, value);
             }
         }
 
@@ -180,7 +180,7 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return MTAShared.IsPedInVehicle(element);
+                return MtaShared.IsPedInVehicle(element);
             }
         }
 
@@ -191,11 +191,11 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return MTAShared.IsPedOnFire(element);
+                return MtaShared.IsPedOnFire(element);
             }
             set
             {
-                MTAShared.SetPedOnFire(element, value);
+                MtaShared.SetPedOnFire(element, value);
             }
         }
 
@@ -206,7 +206,7 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return MTAShared.IsPedOnGround(element);
+                return MtaShared.IsPedOnGround(element);
             }
         }
 
@@ -217,7 +217,7 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return MTAShared.IsPedWearingJetpack(element);
+                return MtaShared.IsPedWearingJetpack(element);
             }
         }
 
@@ -230,9 +230,9 @@ namespace Slipe.Shared.Peds
             {
                 try
                 {
-                    return (PhysicalElement)ElementManager.Instance.GetElement(MTAShared.GetPedTarget(element));
+                    return (PhysicalElement)ElementManager.Instance.GetElement(MtaShared.GetPedTarget(element));
                 }
-                catch (MTAException)
+                catch (MtaException)
                 {
                     return null;
                 }
@@ -247,11 +247,11 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return (WalkingStyle)MTAShared.GetPedWalkingStyle(element);
+                return (WalkingStyle)MtaShared.GetPedWalkingStyle(element);
             }
             set
             {
-                MTAShared.SetPedWalkingStyle(element, (int)value);
+                MtaShared.SetPedWalkingStyle(element, (int)value);
             }
         }
 
@@ -262,7 +262,7 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return (WeaponType)MTAShared.GetPedWeapon(element, (int)WeaponSlot);
+                return (WeaponType)MtaShared.GetPedWeapon(element, (int)WeaponSlot);
             }
         }
 
@@ -273,7 +273,7 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return MTAShared.GetPedAmmoInClip(element, (int)WeaponSlot);
+                return MtaShared.GetPedAmmoInClip(element, (int)WeaponSlot);
             }
         }
 
@@ -284,7 +284,7 @@ namespace Slipe.Shared.Peds
         {
             get
             {
-                return MTAShared.GetPedTotalAmmo(element, (int)WeaponSlot);
+                return MtaShared.GetPedTotalAmmo(element, (int)WeaponSlot);
             }
         }
 
@@ -295,7 +295,7 @@ namespace Slipe.Shared.Peds
         public SharedPed() : base() { }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public SharedPed(MTAElement element) : base(element) { }
+        public SharedPed(MtaElement element) : base(element) { }
 
         #endregion
 
@@ -317,7 +317,7 @@ namespace Slipe.Shared.Peds
                 t = ((int)slot).ToString() + t;
                 m = ((int)slot).ToString() + m;
             }
-            return MTAShared.AddPedClothes(element, t, m, (int)slot);
+            return MtaShared.AddPedClothes(element, t, m, (int)slot);
         }
 
         /// <summary>
@@ -325,8 +325,8 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool AddClothes(ClothesSlot slot, int index)
         {
-            Tuple<string, string> result = MTAShared.GetClothesByTypeIndex((int)slot, index);
-            return MTAShared.AddPedClothes(element, result.Item1, result.Item2, (int)slot);
+            Tuple<string, string> result = MtaShared.GetClothesByTypeIndex((int)slot, index);
+            return MtaShared.AddPedClothes(element, result.Item1, result.Item2, (int)slot);
         }
 
         /// <summary>
@@ -334,7 +334,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool AddClothes(ClothesTexture texture, ClothesModel model)
         {
-            Tuple<int, int> result = MTAShared.GetTypeIndexFromClothes(texture.ToString(), model.ToString());
+            Tuple<int, int> result = MtaShared.GetTypeIndexFromClothes(texture.ToString(), model.ToString());
             return AddClothes((ClothesSlot)result.Item1, result.Item2);
         }
 
@@ -343,7 +343,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public ClothesModel GetClothesModel(ClothesSlot slot)
         {
-            Tuple<string, string> result = MTAShared.GetPedClothes(element, (int)slot);
+            Tuple<string, string> result = MtaShared.GetPedClothes(element, (int)slot);
             return (ClothesModel)Enum.Parse(typeof(ClothesModel), result.Item2);
         }
 
@@ -352,7 +352,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public ClothesTexture GetClothesTexture(ClothesSlot slot)
         {
-            Tuple<string, string> result = MTAShared.GetPedClothes(element, (int)slot);
+            Tuple<string, string> result = MtaShared.GetPedClothes(element, (int)slot);
             return (ClothesTexture)Enum.Parse(typeof(ClothesTexture), result.Item1);
         }
 
@@ -361,7 +361,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool RemoveClothes(ClothesSlot slot)
         {
-            return MTAShared.RemovePedClothes(element, (int)slot, null, null);
+            return MtaShared.RemovePedClothes(element, (int)slot, null, null);
         }
 
         #endregion
@@ -373,7 +373,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public WeaponType GetWeaponInSlot(WeaponSlot slot)
         {
-            return (WeaponType)MTAShared.GetPedWeapon(element, (int)slot);
+            return (WeaponType)MtaShared.GetPedWeapon(element, (int)slot);
         }
 
         /// <summary>
@@ -381,7 +381,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public int GetAmmoInClip(WeaponSlot slot)
         {
-            return MTAShared.GetPedAmmoInClip(element, (int)slot);
+            return MtaShared.GetPedAmmoInClip(element, (int)slot);
         }
 
         /// <summary>
@@ -389,7 +389,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public int GetTotalAmmo(WeaponSlot slot)
         {
-            return MTAShared.GetPedTotalAmmo(element, (int)slot);
+            return MtaShared.GetPedTotalAmmo(element, (int)slot);
         }
 
         #endregion
@@ -401,7 +401,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool SetAnimation(Animation animation, bool loop = true, int time = -1, bool updatePosition = true, bool interruptable = true, bool freeLastFrame = true, int blendTime = 250)
         {
-            return MTAShared.SetPedAnimation(element, animation.Group, animation.Anim, time, loop, updatePosition, interruptable, freeLastFrame, blendTime);
+            return MtaShared.SetPedAnimation(element, animation.Group, animation.Anim, time, loop, updatePosition, interruptable, freeLastFrame, blendTime);
         }
 
         /// <summary>
@@ -409,7 +409,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool ResetAnimation()
         {
-            return MTAShared.SetPedAnimation(element, null, null, -1, true, true, true, true, 250);
+            return MtaShared.SetPedAnimation(element, null, null, -1, true, true, true, true, 250);
         }
 
         /// <summary>
@@ -417,7 +417,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool SetAnimationProgress(Animation animation, float progress)
         {
-            return MTAShared.SetPedAnimationProgress(element, animation.Anim, progress);
+            return MtaShared.SetPedAnimationProgress(element, animation.Anim, progress);
         }
 
         /// <summary>
@@ -425,7 +425,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool SetAnimationSpeed(Animation animation, float speed = 1.0f)
         {
-            return MTAShared.SetPedAnimationSpeed(element, animation.Anim, speed);
+            return MtaShared.SetPedAnimationSpeed(element, animation.Anim, speed);
         }
 
         #endregion
@@ -437,7 +437,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public float GedStat(PedStat stat)
         {
-            return MTAShared.GetPedStat(element, (int)stat);
+            return MtaShared.GetPedStat(element, (int)stat);
         }
 
         /// <summary>
@@ -445,7 +445,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool SetStat(PedStat stat, float value)
         {
-            return MTAShared.SetPedStat(element, (int)stat, value);
+            return MtaShared.SetPedStat(element, (int)stat, value);
         }
 
         /// <summary>
@@ -453,7 +453,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool Kill(SharedPed killer, WeaponType weapon, BodyPart bodyPart, bool stealth = false)
         {
-            return MTAShared.KillPed(element, killer.MTAElement, (int)weapon, (int)bodyPart, stealth);
+            return MtaShared.KillPed(element, killer.MTAElement, (int)weapon, (int)bodyPart, stealth);
         }
 
         /// <summary>
@@ -461,7 +461,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool Kill(SharedPed killer)
         {
-            return MTAShared.KillPed(element, killer.MTAElement, 255, 255, false);
+            return MtaShared.KillPed(element, killer.MTAElement, 255, 255, false);
         }
 
         /// <summary>
@@ -469,7 +469,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool Kill()
         {
-            return MTAShared.KillPed(element, null, 255, 255, false);
+            return MtaShared.KillPed(element, null, 255, 255, false);
         }
 
         /// <summary>
@@ -477,7 +477,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool RemoveFromVehicle()
         {
-            return MTAShared.RemovePedFromVehicle(element);
+            return MtaShared.RemovePedFromVehicle(element);
         }
 
         /// <summary>
@@ -485,7 +485,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool WarpIntoVehicle(SharedVehicle vehicle, Seat seat)
         {
-            return MTAShared.WarpPedIntoVehicle(element, vehicle.MTAElement, (int)seat);
+            return MtaShared.WarpPedIntoVehicle(element, vehicle.MTAElement, (int)seat);
         }
 
         /// <summary>
@@ -493,7 +493,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool WarpIntoVehicle(SharedVehicle vehicle)
         {
-            return MTAShared.WarpPedIntoVehicle(element, vehicle.MTAElement, 0);
+            return MtaShared.WarpPedIntoVehicle(element, vehicle.MTAElement, 0);
         }
 
         #endregion

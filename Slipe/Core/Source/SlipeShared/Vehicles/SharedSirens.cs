@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Utilities;
 
 namespace Slipe.Shared.Vehicles
@@ -82,13 +82,13 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MTAShared.GetVehicleSirensOn(vehicle.MTAElement);
+                return MtaShared.GetVehicleSirensOn(vehicle.MTAElement);
             }
             set
             {
                 // This is due to an MTA bug not turning on silent sirens that are off
-                MTAShared.SetVehicleSirensOn(vehicle.MTAElement, false);
-                MTAShared.SetVehicleSirensOn(vehicle.MTAElement, value);
+                MtaShared.SetVehicleSirensOn(vehicle.MTAElement, false);
+                MtaShared.SetVehicleSirensOn(vehicle.MTAElement, value);
             }
         }
 
@@ -99,11 +99,11 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                dynamic[] ar = MTAShared.GetArrayFromTable(MTAShared.GetVehicleSirens(vehicle.MTAElement), "dynamic");
+                dynamic[] ar = MtaShared.GetArrayFromTable(MtaShared.GetVehicleSirens(vehicle.MTAElement), "dynamic");
                 Siren[] result = new Siren[ar.Length];
                 for (int i = 0; i < ar.Length; i++)
                 {
-                    Dictionary<string, float> d = (Dictionary<string, float>)MTAShared.GetDictionaryFromTable(ar[i], "System.String", "System.Single");
+                    Dictionary<string, float> d = (Dictionary<string, float>)MtaShared.GetDictionaryFromTable(ar[i], "System.String", "System.Single");
                     result[i] = new Siren(vehicle, i + 1, new Vector3(d["x"], d["y"], d["z"]), new Color((byte)d["Red"], (byte)d["Green"], (byte)d["Blue"], (byte)d["Alpha"]), d["Min_Alpha"], false);
                 }
                 return result;
@@ -122,9 +122,9 @@ namespace Slipe.Shared.Vehicles
 
         protected void UpdateParams()
         {
-            Dictionary<string, dynamic> d = MTAShared.GetDictionaryFromTable(MTAShared.GetVehicleSirenParams(vehicle.MTAElement), "System.String", "dynamic");
+            Dictionary<string, dynamic> d = MtaShared.GetDictionaryFromTable(MtaShared.GetVehicleSirenParams(vehicle.MTAElement), "System.String", "dynamic");
             type = (SirenType)d["SirenType"];
-            Dictionary<string, bool> flags = MTAShared.GetDictionaryFromTable(d["Flags"], "System.String", "System.Boolean");
+            Dictionary<string, bool> flags = MtaShared.GetDictionaryFromTable(d["Flags"], "System.String", "System.Boolean");
             visibleFromAllDirection = flags["360"];
             checkLOS = flags["DoLOSCheck"];
             useRandomiser = flags["UseRandomiser"];

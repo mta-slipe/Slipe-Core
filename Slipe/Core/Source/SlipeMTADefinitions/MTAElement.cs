@@ -1,3 +1,3 @@
-namespace Slipe.MTADefinitions {
-	public class MTAElement{}
+namespace Slipe.MtaDefinitions {
+	public class MtaElement{}
 }

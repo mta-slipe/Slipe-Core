@@ -1,3 +1,3 @@
-namespace Slipe.MTADefinitions {
-	public class MTABan{}
+namespace Slipe.MtaDefinitions {
+	public class MtaBan{}
 }

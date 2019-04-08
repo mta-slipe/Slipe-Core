@@ -1,3 +1,3 @@
-namespace Slipe.MTADefinitions {
-	public class MTAResource{}
+namespace Slipe.MtaDefinitions {
+	public class MtaResource{}
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Elements;
 using System.ComponentModel;
@@ -20,7 +20,7 @@ namespace Slipe.Server.Vehicles
         {
             get
             {
-                return (Vehicle) ElementManager.Instance.GetElement(MTAShared.GetVehicleTowingVehicle(element));
+                return (Vehicle) ElementManager.Instance.GetElement(MtaShared.GetVehicleTowingVehicle(element));
             }
             set
             {
@@ -44,7 +44,7 @@ namespace Slipe.Server.Vehicles
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Trailer(MTAElement element) : base(element)
+        public Trailer(MtaElement element) : base(element)
         {
 
         }
@@ -54,7 +54,7 @@ namespace Slipe.Server.Vehicles
         /// </summary>
         public bool AttachTo(Vehicle vehicle)
         {
-            return MTAShared.AttachTrailerToVehicle(element, vehicle.MTAElement);
+            return MtaShared.AttachTrailerToVehicle(element, vehicle.MTAElement);
         }
     }
 

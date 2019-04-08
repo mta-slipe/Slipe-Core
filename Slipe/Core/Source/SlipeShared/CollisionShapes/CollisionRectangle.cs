@@ -1,4 +1,4 @@
-﻿using Slipe.MTADefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,7 +17,7 @@ namespace Slipe.Shared.CollisionShapes
         /// </summary>
         public CollisionRectangle(Vector2 position, float width, float height)
         {
-            element = MTAShared.CreateColRectangle(position.X, position.Y, width, height);
+            element = MtaShared.CreateColRectangle(position.X, position.Y, width, height);
             ElementManager.Instance.RegisterElement(this);
         }
     }

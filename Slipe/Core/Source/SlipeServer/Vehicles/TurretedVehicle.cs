@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
 
@@ -19,12 +19,12 @@ namespace Slipe.Server.Vehicles
         {
             get
             {
-                Tuple<float, float> r = MTAShared.GetVehicleTurretPosition(element);
+                Tuple<float, float> r = MtaShared.GetVehicleTurretPosition(element);
                 return new Vector2(r.Item1, r.Item2);
             }
             set
             {
-                MTAShared.SetVehicleTurretPosition(element, value.X, value.Y);
+                MtaShared.SetVehicleTurretPosition(element, value.X, value.Y);
             }
         }
 
@@ -44,7 +44,7 @@ namespace Slipe.Server.Vehicles
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public TurretedVehicle(MTAElement element) : base(element)
+        public TurretedVehicle(MtaElement element) : base(element)
         {
 
         }

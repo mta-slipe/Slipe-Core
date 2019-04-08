@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Weapons;
 using Slipe.Shared.Pickups;
@@ -22,11 +22,11 @@ namespace Slipe.Server.Pickups
         {
             get
             {
-                return MTAServer.GetPickupRespawnInterval(element);
+                return MtaServer.GetPickupRespawnInterval(element);
             }
             set
             {
-                MTAServer.SetPickupRespawnInterval(element, value);
+                MtaServer.SetPickupRespawnInterval(element, value);
             }
         }
 
@@ -37,14 +37,14 @@ namespace Slipe.Server.Pickups
         {
             get
             {
-                return MTAServer.IsPickupSpawned(element);
+                return MtaServer.IsPickupSpawned(element);
             }
         }
 
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Pickup(MTAElement element) : base(element) { }
+        public Pickup(MtaElement element) : base(element) { }
 
         /// <summary>
         /// Creates a pickup from the base createPickup paramters
@@ -73,7 +73,7 @@ namespace Slipe.Server.Pickups
         /// </summary>
         public bool Use(Player player)
         {
-            return MTAShared.UsePickup(element, player.MTAElement);
+            return MtaShared.UsePickup(element, player.MTAElement);
         }
     }
 }

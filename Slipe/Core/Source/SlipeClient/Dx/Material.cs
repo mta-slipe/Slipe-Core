@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 
 namespace Slipe.Client.Dx
@@ -11,12 +11,12 @@ namespace Slipe.Client.Dx
     /// </summary>
     public abstract class Material
     {
-        protected MTAElement materialElement;
+        protected MtaElement materialElement;
 
         /// <summary>
         /// Get the material element associated
         /// </summary>
-        public MTAElement MaterialElement
+        public MtaElement MaterialElement
         {
             get
             {
@@ -31,7 +31,7 @@ namespace Slipe.Client.Dx
         {
             get
             {
-                Tuple<int, int, dynamic, dynamic> result = MTAClient.DxGetMaterialSize(materialElement);
+                Tuple<int, int, dynamic, dynamic> result = MtaClient.DxGetMaterialSize(materialElement);
                 return new Vector2(result.Item1, result.Item2);
             }
         }
@@ -43,7 +43,7 @@ namespace Slipe.Client.Dx
         {
             get
             {
-                Tuple<int, int, dynamic, dynamic> result = MTAClient.DxGetMaterialSize(materialElement);
+                Tuple<int, int, dynamic, dynamic> result = MtaClient.DxGetMaterialSize(materialElement);
                 return new Vector3(result.Item1, result.Item2, result.Item3);
             }
         }

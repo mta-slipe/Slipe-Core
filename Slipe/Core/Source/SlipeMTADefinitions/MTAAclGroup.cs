@@ -1,3 +1,3 @@
-namespace Slipe.MTADefinitions {
-	public class MTAAclGroup{}
+namespace Slipe.MtaDefinitions {
+	public class MtaAclGroup{}
 }

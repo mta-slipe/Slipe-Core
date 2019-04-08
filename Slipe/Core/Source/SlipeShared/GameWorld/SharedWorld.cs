@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Utilities;
 
@@ -39,11 +39,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.AreTrafficLightsLocked();
+                return MtaShared.AreTrafficLightsLocked();
             }
             set
             {
-                MTAShared.SetTrafficLightsLocked(value);
+                MtaShared.SetTrafficLightsLocked(value);
             }
         }
 
@@ -55,11 +55,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.GetAircraftMaxVelocity();
+                return MtaShared.GetAircraftMaxVelocity();
             }
             set
             {
-                MTAShared.SetAircraftMaxVelocity(value);
+                MtaShared.SetAircraftMaxVelocity(value);
             }
         }
 
@@ -70,11 +70,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.GetAircraftMaxHeight();
+                return MtaShared.GetAircraftMaxHeight();
             }
             set
             {
-                MTAShared.SetAircraftMaxHeight(value);
+                MtaShared.SetAircraftMaxHeight(value);
             }
         }
 
@@ -85,11 +85,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.GetCloudsEnabled();
+                return MtaShared.GetCloudsEnabled();
             }
             set
             {
-                MTAShared.SetCloudsEnabled(value);
+                MtaShared.SetCloudsEnabled(value);
             }
         }
 
@@ -100,11 +100,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.GetFarClipDistance();
+                return MtaShared.GetFarClipDistance();
             }
             set
             {
-                MTAShared.SetFarClipDistance(value);
+                MtaShared.SetFarClipDistance(value);
             }
         }
 
@@ -115,11 +115,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.GetFogDistance();
+                return MtaShared.GetFogDistance();
             }
             set
             {
-                MTAShared.SetFogDistance(value);
+                MtaShared.SetFogDistance(value);
             }
         }
 
@@ -130,11 +130,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.GetGameSpeed();
+                return MtaShared.GetGameSpeed();
             }
             set
             {
-                MTAShared.SetGameSpeed(value);
+                MtaShared.SetGameSpeed(value);
             }
         }
 
@@ -145,11 +145,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.GetGravity();
+                return MtaShared.GetGravity();
             }
             set
             {
-                MTAShared.SetGravity(value);
+                MtaShared.SetGravity(value);
             }
         }
 
@@ -160,11 +160,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return HeatHaze.FromRaw(MTAShared.GetHeatHaze());
+                return HeatHaze.FromRaw(MtaShared.GetHeatHaze());
             }
             set
             {
-                MTAShared.SetHeatHaze(value.Intensity, value.RandomShift, value.SpeedMin, value.SpeedMax, (int)value.ScanSize.X, (int)value.ScanSize.Y, (int)value.RenderSize.X, (int)value.RenderSize.Y, value.ShowInside);
+                MtaShared.SetHeatHaze(value.Intensity, value.RandomShift, value.SpeedMin, value.SpeedMax, (int)value.ScanSize.X, (int)value.ScanSize.Y, (int)value.RenderSize.X, (int)value.RenderSize.Y, value.ShowInside);
             }
         }
 
@@ -175,11 +175,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.GetJetpackMaxHeight();
+                return MtaShared.GetJetpackMaxHeight();
             }
             set
             {
-                MTAShared.SetJetpackMaxHeight(value);
+                MtaShared.SetJetpackMaxHeight(value);
             }
         }
 
@@ -190,11 +190,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.GetMinuteDuration();
+                return MtaShared.GetMinuteDuration();
             }
             set
             {
-                MTAShared.SetMinuteDuration(value);
+                MtaShared.SetMinuteDuration(value);
             }
         }
 
@@ -205,11 +205,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.GetMoonSize();
+                return MtaShared.GetMoonSize();
             }
             set
             {
-                MTAShared.SetMoonSize(value);
+                MtaShared.SetMoonSize(value);
             }
         }
 
@@ -222,11 +222,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.GetOcclusionsEnabled();
+                return MtaShared.GetOcclusionsEnabled();
             }
             set
             {
-                MTAShared.SetOcclusionsEnabled(value);
+                MtaShared.SetOcclusionsEnabled(value);
             }
         }
 
@@ -238,11 +238,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.GetRainLevel();
+                return MtaShared.GetRainLevel();
             }
             set
             {
-                MTAShared.SetRainLevel(value);
+                MtaShared.SetRainLevel(value);
             }
         }
 
@@ -253,12 +253,12 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                Tuple<int, int, int, int, int, int> raw = MTAShared.GetSkyGradient();
+                Tuple<int, int, int, int, int, int> raw = MtaShared.GetSkyGradient();
                 return new Tuple<Color, Color>(new Color((byte)raw.Item1, (byte)raw.Item2, (byte)raw.Item3), new Color((byte)raw.Item4, (byte)raw.Item5, (byte)raw.Item6));
             }
             set
             {
-                MTAShared.SetSkyGradient(value.Item1.R, value.Item1.G, value.Item1.B, value.Item2.R, value.Item2.G, value.Item2.B);
+                MtaShared.SetSkyGradient(value.Item1.R, value.Item1.G, value.Item1.B, value.Item2.R, value.Item2.G, value.Item2.B);
             }
         }
 
@@ -269,12 +269,12 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                Tuple<int, int, int, int, int, int> raw = MTAShared.GetSunColor();
+                Tuple<int, int, int, int, int, int> raw = MtaShared.GetSunColor();
                 return new Tuple<Color, Color>(new Color((byte)raw.Item1, (byte)raw.Item2, (byte)raw.Item3), new Color((byte)raw.Item4, (byte)raw.Item5, (byte)raw.Item6));
             }
             set
             {
-                MTAShared.SetSunColor(value.Item1.R, value.Item1.G, value.Item1.B, value.Item2.R, value.Item2.G, value.Item2.B);
+                MtaShared.SetSunColor(value.Item1.R, value.Item1.G, value.Item1.B, value.Item2.R, value.Item2.G, value.Item2.B);
             }
         }
 
@@ -285,11 +285,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return (int)MTAShared.GetSunSize();
+                return (int)MtaShared.GetSunSize();
             }
             set
             {
-                MTAShared.SetSunSize(value);
+                MtaShared.SetSunSize(value);
             }
         }
 
@@ -300,12 +300,12 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                Tuple<int, int> time = MTAShared.GetTime();
+                Tuple<int, int> time = MtaShared.GetTime();
                 return new GameTime(time.Item1, time.Item2);
             }
             set
             {
-                MTAShared.SetTime(value.Hour, value.Minute);
+                MtaShared.SetTime(value.Hour, value.Minute);
             }
         }
 
@@ -316,14 +316,14 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return (TrafficLightState)MTAShared.GetTrafficLightState();
+                return (TrafficLightState)MtaShared.GetTrafficLightState();
             }
             set
             {
                 if (value == TrafficLightState.Auto)
-                    MTAShared.SetTrafficLightState("auto");
+                    MtaShared.SetTrafficLightState("auto");
                 else
-                    MTAShared.SetTrafficLightState((int)value);
+                    MtaShared.SetTrafficLightState((int)value);
             }
         }
 
@@ -335,15 +335,15 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                Tuple<int, int> result = MTAShared.GetWeather();
+                Tuple<int, int> result = MtaShared.GetWeather();
                 return new Weather((WeatherType)result.Item1, (WeatherType)result.Item2);
             }
             set
             {
                 if (value.TransitionTo > 0)
-                    MTAShared.SetWeatherBlended((int)value.TransitionTo);
+                    MtaShared.SetWeatherBlended((int)value.TransitionTo);
                 else
-                    MTAShared.SetWeather((int)value.Current);
+                    MtaShared.SetWeather((int)value.Current);
             }
         }
 
@@ -355,12 +355,12 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                Tuple<int, int, int> result = MTAShared.GetWindVelocity();
+                Tuple<int, int, int> result = MtaShared.GetWindVelocity();
                 return new Vector3(result.Item1, result.Item2, result.Item3);
             }
             set
             {
-                MTAShared.SetWindVelocity(value.X, value.Y, value.Z);
+                MtaShared.SetWindVelocity(value.X, value.Y, value.Z);
             }
         }
 
@@ -371,7 +371,7 @@ namespace Slipe.Shared.GameWorld
         {
             set
             {
-                MTAShared.SetInteriorSoundsEnabled(value);
+                MtaShared.SetInteriorSoundsEnabled(value);
             }
         }
 
@@ -382,12 +382,12 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                Tuple<int, int, int, int> result = MTAShared.GetWaterColor();
+                Tuple<int, int, int, int> result = MtaShared.GetWaterColor();
                 return new Color((byte)result.Item1, (byte)result.Item2, (byte)result.Item3, (byte)result.Item4);
             }
             set
             {
-                MTAShared.SetWaterColor(value.R, value.G, value.B, value.A);
+                MtaShared.SetWaterColor(value.R, value.G, value.B, value.A);
             }
         }
 
@@ -398,11 +398,11 @@ namespace Slipe.Shared.GameWorld
         {
             get
             {
-                return MTAShared.GetWaveHeight();
+                return MtaShared.GetWaveHeight();
             }
             set
             {
-                MTAShared.SetWaveHeight(value);
+                MtaShared.SetWaveHeight(value);
             }
         }
 
@@ -424,7 +424,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool ResetFarClipDistance()
         {
-            return MTAShared.ResetFarClipDistance();
+            return MtaShared.ResetFarClipDistance();
         }
 
         /// <summary>
@@ -432,7 +432,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool ResetFogDistance()
         {
-            return MTAShared.ResetFogDistance();
+            return MtaShared.ResetFogDistance();
         }
 
         /// <summary>
@@ -440,7 +440,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool ResetHeatHaze()
         {
-            return MTAShared.ResetHeatHaze();
+            return MtaShared.ResetHeatHaze();
         }
 
         /// <summary>
@@ -456,7 +456,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool ResetMoonSize()
         {
-            return MTAShared.ResetMoonSize();
+            return MtaShared.ResetMoonSize();
         }
 
         /// <summary>
@@ -464,7 +464,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool ResetRainLevel()
         {
-            return MTAShared.ResetRainLevel();
+            return MtaShared.ResetRainLevel();
         }
 
         /// <summary>
@@ -472,7 +472,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool ResetSkyGradient()
         {
-            return MTAShared.ResetSkyGradient();
+            return MtaShared.ResetSkyGradient();
         }
 
         /// <summary>
@@ -480,7 +480,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool ResetSunColor()
         {
-            return MTAShared.ResetSunColor();
+            return MtaShared.ResetSunColor();
         }
 
         /// <summary>
@@ -488,7 +488,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool ResetSunSize()
         {
-            return MTAShared.ResetSunSize();
+            return MtaShared.ResetSunSize();
         }
 
         /// <summary>
@@ -496,7 +496,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool ResetWindVelocity()
         {
-            return MTAShared.ResetWindVelocity();
+            return MtaShared.ResetWindVelocity();
         }
 
         /// <summary>
@@ -504,7 +504,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public string GetZoneName(Vector3 position, bool citiesOnly = false)
         {
-            return MTAShared.GetZoneName(position.X, position.Y, position.Z, citiesOnly);
+            return MtaShared.GetZoneName(position.X, position.Y, position.Z, citiesOnly);
         }
 
         /// <summary>
@@ -512,7 +512,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool RemoveWorldModel(int modelID, float radius, Vector3 position, int interior = 0)
         {
-            return MTAShared.RemoveWorldModel(modelID, radius, position.X, position.Y, position.Z, interior);
+            return MtaShared.RemoveWorldModel(modelID, radius, position.X, position.Y, position.Z, interior);
         }
 
         /// <summary>
@@ -520,7 +520,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool RestoreWorldModel(int modelID, float radius, Vector3 position, int interior = -1)
         {
-            return MTAShared.RestoreWorldModel(modelID, radius, position.X, position.Y, position.Z, interior);
+            return MtaShared.RestoreWorldModel(modelID, radius, position.X, position.Y, position.Z, interior);
         }
 
         /// <summary>
@@ -528,7 +528,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool RestoreAllWorldModels()
         {
-            return MTAShared.RestoreAllWorldModels();
+            return MtaShared.RestoreAllWorldModels();
         }
 
         /// <summary>
@@ -536,7 +536,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool ResetWaterColor()
         {
-            return MTAShared.ResetWaterColor();
+            return MtaShared.ResetWaterColor();
         }
 
         /// <summary>
@@ -544,7 +544,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool SetWaterLevel(float level, bool includeWaterFeatures = true, bool includeWaterElements = true)
         {
-            return MTAShared.SetWaterLevel(level, includeWaterFeatures, includeWaterElements);
+            return MtaShared.SetWaterLevel(level, includeWaterFeatures, includeWaterElements);
         }
 
         /// <summary>
@@ -552,7 +552,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public bool ResetWaterLevel()
         {
-            return MTAShared.ResetWaterLevel();
+            return MtaShared.ResetWaterLevel();
         }
 
         #endregion

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Weapons;
 using System.ComponentModel;
@@ -23,7 +23,7 @@ namespace Slipe.Shared.Pickups
         {
             get
             {
-                return (PickupType)MTAShared.GetPickupType(element);
+                return (PickupType)MtaShared.GetPickupType(element);
             }
         }
 
@@ -34,7 +34,7 @@ namespace Slipe.Shared.Pickups
         {
             get
             {
-                return MTAShared.GetPickupAmmo(element);
+                return MtaShared.GetPickupAmmo(element);
             }
         }
 
@@ -45,7 +45,7 @@ namespace Slipe.Shared.Pickups
         {
             get
             {
-                return (WeaponType)MTAShared.GetPickupWeapon(element);
+                return (WeaponType)MtaShared.GetPickupWeapon(element);
             }
         }
 
@@ -56,7 +56,7 @@ namespace Slipe.Shared.Pickups
         {
             get
             {
-                return MTAShared.GetPickupAmount(element);
+                return MtaShared.GetPickupAmount(element);
             }
         }
 
@@ -65,14 +65,14 @@ namespace Slipe.Shared.Pickups
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public SharedPickup(MTAElement element) : base(element) { }
+        public SharedPickup(MtaElement element) : base(element) { }
 
         /// <summary>
         /// Creates a pickup from all CreatePickup variables
         /// </summary>
         public SharedPickup(Vector3 position, PickupType type, int amount, int respawnTime = 30000, int ammo = 50)
         {
-            element = MTAShared.CreatePickup(position.X, position.Y, position.Z, (int)type, amount, respawnTime, ammo);
+            element = MtaShared.CreatePickup(position.X, position.Y, position.Z, (int)type, amount, respawnTime, ammo);
             ElementManager.Instance.RegisterElement(this);
         }
         /// <summary>
@@ -99,7 +99,7 @@ namespace Slipe.Shared.Pickups
         /// </summary>
         public bool Morph(PickupType type, int amount, int ammo = 50)
         {
-            return MTAShared.SetPickupType(element, (int)type, amount, ammo);
+            return MtaShared.SetPickupType(element, (int)type, amount, ammo);
         }
 
         /// <summary>

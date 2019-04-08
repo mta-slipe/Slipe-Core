@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 
 namespace Slipe.Shared.Utilities
 {
@@ -57,7 +57,7 @@ namespace Slipe.Shared.Utilities
         {
             get
             {
-                return MTAShared.Tocolor(R, G, B, A);
+                return MtaShared.Tocolor(R, G, B, A);
             }
         }
 

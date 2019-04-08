@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MTADefinitions;
+using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
@@ -16,7 +16,7 @@ namespace Slipe.Server.Radar
     public class RadarArea : SharedRadarArea
     {
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public RadarArea(MTAElement element) : base(element) { }
+        public RadarArea(MtaElement element) : base(element) { }
 
         /// <summary>
         /// Create a radar area from all the createRadarArea parameters
