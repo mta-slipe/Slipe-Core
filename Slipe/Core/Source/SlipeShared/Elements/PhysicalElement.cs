@@ -47,7 +47,7 @@ namespace Slipe.Shared.Elements
                 MTAShared.SetElementInterior(element, value, position.X, position.Y, position.Z);
             }
         }
-
+                
         /// <summary>
         /// Gets and sets if this element is frozen in place
         /// </summary>
