@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.IO
+namespace Slipe.Server.IO
 {
     /// <summary>
     /// Represents the ingame chatbox

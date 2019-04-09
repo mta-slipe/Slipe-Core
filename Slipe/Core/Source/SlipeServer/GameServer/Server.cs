@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MtaDefinitions;
+using Slipe.Server.IO;
 
 namespace Slipe.Server.GameServer
 {
@@ -104,6 +105,54 @@ namespace Slipe.Server.GameServer
         public static bool IsGlitchEnabled(Glitch glitch)
         {
             return MtaServer.IsGlitchEnabled(glitch.ToString().ToLower());
+        }
+
+        /// <summary>
+        /// Returns the MTA F8 console
+        /// </summary>
+        private static MTAConsole console;
+        public static MTAConsole Console
+        {
+            get
+            {
+                if (console == null)
+                {
+                    console = new MTAConsole();
+                }
+                return console;
+            }
+        }
+
+        /// <summary>
+        /// Returns the MTA debug view
+        /// </summary>
+        private static MTADebug debug;
+        public static MTADebug Debug
+        {
+            get
+            {
+                if (debug == null)
+                {
+                    debug = new MTADebug();
+                }
+                return debug;
+            }
+        }
+
+        /// <summary>
+        /// Returns the MTA Server Log
+        /// </summary>
+        private static ServerLog log;
+        public static ServerLog Log
+        {
+            get
+            {
+                if (log == null)
+                {
+                    log = new ServerLog();
+                }
+                return log;
+            }
         }
 
         /// <summary>

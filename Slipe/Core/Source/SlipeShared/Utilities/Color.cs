@@ -103,6 +103,16 @@ namespace Slipe.Shared.Utilities
 
         }
 
+        public static implicit operator Color(uint color)
+        {
+            return new Color(color);
+        }
+
+        public static implicit operator Color(int color)
+        {
+            return new Color(color);
+        }
+
         public static Color Maroon { get { return new Color(128, 0, 0); } }
         public static Color rkRed { get { return new Color(139, 0, 0); } }
         public static Color Brown { get { return new Color(165, 42, 42); } }

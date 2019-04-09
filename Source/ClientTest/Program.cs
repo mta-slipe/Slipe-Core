@@ -33,6 +33,7 @@ namespace ClientTest
 
         public Program()
         {
+            ChatBox.WriteLine("hey", 0xff00ff);
             //guiBrowser = new GUIBrowser(Vector2.Zero, 1, 1, false, true, true);
             //browser = guiBrowser.Browser;
 
