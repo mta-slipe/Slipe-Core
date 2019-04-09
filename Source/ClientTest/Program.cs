@@ -67,13 +67,12 @@ namespace ClientTest
             Player.Local.SetAnimation(new Animation("salute", "mil_salutePrt"), false);
 
             Vector3 pos = Player.Local.Position;
-            // BROKEN UNTIL FIXED BY YUAN
-            //Random r = new Random();
-            //for (int i = 0; i < 20; i++)
-            //{
-            //    Vector3 newPos = new Vector3(pos.X + r.Next(-5, 5), pos.Y + r.Next(-5, 5), pos.Z + r.Next(-5, 5));
-            //    Fx.WaterHydrant(newPos);
-            //}
+            Random r = new Random();
+            for (int i = 0; i < 20; i++)
+            {
+                Vector3 newPos = new Vector3(pos.X + r.Next(-5, 5), pos.Y + r.Next(-5, 5), pos.Z + r.Next(-5, 5));
+                Fx.WaterHydrant(newPos);
+            }
 
             Effect ef = new Effect(EffectType.fire_large, pos, Vector3.Zero);
 
