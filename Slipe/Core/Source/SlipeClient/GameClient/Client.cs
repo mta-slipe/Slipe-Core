@@ -92,5 +92,68 @@ namespace Slipe.Client.GameClient
                 MtaClient.SetRadioChannel((int)value);
             }
         }
+
+        /// <summary>
+        /// Get and set if the input is focused on Gui elements
+        /// </summary>
+        public static bool GuiInputEnabled
+        {
+            get
+            {
+                return MtaClient.GuiGetInputEnabled();
+            }
+            set
+            {
+                MtaClient.GuiSetInputEnabled(value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the input mode
+        /// </summary>
+        public static InputMode InputMode
+        {
+            get
+            {
+                return (InputMode) Enum.Parse(typeof(InputMode), MtaClient.GuiGetInputMode(), true);
+            }
+            set
+            {
+                MtaClient.GuiSetInputMode(value.ToString().ToLower());
+            }
+        }
+
+        /// <summary>
+        /// Get whether the user is in the main menu or not
+        /// </summary>
+        public static bool IsMainMenuActive
+        {
+            get
+            {
+                return MtaClient.IsMainMenuActive();
+            }
+        }
+
+        /// <summary>
+        /// Get if any system windows that take focus are active.
+        /// </summary>
+        public static bool IsMtaWindowActive
+        {
+            get
+            {
+                return MtaClient.IsMTAWindowActive();
+            }
+        }
+
+        /// <summary>
+        /// Get if the download box is active
+        /// </summary>
+        public static bool IsTransferBoxActive
+        {
+            get
+            {
+                return MtaClient.IsTransferBoxActive();
+            }
+        }
     }
 }

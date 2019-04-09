@@ -10,13 +10,26 @@ namespace Slipe.Client.IO
     /// </summary>
     public class Cursor
     {
+        /// <summary>
+        /// Get the type of the current cursor image.
+        /// </summary>
+        public static string Type
+        {
+            get
+            {
+                return MtaClient.GuiGetCursorType();
+            }
+        }
 
         /// <summary>
         /// Get the visibility of the cursor
         /// </summary>
-        public static bool IsVisible()
+        public static bool Visible
         {
-            return MtaClient.IsCursorShowing();
+            get
+            {
+                return MtaClient.IsCursorShowing();
+            }            
         }
 
         /// <summary>

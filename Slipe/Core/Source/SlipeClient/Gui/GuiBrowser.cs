@@ -12,7 +12,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// GUI variant of a browser element
     /// </summary>
-    public class GuiBrowser : GUIElement
+    public class GuiBrowser : GuiElement
     {
         private Browser browser;
 
