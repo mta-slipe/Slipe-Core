@@ -18,7 +18,7 @@ namespace Slipe.Shared.Rpc
             [[
             this.x = System.cast(System.Int32, value.x)
             this.name = System.cast(System.String, value.name)
-            this.element = Slipe.Shared.ElementManager:getInstance():GetElement(value.element)
+            this.element = Slipe.Shared.Elements.ElementManager:getInstance():GetElement(value.element)
             ]]
             */
         }

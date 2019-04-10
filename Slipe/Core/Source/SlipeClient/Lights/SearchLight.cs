@@ -183,7 +183,7 @@ namespace Slipe.Client.Lights
         /// <summary>
         /// Updates this element to the correct position and rotation
         /// </summary>
-        protected void Update()
+        protected void Update(float timeSlice)
         {
             StartPosition = ToAttached.Position + Offset.Translation;
             EndPosition = Vector3.Transform(relativeEndPosition, ToAttached.Matrix * Offset);

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.Shared.Elements;
 using Slipe.Server.Peds;
+using Slipe.Server.Elements;
 
 namespace Slipe.Server.Rpc
 {
@@ -31,7 +32,7 @@ namespace Slipe.Server.Rpc
         {
             RegisteredRPCs = new Dictionary<string, Action<Player, object>>();
 
-            Element.OnRootEvent += (eventName, source, p1, p2, p3, p4, p5, p6, p7, p8) =>
+            RootElement.OnMiscelaniousEvent += (eventName, source, p1, p2, p3, p4, p5, p6, p7, p8) =>
             {
                 if (RegisteredRPCs.ContainsKey(eventName))
                 {
@@ -56,7 +57,7 @@ namespace Slipe.Server.Rpc
                  */
             };
             MtaShared.AddEvent(key, true);
-            Element.Root.AddEventHandler(key);
+            Element.Root.ListenForEvent(key);
         }
 
         /// <summary>

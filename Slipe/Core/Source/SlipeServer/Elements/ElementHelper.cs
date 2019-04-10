@@ -31,7 +31,9 @@ namespace Slipe.Server.Elements
             [typeof(Team)] = "team",
             [typeof(Marker)] = "marker",
             [typeof(Water)] = "water",
-            [typeof(Ped)] = "ped"
+            [typeof(Ped)] = "ped",
+            [typeof(RootElement)] = "root",
+            [typeof(ResourceRootElement)] = "resource"
         };
 
         /// <summary>
@@ -69,7 +71,7 @@ namespace Slipe.Server.Elements
         /// <summary>
         /// Creates an instance of an element given a certain type
         /// </summary>
-        public Element InstantiateElement(string type, MtaElement element)
+        public virtual Element InstantiateElement(string type, MtaElement element)
         {
             switch (type)
             {
@@ -95,6 +97,10 @@ namespace Slipe.Server.Elements
                     return new Water(element);
                 case "ped":
                     return new Ped(element);
+                case "root":
+                    return new RootElement(element);
+                case "resource":
+                    return new ResourceRootElement(element);
                 default:
                     return new Element(element);
             }

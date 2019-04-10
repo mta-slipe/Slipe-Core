@@ -30,23 +30,14 @@ namespace Slipe.Server.Peds
         {
             instance = this;
 
-            Element.OnRootEvent += HandleRootEvent;
-            Element.Root.AddEventHandler("onPlayerJoin");
+            Element.Root.ListenForEvent("onPlayerJoin");
         }
 
-        /// <summary>
-        /// Handles player events on the root element
-        /// </summary>
-        public void HandleRootEvent(string eventName, MtaDefinitions.MtaElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        internal void HandleJoin(Player player)
         {
-            switch (eventName)
-            {
-                case "onPlayerJoin":
-                    Player player = new Player(source);
-                    OnPlayerJoin?.Invoke(player);
-                    break;
-            }
+            OnPlayerJoin?.Invoke(player);
         }
+
 
         public delegate void OnPlayerJoinHandler(Player player);
         public event OnPlayerJoinHandler OnPlayerJoin;

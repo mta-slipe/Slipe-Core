@@ -96,6 +96,6 @@ namespace Slipe.Client.Helpers
         /// <summary>
         /// Updates this element to the correct position and rotation
         /// </summary>
-        protected abstract void Update();
+        protected abstract void Update(float timeSlice);
     }
 }

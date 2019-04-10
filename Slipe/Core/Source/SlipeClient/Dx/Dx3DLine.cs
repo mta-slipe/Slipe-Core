@@ -21,7 +21,7 @@ namespace Slipe.Client.Dx
         {
             get
             {
-                Update();
+                Update(0);
                 return startPos;
             }
             set
@@ -38,7 +38,7 @@ namespace Slipe.Client.Dx
         {
             get
             {
-                Update();
+                Update(0);
                 return endPos;
             }
             set
@@ -103,7 +103,7 @@ namespace Slipe.Client.Dx
             return false;
         }
 
-        protected override void Update()
+        protected override void Update(float timeSlice)
         {
             startPos = ToAttached.Position + Offset.Translation;
             endPos = Vector3.Transform(relativeEndPosition, ToAttached.Matrix * Offset);

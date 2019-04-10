@@ -174,7 +174,7 @@ namespace Slipe.Shared.Elements
         /// <summary>
         /// Adds an eventhandler to this element
         /// </summary>
-        public void AddEventHandler(string eventName, bool propagated = true, string priorty = "normal")
+        public void ListenForEvent(string eventName, bool propagated = true, string priorty = "normal")
         {
             ElementManager.Instance.AddEventHandler(this, eventName, propagated, priorty);
         }
@@ -184,14 +184,8 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public virtual void HandleEvent(string eventName, MtaElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
         {
-            if (this == Root)
-            {
-                OnRootEvent?.Invoke(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
-            }
-        }
 
-        public delegate void OnRootEventHandler(string eventName, MtaElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8);
-        public static event OnRootEventHandler OnRootEvent;
+        }
 
         #endregion
 

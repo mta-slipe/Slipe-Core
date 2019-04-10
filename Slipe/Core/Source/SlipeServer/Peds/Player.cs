@@ -308,6 +308,7 @@ namespace Slipe.Server.Peds
         public Player(MtaElement mtaElement) : base(mtaElement)
         {
             Camera = new Camera(this);
+            PlayerManager.Instance.HandleJoin(this);
         }
 
         #endregion

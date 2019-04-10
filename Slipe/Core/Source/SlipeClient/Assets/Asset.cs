@@ -1,4 +1,5 @@
-﻿using Slipe.MtaDefinitions;
+﻿using Slipe.Client.Elements;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using System;
 using System.Collections.Generic;
@@ -33,20 +34,18 @@ namespace Slipe.Client.Assets
             this.state = DownloadState.Default;
             this.filepath = filepath;
 
-            Element.Root.AddEventHandler("onClientFileDownloadComplete");
-            Element.OnRootEvent += HandleRootEvent;
+            Element.Root.ListenForEvent("onClientFileDownloadComplete");
+            ResourceRootElement.OnFileDownloadComplete += HandleDownloadComplete;
+
         }
 
-        private void HandleRootEvent(string eventName, MtaElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        private void HandleDownloadComplete(string path, bool success)
         {
-            if (eventName == "onClientFileDownloadComplete")
+            if (path == filepath)
             {
-                if ((string) p1 == filepath)
-                {
-                    this.state = (bool)p2 == true ? DownloadState.Downloaded : DownloadState.Failed;
-                    Element.OnRootEvent -= HandleRootEvent;
-                    OnDownloadComplete?.Invoke();
-                }
+                this.state = success == true ? DownloadState.Downloaded : DownloadState.Failed;
+                ResourceRootElement.OnFileDownloadComplete -= HandleDownloadComplete;
+                OnDownloadComplete?.Invoke();
             }
         }
 

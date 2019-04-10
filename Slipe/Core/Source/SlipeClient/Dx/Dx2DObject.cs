@@ -25,7 +25,7 @@ namespace Slipe.Client.Dx
         {
             get
             {
-                Update();
+                Update(0);
                 return pos;
             }
             set
@@ -42,7 +42,7 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// Updates this DxObject to the correct position on screen
         /// </summary>
-        protected override void Update()
+        protected override void Update(float timeSlice)
         {
             pos = GameClient.Client.Renderer.ScreenFromWorldPosition(ToAttached.Position + Offset.Translation);
         }

@@ -44,7 +44,9 @@ namespace Slipe.Client.Elements
             [typeof(Effect)] = "effect",
             [typeof(Sound)] = "sound",
             [typeof(CustomWeapon)] = "weapon",
-            [typeof(Projectile)] = "projectile"
+            [typeof(Projectile)] = "projectile",
+            [typeof(RootElement)] = "root",
+            [typeof(ResourceRootElement)] = "resource"
         };
 
         /// <summary>
@@ -83,7 +85,7 @@ namespace Slipe.Client.Elements
         /// <summary>
         /// Instantiate an MTA element as a slipe class of the specific type
         /// </summary>
-        public Element InstantiateElement(string type, MtaElement element)
+        public virtual Element InstantiateElement(string type, MtaElement element)
         {
             switch (type)
             {
@@ -125,6 +127,10 @@ namespace Slipe.Client.Elements
                     return new CustomWeapon(element);
                 case "projectile":
                     return new Projectile(element);
+                case "root":
+                    return new RootElement(element);
+                case "resource":
+                    return new ResourceRootElement(element);
                 default:
                     return new Element(element);
             }

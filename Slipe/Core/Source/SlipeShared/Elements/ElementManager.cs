@@ -48,7 +48,8 @@ namespace Slipe.Shared.Elements
             elementHelper = helper;
             instance = this;
             elements = new Dictionary<object, Element>();
-            root = new Element(MtaShared.GetRootElement());
+            MtaElement mtaRoot = MtaShared.GetRootElement();
+            root = elementHelper.InstantiateElement(MtaShared.GetElementType(mtaRoot), mtaRoot);
         }
 
         /// <summary>

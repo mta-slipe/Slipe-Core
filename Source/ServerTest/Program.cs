@@ -85,7 +85,7 @@ namespace ServerTest
                 vehicle.Rotation = new Vector3(0, 0, 90);
             }
 
-            Element.Root.AddEventHandler("onVehicleDamage");
+            Element.Root.ListenForEvent("onVehicleDamage");
 
             Color color = new Color(0x0000ff);
             color = new Color(0xff00ffaa);

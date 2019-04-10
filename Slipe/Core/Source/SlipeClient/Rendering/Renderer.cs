@@ -4,6 +4,7 @@ using System.Text;
 using System.Numerics;
 using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
+using Slipe.Client.Elements;
 
 namespace Slipe.Client.Rendering
 {
@@ -86,10 +87,9 @@ namespace Slipe.Client.Rendering
         {
             instance = this;
 
-            Element.OnRootEvent += HandleRootEvent;
-            Element.Root.AddEventHandler("onClientRender");
-            Element.Root.AddEventHandler("onClientPreRender");
-            Element.Root.AddEventHandler("onClientHUDRender");
+            RootElement.OnRender += () => { OnRender?.Invoke(); };
+            RootElement.OnPreRender += (float timeSlice) => { OnPreRender?.Invoke(timeSlice); };
+            RootElement.OnHUDRender += () => { OnHudRender?.Invoke(); };
         }
         #endregion
 
@@ -142,28 +142,9 @@ namespace Slipe.Client.Rendering
 
         #region Events
 
-        /// <summary>
-        /// Handles player events on the root element
-        /// </summary>
-        public void HandleRootEvent(string eventName, MtaElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
-        {
-            switch (eventName)
-            {
-                case "onClientRender":
-                    OnRender?.Invoke();
-                    break;
-                case "onClientPreRender":
-                    OnPreRender?.Invoke();
-                    break;
-                case "OnClientHUDRender":
-                    OnHudRender?.Invoke();
-                    break;
-            }
-        }
-
         public delegate void OnRenderHandler();
         public event OnRenderHandler OnRender;
-        public delegate void OnPreRenderHandler();
+        public delegate void OnPreRenderHandler(float timeSlice);
         public event OnPreRenderHandler OnPreRender;
         public delegate void OnHudRenderHandler();
         public event OnHudRenderHandler OnHudRender;

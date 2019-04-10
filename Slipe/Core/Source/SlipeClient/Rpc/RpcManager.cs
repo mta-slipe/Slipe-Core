@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 using Slipe.Shared.Elements;
+using Slipe.Client.Elements;
 
 namespace Slipe.Client.Rpc
 {
@@ -28,7 +29,7 @@ namespace Slipe.Client.Rpc
         {
             RegisteredRPCs = new Dictionary<string, Action<object>>();
 
-            Element.OnRootEvent += (eventName, source, p1, p2, p3, p4, p5, p6, p7, p8) =>
+            RootElement.OnMiscelaniousEvent += (eventName, source, p1, p2, p3, p4, p5, p6, p7, p8) =>
             {
                 Console.WriteLine("CLIENT RPC TRIGGER");
                 if (RegisteredRPCs.ContainsKey(eventName))
@@ -52,7 +53,7 @@ namespace Slipe.Client.Rpc
                  */
             };
             MtaShared.AddEvent(key, true);
-            Element.Root.AddEventHandler(key);
+            Element.Root.ListenForEvent(key);
         }
 
         /// <summary>

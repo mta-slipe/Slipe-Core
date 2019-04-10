@@ -130,6 +130,7 @@ namespace Slipe.Client.Peds
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Player(MtaElement mtaElement) : base(mtaElement)
         {
+            PlayerManager.Instance.HandleJoin(this);
         }
 
         #endregion
