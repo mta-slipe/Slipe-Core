@@ -11,6 +11,7 @@ using Slipe.Server.GameServer;
 using Slipe.Shared.Peds;
 using Slipe.Server.Rendering;
 using System.ComponentModel;
+using Slipe.Server.Displays;
 
 namespace Slipe.Server.Peds
 {
@@ -314,6 +315,14 @@ namespace Slipe.Server.Peds
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Check if this palyer can observe a certain display
+        /// </summary>
+        public bool IsDisplayObserver(Display display)
+        {
+            return MtaServer.TextDisplayIsObserver(display.DisplayElement, element);
+        }
 
         /// <summary>
         /// Logs the player into an account
