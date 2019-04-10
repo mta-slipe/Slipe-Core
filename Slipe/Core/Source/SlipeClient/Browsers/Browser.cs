@@ -79,10 +79,9 @@ namespace Slipe.Client.Browsers
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Browser(MtaElement element)
+        public Browser(MtaElement element) : base(element)
         {
-            this.element = element;
-            ElementManager.Instance.RegisterElement(this);
+
         }
 
         #endregion

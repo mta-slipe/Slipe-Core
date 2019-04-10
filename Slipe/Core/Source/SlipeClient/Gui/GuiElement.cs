@@ -168,6 +168,18 @@ namespace Slipe.Client.Gui
             }
         }
 
+        /// <summary>
+        /// Get if this Gui item is created relatively to a parent
+        /// </summary>
+        protected bool isRelative;
+        public bool IsRelative
+        {
+            get
+            {
+                return isRelative;
+            }            
+        }
+
         #endregion
 
         #region Constructors

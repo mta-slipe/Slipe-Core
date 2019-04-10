@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using Slipe.Shared.Elements;
+using System.ComponentModel;
 
 namespace Slipe.Shared.CollisionShapes
 {
@@ -12,6 +13,12 @@ namespace Slipe.Shared.CollisionShapes
     /// </summary>
     public class CollisionTube: CollisionShape
     {
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public CollisionTube(MtaElement element) : base(element)
+        {
+
+        }
+
         /// <summary>
         /// Creates a collision tube from a position, radius and height
         /// </summary>

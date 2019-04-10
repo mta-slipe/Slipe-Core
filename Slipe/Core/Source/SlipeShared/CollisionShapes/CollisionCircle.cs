@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using Slipe.Shared.Elements;
+using System.ComponentModel;
 
 namespace Slipe.Shared.CollisionShapes
 {
@@ -12,6 +13,12 @@ namespace Slipe.Shared.CollisionShapes
     /// </summary>
     public class CollisionCircle: CollisionShape
     {
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public CollisionCircle(MtaElement element) : base(element)
+        {
+
+        }
+
         /// <summary>
         /// Creates a collision circle from a position and a radius
         /// </summary>

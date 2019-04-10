@@ -292,7 +292,7 @@ namespace Slipe.MtaDefinitions {
 		public static bool GuiGridListAutoSizeColumn (MtaElement gridList, int columnIndex){ throw new NotImplementedException(); }
 		public static int GuiGridListGetColumnCount (MtaElement gridList){ throw new NotImplementedException(); }
 		public static string GuiGridListGetColumnTitle (MtaElement guiGridlist, int columnIndex){ throw new NotImplementedException(); }
-		public static bool GuiGridListGetColumnWidth (MtaElement gridList, int columnIndex, bool relative){ throw new NotImplementedException(); }
+		public static float GuiGridListGetColumnWidth (MtaElement gridList, int columnIndex, bool relative){ throw new NotImplementedException(); }
 		public static Tuple<int, int, int, int> GuiGridListGetItemColor (MtaElement gridList, int rowIndex, int columnIndex){ throw new NotImplementedException(); }
 		public static string GuiGridListGetItemText (MtaElement gridList, int rowIndex, int columnIndex){ throw new NotImplementedException(); }
 		public static int GuiGridListGetRowCount (MtaElement gridList){ throw new NotImplementedException(); }

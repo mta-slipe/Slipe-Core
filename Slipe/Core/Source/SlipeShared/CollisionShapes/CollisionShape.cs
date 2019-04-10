@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using Slipe.Shared.Elements;
+using System.ComponentModel;
 
 namespace Slipe.Shared.CollisionShapes
 {
@@ -16,7 +17,15 @@ namespace Slipe.Shared.CollisionShapes
         /// Gets the type of the collision shape
         /// </summary>
         public string ShapeType { get { return MtaShared.GetColShapeType(element); } }
-        
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public CollisionShape(MtaElement element) : base(element)
+        {
+
+        }
+
+        public CollisionShape() : base() { }
+
         /// <summary>
         /// Checks whether a certain position is inside a collision shape
         /// </summary>
