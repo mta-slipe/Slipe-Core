@@ -22,8 +22,8 @@ end
 SqlOptions.getAutoReconnect = function (this)
   return this.reconnect
 end
-this.reconnect = value
 SqlOptions.setAutoReconnect = function (this, value)
+  this.reconnect = value
 end
 
 SqlOptions.getLog = function (this)
