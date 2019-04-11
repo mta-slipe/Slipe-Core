@@ -354,17 +354,13 @@ namespace Slipe.Shared.Vehicles
         /// Creates a vehicle from all MTA createVehicle variables
         /// </summary>
         public SharedVehicle(SharedVehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1)
-        {
-            element = MtaShared.CreateVehicle(model.ID, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, numberplate, false, variant1, variant2);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaShared.CreateVehicle(model.ID, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, numberplate, false, variant1, variant2)) { }
 
         /// <summary>
         /// Creates a specific model at a certain position
         /// </summary>
-        public SharedVehicle(SharedVehicleModel model, Vector3 position): this(model, position, Vector3.Zero)
-        {
-        }
+        public SharedVehicle(SharedVehicleModel model, Vector3 position)
+            : this(model, position, Vector3.Zero) { }
         #endregion
 
         #region Misc. Methods
@@ -519,7 +515,24 @@ namespace Slipe.Shared.Vehicles
         {
             return MtaShared.SetVehiclePanelState(element, (int)panel, (int)damage);
         }
-        #endregion            
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        /// Handles events
+        /// </summary>
+        public override void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
+        {
+            switch (eventName)
+            {
+                default:
+                    base.HandleEvent(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
+                    break;
+            }
+        }
+
+        #endregion
 
     }
 }

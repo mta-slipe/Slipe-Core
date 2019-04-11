@@ -74,11 +74,7 @@ namespace Slipe.Client.Gui
         /// Create a new memo
         /// </summary>
         public Memo(Vector2 position, Vector2 dimensions, string defaultText, bool relative = false, GuiElement parent = null)
-        {
-            element = MtaClient.GuiCreateMemo(position.X, position.Y, dimensions.X, dimensions.Y, defaultText, relative, parent?.MTAElement);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this (MtaClient.GuiCreateMemo(position.X, position.Y, dimensions.X, dimensions.Y, defaultText, relative, parent?.MTAElement)) { }
 
         #endregion
     }

@@ -38,10 +38,6 @@ namespace Slipe.Client.Gui
         /// Create a new checkbox
         /// </summary>
         public CheckBox(Vector2 position, Vector2 dimensions, string content, bool selected = false, bool relative = false, GuiElement parent = null)
-        {
-            element = MtaClient.GuiCreateCheckBox(position.X, position.Y, dimensions.X, dimensions.Y, content, selected, relative, parent?.MTAElement);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.GuiCreateCheckBox(position.X, position.Y, dimensions.X, dimensions.Y, content, selected, relative, parent?.MTAElement)) { }
     }
 }

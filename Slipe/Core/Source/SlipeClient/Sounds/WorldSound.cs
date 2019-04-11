@@ -102,38 +102,25 @@ namespace Slipe.Client.Sounds
         /// Create a sound in the world at a certain position
         /// </summary>
         public WorldSound(string pathOrUrl, Vector3 position, bool looped = false, bool throttled = true)
-        {
-            element = MtaClient.PlaySound3D(pathOrUrl, position.X, position.Y, position.Z, looped, throttled);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.PlaySound3D(pathOrUrl, position.X, position.Y, position.Z, looped, throttled)) { }
 
         /// <summary>
         /// Create a GTA Sfx at a 3D position in the world
         /// </summary>
         public WorldSound(SoundContainer container, int bankId, int soundId, Vector3 position, bool looped = false)
-        {
-            element = MtaClient.PlaySFX3D(container.ToString().ToLower(), bankId, soundId, position.X, position.Y, position.Z, looped);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.PlaySFX3D(container.ToString().ToLower(), bankId, soundId, position.X, position.Y, position.Z, looped)) { }
 
         /// <summary>
         /// Create a GTA radio station sound at a 3D position in the world
         /// </summary>
         public WorldSound(RadioStation station, int trackId, Vector3 position, bool looped = false)
-        {
-            string stationName = MtaClient.GetRadioChannelName((int)station);
-            element = MtaClient.PlaySFX3D("radio", stationName, trackId, position.X, position.Y, position.Z, looped);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.PlaySFX3D("radio", MtaClient.GetRadioChannelName((int)station), trackId, position.X, position.Y, position.Z, looped)) { }
 
         /// <summary>
         /// Create an extra GTA radio station sound at a 3D position in the world
         /// </summary>
         public WorldSound(ExtraStations station, int trackId, Vector3 position, bool looped = false)
-        {
-            element = MtaClient.PlaySFX3D("radio", station.ToString(), trackId, position.X, position.Y, position.Z, looped);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.PlaySFX3D("radio", station.ToString(), trackId, position.X, position.Y, position.Z, looped)) { }
 
         #endregion
 

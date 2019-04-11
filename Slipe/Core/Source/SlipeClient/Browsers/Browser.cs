@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.Shared.Elements;
 using System.ComponentModel;
-using Slipe.Client.IO;
+using Slipe.Shared.IO;
 
 namespace Slipe.Client.Browsers
 {
@@ -73,10 +73,7 @@ namespace Slipe.Client.Browsers
         /// Create a browser from the createBrowser parameters
         /// </summary>
         public Browser(int width, int height, bool isLocal, bool transparent = false)
-        {
-            element = MtaClient.CreateBrowser(width, height, isLocal, transparent);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.CreateBrowser(width, height, isLocal, transparent)) { }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Browser(MtaElement element) : base(element)
@@ -243,7 +240,7 @@ namespace Slipe.Client.Browsers
         /// <summary>
         /// Handle an event on the browser
         /// </summary>
-        public override void HandleEvent(string eventName, MtaElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public override void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
         {
             switch (eventName)
             {
@@ -276,6 +273,9 @@ namespace Slipe.Client.Browsers
                     break;
                 case "onClientBrowserTooltip":
                     OnTooltip?.Invoke((string)p1);
+                    break;
+                default:
+                    base.HandleEvent(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
                     break;
             }
         }

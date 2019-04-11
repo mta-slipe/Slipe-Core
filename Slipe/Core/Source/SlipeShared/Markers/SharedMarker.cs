@@ -110,8 +110,6 @@ namespace Slipe.Shared.Markers
 
         #region Constructors
 
-        protected SharedMarker() : base() { }
-
         [EditorBrowsable(EditorBrowsableState.Never)]
         public SharedMarker(MtaElement element) : base(element) { }
 

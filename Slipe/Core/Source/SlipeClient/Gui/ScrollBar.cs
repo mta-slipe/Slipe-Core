@@ -38,10 +38,6 @@ namespace Slipe.Client.Gui
         /// Create a scroll bar
         /// </summary>
         public ScrollBar(Vector2 position, Vector2 dimensions, bool horizontal, bool relative = false, GuiElement parent = null)
-        {
-            element = MtaClient.GuiCreateScrollBar(position.X, position.Y, dimensions.X, dimensions.Y, horizontal, relative, parent?.MTAElement);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.GuiCreateScrollBar(position.X, position.Y, dimensions.X, dimensions.Y, horizontal, relative, parent?.MTAElement)) { }
     }
 }

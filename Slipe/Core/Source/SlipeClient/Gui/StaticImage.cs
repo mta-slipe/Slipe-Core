@@ -37,11 +37,7 @@ namespace Slipe.Client.Gui
         /// Create a static image
         /// </summary>
         public StaticImage(Vector2 position, Vector2 dimensions, string filePath, bool relative = false, GuiElement parent = null)
-        {
-            element = MtaClient.GuiCreateStaticImage(position.X, position.Y, dimensions.X, dimensions.Y, filePath, relative, parent?.MTAElement);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.GuiCreateStaticImage(position.X, position.Y, dimensions.X, dimensions.Y, filePath, relative, parent?.MTAElement)) { }
         #endregion
 
         /// <summary>

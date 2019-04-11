@@ -25,11 +25,7 @@ namespace Slipe.Client.Gui
         /// Create a tab
         /// </summary>
         public Tab(string title, TabPanel panel)
-        {
-            element = MtaClient.GuiCreateTab(title, panel.MTAElement);
-            parentPanel = panel;
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.GuiCreateTab(title, panel.MTAElement)) { }
 
         /// <summary>
         /// Delete this tab

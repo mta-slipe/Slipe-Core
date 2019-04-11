@@ -151,6 +151,10 @@ namespace ServerTest
             try
             {
                 Player player = (Player) Player.GetFromName("SAES>DezZolation");
+                player.OnConsole += (string command) =>
+                {
+                    Debug.WriteLine(command);
+                };
                 player.PlaySoundFrontEnd(FrontEndSound.RadioStatic);
                 Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponModel.Colt45, 200);
                 pickup.Use(player);
@@ -168,7 +172,6 @@ namespace ServerTest
             RadarArea area = new RadarArea(new Vector2(200, 200), new Vector2(400, 400), new Color(40, 120, 255));
             Debug.WriteLine(area.Type);
             area.Flashing = true;
-
             foreach(Account account in Account.All)
             {
                 account.SetData("Test", "Success");

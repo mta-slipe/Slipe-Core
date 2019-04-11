@@ -95,8 +95,6 @@ namespace Slipe.Shared.Radar
 
         #region Constructors
 
-        protected SharedBlip() { }
-
         [EditorBrowsable(EditorBrowsableState.Never)]
         public SharedBlip(MtaElement element) : base(element) { }
 

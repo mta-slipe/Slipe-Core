@@ -68,11 +68,7 @@ namespace Slipe.Client.Gui
         /// Create a label
         /// </summary>
         public Label(Vector2 position, Vector2 dimensions, string content, bool relative = false, GuiElement parent = null)
-        {
-            element = MtaClient.GuiCreateLabel(position.X, position.Y, dimensions.X, dimensions.Y, content, relative, parent?.MTAElement);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.GuiCreateLabel(position.X, position.Y, dimensions.X, dimensions.Y, content, relative, parent?.MTAElement)) { }
         #endregion
 
         /// <summary>

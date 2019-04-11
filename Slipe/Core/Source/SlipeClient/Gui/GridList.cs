@@ -152,13 +152,7 @@ namespace Slipe.Client.Gui
         /// Create a new gridlist
         /// </summary>
         public GridList(Vector2 position, Vector2 dimensions, bool relative = false, GuiElement parent = null)
-        {
-            element = MtaClient.GuiCreateGridList(position.X, position.Y, dimensions.X, dimensions.Y, relative, parent?.MTAElement);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
-            columns = new Dictionary<int, GridColumn>();
-            rows = new Dictionary<int, GridRow>();
-        }
+            : this(MtaClient.GuiCreateGridList(position.X, position.Y, dimensions.X, dimensions.Y, relative, parent?.MTAElement)) { }
 
         #endregion
 

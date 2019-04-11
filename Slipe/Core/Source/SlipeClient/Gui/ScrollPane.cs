@@ -58,11 +58,7 @@ namespace Slipe.Client.Gui
         /// Create a progress bar
         /// </summary>
         public ScrollPane(Vector2 position, Vector2 dimensions, bool relative = false, GuiElement parent = null)
-        {
-            element = MtaClient.GuiCreateScrollPane(position.X, position.Y, dimensions.X, dimensions.Y, relative, parent?.MTAElement);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.GuiCreateScrollPane(position.X, position.Y, dimensions.X, dimensions.Y, relative, parent?.MTAElement)) { }
         #endregion
 
         /// <summary>

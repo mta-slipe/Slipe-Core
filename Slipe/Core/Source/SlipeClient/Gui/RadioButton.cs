@@ -38,10 +38,6 @@ namespace Slipe.Client.Gui
         /// Create a radio button
         /// </summary>
         public RadioButton(Vector2 position, Vector2 dimensions, string content, bool relative = false, GuiElement parent = null)
-        {
-            element = MtaClient.GuiCreateRadioButton(position.X, position.Y, dimensions.X, dimensions.Y, content, relative, parent?.MTAElement);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.GuiCreateRadioButton(position.X, position.Y, dimensions.X, dimensions.Y, content, relative, parent?.MTAElement)) { }
     }
 }

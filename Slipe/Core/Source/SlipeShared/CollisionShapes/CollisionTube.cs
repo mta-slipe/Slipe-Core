@@ -23,9 +23,6 @@ namespace Slipe.Shared.CollisionShapes
         /// Creates a collision tube from a position, radius and height
         /// </summary>
         public CollisionTube(Vector3 position, float radius, float height)
-        {
-            element = MtaShared.CreateColTube(position.X, position.Y, position.Z, radius, height);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            :this(MtaShared.CreateColTube(position.X, position.Y, position.Z, radius, height)) { }
     }
 }

@@ -38,10 +38,6 @@ namespace Slipe.Client.Gui
         /// Create a progress bar
         /// </summary>
         public ProgressBar(Vector2 position, Vector2 dimensions, bool relative = false, GuiElement parent = null)
-        {
-            element = MtaClient.GuiCreateProgressBar(position.X, position.Y, dimensions.X, dimensions.Y, relative, parent?.MTAElement);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.GuiCreateProgressBar(position.X, position.Y, dimensions.X, dimensions.Y, relative, parent?.MTAElement)) { }
     }
 }

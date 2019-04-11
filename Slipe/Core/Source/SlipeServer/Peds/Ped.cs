@@ -95,8 +95,6 @@ namespace Slipe.Server.Peds
 
         #region Constructors
 
-        public Ped() : base() { }
-
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Ped(MtaElement element) : base(element) { }
 
@@ -104,9 +102,7 @@ namespace Slipe.Server.Peds
         /// Create a new ped
         /// </summary>
         public Ped(PedModel model, Vector3 position, float rotation = 0.0f, bool synced = true)
-        {
-            element = MtaServer.CreatePed((int)model, position.X, position.Y, position.Z, rotation, synced);
-        }
+            : this (MtaServer.CreatePed((int)model, position.X, position.Y, position.Z, rotation, synced)) { }
 
         #endregion
 
@@ -158,6 +154,23 @@ namespace Slipe.Server.Peds
         public bool TakeAmmo(SharedWeaponModel model, int amount)
         {
             return MtaServer.TakeWeapon(element, model.ID, amount);
+        }
+
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        /// Handles events
+        /// </summary>
+        public override void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
+        {
+            switch (eventName)
+            {
+                default:
+                    base.HandleEvent(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
+                    break;
+            }
         }
 
         #endregion

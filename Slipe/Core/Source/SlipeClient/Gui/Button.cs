@@ -23,10 +23,6 @@ namespace Slipe.Client.Gui
         /// Create a new button
         /// </summary>
         public Button(Vector2 position, Vector2 dimensions, string content, bool relative = false, GuiElement parent = null)
-        {
-            element = MtaClient.GuiCreateButton(position.X, position.Y, dimensions.X, dimensions.Y, content, relative, parent?.MTAElement);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.GuiCreateButton(position.X, position.Y, dimensions.X, dimensions.Y, content, relative, parent?.MTAElement)) { }
     }
 }

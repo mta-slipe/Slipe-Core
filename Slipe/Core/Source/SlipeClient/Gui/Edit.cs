@@ -88,10 +88,8 @@ namespace Slipe.Client.Gui
         /// Create a new edit
         /// </summary>
         public Edit(Vector2 position, Vector2 dimensions, string defaultContent, bool relative = false, GuiElement parent = null, bool masked = false, int maxLength = 128)
+            : this (MtaClient.GuiCreateEdit(position.X, position.Y, dimensions.X, dimensions.Y, defaultContent, relative, parent?.MTAElement))
         {
-            element = MtaClient.GuiCreateEdit(position.X, position.Y, dimensions.X, dimensions.Y, defaultContent, relative, parent?.MTAElement);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
             Masked = masked;
             MaxLength = maxLength;
         }

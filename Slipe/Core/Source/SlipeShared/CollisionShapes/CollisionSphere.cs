@@ -23,9 +23,6 @@ namespace Slipe.Shared.CollisionShapes
         /// Creates a collision sphere from a position and radius
         /// </summary>
         public CollisionSphere(Vector3 position, float radius)
-        {
-            element = MtaShared.CreateColSphere(position.X, position.Y, position.Z, radius);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaShared.CreateColSphere(position.X, position.Y, position.Z, radius)) { }
     }
 }

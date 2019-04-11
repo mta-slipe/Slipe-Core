@@ -22,14 +22,12 @@ namespace Slipe.Client.Markers
         /// Create a marker form all the createMarker parameters
         /// </summary>
         public Marker(Vector3 position, MarkerType type, Color color, float size = 4.0f)
-        {
-            element = MtaClient.CreateMarker(position.X, position.Y, position.Z, type.ToString(), size, color.R, color.G, color.B, color.A);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this (MtaClient.CreateMarker(position.X, position.Y, position.Z, type.ToString(), size, color.R, color.G, color.B, color.A)) { }
 
         /// <summary>
         /// Creates a marker from just a position and type
         /// </summary>
-        public Marker(Vector3 position, MarkerType type) : this(position, type, Color.Red) { }
+        public Marker(Vector3 position, MarkerType type) 
+            : this(position, type, Color.Red) { }
     }
 }

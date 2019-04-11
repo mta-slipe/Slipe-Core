@@ -43,10 +43,7 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         /// <include file='doc.xml' path='docs/members[@name="SharedWorldObject"]/constructor/*'/>
         public SharedWorldObject(int model, Vector3 position, Vector3 rotation, bool isLowLOD = false)
-        {
-            element = MtaShared.CreateObject(model, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, isLowLOD);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaShared.CreateObject(model, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, isLowLOD)) { }
 
         /// <summary>
         /// Creates a SharedWorldObject from a model ID and a position Vector3

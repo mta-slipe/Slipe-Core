@@ -19,9 +19,6 @@ namespace Slipe.Client.Gui
         }
 
         public GuiFont(string filePath, int size = 9)
-        {
-            element = MtaClient.GuiCreateFont(filePath, size);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.GuiCreateFont(filePath, size)) { }
     }
 }

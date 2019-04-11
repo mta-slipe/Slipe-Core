@@ -69,9 +69,7 @@ namespace Slipe.Server.Acl
         /// Create a new ACL entry
         /// </summary>
         public AclEntry(string name)
-        {
-            entry = MtaServer.AclCreate(name);
-        }
+            : this(MtaServer.AclCreate(name)) { }
 
         #endregion
 

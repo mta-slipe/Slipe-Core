@@ -49,7 +49,7 @@ namespace Slipe.Server.Elements
         /// <summary>
         /// Gets this element's zone name
         /// </summary>
-        public static string GetZoneName(this Element source, bool citiesOnly = false)
+        public static string GetZoneName(this PhysicalElement source, bool citiesOnly = false)
         {
             return MtaServer.GetElementZoneName(source.MTAElement, citiesOnly);
         }
@@ -57,7 +57,7 @@ namespace Slipe.Server.Elements
         /// <summary>
         /// Gets the syncer of this element
         /// </summary>
-        public static Player GetSyncer(this Element source)
+        public static Player GetSyncer(this PhysicalElement source)
         {
             return (Player)ElementManager.Instance.GetElement(MtaServer.GetElementSyncer(source.MTAElement));
         }
@@ -65,7 +65,7 @@ namespace Slipe.Server.Elements
         /// <summary>
         /// Sets the syncer of this element
         /// </summary>
-        public static bool SetSyncer(this Element source, Player target)
+        public static bool SetSyncer(this PhysicalElement source, Player target)
         {
             return MtaServer.SetElementSyncer(source.MTAElement, target.MTAElement);
         }

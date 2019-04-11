@@ -40,11 +40,7 @@ namespace Slipe.Client.Gui
         /// Create a tab panel
         /// </summary>
         public TabPanel(Vector2 position, Vector2 dimensions, bool relative = false, GuiElement parent = null)
-        {
-            element = MtaClient.GuiCreateTabPanel(position.X, position.Y, dimensions.X, dimensions.Y, relative, parent?.MTAElement);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.GuiCreateTabPanel(position.X, position.Y, dimensions.X, dimensions.Y, relative, parent?.MTAElement)) { }
 
         #endregion
     }

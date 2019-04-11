@@ -96,9 +96,7 @@ namespace Slipe.Server.Acl
         /// Create a new ACL group
         /// </summary>
         public AclGroup(string name)
-        {
-            group = MtaServer.AclCreateGroup(name);
-        }
+            : this(MtaServer.AclCreateGroup(name)) { }
 
         #endregion
 

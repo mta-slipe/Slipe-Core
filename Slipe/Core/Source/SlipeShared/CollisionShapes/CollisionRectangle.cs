@@ -23,9 +23,6 @@ namespace Slipe.Shared.CollisionShapes
         /// Creates a rectangular collision shape. The position marks on the south west corner of the colshape.
         /// </summary>
         public CollisionRectangle(Vector2 position, float width, float height)
-        {
-            element = MtaShared.CreateColRectangle(position.X, position.Y, width, height);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            :this(MtaShared.CreateColRectangle(position.X, position.Y, width, height)) { }
     }
 }

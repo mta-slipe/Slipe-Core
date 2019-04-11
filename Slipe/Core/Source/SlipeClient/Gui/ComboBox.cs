@@ -71,12 +71,7 @@ namespace Slipe.Client.Gui
         /// Create a new combo box
         /// </summary>
         public ComboBox(Vector2 position, Vector2 dimensions, string caption, bool relative = false, GuiElement parent = null)
-        {
-            element = MtaClient.GuiCreateComboBox(position.X, position.Y, dimensions.X, dimensions.Y, caption, relative, parent?.MTAElement);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
-            items = new Dictionary<int, ComboBoxItem>();
-        }
+            : this(MtaClient.GuiCreateComboBox(position.X, position.Y, dimensions.X, dimensions.Y, caption, relative, parent?.MTAElement)) { }
         #endregion
 
         /// <summary>

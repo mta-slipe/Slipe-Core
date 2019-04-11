@@ -59,11 +59,7 @@ namespace Slipe.Client.Gui
         /// Create a window
         /// </summary>
         public Window(Vector2 position, Vector2 dimensions, string title, bool relative = false)
-        {
-            element = MtaClient.GuiCreateWindow(position.X, position.Y, dimensions.X, dimensions.Y, title, relative);
-            isRelative = relative;
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.GuiCreateWindow(position.X, position.Y, dimensions.X, dimensions.Y, title, relative)) { }
 
         #endregion
     }

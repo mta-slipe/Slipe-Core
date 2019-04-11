@@ -23,9 +23,6 @@ namespace Slipe.Shared.CollisionShapes
         /// Creates a collision circle from a position and a radius
         /// </summary>
         public CollisionCircle(Vector2 position, float radius)
-        {
-            element = MtaShared.CreateColCircle(position.X, position.Y, radius);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaShared.CreateColCircle(position.X, position.Y, radius)) { }
     }
 }

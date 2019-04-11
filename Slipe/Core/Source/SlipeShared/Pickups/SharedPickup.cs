@@ -71,24 +71,25 @@ namespace Slipe.Shared.Pickups
         /// Creates a pickup from all CreatePickup variables
         /// </summary>
         public SharedPickup(Vector3 position, PickupType type, int amount, int respawnTime = 30000, int ammo = 50)
-        {
-            element = MtaShared.CreatePickup(position.X, position.Y, position.Z, (int)type, amount, respawnTime, ammo);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaShared.CreatePickup(position.X, position.Y, position.Z, (int)type, amount, respawnTime, ammo)) { }
+
         /// <summary>
         /// Creates a weapon pickup
         /// </summary>
-        public SharedPickup(Vector3 position, SharedWeaponModel weapon, int ammo = 50, int respawnTime = 30000) : this(position, PickupType.Weapon, weapon.ID, respawnTime, ammo) { }
+        public SharedPickup(Vector3 position, SharedWeaponModel weapon, int ammo = 50, int respawnTime = 30000) 
+            : this(position, PickupType.Weapon, weapon.ID, respawnTime, ammo) { }
 
         /// <summary>
         /// Creates a custom pickup using GTA custom pickup models
         /// </summary>
-        public SharedPickup(Vector3 position, PickupModel model, int respawnTime = 30000) : this(position, PickupType.Custom, (int)model, respawnTime) { }
+        public SharedPickup(Vector3 position, PickupModel model, int respawnTime = 30000) 
+            : this(position, PickupType.Custom, (int)model, respawnTime) { }
 
         /// <summary>
         /// Creates a pickup object with any model
         /// </summary>
-        public SharedPickup(Vector3 position, int model) : this(position, PickupType.Custom, model) { }
+        public SharedPickup(Vector3 position, int model) 
+            : this(position, PickupType.Custom, model) { }
 
         #endregion
 

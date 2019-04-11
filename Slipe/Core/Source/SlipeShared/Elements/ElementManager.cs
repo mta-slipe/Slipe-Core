@@ -106,7 +106,7 @@ namespace Slipe.Shared.Elements
         /// <summary>
         /// Handles an event when it's triggered on a specific MTA element
         /// </summary>
-        public static void HandleEvent(string eventString, MtaElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public static void HandleEvent(string eventString, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
         {
             Element element = Instance.GetElement(source);
             //if (element == null)

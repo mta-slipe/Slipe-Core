@@ -82,15 +82,13 @@ namespace Slipe.Client.Lights
         /// Create a light with all the parameters
         /// </summary>
         public Light(LightType type, Vector3 position, float radius, Color color, Vector3 direction, bool createShadow = false)
-        {
-            element = MtaClient.CreateLight((int)type, position.X, position.Y, position.Z, radius, color.R, color.G, color.B, direction.X, direction.Y, direction.Z, createShadow);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.CreateLight((int)type, position.X, position.Y, position.Z, radius, color.R, color.G, color.B, direction.X, direction.Y, direction.Z, createShadow)) { }
 
         /// <summary>
         /// Create a simple red light
         /// </summary>
-        public Light(LightType type, Vector3 position, float radius = 3) : this(type, position, radius, Color.Red, Vector3.Zero) { }
+        public Light(LightType type, Vector3 position, float radius = 3) 
+            : this(type, position, radius, Color.Red, Vector3.Zero) { }
 
         #endregion
 

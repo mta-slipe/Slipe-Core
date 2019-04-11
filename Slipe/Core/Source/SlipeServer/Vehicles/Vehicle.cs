@@ -154,7 +154,7 @@ namespace Slipe.Server.Vehicles
         /// </summary>
         public Vehicle(BaseVehicleModel model, Vector3 position) : base(model, position)
         {
-
+            ListenForEvent("onVehicleDamage");
         }
 
         /// <summary>
@@ -162,10 +162,14 @@ namespace Slipe.Server.Vehicles
         /// </summary>
         public Vehicle(BaseVehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
         {
+            ListenForEvent("onVehicleDamage");
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Vehicle(MtaElement element) : base(element) { }
+        public Vehicle(MtaElement element) : base(element)
+        {
+            ListenForEvent("onVehicleDamage");
+        }
 
         #endregion
 
@@ -234,12 +238,15 @@ namespace Slipe.Server.Vehicles
         /// <summary>
         /// Handles events for vehicles
         /// </summary>
-        public override void HandleEvent(string eventName, MtaElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public override void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
         {
             switch (eventName)
             {
                 case "onVehicleDamage":
                     OnDamage?.Invoke((float)p1);
+                    break;
+                default:
+                    base.HandleEvent(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
                     break;
             }
         }

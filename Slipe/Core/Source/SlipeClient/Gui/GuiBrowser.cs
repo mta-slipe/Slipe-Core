@@ -30,12 +30,9 @@ namespace Slipe.Client.Gui
         /// <summary>
         /// Create a new GUI browser
         /// </summary>
-        public GuiBrowser(Vector2 position, float width, float height, bool isLocal, bool isTransparent, bool relative = false, GuiElement parent = null) : base()
+        public GuiBrowser(Vector2 position, float width, float height, bool isLocal, bool isTransparent, bool relative = false, GuiElement parent = null)
+            : this(MtaClient.GuiCreateBrowser(position.X, position.Y, width, height, isLocal, isTransparent, relative, parent?.MTAElement))
         {
-
-            element = MtaClient.GuiCreateBrowser(position.X, position.Y, width, height, isLocal, isTransparent, relative, parent?.MTAElement);
-            ElementManager.Instance.RegisterElement(this);
-            isRelative = relative;
             browser = new Browser(MtaClient.GuiGetBrowser(element));
         }
     }
