@@ -6,6 +6,9 @@ namespace Slipe.Sql
 {
     public class SqlValue
     {
+        /// <summary>
+        /// Represents a value used by  
+        /// </summary>
         public SqlValue(object value)
         {
 

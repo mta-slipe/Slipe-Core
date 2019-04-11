@@ -6,21 +6,21 @@ using System.Text;
 
 namespace Slipe.Shared.IO
 {
-    public class SharedMTADebug
+    public class SharedMtaDebug
     {
-        protected internal SharedMTADebug()
+        protected internal SharedMtaDebug()
         {
 
         }
 
-        public void WriteLine(string line, DebugMessageLevel level = DebugMessageLevel.INFORMATION)
+        public void WriteLine(string line, DebugMessageLevel level = DebugMessageLevel.Information)
         {
             MtaShared.OutputDebugString(line, (int) level, 255, 255, 255);
         }
 
         public void WriteLine(string line, Color color)
         {
-            MtaShared.OutputDebugString(line, (int)DebugMessageLevel.CUSTOM, color.R, color.G, color.B);
+            MtaShared.OutputDebugString(line, (int)DebugMessageLevel.Custom, color.R, color.G, color.B);
         }
 
         public void WriteLine(string line, DebugMessageLevel level, Color color)

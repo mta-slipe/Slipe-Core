@@ -7,9 +7,9 @@ using System.Text;
 
 namespace Slipe.Server.IO
 {
-    public class MTAConsole
+    public class MtaConsole
     {
-        internal MTAConsole()
+        internal MtaConsole()
         {
 
         }

@@ -6,6 +6,9 @@ namespace Slipe.Sql
 {
     public class SqlOptions
     {
+        /// <summary>
+        /// Whether the connection should be shared with other scripts
+        /// </summary>
         public bool Share 
         {
             get {
@@ -16,6 +19,9 @@ namespace Slipe.Sql
             }
         }
 
+        /// <summary>
+        /// Whether the connection should batch multiple queries into one call
+        /// </summary>
         public bool Batch 
         {
             get {
@@ -26,6 +32,9 @@ namespace Slipe.Sql
             }
         }
 
+        /// <summary>
+        /// Whether the connection should automatically attempt to reconnect if connection is lost
+        /// </summary>
         public bool AutoReconnect 
         {
             get {
@@ -36,6 +45,9 @@ namespace Slipe.Sql
             }
         }
 
+        /// <summary>
+        /// Whether the queries executed on the connection should be logged
+        /// </summary>
         public bool Log 
         {
             get {
@@ -46,6 +58,9 @@ namespace Slipe.Sql
             }
         }
 
+        /// <summary>
+        /// Tag for this connection to easily identify it in MySql server logs
+        /// </summary>
         public string Tag 
         {
             get {
@@ -56,6 +71,9 @@ namespace Slipe.Sql
             }
         }
 
+        /// <summary>
+        /// List of errors / warnings to surpress
+        /// </summary>
         public string[] Surpress 
         {
             get {
@@ -66,6 +84,9 @@ namespace Slipe.Sql
             }
         }
 
+        /// <summary>
+        /// Whether the connection should support running multiple statements at once
+        /// </summary>
         public bool Multi_statements 
         {
             get {

@@ -238,7 +238,7 @@ namespace ServerTest
                     Console.WriteLine(parameter);
                 }
                 Server.Log.WriteLine("I AM A SERVER LOG!");
-                Server.Debug.WriteLine("I AM AN ERROR!", Slipe.Shared.IO.DebugMessageLevel.ERROR);
+                Server.Debug.WriteLine("I AM AN ERROR!", Slipe.Shared.IO.DebugMessageLevel.Error);
                 ChatBox.WriteLine("I am a chat message!", 0xff00ff);
             });
 

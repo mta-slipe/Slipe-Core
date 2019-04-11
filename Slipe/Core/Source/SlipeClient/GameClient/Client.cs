@@ -38,14 +38,14 @@ namespace Slipe.Client.GameClient
         /// <summary>
         /// Returns the MTA F8 console
         /// </summary>
-        private static MTAConsole console;
-        public static MTAConsole Console
+        private static MtaConsole console;
+        public static MtaConsole Console
         {
             get
             {
                 if (console == null)
                 {
-                    console = new MTAConsole();
+                    console = new MtaConsole();
                 }
                 return console;
             }
@@ -54,14 +54,14 @@ namespace Slipe.Client.GameClient
         /// <summary>
         /// Returns the MTA debug view
         /// </summary>
-        private static MTADebug debug;
-        public static MTADebug Debug
+        private static MtaDebug debug;
+        public static MtaDebug Debug
         {
             get
             {
                 if (debug == null)
                 {
-                    debug = new MTADebug();
+                    debug = new MtaDebug();
                 }
                 return debug;
             }
