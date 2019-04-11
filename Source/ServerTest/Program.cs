@@ -33,6 +33,7 @@ using Slipe.Server.Rpc;
 using Slipe.Server.Peds;
 using Slipe.Shared.Peds;
 using Slipe.Server.Weapons;
+using Slipe.Sql;
 
 namespace ServerTest
 {
@@ -221,6 +222,32 @@ namespace ServerTest
                 Server.Debug.WriteLine("I AM AN ERROR!", Slipe.Shared.IO.DebugMessageLevel.ERROR);
                 ChatBox.WriteLine("I am a chat message!", 0xff00ff);
             });
+
+            _ = DoSql();
+        }
+
+        public async Task DoSql()
+        {
+            Database database = new Database(new MySqlConnectionString()
+            {
+                Hostname = "127.0.0.1",
+                Port = 3306,
+                DbName = "test"
+            }, "user", "password");
+
+            Random random = new Random();
+            database.Exec("INSERT INTO `vector` (`x`, `y`, `z`) VALUES(?, ?, ?)", new object[]{
+                random.Next(0, 1000),
+                random.Next(0, 1000),
+                random.Next(0, 1000)
+            });
+
+            var results = await database.Query("SELECT * FROM `vector`");
+            foreach(var row in results)
+            {
+                Console.WriteLine("X: {0}, Y: {1}, Z: {2}", (int) row["x"], (int) row["y"], (int) row["z"]);
+                int xResult = row["x"] + 10;
+            }
         }
 
         public async Task DoSocket()

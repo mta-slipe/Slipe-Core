@@ -19,7 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resource", "Resource", "{3B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{B9532276-8EF2-4275-9570-87EBEA1D4687}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPCDefinitions", "Source\RPCDefinitions\RPCDefinitions.csproj", "{84F888B4-0D8D-4A77-9ED1-2168F5B66073}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPCDefinitions", "Source\RPCDefinitions\RPCDefinitions.csproj", "{84F888B4-0D8D-4A77-9ED1-2168F5B66073}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlipeSql", "Slipe\Core\Source\SlipeSql\SlipeSql.csproj", "{0C2CF38D-D799-4804-AE2E-40401B5B1D5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{84F888B4-0D8D-4A77-9ED1-2168F5B66073}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84F888B4-0D8D-4A77-9ED1-2168F5B66073}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84F888B4-0D8D-4A77-9ED1-2168F5B66073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C2CF38D-D799-4804-AE2E-40401B5B1D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C2CF38D-D799-4804-AE2E-40401B5B1D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C2CF38D-D799-4804-AE2E-40401B5B1D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C2CF38D-D799-4804-AE2E-40401B5B1D5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{C0F22D0D-3E17-4EDD-8D2F-5598238C7BF5} = {3BAE3D07-C859-4665-B92B-786ECB449FE8}
 		{ABE9713E-8B2B-48F4-9156-820A0BDC3285} = {3BAE3D07-C859-4665-B92B-786ECB449FE8}
 		{84F888B4-0D8D-4A77-9ED1-2168F5B66073} = {3BAE3D07-C859-4665-B92B-786ECB449FE8}
+		{0C2CF38D-D799-4804-AE2E-40401B5B1D5B} = {B9532276-8EF2-4275-9570-87EBEA1D4687}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8A90CAD4-53BE-4856-8024-F10959030200}

@@ -33,7 +33,8 @@
         ]
       },
       "dlls": [
-        "SlipeMTADefinitions.dll"
+        "SlipeMTADefinitions.dll",
+        "Slipe.Sql.dll"
       ],
       "systemComponents": [
         "Core.lua",
@@ -100,9 +101,13 @@
         "Net/Sockets/Socket.lua"
       ],
       "backingLua": [
-        "shared.lua",
-        "server.lua",
-        "client.lua"
+        "SlipeMTADfinitions/shared.lua",
+        "SlipeMTADfinitions/server.lua",
+        "SlipeMTADfinitions/client.lua",
+        "SlipeSql/SqlValue.lua",
+        "SlipeSql/SqlOptions.lua",
+        "SlipeSql/MySqlConnectionString.lua",
+        "SlipeSql/Database.lua"
       ],
       "assetDirectories": []
     }

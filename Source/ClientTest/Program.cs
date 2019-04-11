@@ -86,6 +86,11 @@ namespace ClientTest
             {
                 Debug.WriteLine(texture);
             }
+
+            //RootElement.OnKey += (string key, bool state) =>
+            //{
+            //    ChatBox.WriteLine(key, 0xff00ff);
+            //};
         }
 
         public void HandleTestRPC(BasicIncomingRpc arguments)

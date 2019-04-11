@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Slipe\Core\Source\SlipeServer\SlipeServer.csproj" />
+    <ProjectReference Include="..\..\Slipe\Core\Source\SlipeSql\SlipeSql.csproj" />
     <ProjectReference Include="..\RPCDefinitions\RPCDefinitions.csproj" />
   </ItemGroup>
 
