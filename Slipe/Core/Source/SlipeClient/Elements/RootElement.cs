@@ -17,7 +17,7 @@ namespace Slipe.Client.Elements
             this.ListenForEvent("onClientHUDRender");
         }
 
-        public override void HandleEvent(string eventName, MtaElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public override void HandleEvent(string eventName, MtaElement element, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
         {
             switch (eventName)
             {
@@ -51,7 +51,7 @@ namespace Slipe.Client.Elements
         public delegate void OnHUDRenderHandler();
         public static event OnRenderHandler OnHUDRender;
 
-        public delegate void OnMiscelaniousEventHandler(string eventName, MtaElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8);
+        public delegate void OnMiscelaniousEventHandler(string eventName, MtaElement element, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8);
         public static event OnMiscelaniousEventHandler OnMiscelaniousEvent;
     }
 }

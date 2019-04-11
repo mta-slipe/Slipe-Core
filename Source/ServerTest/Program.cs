@@ -34,6 +34,7 @@ using Slipe.Server.Peds;
 using Slipe.Shared.Peds;
 using Slipe.Server.Weapons;
 using Slipe.Sql;
+using Slipe.Server.Displays;
 
 namespace ServerTest
 {
@@ -133,9 +134,28 @@ namespace ServerTest
             alpha.Handling.Mass = alpha.Handling.Mass * 1.5f;
             Debug.WriteLine(alpha.Handling.Mass);
 
+            Display d1 = new Display();
+            Item t = new Item(d1, "You're a noob", new Vector2(0.5f, 0.5f));
+            Display d2 = new Display();
+            Item b = new Item(d2, "Bob is a noob", new Vector2(0.5f, 0.5f));
+
+            try
+            {
+                Player bob = (Player)Player.GetFromName("SAES>Nanobob");
+                d1.AddObserver(bob);
+            }
+            catch(NullElementException)
+            { 
+                d2.AddObservers(Player.Alive);
+            }
+
             try
             {
                 Player player = (Player) Player.GetFromName("SAES>DezZolation");
+                player.OnConsole += (string command) =>
+                {
+                    Debug.WriteLine(command);
+                };
                 player.PlaySoundFrontEnd(FrontEndSound.RadioStatic);
                 Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponModel.Colt45, 200);
                 pickup.Use(player);
@@ -153,7 +173,6 @@ namespace ServerTest
             RadarArea area = new RadarArea(new Vector2(200, 200), new Vector2(400, 400), new Color(40, 120, 255));
             Debug.WriteLine(area.Type);
             area.Flashing = true;
-
             foreach(Account account in Account.All)
             {
                 account.SetData("Test", "Success");
@@ -223,7 +242,7 @@ namespace ServerTest
                 ChatBox.WriteLine("I am a chat message!", 0xff00ff);
             });
 
-            _ = DoSql();
+            //_ = DoSql();
         }
 
         public async Task DoSql()

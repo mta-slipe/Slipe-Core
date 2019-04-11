@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.IO
+namespace Slipe.Shared.IO
 {
     /// <summary>
     /// Represents different mouse buttons
@@ -12,5 +12,14 @@ namespace Slipe.Client.IO
         Left,
         Middle,
         Right,
+    }
+
+    /// <summary>
+    /// Represents different mouse button states
+    /// </summary>
+    public enum MouseButtonState
+    {
+        Up,
+        Down
     }
 }

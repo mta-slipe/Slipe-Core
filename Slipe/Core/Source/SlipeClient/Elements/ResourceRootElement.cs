@@ -13,7 +13,7 @@ namespace Slipe.Client.Elements
             this.ListenForEvent("onClientFileDownloadComplete");
         }
 
-        public override void HandleEvent(string eventName, MtaElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public override void HandleEvent(string eventName, MtaElement element, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
         {
             switch (eventName)
             {

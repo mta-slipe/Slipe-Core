@@ -16,8 +16,6 @@ namespace Slipe.Client.Peds
     /// </summary>
     public class Player : Ped
     {
-        private static LocalPlayer localPlayer;
-
         #region Properties
 
         /// <summary>

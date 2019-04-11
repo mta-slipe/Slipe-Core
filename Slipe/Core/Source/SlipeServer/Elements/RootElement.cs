@@ -3,6 +3,7 @@ using Slipe.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Slipe.Server.Accounts;
 
 namespace Slipe.Server.Elements
 {
@@ -10,14 +11,18 @@ namespace Slipe.Server.Elements
     {
         public RootElement(MtaElement element) : base(element)
         {
-
+            ListenForEvent("onAccountDataChange");
         }
 
 
-        public override void HandleEvent(string eventName, MtaElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public override void HandleEvent(string eventName, MtaElement element, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
         {
             switch (eventName)
             {
+                case "onAccountDataChange":
+                    Account acc = AccountManager.Instance.GetAccount((MtaAccount) p1);
+                    acc.HandleEvent(eventName, p1, p2, p3, p4, p5, p6, p7, p8);
+                    break;
                 default:
                     OnMiscelaniousEvent?.Invoke(eventName, element, p1, p2, p3, p4, p5, p6, p7, p8);
                     break;
@@ -25,7 +30,7 @@ namespace Slipe.Server.Elements
         }
 
 
-        public delegate void OnMiscelaniousEventHandler(string eventName, MtaElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8);
+        public delegate void OnMiscelaniousEventHandler(string eventName, MtaElement element, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8);
         public static event OnMiscelaniousEventHandler OnMiscelaniousEvent;
     }
 }

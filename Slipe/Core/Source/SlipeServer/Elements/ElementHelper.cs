@@ -10,6 +10,7 @@ using Slipe.Server.Pickups;
 using Slipe.Server.Radar;
 using Slipe.Server.Vehicles;
 using Slipe.Shared.Elements;
+using Slipe.Shared.CollisionShapes;
 
 namespace Slipe.Server.Elements
 {
@@ -25,6 +26,7 @@ namespace Slipe.Server.Elements
             [typeof(Vehicle)] = "vehicle",
             [typeof(Player)] = "player",
             [typeof(WorldObject)] = "object",
+            [typeof(CollisionShape)] = "colshape",
             [typeof(Pickup)] = "pickup",
             [typeof(Blip)] = "blip",
             [typeof(RadarArea)] = "radararea",
@@ -83,6 +85,8 @@ namespace Slipe.Server.Elements
                     return new Player(element);
                 case "object":
                     return new WorldObject(element);
+                case "colshape":
+                    return new CollisionShape(element);
                 case "pickup":
                     return new Pickup(element);
                 case "blip":

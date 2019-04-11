@@ -7,6 +7,8 @@ using Slipe.Shared.CollisionShapes;
 using Slipe.Shared.Helpers;
 using Slipe.Shared.Markers;
 using System.ComponentModel;
+using Slipe.Shared.IO;
+using Slipe.Shared.Peds;
 
 namespace Slipe.Shared.Elements
 {
@@ -371,10 +373,10 @@ namespace Slipe.Shared.Elements
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        protected PhysicalElement() { }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public PhysicalElement(MtaElement mtaElement) : base(mtaElement) { }
+        public PhysicalElement(MtaElement mtaElement) : base(mtaElement)
+        {
+            ListenForEvent("onElementClicked");
+        }
 
         #endregion
 
@@ -473,6 +475,29 @@ namespace Slipe.Shared.Elements
             MtaElement[] mtaElements = MtaShared.GetArrayFromTable(MtaShared.GetElementsWithinRange(position.X, position.Y, position.Z, range, type), "MTAElement");
             return ElementManager.Instance.CastArray<PhysicalElement>(mtaElements);
         }
+
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        /// Used to handle events that are triggered on the attached MTA element
+        /// </summary>
+        public override void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
+        {
+            switch (eventName)
+            {
+                case "onElementClicked":
+                    OnClick?.Invoke((MouseButton)Enum.Parse(typeof(MouseButton), (string) p1, true), (MouseButtonState)Enum.Parse(typeof(MouseButtonState), (string) p2, true), (SharedPed) ElementManager.Instance.GetElement((MtaElement) p3), new Vector3((float) p4, (float) p5, (float) p6));
+                    break;
+                default:
+                    base.HandleEvent(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
+                    break;
+            }
+        }
+
+        public delegate void OnElementClickHandler(MouseButton mouseButton, MouseButtonState buttonState, SharedPed clickedBy, Vector3 clickPosition);
+        public event OnElementClickHandler OnClick;
 
         #endregion
     }

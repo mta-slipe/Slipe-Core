@@ -172,11 +172,6 @@ namespace Slipe.Client.Gui
 
         #region Constructors
 
-        public GuiElement()
-        {
-
-        }
-
         [EditorBrowsable(EditorBrowsableState.Never)]
         public GuiElement(MtaElement element) : base(element)
         {

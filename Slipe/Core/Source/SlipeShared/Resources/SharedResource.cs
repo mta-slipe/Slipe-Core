@@ -12,9 +12,9 @@ namespace Slipe.Shared.Resources
     /// </summary>
     public class SharedResource
     {
-        protected MtaResource _resource;
-
         #region Properties
+
+        public MtaResource MTAResource { get; }
 
         /// <summary>
         /// Get the name of this resource
@@ -23,7 +23,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return MtaShared.GetResourceName(_resource);
+                return MtaShared.GetResourceName(MTAResource);
             }
         }
 
@@ -35,7 +35,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return ElementManager.Instance.GetElement(MtaShared.GetResourceDynamicElementRoot(_resource));
+                return ElementManager.Instance.GetElement(MtaShared.GetResourceDynamicElementRoot(MTAResource));
             }
         }
 
@@ -46,7 +46,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return ElementManager.Instance.GetElement(MtaShared.GetResourceRootElement(_resource));
+                return ElementManager.Instance.GetElement(MtaShared.GetResourceRootElement(MTAResource));
             }
         }
 
@@ -57,7 +57,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return MtaShared.GetResourceState(_resource);
+                return MtaShared.GetResourceState(MTAResource);
             }
         }
 
@@ -68,7 +68,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return MtaShared.GetArrayFromTable(MtaShared.GetResourceExportedFunctions(_resource), "System.String");
+                return MtaShared.GetArrayFromTable(MtaShared.GetResourceExportedFunctions(MTAResource), "System.String");
             }
         }
 
@@ -92,20 +92,13 @@ namespace Slipe.Shared.Resources
         #endregion
 
         #region Constructors
-        public MtaResource MTAResource
-        {
-            get
-            {
-                return _resource;
-            }
-        }
 
         /// <summary>
         /// Create a resource from an MTA resource element
         /// </summary>
         public SharedResource(MtaResource resource)
         {
-            _resource = resource;
+            MTAResource = resource;
         }
 
         #endregion

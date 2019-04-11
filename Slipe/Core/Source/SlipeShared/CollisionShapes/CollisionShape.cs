@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using Slipe.Shared.Elements;
+using System.ComponentModel;
 
 namespace Slipe.Shared.CollisionShapes
 {
@@ -16,7 +17,16 @@ namespace Slipe.Shared.CollisionShapes
         /// Gets the type of the collision shape
         /// </summary>
         public string ShapeType { get { return MtaShared.GetColShapeType(element); } }
-        
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public CollisionShape(MtaElement element) : base(element)
+        {
+            ListenForEvent("onColShapeHit");
+            ListenForEvent("onClientColShapeHit");
+            ListenForEvent("onColShapeLeave");
+            ListenForEvent("onClientColShapeLeave");
+        }
+
         /// <summary>
         /// Checks whether a certain position is inside a collision shape
         /// </summary>
@@ -45,7 +55,7 @@ namespace Slipe.Shared.CollisionShapes
         /// <summary>
         /// Handles certain hit and leave events for collision shapes
         /// </summary>
-        public override void HandleEvent(string eventName, Slipe.MtaDefinitions.MtaElement element, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public override void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
         {
             switch (eventName)
             {
@@ -60,6 +70,9 @@ namespace Slipe.Shared.CollisionShapes
                     break;
                 case "onClientColShapeLeave":
                     OnLeave?.Invoke((Element)p1, (bool) p2);
+                    break;
+                default:
+                    base.HandleEvent(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
                     break;
             }
         }

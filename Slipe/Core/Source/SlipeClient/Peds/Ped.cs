@@ -191,8 +191,6 @@ namespace Slipe.Client.Peds
 
         #region Constructors
 
-        public Ped() : base() { }
-
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Ped(MtaElement element) : base(element) { }
 
@@ -200,9 +198,7 @@ namespace Slipe.Client.Peds
         /// Create a new ped
         /// </summary>
         public Ped(PedModel model, Vector3 position, float rotation = 0.0f)
-        {
-            element = MtaClient.CreatePed((int)model, position.X, position.Y, position.Z, rotation);
-        }
+            : this (MtaClient.CreatePed((int)model, position.X, position.Y, position.Z, rotation)) { }
         #endregion
 
         #region Methods

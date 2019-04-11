@@ -292,8 +292,6 @@ namespace Slipe.Shared.Peds
 
         #region Constructors
 
-        public SharedPed() : base() { }
-
         [EditorBrowsable(EditorBrowsableState.Never)]
         public SharedPed(MtaElement element) : base(element) { }
 
@@ -494,6 +492,24 @@ namespace Slipe.Shared.Peds
         public bool WarpIntoVehicle(SharedVehicle vehicle)
         {
             return MtaShared.WarpPedIntoVehicle(element, vehicle.MTAElement, 0);
+        }
+
+        #endregion
+
+
+        #region Events
+
+        /// <summary>
+        /// Handles events
+        /// </summary>
+        public override void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
+        {
+            switch (eventName)
+            {
+                default:
+                    base.HandleEvent(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
+                    break;
+            }
         }
 
         #endregion

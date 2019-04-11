@@ -50,9 +50,6 @@ namespace Slipe.Client.Effects
         /// Create an effect of a type
         /// </summary>
         public Effect(EffectType type, Vector3 position, Vector3 rotation, float drawDistance = 0, bool enableSound = false)
-        {
-            element = MtaClient.CreateEffect(type.ToString(), position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, drawDistance, enableSound);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            :base(MtaClient.CreateEffect(type.ToString(), position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, drawDistance, enableSound)) { }
     }
 }

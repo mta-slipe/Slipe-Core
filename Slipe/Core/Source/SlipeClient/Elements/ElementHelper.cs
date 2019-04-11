@@ -16,6 +16,7 @@ using Slipe.Client.Markers;
 using Slipe.Client.GameWorld;
 using Slipe.Client.Peds;
 using Slipe.Client.Weapons;
+using Slipe.Shared.CollisionShapes;
 
 namespace Slipe.Client.Elements
 {
@@ -30,12 +31,13 @@ namespace Slipe.Client.Elements
             [typeof(Player)] = "player",
             [typeof(Vehicle)] = "vehicle",
             [typeof(WorldObject)] = "object",
+            [typeof(Browser)] = "browser",
             [typeof(GuiBrowser)] = "gui-browser",
+            [typeof(CollisionShape)] = "colshape",
             [typeof(Team)] = "team",
             [typeof(Pickup)] = "pickup",
             [typeof(Blip)] = "blip",
             [typeof(RadarArea)] = "radararea",
-            [typeof(Team)] = "team",
             [typeof(Marker)] = "marker",
             [typeof(Water)] = "water",
             [typeof(Light)] = "light",
@@ -46,7 +48,22 @@ namespace Slipe.Client.Elements
             [typeof(CustomWeapon)] = "weapon",
             [typeof(Projectile)] = "projectile",
             [typeof(RootElement)] = "root",
-            [typeof(ResourceRootElement)] = "resource"
+            [typeof(ResourceRootElement)] = "resource",
+            [typeof(Button)] = "gui-button",
+            [typeof(CheckBox)] = "gui-checkbox",
+            [typeof(ComboBox)] = "gui-combobox",
+            [typeof(Edit)] = "gui-edit",
+            [typeof(GridList)] = "gui-gridlist",
+            [typeof(Memo)] = "gui-memo",
+            [typeof(ProgressBar)] = "gui-progressbar",
+            [typeof(RadioButton)] = "gui-radiobutton",
+            [typeof(ScrollBar)] = "gui-scrollbar",
+            [typeof(ScrollPane)] = "gui-scrollpane",
+            [typeof(StaticImage)] = "gui-staticimage",
+            [typeof(TabPanel)] = "gui-tabpanel",
+            [typeof(Tab)] = "gui-tab",
+            [typeof(Label)] = "gui-label",
+            [typeof(Window)] = "gui-window"
         };
 
         /// <summary>
@@ -97,8 +114,8 @@ namespace Slipe.Client.Elements
                     return new Vehicle(element);
                 case "object":
                     return new WorldObject(element);
-                case "gui-browser":
-                    return new GuiBrowser(element);
+                case "colshape":
+                    return new CollisionShape(element);
                 case "browser":
                     return new Browser(element);
                 case "team":
@@ -131,6 +148,38 @@ namespace Slipe.Client.Elements
                     return new RootElement(element);
                 case "resource":
                     return new ResourceRootElement(element);
+                case "gui-button":
+                    return new Button(element);
+                case "gui-browser":
+                    return new GuiBrowser(element);
+                case "gui-checkbox":
+                    return new CheckBox(element);
+                case "gui-combobox":
+                    return new ComboBox(element);
+                case "gui-edit":
+                    return new Edit(element);
+                case "gui-gridlist":
+                    return new GridList(element);
+                case "gui-memo":
+                    return new Memo(element);
+                case "gui-progressbar":
+                    return new ProgressBar(element);
+                case "gui-radiobutton":
+                    return new RadioButton(element);
+                case "gui-scrollbar":
+                    return new ScrollBar(element);
+                case "gui-scrollpane":
+                    return new ScrollPane(element);
+                case "gui-staticimage":
+                    return new StaticImage(element);
+                case "gui-tabpanel":
+                    return new TabPanel(element);
+                case "gui-tab":
+                    return new Tab(element);
+                case "gui-label":
+                    return new Label(element);
+                case "gui-window":
+                    return new Window(element);
                 default:
                     return new Element(element);
             }

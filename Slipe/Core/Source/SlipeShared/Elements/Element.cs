@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using Slipe.MtaDefinitions;
+using Slipe.Shared.IO;
 
 namespace Slipe.Shared.Elements
 {
@@ -116,10 +117,7 @@ namespace Slipe.Shared.Elements
         /// Create a dummy element in the element tree
         /// </summary>
         public Element(string elementType, string elementID = null)
-        {
-            element = MtaShared.CreateElement(elementType, elementID);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            :this(MtaShared.CreateElement(elementType, elementID)) { }
 
         #endregion
 
@@ -182,7 +180,7 @@ namespace Slipe.Shared.Elements
         /// <summary>
         /// Used to handle events that are triggered on the attached MTA element
         /// </summary>
-        public virtual void HandleEvent(string eventName, MtaElement source, dynamic p1, dynamic p2, dynamic p3, dynamic p4, dynamic p5, dynamic p6, dynamic p7, dynamic p8)
+        public virtual void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
         {
 
         }

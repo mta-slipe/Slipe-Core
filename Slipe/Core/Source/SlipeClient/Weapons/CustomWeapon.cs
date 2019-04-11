@@ -91,10 +91,7 @@ namespace Slipe.Client.Weapons
         /// Create a custom weapon at a certain position
         /// </summary>
         public CustomWeapon(SharedWeaponModel model, Vector3 position)
-        {
-            element = MtaClient.CreateWeapon(model.Name, position.X, position.Y, position.Z);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.CreateWeapon(model.Name, position.X, position.Y, position.Z)) { }
 
         #endregion
 

@@ -74,15 +74,13 @@ namespace Slipe.Shared.Radar
         /// Creates a radar area from the createRadarArea parameters
         /// </summary>
         public SharedRadarArea(Vector2 position, Vector2 dimensions, Color color, Element visibleTo = null)
-        {
-            element = MtaShared.CreateRadarArea(position.X, position.Y, dimensions.X, dimensions.Y, color.R, color.G, color.B, color.A, visibleTo?.MTAElement);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaShared.CreateRadarArea(position.X, position.Y, dimensions.X, dimensions.Y, color.R, color.G, color.B, color.A, visibleTo?.MTAElement)) { }
 
         /// <summary>
         /// Creats a white radar area from just a position and a dimension
         /// </summary>
-        public SharedRadarArea(Vector2 position, Vector2 dimension) : this(position, dimension, Color.White) { }
+        public SharedRadarArea(Vector2 position, Vector2 dimension) 
+            : this(position, dimension, Color.White) { }
 
         #endregion
 

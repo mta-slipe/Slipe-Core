@@ -189,39 +189,25 @@ namespace Slipe.Client.Sounds
         /// Create sound
         /// </summary>
         public Sound(string pathOrUrl, bool looped = false, bool throttled = true)
-        {
-            element = MtaClient.PlaySound(pathOrUrl, looped, throttled);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.PlaySound(pathOrUrl, looped, throttled)) { }
 
         /// <summary>
         /// Create a GTA Sfx
         /// </summary>
         public Sound(SoundContainer container, int bankId, int soundId, bool looped = false)
-        {
-            //string containerBank = ((SoundContainer)container).ToString().ToLower();
-            element = MtaClient.PlaySFX(container.ToString().ToLower(), bankId, soundId, looped);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.PlaySFX(container.ToString().ToLower(), bankId, soundId, looped)) { }
 
         /// <summary>
         /// Create a GTA radio station sound
         /// </summary>
         public Sound(RadioStation station, int trackId, bool looped = false)
-        {
-            string stationName = MtaClient.GetRadioChannelName((int)station);
-            element = MtaClient.PlaySFX("radio", stationName, trackId, looped);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.PlaySFX("radio", MtaClient.GetRadioChannelName((int)station), trackId, looped)) { }
 
         /// <summary>
         /// Create an extra GTA radio station sound
         /// </summary>
         public Sound(ExtraStations station, int trackId, bool looped = false)
-        {
-            element = MtaClient.PlaySFX("radio", station.ToString(), trackId, looped);
-            ElementManager.Instance.RegisterElement(this);
-        }
+            : this(MtaClient.PlaySFX("radio", station.ToString(), trackId, looped)) { }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Sound(Player player)

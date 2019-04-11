@@ -120,9 +120,8 @@ namespace Slipe.Client.Lights
         /// Create a searchlight from all parameters
         /// </summary>
         public SearchLight(Vector3 start, Vector3 end, float startRadius, float endRadius, bool renderSpot = true)
+            : this(MtaClient.CreateSearchLight(start.X, start.Y, start.Z, end.X, end.Y, end.Z, startRadius, endRadius, renderSpot))
         {
-            element = MtaClient.CreateSearchLight(start.X, start.Y, start.Z, end.X, end.Y, end.Z, startRadius, endRadius, renderSpot);
-            ElementManager.Instance.RegisterElement(this);
             relativeEndPosition = end - start;
         }
 

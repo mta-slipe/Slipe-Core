@@ -31,7 +31,7 @@ namespace Slipe.Client.Resources
         {
             get
             {
-                return ElementManager.Instance.GetElement(MtaClient.GetResourceGUIElement(_resource));
+                return ElementManager.Instance.GetElement(MtaClient.GetResourceGUIElement(MTAResource));
             }
         }
 

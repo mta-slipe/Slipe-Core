@@ -33,64 +33,16 @@ namespace Slipe.Shared.GameWorld
         public SharedWater(MtaElement element) : base(element) { }
 
         /// <summary>
-        /// Creates a body of water from 4 corners. The order of the input vectors doesn't matter
+        /// Creates a body of water from 4 corners. Order: SouthWest -> SouthEast -> NorthWest -> NorthEast
         /// </summary>
-        public SharedWater(Vector3 corner1, Vector3 corner2, Vector3 corner3, Vector3 corner4, bool shallow = false)
-        {
-            Vector3 southWest = new Vector3(3000, 3000, 0);
-            Vector3 southEast = new Vector3(-3000, 3000, 0);
-            Vector3 northWest = new Vector3(3000, -3000, 0);
-            Vector3 northEast = new Vector3(-3000, -3000, 0);
-
-            Vector3[] vectors = new Vector3[] { corner1, corner2, corner3, corner4 };
-
-            foreach (Vector3 v in vectors)
-            {
-                // North-East
-                if (v.X > northEast.X && v.Y > northEast.Y)
-                    northEast = v;
-                // South-West
-                if (v.X < southWest.X && v.Y < southWest.Y)
-                    southWest = v;
-                // North-West
-                if (v.X < northWest.X && v.Y > northWest.Y)
-                    northWest = v;
-                // South-East
-                if (v.X > southEast.X && v.Y < southEast.Y)
-                    southEast = v;
-            }
-
-            element = MtaShared.CreateWater(southWest.X, southWest.Y, southWest.Z, southEast.X, southEast.Y, southEast.Z, northWest.X, northWest.Y, northWest.Z, northEast.X, northEast.Y, northEast.Z, shallow);
-            ElementManager.Instance.RegisterElement(this);
-        }
+        public SharedWater(Vector3 southWest, Vector3 southEast, Vector3 northWest, Vector3 northEast, bool shallow = false)
+            :this(MtaShared.CreateWater(southWest.X, southWest.Y, southWest.Z, southEast.X, southEast.Y, southEast.Z, northWest.X, northWest.Y, northWest.Z, northEast.X, northEast.Y, northEast.Z, shallow)) { }
 
         /// <summary>
-        /// Creates a body of water from 3 corners. The order of the input vectors doesn't matter
+        /// Creates a body of water from 3 corners. Order: SouthWest -> SouthEast -> NorthWest
         /// </summary>
-        public SharedWater(Vector3 corner1, Vector3 corner2, Vector3 corner3, bool shallow = false)
-        {
-            Vector3 southWest = new Vector3(3000, 3000, 0);
-            Vector3 southEast = new Vector3(-3000, 3000, 0);
-            Vector3 northWest = new Vector3(3000, -3000, 0);
-
-            Vector3[] vectors = new Vector3[] { corner1, corner2, corner3 };
-
-            foreach (Vector3 v in vectors)
-            {
-                // South-West
-                if (v.X < southWest.X && v.Y < southWest.Y)
-                    southWest = v;
-                // North-West
-                if (v.X < northWest.X && v.Y > northWest.Y)
-                    northWest = v;
-                // South-East
-                if (v.X > southEast.X && v.Y < southEast.Y)
-                    southEast = v;
-            }
-
-            element = MtaShared.CreateWater(southWest.X, southWest.Y, southWest.Z, southEast.X, southEast.Y, southEast.Z, northWest.X, northWest.Y, northWest.Z, shallow);
-            ElementManager.Instance.RegisterElement(this);
-        }
+        public SharedWater(Vector3 southWest, Vector3 southEast, Vector3 northWest, bool shallow = false)
+            :this(MtaShared.CreateWater(southWest.X, southWest.Y, southWest.Z, southEast.X, southEast.Y, southEast.Z, northWest.X, northWest.Y, northWest.Z, shallow)) { }
 
         #endregion
 

@@ -11,6 +11,7 @@ using Slipe.Server.GameServer;
 using Slipe.Shared.Peds;
 using Slipe.Server.Rendering;
 using System.ComponentModel;
+using Slipe.Server.Displays;
 
 namespace Slipe.Server.Peds
 {
@@ -78,7 +79,7 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return new Account(MtaServer.GetPlayerAccount(element));
+                return AccountManager.Instance.GetAccount(MtaServer.GetPlayerAccount(element));
             }
         }
 
@@ -309,11 +310,20 @@ namespace Slipe.Server.Peds
         {
             Camera = new Camera(this);
             PlayerManager.Instance.HandleJoin(this);
+            ListenForEvent("onConsole");
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Check if this palyer can observe a certain display
+        /// </summary>
+        public bool IsDisplayObserver(Display display)
+        {
+            return MtaServer.TextDisplayIsObserver(display.DisplayElement, element);
+        }
 
         /// <summary>
         /// Logs the player into an account
@@ -462,7 +472,30 @@ namespace Slipe.Server.Peds
             }
         }
 
-        #endregion               
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        /// Handles events for players
+        /// </summary>
+        public override void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
+        {
+            switch (eventName)
+            {
+                case "onConsole":
+                    OnConsole?.Invoke((string)p1);
+                    break;
+                default:
+                    base.HandleEvent(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
+                    break;
+            }
+        }
+
+        public delegate void OnConsoleHandler(string message);
+        public event OnConsoleHandler OnConsole;
+
+        #endregion
 
     }
 }
