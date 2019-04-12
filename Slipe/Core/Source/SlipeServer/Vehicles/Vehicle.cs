@@ -233,6 +233,8 @@ namespace Slipe.Server.Vehicles
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnDamageHandler(float loss);
         public event OnDamageHandler OnDamage;
 
@@ -259,6 +261,8 @@ namespace Slipe.Server.Vehicles
 
         public delegate void OnRespawnHandler(bool exploded);
         public event OnRespawnHandler OnRespawn;
+
+        #pragma warning restore 67
 
         #endregion
 

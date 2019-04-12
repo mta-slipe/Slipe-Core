@@ -478,6 +478,7 @@ namespace Slipe.Shared.Elements
         #endregion
 
         #region Events
+        #pragma warning disable 67
 
         public delegate void OnClickedHandler(MouseButton mouseButton, MouseButtonState buttonState, SharedPed clickedBy, Vector3 clickPosition);
         public event OnClickedHandler OnClicked;
@@ -497,6 +498,8 @@ namespace Slipe.Shared.Elements
         public delegate void OnStreamOutHandler();
         public event OnStreamOutHandler OnStreamOut;
 
+        #pragma warning restore 67
         #endregion
+
     }
 }

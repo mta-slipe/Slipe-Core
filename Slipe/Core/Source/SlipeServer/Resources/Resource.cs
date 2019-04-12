@@ -117,7 +117,10 @@ namespace Slipe.Server.Resources
         /// Create a resource from an MTA resource element
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Resource(MtaResource resource) : base(resource) { }
+        public Resource(MtaResource resource) : base(resource)
+        {
+            ResourceManager.Instance.RegisterResource(this);
+        }
 
         /// <summary>
         /// Create a new empty resource
@@ -270,29 +273,29 @@ namespace Slipe.Server.Resources
 
         #region Events
 
-        internal void HandlePreStart()
-        {
-            OnPreStart?.Invoke();
-        }
+        //internal void HandlePreStart()
+        //{
+        //    OnPreStart?.Invoke();
+        //}
 
-        internal void HandleStart()
-        {
-            OnStart?.Invoke();
-        }
+        //internal void HandleStart()
+        //{
+        //    OnStart?.Invoke();
+        //}
 
-        internal void HandleStop(bool wasDeleted)
-        {
-            OnStop?.Invoke(wasDeleted);
-        }
+        //internal void HandleStop(bool wasDeleted)
+        //{
+        //    OnStop?.Invoke(wasDeleted);
+        //}
 
-        public delegate void OnPreStartHandler();
-        public event OnPreStartHandler OnPreStart;
+        //public delegate void OnPreStartHandler();
+        //public event OnPreStartHandler OnPreStart;
 
-        public delegate void OnStartHandler();
-        public event OnStartHandler OnStart;
+        //public delegate void OnStartHandler();
+        //public event OnStartHandler OnStart;
 
-        public delegate void OnStopHandler(bool wasDeleted);
-        public event OnStopHandler OnStop;
+        //public delegate void OnStopHandler(bool wasDeleted);
+        //public event OnStopHandler OnStop;
 
         #endregion
 

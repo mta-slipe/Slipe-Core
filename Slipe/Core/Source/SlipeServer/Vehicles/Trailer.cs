@@ -63,11 +63,15 @@ namespace Slipe.Server.Vehicles
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnAttachHandler(Vehicle truck);
         public event OnAttachHandler OnAttach;
 
         public delegate void OnDetachHandler(Vehicle truck);
         public event OnDetachHandler OnDetach;
+
+        #pragma warning restore 67
 
         #endregion
     }

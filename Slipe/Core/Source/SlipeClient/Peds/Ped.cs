@@ -9,6 +9,7 @@ using Slipe.Shared.Weapons;
 using Slipe.Shared.Peds;
 using System.ComponentModel;
 using Slipe.Client.Vehicles;
+using Slipe.Shared.Explosions;
 
 namespace Slipe.Client.Peds
 {
@@ -297,6 +298,8 @@ namespace Slipe.Client.Peds
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnDamageHandler(PhysicalElement attacker, DamageType damageType, BodyPart bodyPart, float loss);
         public event OnDamageHandler OnDamage;
 
@@ -311,6 +314,11 @@ namespace Slipe.Client.Peds
 
         public delegate void OnStepHandler(bool leftFoot);
         public event OnStepHandler OnStep;
+
+        public delegate void OnExplosionHandler(Vector3 position, ExplosionType type);
+        public event OnExplosionHandler OnExplosion;
+
+        #pragma warning restore 67
 
         #endregion
 

@@ -49,11 +49,14 @@ namespace Slipe.Shared.CollisionShapes
             return ElementManager.Instance.CastArray<PhysicalElement>(array);
         }
 
+        #pragma warning disable 67
+
         public delegate void OnHitHandler(PhysicalElement element, bool matchingDimension);
         public event OnHitHandler OnHit;
 
         public delegate void OnLeaveHandler(PhysicalElement element, bool matchingDimension);
         public event OnLeaveHandler OnLeave;
 
+        #pragma warning restore 67
     }
 }

@@ -42,8 +42,12 @@ namespace Slipe.Client.Gui
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnScrollHandler();
         public event OnScrollHandler OnScroll;
+
+        #pragma warning restore 67
 
         #endregion
     }

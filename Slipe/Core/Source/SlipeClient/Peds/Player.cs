@@ -11,6 +11,9 @@ using System.ComponentModel;
 using Slipe.Shared.CollisionShapes;
 using Slipe.Client.Pickups;
 using Slipe.Shared.Peds;
+using Slipe.Client.Vehicles;
+using Slipe.Shared.Vehicles;
+using Slipe.Shared.Weapons;
 
 namespace Slipe.Client.Peds
 {
@@ -157,6 +160,8 @@ namespace Slipe.Client.Peds
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnCollisionShapeHitHandler(CollisionShape colShape, bool matchingDimension);
         public event OnCollisionShapeHitHandler OnCollisionShapeHit;
 
@@ -180,6 +185,32 @@ namespace Slipe.Client.Peds
 
         public delegate void OnSpawnHandler(Team playerTeam);
         public event OnSpawnHandler OnSpawn;
+
+        public delegate void OnVehicleEnterHandler(Vehicle vehicle, Seat seat);
+        public event OnVehicleEnterHandler OnVehicleEnter;
+
+        public delegate void OnVehicleExitHandler(Vehicle vehicle, Seat seat);
+        public event OnVehicleExitHandler OnVehicleExit;
+
+        public delegate void OnVoicePausedHandler();
+        public event OnVoicePausedHandler OnVoicePaused;
+
+        public delegate void OnVoiceResumedHandler();
+        public event OnVoiceResumedHandler OnVoiceResumed;
+
+        public delegate void OnVoiceStartHandler();
+        public event OnVoiceStartHandler OnVoiceStart;
+
+        public delegate void OnVoiceStopHandler();
+        public event OnVoiceStopHandler OnVoiceStop;
+
+        public delegate void OnWeaponSwitchHandler(SharedWeaponModel previousWeapon, SharedWeaponModel newWeapon);
+        public event OnWeaponSwitchHandler OnWeaponSwitch;
+
+        public delegate void OnChatMessageHandler(string text, Color color);
+        public static event OnChatMessageHandler OnChatMessage;
+
+        #pragma warning restore 67
 
         #endregion
 

@@ -8,6 +8,8 @@ using Slipe.Shared.Elements;
 using System.ComponentModel;
 using Slipe.Client.Peds;
 using Slipe.Shared.CollisionShapes;
+using Slipe.Shared.Weapons;
+using Slipe.Shared.Explosions;
 
 namespace Slipe.Client.Vehicles
 {
@@ -239,11 +241,46 @@ namespace Slipe.Client.Vehicles
         #endregion
 
         #region Events
+
+        #pragma warning disable 67
+
         public delegate void OnCollisionShapeHitHandler(CollisionShape colShape, bool matchingDimension);
         public event OnCollisionShapeHitHandler OnCollisionShapeHit;
 
         public delegate void OnCollisionShapeLeaveHandler(CollisionShape colShape, bool matchingDimension);
         public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
+
+        public delegate void OnCollisionHandler(PhysicalElement hitElement, float force, Part bodyPart, Vector3 collisionPosition, Vector3 normal, int model);
+        public event OnCollisionHandler OnCollision;
+
+        public delegate void OnDamageHandler(PhysicalElement attacker, SharedWeaponModel weaponModel, float loss, Vector3 damagePosition, Tire damagedTire);
+        public event OnDamageHandler OnDamage;
+
+        public delegate void OnEnterHandler(Player player, Seat seat);
+        public event OnEnterHandler OnEnter;
+
+        public delegate void OnExitHandler(Player player, Seat seat);
+        public event OnExitHandler OnExit;
+
+        public delegate void OnStartEnterHandler(Player enteringPlayer, Seat seat, Door door);
+        public event OnStartEnterHandler OnStartEnter;
+
+        public delegate void OnStartExitHandler(Player exitingPlayer, Seat seat, Door door);
+        public event OnStartExitHandler OnStartExit;
+
+        public delegate void OnExplodeHandler();
+        public event OnExplodeHandler OnExplode;
+
+        public delegate void OnRespawnHandler(bool exploded);
+        public event OnRespawnHandler OnRespawn;
+
+        public delegate void OnNitroStateChangeHandler(bool state);
+        public event OnNitroStateChangeHandler OnNitroStateChange;
+
+        public delegate void OnExplosionHandler(Vector3 position, ExplosionType type);
+        public event OnExplosionHandler OnExplosion;
+
+        #pragma warning restore 67
 
         #endregion
 

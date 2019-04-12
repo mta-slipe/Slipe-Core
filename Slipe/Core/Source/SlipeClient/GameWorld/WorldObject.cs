@@ -5,6 +5,8 @@ using System.Text;
 using System.Numerics;
 using System.ComponentModel;
 using Slipe.Shared.GameWorld;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Explosions;
 
 namespace Slipe.Client.GameWorld
 {
@@ -97,5 +99,22 @@ namespace Slipe.Client.GameWorld
         {
             MtaClient.RespawnObject(element);
         }
+
+        #region Events
+
+        #pragma warning disable 67
+
+        public delegate void OnBreakHandler(PhysicalElement attacker);
+        public event OnBreakHandler OnBreak;
+
+        public delegate void OnDamageHandler(float loss, PhysicalElement attacker);
+        public event OnDamageHandler OnDamage;
+
+        public delegate void OnExplosionHandler(Vector3 position, ExplosionType type);
+        public event OnExplosionHandler OnExplosion;
+
+        #pragma warning restore 67
+
+        #endregion
     }
 }

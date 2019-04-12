@@ -6,6 +6,8 @@ using System.Text;
 using Slipe.Shared.IO;
 using System.Numerics;
 using Slipe.Shared.Peds;
+using Slipe.Shared.Utilities;
+using Slipe.Shared.Helpers;
 
 namespace Slipe.Client.Elements
 {
@@ -20,6 +22,8 @@ namespace Slipe.Client.Elements
         {
             OnMiscelaniousEvent?.Invoke(eventName, element, p1, p2, p3, p4, p5, p6, p7, p8);
         }
+
+        #pragma warning disable 67
 
         public delegate void OnMiscelaniousEventHandler(string eventName, MtaElement element, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8);
         public static event OnMiscelaniousEventHandler OnMiscelaniousEvent;
@@ -51,6 +55,21 @@ namespace Slipe.Client.Elements
         public delegate void OnCursorMoveHandler(Vector2 relativePosition, Vector2 absolutePosition, Vector3 worldPosition);
         public static event OnCursorMoveHandler OnCursorMove;
 
+        public delegate void OnChatMessageHandler(string text, Color color);
+        public static event OnChatMessageHandler OnChatMessage;
+
+        public delegate void OnDebugMessageHandler(string message, DebugMessageLevel level, string file, int line, Color color);
+        public static event OnDebugMessageHandler OnDebugMessage;
+
+        public delegate void OnMinimizeHandler();
+        public static event OnMinimizeHandler OnMinimize;
+
+        public delegate void OnNetworkInteruptionBeginHandler(NetworkInteruptionStatus status, int ticksSinceInteruptionStarted);
+        public event OnNetworkInteruptionBeginHandler OnNetworkInteruption;
+
+        public delegate void OnRestoreHandler(bool didClearRenderTargets);
+        public event OnRestoreHandler OnRestore;
+
         /// This method is just here so that these enums get parsed and are usable in events
         private void initEnums()
         {
@@ -58,6 +77,8 @@ namespace Slipe.Client.Elements
             MouseButtonState s = (MouseButtonState)Enum.Parse(typeof(MouseButtonState), "Down", true);
             QuitType q = (QuitType)Enum.Parse(typeof(QuitType), "Disconnected", true);
         }
+
+        #pragma warning restore 67
 
     }
 }

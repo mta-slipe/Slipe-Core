@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Peds
+namespace Slipe.Shared.Helpers
 {
     /// <summary>
     /// Represents a status code for the player screenshot event

@@ -182,8 +182,12 @@ namespace Slipe.Shared.Elements
 
         }
 
+        #pragma warning disable 67
+
         public delegate void OnDestroyHandler();
         public event OnDestroyHandler OnDestroy;
+
+        #pragma warning restore 67
 
         #endregion
 

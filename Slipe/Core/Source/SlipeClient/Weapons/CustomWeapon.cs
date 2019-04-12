@@ -10,6 +10,7 @@ using Slipe.Client.Vehicles;
 using Slipe.Shared.Vehicles;
 using Slipe.Client.Peds;
 using Slipe.Shared.Peds;
+using Slipe.Client.SightLines;
 
 namespace Slipe.Client.Weapons
 {
@@ -152,6 +153,17 @@ namespace Slipe.Client.Weapons
         {
             return MtaClient.ResetWeaponFiringRate(element);
         }
+
+        #endregion
+
+        #region Events
+
+        #pragma warning disable 67
+
+        public delegate void OnFireHandler(PhysicalElement hitElement, Vector3 hitPosition, Vector3 hitNormal, SurfaceMaterialType hitMaterial, float lighting, int partHit);
+        public event OnFireHandler OnFire;
+
+        #pragma warning restore 67
 
         #endregion
     }

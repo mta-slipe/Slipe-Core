@@ -100,27 +100,39 @@ namespace Slipe.Client.Weapons
         /// <summary>
         /// Create a new projectile with all the parameters
         /// </summary>
-        public Projectile(Player creator, ProjectileType projectile, Vector3 startPos, float force, PhysicalElement target, Vector3 rotation, Vector3 velocity, int model = -1)
+        public Projectile(PhysicalElement creator, ProjectileType projectile, Vector3 startPos, float force, PhysicalElement target, Vector3 rotation, Vector3 velocity, int model = -1)
             : this(MtaClient.CreateProjectile(creator.MTAElement, (int)projectile, startPos.X, startPos.Y, startPos.Z, force, target.MTAElement, rotation.X, rotation.Y, rotation.Z, velocity.X, velocity.Y, velocity.Z, -1)) { }
 
         /// <summary>
         /// Create a new projectile
         /// </summary>
-        public Projectile(Player creator, ProjectileType projectile, Vector3 startPos, float force, PhysicalElement target, Vector3 rotation) 
+        public Projectile(PhysicalElement creator, ProjectileType projectile, Vector3 startPos, float force, PhysicalElement target, Vector3 rotation) 
             : this(creator, projectile, startPos, force, target, rotation, Vector3.Zero) { }
 
         /// <summary>
         /// Create a new projectile
         /// </summary>
-        public Projectile(Player creator, ProjectileType projectile, Vector3 startPos, float force, PhysicalElement target) 
+        public Projectile(PhysicalElement creator, ProjectileType projectile, Vector3 startPos, float force, PhysicalElement target) 
             : this(creator, projectile, startPos, force, target, Vector3.Zero) { }
 
         /// <summary>
         /// Create a new projectile
         /// </summary>
-        public Projectile(Player creator, ProjectileType projectile, Vector3 startPos, float force = 1.0f) 
+        public Projectile(PhysicalElement creator, ProjectileType projectile, Vector3 startPos, float force = 1.0f) 
             : this(creator, projectile, startPos, force, null) { }
 
         #endregion
+
+        #region Events
+
+        #pragma warning disable 67
+
+        public delegate void OnCreatedHandler(PhysicalElement creator);
+        public event OnCreatedHandler OnCreated;
+
+        #pragma warning restore 67
+
+        #endregion
+
     }
 }

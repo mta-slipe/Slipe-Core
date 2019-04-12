@@ -20,6 +20,7 @@ using Slipe.Server.Resources;
 using Slipe.Server.Vehicles;
 using Slipe.Shared.Vehicles;
 using Slipe.Server.Weapons;
+using Slipe.Shared.Helpers;
 
 namespace Slipe.Server.Peds
 {
@@ -482,6 +483,8 @@ namespace Slipe.Server.Peds
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnConsoleHandler(string message);
         public event OnConsoleHandler OnConsole;
 
@@ -551,7 +554,7 @@ namespace Slipe.Server.Peds
         public delegate void OnUnmutedHandler();
         public event OnUnmutedHandler OnUnmuted;
 
-        public delegate void OnNetworkInteruptionBeginHandler(int ticksSinceInteruptionStarted);
+        public delegate void OnNetworkInteruptionBeginHandler(NetworkInteruptionStatus status, int ticksSinceInteruptionStarted);
         public event OnNetworkInteruptionBeginHandler OnNetworkInteruption;
 
         public delegate void OnPrivateMessageHandler(string message, Player recipient);
@@ -586,6 +589,8 @@ namespace Slipe.Server.Peds
 
         public delegate void OnWeaponFireHandler(WeaponModel weapon, Vector3 endPosition, PhysicalElement hitElement, Vector3 startPosition);
         public event OnWeaponFireHandler OnWeaponFire;
+
+        #pragma warning restore 67
 
         /// This method is just here so that these enums get parsed and are usable in events
         private void initEnums()

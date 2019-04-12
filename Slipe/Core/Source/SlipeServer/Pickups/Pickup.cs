@@ -85,11 +85,15 @@ namespace Slipe.Server.Pickups
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnSpawnHandler();
         public event OnSpawnHandler OnSpawn;
 
         public delegate void OnUseHandler(Player usingPlayer);
         public event OnUseHandler OnUse;
+
+        #pragma warning restore 67
 
         #endregion
     }

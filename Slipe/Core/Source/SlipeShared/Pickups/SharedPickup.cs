@@ -110,6 +110,7 @@ namespace Slipe.Shared.Pickups
         #endregion
 
         #region Events
+        #pragma warning disable 67
 
         public delegate void OnHitHandler(SharedPed hitPlayer, bool matchingDimension);
         public event OnHitHandler OnHit;
@@ -117,6 +118,7 @@ namespace Slipe.Shared.Pickups
         public delegate void OnLeaveHandler(SharedPed leavePlayer, bool matchingDimension);
         public event OnLeaveHandler OnLeave;
 
+        #pragma warning restore 67
         #endregion
 
     }

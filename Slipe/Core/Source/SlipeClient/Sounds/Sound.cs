@@ -249,5 +249,31 @@ namespace Slipe.Client.Sounds
 
         #endregion
 
+        #region Events
+
+        #pragma warning disable 67
+
+        public delegate void OnBeatHandler(float time);
+        public event OnBeatHandler OnBeat;
+
+        public delegate void OnMetaChangedHandler(string streamTitle);
+        public event OnMetaChangedHandler OnMetaChanged;
+
+        public delegate void OnDownloadFinishedHandler(int length);
+        public event OnDownloadFinishedHandler OnDownloadFinished;
+
+        public delegate void OnStartHandler(string reason);
+        public event OnStartHandler OnStart;
+
+        public delegate void OnStopHandler(string reason);
+        public event OnStopHandler OnStop;
+
+        public delegate void OnStreamHandler(bool success, int length, string streamName, string errorMessage);
+        public event OnStreamHandler OnStream;
+
+        #pragma warning restore 67
+
+        #endregion
+
     }
 }

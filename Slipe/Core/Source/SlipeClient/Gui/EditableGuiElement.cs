@@ -19,8 +19,12 @@ namespace Slipe.Client.Gui
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnChangedHandler();
         public event OnChangedHandler OnChanged;
+
+        #pragma warning restore 67
 
         #endregion
     }

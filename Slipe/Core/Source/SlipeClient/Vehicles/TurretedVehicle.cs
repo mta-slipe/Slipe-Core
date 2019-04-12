@@ -52,8 +52,12 @@ namespace Slipe.Client.Vehicles
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnPedHitHandler(Ped pedHit);
         public event OnPedHitHandler OnPedHit;
+
+        #pragma warning restore 67
 
         #endregion
     }

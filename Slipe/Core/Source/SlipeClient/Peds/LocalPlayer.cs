@@ -174,6 +174,8 @@ namespace Slipe.Client.Peds
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnChokeHandler(SharedWeaponModel weaponModel, Ped responsiblePed);
         public event OnChokeHandler OnChoke;
 
@@ -191,6 +193,11 @@ namespace Slipe.Client.Peds
 
         public delegate void OnTargetHandler(PhysicalElement target);
         public event OnTargetHandler OnTarget;
+
+        public delegate void OnConsoleHandler(string text);
+        public event OnConsoleHandler OnConsole;
+
+        #pragma warning restore 67
 
         #endregion
     }

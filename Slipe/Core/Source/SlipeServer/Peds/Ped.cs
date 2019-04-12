@@ -165,11 +165,15 @@ namespace Slipe.Server.Peds
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnWastedHandler(int remainingAmmo, Player attacker, DamageType damageType, BodyPart bodyPart, bool stealth);
         public event OnWastedHandler OnWasted;
 
         public delegate void OnWeaponSwitchHandler(WeaponModel previousWeapon, WeaponModel newWeapon);
         public event OnWeaponSwitchHandler OnWeaponSwitch;
+
+        #pragma warning restore 67
 
         #endregion
     }

@@ -102,7 +102,6 @@ namespace ServerTest
 
             Vehicle alpha = new Vehicle(VehicleModel.Alpha, new Vector3(0, 10, 3));
 
-            // alpha.AddEventHandler("onVehicleDamage");
             alpha.OnDamage += (float loss) =>
             {
                 Dictionary<Seat, Player> occupants = alpha.Occupants;

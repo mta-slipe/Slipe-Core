@@ -235,6 +235,8 @@ namespace Slipe.Client.Gui
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnBlurHandler();
         public event OnBlurHandler OnBlur;
 
@@ -270,6 +272,8 @@ namespace Slipe.Client.Gui
 
         public delegate void OnMouseWheelHandler(MouseWheelState upOrDown);
         public event OnMouseWheelHandler OnMouseWheel;
+
+        #pragma warning restore 67
 
         #endregion
     }

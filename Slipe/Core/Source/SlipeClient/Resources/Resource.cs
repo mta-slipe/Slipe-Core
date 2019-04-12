@@ -16,11 +16,14 @@ namespace Slipe.Client.Resources
         /// <summary>
         /// Static pointer to the current resource
         /// </summary>
+        private static Resource thisResource;
         public static Resource This
         {
             get
             {
-                return new Resource(MtaShared.GetThisResource());
+                if (thisResource == null)
+                    thisResource = ResourceManager.Instance.GetResource(MtaShared.GetThisResource());
+                return thisResource;
             }
         }
 
@@ -38,8 +41,12 @@ namespace Slipe.Client.Resources
         #region Constructor
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Resource(MtaResource resource) : base(resource) { }
+        public Resource(MtaResource resource) : base(resource)
+        {
+            ResourceManager.Instance.RegisterResource(this);
+        }
 
         #endregion
+
     }
 }

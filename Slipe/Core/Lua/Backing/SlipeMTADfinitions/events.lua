@@ -37,8 +37,6 @@ function initEvents()
 	local _stringArray = {1, function(e) return arrayFromTable(e, "System.String") end}		
 	local _enum = {1, function(e, en) return _int[2](parseEnum(typeOf(en), _string[2](e):Replace(" ", "_"), true)) end}
 
-	-- System.new(SlipeSharedUtilities.Color, 4, System.cast(System.Byte, p5), System.cast(System.Byte, p6), System.cast(System.Byte, p7))
-
 	local events = {}
 
 	if triggerServerEvent == nil then
@@ -148,6 +146,9 @@ function initEvents()
 		local weaponModel = Slipe.Shared.Weapons.SharedWeaponModel
 		local _weaponModel = {1, function(e) return new(weaponModel, 2, e) end}
 
+		local reM = Slipe.Client.Resources.ResourceManager.getInstance()
+		local _resource = {1, function(e) return reM:GetResource(e) end}	
+
 		-- Browser
 		events.onClientBrowserCreated = {"OnCreated"}
 		events.onClientBrowserCursorChange = {"OnCursorChange", {_int}}
@@ -173,6 +174,14 @@ function initEvents()
 		events.onClientClick = {"OnClick", {{_enum, mouseButton}, {_enum, mouseButtonState}, _vector2, _vector3, _element}}
 		events.onClientCursorMove = {"OnCursorMove", {_vector2, _vector2, _vector3}}
 		events.onClientDoubleClick = {"OnDoubleClick", {{_enum, mouseButton}, _vector2, _vector3, _element}}
+		events.onClientChatMessage = {"OnChatMessage", {_string, _color3}}
+		events.onClientDebugMessage = {"OnDebugMessage", {_string, _int, _string, _int, _color3}}
+		events.onClientMinimize = {"OnMinimize"}
+		events.onClientPlayerNetworkStatus = {"OnNetworkInteruption", {_int, _int}}
+		events.onClientRestore = {"OnRestore", {_boolean}}
+
+		-- Misc
+		events.onClientExplosion = {"OnExplosion", {_vector3, _int}}
 
 		-- Colshape
 		events.onClientColShapeHit = {"OnHit", {_element, _boolean}}
@@ -223,6 +232,7 @@ function initEvents()
 		events.onClientPickupLeave = {"OnLeave", {_element, _boolean}}
 
 		-- Player
+		events.onClientConsole = {"OnConsole", {_string}}
 		events.onPlayerChangeNick = {"OnNicknameChanged", {_string, _string}}
 		events.onClientPlayerChoke = {"OnChoke", {_weaponModel, _element}}
 		events.onClientPlayerDamage = {"OnDamage", {_element, _int, _int, _float}}
@@ -238,7 +248,51 @@ function initEvents()
 		events.onClientPlayerStuntStart = {"OnStuntStart", {_string}}
 		events.onClientPlayerStuntFinish = {"OnStuntFinish", {_string, _int, _float}}
 		events.onClientPlayerTarget = {"OnTarget", {_element}}
+		events.onClientPlayerVehicleEnter = {"OnVehicleEnter", {_element, _int}}
+		events.onClientPlayerVehicleExit = {"OnVehicleExit", {_element, _int}}
+		events.onClientPlayerVoicePause = {"OnVoicePaused"}
+		events.onClientPlayerVoiceResumed = {"OnVoiceResumed"}
+		events.onClientPlayerVoiceStart = {"OnVoiceStart"}
+		events.onClientPlayerVoiceStop = {"OnVoiceStop"}
+		events.onClientPlayerWasted = {"OnWasted", {_element, _int, _int, _boolean}}
+		events.onClientPlayerWeaponFire = {"OnWeaponFire", {_weaponModel, _int, _int, _vector3, _element}}
+		events.onClientPlayerWeaponSwitch = {"OnWeaponSwitch", {_weaponModel, _weaponModel}}
 
+		-- Object
+		events.onClientObjectBreak = {"OnBreak", {_element}}
+		events.onClientObjectDamage = {"OnDamage", {_float, _element}}
+
+		-- Projectile
+		events.onClientProjectileCreation = {"OnCreated", {_element}}
+
+		-- Resource
+		events.onClientResourceStart = {"OnStart", {_resource}}
+		events.onClientResourceStop = {"OnStop", {_resource}}
+
+		-- Sound
+		events.onClientSoundBeat = {"OnBeat", {_float}}
+		events.onClientSoundChangedMeta = {"OnMetaChanged", {_string}}
+		events.onClientSoundFinishedDownload = {"OnDownloadFinished", {_int}}
+		events.onClientSoundStarted = {"OnStart", {_string}}
+		events.onClientSoundStopped = {"OnStop", {_string}}
+		events.onClientSoundStream = {"OnStream", {_boolean, _int, _string, _string}}
+
+		-- Vehicle
+		events.onClientTrailerAttach = {"OnAttach", {_element}}
+		events.onClientTrailerDetach = {"OnDetach", {_element}}
+		events.onClientVehicleCollision = {"OnCollision", {_element, _float, _int, _vector3, _vector3, _int}}
+		events.onClientVehicleDamage = {"OnDamage", {_element, _weaponModel, _float, _vector3, _int}}
+		events.onVehicleEnter = {"OnEnter", {_element, _int}}
+		events.onVehicleExit = {"OnExit", {_element, _int}}
+		events.onVehicleStartEnter = {"OnStartEnter", {_element, _int, _int}}
+		events.onVehicleStartExit = {"OnStartExit", {_element, _int, _int}}
+		events.onVehicleExplode = {"OnExplode"}
+		events.onVehicleRespawn = {"OnRespawn"}
+		events.onClientVehicleNitroStateChange = {"OnNitroStateChange", {_boolean}}
+
+		-- Custom Weapon
+		events.onClientWeaponFire = {"OnFire", {_element, _vector3, _vector3, _int, _float, _int}}
+		
 	end
 
 	for e, v in pairs(events) do

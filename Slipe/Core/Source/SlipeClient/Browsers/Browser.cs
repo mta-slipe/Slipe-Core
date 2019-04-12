@@ -237,6 +237,8 @@ namespace Slipe.Client.Browsers
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnCreatedHandler();
         public event OnCreatedHandler OnCreated;
 
@@ -266,6 +268,8 @@ namespace Slipe.Client.Browsers
 
         public delegate void OnTooltipHandler(string tooltip);
         public event OnTooltipHandler OnTooltip;
+
+        #pragma warning restore 67
 
         #endregion
     }

@@ -120,11 +120,15 @@ namespace Slipe.Shared.Markers
 
         #region Events
 
+        #pragma warning disable 67
+
         public delegate void OnHitHandler(PhysicalElement hitElement, bool matchingDimension);
         public event OnHitHandler OnHit;
 
         public delegate void OnLeaveHandler(PhysicalElement leaveElement, bool matchingDimension);
         public event OnLeaveHandler OnLeave;
+
+        #pragma warning restore 67
 
         #endregion
     }

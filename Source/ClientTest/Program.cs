@@ -28,7 +28,6 @@ namespace ClientTest
             new Program();
         }
 
-        private GuiBrowser guiBrowser;
         private Browser browser;
 
         public Program()
