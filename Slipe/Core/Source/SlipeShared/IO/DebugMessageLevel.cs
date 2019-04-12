@@ -6,9 +6,9 @@ namespace Slipe.Shared.IO
 {
     public enum DebugMessageLevel
     {
-        CUSTOM,
-        ERROR,
-        WARNING,
-        INFORMATION
+        Custom,
+        Error,
+        Warning,
+        Information
     }
 }

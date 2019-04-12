@@ -7,9 +7,9 @@ using System.Text;
 
 namespace Slipe.Client.IO
 {
-    public class MTADebug : SharedMTADebug
+    public class MtaDebug : SharedMtaDebug
     {
-        protected internal MTADebug()
+        protected internal MtaDebug()
         {
 
         }

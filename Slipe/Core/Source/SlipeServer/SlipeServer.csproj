@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SlipeMTADefinitions\SlipeMTADefinitions.csproj" />
     <ProjectReference Include="..\SlipeShared\SlipeShared.csproj" />
+    <ProjectReference Include="..\SlipeSql\SlipeSql.csproj" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">

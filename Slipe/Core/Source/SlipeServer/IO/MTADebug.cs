@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Slipe.Server.IO
 {
-    public class MTADebug: SharedMTADebug
+    public class MtaDebug: SharedMtaDebug
     {
-        internal MTADebug()
+        internal MtaDebug()
         {
 
         }
