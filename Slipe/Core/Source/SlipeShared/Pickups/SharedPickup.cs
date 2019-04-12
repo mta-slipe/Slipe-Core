@@ -6,6 +6,7 @@ using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Weapons;
 using System.ComponentModel;
+using Slipe.Shared.Peds;
 
 namespace Slipe.Shared.Pickups
 {
@@ -65,31 +66,10 @@ namespace Slipe.Shared.Pickups
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public SharedPickup(MtaElement element) : base(element) { }
+        public SharedPickup(MtaElement element) : base(element)
+        {
 
-        /// <summary>
-        /// Creates a pickup from all CreatePickup variables
-        /// </summary>
-        public SharedPickup(Vector3 position, PickupType type, int amount, int respawnTime = 30000, int ammo = 50)
-            : this(MtaShared.CreatePickup(position.X, position.Y, position.Z, (int)type, amount, respawnTime, ammo)) { }
-
-        /// <summary>
-        /// Creates a weapon pickup
-        /// </summary>
-        public SharedPickup(Vector3 position, SharedWeaponModel weapon, int ammo = 50, int respawnTime = 30000) 
-            : this(position, PickupType.Weapon, weapon.ID, respawnTime, ammo) { }
-
-        /// <summary>
-        /// Creates a custom pickup using GTA custom pickup models
-        /// </summary>
-        public SharedPickup(Vector3 position, PickupModel model, int respawnTime = 30000) 
-            : this(position, PickupType.Custom, (int)model, respawnTime) { }
-
-        /// <summary>
-        /// Creates a pickup object with any model
-        /// </summary>
-        public SharedPickup(Vector3 position, int model) 
-            : this(position, PickupType.Custom, model) { }
+        }
 
         #endregion
 
@@ -126,6 +106,16 @@ namespace Slipe.Shared.Pickups
         {
             return Morph(PickupType.Custom, model);
         }
+
+        #endregion
+
+        #region Events
+
+        public delegate void OnHitHandler(SharedPed hitPlayer, bool matchingDimension);
+        public event OnHitHandler OnHit;
+
+        public delegate void OnLeaveHandler(SharedPed leavePlayer, bool matchingDimension);
+        public event OnLeaveHandler OnLeave;
 
         #endregion
 

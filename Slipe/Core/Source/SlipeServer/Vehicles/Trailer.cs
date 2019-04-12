@@ -28,6 +28,8 @@ namespace Slipe.Server.Vehicles
             }
         }
 
+        #region Constructors
+
         /// <summary>
         /// Create a vehicle from a model at a position
         /// </summary>
@@ -41,13 +43,15 @@ namespace Slipe.Server.Vehicles
         /// </summary>
         public Trailer(TrailerModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
         {
+
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Trailer(MtaElement element) : base(element)
         {
-
         }
+
+        #endregion
 
         /// <summary>
         /// Attach this trailer to a vehicle
@@ -56,6 +60,16 @@ namespace Slipe.Server.Vehicles
         {
             return MtaShared.AttachTrailerToVehicle(element, vehicle.MTAElement);
         }
+
+        #region Events
+
+        public delegate void OnAttachHandler(Vehicle truck);
+        public event OnAttachHandler OnAttach;
+
+        public delegate void OnDetachHandler(Vehicle truck);
+        public event OnDetachHandler OnDetach;
+
+        #endregion
     }
 
     /// <summary>

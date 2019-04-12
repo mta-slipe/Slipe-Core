@@ -5,6 +5,9 @@ using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Peds;
 using System.ComponentModel;
+using Slipe.Shared.Weapons;
+using Slipe.Client.Sounds;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Client.Peds
 {
@@ -166,6 +169,28 @@ namespace Slipe.Client.Peds
         {
             return MtaClient.PlaySoundFrontEnd((int)frontEndSound);
         }
+
+        #endregion
+
+        #region Events
+
+        public delegate void OnChokeHandler(SharedWeaponModel weaponModel, Ped responsiblePed);
+        public event OnChokeHandler OnChoke;
+
+        public delegate void OnRadioSwitchHandler(RadioStation newRadioStation);
+        public event OnRadioSwitchHandler OnRadioSwitch;
+
+        public delegate void OnStealthKillHandler(Ped victim);
+        public event OnStealthKillHandler OnStealthKill;
+
+        public delegate void OnStuntStartHandler(string stuntType);
+        public event OnStuntStartHandler OnStuntStart;
+
+        public delegate void OnStuntFinishHandler(string stuntType, int stuntTime, float stuntDistance);
+        public event OnStuntFinishHandler OnStuntFinish;
+
+        public delegate void OnTargetHandler(PhysicalElement target);
+        public event OnTargetHandler OnTarget;
 
         #endregion
     }

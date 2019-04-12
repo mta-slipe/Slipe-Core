@@ -34,7 +34,6 @@ namespace Slipe.Client.Assets
             this.state = DownloadState.Default;
             this.filepath = filepath;
 
-            Element.Root.ListenForEvent("onClientFileDownloadComplete");
             ResourceRootElement.OnFileDownloadComplete += HandleDownloadComplete;
 
         }

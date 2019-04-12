@@ -5,6 +5,7 @@ using System.Text;
 using Slipe.Shared.Elements;
 using System.ComponentModel;
 using System.Numerics;
+using Slipe.Shared.IO;
 
 namespace Slipe.Client.Gui
 {
@@ -229,6 +230,46 @@ namespace Slipe.Client.Gui
         {
             return MtaClient.GuiGetProperty(element, property);
         }
+
+        #endregion
+
+        #region Events
+
+        public delegate void OnBlurHandler();
+        public event OnBlurHandler OnBlur;
+
+        public delegate void OnFocusHandler();
+        public event OnFocusHandler OnFocus;
+
+        public delegate void OnClickHandler(MouseButton button, MouseButtonState buttonState, Vector2 mousePosition);
+        public event OnClickHandler OnClick;
+
+        public delegate void OnDoubleClickHandler(MouseButton button, MouseButtonState buttonState, Vector2 mousePosition);
+        public event OnDoubleClickHandler OnDoubleClick;
+
+        public delegate void OnMouseDownHandler(MouseButton button, Vector2 mousePosition);
+        public event OnMouseDownHandler OnMouseDown;
+
+        public delegate void OnMouseUpHandler(MouseButton button, Vector2 mousePosition);
+        public event OnMouseUpHandler OnMouseUp;
+
+        public delegate void OnMoveHandler();
+        public event OnMoveHandler OnMove;
+
+        public delegate void OnResizeHandler();
+        public event OnResizeHandler OnResize;
+
+        public delegate void OnMouseEnterHandler(Vector2 mousePosition, GuiElement previousHoverGuiElement);
+        public event OnMouseEnterHandler OnMouseEnter;
+
+        public delegate void OnMouseLeaveHandler(Vector2 mousePosition, GuiElement nextHoverGuiElement);
+        public event OnMouseLeaveHandler OnMouseLeave;
+
+        public delegate void OnMouseMoveHandler(Vector2 mousePosition);
+        public event OnMouseMoveHandler OnMouseMove;
+
+        public delegate void OnMouseWheelHandler(MouseWheelState upOrDown);
+        public event OnMouseWheelHandler OnMouseWheel;
 
         #endregion
     }

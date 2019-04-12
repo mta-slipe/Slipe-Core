@@ -22,8 +22,6 @@ namespace Slipe.Client.Peds
         public PlayerManager()
         {
             instance = this;
-
-            Element.Root.ListenForEvent("onClientPlayerJoin");
         }
 
         internal void HandleJoin(Player player)

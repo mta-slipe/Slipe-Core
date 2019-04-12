@@ -150,12 +150,10 @@ namespace Slipe.Server.Accounts
         /// Add a ban of a specific IP and/or serial
         /// </summary>
         public Ban(string ip, string serial, Player banner, string reason, int seconds)
-        {
-            ban = MtaServer.AddBan(ip, null, serial, banner == null ? null : banner.MTAElement, reason, seconds);
-        }
+            : this(MtaServer.AddBan(ip, null, serial, banner == null ? null : banner.MTAElement, reason, seconds)) { }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        private Ban(MtaBan ban)
+        public Ban(MtaBan ban)
         {
             this.ban = ban;
         }

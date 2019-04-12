@@ -34,5 +34,12 @@ namespace Slipe.Client.Gui
         {
             return MtaClient.GuiDeleteTab(element, parentPanel.MTAElement);
         }
+
+        #region Events
+
+        public delegate void OnOpenHandler();
+        public event OnOpenHandler OnOpen;
+
+        #endregion
     }
 }

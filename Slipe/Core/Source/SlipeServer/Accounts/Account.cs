@@ -276,23 +276,5 @@ namespace Slipe.Server.Accounts
 
         #endregion
 
-        #region Events
-        /// <summary>
-        /// Handles events for accounts
-        /// </summary>
-        public void HandleEvent(string eventName, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
-        {
-            switch (eventName)
-            {
-                case "onAccountDataChange":
-                    OnDataChange?.Invoke((string) p2, (string) p3);
-                    break;
-            }
-        }
-
-        public delegate void OnAccountDataChangeHandler(string key, string value);
-        public event OnAccountDataChangeHandler OnDataChange;
-        #endregion
-
     }
 }

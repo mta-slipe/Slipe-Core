@@ -8,6 +8,7 @@ using Slipe.Shared.Elements;
 using Slipe.Shared.Weapons;
 using Slipe.Shared.Peds;
 using System.ComponentModel;
+using Slipe.Client.Vehicles;
 
 namespace Slipe.Client.Peds
 {
@@ -291,6 +292,25 @@ namespace Slipe.Client.Peds
         {
             return MtaClient.SetPedLookAt(element, 0, 0, 0, time, blend, lookAt.MTAElement);
         }
+
+        #endregion
+
+        #region Events
+
+        public delegate void OnDamageHandler(PhysicalElement attacker, DamageType damageType, BodyPart bodyPart, float loss);
+        public event OnDamageHandler OnDamage;
+
+        public delegate void OnHeliKilledHandler(Vehicle responsibleHelicopter);
+        public event OnHeliKilledHandler OnHeliKilled;
+
+        public delegate void OnWastedHandler(Player killer, DamageType damageType, BodyPart bodyPart, bool stealth);
+        public event OnWastedHandler OnWasted;
+
+        public delegate void OnWeaponFireHandler(SharedWeaponModel weaponModel, int ammoLeft, int ammoLeftInClip, Vector3 hitPosition, PhysicalElement hitElement);
+        public event OnWeaponFireHandler OnWeaponFire;
+
+        public delegate void OnStepHandler(bool leftFoot);
+        public event OnStepHandler OnStep;
 
         #endregion
 

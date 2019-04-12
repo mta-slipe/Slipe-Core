@@ -462,9 +462,9 @@ namespace Slipe.MtaDefinitions {
 		public static float GetAircraftMaxHeight (){ throw new NotImplementedException(); }
 		public static bool SetAircraftMaxHeight (float Height){ throw new NotImplementedException(); }
 		public static bool SetJetpackMaxHeight (float Height){ throw new NotImplementedException(); }
-		public static System.Collections.Generic.List<dynamic> GetListFromTable (dynamic table, string listType){ throw new NotImplementedException(); }
-		public static T[] GetArrayFromTable<T> (dynamic table, string arrayType){ throw new NotImplementedException(); }
-		public static dynamic GetDictionaryFromTable (dynamic table, string tKey, string tValue){ throw new NotImplementedException(); }
+		public static System.Collections.Generic.List<dynamic> GetListFromTable (object table, string listType){ throw new NotImplementedException(); }
+		public static T[] GetArrayFromTable<T> (object table, string arrayType){ throw new NotImplementedException(); }
+		public static dynamic GetDictionaryFromTable (object table, string tKey, string tValue){ throw new NotImplementedException(); }
 		public static DateTime GetDateTimeFromSecondStamp (int seconds){ throw new NotImplementedException(); }
 		public static MtaElement CreateWater (float x1, float y1, float z1, float x2, float y2, float z2, float x3, float y3, float z3, bool bShallow){ throw new NotImplementedException(); }
 		public static bool SetWaterLevel (float level, bool includeWaterFeatures, bool includeWaterElements){ throw new NotImplementedException(); }

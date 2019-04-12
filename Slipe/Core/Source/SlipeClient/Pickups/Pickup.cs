@@ -18,23 +18,33 @@ namespace Slipe.Client.Pickups
         public Pickup(MtaElement element) : base(element) { }
 
         /// <summary>
+        /// Creates a pickup from all CreatePickup variables
+        /// </summary>
+        public Pickup(Vector3 position, PickupType type, int amount, int respawnTime = 30000, int ammo = 50)
+            : this(MtaShared.CreatePickup(position.X, position.Y, position.Z, (int)type, amount, respawnTime, ammo)) { }
+
+        /// <summary>
         /// Creates a pickup from the base createPickup paramters
         /// </summary>
-        public Pickup(Vector3 position, PickupType type, int amount, int ammo = 50) : base(position, type, amount, 0, ammo) { }
+        public Pickup(Vector3 position, PickupType type, int amount, int ammo = 50) 
+            : this(position, type, amount, 0, ammo) { }
 
         /// <summary>
         /// Creates a weapon pickup
         /// </summary>
-        public Pickup(Vector3 position, SharedWeaponModel weapon, int ammo = 50) : base(position, PickupType.Weapon, weapon.ID, 0, ammo) { }
+        public Pickup(Vector3 position, SharedWeaponModel weapon, int ammo = 50) 
+            : this(position, PickupType.Weapon, weapon.ID, 0, ammo) { }
 
         /// <summary>
         /// Creates a custom model pickup
         /// </summary>
-        public Pickup(Vector3 position, PickupModel model) : base(position, PickupType.Custom, (int)model) { }
+        public Pickup(Vector3 position, PickupModel model) 
+            : this(position, PickupType.Custom, (int)model, 50) { }
 
         /// <summary>
         /// Creates a model pickup from any model ID
         /// </summary>
-        public Pickup(Vector3 position, int model) : base(position, PickupType.Custom, model) { }
+        public Pickup(Vector3 position, int model) 
+            : this(position, PickupType.Custom, model, 50) { }
     }
 }

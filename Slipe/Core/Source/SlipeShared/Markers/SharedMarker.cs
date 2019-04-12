@@ -111,11 +111,21 @@ namespace Slipe.Shared.Markers
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public SharedMarker(MtaElement element) : base(element) { }
+        public SharedMarker(MtaElement element) : base(element)
+        {
+
+        }
 
         #endregion
 
+        #region Events
 
+        public delegate void OnHitHandler(PhysicalElement hitElement, bool matchingDimension);
+        public event OnHitHandler OnHit;
 
+        public delegate void OnLeaveHandler(PhysicalElement leaveElement, bool matchingDimension);
+        public event OnLeaveHandler OnLeave;
+
+        #endregion
     }
 }

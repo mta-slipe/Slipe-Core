@@ -375,7 +375,6 @@ namespace Slipe.Shared.Elements
         [EditorBrowsable(EditorBrowsableState.Never)]
         public PhysicalElement(MtaElement mtaElement) : base(mtaElement)
         {
-            ListenForEvent("onElementClicked");
         }
 
         #endregion
@@ -480,24 +479,23 @@ namespace Slipe.Shared.Elements
 
         #region Events
 
-        /// <summary>
-        /// Used to handle events that are triggered on the attached MTA element
-        /// </summary>
-        public override void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
-        {
-            switch (eventName)
-            {
-                case "onElementClicked":
-                    OnClick?.Invoke((MouseButton)Enum.Parse(typeof(MouseButton), (string) p1, true), (MouseButtonState)Enum.Parse(typeof(MouseButtonState), (string) p2, true), (SharedPed) ElementManager.Instance.GetElement((MtaElement) p3), new Vector3((float) p4, (float) p5, (float) p6));
-                    break;
-                default:
-                    base.HandleEvent(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
-                    break;
-            }
-        }
+        public delegate void OnClickedHandler(MouseButton mouseButton, MouseButtonState buttonState, SharedPed clickedBy, Vector3 clickPosition);
+        public event OnClickedHandler OnClicked;
 
-        public delegate void OnElementClickHandler(MouseButton mouseButton, MouseButtonState buttonState, SharedPed clickedBy, Vector3 clickPosition);
-        public event OnElementClickHandler OnClick;
+        public delegate void OnModelChangeHandler(int oldModel, int newModel);
+        public event OnModelChangeHandler OnModelChange;
+
+        public delegate void OnStartSyncHandler(SharedPed newSyncer);
+        public event OnStartSyncHandler OnStartSync;
+
+        public delegate void OnStopSyncHandler(SharedPed oldSyncer);
+        public event OnStopSyncHandler OnStopSync;
+
+        public delegate void OnStreamInHandler();
+        public event OnStreamInHandler OnStreamIn;
+
+        public delegate void OnStreamOutHandler();
+        public event OnStreamOutHandler OnStreamOut;
 
         #endregion
     }

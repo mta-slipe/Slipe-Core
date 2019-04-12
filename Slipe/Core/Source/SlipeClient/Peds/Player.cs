@@ -8,6 +8,9 @@ using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
 using Slipe.Client.GameServer;
 using System.ComponentModel;
+using Slipe.Shared.CollisionShapes;
+using Slipe.Client.Pickups;
+using Slipe.Shared.Peds;
 
 namespace Slipe.Client.Peds
 {
@@ -149,6 +152,34 @@ namespace Slipe.Client.Peds
                 throw new NullElementException("No player with the name " + name + " could be found.");
             }
         }
+
+        #endregion
+
+        #region Events
+
+        public delegate void OnCollisionShapeHitHandler(CollisionShape colShape, bool matchingDimension);
+        public event OnCollisionShapeHitHandler OnCollisionShapeHit;
+
+        public delegate void OnCollisionShapeLeaveHandler(CollisionShape colShape, bool matchingDimension);
+        public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
+
+        public delegate void OnNicknameChangedHandler(string oldNickname, string newNickname);
+        public event OnNicknameChangedHandler OnNicknameChanged;
+
+        public delegate void OnJoinHandler();
+        public event OnJoinHandler OnJoin;
+
+        public delegate void OnPickupHitHandler(Pickup pickupHit, bool matchingDimension);
+        public event OnPickupHitHandler OnPickupHit;
+
+        public delegate void OnPickupLeaveHandler(Pickup pickupLeft, bool matchingDimension);
+        public event OnPickupLeaveHandler OnPickupLeave;
+
+        public delegate void OnQuitHandler(QuitType quitType);
+        public event OnQuitHandler OnQuit;
+
+        public delegate void OnSpawnHandler(Team playerTeam);
+        public event OnSpawnHandler OnSpawn;
 
         #endregion
 

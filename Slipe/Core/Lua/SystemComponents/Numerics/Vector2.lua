@@ -158,7 +158,7 @@ Vector2.ToString = function (this)
     sb:Append(this.X:ToString())
     sb:AppendChar(separator)
     sb:AppendChar(32 --[[' ']])
-    sb:AppendChar(this.Y:ToString())
+    sb:Append(this.Y:ToString())
     sb:AppendChar(62 --[['>']])
     return sb:ToString()
 end

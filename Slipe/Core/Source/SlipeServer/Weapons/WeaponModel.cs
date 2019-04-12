@@ -34,6 +34,11 @@ namespace Slipe.Server.Weapons
         /// </summary>
         public WeaponModel(string name) : base(name) { }
 
+        /// <summary>
+        /// Get a weapon model from the weapon id
+        /// </summary>
+        public WeaponModel(int id) : base(id) { }
+
         #endregion
     }
 }

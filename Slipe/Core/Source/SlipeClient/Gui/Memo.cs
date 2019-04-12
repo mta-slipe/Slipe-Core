@@ -11,7 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a multi-line gui edit box
     /// </summary>
-    public class Memo : GuiElement
+    public class Memo : EditableGuiElement
     {
         #region Properties
 

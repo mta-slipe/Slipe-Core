@@ -6,6 +6,8 @@ using Slipe.MtaDefinitions;
 using Slipe.Shared.Peds;
 using System.ComponentModel;
 using Slipe.Shared.Weapons;
+using Slipe.Server.Weapons;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Server.Peds
 {
@@ -96,7 +98,10 @@ namespace Slipe.Server.Peds
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Ped(MtaElement element) : base(element) { }
+        public Ped(MtaElement element) : base(element)
+        {
+
+        }
 
         /// <summary>
         /// Create a new ped
@@ -160,18 +165,11 @@ namespace Slipe.Server.Peds
 
         #region Events
 
-        /// <summary>
-        /// Handles events
-        /// </summary>
-        public override void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
-        {
-            switch (eventName)
-            {
-                default:
-                    base.HandleEvent(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
-                    break;
-            }
-        }
+        public delegate void OnWastedHandler(int remainingAmmo, Player attacker, DamageType damageType, BodyPart bodyPart, bool stealth);
+        public event OnWastedHandler OnWasted;
+
+        public delegate void OnWeaponSwitchHandler(WeaponModel previousWeapon, WeaponModel newWeapon);
+        public event OnWeaponSwitchHandler OnWeaponSwitch;
 
         #endregion
     }

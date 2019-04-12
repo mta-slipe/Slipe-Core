@@ -108,15 +108,6 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public static void HandleEvent(string eventString, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
         {
-            Element element = Instance.GetElement(source);
-            //if (element == null)
-            //{
-            //    // if the resource is not aware of the referenced element's existance have the root element handle it instead
-            //    // this is particularly useful for playerJoin, since the player element will not exist before that yet
-            //    Element.Root.HandleEvent(eventString, source, p1, p2, p3, p4, p5, p6, p7, p8);
-            //    return;
-            //}
-            element.HandleEvent(eventString, source, p1, p2, p3, p4, p5, p6, p7, p8);
             Element.Root.HandleEvent(eventString, source, p1, p2, p3, p4, p5, p6, p7, p8);
         }
 

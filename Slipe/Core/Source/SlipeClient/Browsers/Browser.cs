@@ -237,49 +237,6 @@ namespace Slipe.Client.Browsers
 
         #region Events
 
-        /// <summary>
-        /// Handle an event on the browser
-        /// </summary>
-        public override void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
-        {
-            switch (eventName)
-            {
-                case "onClientBrowserCreated":
-                    OnCreated?.Invoke();
-                    break;
-                case "onClientBrowserCursorChange":
-                    OnCursorChange?.Invoke((int)p1);
-                    break;
-                case "onClientBrowserDocumentReady":
-                    OnDocumentReady?.Invoke((string)p1);
-                    break;
-                case "onClientBrowserInputFocusChanged":
-                    OnInputFocusChange?.Invoke((bool)p1);
-                    break;
-                case "onClientBrowserLoadingFailed":
-                    OnLoadFail?.Invoke((string)p1, (int)p2, (string)p3);
-                    break;
-                case "onClientBrowserLoadingStart":
-                    OnLoadStart?.Invoke((string)p1);
-                    break;
-                case "onClientBrowserNavigate":
-                    OnNavigate?.Invoke((string)p1, (bool)p2);
-                    break;
-                case "onClientBrowserPopup":
-                    OnPopup?.Invoke((string)p1, (string)p2, (bool)p3);
-                    break;
-                case "onClientBrowserResourceBlocked":
-                    OnResourceBlocked?.Invoke((string)p1, (string)p2, (int)p3);
-                    break;
-                case "onClientBrowserTooltip":
-                    OnTooltip?.Invoke((string)p1);
-                    break;
-                default:
-                    base.HandleEvent(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
-                    break;
-            }
-        }
-
         public delegate void OnCreatedHandler();
         public event OnCreatedHandler OnCreated;
 

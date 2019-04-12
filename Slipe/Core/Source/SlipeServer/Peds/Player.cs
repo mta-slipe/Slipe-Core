@@ -12,6 +12,14 @@ using Slipe.Shared.Peds;
 using Slipe.Server.Rendering;
 using System.ComponentModel;
 using Slipe.Server.Displays;
+using Slipe.Shared.CollisionShapes;
+using Slipe.Shared.IO;
+using Slipe.Server.Markers;
+using Slipe.Server.Pickups;
+using Slipe.Server.Resources;
+using Slipe.Server.Vehicles;
+using Slipe.Shared.Vehicles;
+using Slipe.Server.Weapons;
 
 namespace Slipe.Server.Peds
 {
@@ -309,8 +317,6 @@ namespace Slipe.Server.Peds
         public Player(MtaElement mtaElement) : base(mtaElement)
         {
             Camera = new Camera(this);
-            PlayerManager.Instance.HandleJoin(this);
-            ListenForEvent("onConsole");
         }
 
         #endregion
@@ -476,24 +482,118 @@ namespace Slipe.Server.Peds
 
         #region Events
 
-        /// <summary>
-        /// Handles events for players
-        /// </summary>
-        public override void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
-        {
-            switch (eventName)
-            {
-                case "onConsole":
-                    OnConsole?.Invoke((string)p1);
-                    break;
-                default:
-                    base.HandleEvent(eventName, source, p1, p2, p3, p4, p5, p6, p7, p8);
-                    break;
-            }
-        }
-
         public delegate void OnConsoleHandler(string message);
         public event OnConsoleHandler OnConsole;
+
+        public delegate void OnCollisionShapeHitHandler(CollisionShape colShape, bool matchingDimension);
+        public event OnCollisionShapeHitHandler OnCollisionShapeHit;
+
+        public delegate void OnCollisionShapeLeaveHandler(CollisionShape colShape, bool matchingDimension);
+        public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
+
+        public delegate void OnJoinHandler();
+        public event OnJoinHandler OnJoin;
+
+        public delegate void OnAcInfoHandler(string[] detectedAcList, string d3d9Size, string d3d9Md5, string d3d9Sha256);
+        public event OnAcInfoHandler OnAcInfo;
+
+        public delegate void OnBanAddedHandler(Ban ban);
+        public event OnBanAddedHandler OnBanAdded;
+
+        public delegate void OnBannedHandler(Ban ban, Player responsibleBanner);
+        public event OnBannedHandler OnBanned;
+
+        public delegate void OnNicknameChangedHandler(string oldNickname, string newNickname, bool changedByuser);
+        public event OnNicknameChangedHandler OnNicknameChanged;
+
+        public delegate void OnChatHandler(string message, MessageType type);
+        public event OnChatHandler OnChat;
+
+        public delegate void OnClickHandler(MouseButton mouseButton, MouseButtonState buttonState, PhysicalElement clickedElement, Vector3 worldPosition, Vector2 screenPosition);
+        public event OnClickHandler OnClick;
+
+        public delegate void OnCommandHandler(string command);
+        public event OnCommandHandler OnCommand;
+
+        public delegate void OnContactHandler(PhysicalElement previousElement, PhysicalElement newElement);
+        public event OnContactHandler OnContact;
+
+        public delegate void OnDamageHandler(Player attacker, DamageType damageType, BodyPart bodyPart, float loss);
+        public event OnDamageHandler OnDamage;
+
+        public delegate void OnLoginHandler(Account previousAccount, Account newAccount);
+        public event OnLoginHandler OnLogin;
+
+        public delegate void OnLogoutHandler(Account previousAccount, Account newAccount);
+        public event OnLogoutHandler OnLogout;
+
+        public delegate void OnMarkerHitHandler(Marker markerHit, bool matchingDimension);
+        public event OnMarkerHitHandler OnMarkerHit;
+
+        public delegate void OnMarkerLeaveHandler(Marker markerLeft, bool matchingDimension);
+        public event OnMarkerLeaveHandler OnMarkerLeave;
+
+        public delegate void OnPickupHitHandler(Pickup pickupHit);
+        public event OnPickupHitHandler OnPickupHit;
+
+        public delegate void OnPickupLeaveHandler(Pickup pickupLeft);
+        public event OnPickupLeaveHandler OnPickupLeave;
+
+        public delegate void OnPickupUseHandler(Pickup pickupUse);
+        public event OnPickupUseHandler OnPickupUse;
+
+        public delegate void OnModInfoHandler(string fileName, dynamic[] items);
+        public event OnModInfoHandler OnModInfo;
+
+        public delegate void OnMutedHandler();
+        public event OnMutedHandler OnMuted;
+
+        public delegate void OnUnmutedHandler();
+        public event OnUnmutedHandler OnUnmuted;
+
+        public delegate void OnNetworkInteruptionBeginHandler(int ticksSinceInteruptionStarted);
+        public event OnNetworkInteruptionBeginHandler OnNetworkInteruption;
+
+        public delegate void OnPrivateMessageHandler(string message, Player recipient);
+        public event OnPrivateMessageHandler OnPrivateMessage;
+
+        public delegate void OnQuitHandler(QuitType quitType, string reason, Player responsiblePlayer);
+        public event OnQuitHandler OnQuit;
+
+        public delegate void OnScreenShotHandler(Resource resource, StatusCode status, string imageData, int timeStamp, string tag);
+        public event OnScreenShotHandler OnScreenShot;
+
+        public delegate void OnSpawnHandler(Vector3 position, float rotation, Team team, PedModel model, int interior, int dimension);
+        public event OnSpawnHandler OnSpawn;
+
+        public delegate void OnStealthKillHandler(Ped victim);
+        public event OnStealthKillHandler OnStealthKill;
+
+        public delegate void OnTargetHandler(PhysicalElement target);
+        public event OnTargetHandler OnTarget;
+
+        public delegate void OnVehicleEnterHandler(Vehicle vehicle, Seat seat, Player jacked);
+        public event OnVehicleEnterHandler OnVehicleEnter;
+
+        public delegate void OnVehicleExitHandler(Vehicle vehicle, Seat seat, Player jacker, bool forcedByScript);
+        public event OnVehicleExitHandler OnVehicleExit;
+
+        public delegate void OnVoiceStartHandler();
+        public event OnVoiceStartHandler OnVoiceStart;
+
+        public delegate void OnVoiceStopHandler();
+        public event OnVoiceStopHandler OnVoiceStop;
+
+        public delegate void OnWeaponFireHandler(WeaponModel weapon, Vector3 endPosition, PhysicalElement hitElement, Vector3 startPosition);
+        public event OnWeaponFireHandler OnWeaponFire;
+
+        /// This method is just here so that these enums get parsed and are usable in events
+        private void initEnums()
+        {
+            MouseButton m = (MouseButton)Enum.Parse(typeof(MouseButton), "Left", true);
+            MouseButtonState s = (MouseButtonState)Enum.Parse(typeof(MouseButtonState), "Down", true);
+            QuitType q = (QuitType)Enum.Parse(typeof(QuitType), "Disconnected", true);
+        }
 
         #endregion
 

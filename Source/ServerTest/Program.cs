@@ -34,6 +34,7 @@ using Slipe.Server.Peds;
 using Slipe.Shared.Peds;
 using Slipe.Server.Weapons;
 using Slipe.Server.Displays;
+using Slipe.Shared.IO;
 
 namespace ServerTest
 {
@@ -85,8 +86,6 @@ namespace ServerTest
             {
                 vehicle.Rotation = new Vector3(0, 0, 90);
             }
-
-            Element.Root.ListenForEvent("onVehicleDamage");
 
             Color color = new Color(0x0000ff);
             color = new Color(0xff00ffaa);
@@ -153,11 +152,35 @@ namespace ServerTest
                 Player player = (Player) Player.GetFromName("SAES>DezZolation");
                 player.OnConsole += (string command) =>
                 {
-                    Debug.WriteLine(command);
+                    Console.WriteLine(command);
+                };
+                player.OnConsole += (string command) =>
+                {
+                    Console.WriteLine(command + "HA");
+                };
+                player.OnClick += (MouseButton mouseButton, MouseButtonState buttonState, PhysicalElement clickedElement, Vector3 worldPosition, Vector2 screenPosition) =>
+                {
+                    if(mouseButton == MouseButton.Left && buttonState == MouseButtonState.Down)
+                    {
+                        if(clickedElement != null)
+                        {
+                            Console.WriteLine(clickedElement.GetZoneName());
+                        }                        
+                        Console.WriteLine(worldPosition.ToString());
+                        Console.WriteLine(screenPosition.ToString());
+                    }
+
                 };
                 player.PlaySoundFrontEnd(FrontEndSound.RadioStatic);
                 Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponModel.Colt45, 200);
-                pickup.Use(player);
+                pickup.OnUse += (Player p) =>
+                {
+                    Debug.WriteLine(p.IP);
+                };
+                pickup.OnSpawn += () =>
+                {
+                    Console.WriteLine("PICKUP RESPAWNED");
+                };
                 Console.WriteLine(pickup.RespawnInterval.ToString());
             }
             catch(NullElementException)

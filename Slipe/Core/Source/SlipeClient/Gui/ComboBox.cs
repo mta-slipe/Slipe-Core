@@ -104,5 +104,12 @@ namespace Slipe.Client.Gui
             }
             return false;
         }
+
+        #region Events
+
+        public delegate void OnAcceptedHandler();
+        public event OnAcceptedHandler OnAccepted;
+
+        #endregion
     }
 }

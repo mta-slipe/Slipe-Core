@@ -30,3 +30,5 @@ if triggerServerEvent == nil then
 else
 	ClientTest.Program.Main()
 end
+
+initEvents()

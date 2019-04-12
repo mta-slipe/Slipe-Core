@@ -22,4 +22,13 @@ namespace Slipe.Shared.IO
         Up,
         Down
     }
+
+    /// <summary>
+    /// Represents the scroll direction of the mouse wheel
+    /// </summary>
+    public enum MouseWheelState
+    {
+        Down = -1,
+        Up = 1
+    }
 }

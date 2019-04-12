@@ -57,14 +57,14 @@ namespace Slipe.Server.Accounts
         }
 
         /// <summary>
-        /// Cast an array of MTAElements to a desired type
+        /// Cast an array of Accounts to a desired type
         /// </summary>
         public Account[] CastMultiple(MtaAccount[] accounts)
         {
             Account[] result = new Account[accounts.Length];
             for (int i = 0; i < accounts.Length; i++)
             {
-                result[i] = (Account) Instance.GetAccount(accounts[i]);
+                result[i] = Instance.GetAccount(accounts[i]);
             }
             return result;
         }

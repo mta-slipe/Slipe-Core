@@ -39,5 +39,12 @@ namespace Slipe.Client.Gui
         /// </summary>
         public ScrollBar(Vector2 position, Vector2 dimensions, bool horizontal, bool relative = false, GuiElement parent = null)
             : this(MtaClient.GuiCreateScrollBar(position.X, position.Y, dimensions.X, dimensions.Y, horizontal, relative, parent?.MTAElement)) { }
+
+        #region Events
+
+        public delegate void OnScrollHandler();
+        public event OnScrollHandler OnScroll;
+
+        #endregion
     }
 }

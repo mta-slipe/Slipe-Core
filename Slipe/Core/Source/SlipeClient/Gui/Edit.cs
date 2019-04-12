@@ -11,7 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// A Cegui single line text field
     /// </summary>
-    public class Edit : GuiElement
+    public class Edit : EditableGuiElement
     {
         #region Properties
         /// <summary>
@@ -93,6 +93,13 @@ namespace Slipe.Client.Gui
             Masked = masked;
             MaxLength = maxLength;
         }
+        #endregion
+
+        #region Events
+
+        public delegate void OnAcceptedHandler();
+        public event OnAcceptedHandler OnAccepted;
+
         #endregion
     }
 }

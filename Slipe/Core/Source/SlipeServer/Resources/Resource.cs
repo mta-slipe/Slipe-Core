@@ -86,11 +86,14 @@ namespace Slipe.Server.Resources
         /// <summary>
         /// Static pointer to the current resource
         /// </summary>
+        private static Resource thisResource;
         public static Resource This
         {
             get
             {
-                return new Resource(MtaShared.GetThisResource());
+                if(thisResource == null)
+                    thisResource = ResourceManager.Instance.GetResource(MtaShared.GetThisResource());
+                return thisResource;
             }
         }
 
@@ -102,12 +105,7 @@ namespace Slipe.Server.Resources
             get
             {
                 MtaResource[] resourceList = MtaShared.GetArrayFromTable(MtaServer.GetResources(), "mta-resource");
-                Resource[] resources = new Resource[resourceList.Length];
-                for (int i = 0; i < resourceList.Length; i++)
-                {
-                    resources[i] = new Resource(resourceList[i]);
-                }
-                return resources;
+                return ResourceManager.Instance.CastMultiple(resourceList);
             }
         }
 
@@ -124,7 +122,7 @@ namespace Slipe.Server.Resources
         /// <summary>
         /// Create a new empty resource
         /// </summary>
-        public Resource(string name, string organizationalDir = null) : base(MtaServer.CreateResource(name, organizationalDir)) { }
+        public Resource(string name, string organizationalDir = null) : this(MtaServer.CreateResource(name, organizationalDir)) { }
 
         #endregion
 
@@ -257,7 +255,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public static Resource CopyFrom(Resource resource, string name, string organizationalDir = null)
         {
-            return new Resource(MtaServer.CopyResource(resource.MTAResource, name, organizationalDir));
+            return (Resource) ResourceManager.Instance.GetResource(MtaServer.CopyResource(resource.MTAResource, name, organizationalDir));
         }
 
         /// <summary>
@@ -267,6 +265,34 @@ namespace Slipe.Server.Resources
         {
             return MtaServer.RefreshResources(true, null);
         }
+
+        #endregion
+
+        #region Events
+
+        internal void HandlePreStart()
+        {
+            OnPreStart?.Invoke();
+        }
+
+        internal void HandleStart()
+        {
+            OnStart?.Invoke();
+        }
+
+        internal void HandleStop(bool wasDeleted)
+        {
+            OnStop?.Invoke(wasDeleted);
+        }
+
+        public delegate void OnPreStartHandler();
+        public event OnPreStartHandler OnPreStart;
+
+        public delegate void OnStartHandler();
+        public event OnStartHandler OnStart;
+
+        public delegate void OnStopHandler(bool wasDeleted);
+        public event OnStopHandler OnStop;
 
         #endregion
 

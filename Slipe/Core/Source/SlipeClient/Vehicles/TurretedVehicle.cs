@@ -4,6 +4,7 @@ using System.Text;
 using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
+using Slipe.Client.Peds;
 
 namespace Slipe.Client.Vehicles
 {
@@ -48,6 +49,13 @@ namespace Slipe.Client.Vehicles
         {
 
         }
+
+        #region Events
+
+        public delegate void OnPedHitHandler(Ped pedHit);
+        public event OnPedHitHandler OnPedHit;
+
+        #endregion
     }
 
     /// <summary>

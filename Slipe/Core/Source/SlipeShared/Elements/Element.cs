@@ -177,13 +177,13 @@ namespace Slipe.Shared.Elements
             ElementManager.Instance.AddEventHandler(this, eventName, propagated, priorty);
         }
 
-        /// <summary>
-        /// Used to handle events that are triggered on the attached MTA element
-        /// </summary>
         public virtual void HandleEvent(string eventName, MtaElement source, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
         {
 
         }
+
+        public delegate void OnDestroyHandler();
+        public event OnDestroyHandler OnDestroy;
 
         #endregion
 

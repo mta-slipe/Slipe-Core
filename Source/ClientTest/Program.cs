@@ -102,8 +102,6 @@ namespace ClientTest
         {
             browser.LoadUrl("https://nanobob.net");
             Cursor.SetVisible(true);
-
-            browser.ListenForEvent("onClientBrowserDocumentReady");
         }
 
         public void OnReady(string url)

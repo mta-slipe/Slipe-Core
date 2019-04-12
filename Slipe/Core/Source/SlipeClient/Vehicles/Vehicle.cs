@@ -7,6 +7,7 @@ using Slipe.Shared.Vehicles;
 using Slipe.Shared.Elements;
 using System.ComponentModel;
 using Slipe.Client.Peds;
+using Slipe.Shared.CollisionShapes;
 
 namespace Slipe.Client.Vehicles
 {
@@ -177,12 +178,14 @@ namespace Slipe.Client.Vehicles
         /// <summary>
         /// Create a vehicle from a model at a position
         /// </summary>
-        public Vehicle(BaseVehicleModel model, Vector3 position) : base(model, position) { }
+        public Vehicle(BaseVehicleModel model, Vector3 position)
+            : this(model, position, Vector3.Zero) { }
 
         /// <summary>
-        /// Create a vehicle model using all createVehicle arguments
+        /// Create a vehicle using all createVehicle arguments
         /// </summary>
-        public Vehicle(BaseVehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2) { }
+        public Vehicle(BaseVehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1)
+            : this(MtaShared.CreateVehicle(model.ID, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, numberplate, false, variant1, variant2)) { }
         #endregion
 
         #region Misc. Methods
@@ -233,6 +236,15 @@ namespace Slipe.Client.Vehicles
         {
             return MtaClient.SetVehicleWindowOpen(element, (int)window, open);
         }
+        #endregion
+
+        #region Events
+        public delegate void OnCollisionShapeHitHandler(CollisionShape colShape, bool matchingDimension);
+        public event OnCollisionShapeHitHandler OnCollisionShapeHit;
+
+        public delegate void OnCollisionShapeLeaveHandler(CollisionShape colShape, bool matchingDimension);
+        public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
+
         #endregion
 
     }
