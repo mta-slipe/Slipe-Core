@@ -35,7 +35,7 @@ namespace Slipe.Sql
         /// </summary>
         /// <param name="query">sql query</param>
         /// <param name="parameters">parameters for the SQL query</param>
-        public void Exec(string query, object[] parameters)
+        public void Exec(string query, params object[] parameters)
         {
             throw new NotImplementedException();
         }
@@ -46,7 +46,7 @@ namespace Slipe.Sql
         /// <param name="query">sql query</param>
         /// <param name="parameters">parameters for the SQL query</param>
         /// <returns>An array of dictionaries representing the resulting rows of the query</returns>
-        public Task<Dictionary<string, SqlValue>[]> Query(string query, object[] parameters = null)
+        public Task<Dictionary<string, SqlValue>[]> Query(string query, params object[] parameters)
         {
             throw new NotImplementedException();
         }

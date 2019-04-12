@@ -210,7 +210,7 @@ namespace ServerTest
 
 
             // JSON test
-            //string json = MTAShared.ToJSON(new JsonTestStruct()
+            //string json = MtaShared.ToJSON(new JsonTestStruct()
             //{
             //    x = 5,
             //    y = "Hello world",
@@ -224,9 +224,9 @@ namespace ServerTest
             //    }
             //}, true, "none");
 
-            //JsonTestStruct unserializedJson = (JsonTestStruct)MTAShared.FromJSON(json);
+            //JsonTestStruct unserializedJson = (JsonTestStruct)MtaShared.FromJSON(json);
             //Console.WriteLine(unserializedJson.struc.z);
-            //foreach(int i in unserializedJson.struc.ints)
+            //foreach (int i in unserializedJson.struc.ints)
             //{
             //    Console.WriteLine(i);
             //}
@@ -242,7 +242,7 @@ namespace ServerTest
                 ChatBox.WriteLine("I am a chat message!", 0xff00ff);
             });
 
-            //_ = DoSql();
+            _ = DoSql();
         }
 
         public async Task DoSql()

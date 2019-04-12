@@ -1,10 +1,12 @@
 local System = System
 local DictStringString
 local ArrayDictStringString
+local ArrayObject
 
 System.import(function (out)
   DictStringString = System.Dictionary(System.String, System.String)
   ArrayDictStringString = System.Array(DictStringString)
+  ArrayObject = System.Array(System.Object)
 end)
 
 local Database = {}
@@ -111,11 +113,15 @@ Database.__ctor__ = {
   end
 }
 
--- <summary>
--- Runs an SQL query discarding the results
--- </summary>
--- <param name="parameters">parameters for the SQL query</param>
-Database.Exec = function (this, query, parameters)
+Database.Exec = function (this, query, ...)
+  local varargs = {...}
+  if (#varargs == 1 and System.is(varargs[1], ArrayObject) ) then
+    return this:Exec1(query, varargs[1])
+  end
+  dbExec(this.database, query, ...)
+end
+
+Database.Exec1 = function (this, query, parameters)
   local params = {}
   if parameters	~= nil then
     for _, value in System.each(parameters) do
@@ -125,12 +131,19 @@ Database.Exec = function (this, query, parameters)
   dbExec(this.database, query, unpack(params))
 end
 
--- <summary>
--- Runs an SQL query and resturns the results asynchronously
--- </summary>
--- <param name="parameters">parameters for the SQL query</param>
--- <returns>An array of dictionaries representing the resulting rows of the query</returns>
-Database.Query = function (this, query, parameters)
+Database.Query = function (this, query, ...)
+  local varargs = {...}
+  if (#varargs == 1 and System.is(varargs[1], ArrayObject) ) then
+    return this:Query1(query, varargs[1])
+  end
+
+  local task, callback = System.Task.Callback(createResultSet)
+  dbQuery(callback, this.database, query, ...)
+
+  return task;
+end
+
+Database.Query1 = function (this, query, parameters)
   local params = {}
 
   if parameters	~= nil then
