@@ -36,6 +36,7 @@ using Slipe.Server.Weapons;
 using Slipe.Sql;
 using Slipe.Server.Displays;
 using Slipe.Shared.IO;
+using Slipe.Shared.Cryptography;
 
 namespace ServerTest
 {
@@ -211,6 +212,8 @@ namespace ServerTest
             });
             Console.WriteLine(Resource.This.LoadTime.ToString());
 
+            Task _ = DoCrypto();
+
             // Console.WriteLine(File.ReadAllText("meta.xml"));
             // Task.Run(TestMethod);
             // Console.WriteLine("10");
@@ -265,6 +268,18 @@ namespace ServerTest
             });
 
             //_ = DoSql();
+        }
+
+        public async Task DoCrypto()
+        {
+            string cryptoTest = "If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?";
+            string hash = Sha512.Hash(cryptoTest);
+            Console.WriteLine(Sha512.Verify(cryptoTest, hash).ToString());
+
+            hash = await Bcrypt.Hash(cryptoTest);
+            Console.WriteLine(hash);
+            bool verified = await Bcrypt.Verify(cryptoTest, hash);
+            Console.WriteLine(verified.ToString());
         }
 
         public async Task DoSql()

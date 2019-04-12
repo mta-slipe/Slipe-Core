@@ -493,3 +493,17 @@ System.define("Slipe.MtaDefinitions.MtaException", {
 	this.innerException = innerException
   end
 })
+System.define("Slipe.MtaDefinitions.MtaPasswords", {
+	Hash = function(input, cost)
+		local options = {}
+		options.cost = cost
+		local task, callback = System.Task.Callback(function(d) return d end)
+		passwordHash(input, "bcrypt", options, callback)
+		return task
+	end,
+	Verify = function(input, hash)
+		local task, callback = System.Task.Callback(function(d) return d end)
+		passwordVerify(input, hash, {}, callback)
+		return task
+	end
+})

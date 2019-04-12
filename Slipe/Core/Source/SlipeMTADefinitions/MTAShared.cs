@@ -249,8 +249,8 @@ namespace Slipe.MtaDefinitions {
 		public static bool Iprint (dynamic var1, dynamic var2, dynamic var3){ throw new NotImplementedException(); }
 		public static bool IsOOPEnabled (){ throw new NotImplementedException(); }
 		public static string Md5 (string str){ throw new NotImplementedException(); }
-		public static string PasswordHash (string password, string algorithm, dynamic options, dynamic callback){ throw new NotImplementedException(); }
-		public static bool PasswordVerify (string password, string hash, dynamic options, dynamic callback){ throw new NotImplementedException(); }
+		public static string PasswordHash (string password, string algorithm, dynamic options){ throw new NotImplementedException(); }
+		public static bool PasswordVerify (string password, string hash, dynamic options){ throw new NotImplementedException(); }
 		public static bool PregFind (string subject, string pattern, dynamic flags){ throw new NotImplementedException(); }
 		public static bool IsTimer (MtaTimer theTimer){ throw new NotImplementedException(); }
 		public static string PregReplace (string subject, string pattern, string replacement, dynamic flags){ throw new NotImplementedException(); }
