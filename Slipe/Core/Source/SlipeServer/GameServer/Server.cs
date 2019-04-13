@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Slipe.MtaDefinitions;
 using Slipe.Server.IO;
+using Slipe.Shared.Helpers;
 
 namespace Slipe.Server.GameServer
 {
@@ -59,11 +60,6 @@ namespace Slipe.Server.GameServer
         }
 
         /// <summary>
-        /// Get the current MTA version of this server
-        /// </summary>
-        public static string Version { get { return MtaShared.GetVersion(); } }
-
-        /// <summary>
         /// Get the port this server runs on
         /// </summary>
         public static int Port { get { return MtaServer.GetServerPort(); } }
@@ -105,6 +101,45 @@ namespace Slipe.Server.GameServer
         public static bool IsGlitchEnabled(Glitch glitch)
         {
             return MtaServer.IsGlitchEnabled(glitch.ToString().ToLower());
+        }
+
+        private static Config config;
+        /// <summary>
+        /// Get the server config handler
+        /// </summary>
+        public static Config Config
+        {
+            get
+            {
+                if (config == null)
+                    config = new Config();
+                return config;
+            }
+        }
+
+        /// <summary>
+        /// Get the amount of time that the system has been running in milliseconds.
+        /// </summary>
+        public static int TickCount
+        {
+            get
+            {
+                return MtaShared.GetTickCount();
+            }
+        }
+
+        private static SystemVersion version;
+        /// <summary>
+        /// Get the current MTA version of this server
+        /// </summary>
+        public static SystemVersion Version
+        {
+            get
+            {
+                if (version == null)
+                    version = new SystemVersion();
+                return version;
+            }
         }
 
         /// <summary>
@@ -152,6 +187,21 @@ namespace Slipe.Server.GameServer
                     log = new ServerLog();
                 }
                 return log;
+            }
+        }
+
+        /// <summary>
+        /// Get and set the limit at which clients can run their game on this server
+        /// </summary>
+        public static int FpsLimit
+        {
+            get
+            {
+                return MtaShared.GetFPSLimit();
+            }
+            set
+            {
+                MtaShared.SetFPSLimit(value);
             }
         }
 

@@ -134,9 +134,9 @@ namespace ServerTest
             Debug.WriteLine(alpha.Handling.Mass);
 
             Display d1 = new Display();
-            Item t = new Item(d1, "You're a noob", new Vector2(0.5f, 0.5f));
+            new Item(d1, "You're a noob", new Vector2(0.5f, 0.5f));
             Display d2 = new Display();
-            Item b = new Item(d2, "Bob is a noob", new Vector2(0.5f, 0.5f));
+            new Item(d2, "Bob is a noob", new Vector2(0.5f, 0.5f));
 
             try
             {

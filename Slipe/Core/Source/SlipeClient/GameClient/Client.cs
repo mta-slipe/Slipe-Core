@@ -5,6 +5,7 @@ using Slipe.MtaDefinitions;
 using Slipe.Client.Sounds;
 using Slipe.Client.Rendering;
 using Slipe.Client.IO;
+using Slipe.Shared.Helpers;
 
 namespace Slipe.Client.GameClient
 {
@@ -153,6 +154,31 @@ namespace Slipe.Client.GameClient
             get
             {
                 return MtaClient.IsTransferBoxActive();
+            }
+        }
+
+        /// <summary>
+        /// Get the amount of time that the system has been running in milliseconds.
+        /// </summary>
+        public static int TickCount
+        {
+            get
+            {
+                return MtaShared.GetTickCount();
+            }
+        }
+
+        private static SystemVersion version;
+        /// <summary>
+        /// Get the current MTA version of this client
+        /// </summary>
+        public static SystemVersion Version
+        {
+            get
+            {
+                if (version == null)
+                    version = new SystemVersion();
+                return version;
             }
         }
     }

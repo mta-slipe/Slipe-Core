@@ -27,6 +27,21 @@ namespace Slipe.Client.Rendering
         #region Properties
 
         /// <summary>
+        /// Get and set the limit at which the game is rendered
+        /// </summary>
+        public int FpsLimit
+        {
+            get
+            {
+                return MtaShared.GetFPSLimit();
+            }
+            set
+            {
+                MtaShared.SetFPSLimit(value);
+            }
+        }
+
+        /// <summary>
         /// Returns the size of the screen as a Vector2
         /// </summary>
         public Vector2 ScreenSize
