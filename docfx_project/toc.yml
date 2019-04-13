@@ -1,0 +1,9 @@
+- name: Articles
+  href: articles/
+  homepage: api/index.md
+- name: Shared Documentation
+  href: api/shared/
+- name: Client Documentation
+  href: api/client/
+- name: Server Documentation
+  href: api/server/
