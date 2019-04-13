@@ -1,0 +1,10 @@
+- name: Articles
+  href: articles/
+- name: Shared Documentation
+  href: api/shared/
+- name: Client Documentation
+  href: api/client/
+- name: Server Documentation
+  href: api/server/
+- name: SQL Documentation
+  href: api/sql/

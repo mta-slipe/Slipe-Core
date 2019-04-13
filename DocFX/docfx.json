@@ -1,0 +1,99 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../Slipe/Core/Source/SlipeShared/",
+          "files": [
+            "**.csproj"
+          ]
+        }
+      ],
+      "dest": "api/shared"
+    },
+    {
+      "src": [
+        {
+          "src": "../Slipe/Core/Source/SlipeServer/",
+          "files": [
+            "**.csproj"
+          ]
+        }
+      ],
+      "dest": "api/server"
+    },
+    {
+      "src": [
+        {
+          "src": "../Slipe/Core/Source/SlipeClient/",
+          "files": [
+            "**.csproj"
+          ]
+        }
+      ],
+      "dest": "api/client"
+    },
+    {
+      "src": [
+        {
+          "src": "../Slipe/Core/Source/SlipeSql/",
+          "files": [
+            "**.csproj"
+          ]
+        }
+      ],
+      "dest": "api/sql"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "api/shared/**.yml",
+          "api/server/**.yml",
+          "api/client/**.yml",
+          "api/sql/**.yml",
+          "api/index.md"
+        ]
+      },
+      {
+        "files": [
+          "articles/**.md",
+          "articles/**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ]
+      }
+    ],
+    "overwrite": [
+      {
+        "files": [
+          "apidoc/**.md"
+        ],
+        "exclude": [
+          "obj/**",
+          "_site/**"
+        ]
+      }
+    ],
+    "dest": "_site",
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "template": [
+      "default"
+    ],
+    "postProcessors": [],
+    "markdownEngineName": "markdig",
+    "noLangKeyword": false,
+    "keepFileLink": false,
+    "cleanupCacheHistory": false,
+    "disableGitFeatures": false
+  }
+}
