@@ -14,6 +14,8 @@ namespace Slipe.Client.GameClient
     /// </summary>
     public static class Client
     {
+        #region Properties
+
         /// <summary>
         /// Get the renderer object
         /// </summary>
@@ -181,5 +183,58 @@ namespace Slipe.Client.GameClient
                 return version;
             }
         }
+
+        /// <summary>
+        /// Get a string tuple representing the localization of this client. The first string is the short code, the second the full language name
+        /// </summary>
+        public static Tuple<string, string> Localization
+        {
+            get
+            {
+                Dictionary<string, string> d = MtaShared.GetDictionaryFromTable(MtaClient.GetLocalization(), "System.String", "System.String");
+                return new Tuple<string, string>(d["code"], d["name"]);
+            }
+        }
+
+        /// <summary>
+        /// Get if the client allows tray notifications from MTA
+        /// </summary>
+        public static bool IsTrayNotificationEnabled
+        {
+            get
+            {
+                return MtaClient.IsTrayNotificationEnabled();
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Create a windows tray notification
+        /// </summary>
+        public static void CreateTrayNotification(string text, TrayIconType trayIcon = 0, bool useSound = true)
+        {
+            MtaClient.CreateTrayNotification(text, trayIcon.ToString().ToLower(), useSound);
+        }
+
+        /// <summary>
+        /// Set the client's clipboard text
+        /// </summary>
+        public static bool SetClipboard(string text)
+        {
+            return MtaClient.SetClipboard(text);
+        }
+
+        /// <summary>
+        /// Set the client's window flashing
+        /// </summary>
+        public static bool SetWindowFlashing(bool shouldFlash, int count = 10)
+        {
+            return MtaClient.SetWindowFlashing(shouldFlash, count);
+        }
+
+        #endregion
     }
 }
