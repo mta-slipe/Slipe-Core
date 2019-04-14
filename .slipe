@@ -106,6 +106,7 @@
         "SlipeMTADfinitions/client.lua",
         "SlipeMTADfinitions/events.lua",
         "SlipeMTADfinitions/json.lua",
+        "SlipeMTADfinitions/exports.lua",
         "SlipeSql/SqlValue.lua",
         "SlipeSql/SqlOptions.lua",
         "SlipeSql/MySqlConnectionString.lua",

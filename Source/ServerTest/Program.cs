@@ -38,6 +38,7 @@ using Slipe.Server.Displays;
 using Slipe.Shared.IO;
 using Slipe.Shared.Cryptography;
 using Slipe.Json;
+using Slipe.Exports;
 
 namespace ServerTest
 {
@@ -210,6 +211,11 @@ namespace ServerTest
             RpcManager.Instance.RegisterRPC<EmptyIncomingRpc>("onPlayerReady", (Player player, EmptyIncomingRpc rpc) =>
             {
                 Console.WriteLine("{0} has sent the ready event", player.Name);
+
+
+                WorldObject handDildo = new WorldObject(321, new Vector3(0, 0, 10));
+                handDildo.Scale = new Vector3(2, 2, 2);
+                Export.Invoke("bone_attach", "attachElementToBone", handDildo.MTAElement, player.MTAElement, 12, 0, 0, 0, 0, -90, 0);
             });
             Console.WriteLine(Resource.This.LoadTime.ToString());
 
@@ -271,6 +277,7 @@ namespace ServerTest
             });
 
             //_ = DoSql();
+
         }
 
         public async Task DoCrypto()

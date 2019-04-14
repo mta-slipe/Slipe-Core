@@ -14,9 +14,10 @@
     {
       "src": [
         {
-          "src": "../Slipe/Core/Source/SlipeServer/",
+          "src": "../Slipe/Core/Source/",
           "files": [
-            "**.csproj"
+            "SlipeServer/**.csproj",
+            "SlipeSql/**.csproj"
           ]
         }
       ],
@@ -33,17 +34,6 @@
       ],
       "dest": "api/client"
     },
-    {
-      "src": [
-        {
-          "src": "../Slipe/Core/Source/SlipeSql/",
-          "files": [
-            "**.csproj"
-          ]
-        }
-      ],
-      "dest": "api/sql"
-    }
   ],
   "build": {
     "content": [
@@ -52,7 +42,6 @@
           "api/shared/**.yml",
           "api/server/**.yml",
           "api/client/**.yml",
-          "api/sql/**.yml",
           "api/index.md"
         ]
       },
