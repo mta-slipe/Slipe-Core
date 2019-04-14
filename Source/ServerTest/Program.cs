@@ -37,6 +37,7 @@ using Slipe.Sql;
 using Slipe.Server.Displays;
 using Slipe.Shared.IO;
 using Slipe.Shared.Cryptography;
+using Slipe.Json;
 
 namespace ServerTest
 {
@@ -235,26 +236,28 @@ namespace ServerTest
 
 
             // JSON test
-            //string json = MtaShared.ToJSON(new JsonTestStruct()
-            //{
-            //    x = 5,
-            //    y = "Hello world",
-            //    struc = new JsonTestStruct2()
-            //    {
-            //        z = 50,
-            //        ints = new int[5]
-            //        {
-            //            1, 2, 3, 4, 5
-            //        }
-            //    }
-            //}, true, "none");
+            string json = Json.Serialize(new JsonTestStruct()
+            {
+                x = 5,
+                y = "Hello world",
+                struc = new JsonTestStruct2()
+                {
+                    z = 50,
+                    ints = new int[5]
+                    {
+                        1, 2, 3, 4, 5
+                    }
+                }
+            });
 
-            //JsonTestStruct unserializedJson = (JsonTestStruct)MtaShared.FromJSON(json);
-            //Console.WriteLine(unserializedJson.struc.z);
-            //foreach (int i in unserializedJson.struc.ints)
-            //{
-            //    Console.WriteLine(i);
-            //}
+            JsonTestStruct unserializedJson = Json.Deserialize<JsonTestStruct>(json);
+
+            Console.WriteLine(unserializedJson.y);
+            Console.WriteLine(unserializedJson.struc.z);
+            foreach (int i in unserializedJson.struc.ints)
+            {
+                Console.WriteLine(i);
+            }
 
             new CommandHandler("testCommand", (string command, string[] parameters) =>
             {
