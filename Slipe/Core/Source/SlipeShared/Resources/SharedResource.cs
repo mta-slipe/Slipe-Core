@@ -4,6 +4,7 @@ using System.Text;
 using Slipe.MtaDefinitions;
 using System.Xml;
 using Slipe.Shared.Elements;
+using Slipe.Exports;
 
 namespace Slipe.Shared.Resources
 {
@@ -110,5 +111,12 @@ namespace Slipe.Shared.Resources
         {
             return new SharedResource(MtaShared.GetResourceFromName(name));
         }
+
+        // Broken until fixed by Yuan
+        //public object Invoke(string functionName, params object[] parameters)
+        //{
+        //    Console.WriteLine("NAME: {0}", this.Name);
+        //    return Export.Invoke(this.Name, functionName, parameters);
+        //}
     }
 }

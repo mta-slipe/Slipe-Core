@@ -216,6 +216,7 @@ namespace ServerTest
                 WorldObject handDildo = new WorldObject(321, new Vector3(0, 0, 10));
                 handDildo.Scale = new Vector3(2, 2, 2);
                 Export.Invoke("bone_attach", "attachElementToBone", handDildo.MTAElement, player.MTAElement, 12, 0, 0, 0, 0, -90, 0);
+                //Resource.FromName("bone_attach").Invoke("attachElementToBone", handDildo.MTAElement, player.MTAElement, 12, 0, 0, 0, 0, -90, 0);
             });
             Console.WriteLine(Resource.This.LoadTime.ToString());
 
@@ -277,7 +278,6 @@ namespace ServerTest
             });
 
             //_ = DoSql();
-
         }
 
         public async Task DoCrypto()
