@@ -87,5 +87,12 @@ namespace Slipe.Server.GameServer
         {
 
         }
+
+        /// <summary>
+        /// Create a new team on the server
+        /// </summary>
+        /// <param name="name">The name of this team</param>
+        /// <param name="color">The color of this team</param>
+        public Team(string name, Color color) : this(MtaServer.CreateTeam(name, color.R, color.G, color.B)) { }
     }
 }

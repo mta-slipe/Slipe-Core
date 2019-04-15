@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Slipe\Core\Source\SlipeClient\SlipeClient.csproj" />
-    <ProjectReference Include="..\RPCDefinitions\RPCDefinitions.csproj" />
+    <ProjectReference Include="..\..\Slipe\Core\Source\SlipeServer\SlipeServer.csproj" />
+    <ProjectReference Include="..\..\Slipe\Core\Source\SlipeSql\SlipeSql.csproj" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="cd ..\..\ &amp;&amp; slipe compile -client-only" />
+    <Exec Command="cd ..\..\ &amp;&amp; slipe compile -server-only" />
   </Target>
 
 </Project>
