@@ -62,222 +62,27 @@ namespace ServerTest
             t.Enabled = false;
         }
 
+        private Database database;
+
         public Program()
         {
-            Debug.WriteLine(Server.Name);
-            List<Vehicle> vehicles = new List<Vehicle>(); ;
-            for (int i = 0; i < 10; i++)
+            database = new Database(new MySqlConnectionString()
             {
-                Vehicle rhino = new TurretedVehicle(TurretedModel.Rhino, new Vector3(i * 15, 0, 3));
-                Blip blip = new Blip(rhino);
-                vehicles.Add(rhino);
-            }
-            vehicles[5].Rotation = new Vector3(0, 0, 45);
-
-            WorldObject dildo = new WorldObject(321, new Vector3(3, 3, 3));
-            dildo.Scale = new Vector3(3, 3, 3);
-            dildo.Move(5000, new Vector3(3, 3, 10), Vector3.Zero, EasingFunction.CosineCurve, 0.4f, 0.5f);
-            Console.WriteLine("{0} is a pleb", "SAES>Dezzolation");
-
-            vehicles[4].AttachTo(dildo, new Vector3(0, 0, 3), Vector3.Zero);
-
-            Dictionary<string, Vehicle> vehicleDictionary = new Dictionary<string, Vehicle>();
-            vehicleDictionary["best"] = vehicles[3];
-            vehicleDictionary["best"].Position = new Vector3(0, 0, 20);
-            vehicleDictionary["best"].Frozen = true;
-
-            foreach (Vehicle vehicle in ElementHelper.GetByType<Vehicle>())
-            {
-                vehicle.Rotation = new Vector3(0, 0, 90);
-            }
-
-            Color color = new Color(0x0000ff);
-            color = new Color(0xff00ffaa);
-            color = new Color((uint) 0x000000ff);
-            Debug.WriteLine("Color: {0}, {1}, {2}, {3}", color.R, color.G, color.B, color.A);
-
-            Vehicle patriot = new Vehicle(VehicleModel.Patriot, new Vector3(0, 15, 3));
-
-            patriot.Sirens.Add(new Vector3(-0.6f, 1, 0.5f), Color.Red, 200);
-            patriot.Sirens.Add(new Vector3(0.6f, 1, 0.5f), new Color(0, 0, 255), 200);
-            patriot.Sirens.On = true;
-            patriot.Sirens.Silent = true;
+                Hostname = "127.0.0.1",
+                Port = 3306,
+                DbName = "test"
+            }, "user", "password");
 
             Vehicle alpha = new Vehicle(VehicleModel.Alpha, new Vector3(0, 10, 3));
 
-            alpha.OnDamage += (float loss) =>
-            {
-                Dictionary<Seat, Player> occupants = alpha.Occupants;
-                Debug.WriteLine(occupants.Count);
-                foreach(KeyValuePair<Seat, Player> oc in occupants)
-                {
-                    Debug.WriteLine(oc.Value.Name);
-                }
-                Debug.WriteLine("Vehicle lost " + loss +" health");
-                try
-                {
-                    Player nano = (Player)Player.GetFromName("SAES>Nanobob");
-                    RpcManager.Instance.TriggerRPC(nano, "testRPC", new BasicOutgoingRpc("Vehicle damage", (int)loss, nano));
-                }
-                catch (NullElementException) { }
+            alpha.OnDamage += HandleDamage;
+        }
 
-            };
-
-            SuperSwatTank swatTank = new SuperSwatTank(new Vector3(0, 25, 4));
-
-            Player[] alives = Player.Alive;
-            foreach(Player p in alives)
-            {
-                Console.WriteLine(p.Name);
-            }
-
-            Debug.WriteLine(alpha.Handling.Mass);
-            alpha.Handling.Mass = alpha.Handling.Mass * 1.5f;
-            Debug.WriteLine(alpha.Handling.Mass);
-
-            Display d1 = new Display();
-            new Item(d1, "You're a noob", new Vector2(0.5f, 0.5f));
-            Display d2 = new Display();
-            new Item(d2, "Bob is a noob", new Vector2(0.5f, 0.5f));
-
-            try
-            {
-                Player bob = (Player)Player.GetFromName("SAES>Nanobob");
-                d1.AddObserver(bob);
-            }
-            catch(NullElementException)
-            { 
-                d2.AddObservers(Player.Alive);
-            }
-
-            try
-            {
-                Player player = (Player) Player.GetFromName("SAES>DezZolation");
-                player.OnConsole += (string command) =>
-                {
-                    Console.WriteLine(command);
-                };
-                player.OnConsole += (string command) =>
-                {
-                    Console.WriteLine(command + "HA");
-                };
-                player.OnClick += (MouseButton mouseButton, MouseButtonState buttonState, PhysicalElement clickedElement, Vector3 worldPosition, Vector2 screenPosition) =>
-                {
-                    if(mouseButton == MouseButton.Left && buttonState == MouseButtonState.Down)
-                    {
-                        if(clickedElement != null)
-                        {
-                            Console.WriteLine(clickedElement.GetZoneName());
-                        }                        
-                        Console.WriteLine(worldPosition.ToString());
-                        Console.WriteLine(screenPosition.ToString());
-                    }
-
-                };
-                player.PlaySoundFrontEnd(FrontEndSound.RadioStatic);
-                Pickup pickup = new Pickup(player.Position + player.ForwardVector * 3, WeaponModel.Colt45, 200);
-                pickup.OnUse += (Player p) =>
-                {
-                    Debug.WriteLine(p.IP);
-                };
-                pickup.OnSpawn += () =>
-                {
-                    Console.WriteLine("PICKUP RESPAWNED");
-                };
-                Console.WriteLine(pickup.RespawnInterval.ToString());
-            }
-            catch(NullElementException)
-            {
-                Console.WriteLine("ha");
-            }
-
-            Blip blip2 = new Blip(new Vector3(0, 0, 0), BlipType.Burgershot, Color.Red, 2);
-            Vector3 vect = blip2.ForwardVector;
-            Console.WriteLine(vect.ToString());
-
-            RadarArea area = new RadarArea(new Vector2(200, 200), new Vector2(400, 400), new Color(40, 120, 255));
-            Debug.WriteLine(area.Type);
-            area.Flashing = true;
-            foreach(Account account in Account.All)
-            {
-                account.SetData("Test", "Success");
-                foreach(KeyValuePair<string, string> pair in account.Data)
-                {
-                    Debug.WriteLine(pair.Key);
-                    Debug.WriteLine(pair.Value);
-                }
-            }
-
-            RpcManager.Instance.RegisterRPC<EmptyIncomingRpc>("onPlayerReady", (Player player, EmptyIncomingRpc rpc) =>
-            {
-                Console.WriteLine("{0} has sent the ready event", player.Name);
-
-
-                WorldObject handDildo = new WorldObject(321, new Vector3(0, 0, 10));
-                handDildo.Scale = new Vector3(2, 2, 2);
-                Export.Invoke("bone_attach", "attachElementToBone", handDildo.MTAElement, player.MTAElement, 12, 0, 0, 0, 0, -90, 0);
-                //Resource.FromName("bone_attach").Invoke("attachElementToBone", handDildo.MTAElement, player.MTAElement, 12, 0, 0, 0, 0, -90, 0);
-            });
-            Console.WriteLine(Resource.This.LoadTime.ToString());
-
-            Task _ = DoCrypto();
-
-            // Console.WriteLine(File.ReadAllText("meta.xml"));
-            // Task.Run(TestMethod);
-            // Console.WriteLine("10");
-            // HttpTest();
-
-            //XmlDocument document = new XmlDocument();
-            //document.Load("test.xml");
-
-            //foreach(XmlElement item in document.FirstChild.FirstChild.ChildNodes)
-            //{
-            //    Console.WriteLine(item.Value);
-            //}
-            //XmlElement newElement = document.CreateElement("new");
-            //newElement.Value = "test";
-            //document.FirstChild.AppendChild(newElement);
-            //document.Save("test.xml");
-
-            // Task _ = DoSocket();
-
-
-            // JSON test
-            string json = Json.Serialize(new JsonTestStruct()
-            {
-                x = 5,
-                y = "Hello world",
-                struc = new JsonTestStruct2()
-                {
-                    z = 50,
-                    ints = new int[5]
-                    {
-                        1, 2, 3, 4, 5
-                    }
-                }
-            });
-
-            JsonTestStruct unserializedJson = Json.Deserialize<JsonTestStruct>(json);
-
-            Console.WriteLine(unserializedJson.y);
-            Console.WriteLine(unserializedJson.struc.z);
-            foreach (int i in unserializedJson.struc.ints)
-            {
-                Console.WriteLine(i);
-            }
-
-            new CommandHandler("testCommand", (string command, string[] parameters) =>
-            {
-                foreach(string parameter in parameters)
-                {
-                    Console.WriteLine(parameter);
-                }
-                Server.Log.WriteLine("I AM A SERVER LOG!");
-                Server.Debug.WriteLine("I AM AN ERROR!", Slipe.Shared.IO.DebugMessageLevel.Error);
-                ChatBox.WriteLine("I am a chat message!", 0xff00ff);
-            });
-
-            //_ = DoSql();
+        public async void HandleDamage(float loss)
+        {
+            database.Exec("INSERT INTO `alpha_log` (`loss`) VALUES (?)", loss);
+            var result = await database.Query("SELECT COUNT(`loss`) as count FROM `alpha_log`");
+            ChatBox.WriteLine(string.Format("The alpha has been damaged {0} times", (int)result[0]["count"]), 0xff00ff);
         }
 
         public async Task DoCrypto()

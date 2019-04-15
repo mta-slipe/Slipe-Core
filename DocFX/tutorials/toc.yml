@@ -1,0 +1,4 @@
+- name: Getting started
+  href: gettingStarted.md
+- name: Creating your first resource
+  href: firstResource.md

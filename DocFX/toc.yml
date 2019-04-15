@@ -1,5 +1,5 @@
-- name: Articles
-  href: articles/
+- name: Tutorials
+  href: tutorials/
 - name: Shared Documentation
   href: api/shared/
 - name: Client Documentation

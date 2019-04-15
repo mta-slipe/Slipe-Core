@@ -25,10 +25,16 @@ prepareModule("Slipe/Core")
 local mainManifest = triggerServerEvent == nil and "Dist/Server/manifest.lua" or "Dist/Client/manifest.lua"
 finalizeManifest(mainManifest)
 
-if triggerServerEvent == nil then
-	ServerTest.Program.Main()
-else
-	ClientTest.Program.Main()
+function runEntryPoint()
+	local stringEntryPoint = System.entryPoint
+
+	local splits = split(stringEntryPoint, ".") 
+	local result = _G 
+	for _, split in ipairs(splits) do 
+		result = result[split] 
+	end
+	result()
 end
+runEntryPoint()
 
 initEvents()
