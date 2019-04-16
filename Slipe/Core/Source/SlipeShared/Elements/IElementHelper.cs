@@ -8,5 +8,6 @@ namespace Slipe.Shared.Elements
     public interface IElementHelper
     {
         Element InstantiateElement(string type, MtaElement element);
+        string GetTypeName(Type type);
     }
 }

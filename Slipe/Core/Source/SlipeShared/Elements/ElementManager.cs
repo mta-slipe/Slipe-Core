@@ -69,6 +69,10 @@ namespace Slipe.Shared.Elements
             {
                 return null;
             }
+            if(!MtaShared.IsElement(element))
+            {
+                return null;
+            }
             if (!elements.ContainsKey(element))
             {
                 try
@@ -96,6 +100,16 @@ namespace Slipe.Shared.Elements
                 result[i] = (T)Instance.GetElement(elements[i]);
             }
             return result;
+        }
+
+        /// <summary>
+        /// Get the string representation of an element type
+        /// </summary>
+        /// <param name="type">The Slipe class of the element</param>
+        /// <returns>A string describing the MTA element type</returns>
+        public string GetTypeName(Type type)
+        {
+            return elementHelper.GetTypeName(type);
         }
 
         protected internal void AddEventHandler(Element element, string eventName, bool propagated = true, string priorty = "normal")

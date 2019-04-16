@@ -55,17 +55,17 @@ namespace Slipe.Shared.GameWorld
         /// <summary>
         /// Moves a WorldObject to a position and rotation during a period, using an easing function
         /// </summary>
-        public bool Move(int milliseconds, Vector3 position, Vector3 rotationOffset, EasingFunction easingType = EasingFunction.Linear, float easingPeriod = 0, float easingAmplitude = 0, float easingOvershoot = 0)
+        public bool Move(int milliseconds, Vector3 position, Vector3 rotationOffset, EasingFunction easingFunction)
         {
-            return MtaShared.MoveObject(element, milliseconds, position.X, position.Y, position.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z, easingType.ToString(), easingPeriod, easingAmplitude, easingOvershoot);
+            return MtaShared.MoveObject(element, milliseconds, position.X, position.Y, position.Z, rotationOffset.X, rotationOffset.Y, rotationOffset.Z, easingFunction.Name, easingFunction.Period, easingFunction.Amplitude, easingFunction.Overshoot);
         }
 
         /// <summary>
-        /// Moves a WorldObject to a position in a certain time
+        /// Moves a WorldObject linearly to a position in a certain time
         /// </summary>
         public bool Move(int milliseconds, Vector3 position)
         {
-            return Move(milliseconds, position, new Vector3(0, 0, 0));
+            return Move(milliseconds, position, new Vector3(0, 0, 0), EasingFunction.Linear);
         }
 
         /// <summary>

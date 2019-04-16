@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ServerSide": {
+      "commandName": "Executable",
+      "executablePath": "slipe",
+      "commandLineArgs": "restart-resource",
+      "workingDirectory": "../../"
+    }
+  }
+}

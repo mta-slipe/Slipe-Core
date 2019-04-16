@@ -73,7 +73,13 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return (Team)ElementManager.Instance.GetElement(MtaShared.GetPlayerTeam(element));
+                try
+                {
+                    return (Team)ElementManager.Instance.GetElement(MtaShared.GetPlayerTeam(element));
+                }catch(MtaException)
+                {
+                    return null;
+                }                
             }
             set
             {
@@ -256,6 +262,18 @@ namespace Slipe.Server.Peds
         #endregion
 
         #region Static Properties
+
+        /// <summary>
+        /// Get an array of all players in the server
+        /// </summary>
+        public static Player[] All
+        {
+            get
+            {
+                MtaElement[] elements = MtaShared.GetArrayFromTable(MtaServer.GetElementsByType("player", Root.MTAElement), "MTAElement");
+                return ElementManager.Instance.CastArray<Player>(elements);
+            }
+        }
 
         /// <summary>
         /// Get an array of all alive players in the server

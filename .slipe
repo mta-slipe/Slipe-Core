@@ -1,12 +1,10 @@
 {
   "compileTargets": {
     "client": [
-      "RPCDefinitions",
-      "ClientTest"
+      "ClientSide"
     ],
     "server": [
-      "RPCDefinitions",
-      "ServerTest"
+      "ServerSide"
     ]
   },
   "dlls": [],

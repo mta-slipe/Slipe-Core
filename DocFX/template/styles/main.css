@@ -1,9 +1,22 @@
 /* Copyright (c) Microsoft Corporation. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 /* Colors */
+nav {
+  border-color: #000 !important;
+  background-color: #252525 !important;
+  background-image: -webkit-gradient(linear,left ,right ,color-stop(0%,#000),color-stop(100%,#252525)) !important;
+  background-image: -webkit-linear-gradient(90deg,#000 0,#252525 100%) !important;
+  background-image: -moz-linear-gradient(90deg,#000 0,#252525 100%) !important;
+  background-image: -ms-linear-gradient(90deg,#000 0,#252525 100%) !important;
+  background-image: -o-linear-gradient(90deg,#000 0,#252525 100%) !important;
+  background-image: linear-gradient(90deg,#000 0,#252525 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000', endColorstr='#252525', GradientType=1) !important;
+}
+
+
   .hero {
       color: #fff;
       background-color: #252525;
-      background-image: -webkit-gradient(linear,left bottom,right top,color-stop(0%,#000),color-stop(100%,#252525));
+      background-image: -webkit-gradient(linear,left bottom ,right top ,color-stop(0%,#000),color-stop(100%,#252525));
       background-image: -webkit-linear-gradient(45deg,#000 0,#252525 100%);
       background-image: -moz-linear-gradient(45deg,#000 0,#252525 100%);
       background-image: -ms-linear-gradient(45deg,#000 0,#252525 100%);
@@ -135,48 +148,13 @@
     margin-top: 50px;
     font-size: 16px;
   }
-
-
-
-  .bg-black {
-    background-color: #161616 !important;
-  }
-  .projects-section {
-    padding: 10rem 0;
-  }
-  
-  .projects-section .featured-text {
-    padding: 2rem;
-  }
-  
-  @media (min-width: 992px) {
-    .projects-section .featured-text {
-      padding: 0 0 0 2rem;
-      border-left: 0.5rem solid #64a19d;
-    }
-  }
-  
-  .projects-section .project-text {
-    padding: 3rem;
-    font-size: 90%;
-  }
-  
-  @media (min-width: 992px) {
-    .projects-section .project-text {
-      padding: 5rem;
-    }
-    .projects-section .project-text hr {
-      border-color: #64a19d;
-      border-width: .25rem;
-      width: 30%;
-    }
-  }
   
 
   @media only screen and (max-width: 768px) {
     .hero {
       height: 600px;
       margin-top: 0px;
+      padding-top: 20px;
     }
     .title{
       text-align: center;
