@@ -18,6 +18,18 @@ namespace Slipe.Shared.CollisionShapes
         /// </summary>
         public string ShapeType { get { return MtaShared.GetColShapeType(element); } }
 
+        /// <summary>
+        /// Gets an array of all elements inside the collision shape
+        /// </summary>
+        public PhysicalElement[] ElementsWithin
+        {
+            get
+            {
+                MtaElement[] array = MtaShared.GetArrayFromTable(MtaShared.GetElementsWithinColShape(element, null), "MTAElement");
+                return ElementManager.Instance.CastArray<PhysicalElement>(array);
+            }
+        }
+
         [EditorBrowsable(EditorBrowsableState.Never)]
         public CollisionShape(MtaElement element) : base(element)
         {
@@ -41,15 +53,15 @@ namespace Slipe.Shared.CollisionShapes
         }
 
         /// <summary>
-        /// Gets an array of all elements inside the collision shape
+        /// Gets an array of all elements of a specific type inside the collision shape
         /// </summary>
-        public PhysicalElement[] GetElementsWithin()
+        public PhysicalElement[] GetElementsWithinOfType(Type type)
         {
-            MtaElement[] array = MtaShared.GetArrayFromTable(MtaShared.GetElementsWithinColShape(element, null), "MTAElement");
+            MtaElement[] array = MtaShared.GetArrayFromTable(MtaShared.GetElementsWithinColShape(element, ElementManager.Instance.GetTypeName(type)), "MTAElement");
             return ElementManager.Instance.CastArray<PhysicalElement>(array);
         }
 
-        #pragma warning disable 67
+#pragma warning disable 67
 
         public delegate void OnHitHandler(PhysicalElement element, bool matchingDimension);
         public event OnHitHandler OnHit;

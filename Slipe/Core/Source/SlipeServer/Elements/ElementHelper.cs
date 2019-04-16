@@ -63,6 +63,16 @@ namespace Slipe.Server.Elements
         }
 
         /// <summary>
+        /// Get the string representation of an element type
+        /// </summary>
+        /// <param name="type">The Slipe class of the element</param>
+        /// <returns>A string describing the MTA element type</returns>
+        public string GetTypeName(Type type)
+        {
+            return ElementTypeNames[type];
+        }
+
+        /// <summary>
         /// Returns a list of all elements of type T
         /// </summary>
         public static List<T> GetByType<T>() where T : Element
