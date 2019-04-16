@@ -19,7 +19,7 @@ namespace ServerSide
         /// <param name="northEast">The north eastern vector of the collision cuboid</param>
         /// <param name="gates">An array of all subscribed gates</param>
         public GateGroup(Vector3 southWest, Vector3 northEast, IGateable[] gates) 
-            : base(southWest, northEast.X - southWest.X, northEast.Y - southWest.Y, northEast.Z - southWest.Z)
+            : base(southWest, new Vector3(northEast.X - southWest.X, northEast.Y - southWest.Y, northEast.Z - southWest.Z))
         {
             this.gates = gates;
             OnHit += (PhysicalElement element, bool matchingDimension) =>

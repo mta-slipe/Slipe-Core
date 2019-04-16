@@ -6,7 +6,6 @@ local mainString
  local oldInit = System.init	
 
  local prepareInit = function(classes)	
-	iprint(allClasses)	
 	for _, class in ipairs(classes) do	
 		allClasses[#allClasses + 1] = class	
 	end	
