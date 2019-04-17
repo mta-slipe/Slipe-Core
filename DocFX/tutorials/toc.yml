@@ -1,4 +1,20 @@
 - name: Getting started
-  href: gettingStarted.md
-- name: Creating your first resource
-  href: firstResource.md
+  items:
+  - name: Installation
+    href: installation.md
+  - name: Creating your first resource
+    href: firstResource.md
+  - name: Slipe CLI
+    href: cli.md
+- name: Features
+  items:
+  - name: Libraries
+    href: libraries.md
+  - name: Utilities
+    href: utilities.md
+  - name: SQL
+    href: sql.md
+  - name: Snippets
+    href: snippets.md
+- name: Roadmap
+  href: roadmap.md
