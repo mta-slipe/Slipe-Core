@@ -6,3 +6,5 @@
   href: cli.md
 - name: SQL
   href: sql.md
+- name: Remote procedure calls
+  href: rpc.md

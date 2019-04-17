@@ -1,9 +1,9 @@
 # SQL
-Slipe offers a simple interface to deal with SQL databases. The `Database` class ([documentation]([/api/server/Slipe.Sql.Database.html])) supports both MySQL and sqlite databases.
+Slipe offers a simple interface to deal with SQL databases. The `Database` class ([documentation](/api/server/Slipe.Sql.Database.html)) supports both MySQL and sqlite databases.
 
 ## Connecting to a database
 Connecting to a database is done by creating an instance of the `Database` class.  
-In order to make it easier to create a MySql connection string you can use the `MySqlConnectionString` class ([documentation](/api/Server/Slipe.Sql.MySqlConnectionString.sql))
+In order to make it easier to create a MySql connection string you can use the `MySqlConnectionString` class ([documentation](/api/server/Slipe.Sql.MySqlConnectionString.html))
 ```cs
 // MySql
 Database database = new Database(new MySqlConnectionString()

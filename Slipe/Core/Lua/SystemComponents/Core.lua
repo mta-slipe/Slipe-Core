@@ -460,6 +460,9 @@ if version < 5.3 then
     if y == 0 then
       throw(System.DivideByZeroException(), 1)
     end
+    if x < 0 and y > 0 then
+      y = -y
+    end
     return x % y
   end
 
@@ -652,7 +655,7 @@ else
   function System.sl(x, y) return x << y end
   function System.sr(x, y) return x >> y end
   function System.div(x, y) return x // y end
-  function System.mod(x, y) return x % y end
+  function System.mod(x, y) if x < 0 and y > 0 then y = -y end return x % y end
   
   function System.bnotOfNull(x) 
     if x == nil 
@@ -1050,8 +1053,7 @@ ValueType = {
 
 defCls("System.ValueType", ValueType)
 
-local AnonymousType = {}
-defCls("System.AnonymousType", AnonymousType)
+local AnonymousType = defCls("System.AnonymousType", {})
 
 function System.anonymousType(t)
   return setmetatable(t, AnonymousType)
@@ -1141,7 +1143,7 @@ function System.tuple(...)
   return setmetatable(pack(...), Tuple)
 end
 
-local ValueTuple = {
+local ValueTuple = defStc("System.ValueTuple", {
   Deconstruct = tupleDeconstruct,
   ToString = tupleToString,
   __eq = tupleEquals,
@@ -1154,8 +1156,7 @@ local ValueTuple = {
   default = function()
     throw(System.NotSupportedException("not support default(T) when T is ValueTuple"))
   end
-}
-defStc("System.ValueTuple", ValueTuple)
+})
 
 function System.valueTuple(...)
   return setmetatable(pack(...), ValueTuple)
@@ -1247,8 +1248,6 @@ local IEnumerable = defInf("System.IEnumerable")
 local IEnumerator = defInf("System.IEnumerator")
 
 local yieldCoroutinePool = {}
-local yieldCoroutineExit = {}
-
 local function yieldCoroutineCreate(f)
   local co = tremove(yieldCoroutinePool)
   if co == nil then
@@ -1257,7 +1256,7 @@ local function yieldCoroutineCreate(f)
       while true do
         f = nil
         yieldCoroutinePool[#yieldCoroutinePool + 1] = co
-        f = cyield(yieldCoroutineExit)
+        f = cyield(yieldCoroutinePool)
         f(cyield())
       end
     end)
@@ -1273,7 +1272,7 @@ local YieldEnumerator = defCls("System.YieldEnumerator", {
   Dispose = emptyFn,
   MoveNext = function (this)
     local co = this.co
-    if co == "exit" then
+    if co == false then
       return false
     end
   
@@ -1289,8 +1288,8 @@ local YieldEnumerator = defCls("System.YieldEnumerator", {
     end
   
     if ok then
-      if v == yieldCoroutineExit then
-        this.co = "exit"
+      if v == yieldCoroutinePool then
+        this.co = false
         this.current = nil
         return false
       else

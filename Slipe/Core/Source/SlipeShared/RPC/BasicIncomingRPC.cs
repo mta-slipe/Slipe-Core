@@ -12,15 +12,11 @@ namespace Slipe.Shared.Rpc
         public int x;
         public Element element;
 
-        public BasicIncomingRpc(object value)
+        public BasicIncomingRpc(dynamic value)
         {
-            /*
-            [[
-            this.x = System.cast(System.Int32, value.x)
-            this.name = System.cast(System.String, value.name)
-            this.element = Slipe.Shared.Elements.ElementManager:getInstance():GetElement(value.element)
-            ]]
-            */
+            this.x = (int)value.x;
+            this.name = (string)value.name;
+            this.element = Slipe.Shared.Elements.ElementManager.Instance.GetElement(value.element);
         }
     }
 }

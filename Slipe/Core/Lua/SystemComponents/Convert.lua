@@ -159,7 +159,7 @@ local function objectToInt32(v)
 end
 
 local function toInt32(value)
-  return toNumber(value, -2147483648, 2147483647, ParseUInt16, objectToInt32) 
+  return toNumber(value, -2147483648, 2147483647, ParseInt32, objectToInt32) 
 end
 
 local function objectToUInt32(v)
@@ -210,7 +210,7 @@ local function toDateTime(value)
 end
 
 local function toBaseType(ic, targetType)
-  local cls = targetType.c
+  local cls = targetType[1]
   if cls == Boolean then return ic:ToBoolean() end
   if cls == Char then return ic:ToChar() end
   if cls == SByte then return ic:ToSByte() end
