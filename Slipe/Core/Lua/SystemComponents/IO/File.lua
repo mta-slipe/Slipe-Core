@@ -50,7 +50,7 @@ function File.ReadAllLines(path)
   return System.arrayFromTable(split(contents, "\n"))
 end
 
-function File.WriteWriteAllBytes(path, contents)
+function File.WriteAllBytes(path, contents)
   local file = fileOpen(path)
   fileWrite(file, contents)
   fileClose(path)
@@ -72,6 +72,10 @@ function File.WriteAllLines(path, contents)
     end
   end
   fileClose(file)
+end
+
+function File.Copy(pathFrom, pathTo, overwrite)
+  fileCopy(pathFrom, pathTo, overwrite)
 end
 
 function File.Exists(path)

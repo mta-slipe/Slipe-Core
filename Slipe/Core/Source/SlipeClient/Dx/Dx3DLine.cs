@@ -105,8 +105,11 @@ namespace Slipe.Client.Dx
 
         protected override void Update(float timeSlice)
         {
-            startPos = ToAttached.Position + Offset.Translation;
-            endPos = Vector3.Transform(relativeEndPosition, ToAttached.Matrix * Offset);
+            if(IsAttached)
+            {
+                startPos = ToAttached.Position + Offset.Translation;
+                endPos = Vector3.Transform(relativeEndPosition, ToAttached.Matrix * Offset);
+            }
         }
     }
 }

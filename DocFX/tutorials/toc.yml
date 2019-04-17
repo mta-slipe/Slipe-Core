@@ -1,10 +1,22 @@
 - name: Getting started
-  href: gettingStarted.md
-- name: Creating your first resource
-  href: firstResource.md
-- name: Slipe CLI
-  href: cli.md
-- name: SQL
-  href: sql.md
-- name: Remote procedure calls
-  href: rpc.md
+  items:
+  - name: Installation
+    href: installation.md
+  - name: Creating your first resource
+    href: firstResource.md
+  - name: Slipe CLI
+    href: cli.md
+- name: Features
+  items:
+  - name: Libraries
+    href: libraries.md
+  - name: Utilities
+    href: utilities.md
+  - name: SQL
+    href: sql.md
+  - name: Snippets
+  - name: Remote procedure calls
+    href: rpc.md
+    href: snippets.md
+- name: Roadmap
+  href: roadmap.md

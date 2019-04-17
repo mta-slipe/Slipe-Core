@@ -1,7 +1,7 @@
 # Creating your first resource
 
 ## Prerequisites
-You will need to have installed the Slipe CLI in order to compile your resources. If you have not done so please follow the instructions in [Getting started](/tutorials/gettingStarted.html)
+You will need to have installed the Slipe CLI in order to compile your resources. If you have not done so please follow the instructions in [Getting started](/tutorials/installation.html)
 
 ## Creating a resource
 After installing the CLI tool in the previous step you are now ready to start working on your first resource.

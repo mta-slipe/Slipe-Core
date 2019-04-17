@@ -5,6 +5,9 @@ using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Client.Dx;
 using Slipe.Shared.Elements;
+using Slipe.Client.GameClient;
+using Slipe.Client.Rendering;
+using Slipe.Client.Elements;
 
 namespace Slipe.Client.SightLines
 {
@@ -64,6 +67,25 @@ namespace Slipe.Client.SightLines
         /// Allow the line of sight to pass through a certain specified element.
         /// </summary>
         public PhysicalElement IgnoredElement { get; set; }
+
+        /// <summary>
+        /// Get and set if this sightline should be drawn (use for debug)
+        /// </summary>
+        public bool Debug
+        {
+            get
+            {
+                return Visible;
+            }
+            set
+            {
+                if(value)
+                    RootElement.OnRender += DebugDraw;
+                else
+                    RootElement.OnRender -= DebugDraw;
+                Visible = value;
+            }            
+        }
 
         /// <summary>
         /// Test if the SightLine hits water. Throws an exception when no water is hit
@@ -137,6 +159,11 @@ namespace Slipe.Client.SightLines
             IncludeWorldModelInformation = includeWorldModelInformation;
             IncludeCarTyreHits = includeCarTyreHits;
             IgnoredElement = ignoredElement;
+        }
+
+        private void DebugDraw()
+        {
+            Draw();
         }
 
         #endregion
