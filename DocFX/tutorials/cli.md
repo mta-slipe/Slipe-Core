@@ -1,7 +1,7 @@
 # Slipe CLI
 
 ## What is Slipe CLI?
-The Slipe CLI is the command line interface tool you can use to manage and compile your project. If you have not yet installed it please follow the instructions in [Getting started](/tutorials/gettingStarted.html).
+The Slipe CLI is the command line interface tool you can use to manage and compile your project. If you have not yet installed it please follow the instructions in [Getting started](/tutorials/installation.html).
 
 The CLI has various tasks, like managing your project, but also compiling it and generating your `meta.xml` file
 
