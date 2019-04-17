@@ -126,7 +126,7 @@ nav {
     margin: 0 2px;
   }
   .media-icons i:hover{
-    color: #6A95C1;
+    color: #337ab7;
   }
   .hero .button {
       padding: 8px 16px;
@@ -145,10 +145,154 @@ nav {
   }
 
   .main-info{
-    margin-top: 50px;
+    margin-top: 75px;
+    margin-bottom: 100px;
     font-size: 16px;
   }
+
+  .section-contributions {
+    font-size: 16px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .section-contributions h4 {
+    margin-top: 25px;
+  }
+
+  .section-contributions ul{
+    list-style-type: square;
+  }
+
+  .section-contributions i {
+    color: #1E1E1E;
+    font-size: 40px;
+    margin-right: 5px;
+    margin-top: 25px;
+  }
+
+  .section-contributions i:hover{
+    color: #337ab7;
+  }
+
+  footer, .footer {
+    display: block !important;
+    opacity: 1 !important;
+    background-color: #1E1E1E;
+    color: #C8C8C8;
+    border: 0;
+  }
+
+  .side-info{
+    font-size: 16px;
+    list-style-type: square;
+  }
+
+  .side-info li {
+    line-height: 28px;
+    padding-left: 8px;
+  }
+
+  .example-section i {
+    font-style: normal;
+  }
+
+  .example-section{
+    padding-bottom: 50px;
+    background-color: #1E1E1E;
+    color: #C8C8C8;
+  }
+
+  .example-section h3{
+    color: white;
+  }
+
+  .example-block-container {
+    position: relative;
+    margin-top: 50px;
+  }
+
+  .example-section pre {
+    background-color: inherit;
+    border: 0;
+  }
+
+  .example-section .hljs {
+    color: #C8C8C8;
+    word-wrap: break-word;
+  }
+
+  .example-section .hljs-keyword {
+    color: #569CD6;
+  }
+
+  .example-section .hljs-title {
+    color: #3CBFA9;
+  }
+
+  .example-section .hljs-comment {
+    color: #608B4E;
+  }
+
+  .example-section .hljs-variable {
+    color: #9CDCFE;
+  }
   
+  .example-section .hljs-struct {
+    color: #61BB91;
+  }
+
+  .example-section .hljs-enum {
+    color: #B8D7A3;
+  }
+
+  .example-section .hljs-method, .example-section .hljs-method  span  span {
+    color: #DCDCAA !important;
+  }
+
+  .example-section .hljs-number {
+    color: #B5CEA8;
+  }
+
+  .side-info .forceHover, 
+  .side-info li:hover, 
+  .example-section code i:hover, 
+  .example-section code .forceHover,
+  i:hover span, .forceHover span{
+    background-color: #C8C8C8;
+    color: #1E1E1E !important;
+    cursor: crosshair;
+  }
+
+  @media only screen and (max-width: 631px) {
+    .example-section pre {
+      font-size: 12px;
+    }
+  }
+
+  @media only screen and (max-width: 587px) {
+    .example-section pre {
+      font-size: 11px;
+    }
+  }
+
+  @media only screen and (max-width: 543px) {
+    .example-section pre {
+      font-size: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 501px) {
+    .example-section pre {
+      font-size: 9px;
+    }
+  }
+
+  @media only screen and (max-width: 457px) {
+    .example-section pre {
+      font-size: 8px;
+    }
+  }
 
   @media only screen and (max-width: 768px) {
     .hero {
@@ -172,9 +316,9 @@ nav {
     }
   }
 
-  @media only screen and (max-width: 507px) {
+  @media only screen and (max-width: 524px) {
     .hero {
-      height: 650px;
+      height: 625px;
     }
     .buttons-unit{
       display: flex;
