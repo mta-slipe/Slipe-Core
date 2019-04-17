@@ -140,9 +140,7 @@ public class <i id="e1" onmouseenter="document.getElementById('i1').className = 
             <li>Mathijs Sonnemans - <a href="https://github.com/DezZolation" target="_blank">DezZolation</a></li>
           </ul>
         <h4>Project Contributors</h4>
-        <ul>
-          <li><a href="https://github.com/4O4" target="_blank">404</a></li>
-          <li><a href="https://github.com/Citizen01" target="_blank">Citizen</a></li>
+        <ul class="js-contributor-list">
         </ul>
       </div>
       <div class="col-sm-6 col-xs-12">
