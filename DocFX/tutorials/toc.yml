@@ -2,3 +2,7 @@
   href: gettingStarted.md
 - name: Creating your first resource
   href: firstResource.md
+- name: Slipe CLI
+  href: cli.md
+- name: SQL
+  href: sql.md
