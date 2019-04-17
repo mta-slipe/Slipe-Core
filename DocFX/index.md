@@ -84,7 +84,7 @@ public class <i id="e1" onmouseenter="document.getElementById('i1').className = 
         <i id="e5" onmouseenter="document.getElementById('i5').className = 'forceHover';" onmouseleave="document.getElementById('i5').className = '';">OnStartEnter += (<span class="hljs-title">Player</span> <span class="hljs-variable">player</span>, <span class="hljs-enum">Seat</span> <span class="hljs-variable">seat</span>, <span class="hljs-title">Player</span> <span class="hljs-variable">jacked</span>, <span class="hljs-enum">Door</span> <span class="hljs-variable">door</span>) =></i>
         {
             if (<span class="hljs-variable">seat</span> == <i id="e6" onmouseenter="document.getElementById('i6').className = 'forceHover';" onmouseleave="document.getElementById('i6').className = '';"><span class="hljs-enum">Seat</span>.FrontLeft</i> && <span class="hljs-variable">player</span>.Team != <span class="hljs-variable">team</span>)
-            <span class="hljs-title">Event</span>.<span class="hljs-method">Cancel</span>();
+              <span class="hljs-title">Event</span>.<span class="hljs-method">Cancel</span>();
         };
     }
     <span></span>
