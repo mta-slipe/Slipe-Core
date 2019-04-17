@@ -1,6 +1,6 @@
 /* Copyright (c) Microsoft Corporation. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 /* Colors */
-nav {
+.navbar-inverse {
   border-color: #000 !important;
   background-color: #252525 !important;
   background-image: -webkit-gradient(linear,left ,right ,color-stop(0%,#000),color-stop(100%,#252525)) !important;
@@ -261,7 +261,7 @@ nav {
   i:hover span, .forceHover span{
     background-color: #C8C8C8;
     color: #1E1E1E !important;
-    cursor: crosshair;
+    cursor: default;
   }
 
   @media only screen and (max-width: 631px) {
