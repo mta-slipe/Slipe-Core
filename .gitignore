@@ -5,6 +5,7 @@ InternalModules/
 meta.xml
 
 DocFX/api
+DocFX/log.txt
 
 
 .vs/
