@@ -14,9 +14,9 @@
     href: utilities.md
   - name: SQL
     href: sql.md
-  - name: Snippets
   - name: Remote procedure calls
     href: rpc.md
+  - name: Snippets
     href: snippets.md
 - name: Roadmap
   href: roadmap.md

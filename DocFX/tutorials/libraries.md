@@ -252,6 +252,7 @@ namespace ServerTest
 			// Wait for new messages from the server
 			socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, Receive, result.AsyncState);
 		}
+	}
 }
 ```
 
