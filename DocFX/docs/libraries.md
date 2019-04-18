@@ -21,8 +21,8 @@ using  System.Numerics;
 // Have an AK-47 drop on the ground 3 units behind this vehicle
 public  void DropWeapon()
 {
-	Vector3 position = Position + ForwardVector * -3;
-	new  Pickup(position, SharedWeaponModel.Ak47);
+    Vector3 position = Position + ForwardVector * -3;
+    new  Pickup(position, SharedWeaponModel.Ak47);
 }
 ```
 
@@ -51,28 +51,28 @@ private  int c;
 
 static  void Main(string[] args)
 {
-	c = 0;
-	// Create a timer and set a two second interval.
-	Timer aTimer = new  Timer(2000);
+    c = 0;
+    // Create a timer and set a two second interval.
+    Timer aTimer = new  Timer(2000);
 
-	// Hook up the Elapsed event for the timer.
-	aTimer.Elapsed += OnTimedEvent;
+    // Hook up the Elapsed event for the timer.
+    aTimer.Elapsed += OnTimedEvent;
 
-	// Start the timer
-	aTimer.Enabled = true;
+    // Start the timer
+    aTimer.Enabled = true;
 }
 
 public  static  void OnTimedEvent(Object source, ElapsedEventArgs e)
 {
-	c++;
-	Console.WriteLine("The elapsed event was raised at " + e.SignalTime.ToString());  
+    c++;
+    Console.WriteLine("The elapsed event was raised at " + e.SignalTime.ToString());  
 
-	// If the event was elapsed 5 times, stop the timer
-	if(c >= 5)
-	{
-		Timer t = (Timer)source;
-		t.Enabled = false;
-	}
+    // If the event was elapsed 5 times, stop the timer
+    if(c >= 5)
+    {
+        Timer t = (Timer)source;
+        t.Enabled = false;
+    }
 }
 ```
 
@@ -116,46 +116,46 @@ These classes combined provide a full wrapper for all the Xml functions in MTA. 
 ```xml
 <!-- test.xml before -->
 <test>
-	<node>
-		<entry>1</entry>
-		<entry>2</entry>
-		<entry>3</entry>
-		<entry>4</entry>
-	</node>
+    <node>
+        <entry>1</entry>
+        <entry>2</entry>
+        <entry>3</entry>
+        <entry>4</entry>
+    </node>
 </test>
 ```
 ```csharp
 public void XmlStuff() 
 {
-	XmlDocument document = new XmlDocument();
-	document.Load("test.xml"); // Load test.xml from the root folder
-	
-	// Writes 1 to 5
-	foreach(XmlElement item in document.FirstChild.FirstChild.ChildNodes)
-	{
-		Console.WriteLine(item.Value);
-	}
-	
-	XmlElement newElement = document.CreateElement("new"); // Create a new element
-	newElement.Value = "test";
-	
-	// Append the element to the first child (<test>)
-	document.FirstChild.AppendChild(newElement); 
+    XmlDocument document = new XmlDocument();
+    document.Load("test.xml"); // Load test.xml from the root folder
+    
+    // Writes 1 to 5
+    foreach(XmlElement item in document.FirstChild.FirstChild.ChildNodes)
+    {
+        Console.WriteLine(item.Value);
+    }
+    
+    XmlElement newElement = document.CreateElement("new"); // Create a new element
+    newElement.Value = "test";
+    
+    // Append the element to the first child (<test>)
+    document.FirstChild.AppendChild(newElement); 
 
-	// Save the xml file
-	document.Save("test.xml");
+    // Save the xml file
+    document.Save("test.xml");
 }
 ```
 ```xml
 <!-- test.xml after -->
 <test>
-	<node>
-		<entry>1</entry>
-		<entry>2</entry>
-		<entry>3</entry>
-		<entry>4</entry>
-	</node>
-	<new>test</new>
+    <node>
+        <entry>1</entry>
+        <entry>2</entry>
+        <entry>3</entry>
+        <entry>4</entry>
+    </node>
+    <new>test</new>
 </test>
 ```
 ## System.Net.Http
@@ -172,30 +172,30 @@ The following classes are (partially) implemented:
 ```csharp
 namespace ServerTest
 {
-	class Program
-	{
-		static void Main(string[] args)
-		{
-			// This method is asynchronous.
-			// This means that while the content is being fetched 
-			// 'Hello World' is probably being printed before the content from HttpTest().
-			HttpTest();
-			Console.WriteLine("Hello World!");
-		}
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // This method is asynchronous.
+            // This means that while the content is being fetched 
+            // 'Hello World' is probably being printed before the content from HttpTest().
+            HttpTest();
+            Console.WriteLine("Hello World!");
+        }
 
-		private async Task HttpTest()
-		{
-			HttpClient client = new HttpClient();
-			HttpResponseMessage response = await client.GetAsync("https://nanobob.net");
-			HttpResponseMessage postResponse = await client.PostAsync("https://nanobob.net/sendData/", new FormUrlEncodedContent(
-				new List<KeyValuePair<string, string>>() {
-					new KeyValuePair<string, string>("TestKey", "TestValue"),
-					new KeyValuePair<string, string>("TestKey2", "TestValue2"),
-				})
-			);
-			Console.WriteLine("Post request status code: {0}, sucess: {1}", postResponse.StatusCode, postResponse.IsSuccessStatusCode);
-		}
-	}	
+        private async Task HttpTest()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync("https://nanobob.net");
+            HttpResponseMessage postResponse = await client.PostAsync("https://nanobob.net/sendData/", new FormUrlEncodedContent(
+                new List<KeyValuePair<string, string>>() {
+                    new KeyValuePair<string, string>("TestKey", "TestValue"),
+                    new KeyValuePair<string, string>("TestKey2", "TestValue2"),
+                })
+            );
+            Console.WriteLine("Post request status code: {0}, sucess: {1}", postResponse.StatusCode, postResponse.IsSuccessStatusCode);
+        }
+    }	
 }
 ```
 ## System.Net.Sockets.Socket
@@ -205,54 +205,54 @@ If your server uses the [MTA Sockets Module](https://wiki.multitheftauto.com/wik
 ```csharp
 namespace ServerTest
 {
-	class Program
-	{
-		static void Main(string[] args)
-		{
-			DoSocket();
-		}
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DoSocket();
+        }
 
-		public async Task DoSocket()
-		{
-			// Setup a new socket instance
-			Socket socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
-			
-			// Connect to a server
-			await socket.ConnectAsync(IPAddress.Parse("52.20.16.20"), 30000);
-			Console.WriteLine("We've connected");
-	
-			// Send a test message over the socket
-			string message = "Test message";
-			socket.Send(Encoding.ASCII.GetBytes(message));
+        public async Task DoSocket()
+        {
+            // Setup a new socket instance
+            Socket socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
+            
+            // Connect to a server
+            await socket.ConnectAsync(IPAddress.Parse("52.20.16.20"), 30000);
+            Console.WriteLine("We've connected");
+    
+            // Send a test message over the socket
+            string message = "Test message";
+            socket.Send(Encoding.ASCII.GetBytes(message));
 
-			// Receive a response from the server in a byte[]
-			byte[] buffer = new byte[1024];
-			socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, Receive, new SocketState()
-			{
-				buffer = buffer,
-				socket = socket
-			});
-		}
+            // Receive a response from the server in a byte[]
+            byte[] buffer = new byte[1024];
+            socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, Receive, new SocketState()
+            {
+                buffer = buffer,
+                socket = socket
+            });
+        }
 
-		// Handle receiving data from the server
-		public void Receive(IAsyncResult result)
-		{
-			// Get the used socket instance from the result
-			SocketState state = (SocketState)result.AsyncState;
-			Socket socket = state.socket;
+        // Handle receiving data from the server
+        public void Receive(IAsyncResult result)
+        {
+            // Get the used socket instance from the result
+            SocketState state = (SocketState)result.AsyncState;
+            Socket socket = state.socket;
 
-			// Get the data in the buffer
-			byte[] buffer = state.buffer;
-			int bytesRead = socket.EndReceive(result);
-			string message = Encoding.ASCII.GetString(buffer, 0, bytesRead);
-	
-			// Print the received message
-			Console.WriteLine("We've received: {0}", message);
+            // Get the data in the buffer
+            byte[] buffer = state.buffer;
+            int bytesRead = socket.EndReceive(result);
+            string message = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+    
+            // Print the received message
+            Console.WriteLine("We've received: {0}", message);
 
-			// Wait for new messages from the server
-			socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, Receive, result.AsyncState);
-		}
-	}
+            // Wait for new messages from the server
+            socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, Receive, result.AsyncState);
+        }
+    }
 }
 ```
 

@@ -35,8 +35,8 @@ When you use a select query use the `Database.Query()` method, this method retur
 var results = await database.Query("SELECT * FROM `vector`");
 foreach(var row in results)
 {
-	Console.WriteLine("X: {0}, Y: {1}, Z: {2}", (int) row["x"], (int) row["y"], (int) row["z"]);
-	int xResult = row["x"] + 10;
+    Console.WriteLine("X: {0}, Y: {1}, Z: {2}", (int) row["x"], (int) row["y"], (int) row["z"]);
+    int xResult = row["x"] + 10;
 }
 ```
 
@@ -45,29 +45,29 @@ The following example calls the `DoSQL` method asynchronously. The `DoSQL` metho
 ```cs
 public void RandomMethod()
 {
-	_ = Task.Run(DoSQL);
+    _ = Task.Run(DoSQL);
 }
 
 public async Task DoSql()
 {
-	Database database = new Database(new MySqlConnectionString()
-	{
-		Hostname = "127.0.0.1",
-		Port = 3306,
-		DbName = "test"
-	}, "user", "password");
+    Database database = new Database(new MySqlConnectionString()
+    {
+        Hostname = "127.0.0.1",
+        Port = 3306,
+        DbName = "test"
+    }, "user", "password");
 
-	Random random = new Random();
-	database.Exec("INSERT INTO `vector` (`x`, `y`, `z`) VALUES(?, ?, ?)", 
-		random.Next(0, 1000),
-		random.Next(0, 1000),
-		random.Next(0, 1000)
-	);
+    Random random = new Random();
+    database.Exec("INSERT INTO `vector` (`x`, `y`, `z`) VALUES(?, ?, ?)", 
+        random.Next(0, 1000),
+        random.Next(0, 1000),
+        random.Next(0, 1000)
+    );
 
-	var results = await database.Query("SELECT * FROM `vector`");
-	foreach(var row in results)
-	{
-		Console.WriteLine("X: {0}, Y: {1}, Z: {2}", (int) row["x"], (int) row["y"], (int) row["z"]);
-	}
+    var results = await database.Query("SELECT * FROM `vector`");
+    foreach(var row in results)
+    {
+        Console.WriteLine("X: {0}, Y: {1}, Z: {2}", (int) row["x"], (int) row["y"], (int) row["z"]);
+    }
 }
 ```

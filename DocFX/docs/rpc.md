@@ -15,36 +15,36 @@ Here's an example:
 ```cs
 public class BasicOutgoingRpc : IRpc
 {
-	// the fields to transmit
-	public string name;
-	public int x;
-	public MtaElement element;
+    // the fields to transmit
+    public string name;
+    public int x;
+    public MtaElement element;
 
-	
-	// the constructor which sets the fields
-	public BasicOutgoingRpc(string name, int x, Element element)
-	{
-		this.name = name;
-		this.x = x;
-		this.element = element.MTAElement;
-	}
+    
+    // the constructor which sets the fields
+    public BasicOutgoingRpc(string name, int x, Element element)
+    {
+        this.name = name;
+        this.x = x;
+        this.element = element.MTAElement;
+    }
 }
 ```
 
 ```cs
 public class BasicIncomingRpc : IRpc
 {
-	public string name;
-	public int x;
-	public Element element;
+    public string name;
+    public int x;
+    public Element element;
 
-	// Parsing the single `dynamic` vlaue to the proper type fields
-	public BasicIncomingRpc(dynamic value)
-	{
-		this.x = (int)value.x;
-		this.name = (string)value.name;
-		this.element = Slipe.Shared.Elements.ElementManager.Instance.GetElement(value.element);
-	}
+    // Parsing the single `dynamic` vlaue to the proper type fields
+    public BasicIncomingRpc(dynamic value)
+    {
+        this.x = (int)value.x;
+        this.name = (string)value.name;
+        this.element = Slipe.Shared.Elements.ElementManager.Instance.GetElement(value.element);
+    }
 }
 ```
 It is import that you cast the data in `value` to the appropriate types when using incoming RPCs. Because when transferring over the network all metatable data (which class / datatype something is) is lost.
@@ -56,7 +56,7 @@ RpcManager.Instance.RegisterRPC<BasicIncomingRpc>("testRPC", HandleTestRPC);
 
 public void HandleTestRPC(BasicIncomingRpc arguments)
 {
-	Debug.WriteLine("Handling testRPC, name: {0}, x: {1}, player name: {2}", arguments.name, arguments.x, ((Player)arguments.element).Name);
+    Debug.WriteLine("Handling testRPC, name: {0}, x: {1}, player name: {2}", arguments.name, arguments.x, ((Player)arguments.element).Name);
 }
 ```
 
