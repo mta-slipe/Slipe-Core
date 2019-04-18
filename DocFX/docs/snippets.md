@@ -118,16 +118,16 @@ This example shows one of many extended data types that are implemented in Slipe
 ```csharp
 namespace ServerTest
 {
-	class Program
-	{
-		static void Main(string[] args)
-		{
-			Vehicle patriot = new Vehicle(VehicleModel.Patriot, new Vector3(0, 15, 3));
-			patriot.Sirens.Add(new Vector3(-0.6f, 1, 0.5f), Color.Red, 200);
-			patriot.Sirens.Add(new Vector3(0.6f, 1, 0.5f), new Color(0, 0, 255), 200);
-			patriot.Sirens.On = true;
-			patriot.Sirens.Silent = true;
-		}
-	}
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Vehicle patriot = new Vehicle(VehicleModel.Patriot, new Vector3(0, 15, 3));
+            patriot.Sirens.Add(new Vector3(-0.6f, 1, 0.5f), Color.Red, 200);
+            patriot.Sirens.Add(new Vector3(0.6f, 1, 0.5f), new Color(0, 0, 255), 200);
+            patriot.Sirens.On = true;
+            patriot.Sirens.Silent = true;
+        }
+    }
 }
 ```

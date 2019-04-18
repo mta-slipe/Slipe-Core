@@ -1,8 +1,8 @@
-- name: Tutorials
-  href: tutorials/
-- name: Shared Documentation
+- name: Docs
+  href: docs/
+- name: Shared Library
   href: api/shared/
-- name: Client Documentation
+- name: Client Library
   href: api/client/
-- name: Server Documentation
+- name: Server Library
   href: api/server/

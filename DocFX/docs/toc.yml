@@ -6,6 +6,8 @@
     href: firstResource.md
   - name: Slipe CLI
     href: cli.md
+  - name: Visual Studio
+    href: visualStudio.md
 - name: Features
   items:
   - name: Libraries
