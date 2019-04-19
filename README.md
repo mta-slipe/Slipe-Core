@@ -16,7 +16,7 @@ Since .NET Core 3.0 is still in preview you need to manually activate it in Visu
 
 ### Installation
 
-* Download the latest version of [Slipe-CLI](https://github.com/mta-slipe/Slipe-CLI/releases)
+* Download the latest version of [Slipe-CLI](https://mta-slipe.com/slipe-cli.zip)
 * Clone this repository in your MTA server's resources folder
 * Open the Source/Resource.sln solution
 * Use the command ```slipe compile``` in the resource folder or simply build the project from Visual Studio

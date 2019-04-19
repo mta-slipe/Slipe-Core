@@ -11,7 +11,7 @@ Since .NET Core 3.0 is still in preview you need to manually activate it in Visu
 
 ## Installing Slipe
 
-* Download the latest version of [Slipe-CLI](https://github.com/mta-slipe/Slipe-CLI/releases/latest)
+* Download the latest version of [Slipe-CLI](/slipe-cli.zip)
 * Unzip the downloaded file
     * On linux:
         * run `chmod +x ./install.sh`
