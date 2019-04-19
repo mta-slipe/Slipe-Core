@@ -49,7 +49,7 @@ public class BasicIncomingRpc : IRpc
 ```
 It is import that you cast the data in `value` to the appropriate types when using incoming RPCs. Because when transferring over the network all metatable data (which class / datatype something is) is lost.
 
-## Registring an RPC
+## Registering an RPC
 In order to register an RPC you have to call the `RegisterRPC` method on the singleton `Instance` of the `RpcManager`. The `RegisterRPC` method is a generic method, meaning you need to supply a type argument, this type argument is the `IncomingRpc` type you wish to receive.
 ```cs
 RpcManager.Instance.RegisterRPC<BasicIncomingRpc>("testRPC", HandleTestRPC);

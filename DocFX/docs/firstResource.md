@@ -18,7 +18,7 @@ A resource can be compiled in one of several ways, if you're not using Visual St
 
 #### Visual Studio
 When you open your solution (`.sln` file) in Visual Studio it contains 2 projects. `ServerSide` and `ClientSide`, both of these projects will compile to Lua when you build them using Visual Studio's build action.  
-Furthermore starting the project will attempt to restart the resource on your MTA server (if it is already running)
+Furthermore, starting the project will attempt to restart the resource on your MTA server (if it is already running).
 
 #### Commandline
 In order to compile from the command line, use the `slipe compile` command.
