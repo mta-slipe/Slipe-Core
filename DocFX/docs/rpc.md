@@ -7,7 +7,7 @@ RPCs work somewhat similar to how client & server events do in MTA, where you wi
 
 
 ## RPC payload classes
-In an RPC you can send a single object / instance of a class (or enum) along with any trigger. This means you will have to define a class to encapsulate the values you want to tarnsmit from server to client, or the other way around.
+In an RPC you can send a single object / instance of a class (or enum) along with any trigger. This means you will have to define a class to encapsulate the values you want to transmit from server to client, or the other way around.
 
 An RPC payload is split up into two classes, one "incoming" class, and one "outgoing" class. Where the outgoing class will send the data, and the incoming class will parse the data.
 

@@ -15,6 +15,9 @@ The following commands can be executed anywhere on your system
 In order to create a new slipe resource use the `slipe new` command, this command is best executed in the `resources` directory of your mta server.  
 Syntax: `slipe new {project-name}`  
 Example: `slipe new testProject`
+- **Update the CLI**  
+In order to update the CLi run the `slipe update` command.  
+Syntax: `slipe update`
 
 ## Resource specific commands
 The following commands need to be run in a slipe resource directory. (A directory created with `slipe new`)
@@ -34,6 +37,10 @@ Syntax: `slipe meta-generate`
 **NOTE: This command only works on windows**  
 In order to restart your resource on the MTA server use `slipe restart-resource`. This command is used in the default project setup to restart the resource when running the project from Visual Studio.  
 Syntax: `slipe restart-resource`  
+
+- **Update slipe core**  
+In order to update the Slipe core module (all of Slipe's wrapper classes) use the `slipe update-core` command.  
+Syntax: `slipe update-core`
 
 ### Project commands
 The following commands are used to manage the projects in your resource.
@@ -82,3 +89,19 @@ In order to remove a module from your project but not delete the files use the `
 Syntax: `slipe remove-module {module-name}`
 Example: `slipe remove-module TestModule`
 
+- **Export a module**  
+In order to export a module you have created in order to share it with the world use the `slipe export-module` command.  
+Syntax: `slipe export-module {module-name} [-directory {directory}] [-zip]`  
+Example: `slipe export-module TestModule -zip`
+
+- **Import a module**  
+In order to import a module from a .zip file use the `slipe import-module` command.  
+Syntax: `slipe import-module {filepath / url} [-directory {directory}]`  
+Example: `slipe import-module ./TestModule.zip`  
+Example: `slipe import-module https://mta-slipe.com/TestModule.zip`
+
+- **Update a module**  
+In order to update a module use the `slipe update-module` command.  
+Syntax: `slipe update-module {filepath / url}`  
+Example: `slipe update-module ./TestModule.zip`  
+Example: `slipe update-module https://mta-slipe.com/TestModule.zip`

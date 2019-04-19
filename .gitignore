@@ -2,6 +2,8 @@ Dist/
 Slipe/Build/
 Build/
 InternalModules/
+ExportedModules/
+BuildOutput/
 meta.xml
 
 DocFX/api
