@@ -2,6 +2,8 @@
 using Slipe.Shared.Elements;
 using Slipe.Client.SightLines;
 using Slipe.Client.Peds;
+using Slipe.Client.Resources;
+using System;
 
 namespace ClientSide
 {

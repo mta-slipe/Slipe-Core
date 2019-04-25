@@ -124,5 +124,6 @@ namespace Slipe.Shared.Resources
             */
             return Export.Invoke(this.Name, functionName, parameters);
         }
+
     }
 }

@@ -57,9 +57,9 @@ function initEvents()
 		events.onBan = {"OnBanAdded", {_ban}}
 		events.onUnban = {"OnBanRemoved", {_ban, _element}}
 		events.onPlayerConnect = {"OnPlayerConnect", {_string, _string, _string, _string, _int, _string}}
-		events.onResourcePreStart = {"OnResourcePreStart", {_resource}}
-		events.onResourceStart = {"OnResourceStart", {_resource}}
-		events.onResourceStop = {"OnResourceStop", {_resource, _boolean}}
+		events.onResourcePreStart = {"OnPreStart", {_resource}}
+		events.onResourceStart = {"OnStart", {_resource}}
+		events.onResourceStop = {"OnStop", {_resource, _boolean}}
 		events.onChatMessage = {"OnChatMessage", {_string, _element}}
 		events.onDebugMessage = {"OnDebugMessage", {_string, _int, _string, _int, _color3}}
 		events.onSettingChange = {"OnSettingChange", {_string, _string, _string}}
