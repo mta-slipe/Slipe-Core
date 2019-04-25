@@ -29,6 +29,11 @@ In order to compile your project's C# code to Lua use the `slipe compile` comman
 Syntax: `slipe compile [-server-only] [-client-only] [-module moduleName]`  
 Example: `slipe compile -server-only`
 
+- **Build your project for deployment**  
+In order to build your project for deployment on a live server use the `slipe build` command. This will generate a built version of the resource without any of the unnecesary files to run the resource on MTA. (Like the DLLs and C# source code). You can also optionally compile the Lua code using luac.mtasa.com by using the `luac` option  
+Syntax: `slipe build [-luac] [-directory {directory}]`  
+Example: `slipe build -luac`
+
 - **Generate your meta.xml**  
 In order to generate your meta.xml from your existing code use `slipe meta-generate`.   
 Syntax: `slipe meta-generate`  
@@ -66,7 +71,7 @@ The `no-download` option will mark the `<file>` elements in the `meta.xml` as `d
 
 - **Remove an asset directory**
 In order to remove an asset directory use `slipe remove-assets`   
-Syntax: `slipe remove-assets {directory-path} [-module moduleName]`  
+Syntax: `slipe remove-assets {directory-path} [-module moduleName]`   
 Example: `slipe remove-assets Assets`
 
 ### Module commands
@@ -85,8 +90,8 @@ Syntax: `slipe delete-module {module-name} [-y]`
 Example `slipe delete-module TestModule`  
 
 - **Remove a module**
-In order to remove a module from your project but not delete the files use the `slipe remove-module` command.
-Syntax: `slipe remove-module {module-name}`
+In order to remove a module from your project but not delete the files use the `slipe remove-module` command.  
+Syntax: `slipe remove-module {module-name}`  
 Example: `slipe remove-module TestModule`
 
 - **Export a module**  

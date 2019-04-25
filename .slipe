@@ -12,7 +12,8 @@
   "assetDirectories": [
     {
       "path": "Assets",
-      "downloads": false
+      "downloads": false,
+      "extension": null
     }
   ],
   "modules": [
