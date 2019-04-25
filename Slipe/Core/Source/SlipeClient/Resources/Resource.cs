@@ -48,5 +48,25 @@ namespace Slipe.Client.Resources
 
         #endregion
 
+        #region Events
+
+        internal void HandleStart()
+        {
+            OnStart?.Invoke();
+        }
+
+        internal void HandleStop()
+        {
+            OnStop?.Invoke();
+        }
+
+        public delegate void OnStartHandler();
+        public event OnStartHandler OnStart;
+
+        public delegate void OnStopHandler();
+        public event OnStopHandler OnStop;
+
+        #endregion
+
     }
 }

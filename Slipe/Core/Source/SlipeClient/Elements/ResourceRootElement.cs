@@ -11,7 +11,8 @@ namespace Slipe.Client.Elements
     {
         public ResourceRootElement(MtaElement element) : base(element)
         {
-
+            OnStart += (Resource resource) => { resource.HandleStart(); };
+            OnStop += (Resource resource) => { resource.HandleStop(); };
         }
 
         #pragma warning disable 67
@@ -19,11 +20,11 @@ namespace Slipe.Client.Elements
         public delegate void OnFileDownloadCompleteHandler(string path, bool success);
         public static event OnFileDownloadCompleteHandler OnFileDownloadComplete;
 
-        public delegate void OnStartHandler(Resource resource);
-        public event OnStartHandler OnStart;
+        internal delegate void OnStartHandler(Resource resource);
+        internal event OnStartHandler OnStart;
 
-        public delegate void OnStopHandler(Resource resource);
-        public event OnStopHandler OnStop;
+        internal delegate void OnStopHandler(Resource resource);
+        internal event OnStopHandler OnStop;
 
         #pragma warning restore 67
 

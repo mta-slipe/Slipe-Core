@@ -7,6 +7,7 @@ using Slipe.Shared.Peds;
 using System.Numerics;
 using Slipe.Shared.Helpers;
 using System.Timers;
+using Slipe.Shared.Elements;
 
 namespace ClientSide
 {
@@ -37,15 +38,14 @@ namespace ClientSide
         private void Update(Object source, ElapsedEventArgs e)
         {
             // Calculate the distance between the follower and the player
-            float distance = Vector3.Distance(player.Position, this.Position);
-            this.SetControlState(AnalogControl.forwards, distance >= 4);
+            float distance = Vector3.Distance(player.Position, Position);
+            SetControlState(AnalogControl.forwards, distance >= 4);
 
             if (distance < 4)
                 return;
 
-            // Calculate the rotation between ped and player position
-            float angle = - NumericHelper.ToDegrees((float) Math.Atan2(player.Position.X - this.Position.X, player.Position.Y - this.Position.Y));
-            this.Rotation = new Vector3(0, 0, angle < 0 ? angle + 360 : angle);
+            // Make the ped face the player
+            FaceElement(player);
 
             // Loop through all the sightlines to see if one collides
             bool clear = true;
@@ -57,10 +57,11 @@ namespace ClientSide
             }
 
             // Check if everything is clear
-            this.SetControlState(AnalogControl.jump, !clear);
+            SetControlState(AnalogControl.jump, !clear);
 
             // Run if the player is too far away
-            this.SetControlState(AnalogControl.sprint, distance > 15);
+            SetControlState(AnalogControl.sprint, distance > 15);
         }
+
     }
 }

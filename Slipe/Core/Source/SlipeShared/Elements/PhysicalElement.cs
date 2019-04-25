@@ -475,10 +475,19 @@ namespace Slipe.Shared.Elements
             return ElementManager.Instance.CastArray<PhysicalElement>(mtaElements);
         }
 
+        /// <summary>
+        /// Make this element face another element
+        /// </summary>
+        /// <param name="target">The element to face</param>
+        public virtual void FaceElement(PhysicalElement target)
+        {
+            Rotation = NumericHelper.RotationBetweenPositions(Position, target.Position);
+        }
+
         #endregion
 
         #region Events
-        #pragma warning disable 67
+#pragma warning disable 67
 
         public delegate void OnClickedHandler(MouseButton mouseButton, MouseButtonState buttonState, SharedPed clickedBy, Vector3 clickPosition);
         public event OnClickedHandler OnClicked;

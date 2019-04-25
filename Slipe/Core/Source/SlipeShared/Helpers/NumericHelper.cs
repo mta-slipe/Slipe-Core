@@ -75,5 +75,18 @@ namespace Slipe.Shared.Helpers
 
             return new Vector3(ToDegrees((float) yaw), ToDegrees((float) pitch), ToDegrees((float) roll));
         }
+
+        /// <summary>
+        /// Get a vector that describes the rotation between two vectors
+        /// </summary>
+        /// <param name="position1"></param>
+        /// <param name="position2"></param>
+        /// <returns>A rotation vector</returns>
+        public static Vector3 RotationBetweenPositions(Vector3 position1, Vector3 position2)
+        {
+            float xAngle = ToDegrees((float)Math.Asin((position1.Z - position2.Z) / Vector3.Distance(position2, position1)));
+            float zAngle = -ToDegrees((float)Math.Atan2(position1.X - position2.X, position1.Y - position2.Y));
+            return new Vector3(xAngle < 0 ? xAngle + 360 : xAngle, 0, zAngle < 0 ? zAngle + 360 : zAngle);
+        }
     }
 }

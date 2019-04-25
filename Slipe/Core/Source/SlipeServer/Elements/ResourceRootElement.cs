@@ -1,4 +1,5 @@
 ﻿using Slipe.MtaDefinitions;
+using Slipe.Server.Resources;
 using Slipe.Shared.Elements;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,23 @@ namespace Slipe.Server.Elements
     {
         public ResourceRootElement(MtaElement element) : base(element)
         {
-
+            OnPreStart += (Resource resource) => { resource.HandlePreStart(); };
+            OnStart += (Resource resource) => { resource.HandleStart(); };
+            OnStop += (Resource resource, bool wasDeleted) => { resource.HandleStop(wasDeleted); };
         }
+
+        #pragma warning disable 67
+
+        internal delegate void OnPreStartHandler(Resource resource);
+        internal event OnPreStartHandler OnPreStart;
+
+        internal delegate void OnStartHandler(Resource resource);
+        internal event OnStartHandler OnStart;
+
+        internal delegate void OnStopHandler(Resource resource, bool wasDeleted);
+        internal event OnStopHandler OnStop;
+
+        #pragma warning restore 67
 
     }
 }

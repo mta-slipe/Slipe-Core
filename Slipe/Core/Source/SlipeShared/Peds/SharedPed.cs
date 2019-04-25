@@ -6,6 +6,7 @@ using Slipe.Shared.Vehicles;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Weapons;
 using System.ComponentModel;
+using Slipe.Shared.Helpers;
 
 namespace Slipe.Shared.Peds
 {
@@ -492,6 +493,15 @@ namespace Slipe.Shared.Peds
         public bool WarpIntoVehicle(SharedVehicle vehicle)
         {
             return MtaShared.WarpPedIntoVehicle(element, vehicle.MTAElement, 0);
+        }
+
+        /// <summary>
+        /// Make this ped face a specific physical element
+        /// </summary>
+        /// <param name="target">The element to face</param>
+        public override void FaceElement(PhysicalElement target)
+        {
+            Rotation = NumericHelper.RotationBetweenPositions(target.Position, Position);
         }
 
         #endregion

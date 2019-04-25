@@ -41,15 +41,6 @@ namespace Slipe.Server.Elements
         public delegate void OnPlayerConnectHandler(string nickName, string Ip, string username, string serial, int versionNumber, string versionString);
         public static event OnPlayerConnectHandler OnPlayerConnect;
 
-        public delegate void OnResourcePreStartHandler(Resource resource);
-        public static event OnResourcePreStartHandler OnResourcePreStart;
-
-        public delegate void OnResourceStartHandler(Resource resource);
-        public static event OnResourceStartHandler OnResourceStart;
-
-        public delegate void OnResourceStopHandler(Resource resource, bool wasDeleted);
-        public static event OnResourceStopHandler OnResourceStop;
-
         public delegate void OnChatMessageHandler(string message, Element playerOrResource);
         public static event OnChatMessageHandler OnChatMessage;
 
