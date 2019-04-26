@@ -53,13 +53,13 @@ end
 function File.WriteAllBytes(path, contents)
   local file = fileOpen(path)
   fileWrite(file, contents)
-  fileClose(path)
+  fileClose(file)
 end
 
 function File.WriteAllText(path, contents)
   local file = fileOpen(path)
   fileWrite(file, contents)
-  fileClose(path)
+  fileClose(file)
 end
 
 function File.WriteAllLines(path, contents)
