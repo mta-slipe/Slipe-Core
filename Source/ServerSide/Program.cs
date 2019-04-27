@@ -13,8 +13,8 @@ namespace ServerSide
         }
 
         public Program()
-        {           
-            
+        {
+
         }
     }
 }

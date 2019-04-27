@@ -95,7 +95,6 @@ function initEvents()
 
 		-- Player
 		events.onConsole = {"OnConsole", {_string}}
-		events.onPlayerJoin = {"OnJoin"}
 		events.onPlayerACInfo = {"OnAcInfo", {_stringArray, _string, _string, _string}}
 		events.onBan = {"OnBanAdded", {_ban}}
 		events.onPlayerBan = {"OnBanned", {_ban, _element}}
@@ -332,6 +331,24 @@ function initEvents()
 		end)
 	end
 
+	-- Handle the static OnPlayerJoin event and register all player classes
+	if triggerServerEvent == nil then
+
+		addEventHandler("onPlayerJoin", getRootElement(), function()
+			local player = m:GetElement(source)
+			local onJoinEvent = Slipe.Server.Peds.Player.OnJoin
+			if onJoinEvent ~= nil then
+				onJoinEvent(player)
+			end
+			
+		end)
+
+		for _, element in pairs(getElementsByType("player")) do
+			m:GetElement(element)
+		end
+	end
+
 end
+
 
 

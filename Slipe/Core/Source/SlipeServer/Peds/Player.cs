@@ -512,8 +512,8 @@ namespace Slipe.Server.Peds
         public delegate void OnCollisionShapeLeaveHandler(CollisionShape colShape, bool matchingDimension);
         public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
 
-        public delegate void OnJoinHandler();
-        public event OnJoinHandler OnJoin;
+        public delegate void OnJoinHandler(Player player);
+        public static event OnJoinHandler OnJoin;
 
         public delegate void OnAcInfoHandler(string[] detectedAcList, string d3d9Size, string d3d9Md5, string d3d9Sha256);
         public event OnAcInfoHandler OnAcInfo;
