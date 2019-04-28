@@ -239,6 +239,11 @@ namespace Slipe.Client.Browsers
 
         #pragma warning disable 67
 
+        internal static void HandleWhiteListChange(string[] changedDomains)
+        {
+            OnWhiteListChange?.Invoke(changedDomains);
+        }
+
         public delegate void OnCreatedHandler();
         public event OnCreatedHandler OnCreated;
 
@@ -269,7 +274,10 @@ namespace Slipe.Client.Browsers
         public delegate void OnTooltipHandler(string tooltip);
         public event OnTooltipHandler OnTooltip;
 
-        #pragma warning restore 67
+        public delegate void OnWhiteListChangeHandler(string[] changedDomains);
+        public static event OnWhiteListChangeHandler OnWhiteListChange;
+
+#pragma warning restore 67
 
         #endregion
     }

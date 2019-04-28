@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
+using Slipe.Shared.IO;
+using Slipe.Shared.Elements;
+using Slipe.Client.Elements;
 
 namespace Slipe.Client.IO
 {
@@ -11,10 +14,23 @@ namespace Slipe.Client.IO
     /// </summary>
     public class Cursor
     {
+        protected static Cursor instance;
+
+        public static Cursor Instance
+        {
+            get
+            {
+                return instance ?? new Cursor();
+            }
+        }
+
+
+        #region Properties
+
         /// <summary>
         /// Get and set the screen position of the cursor
         /// </summary>
-        public static Vector2 Position
+        public Vector2 Position
         {
             get
             {
@@ -30,7 +46,7 @@ namespace Slipe.Client.IO
         /// <summary>
         /// Get the world position of the cursor
         /// </summary>
-        public static Vector3 WorldPosition
+        public Vector3 WorldPosition
         {
             get
             {
@@ -42,7 +58,7 @@ namespace Slipe.Client.IO
         /// <summary>
         /// Get and set the opacity of the cursor (0-255)
         /// </summary>
-        public static int Alpha
+        public int Alpha
         {
             get
             {
@@ -57,7 +73,7 @@ namespace Slipe.Client.IO
         /// <summary>
         /// Get the type of the current cursor image.
         /// </summary>
-        public static string Type
+        public string Type
         {
             get
             {
@@ -68,7 +84,7 @@ namespace Slipe.Client.IO
         /// <summary>
         /// Get the visibility of the cursor
         /// </summary>
-        public static bool Visible
+        public bool Visible
         {
             get
             {
@@ -76,12 +92,34 @@ namespace Slipe.Client.IO
             }            
         }
 
+        #endregion
+
+        public Cursor()
+        {
+            RootElement.OnClick += (MouseButton mouseButton, MouseButtonState buttonState, Vector2 screenPosition, Vector3 worldPosition, PhysicalElement clickedElement) => { OnClick?.Invoke(mouseButton, buttonState, screenPosition, worldPosition, clickedElement); };
+            RootElement.OnDoubleClick += (MouseButton mouseButton, Vector2 screenPosition, Vector3 worldPosition, PhysicalElement clickedElement) => { OnDoubleClick?.Invoke(mouseButton, screenPosition, worldPosition, clickedElement); };
+            RootElement.OnCursorMove += (Vector2 relativePosition, Vector2 absolutePosition, Vector3 worldPosition) => { OnMove?.Invoke(relativePosition, absolutePosition, worldPosition); };
+        }
+
         /// <summary>
         /// Set the visibility and whether or not controls should be disabled
         /// </summary>
-        public static bool SetVisible(bool visible, bool toggleControls = true)
+        public bool SetVisible(bool visible, bool toggleControls = true)
         {
             return MtaClient.ShowCursor(visible, toggleControls);
         }
+
+        #region Events
+
+        public delegate void OnClickHandler(MouseButton mouseButton, MouseButtonState buttonState, Vector2 screenPosition, Vector3 worldPosition, PhysicalElement clickedElement);
+        public static event OnClickHandler OnClick;
+
+        public delegate void OnDoubleClickHandler(MouseButton mouseButton, Vector2 screenPosition, Vector3 worldPosition, PhysicalElement clickedElement);
+        public static event OnDoubleClickHandler OnDoubleClick;
+
+        public delegate void OnMoveHandler(Vector2 relativePosition, Vector2 absolutePosition, Vector3 worldPosition);
+        public static event OnMoveHandler OnMove;
+
+        #endregion
     }
 }

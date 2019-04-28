@@ -103,7 +103,6 @@ namespace Slipe.Client.Rendering
             instance = this;
 
             RootElement.OnRender += () => { OnRender?.Invoke(); };
-            RootElement.OnPreRender += (float timeSlice) => { OnPreRender?.Invoke(timeSlice); };
             RootElement.OnHUDRender += () => { OnHudRender?.Invoke(); };
         }
         #endregion
@@ -159,8 +158,7 @@ namespace Slipe.Client.Rendering
 
         public delegate void OnRenderHandler();
         public event OnRenderHandler OnRender;
-        public delegate void OnPreRenderHandler(float timeSlice);
-        public event OnPreRenderHandler OnPreRender;
+
         public delegate void OnHudRenderHandler();
         public event OnHudRenderHandler OnHudRender;
 

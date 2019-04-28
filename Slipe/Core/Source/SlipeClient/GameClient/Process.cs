@@ -12,7 +12,7 @@ namespace Slipe.Client.GameClient
     /// <summary>
     /// Static class that handles calls to functions related to the client
     /// </summary>
-    public static class Client
+    public static class Process
     {
         #region Properties
 
@@ -24,6 +24,17 @@ namespace Slipe.Client.GameClient
             get
             {
                 return Renderer.Instance;
+            }
+        }
+
+        /// <summary>
+        /// Get the input class instance
+        /// </summary>
+        public static Input Input
+        {
+            get
+            {
+                return Input.Instance;
             }
         }
 
@@ -78,21 +89,6 @@ namespace Slipe.Client.GameClient
             get
             {
                 return MtaShared.IsVoiceEnabled();
-            }
-        }
-
-        /// <summary>
-        /// Get and set the radio channel that's playing on the client (even when not in a vehicle)
-        /// </summary>
-        public static RadioStation ActiveRadioStation
-        {
-            get
-            {
-                return (RadioStation)MtaClient.GetRadioChannel();
-            }
-            set
-            {
-                MtaClient.SetRadioChannel((int)value);
             }
         }
 
@@ -234,6 +230,42 @@ namespace Slipe.Client.GameClient
         {
             return MtaClient.SetWindowFlashing(shouldFlash, count);
         }
+
+        #endregion
+
+        #region Events
+
+        internal static void HandleUpdate(float timeSlice)
+        {
+            OnUpdate?.Invoke(timeSlice);
+        }
+
+        internal static void HandleMinimize()
+        {
+            OnMinimize?.Invoke();
+        }
+
+        internal static void HandleNetworkInteruption(NetworkInteruptionStatus status, int ticksSinceInteruptionStarted)
+        {
+            OnNetworkInteruption?.Invoke(status, ticksSinceInteruptionStarted);
+        }
+
+        internal static void HandleRestore(bool didClearRenderTargets)
+        {
+            OnRestore?.Invoke(didClearRenderTargets);
+        }
+
+        public delegate void OnUpdateHandler(float timeSlice);
+        public static event OnUpdateHandler OnUpdate;
+
+        public delegate void OnMinimizeHandler();
+        public static event OnMinimizeHandler OnMinimize;
+
+        public delegate void OnNetworkInteruptionBeginHandler(NetworkInteruptionStatus status, int ticksSinceInteruptionStarted);
+        public static event OnNetworkInteruptionBeginHandler OnNetworkInteruption;
+
+        public delegate void OnRestoreHandler(bool didClearRenderTargets);
+        public static event OnRestoreHandler OnRestore;
 
         #endregion
     }

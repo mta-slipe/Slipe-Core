@@ -237,7 +237,6 @@ function initEvents()
 		events.onClientPlayerDamage = {"OnDamage", {_element, _int, _int, _float}}
 		events.onClientPlayerHeliKilled = {"OnHeliKilled", {_element}}
 		events.onClientPlayerHitByWaterCannon = {"OnPedHit", {_element}}
-		events.onClientPlayerJoin = {"OnJoin"}
 		events.onClientPlayerPickupHit = {"OnPickupHit", {_element, _boolean}}
 		events.onClientPlayerPickupLeave = {"OnPickupLeave", {_element, _boolean}}
 		events.onClientPlayerQuit = {"OnQuit", {_enum, quitType}}
@@ -333,21 +332,25 @@ function initEvents()
 
 	-- Handle the static OnPlayerJoin event and register all player classes
 	if triggerServerEvent == nil then
-
 		addEventHandler("onPlayerJoin", getRootElement(), function()
 			local player = m:GetElement(source)
 			local onJoinEvent = Slipe.Server.Peds.Player.OnJoin
 			if onJoinEvent ~= nil then
 				onJoinEvent(player)
 			end
-			
 		end)
-
-		for _, element in pairs(getElementsByType("player")) do
-			m:GetElement(element)
-		end
+	else
+		addEventHandler("onClientPlayerJoin", getRootElement(), function()
+			local player = m:GetElement(source)
+			local onJoinEvent = Slipe.Client.Peds.Player.OnJoin
+			if onJoinEvent ~= nil then
+				onJoinEvent(player)
+			end
+		end)
 	end
-
+	for _, element in pairs(getElementsByType("player")) do
+		m:GetElement(element)
+	end
 end
 
 

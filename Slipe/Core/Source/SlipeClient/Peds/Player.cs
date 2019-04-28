@@ -132,10 +132,7 @@ namespace Slipe.Client.Peds
 
         #region Constructor
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Player(MtaElement mtaElement) : base(mtaElement)
-        {
-            PlayerManager.Instance.HandleJoin(this);
-        }
+        public Player(MtaElement mtaElement) : base(mtaElement) { }
 
         #endregion
 
@@ -171,8 +168,8 @@ namespace Slipe.Client.Peds
         public delegate void OnNicknameChangedHandler(string oldNickname, string newNickname);
         public event OnNicknameChangedHandler OnNicknameChanged;
 
-        public delegate void OnJoinHandler();
-        public event OnJoinHandler OnJoin;
+        public delegate void OnJoinHandler(Player player);
+        public static event OnJoinHandler OnJoin;
 
         public delegate void OnPickupHitHandler(Pickup pickupHit, bool matchingDimension);
         public event OnPickupHitHandler OnPickupHit;
@@ -208,7 +205,7 @@ namespace Slipe.Client.Peds
         public event OnWeaponSwitchHandler OnWeaponSwitch;
 
         public delegate void OnChatMessageHandler(string text, Color color);
-        public static event OnChatMessageHandler OnChatMessage;
+        public event OnChatMessageHandler OnChatMessage;
 
         #pragma warning restore 67
 

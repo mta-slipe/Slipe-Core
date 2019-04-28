@@ -276,5 +276,17 @@ namespace Slipe.Server.Accounts
 
         #endregion
 
+        #region Events
+
+        internal void HandleDataChange(string key, string value)
+        {
+            OnDataChange?.Invoke(key, value);
+        }
+
+        public delegate void OnDataChangeHandler(string key, string value);
+        public event OnDataChangeHandler OnDataChange;
+
+        #endregion
+
     }
 }

@@ -1,5 +1,4 @@
-﻿using Slipe.Shared;
-using Slipe.MtaDefinitions;
+﻿using Slipe.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -175,6 +174,26 @@ namespace Slipe.Server.Accounts
         {
             Remove(null);
         }
+
+        #region Events
+
+        internal void HandleAdded()
+        {
+            OnAdded?.Invoke();
+        }
+
+        internal void HandleRemoved( Player responsiblePlayer)
+        {
+            OnRemoved?.Invoke(responsiblePlayer);
+        }
+
+        public delegate void OnRemoveHandler(Player responsiblePlayer);
+        public event OnRemoveHandler OnRemoved;
+
+        public delegate void OnAddedHandler();
+        public event OnAddedHandler OnAdded;
+
+        #endregion
 
 
     }

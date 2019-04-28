@@ -8,6 +8,9 @@ using System.Numerics;
 using Slipe.Shared.Peds;
 using Slipe.Shared.Utilities;
 using Slipe.Shared.Helpers;
+using Slipe.Client.GameClient;
+using Slipe.Client.IO;
+using Slipe.Client.Browsers;
 
 namespace Slipe.Client.Elements
 {
@@ -15,7 +18,13 @@ namespace Slipe.Client.Elements
     {
         public RootElement(MtaElement element) : base(element)
         {
-
+            OnPreRender += (float timeSlice) => { Process.HandleUpdate(timeSlice); };
+            OnChatMessage += (string message, Color color) => { ChatBox.HandleMessage(message, color); };
+            OnDebugMessage += (string message, DebugMessageLevel level, string file, int line, Color color) => { Process.Debug.HandleMessage(message, level, file, line, color); };
+            OnBrowserWhiteListChange += (string[] changed) => { Browser.HandleWhiteListChange(changed); };
+            OnMinimize += () => { Process.HandleMinimize(); };
+            OnNetworkInteruption += (NetworkInteruptionStatus status, int ticksSinceInteruptionStarted) => { Process.HandleNetworkInteruption(status, ticksSinceInteruptionStarted); };
+            OnRestore += (bool didClearRenderTargets) => { Process.HandleRestore(didClearRenderTargets); };
         }
 
         public override void HandleEvent(string eventName, MtaElement element, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
@@ -28,47 +37,47 @@ namespace Slipe.Client.Elements
         public delegate void OnMiscelaniousEventHandler(string eventName, MtaElement element, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8);
         public static event OnMiscelaniousEventHandler OnMiscelaniousEvent;
 
-        public delegate void OnKeyHandler(string key, bool isPressed);
-        public static event OnKeyHandler OnKey;
+        internal delegate void OnRenderHandler();
+        internal static event OnRenderHandler OnRender;
 
-        public delegate void OnRenderHandler();
-        public static event OnRenderHandler OnRender;
+        internal delegate void OnPreRenderHandler(float timeSlice);
+        internal static event OnPreRenderHandler OnPreRender;
 
-        public delegate void OnPreRenderHandler(float timeSlice);
-        public static event OnPreRenderHandler OnPreRender;
+        internal delegate void OnHUDRenderHandler();
+        internal static event OnRenderHandler OnHUDRender;
 
-        public delegate void OnHUDRenderHandler();
-        public static event OnRenderHandler OnHUDRender;
+        internal delegate void OnKeyHandler(string key, bool isPressed);
+        internal static event OnKeyHandler OnKey;
 
-        public delegate void OnBrowserWhiteListChangeHandler(string[] changedDomains);
-        public static event OnBrowserWhiteListChangeHandler OnBrowserWhiteListChange;
+        internal delegate void OnCharacterHandler(string character);
+        internal static event OnCharacterHandler OnCharacter;
 
-        public delegate void OnCharacterHandler(string character);
-        public static event OnCharacterHandler OnCharacter;
+        internal delegate void OnClickHandler(MouseButton mouseButton, MouseButtonState buttonState, Vector2 screenPosition, Vector3 worldPosition, PhysicalElement clickedElement);
+        internal static event OnClickHandler OnClick;
 
-        public delegate void OnClickHandler(MouseButton mouseButton, MouseButtonState buttonState, Vector2 screenPosition, Vector3 worldPosition, PhysicalElement clickedElement);
-        public static event OnClickHandler OnClick;
+        internal delegate void OnDoubleClickHandler(MouseButton mouseButton, Vector2 screenPosition, Vector3 worldPosition, PhysicalElement clickedElement);
+        internal static event OnDoubleClickHandler OnDoubleClick;
 
-        public delegate void OnDoubleClickHandler(MouseButton mouseButton, Vector2 screenPosition, Vector3 worldPosition, PhysicalElement clickedElement);
-        public static event OnDoubleClickHandler OnDoubleClick;
+        internal delegate void OnCursorMoveHandler(Vector2 relativePosition, Vector2 absolutePosition, Vector3 worldPosition);
+        internal static event OnCursorMoveHandler OnCursorMove;
 
-        public delegate void OnCursorMoveHandler(Vector2 relativePosition, Vector2 absolutePosition, Vector3 worldPosition);
-        public static event OnCursorMoveHandler OnCursorMove;
+        internal delegate void OnChatMessageHandler(string text, Color color);
+        internal static event OnChatMessageHandler OnChatMessage;
 
-        public delegate void OnChatMessageHandler(string text, Color color);
-        public static event OnChatMessageHandler OnChatMessage;
+        internal delegate void OnDebugMessageHandler(string message, DebugMessageLevel level, string file, int line, Color color);
+        internal static event OnDebugMessageHandler OnDebugMessage;
 
-        public delegate void OnDebugMessageHandler(string message, DebugMessageLevel level, string file, int line, Color color);
-        public static event OnDebugMessageHandler OnDebugMessage;
+        internal delegate void OnBrowserWhiteListChangeHandler(string[] changedDomains);
+        internal static event OnBrowserWhiteListChangeHandler OnBrowserWhiteListChange;
 
-        public delegate void OnMinimizeHandler();
-        public static event OnMinimizeHandler OnMinimize;
+        internal delegate void OnMinimizeHandler();
+        internal static event OnMinimizeHandler OnMinimize;
 
-        public delegate void OnNetworkInteruptionBeginHandler(NetworkInteruptionStatus status, int ticksSinceInteruptionStarted);
-        public event OnNetworkInteruptionBeginHandler OnNetworkInteruption;
+        internal delegate void OnNetworkInteruptionBeginHandler(NetworkInteruptionStatus status, int ticksSinceInteruptionStarted);
+        internal event OnNetworkInteruptionBeginHandler OnNetworkInteruption;
 
-        public delegate void OnRestoreHandler(bool didClearRenderTargets);
-        public event OnRestoreHandler OnRestore;
+        internal delegate void OnRestoreHandler(bool didClearRenderTargets);
+        internal event OnRestoreHandler OnRestore;
 
         /// This method is just here so that these enums get parsed and are usable in events
         private void initEnums()

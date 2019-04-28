@@ -8,9 +8,9 @@ using Slipe.Shared.Helpers;
 namespace Slipe.Server.GameServer
 {
     /// <summary>
-    /// Class that handles methods on the global server
+    /// Static class for functionality of the actual server process
     /// </summary>
-    public static class Server
+    public static class Process
     {
         #region Properties
 
@@ -83,24 +83,6 @@ namespace Slipe.Server.GameServer
             {
                 return MtaShared.IsVoiceEnabled();
             }
-        }
-
-        #endregion
-
-        /// <summary>
-        /// Enable or disable a certain known GTA glitch
-        /// </summary>
-        public static bool SetGlitchEnabled(Glitch glitch, bool enabled)
-        {
-            return MtaServer.SetGlitchEnabled(glitch.ToString().ToLower(), enabled);
-        }
-
-        /// <summary>
-        /// Check if a certain GTA glitch is enabled
-        /// </summary>
-        public static bool IsGlitchEnabled(Glitch glitch)
-        {
-            return MtaServer.IsGlitchEnabled(glitch.ToString().ToLower());
         }
 
         private static Config config;
@@ -205,6 +187,26 @@ namespace Slipe.Server.GameServer
             }
         }
 
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Enable or disable a certain known GTA glitch
+        /// </summary>
+        public static bool SetGlitchEnabled(Glitch glitch, bool enabled)
+        {
+            return MtaServer.SetGlitchEnabled(glitch.ToString().ToLower(), enabled);
+        }
+
+        /// <summary>
+        /// Check if a certain GTA glitch is enabled
+        /// </summary>
+        public static bool IsGlitchEnabled(Glitch glitch)
+        {
+            return MtaServer.IsGlitchEnabled(glitch.ToString().ToLower());
+        }
+
         /// <summary>
         /// Terminates the server process
         /// </summary>
@@ -212,5 +214,27 @@ namespace Slipe.Server.GameServer
         {
             MtaServer.Shutdown(reason);
         }
+
+        #endregion
+
+        #region Events
+
+        internal static void HandlePlayerConnected(string nickName, string Ip, string username, string serial, int versionNumber, string versionString)
+        {
+            OnPlayerConnect?.Invoke(nickName, Ip, username, serial, versionNumber, versionString);
+        }
+
+        internal static void HandleSettingChange(string setting, string oldValue, string newValue)
+        {
+            OnSettingChange?.Invoke(setting, oldValue, newValue);
+        }
+
+        public delegate void OnPlayerConnectHandler(string nickName, string Ip, string username, string serial, int versionNumber, string versionString);
+        public static event OnPlayerConnectHandler OnPlayerConnect;
+
+        public delegate void OnSettingChangeHandler(string setting, string oldValue, string newValue);
+        public static event OnSettingChangeHandler OnSettingChange;
+
+        #endregion
     }
 }

@@ -55,5 +55,17 @@ namespace Slipe.Server.IO
         {
             return MtaServer.ShowChat(player == null ? Element.Root.MTAElement : player.MTAElement, visible);
         }
+
+        #region Events
+
+        internal static void HandleMessage(string message, Element playerOrResource)
+        {
+            OnMessage?.Invoke(message, playerOrResource);
+        }
+
+        public delegate void OnMessageHandler(string message, Element playerOrResource);
+        public static event OnMessageHandler OnMessage;
+
+        #endregion
     }
 }

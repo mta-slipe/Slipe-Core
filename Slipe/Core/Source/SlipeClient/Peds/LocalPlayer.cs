@@ -111,6 +111,21 @@ namespace Slipe.Client.Peds
             }
         }
 
+        /// <summary>
+        /// Get and set the radio channel that's playing on the client (even when not in a vehicle)
+        /// </summary>
+        public RadioStation ActiveRadioStation
+        {
+            get
+            {
+                return (RadioStation)MtaClient.GetRadioChannel();
+            }
+            set
+            {
+                MtaClient.SetRadioChannel((int)value);
+            }
+        }
+
         #endregion
 
         #region Constructor

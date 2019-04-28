@@ -45,7 +45,7 @@ namespace Slipe.Client.Dx
         protected override void Update(float timeSlice)
         {
             if(IsAttached)
-                pos = GameClient.Client.Renderer.ScreenFromWorldPosition(ToAttached.Position + Offset.Translation);
+                pos = GameClient.Process.Renderer.ScreenFromWorldPosition(ToAttached.Position + Offset.Translation);
         }
     }
 }

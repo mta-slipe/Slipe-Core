@@ -279,5 +279,16 @@ namespace Slipe.Client.IO
         {
             MtaClient.ClearChatBox();
         }
+
+        #region Events
+        internal static void HandleMessage(string message, Color color)
+        {
+            OnMessage?.Invoke(message, color);
+        }
+
+        public delegate void OnMessageHandler(string message, Color color);
+        public static event OnMessageHandler OnMessage;
+
+        #endregion
     }
 }

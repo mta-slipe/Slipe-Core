@@ -144,7 +144,7 @@ namespace Slipe.Client.Lights
         {
             toAttached = toElement;
             Offset = offsetMatrix;
-            GameClient.Client.Renderer.OnPreRender += Update;
+            Process.OnUpdate += Update;
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Slipe.Client.Lights
         /// </summary>
         public void Detach()
         {
-            GameClient.Client.Renderer.OnPreRender -= Update;
+            Process.OnUpdate -= Update;
         }
 
         /// <summary>

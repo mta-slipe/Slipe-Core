@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
+using Slipe.Client.GameClient;
 
 namespace Slipe.Client.Helpers
 {
@@ -13,12 +14,12 @@ namespace Slipe.Client.Helpers
     {
         protected override void OnAttach()
         {
-            GameClient.Client.Renderer.OnPreRender += Update;
+            Process.OnUpdate += Update;
         }
 
         protected override void OnDetach()
         {
-            GameClient.Client.Renderer.OnPreRender -= Update;
+            Process.OnUpdate -= Update;
             base.OnDetach();
         }
     }
