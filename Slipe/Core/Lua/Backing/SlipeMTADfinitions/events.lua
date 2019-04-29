@@ -41,13 +41,13 @@ function initEvents()
 
 	if triggerServerEvent == nil then
 
-		local acM = Slipe.Server.Accounts.AccountManager.getInstance()	
-		local reM = Slipe.Server.Resources.ResourceManager.getInstance()
-		local _resource = {1, function(e) return reM:GetResource(e) end}	
+		local acM = Slipe.Server.Accounts.Account
+		local reM = Slipe.Server.Resources.Resource
+		local _resource = {1, function(e) return reM:Get1(e) end}	
 
 		local ban = Slipe.Server.Accounts.Ban
 		local _ban = {1, function(e) return new(ban, 2, e) end}
-		local _account = {1, function(e) return acM:GetAccount(e) end}
+		local _account = {1, function(e) return acM:Get(e) end}
 
 		local weaponModel = Slipe.Server.Weapons.WeaponModel
 		local _weaponModel = {1, function(e) return new(weaponModel, 2, e) end}
@@ -145,8 +145,8 @@ function initEvents()
 		local weaponModel = Slipe.Shared.Weapons.SharedWeaponModel
 		local _weaponModel = {1, function(e) return new(weaponModel, 2, e) end}
 
-		local reM = Slipe.Client.Resources.ResourceManager.getInstance()
-		local _resource = {1, function(e) return reM:GetResource(e) end}	
+		local reM = Slipe.Client.Resources.Resource
+		local _resource = {1, function(e) return reM:Get(e) end}	
 
 		-- Browser
 		events.onClientBrowserCreated = {"OnCreated"}
