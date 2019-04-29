@@ -94,7 +94,7 @@ namespace Slipe.Server.Peds
         {
             get
             {
-                return AccountManager.Instance.GetAccount(MtaServer.GetPlayerAccount(element));
+                return Account.Get(MtaServer.GetPlayerAccount(element));
             }
         }
 

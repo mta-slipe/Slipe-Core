@@ -15,7 +15,7 @@ namespace Slipe.Shared.Resources
     {
         #region Properties
 
-        public MtaResource MTAResource { get; }
+        protected MtaResource MtaResource { get; set; }
 
         /// <summary>
         /// Get the name of this resource
@@ -24,7 +24,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return MtaShared.GetResourceName(MTAResource);
+                return MtaShared.GetResourceName(MtaResource);
             }
         }
 
@@ -36,7 +36,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return ElementManager.Instance.GetElement(MtaShared.GetResourceDynamicElementRoot(MTAResource));
+                return ElementManager.Instance.GetElement(MtaShared.GetResourceDynamicElementRoot(MtaResource));
             }
         }
 
@@ -47,7 +47,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return ElementManager.Instance.GetElement(MtaShared.GetResourceRootElement(MTAResource));
+                return ElementManager.Instance.GetElement(MtaShared.GetResourceRootElement(MtaResource));
             }
         }
 
@@ -58,7 +58,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return MtaShared.GetResourceState(MTAResource);
+                return MtaShared.GetResourceState(MtaResource);
             }
         }
 
@@ -69,7 +69,7 @@ namespace Slipe.Shared.Resources
         {
             get
             {
-                return MtaShared.GetArrayFromTable(MtaShared.GetResourceExportedFunctions(MTAResource), "System.String");
+                return MtaShared.GetArrayFromTable(MtaShared.GetResourceExportedFunctions(MtaResource), "System.String");
             }
         }
 
@@ -91,26 +91,6 @@ namespace Slipe.Shared.Resources
         }
 
         #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Create a resource from an MTA resource element
-        /// </summary>
-        public SharedResource(MtaResource resource)
-        {
-            MTAResource = resource;
-        }
-
-        #endregion
-
-        /// <summary>
-        /// This function is used to retrieve a resource from its name. A resource's name is the same as its folder or file archive name on the server (without the extension).
-        /// </summary>
-        public static SharedResource FromName(string name)
-        {
-            return new SharedResource(MtaShared.GetResourceFromName(name));
-        }
 
         public object Invoke(string functionName, params object[] parameters)
         {

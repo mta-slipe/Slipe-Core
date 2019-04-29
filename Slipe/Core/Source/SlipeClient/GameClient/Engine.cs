@@ -14,7 +14,8 @@ namespace Slipe.Client.GameClient
         {
             get
             {
-                return instance ?? new Engine();
+                instance = instance ?? new Engine();
+                return instance;
             }
         }
 

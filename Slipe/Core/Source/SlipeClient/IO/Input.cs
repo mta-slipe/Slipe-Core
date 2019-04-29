@@ -16,7 +16,8 @@ namespace Slipe.Client.IO
         {
             get
             {
-                return instance ?? new Input();
+                instance = instance ?? new Input();
+                return instance;
             }
         }
 
@@ -31,7 +32,7 @@ namespace Slipe.Client.IO
             }
         }
 
-        public Input()
+        private Input()
         {
             RootElement.OnKey += (string key, bool isPressed) => { OnKey?.Invoke(key, isPressed); };
             RootElement.OnCharacter += (string character) => { OnCharacter?.Invoke(character); };

@@ -15,6 +15,8 @@ namespace Slipe.Server.Resources
     /// </summary>
     public class Resource : SharedResource
     {
+        private static Dictionary<object, Resource> resources = new Dictionary<object, Resource>();
+
         #region Properties
 
         /// <summary>
@@ -24,7 +26,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                return MtaShared.GetDateTimeFromSecondStamp(MtaServer.GetResourceLastStartTime(MTAResource));
+                return MtaShared.GetDateTimeFromSecondStamp(MtaServer.GetResourceLastStartTime(MtaResource));
             }
         }
 
@@ -35,7 +37,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                return MtaServer.GetResourceLoadFailureReason(MTAResource);
+                return MtaServer.GetResourceLoadFailureReason(MtaResource);
             }
         }
 
@@ -46,7 +48,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                return MtaShared.GetDateTimeFromSecondStamp(MtaServer.GetResourceLoadTime(MTAResource));
+                return MtaShared.GetDateTimeFromSecondStamp(MtaServer.GetResourceLoadTime(MtaResource));
             }
         }
 
@@ -57,7 +59,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                return MtaServer.GetResourceOrganizationalPath(MTAResource);
+                return MtaServer.GetResourceOrganizationalPath(MtaResource);
             }
         }
 
@@ -68,7 +70,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                return MtaServer.IsResourceArchived(MTAResource);
+                return MtaServer.IsResourceArchived(MtaResource);
             }
         }
 
@@ -79,7 +81,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                return MtaShared.GetArrayFromTable(MtaServer.GetResourceACLRequests(MTAResource), "acl-request");
+                return MtaShared.GetArrayFromTable(MtaServer.GetResourceACLRequests(MtaResource), "acl-request");
             }
         }
 
@@ -91,8 +93,7 @@ namespace Slipe.Server.Resources
         {
             get
             {
-                if(thisResource == null)
-                    thisResource = ResourceManager.Instance.GetResource(MtaShared.GetThisResource());
+                thisResource = thisResource ?? Get(MtaShared.GetThisResource());
                 return thisResource;
             }
         }
@@ -105,7 +106,7 @@ namespace Slipe.Server.Resources
             get
             {
                 MtaResource[] resourceList = MtaShared.GetArrayFromTable(MtaServer.GetResources(), "mta-resource");
-                return ResourceManager.Instance.CastMultiple(resourceList);
+                return CastMultiple(resourceList);
             }
         }
 
@@ -117,10 +118,17 @@ namespace Slipe.Server.Resources
         /// Create a resource from an MTA resource element
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Resource(MtaResource resource) : base(resource)
+        internal Resource(MtaResource resource)
         {
-            ResourceManager.Instance.RegisterResource(this);
+            resources.Add(resource, this);
+            MtaResource = resource;
         }
+
+        /// <summary>
+        /// Only used to extend a specific resource class
+        /// </summary>
+        /// <param name="name">The name of the resource</param>
+        protected Resource(string name) : this(MtaShared.GetResourceFromName(name)) { }
 
         /// <summary>
         /// Create a new empty resource
@@ -136,7 +144,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool UpdateACLRequest(string rightName, bool access, string byWho = "")
         {
-            return MtaServer.UpdateResourceACLRequest(MTAResource, rightName, access, byWho);
+            return MtaServer.UpdateResourceACLRequest(MtaResource, rightName, access, byWho);
         }        
 
         /// <summary>
@@ -144,7 +152,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public Element MapRoot(string mapName)
         {
-            return ElementManager.Instance.GetElement(MtaServer.GetResourceMapRootElement(MTAResource, mapName));
+            return ElementManager.Instance.GetElement(MtaServer.GetResourceMapRootElement(MtaResource, mapName));
         }
 
         /// <summary>
@@ -194,7 +202,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool Refresh()
         {
-            return MtaServer.RefreshResources(true, MTAResource);
+            return MtaServer.RefreshResources(true, MtaResource);
         }
 
         /// <summary>
@@ -202,7 +210,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool RemoveFile(string fileName)
         {
-            return MtaServer.RemoveResourceFile(MTAResource, fileName);
+            return MtaServer.RemoveResourceFile(MtaResource, fileName);
         }
 
         /// <summary>
@@ -218,7 +226,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool Restart(bool persistent = true, bool configs = true, bool maps = true, bool scripts = true, bool html = true, bool clientConfigs = true, bool clientScripts = true, bool clientFiles = true)
         {
-            return MtaServer.RestartResource(MTAResource, persistent, configs, maps, scripts, html, clientConfigs, clientScripts, clientFiles);
+            return MtaServer.RestartResource(MtaResource, persistent, configs, maps, scripts, html, clientConfigs, clientScripts, clientFiles);
         }
 
         /// <summary>
@@ -226,7 +234,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public string GetInfo(string attribute)
         {
-            return MtaServer.GetResourceInfo(MTAResource, attribute);
+            return MtaServer.GetResourceInfo(MtaResource, attribute);
         }
 
         /// <summary>
@@ -234,7 +242,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool SetInfo(string attribute, string value)
         {
-            return MtaServer.SetResourceInfo(MTAResource, attribute, value);
+            return MtaServer.SetResourceInfo(MtaResource, attribute, value);
         }
 
         /// <summary>
@@ -242,7 +250,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool Start(bool persistent = false, bool includedResources = true, bool configs = true, bool maps = true, bool scripts = true, bool html = true, bool clientConfigs = true, bool clientScripts = true, bool clientFiles = true)
         {
-            return MtaServer.StartResource(MTAResource, persistent, includedResources, configs, maps, scripts, html, clientConfigs, clientScripts, clientFiles);
+            return MtaServer.StartResource(MtaResource, persistent, includedResources, configs, maps, scripts, html, clientConfigs, clientScripts, clientFiles);
         }
 
         /// <summary>
@@ -250,7 +258,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public bool Stop()
         {
-            return MtaServer.StopResource(MTAResource);
+            return MtaServer.StopResource(MtaResource);
         }
 
         /// <summary>
@@ -258,7 +266,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public static Resource CopyFrom(Resource resource, string name, string organizationalDir = null)
         {
-            return (Resource) ResourceManager.Instance.GetResource(MtaServer.CopyResource(resource.MTAResource, name, organizationalDir));
+            return Get(MtaServer.CopyResource(resource.MtaResource, name, organizationalDir));
         }
 
         /// <summary>
@@ -267,6 +275,37 @@ namespace Slipe.Server.Resources
         public static bool RefreshAll()
         {
             return MtaServer.RefreshResources(true, null);
+        }
+
+        /// <summary>
+        /// This function is used to retrieve a resource from its name. A resource's name is the same as its folder or file archive name on the server (without the extension).
+        /// </summary>
+        public static Resource Get(string name)
+        {
+            return new Resource(MtaShared.GetResourceFromName(name));
+        }
+
+        internal static Resource Get(MtaResource resource)
+        {
+            if (resource == null)
+            {
+                return null;
+            }
+            if (!resources.ContainsKey(resource))
+            {
+                return new Resource(resource);
+            }
+            return resources[resource];
+        }
+
+        internal static Resource[] CastMultiple(MtaResource[] _resources)
+        {
+            Resource[] result = new Resource[_resources.Length];
+            for (int i = 0; i < _resources.Length; i++)
+            {
+                result[i] = Get(_resources[i]);
+            }
+            return result;
         }
 
         #endregion

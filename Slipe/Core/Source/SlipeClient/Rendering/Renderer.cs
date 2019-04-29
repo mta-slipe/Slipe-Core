@@ -20,7 +20,8 @@ namespace Slipe.Client.Rendering
         {
             get
             {
-                return instance ?? new Renderer();
+                instance = instance ?? new Renderer();
+                return instance;
             }
         }
 

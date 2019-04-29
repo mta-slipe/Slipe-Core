@@ -13,6 +13,8 @@ namespace Slipe.Client.Resources
     /// </summary>
     public class Resource : SharedResource
     {
+        private static Dictionary<object, Resource> resources = new Dictionary<object, Resource>();
+
         /// <summary>
         /// Static pointer to the current resource
         /// </summary>
@@ -21,8 +23,7 @@ namespace Slipe.Client.Resources
         {
             get
             {
-                if (thisResource == null)
-                    thisResource = ResourceManager.Instance.GetResource(MtaShared.GetThisResource());
+                thisResource = thisResource ?? Get(MtaShared.GetThisResource());
                 return thisResource;
             }
         }
@@ -34,19 +35,47 @@ namespace Slipe.Client.Resources
         {
             get
             {
-                return ElementManager.Instance.GetElement(MtaClient.GetResourceGUIElement(MTAResource));
+                return ElementManager.Instance.GetElement(MtaClient.GetResourceGUIElement(MtaResource));
             }
         }
 
         #region Constructor
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Resource(MtaResource resource) : base(resource)
+        internal Resource(MtaResource resource)
         {
-            ResourceManager.Instance.RegisterResource(this);
+            resources.Add(resource, this);
+            MtaResource = resource;
         }
 
+        /// <summary>
+        /// Only used to extend a specific resource class
+        /// </summary>
+        /// <param name="name">The name of the resource</param>
+        protected Resource(string name) : this(MtaShared.GetResourceFromName(name)) { }
+
         #endregion
+
+        internal static Resource Get(MtaResource resource)
+        {
+            if (resource == null)
+            {
+                return null;
+            }
+            if (!resources.ContainsKey(resource))
+            {
+                return new Resource(resource);
+            }
+            return resources[resource];
+        }
+
+        /// <summary>
+        /// This function is used to retrieve a resource from its name. A resource's name is the same as its folder or file archive name on the server (without the extension).
+        /// </summary>
+        public static Resource Get(string name)
+        {
+            return Get(MtaShared.GetResourceFromName(name));
+        }
 
         #region Events
 

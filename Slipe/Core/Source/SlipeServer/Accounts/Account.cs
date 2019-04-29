@@ -12,11 +12,13 @@ namespace Slipe.Server.Accounts
     /// <summary>
     /// The account class represents a player's server account. 
     /// </summary>
-    public class Account : IAclObject
+    public sealed class Account : IAclObject
     {
+        private static Dictionary<object, Account> accounts = new Dictionary<object, Account>();
+
         #region Properties
 
-        public MtaAccount MTAAccount { get; }
+        internal MtaAccount MTAAccount { get; }
 
         /// <summary>
         /// This function checks to see if an account is a guest account. 
@@ -125,7 +127,7 @@ namespace Slipe.Server.Accounts
             get
             {
                 MtaAccount[] array = MtaShared.GetArrayFromTable(MtaServer.GetAccounts(), "account");
-                return AccountManager.Instance.CastMultiple(array);
+                return CastMultiple(array);
             }
         }
 
@@ -135,7 +137,7 @@ namespace Slipe.Server.Accounts
         public static Account[] GetAccountsBySerial(string serial)
         {
             MtaAccount[] array = MtaShared.GetArrayFromTable(MtaServer.GetAccountsBySerial(serial), "account");
-            return AccountManager.Instance.CastMultiple(array);
+            return CastMultiple(array);
         }
 
         /// <summary>
@@ -144,7 +146,7 @@ namespace Slipe.Server.Accounts
         public static Account[] GetAccountsByIP(string ip)
         {
             MtaAccount[] array = MtaShared.GetArrayFromTable(MtaServer.GetAccountsByIP(ip), "account");
-            return AccountManager.Instance.CastMultiple(array);
+            return CastMultiple(array);
         }
 
         /// <summary>
@@ -153,7 +155,7 @@ namespace Slipe.Server.Accounts
         public static Account[] GetAccountsByData(string key, string value)
         {
             MtaAccount[] array = MtaShared.GetArrayFromTable(MtaServer.GetAccountsByData(key, value), "account");
-            return AccountManager.Instance.CastMultiple(array);
+            return CastMultiple(array);
         }
 
         #endregion
@@ -161,10 +163,10 @@ namespace Slipe.Server.Accounts
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public Account(MtaAccount account)
+        internal Account(MtaAccount account)
         {
             MTAAccount = account;
-            AccountManager.Instance.RegisterAccount(this);
+            accounts.Add(MTAAccount, this);
         }
 
         /// <summary>
@@ -244,6 +246,19 @@ namespace Slipe.Server.Accounts
 
         #region Static Methods
 
+        internal static Account Get(MtaAccount account)
+        {
+            if (account == null)
+            {
+                return null;
+            }
+            if (!accounts.ContainsKey(account))
+            {
+                return new Account(account);
+            }
+            return accounts[account];
+        }
+
         /// <summary>
         /// Get an account from some credentials
         /// </summary>
@@ -251,7 +266,7 @@ namespace Slipe.Server.Accounts
         {
             try
             {
-                return AccountManager.Instance.GetAccount(MtaServer.GetAccount(username, password, caseSensitive));
+                return Get(MtaServer.GetAccount(username, password, caseSensitive));
             }
             catch (MtaException)
             {
@@ -262,16 +277,26 @@ namespace Slipe.Server.Accounts
         /// <summary>
         /// Get an account from an account ID
         /// </summary>
-        public static Account GetByID(int ID)
+        public static Account Get(int ID)
         {
             try
             {
-                return AccountManager.Instance.GetAccount(MtaServer.GetAccountByID(ID));
+                return Get(MtaServer.GetAccountByID(ID));
             }
             catch (MtaException)
             {
                 throw new AccountException("No account with this ID found");
             }
+        }
+
+        internal static Account[] CastMultiple(MtaAccount[] accounts)
+        {
+            Account[] result = new Account[accounts.Length];
+            for (int i = 0; i < accounts.Length; i++)
+            {
+                result[i] = Get(accounts[i]);
+            }
+            return result;
         }
 
         #endregion

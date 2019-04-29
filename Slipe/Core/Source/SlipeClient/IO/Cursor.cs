@@ -20,7 +20,8 @@ namespace Slipe.Client.IO
         {
             get
             {
-                return instance ?? new Cursor();
+                instance = instance ?? new Cursor();
+                return instance;
             }
         }
 
@@ -94,7 +95,7 @@ namespace Slipe.Client.IO
 
         #endregion
 
-        public Cursor()
+        private Cursor()
         {
             RootElement.OnClick += (MouseButton mouseButton, MouseButtonState buttonState, Vector2 screenPosition, Vector3 worldPosition, PhysicalElement clickedElement) => { OnClick?.Invoke(mouseButton, buttonState, screenPosition, worldPosition, clickedElement); };
             RootElement.OnDoubleClick += (MouseButton mouseButton, Vector2 screenPosition, Vector3 worldPosition, PhysicalElement clickedElement) => { OnDoubleClick?.Invoke(mouseButton, screenPosition, worldPosition, clickedElement); };
