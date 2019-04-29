@@ -6,7 +6,7 @@ using System.Numerics;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Helpers;
 using System.ComponentModel;
-using Slipe.Client.GameClient;
+using Slipe.Client.Game;
 
 namespace Slipe.Client.Lights
 {
@@ -144,7 +144,7 @@ namespace Slipe.Client.Lights
         {
             toAttached = toElement;
             Offset = offsetMatrix;
-            Process.OnUpdate += Update;
+            Game.GameClient.OnUpdate += Update;
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Slipe.Client.Lights
         /// </summary>
         public void Detach()
         {
-            Process.OnUpdate -= Update;
+            Game.GameClient.OnUpdate -= Update;
         }
 
         /// <summary>

@@ -7,7 +7,6 @@ using Slipe.Client.Effects;
 using Slipe.Client.Sounds;
 using Slipe.Shared.Elements;
 using Slipe.Client.Radar;
-using Slipe.Client.GameServer;
 using Slipe.Client.Browsers;
 using Slipe.Client.Gui;
 using Slipe.Client.Lights;
@@ -17,6 +16,7 @@ using Slipe.Client.GameWorld;
 using Slipe.Client.Peds;
 using Slipe.Client.Weapons;
 using Slipe.Shared.CollisionShapes;
+using Slipe.Client.Game;
 
 namespace Slipe.Client.Elements
 {

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Slipe.Client.Resources;
+using Slipe.Client.Game;
 
 namespace Slipe.Client.Elements
 {
@@ -11,8 +12,14 @@ namespace Slipe.Client.Elements
     {
         public ResourceRootElement(MtaElement element) : base(element)
         {
-            OnStart += (Resource resource) => { resource.HandleStart(); };
-            OnStop += (Resource resource) => { resource.HandleStop(); };
+            OnStart += (Resource resource) => {
+                GameClient.HandleStart(resource);
+                resource.HandleStart();
+            };
+            OnStop += (Resource resource) => {
+                GameClient.HandleStop(resource);
+                resource.HandleStop();
+            };
         }
 
         #pragma warning disable 67

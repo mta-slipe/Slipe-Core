@@ -6,7 +6,6 @@ using Slipe.Shared.Exceptions;
 using Slipe.Client.Sounds;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
-using Slipe.Client.GameServer;
 using System.ComponentModel;
 using Slipe.Shared.CollisionShapes;
 using Slipe.Client.Pickups;
@@ -14,6 +13,7 @@ using Slipe.Shared.Peds;
 using Slipe.Client.Vehicles;
 using Slipe.Shared.Vehicles;
 using Slipe.Shared.Weapons;
+using Slipe.Client.Game;
 
 namespace Slipe.Client.Peds
 {

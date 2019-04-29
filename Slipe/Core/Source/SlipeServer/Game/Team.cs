@@ -7,7 +7,7 @@ using Slipe.Shared.Utilities;
 using System.ComponentModel;
 using Slipe.Server.Peds;
 
-namespace Slipe.Server.GameServer
+namespace Slipe.Server.Game
 {
     /// <summary>
     /// Class representing a team of players

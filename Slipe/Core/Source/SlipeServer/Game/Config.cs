@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MtaDefinitions;
+using Slipe.Server.Game;
 
-namespace Slipe.Server.GameServer
+namespace Slipe.Server.Game
 {
     /// <summary>
     /// Represents server config fields
@@ -67,7 +68,7 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return Int32.Parse(MtaServer.GetServerConfigSetting("fpslimit"));
+                return int.Parse(MtaServer.GetServerConfigSetting("fpslimit"));
             }
             set
             {
@@ -82,11 +83,11 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return (MtaServer.GetServerConfigSetting("networkencryption") == "1");
+                return MtaServer.GetServerConfigSetting("networkencryption") == "1";
             }
             set
             {
-                if(value)
+                if (value)
                     MtaServer.SetServerConfigSetting("networkencryption", "1", PermanentSaveFlag);
                 else
                     MtaServer.SetServerConfigSetting("networkencryption", "0", PermanentSaveFlag);
@@ -101,7 +102,7 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return (BandwidthReduction) Enum.Parse(typeof(BandwidthReduction), MtaServer.GetServerConfigSetting("bandwidth_reduction"), true);
+                return (BandwidthReduction)Enum.Parse(typeof(BandwidthReduction), MtaServer.GetServerConfigSetting("bandwidth_reduction"), true);
             }
             set
             {
@@ -116,7 +117,7 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return Int32.Parse(MtaServer.GetServerConfigSetting("player_sync_interval"));
+                return int.Parse(MtaServer.GetServerConfigSetting("player_sync_interval"));
             }
             set
             {
@@ -131,7 +132,7 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return Int32.Parse(MtaServer.GetServerConfigSetting("lightweight_sync_interval"));
+                return int.Parse(MtaServer.GetServerConfigSetting("lightweight_sync_interval"));
             }
             set
             {
@@ -146,7 +147,7 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return Int32.Parse(MtaServer.GetServerConfigSetting("camera_sync_interval"));
+                return int.Parse(MtaServer.GetServerConfigSetting("camera_sync_interval"));
             }
             set
             {
@@ -161,7 +162,7 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return Int32.Parse(MtaServer.GetServerConfigSetting("ped_sync_interval"));
+                return int.Parse(MtaServer.GetServerConfigSetting("ped_sync_interval"));
             }
             set
             {
@@ -176,7 +177,7 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return Int32.Parse(MtaServer.GetServerConfigSetting("unoccupied_vehicle_sync_interval"));
+                return int.Parse(MtaServer.GetServerConfigSetting("unoccupied_vehicle_sync_interval"));
             }
             set
             {
@@ -191,7 +192,7 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return Int32.Parse(MtaServer.GetServerConfigSetting("keysync_mouse_sync_interval"));
+                return int.Parse(MtaServer.GetServerConfigSetting("keysync_mouse_sync_interval"));
             }
             set
             {
@@ -206,7 +207,7 @@ namespace Slipe.Server.GameServer
         {
             get
             {
-                return Int32.Parse(MtaServer.GetServerConfigSetting("keysync_analog_sync_interval"));
+                return int.Parse(MtaServer.GetServerConfigSetting("keysync_analog_sync_interval"));
             }
             set
             {

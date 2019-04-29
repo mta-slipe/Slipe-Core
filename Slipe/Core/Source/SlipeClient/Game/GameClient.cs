@@ -6,13 +6,14 @@ using Slipe.Client.Sounds;
 using Slipe.Client.Rendering;
 using Slipe.Client.IO;
 using Slipe.Shared.Helpers;
+using Slipe.Client.Resources;
 
-namespace Slipe.Client.GameClient
+namespace Slipe.Client.Game
 {
     /// <summary>
     /// Static class that handles calls to functions related to the client
     /// </summary>
-    public static class Process
+    public static class GameClient
     {
         #region Properties
 
@@ -114,7 +115,7 @@ namespace Slipe.Client.GameClient
         {
             get
             {
-                return (InputMode) Enum.Parse(typeof(InputMode), MtaClient.GuiGetInputMode(), true);
+                return (InputMode)Enum.Parse(typeof(InputMode), MtaClient.GuiGetInputMode(), true);
             }
             set
             {
@@ -254,6 +255,22 @@ namespace Slipe.Client.GameClient
         {
             OnRestore?.Invoke(didClearRenderTargets);
         }
+
+        internal static void HandleStart(Resource resource)
+        {
+            OnStart?.Invoke(resource);
+        }
+
+        internal static void HandleStop(Resource resource)
+        {
+            OnStop?.Invoke(resource);
+        }
+
+        public delegate void OnStartHandler(Resource resource);
+        public static event OnStartHandler OnStart;
+
+        public delegate void OnStopHandler(Resource resource);
+        public static event OnStopHandler OnStop;
 
         public delegate void OnUpdateHandler(float timeSlice);
         public static event OnUpdateHandler OnUpdate;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.GameServer
+namespace Slipe.Server.Game
 {
     /// <summary>
     /// Represents different glitches in MTA 

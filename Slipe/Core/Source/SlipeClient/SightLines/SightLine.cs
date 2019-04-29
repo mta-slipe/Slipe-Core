@@ -5,7 +5,7 @@ using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Client.Dx;
 using Slipe.Shared.Elements;
-using Slipe.Client.GameClient;
+using Slipe.Client.Game;
 using Slipe.Client.Rendering;
 using Slipe.Client.Elements;
 
@@ -80,9 +80,9 @@ namespace Slipe.Client.SightLines
             set
             {
                 if(value)
-                    RootElement.OnRender += DebugDraw;
+                    GameClient.Renderer.OnRender += DebugDraw;
                 else
-                    RootElement.OnRender -= DebugDraw;
+                    GameClient.Renderer.OnRender -= DebugDraw;
                 Visible = value;
             }            
         }

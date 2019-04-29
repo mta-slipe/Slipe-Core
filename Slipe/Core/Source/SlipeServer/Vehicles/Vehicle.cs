@@ -150,6 +150,7 @@ namespace Slipe.Server.Vehicles
         #endregion
 
         #region Constructors
+
         /// <summary>
         /// Create a vehicle from a model at a position
         /// </summary>

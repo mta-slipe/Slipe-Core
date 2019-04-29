@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MtaDefinitions;
+using Slipe.Server.Game;
 using Slipe.Server.IO;
+using Slipe.Server.Resources;
 using Slipe.Shared.Helpers;
 
-namespace Slipe.Server.GameServer
+namespace Slipe.Server.Game
 {
     /// <summary>
     /// Static class for functionality of the actual server process
     /// </summary>
-    public static class Process
+    public static class GameServer
     {
         #region Properties
 
@@ -228,6 +230,30 @@ namespace Slipe.Server.GameServer
         {
             OnSettingChange?.Invoke(setting, oldValue, newValue);
         }
+
+        internal static void HandlePreStart(Resource resource)
+        {
+            OnPreStart?.Invoke(resource);
+        }
+
+        internal static void HandleStart(Resource resource)
+        {
+            OnStart?.Invoke(resource);
+        }
+
+        internal static void HandleStop(Resource resource, bool wasDeleted)
+        {
+            OnStop?.Invoke(resource, wasDeleted);
+        }
+
+        public delegate void OnPreStartHandler(Resource resource);
+        public static event OnPreStartHandler OnPreStart;
+
+        public delegate void OnStartHandler(Resource resource);
+        public static event OnStartHandler OnStart;
+
+        public delegate void OnStopHandler(Resource resource, bool wasDeleted);
+        public static event OnStopHandler OnStop;
 
         public delegate void OnPlayerConnectHandler(string nickName, string Ip, string username, string serial, int versionNumber, string versionString);
         public static event OnPlayerConnectHandler OnPlayerConnect;

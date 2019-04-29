@@ -1,4 +1,5 @@
 ﻿using Slipe.MtaDefinitions;
+using Slipe.Server.Game;
 using Slipe.Server.Resources;
 using Slipe.Shared.Elements;
 using System;
@@ -11,9 +12,18 @@ namespace Slipe.Server.Elements
     {
         public ResourceRootElement(MtaElement element) : base(element)
         {
-            OnPreStart += (Resource resource) => { resource.HandlePreStart(); };
-            OnStart += (Resource resource) => { resource.HandleStart(); };
-            OnStop += (Resource resource, bool wasDeleted) => { resource.HandleStop(wasDeleted); };
+            OnPreStart += (Resource resource) => {
+                GameServer.HandlePreStart(resource);
+                resource.HandlePreStart();
+            };
+            OnStart += (Resource resource) => {
+                GameServer.HandleStart(resource);
+                resource.HandleStart();
+            };
+            OnStop += (Resource resource, bool wasDeleted) => {
+                GameServer.HandleStop(resource, wasDeleted);
+                resource.HandleStop(wasDeleted);
+            };
         }
 
         #pragma warning disable 67

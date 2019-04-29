@@ -7,7 +7,6 @@ using Slipe.Shared.Exceptions;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
 using Slipe.Server.Accounts;
-using Slipe.Server.GameServer;
 using Slipe.Shared.Peds;
 using Slipe.Server.Rendering;
 using System.ComponentModel;
@@ -21,6 +20,7 @@ using Slipe.Server.Vehicles;
 using Slipe.Shared.Vehicles;
 using Slipe.Server.Weapons;
 using Slipe.Shared.Helpers;
+using Slipe.Server.Game;
 
 namespace Slipe.Server.Peds
 {

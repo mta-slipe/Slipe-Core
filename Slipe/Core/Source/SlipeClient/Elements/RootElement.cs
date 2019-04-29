@@ -8,9 +8,9 @@ using System.Numerics;
 using Slipe.Shared.Peds;
 using Slipe.Shared.Utilities;
 using Slipe.Shared.Helpers;
-using Slipe.Client.GameClient;
 using Slipe.Client.IO;
 using Slipe.Client.Browsers;
+using Slipe.Client.Game;
 
 namespace Slipe.Client.Elements
 {
@@ -18,13 +18,13 @@ namespace Slipe.Client.Elements
     {
         public RootElement(MtaElement element) : base(element)
         {
-            OnPreRender += (float timeSlice) => { Process.HandleUpdate(timeSlice); };
+            OnPreRender += (float timeSlice) => { Game.GameClient.HandleUpdate(timeSlice); };
             OnChatMessage += (string message, Color color) => { ChatBox.HandleMessage(message, color); };
-            OnDebugMessage += (string message, DebugMessageLevel level, string file, int line, Color color) => { Process.Debug.HandleMessage(message, level, file, line, color); };
+            OnDebugMessage += (string message, DebugMessageLevel level, string file, int line, Color color) => { Game.GameClient.Debug.HandleMessage(message, level, file, line, color); };
             OnBrowserWhiteListChange += (string[] changed) => { Browser.HandleWhiteListChange(changed); };
-            OnMinimize += () => { Process.HandleMinimize(); };
-            OnNetworkInteruption += (NetworkInteruptionStatus status, int ticksSinceInteruptionStarted) => { Process.HandleNetworkInteruption(status, ticksSinceInteruptionStarted); };
-            OnRestore += (bool didClearRenderTargets) => { Process.HandleRestore(didClearRenderTargets); };
+            OnMinimize += () => { Game.GameClient.HandleMinimize(); };
+            OnNetworkInteruption += (NetworkInteruptionStatus status, int ticksSinceInteruptionStarted) => { Game.GameClient.HandleNetworkInteruption(status, ticksSinceInteruptionStarted); };
+            OnRestore += (bool didClearRenderTargets) => { Game.GameClient.HandleRestore(didClearRenderTargets); };
         }
 
         public override void HandleEvent(string eventName, MtaElement element, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)

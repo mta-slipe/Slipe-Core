@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.GameClient
+namespace Slipe.Client.Game
 {
     /// <summary>
     /// Represents the input mode for Gui's

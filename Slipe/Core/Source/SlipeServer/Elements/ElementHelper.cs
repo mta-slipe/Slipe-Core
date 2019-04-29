@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MtaDefinitions;
-using Slipe.Server.GameServer;
 using Slipe.Server.GameWorld;
 using Slipe.Server.Markers;
 using Slipe.Server.Peds;
@@ -11,6 +10,7 @@ using Slipe.Server.Radar;
 using Slipe.Server.Vehicles;
 using Slipe.Shared.Elements;
 using Slipe.Shared.CollisionShapes;
+using Slipe.Server.Game;
 
 namespace Slipe.Server.Elements
 {

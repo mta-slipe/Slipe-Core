@@ -4,6 +4,7 @@ using System.Text;
 using System.Numerics;
 using Slipe.Shared.Utilities;
 using Slipe.Client.Helpers;
+using Slipe.Client.Game;
 
 namespace Slipe.Client.Dx
 {
@@ -45,7 +46,7 @@ namespace Slipe.Client.Dx
         protected override void Update(float timeSlice)
         {
             if(IsAttached)
-                pos = GameClient.Process.Renderer.ScreenFromWorldPosition(ToAttached.Position + Offset.Translation);
+                pos = GameClient.Renderer.ScreenFromWorldPosition(ToAttached.Position + Offset.Translation);
         }
     }
 }
