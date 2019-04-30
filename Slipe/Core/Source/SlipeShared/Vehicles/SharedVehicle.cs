@@ -30,7 +30,7 @@ namespace Slipe.Shared.Vehicles
             }
             set
             {
-                MtaShared.SetVehicleColor(element, value.R, value.G, value.B, SecondaryColor.R, SecondaryColor.G, SecondaryColor.B, -1, -1, -1, -1, -1, -1);
+                MtaShared.SetVehicleColor(element, value.R, value.G, value.B, SecondaryColor.R, SecondaryColor.G, SecondaryColor.B, 0, 0, 0, 0, 0, 0);
             }
         }
 
@@ -46,7 +46,7 @@ namespace Slipe.Shared.Vehicles
             }
             set
             {
-                MtaShared.SetVehicleColor(element, PrimaryColor.R, PrimaryColor.G, PrimaryColor.B, value.R, value.G, value.B, -1, -1, -1, -1, -1, -1);
+                MtaShared.SetVehicleColor(element, PrimaryColor.R, PrimaryColor.G, PrimaryColor.B, value.R, value.G, value.B, 0, 0, 0, 0, 0, 0);
             }
         }
 

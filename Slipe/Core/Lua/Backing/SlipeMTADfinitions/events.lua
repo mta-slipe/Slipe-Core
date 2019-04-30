@@ -33,7 +33,7 @@ function initEvents()
 	local _vector2 = {2, function(x, y) return vector2(_float[2](x), _float[2](y)) end}
 	local _color3 = {3, function(r, g, b) return new(color, 4, _byte[2](r), _byte[2](g), _byte[2](b)) end}
 	local _color4 = {4, function(r, g, b, a) return new(color, 3, _byte[2](r), _byte[2](g), _byte[2](b), _byte[2](a)) end}
-	local _element = {1, function(e) return m:GetElement(e) end}
+	local _element = {1, function(e) return m:GetElement1(e) end}
 	local _stringArray = {1, function(e) return arrayFromTable(e, "System.String") end}		
 	local _enum = {1, function(e, en) return _int[2](parseEnum(typeOf(en), _string[2](e):Replace(" ", "_"), true)) end}
 
@@ -348,8 +348,31 @@ function initEvents()
 			end
 		end)
 	end
-	for _, element in pairs(getElementsByType("player")) do
-		m:GetElement1(element)
+
+	local allElementTypes = {
+		"player",
+		"ped",
+		"water",
+		"sound",
+		"vehicle",
+		"object",
+		"pickup",
+		"marker",
+		"colshape",
+		"blip",
+		"radararea",
+		"team",
+		"projectile",
+		"effect",
+		"light",
+		"searchlight",
+		"weapon"
+	}
+
+	for _,type in ipairs(allElementTypes) do
+		for _, element in pairs(getElementsByType(type)) do
+			m:GetElement1(element)
+		end
 	end
 end
 
