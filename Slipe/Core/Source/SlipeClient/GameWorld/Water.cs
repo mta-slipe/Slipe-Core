@@ -5,12 +5,14 @@ using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
 using Slipe.Shared.GameWorld;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Client.GameWorld
 {
     /// <summary>
     /// Class used to create bodies of water on the map
     /// </summary>
+    [DefaultElementClass("water")]
     public class Water : SharedWater
     {
         /// <summary>
@@ -29,6 +31,7 @@ namespace Slipe.Client.GameWorld
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Water(MtaElement element) : base(element) { }
 
         /// <summary>

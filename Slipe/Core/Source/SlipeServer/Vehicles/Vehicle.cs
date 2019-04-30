@@ -11,6 +11,7 @@ using Slipe.Shared.CollisionShapes;
 
 namespace Slipe.Server.Vehicles
 {
+    [DefaultElementClass("vehicle")]
     public class Vehicle : SharedVehicle
     {
         private Sirens s_sirens;
@@ -151,6 +152,13 @@ namespace Slipe.Server.Vehicles
 
         #region Constructors
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
+        public Vehicle(MtaElement element) : base(element)
+        {
+
+        }
+
         /// <summary>
         /// Create a vehicle from a model at a position
         /// </summary>
@@ -162,12 +170,6 @@ namespace Slipe.Server.Vehicles
         /// </summary>
         public Vehicle(BaseVehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1)
             : this(MtaShared.CreateVehicle(model.ID, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, numberplate, false, variant1, variant2)) { }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Vehicle(MtaElement element) : base(element)
-        {
-
-        }
 
         #endregion
 

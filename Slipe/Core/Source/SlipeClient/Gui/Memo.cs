@@ -11,6 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a multi-line gui edit box
     /// </summary>
+    [DefaultElementClass("gui-memo")]
     public class Memo : EditableGuiElement
     {
         #region Properties
@@ -65,6 +66,7 @@ namespace Slipe.Client.Gui
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Memo(MtaElement element) : base(element)
         {
 

@@ -11,6 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui tab panel
     /// </summary>
+    [DefaultElementClass("gui-tabpanel")]
     public class TabPanel : GuiElement
     {
         /// <summary>
@@ -31,6 +32,7 @@ namespace Slipe.Client.Gui
         #region Constructor
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public TabPanel(MtaElement element) : base(element)
         {
 

@@ -12,6 +12,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui label
     /// </summary>
+    [DefaultElementClass("gui-label")]
     public class Label : GuiElement
     {
         #region Properties
@@ -59,6 +60,7 @@ namespace Slipe.Client.Gui
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Label(MtaElement element) : base(element)
         {
 

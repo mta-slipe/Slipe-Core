@@ -11,6 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a static Cegui image
     /// </summary>
+    [DefaultElementClass("gui-staticimage")]
     public class StaticImage : GuiElement
     {
         /// <summary>
@@ -28,6 +29,7 @@ namespace Slipe.Client.Gui
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public StaticImage(MtaElement element) : base(element)
         {
 

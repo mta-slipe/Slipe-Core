@@ -13,9 +13,11 @@ namespace Slipe.Server.Radar
     /// <summary>
     /// Class representing radar areas
     /// </summary>
+    [DefaultElementClass("radararea")]
     public class RadarArea : SharedRadarArea
     {
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public RadarArea(MtaElement element) : base(element) { }
 
         /// <summary>

@@ -14,6 +14,7 @@ using Slipe.Client.Game;
 
 namespace Slipe.Client.Elements
 {
+    [DefaultElementClass("root")]
     public class RootElement: Element
     {
         public RootElement(MtaElement element) : base(element)

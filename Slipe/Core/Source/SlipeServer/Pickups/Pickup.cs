@@ -14,6 +14,7 @@ namespace Slipe.Server.Pickups
     /// <summary>
     /// Class for a GTA pickup
     /// </summary>
+    [DefaultElementClass("pickup")]
     public class Pickup : SharedPickup
     {
         /// <summary>
@@ -45,6 +46,7 @@ namespace Slipe.Server.Pickups
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Pickup(MtaElement element) : base(element)
         {
         }

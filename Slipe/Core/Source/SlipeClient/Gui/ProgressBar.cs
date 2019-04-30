@@ -11,6 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui progress bar
     /// </summary>
+    [DefaultElementClass("gui-progressbar")]
     public class ProgressBar : GuiElement
     {
         /// <summary>
@@ -29,6 +30,7 @@ namespace Slipe.Client.Gui
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public ProgressBar(MtaElement element) : base(element)
         {
 

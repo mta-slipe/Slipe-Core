@@ -11,6 +11,7 @@ namespace Slipe.Client.Effects
     /// <summary>
     /// Represents a positionable effect
     /// </summary>
+    [DefaultElementClass("effect")]
     public class Effect : PhysicalElement
     {
         /// <summary>
@@ -44,6 +45,7 @@ namespace Slipe.Client.Effects
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Effect(MtaElement element) : base(element) { }
 
         /// <summary>

@@ -16,6 +16,7 @@ namespace Slipe.Client.Vehicles
     /// <summary>
     /// Class that represents vehicles in the world
     /// </summary>
+    [DefaultElementClass("vehicle")]
     public class Vehicle : SharedVehicle
     {
         #region Misc. Properties
@@ -175,6 +176,7 @@ namespace Slipe.Client.Vehicles
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Vehicle(MtaElement element) : base(element) { }
 
         /// <summary>

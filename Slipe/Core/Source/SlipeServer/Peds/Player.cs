@@ -27,6 +27,7 @@ namespace Slipe.Server.Peds
     /// <summary>
     /// Class for a player in the MTA server
     /// </summary>
+    [DefaultElementClass("player")]
     public class Player : Ped
     {
         #region Properties
@@ -333,6 +334,7 @@ namespace Slipe.Server.Peds
         #region Constructor
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Player(MtaElement mtaElement) : base(mtaElement)
         {
             Camera = new Camera(this);

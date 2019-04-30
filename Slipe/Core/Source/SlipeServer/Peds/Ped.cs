@@ -14,6 +14,7 @@ namespace Slipe.Server.Peds
     /// <summary>
     /// Represents a pedestrian 
     /// </summary>
+    [DefaultElementClass("ped")]
     public class Ped : SharedPed
     {
         #region Properties
@@ -98,6 +99,7 @@ namespace Slipe.Server.Peds
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Ped(MtaElement element) : base(element)
         {
 

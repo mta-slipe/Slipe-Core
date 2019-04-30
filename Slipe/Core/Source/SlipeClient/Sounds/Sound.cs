@@ -11,6 +11,7 @@ namespace Slipe.Client.Sounds
     /// <summary>
     /// Represents a sound played for the player
     /// </summary>
+    [DefaultElementClass("sound")]
     public class Sound : Element
     {
         #region Properties
@@ -181,9 +182,8 @@ namespace Slipe.Client.Sounds
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Sound(MtaElement element) : base(element) { }
-
-        protected Sound() { }
 
         /// <summary>
         /// Create sound

@@ -11,6 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui scroll bar
     /// </summary>
+    [DefaultElementClass("gui-scrollbar")]
     public class ScrollBar : GuiElement
     {
         /// <summary>
@@ -29,6 +30,7 @@ namespace Slipe.Client.Gui
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public ScrollBar(MtaElement element) : base(element)
         {
 

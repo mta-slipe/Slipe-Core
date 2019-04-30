@@ -5,16 +5,19 @@ using System.Numerics;
 using Slipe.MtaDefinitions;
 using System.ComponentModel;
 using Slipe.Shared.GameWorld;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Server.GameWorld
 {
     /// <summary>
     /// Class representing an Object in MTA
     /// </summary>
+    [DefaultElementClass("object")]
     public class WorldObject : SharedWorldObject
     {
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public WorldObject(MtaElement element) : base(element)
         {
 

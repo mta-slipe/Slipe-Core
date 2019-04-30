@@ -11,6 +11,7 @@ namespace Slipe.Shared.CollisionShapes
     /// <summary>
     /// Base class for collision shapes
     /// </summary>
+    [DefaultElementClass("colshape")]
     public class CollisionShape: PhysicalElement
     {
         /// <summary>
@@ -31,6 +32,7 @@ namespace Slipe.Shared.CollisionShapes
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public CollisionShape(MtaElement element) : base(element)
         {
 
@@ -55,10 +57,10 @@ namespace Slipe.Shared.CollisionShapes
         /// <summary>
         /// Gets an array of all elements of a specific type inside the collision shape
         /// </summary>
-        public PhysicalElement[] GetElementsWithinOfType(Type type)
+        public T[] GetElementsWithin<T>() where T : PhysicalElement
         {
-            MtaElement[] array = MtaShared.GetArrayFromTable(MtaShared.GetElementsWithinColShape(element, ElementManager.Instance.GetTypeName(type)), "MTAElement");
-            return ElementManager.Instance.CastArray<PhysicalElement>(array);
+            MtaElement[] array = MtaShared.GetArrayFromTable(MtaShared.GetElementsWithinColShape(element, ElementManager.Instance.GetTypeName(typeof(T))), "MTAElement");
+            return ElementManager.Instance.CastArray<T>(array);
         }
 
 #pragma warning disable 67

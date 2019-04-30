@@ -21,35 +21,49 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                if (instance == null)
-                {
-                    throw new Exception("ElementManager was not defined. Please double check you have a call to `new ElementManager(new ElementHelper());` in your main");
-                }
+                instance = instance ?? new ElementManager();
                 return instance;
             }
         }
-
-        private IElementHelper elementHelper;
 
         private Element root;
 
         /// <summary>
         /// Returns the root MTA element
         /// </summary>
-        public Element Root { get { return root; } }
+        public Element Root {
+            get
+            {
+                if(root == null)
+                    root = GetElement(MtaShared.GetRootElement());
+                return root;
+            }
+        }
 
         private Dictionary<object, Element> elements;
+        private Dictionary<string, Type> defaultElementTypes;
+        private Dictionary<Type, string> defaultElementTypeNames;
 
         /// <summary>
         /// Creates the ElementManager given an IElementHelper class that maps MTA elements to classes
         /// </summary>
-        public ElementManager(IElementHelper helper)
+        public ElementManager()
         {
-            elementHelper = helper;
-            instance = this;
             elements = new Dictionary<object, Element>();
-            MtaElement mtaRoot = MtaShared.GetRootElement();
-            root = elementHelper.InstantiateElement(MtaShared.GetElementType(mtaRoot), mtaRoot);
+            defaultElementTypes = new Dictionary<string, Type>();
+            defaultElementTypeNames = new Dictionary<Type, string>();
+
+            Type[] defaultClasses = Assembly.GetAssembly(typeof(ElementManager)).GetExportedTypes();
+            foreach(Type type in defaultClasses)
+            {
+                object[] customAttributes = type.GetCustomAttributes(typeof(DefaultElementClassAttribute), false);
+                foreach (object a in customAttributes)
+                {
+                    DefaultElementClassAttribute attribute = (DefaultElementClassAttribute)a;
+                    defaultElementTypes[attribute.ElementType] = type;
+                    defaultElementTypeNames[type] = attribute.ElementType;
+                }
+            }
         }
 
         /// <summary>
@@ -75,16 +89,37 @@ namespace Slipe.Shared.Elements
             }
             if (!elements.ContainsKey(element))
             {
+                string mtaElementType = MtaShared.GetElementType(element);
+                Type elementType;
+                object builtElement = null;
+
                 try
                 {
-                    string mtaElementType = MtaShared.GetElementType(element);
-                    Element wrapperElement = elementHelper.InstantiateElement(mtaElementType, element);
-                    return wrapperElement;
-                }
-                catch (Exception)
+                    elementType = defaultElementTypes[mtaElementType];
+                } catch(KeyNotFoundException)
                 {
-                    return null;
+                    elementType = typeof(Element);
                 }
+
+                foreach (MethodInfo info in elementType.GetMethods())
+                {
+                    object[] customAttributes = info.GetCustomAttributes(typeof(DefaultElementConstructorAttribute), false);
+                    foreach (DefaultElementConstructorAttribute a in customAttributes)
+                    {
+                        /*
+                        [[
+                            builtElement = setmetatable({}, elementType[1])
+                            local ctor = info.metadata[3]
+                            if ctor == nil then
+                                ctor = elementType[1].__ctor__
+                            end
+                            ctor(builtElement, element)
+                        ]]
+                        */
+                        return (Element)builtElement;
+                    }
+                }
+                return null;
             }
             return elements[element];
         }
@@ -109,7 +144,40 @@ namespace Slipe.Shared.Elements
         /// <returns>A string describing the MTA element type</returns>
         public string GetTypeName(Type type)
         {
-            return elementHelper.GetTypeName(type);
+            return defaultElementTypeNames[type];
+        }
+
+        /// <summary>
+        /// Get a list of all classes of a specific element
+        /// </summary>
+        public List<T> GetByType<T>(Element startAt, bool streamedIn = false) where T : Element
+        {
+            List<T> elements = new List<T>();
+
+            if (!defaultElementTypeNames.ContainsKey(typeof(T)))
+            {
+                return elements;
+            }
+
+            List<dynamic> mtaElements = MtaShared.GetListFromTable(MtaClient.GetElementsByType(defaultElementTypeNames[typeof(T)], startAt.MTAElement, streamedIn), "element");
+            foreach (dynamic mtaElement in mtaElements)
+            {
+                Element element = GetElement((MtaElement)mtaElement);
+                if (element != null && element is T)
+                {
+                    elements.Add((T)element);
+                }
+            }
+
+            return elements;
+        }
+
+        /// <summary>
+        /// Get a list of all classes of a specific element
+        /// </summary>
+        public List<T> GetByType<T>() where T : Element
+        {
+            return GetByType<T>(root);
         }
 
         protected internal void AddEventHandler(Element element, string eventName, bool propagated = true, string priorty = "normal")

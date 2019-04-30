@@ -11,6 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui radio button
     /// </summary>
+    [DefaultElementClass("gui-radiobutton")]
     public class RadioButton : GuiElement
     {
         /// <summary>
@@ -29,6 +30,7 @@ namespace Slipe.Client.Gui
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public RadioButton(MtaElement element) : base(element)
         {
 

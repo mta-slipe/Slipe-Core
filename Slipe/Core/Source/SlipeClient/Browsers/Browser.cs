@@ -12,6 +12,7 @@ namespace Slipe.Client.Browsers
     /// <summary>
     /// Class that wraps MTA browsers
     /// </summary>
+    [DefaultElementClass("browser")]
     public class Browser : Element
     {
         #region Properties
@@ -69,17 +70,18 @@ namespace Slipe.Client.Browsers
 
         #region Constructors
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
+        public Browser(MtaElement element) : base(element)
+        {
+
+        }
+
         /// <summary>
         /// Create a browser from the createBrowser parameters
         /// </summary>
         public Browser(int width, int height, bool isLocal, bool transparent = false)
             : this(MtaClient.CreateBrowser(width, height, isLocal, transparent)) { }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Browser(MtaElement element) : base(element)
-        {
-
-        }
 
         #endregion
 

@@ -17,6 +17,7 @@ namespace Slipe.Client.Weapons
     /// <summary>
     /// Represents a custom weapon that can be placed in the world
     /// </summary>
+    [DefaultElementClass("weapon")]
     public class CustomWeapon : PhysicalElement
     {
         #region Properties
@@ -86,6 +87,7 @@ namespace Slipe.Client.Weapons
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public CustomWeapon(MtaElement element) : base(element) { }
 
         /// <summary>

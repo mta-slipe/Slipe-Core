@@ -12,6 +12,7 @@ namespace Slipe.Client.Game
     /// <summary>
     /// Class representing a team of players
     /// </summary>
+    [DefaultElementClass("team")]
     public class Team : Element
     {
         #region Properties
@@ -56,6 +57,7 @@ namespace Slipe.Client.Game
         #endregion
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Team(MtaElement team) : base(team)
         {
 

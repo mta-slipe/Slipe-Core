@@ -9,6 +9,7 @@ using System.ComponentModel;
 
 namespace Slipe.Client.Lights
 {
+    [DefaultElementClass("light")]
     public class Light : PhysicalElement
     {
         #region Properties
@@ -76,6 +77,7 @@ namespace Slipe.Client.Lights
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Light(MtaElement element) : base(element) { }
 
         /// <summary>

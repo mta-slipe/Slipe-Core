@@ -11,9 +11,11 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui button
     /// </summary>
+    [DefaultElementClass("gui-button")]
     public class Button : GuiElement
     {
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Button(MtaElement element) : base(element)
         {
 

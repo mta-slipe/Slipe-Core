@@ -8,8 +8,10 @@ using System.Text;
 
 namespace Slipe.Server.Elements
 {
+    [DefaultElementClass("resource")]
     public class ResourceRootElement: Element
     {
+        [DefaultElementConstructor]
         public ResourceRootElement(MtaElement element) : base(element)
         {
             OnPreStart += (Resource resource) => {

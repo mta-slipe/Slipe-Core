@@ -11,11 +11,13 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui tab (use with tab panel)
     /// </summary>
+    [DefaultElementClass("gui-tab")]
     public class Tab : GuiElement
     {
         private TabPanel parentPanel;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Tab(MtaElement element) : base(element)
         {
             parentPanel = (TabPanel) ElementManager.Instance.GetElement(MtaShared.GetElementParent(element));

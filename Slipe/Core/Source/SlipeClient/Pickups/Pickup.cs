@@ -6,15 +6,18 @@ using System.Numerics;
 using Slipe.Shared.Weapons;
 using Slipe.Shared.Pickups;
 using System.ComponentModel;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Client.Pickups
 {
     /// <summary>
     /// Class for a GTA pickup
     /// </summary>
+    [DefaultElementClass("pickup")]
     public class Pickup : SharedPickup
     {
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Pickup(MtaElement element) : base(element) { }
 
         /// <summary>

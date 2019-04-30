@@ -11,6 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui combo box
     /// </summary>
+    [DefaultElementClass("gui-combobox")]
     public class ComboBox : GuiElement
     {
         private Dictionary<int, ComboBoxItem> items;
@@ -62,6 +63,7 @@ namespace Slipe.Client.Gui
 
         #region Constructors
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public ComboBox(MtaElement element) : base(element)
         {
             items = new Dictionary<int, ComboBoxItem>();

@@ -11,6 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui gridlist
     /// </summary>
+    [DefaultElementClass("gui-gridlist")]
     public class GridList : GuiElement
     {
         private Dictionary<int, GridColumn> columns;
@@ -142,6 +143,7 @@ namespace Slipe.Client.Gui
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public GridList(MtaElement element) : base(element)
         {
             columns = new Dictionary<int, GridColumn>();

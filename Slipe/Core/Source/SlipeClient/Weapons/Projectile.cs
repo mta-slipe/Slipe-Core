@@ -12,6 +12,7 @@ namespace Slipe.Client.Weapons
     /// <summary>
     /// Represents a custom projectile
     /// </summary>
+    [DefaultElementClass("projectile")]
     public class Projectile : PhysicalElement
     {
         #region Properties
@@ -95,6 +96,7 @@ namespace Slipe.Client.Weapons
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Projectile(MtaElement element) : base(element) { }
 
         /// <summary>

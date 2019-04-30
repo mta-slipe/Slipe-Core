@@ -11,6 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui scroll pane
     /// </summary>
+    [DefaultElementClass("gui-scrollpane")]
     public class ScrollPane : GuiElement
     {
         #region Properties
@@ -49,6 +50,7 @@ namespace Slipe.Client.Gui
 
         #region Constructors
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public ScrollPane(MtaElement element) : base(element)
         {
 

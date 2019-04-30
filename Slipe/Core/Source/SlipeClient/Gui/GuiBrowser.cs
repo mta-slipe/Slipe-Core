@@ -12,6 +12,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// GUI variant of a browser element
     /// </summary>
+    [DefaultElementClass("gui-browser")]
     public class GuiBrowser : GuiElement
     {
         private Browser browser;
@@ -22,6 +23,7 @@ namespace Slipe.Client.Gui
         public Browser Browser { get { return browser; } }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public GuiBrowser(MtaElement element) : base(element)
         {
 

@@ -10,6 +10,7 @@ namespace Slipe.Shared.Elements
     /// <summary>
     /// The main Element class representing an OO version of MTA elements
     /// </summary>
+    [DefaultElementClass("element")]
     public class Element
     {
         protected internal MtaElement element;
@@ -101,12 +102,16 @@ namespace Slipe.Shared.Elements
 
         #region Constructors
 
-        public Element() { }
+        public Element()
+        {
+
+        }
 
         /// <summary>
         /// Create an element from a MTA element instance
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Element(MtaElement mtaElement)
         {
             element = mtaElement;

@@ -6,15 +6,18 @@ using System.Numerics;
 using Slipe.Shared.Utilities;
 using Slipe.Shared.Radar;
 using System.ComponentModel;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Client.Radar
 {
     /// <summary>
     /// Class representing a radar area on the minimap
     /// </summary>
+    [DefaultElementClass("radararea")]
     public class RadarArea : SharedRadarArea
     {
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public RadarArea(MtaElement element) : base(element) { }
 
         /// <summary>

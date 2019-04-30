@@ -11,6 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui window
     /// </summary>
+    [DefaultElementClass("gui-window")]
     public class Window : GuiElement
     {
         #region Properties
@@ -50,6 +51,7 @@ namespace Slipe.Client.Gui
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Window(MtaElement element) : base(element)
         {
 

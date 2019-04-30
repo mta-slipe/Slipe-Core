@@ -20,6 +20,7 @@ namespace Slipe.Client.Peds
     /// <summary>
     /// Class of MTA player elements
     /// </summary>
+    [DefaultElementClass("player")]
     public class Player : Ped
     {
         #region Properties
@@ -132,6 +133,7 @@ namespace Slipe.Client.Peds
 
         #region Constructor
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public Player(MtaElement mtaElement) : base(mtaElement) { }
 
         #endregion

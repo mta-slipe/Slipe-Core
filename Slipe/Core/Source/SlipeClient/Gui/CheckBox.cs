@@ -11,6 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// A Cegui checkbox
     /// </summary>
+    [DefaultElementClass("gui-checkbox")]
     public class CheckBox : GuiElement
     {
         /// <summary>
@@ -29,6 +30,7 @@ namespace Slipe.Client.Gui
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
+        [DefaultElementConstructor]
         public CheckBox(MtaElement element) : base(element)
         {
 
