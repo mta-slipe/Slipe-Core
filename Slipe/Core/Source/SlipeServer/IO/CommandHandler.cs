@@ -50,7 +50,7 @@ namespace Slipe.Server.IO
                 this.consoleCallback?.Invoke(command, parameters);
             } else
             {
-                this.callback?.Invoke(element == null ? null : (Player)ElementManager.Instance.GetElement(element), command, parameters);
+                this.callback?.Invoke(element == null ? null : ElementManager.Instance.GetElement<Player>(element), command, parameters);
             }
         }
 

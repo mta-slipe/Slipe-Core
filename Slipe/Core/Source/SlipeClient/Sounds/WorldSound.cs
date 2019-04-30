@@ -157,7 +157,7 @@ namespace Slipe.Client.Sounds
         {
             get
             {
-                return (PhysicalElement)ElementManager.Instance.GetElement(MtaShared.GetElementAttachedTo(element));
+                return ElementManager.Instance.GetElement<PhysicalElement>(MtaShared.GetElementAttachedTo(element));
             }
         }
 

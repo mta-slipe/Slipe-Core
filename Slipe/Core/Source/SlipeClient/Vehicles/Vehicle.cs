@@ -27,7 +27,7 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return (Player)ElementManager.Instance.GetElement(MtaShared.GetVehicleController(element));
+                return ElementManager.Instance.GetElement<Player>(MtaShared.GetVehicleController(element));
             }
         }
 
@@ -42,7 +42,7 @@ namespace Slipe.Client.Vehicles
                 Dictionary<Seat, Player> dictionary = new Dictionary<Seat, Player>();
                 foreach (KeyValuePair<int, MtaElement> entry in elements)
                 {
-                    Player p = (Player)ElementManager.Instance.GetElement(entry.Value);
+                    Player p = ElementManager.Instance.GetElement<Player>(entry.Value);
                     Seat s = (Seat)entry.Key;
                     dictionary.Add(s, p);
                 }
@@ -206,7 +206,7 @@ namespace Slipe.Client.Vehicles
         /// </summary>
         public Player GetOccupant(Seat seat = Seat.FrontLeft)
         {
-            return (Player)ElementManager.Instance.GetElement(MtaShared.GetVehicleOccupant(element, (int)seat));
+            return ElementManager.Instance.GetElement<Player>(MtaShared.GetVehicleOccupant(element, (int)seat));
         }
 
         /// <summary>

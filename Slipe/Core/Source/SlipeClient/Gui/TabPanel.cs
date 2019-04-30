@@ -21,7 +21,7 @@ namespace Slipe.Client.Gui
         {
             get
             {
-                return (Tab) ElementManager.Instance.GetElement(MtaClient.GuiGetSelectedTab(element));
+                return ElementManager.Instance.GetElement<Tab>(MtaClient.GuiGetSelectedTab(element));
             }
             set
             {

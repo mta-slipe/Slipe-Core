@@ -36,7 +36,7 @@ namespace Slipe.Client
         {
             get
             {
-                return (PhysicalElement)ElementManager.Instance.GetElement(MtaClient.GetCameraTarget());
+                return ElementManager.Instance.GetElement<PhysicalElement>(MtaClient.GetCameraTarget());
             }
             set
             {

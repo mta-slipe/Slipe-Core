@@ -20,7 +20,7 @@ namespace Slipe.Client.Gui
         [DefaultElementConstructor]
         public Tab(MtaElement element) : base(element)
         {
-            parentPanel = (TabPanel) ElementManager.Instance.GetElement(MtaShared.GetElementParent(element));
+            parentPanel = ElementManager.Instance.GetElement<TabPanel>(MtaShared.GetElementParent(element));
         }
 
         /// <summary>

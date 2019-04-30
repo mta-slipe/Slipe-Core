@@ -295,7 +295,7 @@ function initEvents()
 
 	for e, v in pairs(events) do
 		addEventHandler(e, root, function(...)
-			local instance = m:GetElement(source)
+			local instance = m:GetElement1(source)
 			if instance and instance[v[1]] then
 				if v[2] == nil or #v[2] == 0 then
 					instance[v[1]]()
@@ -333,7 +333,7 @@ function initEvents()
 	-- Handle the static OnPlayerJoin event and register all player classes
 	if triggerServerEvent == nil then
 		addEventHandler("onPlayerJoin", getRootElement(), function()
-			local player = m:GetElement(source)
+			local player = m:GetElement1(source)
 			local onJoinEvent = Slipe.Server.Peds.Player.OnJoin
 			if onJoinEvent ~= nil then
 				onJoinEvent(player)
@@ -341,7 +341,7 @@ function initEvents()
 		end)
 	else
 		addEventHandler("onClientPlayerJoin", getRootElement(), function()
-			local player = m:GetElement(source)
+			local player = m:GetElement1(source)
 			local onJoinEvent = Slipe.Client.Peds.Player.OnJoin
 			if onJoinEvent ~= nil then
 				onJoinEvent(player)
@@ -349,7 +349,7 @@ function initEvents()
 		end)
 	end
 	for _, element in pairs(getElementsByType("player")) do
-		m:GetElement(element)
+		m:GetElement1(element)
 	end
 end
 

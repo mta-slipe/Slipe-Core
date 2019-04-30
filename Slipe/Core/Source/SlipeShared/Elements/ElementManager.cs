@@ -75,9 +75,9 @@ namespace Slipe.Shared.Elements
         }
 
         /// <summary>
-        /// Gets an element class instance given a certain MTA element
+        /// Gets a generic type class instance given a certain MTA element
         /// </summary>
-        public Element GetElement(MtaElement element)
+        public T GetElement<T>(MtaElement element) where T : Element
         {
             if (element == null)
             {
@@ -116,12 +116,20 @@ namespace Slipe.Shared.Elements
                             ctor(builtElement, element)
                         ]]
                         */
-                        return (Element)builtElement;
+                        return (T)builtElement;
                     }
                 }
                 return null;
             }
-            return elements[element];
+            return (T) elements[element];
+        }
+
+        /// <summary>
+        /// Get an Element given a certain MTA element
+        /// </summary>
+        public Element GetElement(MtaElement element)
+        {
+            return GetElement<Element>(element);
         }
 
         /// <summary>
@@ -132,7 +140,7 @@ namespace Slipe.Shared.Elements
             T[] result = new T[elements.Length];
             for (int i = 0; i < elements.Length; i++)
             {
-                result[i] = (T)Instance.GetElement(elements[i]);
+                result[i] = Instance.GetElement<T>(elements[i]);
             }
             return result;
         }
@@ -162,10 +170,10 @@ namespace Slipe.Shared.Elements
             List<dynamic> mtaElements = MtaShared.GetListFromTable(MtaClient.GetElementsByType(defaultElementTypeNames[typeof(T)], startAt.MTAElement, streamedIn), "element");
             foreach (dynamic mtaElement in mtaElements)
             {
-                Element element = GetElement((MtaElement)mtaElement);
-                if (element != null && element is T)
+                T element = GetElement<T>((MtaElement)mtaElement);
+                if (element != null)
                 {
-                    elements.Add((T)element);
+                    elements.Add(element);
                 }
             }
 

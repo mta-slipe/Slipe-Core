@@ -339,7 +339,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return (SharedVehicle)ElementManager.Instance.GetElement(MtaShared.GetVehicleTowedByVehicle(element));
+                return ElementManager.Instance.GetElement<SharedVehicle>(MtaShared.GetVehicleTowedByVehicle(element));
             }
         }
 

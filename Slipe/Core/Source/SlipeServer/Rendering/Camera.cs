@@ -28,11 +28,11 @@ namespace Slipe.Server.Rendering
         /// <summary>
         /// Get and set the target of this camera
         /// </summary>
-        public Element Target
+        public PhysicalElement Target
         {
             get
             {
-                return ElementManager.Instance.GetElement(MtaServer.GetCameraTarget(player.MTAElement));
+                return ElementManager.Instance.GetElement<PhysicalElement>(MtaServer.GetCameraTarget(player.MTAElement));
             }
             set
             {

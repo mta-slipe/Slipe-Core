@@ -117,7 +117,7 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return (CollisionShape)ElementManager.Instance.GetElement(MtaShared.GetElementColShape(element));
+                return ElementManager.Instance.GetElement<CollisionShape>(MtaShared.GetElementColShape(element));
             }
         }
 
@@ -143,7 +143,7 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return (PhysicalElement)ElementManager.Instance.GetElement(MtaShared.GetLowLODElement(element));
+                return ElementManager.Instance.GetElement<PhysicalElement>(MtaShared.GetLowLODElement(element));
             }
             set
             {
@@ -353,7 +353,7 @@ namespace Slipe.Shared.Elements
         {
             get
             {
-                return (PhysicalElement)ElementManager.Instance.GetElement(MtaShared.GetElementAttachedTo(element));
+                return ElementManager.Instance.GetElement<PhysicalElement>(MtaShared.GetElementAttachedTo(element));
             }
         }
 

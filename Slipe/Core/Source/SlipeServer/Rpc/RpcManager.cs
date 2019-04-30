@@ -36,8 +36,7 @@ namespace Slipe.Server.Rpc
             {
                 if (RegisteredRPCs.ContainsKey(eventName))
                 {
-                    Element element = ElementManager.Instance.GetElement(source);
-                    Player player = (Player)element;
+                    Player player = ElementManager.Instance.GetElement<Player>(source);
                     RegisteredRPCs[eventName].Invoke(player, p1);
                 }
             };

@@ -52,7 +52,7 @@ namespace Slipe.Shared.Peds
             {
                 try
                 {
-                    return (PhysicalElement)ElementManager.Instance.GetElement(MtaShared.GetPedContactElement(element));
+                    return ElementManager.Instance.GetElement<PhysicalElement>(MtaShared.GetPedContactElement(element));
                 }
                 catch (MtaException)
                 {
@@ -82,7 +82,7 @@ namespace Slipe.Shared.Peds
             {
                 try
                 {
-                    return (SharedVehicle)ElementManager.Instance.GetElement(MtaShared.GetPedOccupiedVehicle(element));
+                    return ElementManager.Instance.GetElement<SharedVehicle>(MtaShared.GetPedOccupiedVehicle(element));
                 }
                 catch (MtaException)
                 {
@@ -231,7 +231,7 @@ namespace Slipe.Shared.Peds
             {
                 try
                 {
-                    return (PhysicalElement)ElementManager.Instance.GetElement(MtaShared.GetPedTarget(element));
+                    return ElementManager.Instance.GetElement<PhysicalElement>(MtaShared.GetPedTarget(element));
                 }
                 catch (MtaException)
                 {

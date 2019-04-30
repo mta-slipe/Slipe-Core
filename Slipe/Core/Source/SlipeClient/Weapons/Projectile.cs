@@ -41,7 +41,7 @@ namespace Slipe.Client.Weapons
             {
                 try
                 {
-                    return (Player)ElementManager.Instance.GetElement(MtaClient.GetProjectileCreator(element));
+                    return ElementManager.Instance.GetElement<Player>(MtaClient.GetProjectileCreator(element));
                 } catch(MtaException)
                 {
                     return null;
@@ -59,7 +59,7 @@ namespace Slipe.Client.Weapons
             {
                 try
                 {
-                    return (PhysicalElement)ElementManager.Instance.GetElement(MtaClient.GetProjectileTarget(element));
+                    return ElementManager.Instance.GetElement<PhysicalElement>(MtaClient.GetProjectileTarget(element));
                 }
                 catch (MtaException)
                 {

@@ -59,7 +59,7 @@ namespace Slipe.Server.Elements
         /// </summary>
         public static Player GetSyncer(this PhysicalElement source)
         {
-            return (Player)ElementManager.Instance.GetElement(MtaServer.GetElementSyncer(source.MTAElement));
+            return ElementManager.Instance.GetElement<Player>(MtaServer.GetElementSyncer(source.MTAElement));
         }
 
         /// <summary>

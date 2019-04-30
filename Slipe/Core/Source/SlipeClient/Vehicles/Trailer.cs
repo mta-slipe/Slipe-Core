@@ -20,7 +20,7 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                return (Vehicle) ElementManager.Instance.GetElement(MtaShared.GetVehicleTowingVehicle(element));
+                return ElementManager.Instance.GetElement<Vehicle>(MtaShared.GetVehicleTowingVehicle(element));
             }
             set
             {

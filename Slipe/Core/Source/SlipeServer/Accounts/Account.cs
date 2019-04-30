@@ -84,7 +84,7 @@ namespace Slipe.Server.Accounts
             {
                 try
                 {
-                    return (Player)ElementManager.Instance.GetElement(MtaServer.GetAccountPlayer(MTAAccount));
+                    return ElementManager.Instance.GetElement<Player>(MtaServer.GetAccountPlayer(MTAAccount));
                 }
                 catch (MtaException)
                 {

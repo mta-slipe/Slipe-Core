@@ -32,7 +32,7 @@ namespace Slipe.Client.Peds
         {
             get
             {
-                return (Team)ElementManager.Instance.GetElement(MtaShared.GetPlayerTeam(element));
+                return ElementManager.Instance.GetElement<Team>(MtaShared.GetPlayerTeam(element));
             }
         }
 
@@ -147,7 +147,7 @@ namespace Slipe.Client.Peds
         {
             try
             {
-                return (Player)ElementManager.Instance.GetElement(MtaShared.GetPlayerFromName(name));
+                return ElementManager.Instance.GetElement<Player>(MtaShared.GetPlayerFromName(name));
             }
             catch (MtaException)
             {

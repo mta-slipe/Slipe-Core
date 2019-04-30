@@ -98,7 +98,7 @@ namespace Slipe.Client.SightLines
             {
                 CollisionPosition = new Vector3(d.Item2, d.Item3, d.Item4);
                 if (d.Item5 != null)
-                    HitElement = (PhysicalElement)ElementManager.Instance.GetElement(d.Item5);
+                    HitElement = ElementManager.Instance.GetElement<PhysicalElement>(d.Item5);
                 Normal = new Vector3(d.Item6, d.Item7, d.Rest.Item1);
                 SurfaceMaterial = (SurfaceMaterialType)d.Rest.Item2;
                 Lighting = d.Rest.Item3;

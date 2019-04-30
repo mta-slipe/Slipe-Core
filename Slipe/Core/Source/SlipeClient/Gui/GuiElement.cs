@@ -82,7 +82,7 @@ namespace Slipe.Client.Gui
             get
             {
                 (_, MtaElement e) = MtaClient.GuiGetFont(element);
-                return (GuiFont)ElementManager.Instance.GetElement(e);
+                return ElementManager.Instance.GetElement<GuiFont>(e);
             }
             set
             {
