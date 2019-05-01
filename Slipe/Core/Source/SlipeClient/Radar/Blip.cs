@@ -18,7 +18,6 @@ namespace Slipe.Client.Radar
     {
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Blip(MtaElement element) : base(element) { }
 
         /// <summary>

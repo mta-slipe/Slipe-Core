@@ -115,7 +115,6 @@ namespace Slipe.Client.Lights
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public SearchLight(MtaElement element) : base(element) { }
 
         /// <summary>

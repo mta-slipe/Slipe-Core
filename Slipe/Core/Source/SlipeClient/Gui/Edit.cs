@@ -80,7 +80,6 @@ namespace Slipe.Client.Gui
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Edit(MtaElement element) : base(element)
         {
 

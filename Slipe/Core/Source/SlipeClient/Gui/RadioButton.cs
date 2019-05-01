@@ -30,7 +30,6 @@ namespace Slipe.Client.Gui
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public RadioButton(MtaElement element) : base(element)
         {
 

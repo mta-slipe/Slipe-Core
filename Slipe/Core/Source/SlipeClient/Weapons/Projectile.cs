@@ -96,7 +96,6 @@ namespace Slipe.Client.Weapons
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Projectile(MtaElement element) : base(element) { }
 
         /// <summary>

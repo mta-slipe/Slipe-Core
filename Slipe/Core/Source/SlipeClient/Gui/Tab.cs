@@ -17,7 +17,6 @@ namespace Slipe.Client.Gui
         private TabPanel parentPanel;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Tab(MtaElement element) : base(element)
         {
             parentPanel = ElementManager.Instance.GetElement<TabPanel>(MtaShared.GetElementParent(element));

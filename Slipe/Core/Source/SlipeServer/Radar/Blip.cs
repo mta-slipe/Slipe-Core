@@ -17,7 +17,6 @@ namespace Slipe.Server.Radar
     public class Blip : SharedBlip
     {
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Blip(MtaElement element) : base(element) { }
 
         /// <summary>

@@ -57,7 +57,6 @@ namespace Slipe.Client.Game
         #endregion
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Team(MtaElement team) : base(team)
         {
 

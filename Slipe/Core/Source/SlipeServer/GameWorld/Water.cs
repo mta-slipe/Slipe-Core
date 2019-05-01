@@ -16,7 +16,6 @@ namespace Slipe.Server.GameWorld
     public class Water : SharedWater
     {
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Water(MtaElement element) : base(element) { }
 
         /// <summary>

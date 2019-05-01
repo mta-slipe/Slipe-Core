@@ -334,7 +334,6 @@ namespace Slipe.Server.Peds
         #region Constructor
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Player(MtaElement mtaElement) : base(mtaElement)
         {
             Camera = new Camera(this);

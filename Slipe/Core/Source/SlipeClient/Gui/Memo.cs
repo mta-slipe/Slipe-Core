@@ -66,7 +66,6 @@ namespace Slipe.Client.Gui
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Memo(MtaElement element) : base(element)
         {
 

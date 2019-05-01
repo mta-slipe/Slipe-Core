@@ -63,7 +63,6 @@ namespace Slipe.Client.Gui
 
         #region Constructors
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public ComboBox(MtaElement element) : base(element)
         {
             items = new Dictionary<int, ComboBoxItem>();

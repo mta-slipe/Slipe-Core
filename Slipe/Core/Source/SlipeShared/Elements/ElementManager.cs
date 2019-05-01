@@ -91,8 +91,6 @@ namespace Slipe.Shared.Elements
             {
                 string mtaElementType = MtaShared.GetElementType(element);
                 Type elementType;
-                object builtElement = null;
-
                 try
                 {
                     elementType = defaultElementTypes[mtaElementType];
@@ -100,26 +98,7 @@ namespace Slipe.Shared.Elements
                 {
                     elementType = typeof(Element);
                 }
-
-                foreach (MethodInfo info in elementType.GetMethods())
-                {
-                    object[] customAttributes = info.GetCustomAttributes(typeof(DefaultElementConstructorAttribute), false);
-                    foreach (DefaultElementConstructorAttribute a in customAttributes)
-                    {
-                        /*
-                        [[
-                            builtElement = setmetatable({}, elementType[1])
-                            local ctor = info.metadata[3]
-                            if ctor == nil then
-                                ctor = elementType[1].__ctor__
-                            end
-                            ctor(builtElement, element)
-                        ]]
-                        */
-                        return (T)builtElement;
-                    }
-                }
-                return null;
+                return (T)Activator.CreateInstance(elementType, element);
             }
             return (T) elements[element];
         }

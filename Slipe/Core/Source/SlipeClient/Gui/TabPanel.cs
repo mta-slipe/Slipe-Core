@@ -32,7 +32,6 @@ namespace Slipe.Client.Gui
         #region Constructor
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public TabPanel(MtaElement element) : base(element)
         {
 

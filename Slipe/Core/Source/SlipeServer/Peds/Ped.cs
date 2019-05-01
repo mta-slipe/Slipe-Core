@@ -99,7 +99,6 @@ namespace Slipe.Server.Peds
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Ped(MtaElement element) : base(element)
         {
 

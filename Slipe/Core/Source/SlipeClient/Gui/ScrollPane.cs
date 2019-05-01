@@ -50,7 +50,6 @@ namespace Slipe.Client.Gui
 
         #region Constructors
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public ScrollPane(MtaElement element) : base(element)
         {
 

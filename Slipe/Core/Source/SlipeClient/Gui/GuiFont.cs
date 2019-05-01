@@ -13,7 +13,6 @@ namespace Slipe.Client.Gui
     public class GuiFont : Element
     {
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public GuiFont(MtaElement element) : base(element)
         {
 

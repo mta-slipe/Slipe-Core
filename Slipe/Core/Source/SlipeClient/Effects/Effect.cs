@@ -45,7 +45,6 @@ namespace Slipe.Client.Effects
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Effect(MtaElement element) : base(element) { }
 
         /// <summary>

@@ -71,7 +71,6 @@ namespace Slipe.Client.Browsers
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Browser(MtaElement element) : base(element)
         {
 

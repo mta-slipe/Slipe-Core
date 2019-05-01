@@ -64,7 +64,6 @@ namespace Slipe.Client.GameWorld
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public WorldObject(MtaElement element) : base(element)
         {
 

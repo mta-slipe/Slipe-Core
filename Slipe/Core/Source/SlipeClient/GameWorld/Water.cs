@@ -31,7 +31,6 @@ namespace Slipe.Client.GameWorld
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Water(MtaElement element) : base(element) { }
 
         /// <summary>

@@ -133,7 +133,6 @@ namespace Slipe.Client.Peds
 
         #region Constructor
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Player(MtaElement mtaElement) : base(mtaElement) { }
 
         #endregion

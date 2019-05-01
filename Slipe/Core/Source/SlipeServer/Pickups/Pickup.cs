@@ -46,7 +46,6 @@ namespace Slipe.Server.Pickups
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Pickup(MtaElement element) : base(element)
         {
         }

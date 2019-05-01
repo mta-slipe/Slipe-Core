@@ -15,7 +15,6 @@ namespace Slipe.Client.Gui
     public class Button : GuiElement
     {
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Button(MtaElement element) : base(element)
         {
 

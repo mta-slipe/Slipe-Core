@@ -15,7 +15,6 @@ namespace Slipe.Server.Elements
     [DefaultElementClass("root")]
     public class RootElement: Element
     {
-        [DefaultElementConstructor]
         public RootElement(MtaElement element) : base(element)
         {
             OnAccountDataChange += (Account account, string key, string value) => { account.HandleDataChange(key, value); };

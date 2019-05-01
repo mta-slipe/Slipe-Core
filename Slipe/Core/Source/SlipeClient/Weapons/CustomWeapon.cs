@@ -87,7 +87,6 @@ namespace Slipe.Client.Weapons
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public CustomWeapon(MtaElement element) : base(element) { }
 
         /// <summary>

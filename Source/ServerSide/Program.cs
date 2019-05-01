@@ -27,7 +27,6 @@ namespace ServerSide
     [DefaultElementClass("player")]
     public class MyPlayer : Player
     {
-        [DefaultElementConstructor]
         public MyPlayer(MtaElement element) : base(element)
         {
             Console.WriteLine("We instantiated a MyPlayer as a default player yay! :D");
@@ -38,7 +37,11 @@ namespace ServerSide
     [DefaultElementClass("vehicle")]
     public class MyVehicle : Vehicle
     {
-        [DefaultElementConstructor]
+        public MyVehicle(Vector3 pos, bool test, Vector2 bla) : base(VehicleModel.Alpha, pos)
+        {
+            PrimaryColor = Color.ForestGreen;
+        }
+
         public MyVehicle(MtaElement element) : base(element)
         {
             PrimaryColor = Color.ForestGreen;
@@ -47,6 +50,7 @@ namespace ServerSide
                 player.Model = (int) PedModel.army;
             };
         }
+
     }
 
 }

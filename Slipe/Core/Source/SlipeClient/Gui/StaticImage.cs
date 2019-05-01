@@ -29,7 +29,6 @@ namespace Slipe.Client.Gui
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public StaticImage(MtaElement element) : base(element)
         {
 

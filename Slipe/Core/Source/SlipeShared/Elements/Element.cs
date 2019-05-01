@@ -111,7 +111,6 @@ namespace Slipe.Shared.Elements
         /// Create an element from a MTA element instance
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Element(MtaElement mtaElement)
         {
             element = mtaElement;

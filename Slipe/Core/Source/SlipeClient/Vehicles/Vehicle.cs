@@ -176,7 +176,6 @@ namespace Slipe.Client.Vehicles
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Vehicle(MtaElement element) : base(element) { }
 
         /// <summary>

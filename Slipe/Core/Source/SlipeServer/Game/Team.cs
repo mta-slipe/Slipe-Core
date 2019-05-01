@@ -84,7 +84,6 @@ namespace Slipe.Server.Game
 
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Team(MtaElement team) : base(team)
         {
 

@@ -17,7 +17,6 @@ namespace Slipe.Server.Markers
     public class Marker : SharedMarker
     {
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Marker(MtaElement element) : base(element) { }
 
         /// <summary>

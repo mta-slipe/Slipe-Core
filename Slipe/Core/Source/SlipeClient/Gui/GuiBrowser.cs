@@ -23,7 +23,6 @@ namespace Slipe.Client.Gui
         public Browser Browser { get { return browser; } }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public GuiBrowser(MtaElement element) : base(element)
         {
 

@@ -17,7 +17,6 @@ namespace Slipe.Server.GameWorld
     {
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public WorldObject(MtaElement element) : base(element)
         {
 

@@ -143,7 +143,6 @@ namespace Slipe.Client.Gui
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public GridList(MtaElement element) : base(element)
         {
             columns = new Dictionary<int, GridColumn>();

@@ -32,7 +32,6 @@ namespace Slipe.Shared.CollisionShapes
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public CollisionShape(MtaElement element) : base(element)
         {
 

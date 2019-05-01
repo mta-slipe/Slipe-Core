@@ -17,7 +17,6 @@ namespace Slipe.Client.Pickups
     public class Pickup : SharedPickup
     {
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [DefaultElementConstructor]
         public Pickup(MtaElement element) : base(element) { }
 
         /// <summary>
