@@ -98,7 +98,14 @@ namespace Slipe.Shared.Elements
                 {
                     elementType = typeof(Element);
                 }
-                return (T)Activator.CreateInstance(elementType, element);
+                try
+                {
+                    return (T)Activator.CreateInstance(elementType, element);
+                } catch(Exception)
+                {
+                    return null;
+                }
+                
             }
             return (T) elements[element];
         }

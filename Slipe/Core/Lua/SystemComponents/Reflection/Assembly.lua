@@ -465,7 +465,7 @@ local MethodInfo = define("System.Reflection.MethodInfo", {
     local t = {}
     local metadata = this.metadata
     if metadata then
-      local index = 2-- getMethodAttributesIndex(metadata)
+      local index = getMethodAttributesIndex(metadata)
       fillMetadataCustomAttributes(t, metadata, index, attributeType)
     end
     return arrayFromTable(t, System.Attribute)

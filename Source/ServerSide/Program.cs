@@ -37,17 +37,23 @@ namespace ServerSide
     [DefaultElementClass("vehicle")]
     public class MyVehicle : Vehicle
     {
+        /// <summary>
+        /// @CSharpLua.Metadata
+        /// </summary>
         public MyVehicle(Vector3 pos, bool test, Vector2 bla) : base(VehicleModel.Alpha, pos)
         {
             PrimaryColor = Color.ForestGreen;
         }
 
+        /// <summary>
+        /// @CSharpLua.Metadata
+        /// </summary>
         public MyVehicle(MtaElement element) : base(element)
         {
             PrimaryColor = Color.ForestGreen;
             OnEnter += (Player player, Seat seat, Player jacked) =>
             {
-                player.Model = (int) PedModel.army;
+                player.Model = (int)PedModel.army;
             };
         }
 
