@@ -9,7 +9,7 @@ using System.ComponentModel;
 
 namespace Slipe.Client.Lights
 {
-    [DefaultElementClass("light")]
+    [DefaultElementClass(ElementType.Light)]
     public class Light : PhysicalElement
     {
         #region Properties

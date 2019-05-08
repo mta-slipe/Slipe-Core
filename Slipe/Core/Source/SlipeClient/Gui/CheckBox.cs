@@ -11,7 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// A Cegui checkbox
     /// </summary>
-    [DefaultElementClass("gui-checkbox")]
+    [DefaultElementClass(ElementType.GuiCheckBox)]
     public class CheckBox : GuiElement
     {
         /// <summary>

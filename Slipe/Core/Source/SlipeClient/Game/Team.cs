@@ -12,7 +12,7 @@ namespace Slipe.Client.Game
     /// <summary>
     /// Class representing a team of players
     /// </summary>
-    [DefaultElementClass("team")]
+    [DefaultElementClass(ElementType.Team)]
     public class Team : Element
     {
         #region Properties

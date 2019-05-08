@@ -12,7 +12,7 @@ using Slipe.Server.Game;
 
 namespace Slipe.Server.Elements
 {
-    [DefaultElementClass("root")]
+    [DefaultElementClass(ElementType.Root)]
     public class RootElement: Element
     {
         public RootElement(MtaElement element) : base(element)

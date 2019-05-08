@@ -12,7 +12,7 @@ namespace Slipe.Client.Weapons
     /// <summary>
     /// Represents a custom projectile
     /// </summary>
-    [DefaultElementClass("projectile")]
+    [DefaultElementClass(ElementType.Projectile)]
     public class Projectile : PhysicalElement
     {
         #region Properties

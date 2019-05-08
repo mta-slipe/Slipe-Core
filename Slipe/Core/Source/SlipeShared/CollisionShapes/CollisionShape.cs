@@ -11,7 +11,7 @@ namespace Slipe.Shared.CollisionShapes
     /// <summary>
     /// Base class for collision shapes
     /// </summary>
-    [DefaultElementClass("colshape")]
+    [DefaultElementClass(ElementType.ColShape)]
     public class CollisionShape: PhysicalElement
     {
         /// <summary>

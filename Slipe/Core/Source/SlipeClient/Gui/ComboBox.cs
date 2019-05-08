@@ -11,7 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui combo box
     /// </summary>
-    [DefaultElementClass("gui-combobox")]
+    [DefaultElementClass(ElementType.GuiComboBox)]
     public class ComboBox : GuiElement
     {
         private Dictionary<int, ComboBoxItem> items;

@@ -10,7 +10,7 @@ namespace Slipe.Shared.Elements
     /// <summary>
     /// The main Element class representing an OO version of MTA elements
     /// </summary>
-    [DefaultElementClass("element")]
+    [DefaultElementClass(ElementType.Element)]
     public class Element
     {
         protected internal MtaElement element;

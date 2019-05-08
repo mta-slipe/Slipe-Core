@@ -11,7 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// A Cegui single line text field
     /// </summary>
-    [DefaultElementClass("gui-edit")]
+    [DefaultElementClass(ElementType.GuiEdit)]
     public class Edit : EditableGuiElement
     {
         #region Properties

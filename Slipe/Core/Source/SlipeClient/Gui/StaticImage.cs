@@ -11,7 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a static Cegui image
     /// </summary>
-    [DefaultElementClass("gui-staticimage")]
+    [DefaultElementClass(ElementType.GuiStaticImage)]
     public class StaticImage : GuiElement
     {
         /// <summary>

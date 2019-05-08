@@ -11,7 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui scroll bar
     /// </summary>
-    [DefaultElementClass("gui-scrollbar")]
+    [DefaultElementClass(ElementType.GuiScrollBar)]
     public class ScrollBar : GuiElement
     {
         /// <summary>

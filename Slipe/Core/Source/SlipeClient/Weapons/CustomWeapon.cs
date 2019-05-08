@@ -17,7 +17,7 @@ namespace Slipe.Client.Weapons
     /// <summary>
     /// Represents a custom weapon that can be placed in the world
     /// </summary>
-    [DefaultElementClass("weapon")]
+    [DefaultElementClass(ElementType.Weapon)]
     public class CustomWeapon : PhysicalElement
     {
         #region Properties

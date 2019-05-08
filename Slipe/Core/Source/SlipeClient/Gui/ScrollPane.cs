@@ -11,7 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui scroll pane
     /// </summary>
-    [DefaultElementClass("gui-scrollpane")]
+    [DefaultElementClass(ElementType.GuiScrollPane)]
     public class ScrollPane : GuiElement
     {
         #region Properties

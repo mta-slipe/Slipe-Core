@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Slipe.Server.Elements
 {
-    [DefaultElementClass("resource")]
+    [DefaultElementClass(ElementType.Resource)]
     public class ResourceRootElement: Element
     {
         public ResourceRootElement(MtaElement element) : base(element)

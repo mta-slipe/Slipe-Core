@@ -14,7 +14,7 @@ namespace Slipe.Server.Peds
     /// <summary>
     /// Represents a pedestrian 
     /// </summary>
-    [DefaultElementClass("ped")]
+    [DefaultElementClass(ElementType.Ped)]
     public class Ped : SharedPed
     {
         #region Properties

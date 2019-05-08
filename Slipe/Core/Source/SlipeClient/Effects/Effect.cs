@@ -11,7 +11,7 @@ namespace Slipe.Client.Effects
     /// <summary>
     /// Represents a positionable effect
     /// </summary>
-    [DefaultElementClass("effect")]
+    [DefaultElementClass(ElementType.Effect)]
     public class Effect : PhysicalElement
     {
         /// <summary>

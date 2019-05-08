@@ -12,7 +12,7 @@ namespace Slipe.Server.GameWorld
     /// <summary>
     /// Class used to create bodies of water on the map
     /// </summary>
-    [DefaultElementClass("water")]
+    [DefaultElementClass(ElementType.Water)]
     public class Water : SharedWater
     {
         [EditorBrowsable(EditorBrowsableState.Never)]

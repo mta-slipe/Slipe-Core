@@ -16,7 +16,7 @@ namespace Slipe.Client.Vehicles
     /// <summary>
     /// Class that represents vehicles in the world
     /// </summary>
-    [DefaultElementClass("vehicle")]
+    [DefaultElementClass(ElementType.Vehicle)]
     public class Vehicle : SharedVehicle
     {
         #region Misc. Properties

@@ -11,7 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui gridlist
     /// </summary>
-    [DefaultElementClass("gui-gridlist")]
+    [DefaultElementClass(ElementType.GuiGridList)]
     public class GridList : GuiElement
     {
         private Dictionary<int, GridColumn> columns;

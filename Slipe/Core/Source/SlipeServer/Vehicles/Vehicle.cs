@@ -11,7 +11,7 @@ using Slipe.Shared.CollisionShapes;
 
 namespace Slipe.Server.Vehicles
 {
-    [DefaultElementClass("vehicle")]
+    [DefaultElementClass(ElementType.Vehicle)]
     public class Vehicle : SharedVehicle
     {
         private Sirens s_sirens;

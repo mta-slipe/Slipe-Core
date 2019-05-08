@@ -20,7 +20,7 @@ namespace Slipe.Client.Peds
     /// <summary>
     /// Class of MTA player elements
     /// </summary>
-    [DefaultElementClass("player")]
+    [DefaultElementClass(ElementType.Player)]
     public class Player : Ped
     {
         #region Properties

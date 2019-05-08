@@ -13,7 +13,7 @@ namespace Slipe.Client.Radar
     /// <summary>
     /// Class representing a radar area on the minimap
     /// </summary>
-    [DefaultElementClass("radararea")]
+    [DefaultElementClass(ElementType.RadarArea)]
     public class RadarArea : SharedRadarArea
     {
         [EditorBrowsable(EditorBrowsableState.Never)]

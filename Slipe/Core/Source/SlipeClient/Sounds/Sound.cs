@@ -11,7 +11,7 @@ namespace Slipe.Client.Sounds
     /// <summary>
     /// Represents a sound played for the player
     /// </summary>
-    [DefaultElementClass("sound")]
+    [DefaultElementClass(ElementType.Sound)]
     public class Sound : Element
     {
         #region Properties

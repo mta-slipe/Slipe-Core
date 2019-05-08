@@ -13,7 +13,7 @@ namespace Slipe.Client.Radar
     /// <summary>
     /// Class representing a minimap blip
     /// </summary>
-    [DefaultElementClass("blip")]
+    [DefaultElementClass(ElementType.Blip)]
     public class Blip : SharedBlip
     {
 

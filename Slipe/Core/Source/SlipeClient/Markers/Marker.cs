@@ -13,7 +13,7 @@ namespace Slipe.Client.Markers
     /// <summary>
     /// Class that represents different types of markers
     /// </summary>
-    [DefaultElementClass("marker")]
+    [DefaultElementClass(ElementType.Marker)]
     public class Marker : SharedMarker
     {
         [EditorBrowsable(EditorBrowsableState.Never)]

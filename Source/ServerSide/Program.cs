@@ -24,7 +24,7 @@ namespace ServerSide
         }
     }
 
-    [DefaultElementClass("player")]
+    [DefaultElementClass(ElementType.Player)]
     public class MyPlayer : Player
     {
         public MyPlayer(MtaElement element) : base(element)
@@ -34,7 +34,7 @@ namespace ServerSide
         }
     }
 
-    [DefaultElementClass("vehicle")]
+    [DefaultElementClass(ElementType.Vehicle)]
     public class MyVehicle : Vehicle
     {
         public MyVehicle(MtaElement element) : base(element)

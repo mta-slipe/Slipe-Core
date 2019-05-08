@@ -12,7 +12,7 @@ namespace Slipe.Server.GameWorld
     /// <summary>
     /// Class representing an Object in MTA
     /// </summary>
-    [DefaultElementClass("object")]
+    [DefaultElementClass(ElementType.Object)]
     public class WorldObject : SharedWorldObject
     {
 

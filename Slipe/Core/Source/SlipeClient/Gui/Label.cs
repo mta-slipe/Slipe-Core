@@ -12,7 +12,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui label
     /// </summary>
-    [DefaultElementClass("gui-label")]
+    [DefaultElementClass(ElementType.GuiLabel)]
     public class Label : GuiElement
     {
         #region Properties

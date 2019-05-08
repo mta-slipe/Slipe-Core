@@ -13,7 +13,7 @@ namespace Slipe.Client.GameWorld
     /// <summary>
     /// Class representing an object in the GTA world
     /// </summary>
-    [DefaultElementClass("object")]
+    [DefaultElementClass(ElementType.Object)]
     public class WorldObject : SharedWorldObject
     {
         #region Properties

@@ -13,7 +13,7 @@ namespace Slipe.Client.Pickups
     /// <summary>
     /// Class for a GTA pickup
     /// </summary>
-    [DefaultElementClass("pickup")]
+    [DefaultElementClass(ElementType.Pickup)]
     public class Pickup : SharedPickup
     {
         [EditorBrowsable(EditorBrowsableState.Never)]

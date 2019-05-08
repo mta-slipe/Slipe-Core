@@ -12,7 +12,7 @@ namespace Slipe.Client.Browsers
     /// <summary>
     /// Class that wraps MTA browsers
     /// </summary>
-    [DefaultElementClass("browser")]
+    [DefaultElementClass(ElementType.Browser)]
     public class Browser : Element
     {
         #region Properties

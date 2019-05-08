@@ -13,7 +13,7 @@ namespace Slipe.Client.Lights
     /// <summary>
     /// This function creates a searchlight. A searchlight is a spotlight which looks like the one available in the Police Maverick.
     /// </summary>
-    [DefaultElementClass("searchlight")]
+    [DefaultElementClass(ElementType.SearchLight)]
     public class SearchLight : Element
     {
         protected PhysicalElement toAttached;

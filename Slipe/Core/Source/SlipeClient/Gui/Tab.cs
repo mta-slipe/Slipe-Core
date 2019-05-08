@@ -11,7 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui tab (use with tab panel)
     /// </summary>
-    [DefaultElementClass("gui-tab")]
+    [DefaultElementClass(ElementType.GuiTab)]
     public class Tab : GuiElement
     {
         private TabPanel parentPanel;

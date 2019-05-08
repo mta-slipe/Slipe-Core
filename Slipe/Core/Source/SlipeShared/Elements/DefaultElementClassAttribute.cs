@@ -10,9 +10,23 @@ namespace Slipe.Shared.Elements
     {
         readonly string elementType;
 
-        public DefaultElementClassAttribute(string elementType)
+        /// <summary>
+        /// Designate a class to always be the default class when Mta elements are wrapped in Slipe classes
+        /// </summary>
+        /// <param name="elementType">A string representation of a custom element type</param>
+        public DefaultElementClassAttribute(string type)
         {
-            this.elementType = elementType;
+            elementType = type;
+        }
+
+        /// <summary>
+        /// Designate a class to always be the default class when Mta elements are wrapped in Slipe classes
+        /// </summary>
+        /// <param name="type">An enum representing the element type</param>
+        public DefaultElementClassAttribute(ElementType type)
+        {
+            elementType = type.ToString().ToLower();
+            elementType = elementType.Replace("gui", "gui-");
         }
 
         public string ElementType

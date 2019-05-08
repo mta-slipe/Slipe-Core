@@ -11,7 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui radio button
     /// </summary>
-    [DefaultElementClass("gui-radiobutton")]
+    [DefaultElementClass(ElementType.GuiRadioButton)]
     public class RadioButton : GuiElement
     {
         /// <summary>

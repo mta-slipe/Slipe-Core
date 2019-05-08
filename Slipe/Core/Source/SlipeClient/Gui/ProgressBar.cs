@@ -11,7 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui progress bar
     /// </summary>
-    [DefaultElementClass("gui-progressbar")]
+    [DefaultElementClass(ElementType.GuiProgressBar)]
     public class ProgressBar : GuiElement
     {
         /// <summary>

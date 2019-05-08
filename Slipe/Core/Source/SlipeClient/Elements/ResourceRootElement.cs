@@ -8,7 +8,7 @@ using Slipe.Client.Game;
 
 namespace Slipe.Client.Elements
 {
-    [DefaultElementClass("resource")]
+    [DefaultElementClass(ElementType.Resource)]
     public class ResourceRootElement : Element
     {
         public ResourceRootElement(MtaElement element) : base(element)

@@ -14,7 +14,7 @@ namespace Slipe.Server.Pickups
     /// <summary>
     /// Class for a GTA pickup
     /// </summary>
-    [DefaultElementClass("pickup")]
+    [DefaultElementClass(ElementType.Pickup)]
     public class Pickup : SharedPickup
     {
         /// <summary>

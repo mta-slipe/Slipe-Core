@@ -11,7 +11,7 @@ namespace Slipe.Client.Gui
     /// <summary>
     /// Represents a Cegui window
     /// </summary>
-    [DefaultElementClass("gui-window")]
+    [DefaultElementClass(ElementType.GuiWindow)]
     public class Window : GuiElement
     {
         #region Properties
