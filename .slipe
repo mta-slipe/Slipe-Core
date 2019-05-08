@@ -12,8 +12,7 @@
   "assetDirectories": [
     {
       "path": "Assets",
-      "downloads": false,
-      "extension": null
+      "downloads": false
     }
   ],
   "modules": [
@@ -34,6 +33,9 @@
       "dlls": [
         "SlipeMTADefinitions.dll",
         "Slipe.Sql.dll"
+      ],
+      "attributes": [
+        "Slipe.Shared.Elements.DefaultElementClassAttribute"
       ],
       "systemComponents": [
         "Core.lua",
