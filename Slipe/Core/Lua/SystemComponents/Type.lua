@@ -54,7 +54,8 @@ local select = select
 local unpack = table.unpack
 local floor = math.floor
 
-local typeof
+local Type, typeof
+
 local function isGenericName(name)
   return name:byte(#name) == 93
 end
@@ -100,10 +101,10 @@ local function getInterfaces(this)
     local count = 1
     local p = this[1]
     repeat
-      local interfacesCls = p.interface
-      if interfacesCls ~= nil then
-        for i = 1, #interfacesCls do
-          interfaces[count] = typeof(interfacesCls[i])
+      local interface = p.interface
+      if interface ~= nil then
+        for i = 1, #interface do
+          interfaces[count] = typeof(interface[i])
           count = count + 1
         end
       end
@@ -143,9 +144,9 @@ local function isAssignableFrom(this, c)
   else 
     return isSubclassOf(c, this)
   end
-end 
+end
 
-local Type = System.define("System.Type", {
+Type = System.define("System.Type", {
   Equals = System.equals,
   getIsGenericType = function (this)
     return isGenericName(this[1].__name__)
@@ -431,8 +432,8 @@ local function tryCallConstructor(cls, ...)
   if type(cls.__ctor__) == "table" then
     if cls.__metadata__ and cls.__metadata__.methods then
       local methods = cls.__metadata__.methods
-      local args = {...}
-      for i=1, #methods do
+      local args = { ... }
+      for i = 1, #methods do
         if methods[i][1] == ".ctor" then 
           local index = 4
           local matched = true
@@ -453,7 +454,7 @@ local function tryCallConstructor(cls, ...)
       -- For backward compability we use the first constructor if no metadata is present, this can later be changed to throwing the exception below
       return new(cls, 1, ...)
       -- throw(MissingMethodException("CSharp.lua can't find a constructor out of multiple constructors in class ".. typeof(cls):getName() .." without defined metadata, use @CSharpLua.Metadata at constructors"))
-    end    
+    end
   else
     return cls(...)
   end
