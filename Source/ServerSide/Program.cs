@@ -8,6 +8,7 @@ using Slipe.Shared.Utilities;
 using Slipe.Shared.Vehicles;
 using System;
 using System.Numerics;
+using Slipe.Shared.Rendering;
 
 namespace ServerSide
 {
@@ -29,8 +30,13 @@ namespace ServerSide
     {
         public MyPlayer(MtaElement element) : base(element)
         {
-            Console.WriteLine("We instantiated a MyPlayer as a default player yay! :D");
-            Health -= 20;
+            // Spawn a player in Blueberry
+            OnJoin += (Player p) =>
+            {
+                p.Spawn(new Vector3(0, 0, 5));
+                p.Camera.Target = p;
+                p.Camera.Fade(CameraFade.In);
+            };
         }
     }
 

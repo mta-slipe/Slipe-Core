@@ -18,6 +18,8 @@
     href: sql.md
   - name: Remote procedure calls
     href: rpc.md
+  - name: Inheritance
+    href: inheritance.md
   - name: Snippets
     href: snippets.md
 - name: Roadmap
