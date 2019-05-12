@@ -40,17 +40,33 @@ In some cases you want to apply a new default class to all elements of a specifi
 This example extends the base player class and adds some functionality on the constructor. This class is then applied to any player both in the server while starting your Slipe resource as joining later.
 
 ```csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        new Program();
+    }
+
+    public Program()
+    {
+        // Spawn a player in Blueberry
+        Player.OnJoin += (Player p) =>
+        {
+            p.Spawn(new Vector3(0, 0, 5));
+            p.Camera.Target = p;
+        };
+    }
+}
+
 [DefaultElementClass(ElementType.Player)]
 public class MyPlayer : Player
 {
     public MyPlayer(MtaElement element) : base(element)
     {
-        // Spawn a player in Blueberry
-        OnJoin += (Player p) =>
+
+        this.OnSpawn += (Vector3 position, float rotation, Team team, PedModel model, int interior, int dimension) =>
         {
-            p.Spawn(new Vector3(0, 0, 5));
-            p.Camera.Target = p;
-            p.Camera.Fade(CameraFade.In);
+            this.Camera.Fade(CameraFade.In);
         };
     }
 }
