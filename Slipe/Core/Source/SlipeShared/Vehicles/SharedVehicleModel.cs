@@ -57,9 +57,21 @@ namespace Slipe.Shared.Vehicles
         /// <summary>
         /// Get a vehicle model from the model name as a string
         /// </summary>
+        /// <param name="name">The Mta name of the vehicle</param>
+        /// <returns>The Vehicle model class</returns>
         public static SharedVehicleModel FromName(string name)
         {
             int id = MtaShared.GetVehicleModelFromName(name);
+            return new SharedVehicleModel(id);
+        }
+
+        /// <summary>
+        /// Get a vehicle model from its ID
+        /// </summary>
+        /// <param name="id">The Mta ID of the vehicle</param>
+        /// <returns>The Vehicle model class</returns>
+        public static SharedVehicleModel FromId(int id)
+        {
             return new SharedVehicleModel(id);
         }
 
