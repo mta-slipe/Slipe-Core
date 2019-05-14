@@ -44,6 +44,7 @@ System.define("Slipe.MtaDefinitions.MtaClient", {
 	DetonateSatchels = detonateSatchels,
 	TakePlayerMoney = takePlayerMoney,
 	GetNetworkStats = function(...) local results = {getNetworkStats(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
+	CreateVehicle = function(...) local results = {createVehicle(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	BlowVehicle = blowVehicle,
 	GetRadioChannel = function(...) local results = {getRadioChannel(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	GetRadioChannelName = function(...) local results = {getRadioChannelName(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,

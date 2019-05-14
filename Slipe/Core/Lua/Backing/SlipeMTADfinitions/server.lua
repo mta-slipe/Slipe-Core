@@ -239,6 +239,7 @@ System.define("Slipe.MtaDefinitions.MtaServer", {
 	GetNetworkStats = function(...) local results = {getNetworkStats(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	GetServerConfigSetting = function(...) local results = {getServerConfigSetting(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	SetServerConfigSetting = setServerConfigSetting,
+	CreateVehicle = function(...) local results = {createVehicle(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	BlowVehicle = blowVehicle,
 	AddVehicleSirens = addVehicleSirens,
 	GetModelHandling = function(...) local results = {getModelHandling(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
