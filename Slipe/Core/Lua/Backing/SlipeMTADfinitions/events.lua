@@ -39,6 +39,11 @@ function initEvents()
 
 	local events = {}
 
+	-- 1: MTA event name
+	-- 2: table with parameter conversions 
+	-- 3: (optional) events namespace
+	-- 4: (optional) static event class
+
 	if triggerServerEvent == nil then
 
 		local acM = Slipe.Server.Accounts.Account
@@ -64,17 +69,20 @@ function initEvents()
 		events.onDebugMessage = {"OnDebugMessage", {_string, _int, _string, _int, _color3}}
 		events.onSettingChange = {"OnSettingChange", {_string, _string, _string}}
 
+		
+		local _physicalElementEvents = Slipe.Shared.Elements.Events
 		-- PhysicalElement
-		events.onElementColShapeHit = {"OnCollisionShapeHit", {_element, _boolean}}
-		events.onElementColShapeLeave = {"OnCollisionShapeLeave", {_element, _boolean}}
-		events.onElementClicked = {"OnClicked", {{_enum, mouseButton}, {_enum, mouseButtonState}, _element, _vector3 }}
-		events.onElementModelChange = {"OnModelChange", {_int, _int}}
+		events.onElementColShapeHit = {"OnCollisionShapeHit", {_element, _boolean}, _physicalElementEvents}
+		events.onElementColShapeLeave = {"OnCollisionShapeLeave", {_element, _boolean}, _physicalElementEvents}
+		events.onElementClicked = {"OnClicked", {{_enum, mouseButton}, {_enum, mouseButtonState}, _element, _vector3 }, _physicalElementEvents}
+		events.onElementModelChange = {"OnModelChange", {_int, _int}, _physicalElementEvents}
 		events.onElementStartSync = {"OnStartSync", {_element}}
 		events.onElementStopSync = {"OnStopSync", {_element}}
 
+		local _colShapeEvents = Slipe.Shared.CollisionShapes.Events
 		-- Collisionshape
-		events.onColShapeHit = {"OnHit", {_element, _boolean}}
-		events.onColShapeLeave = {"OnLeave", {_element, _boolean}}
+		events.onColShapeHit = {"OnHit", {_element, _boolean}, _colShapeEvents}
+		events.onColShapeLeave = {"OnLeave", {_element, _boolean}, _colShapeEvents}
 
 		-- Element
 		events.onElementDestroy = {"OnDestroy"}
@@ -89,6 +97,8 @@ function initEvents()
 		events.onMarkerHit = {"OnHit", {_element, _boolean}}
 		events.onMarkerLeave = {"OnLeave", {_element, _boolean}}
 
+
+		local _pedEvents = Slipe.Server.Peds.Events
 		-- Ped
 		events.onPedWasted = {"OnWasted", {_int, _element, _int, _int, _boolean}}
 		events.onPedWeaponSwitch = {"OnWeaponSwitch", {_weaponModel, _weaponModel}}
@@ -119,7 +129,8 @@ function initEvents()
 		events.onPlayerPrivateMessage = {"OnPrivateMessage", {_string, _element}}
 		events.onPlayerQuit = {"OnQuit", {{_enum, quitType}, _string, _element}}
 		events.onPlayerScreenShot = {"OnScreenShot", {_resource, _int, _string, _int, _string}}
-		events.onPlayerSpawn = {"OnSpawn", {_vector3, _float, _element, _int, _int, _int}}
+		events.onPlayerJoin = {"OnJoin", {}, _pedEvents, Slipe.Server.Peds.Player}
+		events.onPlayerSpawn = {"OnSpawn", {_vector3, _float, _element, _int, _int, _int}, _pedEvents}
 		events.onPlayerStealthKill = {"OnStealthKill", {_element}}
 		events.onPlayerTarget = {"OnTarget", {_element}}
 		events.onPlayerVehicleEnter = {"OnVehicleEnter", {_element, _int, _element}}
@@ -218,6 +229,11 @@ function initEvents()
 		events.onClientMouseMove = {"OnMouseMove", {_vector2}}
 		events.onClientMouseWheel = {"OnMouseWheel", {_int}}
 
+		-- Pickup
+		events.onClientPickupHit = {"OnHit", {_element, _boolean}}
+		events.onClientPickupLeave = {"OnLeave", {_element, _boolean}}
+
+		local _peds = Slipe.Client.Peds.Events
 		-- Ped
 		events.onClientPedDamage = {"OnDamage", {_element, _int, _int, _float}}
 		events.onClientPedHeliKilled = {"OnHeliKilled", {_element}}
@@ -225,10 +241,6 @@ function initEvents()
 		events.onClientPedWasted = {"OnWasted", {_element, _int, _int, _boolean}}
 		events.onClientPedWeaponFire = {"OnWeaponFire", {_weaponModel, _int, _int, _vector3, _element}}
 		events.onClientPedStep = {"OnStep", {_boolean}}
-
-		-- Pickup
-		events.onClientPickupHit = {"OnHit", {_element, _boolean}}
-		events.onClientPickupLeave = {"OnLeave", {_element, _boolean}}
 
 		-- Player
 		events.onClientConsole = {"OnConsole", {_string}}
@@ -255,6 +267,7 @@ function initEvents()
 		events.onClientPlayerWasted = {"OnWasted", {_element, _int, _int, _boolean}}
 		events.onClientPlayerWeaponFire = {"OnWeaponFire", {_weaponModel, _int, _int, _vector3, _element}}
 		events.onClientPlayerWeaponSwitch = {"OnWeaponSwitch", {_weaponModel, _weaponModel}}
+		events.onClientPlayerJoin = {"OnJoin", {}, _peds, Slipe.Client.Peds.Player}
 
 		-- Object
 		events.onClientObjectBreak = {"OnBreak", {_element}}
@@ -296,11 +309,10 @@ function initEvents()
 	for e, v in pairs(events) do
 		addEventHandler(e, root, function(...)
 			local instance = m:GetElement1(source)
-			if instance and instance[v[1]] then
-				if v[2] == nil or #v[2] == 0 then
-					instance[v[1]]()
-				else
-					local varArgs = {}
+			local cls = v[4] and v[4] or instance
+			local varArgs = {}
+			if cls and cls[v[1]] then
+				if v[2] and #v[2] ~= 0 then
 					local args = {...}
 					local argStep = 1
 					for i=1,#v[2],1 do
@@ -324,30 +336,34 @@ function initEvents()
 						tInsert(varArgs, i, mPointer(unpack(stepArgs)))
 						argStep = argStep + nArgs
 					end	
-					instance[v[1]](unpack(varArgs, 1, #v[2]))
+				end
+				if v[3] and v[2] then -- remove this once refactor is complete
+					cls[v[1]](instance, v[3][v[1] .. "Args"](unpack(varArgs, 1, #v[2])))
+				elseif v[2]
+					cls[v[1]](unpack(varArgs, 1, #v[2]))
 				end
 			end
 		end)
 	end
 
 	-- Handle the static OnPlayerJoin event and register all player classes
-	if triggerServerEvent == nil then
-		addEventHandler("onPlayerJoin", getRootElement(), function()
-			local player = m:GetElement1(source)
-			local onJoinEvent = Slipe.Server.Peds.Player.OnJoin
-			if onJoinEvent ~= nil then
-				onJoinEvent(player)
-			end
-		end)
-	else
-		addEventHandler("onClientPlayerJoin", getRootElement(), function()
-			local player = m:GetElement1(source)
-			local onJoinEvent = Slipe.Client.Peds.Player.OnJoin
-			if onJoinEvent ~= nil then
-				onJoinEvent(player)
-			end
-		end)
-	end
+	-- if triggerServerEvent == nil then
+	-- 	addEventHandler("onPlayerJoin", getRootElement(), function()
+	-- 		local player = m:GetElement1(source)
+	-- 		local onJoinEvent = Slipe.Server.Peds.Player.OnJoin
+	-- 		if onJoinEvent ~= nil then
+	-- 			onJoinEvent(player, Slipe.Server.Peds.Events.OnJoinArgs)
+	-- 		end
+	-- 	end)
+	-- else
+	-- 	addEventHandler("onClientPlayerJoin", getRootElement(), function()
+	-- 		local player = m:GetElement1(source)
+	-- 		local onJoinEvent = Slipe.Client.Peds.Player.OnJoin
+	-- 		if onJoinEvent ~= nil then
+	-- 			onJoinEvent(player)
+	-- 		end
+	-- 	end)
+	-- end
 
 	local allElementTypes = {
 		"player",

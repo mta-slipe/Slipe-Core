@@ -8,6 +8,7 @@ using Slipe.Shared.Elements;
 using System.ComponentModel;
 using Slipe.Server.Peds;
 using Slipe.Shared.CollisionShapes;
+using Slipe.Shared.Elements.Events;
 
 namespace Slipe.Server.Vehicles
 {
@@ -240,10 +241,10 @@ namespace Slipe.Server.Vehicles
         public delegate void OnDamageHandler(float loss);
         public event OnDamageHandler OnDamage;
 
-        public delegate void OnCollisionShapeHitHandler(CollisionShape colShape, bool matchingDimension);
+        public delegate void OnCollisionShapeHitHandler(Vehicle source, OnCollisionShapeHitArgs eventArgs);
         public event OnCollisionShapeHitHandler OnCollisionShapeHit;
 
-        public delegate void OnCollisionShapeLeaveHandler(CollisionShape colShape, bool matchingDimension);
+        public delegate void OnCollisionShapeLeaveHandler(Vehicle source, OnCollisionShapeLeaveArgs eventArgs);
         public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
 
         public delegate void OnEnterHandler(Player player, Seat seat, Player jacked);

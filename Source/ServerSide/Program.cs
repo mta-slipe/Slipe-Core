@@ -1,6 +1,7 @@
 ﻿using Slipe.MtaDefinitions;
 using Slipe.Server.Game;
 using Slipe.Server.Peds;
+using Slipe.Server.Peds.Events;
 using Slipe.Server.Vehicles;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Peds;
@@ -23,9 +24,9 @@ namespace ServerSide
         public Program()
         {
             // Spawn a player in Blueberry
-            Player.OnJoin += (Player p) =>
+            Player.OnJoin += (Player source, OnJoinArgs eventArgs) =>
             {
-                p.Spawn(new Vector3(0, 0, 5));
+                source.Spawn(new Vector3(0, 0, 5), PedModel.ballas1);
             };
         }
     }
@@ -38,8 +39,10 @@ namespace ServerSide
             OnSpawn += OnPlayerSpawn;
         }
 
-        private void OnPlayerSpawn(Vector3 position, float rotation, Team team, PedModel model, int interior, int dimension)
+        private void OnPlayerSpawn(Player source, OnSpawnArgs eventArgs)
         {
+            Console.WriteLine(eventArgs.Model);
+            Console.WriteLine(eventArgs.Interior);
             Camera.Target = this;
             Camera.Fade(CameraFade.In);
         }

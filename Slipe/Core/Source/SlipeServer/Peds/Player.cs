@@ -21,6 +21,8 @@ using Slipe.Shared.Vehicles;
 using Slipe.Server.Weapons;
 using Slipe.Shared.Helpers;
 using Slipe.Server.Game;
+using Slipe.Server.Peds.Events;
+using Slipe.Shared.Elements.Events;
 
 namespace Slipe.Server.Peds
 {
@@ -370,9 +372,9 @@ namespace Slipe.Server.Peds
         /// <summary>
         /// Spawn the player at a certain position
         /// </summary>
-        public void Spawn(Vector3 position, int rotation = 0, int skin = 0, int interior = 0, int dimension = 0, Team team = null)
+        public void Spawn(Vector3 position, PedModel skin, int rotation = 0, int interior = 0, int dimension = 0, Team team = null)
         {
-            MtaServer.SpawnPlayer(element, position.X, position.Y, position.Z, rotation, skin, interior, dimension, team == null ? null : team.MTAElement);
+            MtaServer.SpawnPlayer(element, position.X, position.Y, position.Z, rotation, (int) skin, interior, dimension, team == null ? null : team.MTAElement);
         }
 
         /// <summary>
@@ -507,13 +509,13 @@ namespace Slipe.Server.Peds
         public delegate void OnConsoleHandler(string message);
         public event OnConsoleHandler OnConsole;
 
-        public delegate void OnCollisionShapeHitHandler(CollisionShape colShape, bool matchingDimension);
+        public delegate void OnCollisionShapeHitHandler(Player source, OnCollisionShapeHitArgs eventArgs);
         public event OnCollisionShapeHitHandler OnCollisionShapeHit;
 
-        public delegate void OnCollisionShapeLeaveHandler(CollisionShape colShape, bool matchingDimension);
+        public delegate void OnCollisionShapeLeaveHandler(Player source, OnCollisionShapeLeaveArgs eventArgs);
         public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
 
-        public delegate void OnJoinHandler(Player player);
+        public delegate void OnJoinHandler(Player source, OnJoinArgs eventArgs);
         public static event OnJoinHandler OnJoin;
 
         public delegate void OnAcInfoHandler(string[] detectedAcList, string d3d9Size, string d3d9Md5, string d3d9Sha256);
@@ -585,7 +587,7 @@ namespace Slipe.Server.Peds
         public delegate void OnScreenShotHandler(Resource resource, StatusCode status, string imageData, int timeStamp, string tag);
         public event OnScreenShotHandler OnScreenShot;
 
-        public delegate void OnSpawnHandler(Vector3 position, float rotation, Team team, PedModel model, int interior, int dimension);
+        public delegate void OnSpawnHandler(Player source, OnSpawnArgs eventArgs);
         public event OnSpawnHandler OnSpawn;
 
         public delegate void OnStealthKillHandler(Ped victim);

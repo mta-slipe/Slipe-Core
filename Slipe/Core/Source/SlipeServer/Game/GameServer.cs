@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using Slipe.MtaDefinitions;
+using Slipe.Server.Elements;
 using Slipe.Server.Game;
+using Slipe.Server.Game.Events;
 using Slipe.Server.IO;
 using Slipe.Server.Resources;
+using Slipe.Shared.Elements;
 using Slipe.Shared.Helpers;
 
 namespace Slipe.Server.Game
@@ -223,12 +226,12 @@ namespace Slipe.Server.Game
 
         internal static void HandlePlayerConnected(string nickName, string Ip, string username, string serial, int versionNumber, string versionString)
         {
-            OnPlayerConnect?.Invoke(nickName, Ip, username, serial, versionNumber, versionString);
+            OnPlayerConnect?.Invoke((RootElement) Element.Root, new OnPlayerConnectArgs(nickName, Ip, username, serial, versionNumber, versionString));
         }
 
         internal static void HandleSettingChange(string setting, string oldValue, string newValue)
         {
-            OnSettingChange?.Invoke(setting, oldValue, newValue);
+            OnSettingChange?.Invoke((RootElement) Element.Root, new OnSettingChangeArgs(setting, oldValue, newValue));
         }
 
         internal static void HandlePreStart(Resource resource)
@@ -255,10 +258,10 @@ namespace Slipe.Server.Game
         public delegate void OnStopHandler(Resource resource, bool wasDeleted);
         public static event OnStopHandler OnStop;
 
-        public delegate void OnPlayerConnectHandler(string nickName, string Ip, string username, string serial, int versionNumber, string versionString);
+        public delegate void OnPlayerConnectHandler(RootElement source, OnPlayerConnectArgs eventArgs);
         public static event OnPlayerConnectHandler OnPlayerConnect;
 
-        public delegate void OnSettingChangeHandler(string setting, string oldValue, string newValue);
+        public delegate void OnSettingChangeHandler(RootElement source, OnSettingChangeArgs eventArgs);
         public static event OnSettingChangeHandler OnSettingChange;
 
         #endregion

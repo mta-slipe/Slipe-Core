@@ -1,4 +1,5 @@
 ﻿using Slipe.MtaDefinitions;
+using Slipe.Server.IO.Events;
 using Slipe.Server.Peds;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
@@ -60,10 +61,14 @@ namespace Slipe.Server.IO
 
         internal static void HandleMessage(string message, Element playerOrResource)
         {
-            OnMessage?.Invoke(message, playerOrResource);
+            OnMessage?.Invoke(playerOrResource, new OnChatMessageArgs(message));
         }
 
-        public delegate void OnMessageHandler(string message, Element playerOrResource);
+        public delegate void OnMessageHandler(Element source, OnChatMessageArgs eventArgs);
+
+        /// <summary>
+        /// The source of the event is either the player or the resource that broadcasted the message
+        /// </summary>
         public static event OnMessageHandler OnMessage;
 
         #endregion

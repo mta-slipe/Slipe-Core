@@ -5,6 +5,7 @@ using System.Text;
 using System.Numerics;
 using Slipe.Shared.Elements;
 using System.ComponentModel;
+using Slipe.Shared.CollisionShapes.Events;
 
 namespace Slipe.Shared.CollisionShapes
 {
@@ -64,10 +65,10 @@ namespace Slipe.Shared.CollisionShapes
 
 #pragma warning disable 67
 
-        public delegate void OnHitHandler(PhysicalElement element, bool matchingDimension);
+        public delegate void OnHitHandler(CollisionShape source, OnHitArgs eventArgs);
         public event OnHitHandler OnHit;
 
-        public delegate void OnLeaveHandler(PhysicalElement element, bool matchingDimension);
+        public delegate void OnLeaveHandler(CollisionShape source, OnLeaveArgs eventArgs);
         public event OnLeaveHandler OnLeave;
 
         #pragma warning restore 67

@@ -20,10 +20,10 @@ namespace Slipe.Server.Elements
             OnAccountDataChange += (Account account, string key, string value) => { account.HandleDataChange(key, value); };
             OnBanAdded += (Ban ban) => { ban.HandleAdded(); };
             OnBanRemoved += (Ban ban, Player responsiblePlayer) => { ban.HandleRemoved(responsiblePlayer); };
-            OnPlayerConnect += (string nickName, string Ip, string username, string serial, int versionNumber, string versionString) => { Game.GameServer.HandlePlayerConnected(nickName, Ip, username, serial, versionNumber, versionString); };
+            OnPlayerConnect += (string nickName, string Ip, string username, string serial, int versionNumber, string versionString) => { GameServer.HandlePlayerConnected(nickName, Ip, username, serial, versionNumber, versionString); };
             OnChatMessage += (string message, Element playerOrResource) => { ChatBox.HandleMessage(message, playerOrResource); };
-            OnDebugMessage += (string message, DebugMessageLevel level, string file, int line, Color color) => { Game.GameServer.Debug.HandleMessage(message, level, file, line, color); };
-            OnSettingChange += (string setting, string oldValue, string newValue) => { Game.GameServer.HandleSettingChange(setting, oldValue, newValue); };
+            OnDebugMessage += (string message, DebugMessageLevel level, string file, int line, Color color) => { GameServer.Debug.HandleMessage(message, level, file, line, color); };
+            OnSettingChange += (string setting, string oldValue, string newValue) => { GameServer.HandleSettingChange(setting, oldValue, newValue); };
         }
 
         public override void HandleEvent(string eventName, MtaElement element, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)

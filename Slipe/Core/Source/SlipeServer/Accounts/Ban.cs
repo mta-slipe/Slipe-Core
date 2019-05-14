@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 using Slipe.Server.Peds;
+using Slipe.Server.Accounts.Events;
 
 namespace Slipe.Server.Accounts
 {
@@ -179,18 +180,18 @@ namespace Slipe.Server.Accounts
 
         internal void HandleAdded()
         {
-            OnAdded?.Invoke();
+            OnAdded?.Invoke(this, new OnAddedArgs());
         }
 
-        internal void HandleRemoved( Player responsiblePlayer)
+        internal void HandleRemoved(Player responsiblePlayer)
         {
-            OnRemoved?.Invoke(responsiblePlayer);
+            OnRemoved?.Invoke(this, new OnRemovedArgs(responsiblePlayer));
         }
 
-        public delegate void OnRemoveHandler(Player responsiblePlayer);
+        public delegate void OnRemoveHandler(Ban source, OnRemovedArgs eventArgs);
         public event OnRemoveHandler OnRemoved;
 
-        public delegate void OnAddedHandler();
+        public delegate void OnAddedHandler(Ban source, OnAddedArgs eventArgs);
         public event OnAddedHandler OnAdded;
 
         #endregion
