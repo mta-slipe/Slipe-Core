@@ -290,7 +290,6 @@ System.define("Slipe.MtaDefinitions.MtaShared", {
 	AddVehicleUpgrade = addVehicleUpgrade,
 	GetTrainPosition = function(...) local results = {getTrainPosition(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	FixVehicle = fixVehicle,
-	CreateVehicle = function(...) local results = {createVehicle(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	DetachTrailerFromVehicle = detachTrailerFromVehicle,
 	GetTrainDirection = getTrainDirection,
 	GetTrainSpeed = function(...) local results = {getTrainSpeed(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,

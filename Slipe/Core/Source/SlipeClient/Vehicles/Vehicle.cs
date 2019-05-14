@@ -188,7 +188,7 @@ namespace Slipe.Client.Vehicles
         /// Create a vehicle using all createVehicle arguments
         /// </summary>
         public Vehicle(SharedVehicleModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1)
-            : this(MtaShared.CreateVehicle(model.ID, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, numberplate, false, variant1, variant2)) { }
+            : this(MtaClient.CreateVehicle(model.ID, position.X, position.Y, position.Z, rotation.X, rotation.Y, rotation.Z, numberplate, variant1, variant2)) { }
         #endregion
 
         #region Misc. Methods
