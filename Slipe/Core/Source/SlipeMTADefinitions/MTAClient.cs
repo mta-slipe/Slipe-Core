@@ -47,7 +47,8 @@ namespace Slipe.MtaDefinitions {
 		public static bool TakePlayerMoney (int amount){ throw new NotImplementedException(); }
 		public static bool DetonateSatchels (){ throw new NotImplementedException(); }
 		public static dynamic GetNetworkStats (){ throw new NotImplementedException(); }
-		public static bool BlowVehicle (MtaElement vehicleToBlow){ throw new NotImplementedException(); }
+        public static MtaElement CreateVehicle(int model, float x, float y, float z, float rx, float ry, float rz, string numberplate, int variant1, int variant2) { throw new NotImplementedException(); }
+        public static bool BlowVehicle (MtaElement vehicleToBlow){ throw new NotImplementedException(); }
 		public static bool DgsProgressBarSetProgress (MtaElement theProgressbar, float progress){ throw new NotImplementedException(); }
 		public static string GetRadioChannelName (int id){ throw new NotImplementedException(); }
 		public static bool GetSFXStatus (string audioContainer){ throw new NotImplementedException(); }
