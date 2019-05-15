@@ -10,7 +10,7 @@ namespace Slipe.Client.Vehicles
     /// <summary>
     /// A train
     /// </summary>
-    public class Train : Vehicle
+    public class Train : BaseVehicle
     {
         #region Properties
         /// <summary>
@@ -102,36 +102,37 @@ namespace Slipe.Client.Vehicles
         #endregion
 
         #region Constructors
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Train(MtaElement element) : base(element) { }
 
         /// <summary>
-        /// Create a train from a model at a position
+        /// Create a plane from a model at a position
         /// </summary>
-        public Train(TrainModel model, Vector3 position) : base(model, position)
-        {
+        public Train(TrainModel model, Vector3 position)
+            : this(model, position, Vector3.Zero) { }
 
-        }
-
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Train(MtaElement element) : base(element)
-        {
-
-        }
+        /// <summary>
+        /// Create a plane using all createVehicle arguments
+        /// </summary>
+        public Train(TrainModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1)
+            : base(model, position, rotation, numberplate, variant1, variant2) { }
 
         #endregion
+
+        public static explicit operator Train(Vehicle vehicle)
+        {
+            if (VehicleModel.FromId(vehicle.Model) is TrainModel)
+                return new Train(vehicle.MTAElement);
+
+            throw (new InvalidCastException("The vehicle is not a train"));
+        }
     }
 
     /// <summary>
     /// Represents models that are trains
     /// </summary>
-    public class TrainModel : BaseVehicleModel
+    public class TrainModel : VehicleModel
     {
-        public static TrainModel FreightEngine { get { return new TrainModel(537); } }
-        public static TrainModel BoxFreight { get { return new TrainModel(590); } }
-        public static TrainModel FlatFreight { get { return new TrainModel(569); } }
-        public static TrainModel BrownStreakEngine { get { return new TrainModel(538); } }
-        public static TrainModel BrownStreakCarriage { get { return new TrainModel(570); } }
-        public static TrainModel Trolly { get { return new TrainModel(449); } }
-        protected TrainModel(int id) : base(id) { }
+        internal TrainModel(int id) : base(id) { }
     }
 }

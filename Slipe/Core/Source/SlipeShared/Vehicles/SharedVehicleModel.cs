@@ -10,19 +10,22 @@ namespace Slipe.Shared.Vehicles
     /// </summary>
     public class SharedVehicleModel
     {
+        #region Fields
+        protected static int[] boatModels = { 472, 473, 493, 595, 484, 430, 453, 452, 446, 454 };
+        protected static int[] planeModels = { 592, 577, 511, 512, 593, 520, 553, 476, 519, 460, 513, 464 };
+        protected static int[] helicopterModels = { 548, 425, 417, 487, 488, 497, 563, 447, 469, 501, 465 };
+        protected static int[] trailerModels = { 606, 607, 608, 610, 611, 584, 435, 450, 591 };
+        protected static int[] trainModels = { 537, 590, 569, 538, 570, 449 };
+        protected static int[] turretedModels = { 432, 601, 407 };
+        protected static int[] taxiModels = { 438, 420 };
+        #endregion
+
         #region Properties
 
-        protected int id;
         /// <summary>
         /// The ID of this model
         /// </summary>
-        public int ID
-        {
-            get
-            {
-                return id;
-            }
-        }
+        public int Id { get; }
 
         /// <summary>
         /// Get the string representation of the name of this model
@@ -31,7 +34,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                return MtaShared.GetVehicleNameFromModel(id);
+                return MtaShared.GetVehicleNameFromModel(Id);
             }
         }
 
@@ -42,7 +45,7 @@ namespace Slipe.Shared.Vehicles
         {
             get
             {
-                Dictionary<string, dynamic> d = MtaShared.GetDictionaryFromTable(MtaShared.GetOriginalHandling(id), "System.String", "dynamic");
+                Dictionary<string, dynamic> d = MtaShared.GetDictionaryFromTable(MtaShared.GetOriginalHandling(Id), "System.String", "dynamic");
                 return new Handling(d);
             }
         }
@@ -51,28 +54,7 @@ namespace Slipe.Shared.Vehicles
 
         protected SharedVehicleModel(int id)
         {
-            this.id = id;
-        }
-
-        /// <summary>
-        /// Get a vehicle model from the model name as a string
-        /// </summary>
-        /// <param name="name">The Mta name of the vehicle</param>
-        /// <returns>The Vehicle model class</returns>
-        public static SharedVehicleModel FromName(string name)
-        {
-            int id = MtaShared.GetVehicleModelFromName(name);
-            return new SharedVehicleModel(id);
-        }
-
-        /// <summary>
-        /// Get a vehicle model from its ID
-        /// </summary>
-        /// <param name="id">The Mta ID of the vehicle</param>
-        /// <returns>The Vehicle model class</returns>
-        public static SharedVehicleModel FromId(int id)
-        {
-            return new SharedVehicleModel(id);
+            this.Id = id;
         }
 
     }

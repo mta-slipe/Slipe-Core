@@ -184,10 +184,10 @@ namespace Slipe.Client.Peds
         public delegate void OnSpawnHandler(Team playerTeam);
         public event OnSpawnHandler OnSpawn;
 
-        public delegate void OnVehicleEnterHandler(Vehicle vehicle, Seat seat);
+        public delegate void OnVehicleEnterHandler(BaseVehicle vehicle, Seat seat);
         public event OnVehicleEnterHandler OnVehicleEnter;
 
-        public delegate void OnVehicleExitHandler(Vehicle vehicle, Seat seat);
+        public delegate void OnVehicleExitHandler(BaseVehicle vehicle, Seat seat);
         public event OnVehicleExitHandler OnVehicleExit;
 
         public delegate void OnVoicePausedHandler();

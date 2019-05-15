@@ -594,10 +594,10 @@ namespace Slipe.Server.Peds
         public delegate void OnTargetHandler(PhysicalElement target);
         public event OnTargetHandler OnTarget;
 
-        public delegate void OnVehicleEnterHandler(Vehicle vehicle, Seat seat, Player jacked);
+        public delegate void OnVehicleEnterHandler(BaseVehicle vehicle, Seat seat, Player jacked);
         public event OnVehicleEnterHandler OnVehicleEnter;
 
-        public delegate void OnVehicleExitHandler(Vehicle vehicle, Seat seat, Player jacker, bool forcedByScript);
+        public delegate void OnVehicleExitHandler(BaseVehicle vehicle, Seat seat, Player jacker, bool forcedByScript);
         public event OnVehicleExitHandler OnVehicleExit;
 
         public delegate void OnVoiceStartHandler();
