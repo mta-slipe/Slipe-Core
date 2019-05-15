@@ -40,6 +40,7 @@ function initEvents()
 	local _elementEvents = Slipe.Shared.Elements.Events
 	local _colShapeEvents = Slipe.Shared.CollisionShapes.Events
 	local _sharedPickupEvents = Slipe.Shared.Pickups.Events
+	local _markerEvents = Slipe.Shared.Markers.Events
 
 	local events = {}
 
@@ -98,49 +99,49 @@ function initEvents()
 		events.onPickupUse = {"OnUse", {_element}, _pickupEvents}
 
 		-- Marker
-		events.onMarkerHit = {"OnHit", {_element, _boolean}}
-		events.onMarkerLeave = {"OnLeave", {_element, _boolean}}
+		events.onMarkerHit = {"OnHit", {_element, _boolean}, _markerEvents}
+		events.onMarkerLeave = {"OnLeave", {_element, _boolean}, _markerEvents}
 		
 		-- Ped
-		events.onPedWasted = {"OnWasted", {_int, _element, _int, _int, _boolean}}
-		events.onPedWeaponSwitch = {"OnWeaponSwitch", {_weaponModel, _weaponModel}}
+		events.onPedWasted = {"OnWasted", {_int, _element, _int, _int, _boolean}, _pedEvents}
+		events.onPedWeaponSwitch = {"OnWeaponSwitch", {_weaponModel, _weaponModel}, _pedEvents}
 
 		-- Player
-		events.onConsole = {"OnConsole", {_string}}
-		events.onPlayerACInfo = {"OnAcInfo", {_stringArray, _string, _string, _string}}
-		events.onBan = {"OnBanAdded", {_ban}}
-		events.onPlayerBan = {"OnBanned", {_ban, _element}}
-		events.onPlayerChangeNick = {"OnNicknameChanged", {_string, _string, _boolean}}
-		events.onPlayerChat = {"OnChat", {_string, _int}}
-		events.onPlayerClick = {"OnClick", {{_enum, mouseButton}, {_enum, mouseButtonState}, _element, _vector3, _vector2}}
-		events.onPlayerCommand = {"OnCommand", {_string}}
-		events.onPlayerContact = {"OnContact", {_element, _element}}
-		events.onPlayerDamage = {"OnDamage", {_element, _int, _int, _float}}
-		events.onPlayerWasted = {"OnWasted", {_int, _element, _int, _int, _boolean}}
-		events.onPlayerLogin = {"OnLogin", {_account, _account}}
-		events.onPlayerLogout = {"OnLogout", {_account, _account}}
-		events.onPlayerMarkerHit = {"OnMarkerHit", {_element, _boolean}}
-		events.onPlayerMarkerLeave = {"OnMarkerLeave", {_element, _boolean}}
-		events.onPlayerModInfo = {"OnModInfo", {_string, _stringArray}}
-		events.onPlayerMute = {"OnMuted"}
-		events.onPlayerUnMute = {"OnUnmuted"}
-		events.onPlayerNetworkStatus = {"OnNetworkInteruption", {_int, _int}}
-		events.onPlayerPickupHit = {"OnPickupHit", {_element}}
-		events.onPlayerPickupLeave = {"OnPickupLeave", {_element}}
-		events.onPlayerPickupUse = {"OnPickupUse", {_element}}
-		events.onPlayerPrivateMessage = {"OnPrivateMessage", {_string, _element}}
-		events.onPlayerQuit = {"OnQuit", {{_enum, quitType}, _string, _element}}
-		events.onPlayerScreenShot = {"OnScreenShot", {_resource, _int, _string, _int, _string}}
+		events.onConsole = {"OnConsole", {_string}, _pedEvents}
+		events.onPlayerACInfo = {"OnAcInfo", {_stringArray, _int, _string, _string}, _pedEvents}
+		events.onBan = {"OnBanAdded", {_ban}, _pedEvents}
+		events.onPlayerBan = {"OnBanned", {_ban, _element}, _pedEvents}
+		events.onPlayerChangeNick = {"OnNicknameChanged", {_string, _string, _boolean}, _pedEvents}
+		events.onPlayerChat = {"OnChat", {_string, _int}, _pedEvents}
+		events.onPlayerClick = {"OnClick", {{_enum, mouseButton}, {_enum, mouseButtonState}, _element, _vector3, _vector2}, _pedEvents}
+		events.onPlayerCommand = {"OnCommand", {_string}, _pedEvents}
+		events.onPlayerContact = {"OnContact", {_element, _element}, _pedEvents}
+		events.onPlayerDamage = {"OnDamage", {_element, _int, _int, _float}, _pedEvents}
+		events.onPlayerWasted = {"OnWasted", {_int, _element, _int, _int, _boolean}, _pedEvents}
+		events.onPlayerLogin = {"OnLogin", {_account, _account}, _pedEvents}
+		events.onPlayerLogout = {"OnLogout", {_account, _account}, _pedEvents}
+		events.onPlayerMarkerHit = {"OnMarkerHit", {_element, _boolean}, _pedEvents}
+		events.onPlayerMarkerLeave = {"OnMarkerLeave", {_element, _boolean}, _pedEvents}
+		events.onPlayerModInfo = {"OnModInfo", {_string, _stringArray}, _pedEvents}
+		events.onPlayerMute = {"OnMuted", {}, _pedEvents}
+		events.onPlayerUnMute = {"OnUnmuted", {}, _pedEvents}
+		events.onPlayerNetworkStatus = {"OnNetworkInteruption", {_int, _int}, _pedEvents}
+		events.onPlayerPickupHit = {"OnPickupHit", {_element}, _pedEvents}
+		events.onPlayerPickupLeave = {"OnPickupLeave", {_element}, _pedEvents}
+		events.onPlayerPickupUse = {"OnPickupUse", {_element}, _pedEvents}
+		events.onPlayerPrivateMessage = {"OnPrivateMessage", {_string, _element}, _pedEvents}
+		events.onPlayerQuit = {"OnQuit", {{_enum, quitType}, _string, _element}, _pedEvents}
+		events.onPlayerScreenShot = {"OnScreenShot", {_resource, _int, _string, _int, _string}, _pedEvents}
 		events.onPlayerJoin = {"OnJoin", {}, _pedEvents, Slipe.Server.Peds.Player}
 		events.onPlayerSpawn = {"OnSpawn", {_vector3, _float, _element, _int, _int, _int}, _pedEvents}
-		events.onPlayerStealthKill = {"OnStealthKill", {_element}}
-		events.onPlayerTarget = {"OnTarget", {_element}}
-		events.onPlayerVehicleEnter = {"OnVehicleEnter", {_element, _int, _element}}
-		events.onPlayerVehicleExit = {"OnVehicleExit", {_element, _int, _element, _boolean}}
-		events.onPlayerVoiceStart = {"OnVoiceStart"}
-		events.onPlayerVoiceStop = {"OnVoiceStop"}
-		events.onPlayerWeaponFire = {"OnWeaponFire", {_weaponModel, _vector3, _element, _vector3}}
-		events.onPlayerWeaponSwitch = {"OnWeaponSwitch", {_weaponModel, _weaponModel}}
+		events.onPlayerStealthKill = {"OnStealthKill", {_element}, _pedEvents}
+		events.onPlayerTarget = {"OnTarget", {_element}, _pedEvents}
+		events.onPlayerVehicleEnter = {"OnVehicleEnter", {_element, _int, _element}, _pedEvents}
+		events.onPlayerVehicleExit = {"OnVehicleExit", {_element, _int, _element, _boolean}, _pedEvents}
+		events.onPlayerVoiceStart = {"OnVoiceStart", {}, _pedEvents}
+		events.onPlayerVoiceStop = {"OnVoiceStop", {}, _pedEvents}
+		events.onPlayerWeaponFire = {"OnWeaponFire", {_weaponModel, _vector3, _element, _vector3}, _pedEvents}
+		events.onPlayerWeaponSwitch = {"OnWeaponSwitch", {_weaponModel, _weaponModel}, _pedEvents}
 
 		-- Vehicle
 		events.onTrailerAttach = {"OnAttach", {_element}}

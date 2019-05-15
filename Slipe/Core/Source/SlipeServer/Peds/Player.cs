@@ -506,7 +506,7 @@ namespace Slipe.Server.Peds
 
         #pragma warning disable 67
 
-        public delegate void OnConsoleHandler(string message);
+        public delegate void OnConsoleHandler(Player source, OnConsoleArgs eventArgs);
         public event OnConsoleHandler OnConsole;
 
         public delegate void OnCollisionShapeHitHandler(Player source, OnCollisionShapeHitArgs eventArgs);
@@ -518,97 +518,97 @@ namespace Slipe.Server.Peds
         public delegate void OnJoinHandler(Player source, OnJoinArgs eventArgs);
         public static event OnJoinHandler OnJoin;
 
-        public delegate void OnAcInfoHandler(string[] detectedAcList, string d3d9Size, string d3d9Md5, string d3d9Sha256);
+        public delegate void OnAcInfoHandler(Player source, OnAcInfoArgs eventArgs);
         public event OnAcInfoHandler OnAcInfo;
 
-        public delegate void OnBanAddedHandler(Ban ban);
+        public delegate void OnBanAddedHandler(Player source, OnBanAddedArgs eventArgs);
         public event OnBanAddedHandler OnBanAdded;
 
-        public delegate void OnBannedHandler(Ban ban, Player responsibleBanner);
+        public delegate void OnBannedHandler(Player source, OnBannedArgs eventArgs);
         public event OnBannedHandler OnBanned;
 
-        public delegate void OnNicknameChangedHandler(string oldNickname, string newNickname, bool changedByuser);
+        public delegate void OnNicknameChangedHandler(Player source, OnNicknameChangedArgs eventArgs);
         public event OnNicknameChangedHandler OnNicknameChanged;
 
-        public delegate void OnChatHandler(string message, MessageType type);
+        public delegate void OnChatHandler(Player source, OnChatArgs eventArgs);
         public event OnChatHandler OnChat;
 
-        public delegate void OnClickHandler(MouseButton mouseButton, MouseButtonState buttonState, PhysicalElement clickedElement, Vector3 worldPosition, Vector2 screenPosition);
+        public delegate void OnClickHandler(Player source, OnClickArgs eventArgs);
         public event OnClickHandler OnClick;
 
-        public delegate void OnCommandHandler(string command);
+        public delegate void OnCommandHandler(Player source, OnCommandArgs eventArgs);
         public event OnCommandHandler OnCommand;
 
-        public delegate void OnContactHandler(PhysicalElement previousElement, PhysicalElement newElement);
+        public delegate void OnContactHandler(Player source, OnContactArgs eventArgs);
         public event OnContactHandler OnContact;
 
-        public delegate void OnDamageHandler(Player attacker, DamageType damageType, BodyPart bodyPart, float loss);
+        public delegate void OnDamageHandler(Player source, OnDamageArgs eventArgs);
         public event OnDamageHandler OnDamage;
 
-        public delegate void OnLoginHandler(Account previousAccount, Account newAccount);
+        public delegate void OnLoginHandler(Player source, OnLoginArgs eventArgs);
         public event OnLoginHandler OnLogin;
 
-        public delegate void OnLogoutHandler(Account previousAccount, Account newAccount);
+        public delegate void OnLogoutHandler(Player source, OnLogoutArgs eventArgs);
         public event OnLogoutHandler OnLogout;
 
-        public delegate void OnMarkerHitHandler(Marker markerHit, bool matchingDimension);
+        public delegate void OnMarkerHitHandler(Player source, OnMarkerHitArgs eventArgs);
         public event OnMarkerHitHandler OnMarkerHit;
 
-        public delegate void OnMarkerLeaveHandler(Marker markerLeft, bool matchingDimension);
+        public delegate void OnMarkerLeaveHandler(Player source, OnMarkerLeaveArgs eventArgs);
         public event OnMarkerLeaveHandler OnMarkerLeave;
 
-        public delegate void OnPickupHitHandler(Pickup pickupHit);
+        public delegate void OnPickupHitHandler(Player source, OnPickupHitArgs eventArgs);
         public event OnPickupHitHandler OnPickupHit;
 
-        public delegate void OnPickupLeaveHandler(Pickup pickupLeft);
+        public delegate void OnPickupLeaveHandler(Player source, OnPickupLeaveArgs eventArgs);
         public event OnPickupLeaveHandler OnPickupLeave;
 
-        public delegate void OnPickupUseHandler(Pickup pickupUse);
+        public delegate void OnPickupUseHandler(Player source, OnPickupUseArgs eventArgs);
         public event OnPickupUseHandler OnPickupUse;
 
-        public delegate void OnModInfoHandler(string fileName, dynamic[] items);
+        public delegate void OnModInfoHandler(Player source, OnModInfoArgs eventArgs);
         public event OnModInfoHandler OnModInfo;
 
-        public delegate void OnMutedHandler();
+        public delegate void OnMutedHandler(Player source, OnMutedArgs eventArgs);
         public event OnMutedHandler OnMuted;
 
-        public delegate void OnUnmutedHandler();
+        public delegate void OnUnmutedHandler(Player source, OnUnmutedArgs eventArgs);
         public event OnUnmutedHandler OnUnmuted;
 
-        public delegate void OnNetworkInteruptionBeginHandler(NetworkInteruptionStatus status, int ticksSinceInteruptionStarted);
-        public event OnNetworkInteruptionBeginHandler OnNetworkInteruption;
+        public delegate void OnNetworkInteruptionHandler(Player source, OnNetworkInteruptionArgs eventArgs);
+        public event OnNetworkInteruptionHandler OnNetworkInteruption;
 
-        public delegate void OnPrivateMessageHandler(string message, Player recipient);
+        public delegate void OnPrivateMessageHandler(Player source, OnPrivateMessageArgs eventArgs);
         public event OnPrivateMessageHandler OnPrivateMessage;
 
-        public delegate void OnQuitHandler(QuitType quitType, string reason, Player responsiblePlayer);
+        public delegate void OnQuitHandler(Player source, OnQuitArgs eventArgs);
         public event OnQuitHandler OnQuit;
 
-        public delegate void OnScreenShotHandler(Resource resource, StatusCode status, string imageData, int timeStamp, string tag);
+        public delegate void OnScreenShotHandler(Player source, OnScreenShotArgs eventArgs);
         public event OnScreenShotHandler OnScreenShot;
 
         public delegate void OnSpawnHandler(Player source, OnSpawnArgs eventArgs);
         public event OnSpawnHandler OnSpawn;
 
-        public delegate void OnStealthKillHandler(Ped victim);
+        public delegate void OnStealthKillHandler(Player source, OnStealthKillArgs eventArgs);
         public event OnStealthKillHandler OnStealthKill;
 
-        public delegate void OnTargetHandler(PhysicalElement target);
+        public delegate void OnTargetHandler(Player source, OnTargetArgs eventArgs);
         public event OnTargetHandler OnTarget;
 
-        public delegate void OnVehicleEnterHandler(Vehicle vehicle, Seat seat, Player jacked);
+        public delegate void OnVehicleEnterHandler(Player source, OnVehicleEnterArgs eventArgs);
         public event OnVehicleEnterHandler OnVehicleEnter;
 
-        public delegate void OnVehicleExitHandler(Vehicle vehicle, Seat seat, Player jacker, bool forcedByScript);
+        public delegate void OnVehicleExitHandler(Player source, OnVehicleExitArgs eventArgs);
         public event OnVehicleExitHandler OnVehicleExit;
 
-        public delegate void OnVoiceStartHandler();
+        public delegate void OnVoiceStartHandler(Player source, OnVoiceStartArgs eventArgs);
         public event OnVoiceStartHandler OnVoiceStart;
 
-        public delegate void OnVoiceStopHandler();
+        public delegate void OnVoiceStopHandler(Player source, OnVoiceStopArgs eventArgs);
         public event OnVoiceStopHandler OnVoiceStop;
 
-        public delegate void OnWeaponFireHandler(WeaponModel weapon, Vector3 endPosition, PhysicalElement hitElement, Vector3 startPosition);
+        public delegate void OnWeaponFireHandler(Player source, OnWeaponFireArgs eventArgs);
         public event OnWeaponFireHandler OnWeaponFire;
 
         #pragma warning restore 67
