@@ -57,7 +57,7 @@ namespace ServerSide
             };
         }
 
-        public MyVehicle(Vector3 pos, bool test, Vector2 bla) : base(VehicleModel.Alpha, pos)
+        public MyVehicle(Vector3 pos, bool test, Vector2 bla) : base(VehicleModel.Car.Alpha, pos)
         {
             PrimaryColor = Color.ForestGreen;
         }

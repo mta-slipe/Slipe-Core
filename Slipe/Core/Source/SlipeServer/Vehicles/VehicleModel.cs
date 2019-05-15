@@ -1,15 +1,20 @@
-﻿using System;
+﻿using Slipe.MtaDefinitions;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Vehicles;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Slipe.Server.Vehicles
 {
     /// <summary>
     /// Class for all other road vehicle models
     /// </summary>
-    public class VehicleModel : BaseVehicleModel
+    public class VehicleModel : SharedVehicleModel
     {
-        public static class Vehicle
+        #region Static Properties
+        public static class TwoWheel
         {
             public static VehicleModel Bf400 { get { return new VehicleModel(581); } }
             public static VehicleModel Faggio { get { return new VehicleModel(462); } }
@@ -25,6 +30,10 @@ namespace Slipe.Server.Vehicles
             public static VehicleModel Bike { get { return new VehicleModel(509); } }
             public static VehicleModel Bmx { get { return new VehicleModel(481); } }
             public static VehicleModel Mountainbike { get { return new VehicleModel(510); } }
+        }
+
+        public static class Car
+        {           
             public static VehicleModel Alpha { get { return new VehicleModel(602); } }
             public static VehicleModel Banshee { get { return new VehicleModel(429); } }
             public static VehicleModel Buffalo { get { return new VehicleModel(402); } }
@@ -167,85 +176,153 @@ namespace Slipe.Server.Vehicles
             public static VehicleModel Sandking { get { return new VehicleModel(495); } }
             public static VehicleModel Solair { get { return new VehicleModel(458); } }
             public static VehicleModel Stratum { get { return new VehicleModel(561); } }
-            public static VehicleModel Cabbie { get { return new VehicleModel(438); } }
-            public static VehicleModel Taxi { get { return new VehicleModel(420); } }
         }
 
         public static class Boat
         {
-            public static VehicleModel Coastguard { get { return new VehicleModel(472); } }
-            public static VehicleModel Dinghy { get { return new VehicleModel(473); } }
-            public static VehicleModel Jetmax { get { return new VehicleModel(493); } }
-            public static VehicleModel Launch { get { return new VehicleModel(595); } }
-            public static VehicleModel Marquis { get { return new VehicleModel(484); } }
-            public static VehicleModel Predator { get { return new VehicleModel(430); } }
-            public static VehicleModel Reefer { get { return new VehicleModel(453); } }
-            public static VehicleModel Speeder { get { return new VehicleModel(452); } }
-            public static VehicleModel Squalo { get { return new VehicleModel(446); } }
-            public static VehicleModel Tropic { get { return new VehicleModel(454); } }
+            public static BoatModel Coastguard { get { return new BoatModel(472); } }
+            public static BoatModel Dinghy { get { return new BoatModel(473); } }
+            public static BoatModel Jetmax { get { return new BoatModel(493); } }
+            public static BoatModel Launch { get { return new BoatModel(595); } }
+            public static BoatModel Marquis { get { return new BoatModel(484); } }
+            public static BoatModel Predator { get { return new BoatModel(430); } }
+            public static BoatModel Reefer { get { return new BoatModel(453); } }
+            public static BoatModel Speeder { get { return new BoatModel(452); } }
+            public static BoatModel Squalo { get { return new BoatModel(446); } }
+            public static BoatModel Tropic { get { return new BoatModel(454); } }
         }
 
         public static class Plane
         {
-            public static VehicleModel Andromada { get { return new VehicleModel(592); } }
-            public static VehicleModel At400 { get { return new VehicleModel(577); } }
-            public static VehicleModel Beagle { get { return new VehicleModel(511); } }
-            public static VehicleModel Cropduster { get { return new VehicleModel(512); } }
-            public static VehicleModel Dodo { get { return new VehicleModel(593); } }
-            public static VehicleModel Hydra { get { return new VehicleModel(520); } }
-            public static VehicleModel Nevada { get { return new VehicleModel(553); } }
-            public static VehicleModel Rustler { get { return new VehicleModel(476); } }
-            public static VehicleModel Shamal { get { return new VehicleModel(519); } }
-            public static VehicleModel Skimmer { get { return new VehicleModel(460); } }
-            public static VehicleModel Stuntplane { get { return new VehicleModel(513); } }
-            public static VehicleModel RcBaron { get { return new VehicleModel(464); } }
+            public static PlaneModel Andromada { get { return new PlaneModel(592); } }
+            public static PlaneModel At400 { get { return new PlaneModel(577); } }
+            public static PlaneModel Beagle { get { return new PlaneModel(511); } }
+            public static PlaneModel Cropduster { get { return new PlaneModel(512); } }
+            public static PlaneModel Dodo { get { return new PlaneModel(593); } }
+            public static PlaneModel Hydra { get { return new PlaneModel(520); } }
+            public static PlaneModel Nevada { get { return new PlaneModel(553); } }
+            public static PlaneModel Rustler { get { return new PlaneModel(476); } }
+            public static PlaneModel Shamal { get { return new PlaneModel(519); } }
+            public static PlaneModel Skimmer { get { return new PlaneModel(460); } }
+            public static PlaneModel Stuntplane { get { return new PlaneModel(513); } }
+            public static PlaneModel RcBaron { get { return new PlaneModel(464); } }
         }
 
         public static class Helicopter
         {
-            public static VehicleModel Cargobob { get { return new VehicleModel(548); } }
-            public static VehicleModel Hunter { get { return new VehicleModel(425); } }
-            public static VehicleModel Leviathan { get { return new VehicleModel(417); } }
-            public static VehicleModel Maverick { get { return new VehicleModel(487); } }
-            public static VehicleModel Newschopper { get { return new VehicleModel(488); } }
-            public static VehicleModel PoliceMaverick { get { return new VehicleModel(497); } }
-            public static VehicleModel Raindance { get { return new VehicleModel(563); } }
-            public static VehicleModel Seasparrow { get { return new VehicleModel(447); } }
-            public static VehicleModel Sparrow { get { return new VehicleModel(469); } }
-            public static VehicleModel RcGoblin { get { return new VehicleModel(501); } }
-            public static VehicleModel RcRaider { get { return new VehicleModel(465); } }
+            public static HelicopterModel Cargobob { get { return new HelicopterModel(548); } }
+            public static HelicopterModel Hunter { get { return new HelicopterModel(425); } }
+            public static HelicopterModel Leviathan { get { return new HelicopterModel(417); } }
+            public static HelicopterModel Maverick { get { return new HelicopterModel(487); } }
+            public static HelicopterModel Newschopper { get { return new HelicopterModel(488); } }
+            public static HelicopterModel PoliceMaverick { get { return new HelicopterModel(497); } }
+            public static HelicopterModel Raindance { get { return new HelicopterModel(563); } }
+            public static HelicopterModel Seasparrow { get { return new HelicopterModel(447); } }
+            public static HelicopterModel Sparrow { get { return new HelicopterModel(469); } }
+            public static HelicopterModel RcGoblin { get { return new HelicopterModel(501); } }
+            public static HelicopterModel RcRaider { get { return new HelicopterModel(465); } }
         }
 
         public static class Trailer
         {
-            public static VehicleModel BaggageCovered { get { return new VehicleModel(606); } }
-            public static VehicleModel BaggageUncovered { get { return new VehicleModel(607); } }
-            public static VehicleModel Steps { get { return new VehicleModel(608); } }
-            public static VehicleModel Farmtrailer { get { return new VehicleModel(610); } }
-            public static VehicleModel Streetcleaner { get { return new VehicleModel(611); } }
-            public static VehicleModel GasSemi { get { return new VehicleModel(584); } }
-            public static VehicleModel Semi { get { return new VehicleModel(435); } }
-            public static VehicleModel OpenSemi { get { return new VehicleModel(450); } }
-            public static VehicleModel SmallSemi { get { return new VehicleModel(591); } }
+            public static TrailerModel BaggageCovered { get { return new TrailerModel(606); } }
+            public static TrailerModel BaggageUncovered { get { return new TrailerModel(607); } }
+            public static TrailerModel Steps { get { return new TrailerModel(608); } }
+            public static TrailerModel Farmtrailer { get { return new TrailerModel(610); } }
+            public static TrailerModel Streetcleaner { get { return new TrailerModel(611); } }
+            public static TrailerModel GasSemi { get { return new TrailerModel(584); } }
+            public static TrailerModel Semi { get { return new TrailerModel(435); } }
+            public static TrailerModel OpenSemi { get { return new TrailerModel(450); } }
+            public static TrailerModel SmallSemi { get { return new TrailerModel(591); } }
         }
 
         public static class Train
         {
-            public static VehicleModel FreightEngine { get { return new VehicleModel(537); } }
-            public static VehicleModel BoxFreight { get { return new VehicleModel(590); } }
-            public static VehicleModel FlatFreight { get { return new VehicleModel(569); } }
-            public static VehicleModel BrownStreakEngine { get { return new VehicleModel(538); } }
-            public static VehicleModel BrownStreakCarriage { get { return new VehicleModel(570); } }
-            public static VehicleModel Trolly { get { return new VehicleModel(449); } }
+            public static TrainModel FreightEngine { get { return new TrainModel(537); } }
+            public static TrainModel BoxFreight { get { return new TrainModel(590); } }
+            public static TrainModel FlatFreight { get { return new TrainModel(569); } }
+            public static TrainModel BrownStreakEngine { get { return new TrainModel(538); } }
+            public static TrainModel BrownStreakCarriage { get { return new TrainModel(570); } }
+            public static TrainModel Trolly { get { return new TrainModel(449); } }
         }
 
         public static class Turreted
         {
-            public static VehicleModel Rhino { get { return new VehicleModel(432); } }
-            public static VehicleModel Swat { get { return new VehicleModel(601); } }
-            public static VehicleModel Firetruck { get { return new VehicleModel(407); } }
+            public static TurretedModel Rhino { get { return new TurretedModel(432); } }
+            public static TurretedModel Swat { get { return new TurretedModel(601); } }
+            public static TurretedModel Firetruck { get { return new TurretedModel(407); } }
         }
 
+        public static class TaxiModels
+        {
+            public static TaxiModel Cabbie { get { return new TaxiModel(438); } }
+            public static TaxiModel Taxi { get { return new TaxiModel(420); } }
+        }
+
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Get the model handling of this vehicle model
+        /// </summary>
+        public ModelHandling Handling
+        {
+            get
+            {
+                return new ModelHandling(Id);
+            }
+        }
+
+        /// <summary>
+        /// Get all the vehicles using this model in the server
+        /// </summary>
+        public BaseVehicle[] Vehicles
+        {
+            get
+            {
+                MtaElement[] mtaElements = MtaShared.GetArrayFromTable(MtaServer.GetVehiclesOfType(Id), "MTAElement");
+                return ElementManager.Instance.CastArray<BaseVehicle>(mtaElements);
+            }
+        }
+        #endregion
+
         protected VehicleModel(int id) : base(id) { }
+
+        #region Static Methods
+        /// <summary>
+        /// Get a vehicle model from the model name as a string, instantiated as the right model class
+        /// </summary>
+        /// <param name="name">The Mta name of the vehicle</param>
+        /// <returns>The Vehicle model, instantiated as the right model class</returns>
+        public static VehicleModel FromName(string name)
+        {
+            return FromId(MtaShared.GetVehicleModelFromName(name));
+        }
+
+        /// <summary>
+        /// Get a vehicle model from its ID, instantiated as the right model class
+        /// </summary>
+        /// <param name="id">The Mta ID of the vehicle</param>
+        /// <returns>The Vehicle model, instantiated as the right model class</returns>
+        public static VehicleModel FromId(int id)
+        {
+            if (boatModels.Contains(id))
+                return new BoatModel(id);
+            if (planeModels.Contains(id))
+                return new PlaneModel(id);
+            if (helicopterModels.Contains(id))
+                return new HelicopterModel(id);
+            if (trailerModels.Contains(id))
+                return new TrailerModel(id);
+            if (trainModels.Contains(id))
+                return new TrainModel(id);
+            if (turretedModels.Contains(id))
+                return new TurretedModel(id);
+            if (taxiModels.Contains(id))
+                return new TaxiModel(id);
+
+            return new VehicleModel(id);
+        }
+        #endregion
     }
 }
