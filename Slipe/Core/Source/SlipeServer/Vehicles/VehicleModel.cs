@@ -14,7 +14,7 @@ namespace Slipe.Server.Vehicles
     public class VehicleModel : SharedVehicleModel
     {
         #region Static Properties
-        public static class TwoWheel
+        public static class Bikes
         {
             public static VehicleModel Bf400 { get { return new VehicleModel(581); } }
             public static VehicleModel Faggio { get { return new VehicleModel(462); } }
@@ -32,7 +32,7 @@ namespace Slipe.Server.Vehicles
             public static VehicleModel Mountainbike { get { return new VehicleModel(510); } }
         }
 
-        public static class Car
+        public static class Cars
         {           
             public static VehicleModel Alpha { get { return new VehicleModel(602); } }
             public static VehicleModel Banshee { get { return new VehicleModel(429); } }
@@ -178,7 +178,7 @@ namespace Slipe.Server.Vehicles
             public static VehicleModel Stratum { get { return new VehicleModel(561); } }
         }
 
-        public static class Boat
+        public static class Boats
         {
             public static BoatModel Coastguard { get { return new BoatModel(472); } }
             public static BoatModel Dinghy { get { return new BoatModel(473); } }
@@ -192,7 +192,7 @@ namespace Slipe.Server.Vehicles
             public static BoatModel Tropic { get { return new BoatModel(454); } }
         }
 
-        public static class Plane
+        public static class Planes
         {
             public static PlaneModel Andromada { get { return new PlaneModel(592); } }
             public static PlaneModel At400 { get { return new PlaneModel(577); } }
@@ -208,7 +208,7 @@ namespace Slipe.Server.Vehicles
             public static PlaneModel RcBaron { get { return new PlaneModel(464); } }
         }
 
-        public static class Helicopter
+        public static class Helicopters
         {
             public static HelicopterModel Cargobob { get { return new HelicopterModel(548); } }
             public static HelicopterModel Hunter { get { return new HelicopterModel(425); } }
@@ -223,7 +223,7 @@ namespace Slipe.Server.Vehicles
             public static HelicopterModel RcRaider { get { return new HelicopterModel(465); } }
         }
 
-        public static class Trailer
+        public static class Trailers
         {
             public static TrailerModel BaggageCovered { get { return new TrailerModel(606); } }
             public static TrailerModel BaggageUncovered { get { return new TrailerModel(607); } }
@@ -236,7 +236,7 @@ namespace Slipe.Server.Vehicles
             public static TrailerModel SmallSemi { get { return new TrailerModel(591); } }
         }
 
-        public static class Train
+        public static class Trains
         {
             public static TrainModel FreightEngine { get { return new TrainModel(537); } }
             public static TrainModel BoxFreight { get { return new TrainModel(590); } }
@@ -246,14 +246,14 @@ namespace Slipe.Server.Vehicles
             public static TrainModel Trolly { get { return new TrainModel(449); } }
         }
 
-        public static class Turreted
+        public static class TurretedVehicles
         {
             public static TurretedModel Rhino { get { return new TurretedModel(432); } }
             public static TurretedModel Swat { get { return new TurretedModel(601); } }
             public static TurretedModel Firetruck { get { return new TurretedModel(407); } }
         }
 
-        public static class TaxiModels
+        public static class Taxis
         {
             public static TaxiModel Cabbie { get { return new TaxiModel(438); } }
             public static TaxiModel Taxi { get { return new TaxiModel(420); } }
