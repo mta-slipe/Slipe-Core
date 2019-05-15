@@ -496,10 +496,10 @@ namespace Slipe.Shared.Elements
         public delegate void OnModelChangeHandler(PhysicalElement source, OnModelChangeArgs eventArgs);
         public event OnModelChangeHandler OnModelChange;
 
-        public delegate void OnStartSyncHandler(SharedPed newSyncer);
+        public delegate void OnStartSyncHandler(PhysicalElement source, OnStartSyncArgs eventArgs);
         public event OnStartSyncHandler OnStartSync;
 
-        public delegate void OnStopSyncHandler(SharedPed oldSyncer);
+        public delegate void OnStopSyncHandler(PhysicalElement source, OnStopSyncArgs eventArgs);
         public event OnStopSyncHandler OnStopSync;
 
         public delegate void OnStreamInHandler();

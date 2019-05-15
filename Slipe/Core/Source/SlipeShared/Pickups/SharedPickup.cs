@@ -7,6 +7,7 @@ using Slipe.Shared.Elements;
 using Slipe.Shared.Weapons;
 using System.ComponentModel;
 using Slipe.Shared.Peds;
+using Slipe.Shared.Pickups.Events;
 
 namespace Slipe.Shared.Pickups
 {
@@ -112,10 +113,10 @@ namespace Slipe.Shared.Pickups
         #region Events
         #pragma warning disable 67
 
-        public delegate void OnHitHandler(SharedPed hitPlayer, bool matchingDimension);
+        public delegate void OnHitHandler(SharedPickup source, OnHitArgs eventArgs);
         public event OnHitHandler OnHit;
 
-        public delegate void OnLeaveHandler(SharedPed leavePlayer, bool matchingDimension);
+        public delegate void OnLeaveHandler(SharedPickup source, OnLeaveArgs eventArgs);
         public event OnLeaveHandler OnLeave;
 
         #pragma warning restore 67

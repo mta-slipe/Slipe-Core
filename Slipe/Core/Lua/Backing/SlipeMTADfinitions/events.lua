@@ -37,6 +37,10 @@ function initEvents()
 	local _stringArray = {1, function(e) return arrayFromTable(e, "System.String") end}		
 	local _enum = {1, function(e, en) return _int[2](parseEnum(typeOf(en), _string[2](e):Replace(" ", "_"), true)) end}
 
+	local _elementEvents = Slipe.Shared.Elements.Events
+	local _colShapeEvents = Slipe.Shared.CollisionShapes.Events
+	local _sharedPickupEvents = Slipe.Shared.Pickups.Events
+
 	local events = {}
 
 	-- 1: MTA event name
@@ -57,6 +61,9 @@ function initEvents()
 		local weaponModel = Slipe.Server.Weapons.WeaponModel
 		local _weaponModel = {1, function(e) return new(weaponModel, 2, e) end}
 
+		local _pickupEvents = Slipe.Server.Pickups.Events
+		local _pedEvents = Slipe.Server.Peds.Events
+
 		-- Root Element
 		events.onAccountDataChange = {"OnAccountDataChange", {_account, _string, _string}}
 		events.onBan = {"OnBanAdded", {_ban}}
@@ -69,36 +76,31 @@ function initEvents()
 		events.onDebugMessage = {"OnDebugMessage", {_string, _int, _string, _int, _color3}}
 		events.onSettingChange = {"OnSettingChange", {_string, _string, _string}}
 
-		
-		local _physicalElementEvents = Slipe.Shared.Elements.Events
 		-- PhysicalElement
-		events.onElementColShapeHit = {"OnCollisionShapeHit", {_element, _boolean}, _physicalElementEvents}
-		events.onElementColShapeLeave = {"OnCollisionShapeLeave", {_element, _boolean}, _physicalElementEvents}
-		events.onElementClicked = {"OnClicked", {{_enum, mouseButton}, {_enum, mouseButtonState}, _element, _vector3 }, _physicalElementEvents}
-		events.onElementModelChange = {"OnModelChange", {_int, _int}, _physicalElementEvents}
-		events.onElementStartSync = {"OnStartSync", {_element}}
-		events.onElementStopSync = {"OnStopSync", {_element}}
+		events.onElementColShapeHit = {"OnCollisionShapeHit", {_element, _boolean}, _elementEvents}
+		events.onElementColShapeLeave = {"OnCollisionShapeLeave", {_element, _boolean}, _elementEvents}
+		events.onElementClicked = {"OnClicked", {{_enum, mouseButton}, {_enum, mouseButtonState}, _element, _vector3 }, _elementEvents}
+		events.onElementModelChange = {"OnModelChange", {_int, _int}, _elementEvents}
+		events.onElementStartSync = {"OnStartSync", {_element}, _elementEvents}
+		events.onElementStopSync = {"OnStopSync", {_element}, _elementEvents}
 
-		local _colShapeEvents = Slipe.Shared.CollisionShapes.Events
 		-- Collisionshape
 		events.onColShapeHit = {"OnHit", {_element, _boolean}, _colShapeEvents}
 		events.onColShapeLeave = {"OnLeave", {_element, _boolean}, _colShapeEvents}
 
 		-- Element
-		events.onElementDestroy = {"OnDestroy"}
+		events.onElementDestroy = {"OnDestroy", {}, _elementEvents}
 
 		-- Pickup
-		events.onPickupHit = {"OnHit", {_element, _boolean}}
-		events.onPickupLeave = {"OnLeave", {_element, _boolean}}
-		events.onPickupSpawn = {"OnSpawn"}
-		events.onPickupUse = {"OnUse", {_element}}
+		events.onPickupHit = {"OnHit", {_element, _boolean}, _sharedPickupEvents}
+		events.onPickupLeave = {"OnLeave", {_element, _boolean}, _sharedPickupEvents}
+		events.onPickupSpawn = {"OnSpawn", {}, _pickupEvents}
+		events.onPickupUse = {"OnUse", {_element}, _pickupEvents}
 
 		-- Marker
 		events.onMarkerHit = {"OnHit", {_element, _boolean}}
 		events.onMarkerLeave = {"OnLeave", {_element, _boolean}}
-
-
-		local _pedEvents = Slipe.Server.Peds.Events
+		
 		-- Ped
 		events.onPedWasted = {"OnWasted", {_int, _element, _int, _int, _boolean}}
 		events.onPedWeaponSwitch = {"OnWeaponSwitch", {_weaponModel, _weaponModel}}

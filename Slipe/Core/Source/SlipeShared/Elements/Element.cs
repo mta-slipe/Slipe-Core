@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using Slipe.MtaDefinitions;
+using Slipe.Shared.Elements.Events;
 using Slipe.Shared.IO;
 
 namespace Slipe.Shared.Elements
@@ -188,7 +189,7 @@ namespace Slipe.Shared.Elements
 
         #pragma warning disable 67
 
-        public delegate void OnDestroyHandler();
+        public delegate void OnDestroyHandler(Element source, OnDestroyArgs eventArgs);
         public event OnDestroyHandler OnDestroy;
 
         #pragma warning restore 67
