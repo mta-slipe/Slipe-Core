@@ -9,6 +9,7 @@ using System.ComponentModel;
 using Slipe.Server.Peds;
 using Slipe.Shared.CollisionShapes;
 using Slipe.Shared.Elements.Events;
+using Slipe.Server.Vehicles.Events;
 
 namespace Slipe.Server.Vehicles
 {
@@ -238,7 +239,7 @@ namespace Slipe.Server.Vehicles
 
         #pragma warning disable 67
 
-        public delegate void OnDamageHandler(float loss);
+        public delegate void OnDamageHandler(Vehicle source, OnDamageArgs eventArgs);
         public event OnDamageHandler OnDamage;
 
         public delegate void OnCollisionShapeHitHandler(Vehicle source, OnCollisionShapeHitArgs eventArgs);
@@ -247,22 +248,22 @@ namespace Slipe.Server.Vehicles
         public delegate void OnCollisionShapeLeaveHandler(Vehicle source, OnCollisionShapeLeaveArgs eventArgs);
         public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
 
-        public delegate void OnEnterHandler(Player player, Seat seat, Player jacked);
+        public delegate void OnEnterHandler(Vehicle source, OnEnterArgs eventArgs);
         public event OnEnterHandler OnEnter;
 
-        public delegate void OnExitHandler(Player player, Seat seat, Player jacker, bool forcedByScript);
+        public delegate void OnExitHandler(Vehicle source, OnExitArgs eventArgs);
         public event OnExitHandler OnExit;
 
-        public delegate void OnStartEnterHandler(Player enteringPlayer, Seat seat, Player jacked, Door door);
+        public delegate void OnStartEnterHandler(Vehicle source, OnStartEnterArgs eventArgs);
         public event OnStartEnterHandler OnStartEnter;
 
-        public delegate void OnStartExitHandler(Player exitingPlayer, Seat seat, Player jacked, Door door);
+        public delegate void OnStartExitHandler(Vehicle source, OnStartExitArgs eventArgs);
         public event OnStartExitHandler OnStartExit;
 
-        public delegate void OnExplodeHandler();
+        public delegate void OnExplodeHandler(Vehicle source, OnExplodeArgs eventArgs);
         public event OnExplodeHandler OnExplode;
 
-        public delegate void OnRespawnHandler(bool exploded);
+        public delegate void OnRespawnHandler(Vehicle source, OnRespawnArgs eventArgs);
         public event OnRespawnHandler OnRespawn;
 
         #pragma warning restore 67

@@ -64,6 +64,7 @@ function initEvents()
 
 		local _pickupEvents = Slipe.Server.Pickups.Events
 		local _pedEvents = Slipe.Server.Peds.Events
+		local _vehicleEvents = Slipe.Server.Vehicles.Events
 
 		-- Root Element
 		events.onAccountDataChange = {"OnAccountDataChange", {_account, _string, _string}}
@@ -144,15 +145,15 @@ function initEvents()
 		events.onPlayerWeaponSwitch = {"OnWeaponSwitch", {_weaponModel, _weaponModel}, _pedEvents}
 
 		-- Vehicle
-		events.onTrailerAttach = {"OnAttach", {_element}}
-		events.onTrailerDetach = {"OnDetach", {_element}}
-		events.onVehicleDamage = {"OnDamage", {_float}}
-		events.onVehicleEnter = {"OnEnter", {_element, _int, _element}}
-		events.onVehicleExit = {"OnExit", {_element, _int, _element, _boolean}}
-		events.onVehicleStartEnter = {"OnStartEnter", {_element, _int, _element, _int}}
-		events.onVehicleStartExit = {"OnStartExit", {_element, _int, _element, _int}}
-		events.onVehicleExplode = {"OnExplode"}
-		events.onVehicleRespawn = {"OnRespawn", {_boolean}}
+		events.onTrailerAttach = {"OnAttach", {_element}, _vehicleEvents}
+		events.onTrailerDetach = {"OnDetach", {_element}, _vehicleEvents}
+		events.onVehicleDamage = {"OnDamage", {_float}, _vehicleEvents}
+		events.onVehicleEnter = {"OnEnter", {_element, _int, _element}, _vehicleEvents}
+		events.onVehicleExit = {"OnExit", {_element, _int, _element, _boolean}, _vehicleEvents}
+		events.onVehicleStartEnter = {"OnStartEnter", {_element, _int, _element, _int}}, _vehicleEvents
+		events.onVehicleStartExit = {"OnStartExit", {_element, _int, _element, _int}, _vehicleEvents}
+		events.onVehicleExplode = {"OnExplode", {}, _vehicleEvents}
+		events.onVehicleRespawn = {"OnRespawn", {_boolean}, _vehicleEvents}
 
 	else
 
