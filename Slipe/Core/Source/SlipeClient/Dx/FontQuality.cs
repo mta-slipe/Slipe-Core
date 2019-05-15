@@ -15,6 +15,6 @@ namespace Slipe.Client.Enums
         NonAntiAliased,
         AntiAliased,
         ClearType,
-        ClearType_Neutral
+        ClearType_Natural
     }
 }
