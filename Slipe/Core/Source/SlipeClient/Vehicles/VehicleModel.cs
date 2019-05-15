@@ -176,7 +176,7 @@ namespace Slipe.Client.Vehicles
 
         public static class Boat
         {
-            public static BoatModel Coastguard { get { return new BoatModel(472); } }
+            public static VehicleModel Coastguard { get { return new VehicleModel(472); } }
             public static VehicleModel Dinghy { get { return new VehicleModel(473); } }
             public static VehicleModel Jetmax { get { return new VehicleModel(493); } }
             public static VehicleModel Launch { get { return new VehicleModel(595); } }
