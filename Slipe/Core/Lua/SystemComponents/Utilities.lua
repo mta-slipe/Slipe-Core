@@ -288,5 +288,3 @@ define("System.Guid", {
   end
 })
 
-
-define("System.ArraySegment", {})
