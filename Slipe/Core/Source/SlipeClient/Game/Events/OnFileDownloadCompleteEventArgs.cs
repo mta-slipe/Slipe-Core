@@ -12,7 +12,7 @@ namespace Slipe.Client.Game.Events
         public string Path { get; }
 
         /// <summary>
-        /// True if the download was a succes
+        /// True if the download was a success
         /// </summary>
         public bool Success { get; }
 
