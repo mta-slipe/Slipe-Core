@@ -17,7 +17,7 @@ namespace Slipe.Client.Browsers.Events
         public int ErrorCode { get; }
 
         /// <summary>
-        /// The descriptino of the error
+        /// The description of the error
         /// </summary>
         public string Description { get; }
 
