@@ -11,6 +11,7 @@ using System;
 using System.Numerics;
 using Slipe.Shared.Rendering;
 using System.Timers;
+using Slipe.Server.Vehicles.Events;
 
 namespace ServerSide
 {
@@ -54,13 +55,13 @@ namespace ServerSide
         public MyVehicle(MtaElement element) : base(element)
         {
             PrimaryColor = Color.ForestGreen;
-            OnEnter += (Player player, Seat seat, Player jacked) =>
+            OnEnter += (Vehicle source, OnEnterArgs eventArgs) =>
             {
-                player.Model = (int)PedModel.army;
+                eventArgs.Player.Model = (int)PedModel.army;
             };
         }
 
-        public MyVehicle(Vector3 pos, bool test, Vector2 bla) : base(VehicleModel.Alpha, pos)
+        public MyVehicle(Vector3 pos) : base(VehicleModel.Cars.Alpha, pos)
         {
             PrimaryColor = Color.ForestGreen;
         }

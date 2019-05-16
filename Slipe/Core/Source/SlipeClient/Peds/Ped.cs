@@ -304,7 +304,7 @@ namespace Slipe.Client.Peds
         public delegate void OnDamageHandler(PhysicalElement attacker, DamageType damageType, BodyPart bodyPart, float loss);
         public event OnDamageHandler OnDamage;
 
-        public delegate void OnHeliKilledHandler(Vehicle responsibleHelicopter);
+        public delegate void OnHeliKilledHandler(BaseVehicle responsibleHelicopter);
         public event OnHeliKilledHandler OnHeliKilled;
 
         public delegate void OnWastedHandler(Player killer, DamageType damageType, BodyPart bodyPart, bool stealth);

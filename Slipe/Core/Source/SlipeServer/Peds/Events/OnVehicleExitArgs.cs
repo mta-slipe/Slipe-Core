@@ -11,7 +11,7 @@ namespace Slipe.Server.Peds.Events
         /// <summary>
         /// The vehicle that is exited
         /// </summary>
-        public Vehicle Vehicle { get; }
+        public BaseVehicle Vehicle { get; }
 
         /// <summary>
         /// The seat that is exited
@@ -28,7 +28,7 @@ namespace Slipe.Server.Peds.Events
         /// </summary>
         public bool IsForced { get; }
 
-        internal OnVehicleExitArgs(Vehicle vehicle, Seat seat, Player jacker, bool forcedByScript)
+        internal OnVehicleExitArgs(BaseVehicle vehicle, Seat seat, Player jacker, bool forcedByScript)
         {
             Vehicle = vehicle;
             Seat = seat;

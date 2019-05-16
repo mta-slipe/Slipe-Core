@@ -71,7 +71,7 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public void RegisterElement(Element element)
         {
-            elements.Add(element.MTAElement, element);
+            elements[element.MTAElement] = element;
         }
 
         /// <summary>

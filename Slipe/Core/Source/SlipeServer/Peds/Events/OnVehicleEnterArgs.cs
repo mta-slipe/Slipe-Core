@@ -11,7 +11,7 @@ namespace Slipe.Server.Peds.Events
         /// <summary>
         /// The vehicle that is entered
         /// </summary>
-        public Vehicle Vehicle { get; }
+        public BaseVehicle Vehicle { get; }
 
         /// <summary>
         /// The seat that is entered
@@ -23,7 +23,7 @@ namespace Slipe.Server.Peds.Events
         /// </summary>
         public Player JackedPlayer { get; }
 
-        internal OnVehicleEnterArgs(Vehicle vehicle, Seat seat, Player jacked)
+        internal OnVehicleEnterArgs(BaseVehicle vehicle, Seat seat, Player jacked)
         {
             Vehicle = vehicle;
             Seat = seat;
