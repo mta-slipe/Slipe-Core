@@ -289,3 +289,4 @@ define("System.Guid", {
 })
 
 
+define("System.ArraySegment", {})

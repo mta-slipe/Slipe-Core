@@ -23,6 +23,6 @@
   - name: Snippets
     href: snippets.md
   - name: Exports
-    href: exports.md
+    href: exporting.md
 - name: Roadmap
   href: roadmap.md
