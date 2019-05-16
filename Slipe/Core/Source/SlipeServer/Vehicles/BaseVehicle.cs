@@ -231,31 +231,31 @@ namespace Slipe.Server.Vehicles
 
 #pragma warning disable 67
 
-        public delegate void OnDamageHandler(BaseVehicle source, OnDamageArgs eventArgs);
+        public delegate void OnDamageHandler(BaseVehicle source, OnDamageEventArgs eventArgs);
         public event OnDamageHandler OnDamage;
 
-        public delegate void OnCollisionShapeHitHandler(BaseVehicle source, OnCollisionShapeHitArgs eventArgs);
+        public delegate void OnCollisionShapeHitHandler(BaseVehicle source, OnCollisionShapeHitEventArgs eventArgs);
         public event OnCollisionShapeHitHandler OnCollisionShapeHit;
 
-        public delegate void OnCollisionShapeLeaveHandler(BaseVehicle source, OnCollisionShapeLeaveArgs eventArgs);
+        public delegate void OnCollisionShapeLeaveHandler(BaseVehicle source, OnCollisionShapeLeaveEventArgs eventArgs);
         public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
 
-        public delegate void OnEnterHandler(BaseVehicle source, OnEnterArgs eventArgs);
+        public delegate void OnEnterHandler(BaseVehicle source, OnEnterEventArgs eventArgs);
         public event OnEnterHandler OnEnter;
 
-        public delegate void OnExitHandler(BaseVehicle source, OnExitArgs eventArgs);
+        public delegate void OnExitHandler(BaseVehicle source, OnExitEventArgs eventArgs);
         public event OnExitHandler OnExit;
 
-        public delegate void OnStartEnterHandler(BaseVehicle source, OnStartEnterArgs eventArgs);
+        public delegate void OnStartEnterHandler(BaseVehicle source, OnStartEnterEventArgs eventArgs);
         public event OnStartEnterHandler OnStartEnter;
 
-        public delegate void OnStartExitHandler(BaseVehicle source, OnStartExitArgs eventArgs);
+        public delegate void OnStartExitHandler(BaseVehicle source, OnStartExitEventArgs eventArgs);
         public event OnStartExitHandler OnStartExit;
 
-        public delegate void OnExplodeHandler(BaseVehicle source, OnExplodeArgs eventArgs);
+        public delegate void OnExplodeHandler(BaseVehicle source, OnExplodeEventArgs eventArgs);
         public event OnExplodeHandler OnExplode;
 
-        public delegate void OnRespawnHandler(BaseVehicle source, OnRespawnArgs eventArgs);
+        public delegate void OnRespawnHandler(BaseVehicle source, OnRespawnEventArgs eventArgs);
         public event OnRespawnHandler OnRespawn;
 
 #pragma warning restore 67

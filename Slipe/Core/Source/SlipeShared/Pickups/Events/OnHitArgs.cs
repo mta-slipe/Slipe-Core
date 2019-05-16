@@ -1,4 +1,6 @@
-﻿using Slipe.Shared.Peds;
+﻿using Slipe.MtaDefinitions;
+using Slipe.Shared.Elements;
+using Slipe.Shared.Peds;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,10 +19,10 @@ namespace Slipe.Shared.Pickups.Events
         /// </summary>
         public bool IsDimensionMatching { get; }
 
-        internal OnHitArgs(SharedPed hitPlayer, bool matchingDimension)
+        internal OnHitArgs(MtaElement hitPlayer, dynamic matchingDimension)
         {
-            Player = hitPlayer;
-            IsDimensionMatching = matchingDimension;
+            Player = ElementManager.Instance.GetElement<SharedPed>(hitPlayer);
+            IsDimensionMatching = (bool) matchingDimension;
         }
     }
 }

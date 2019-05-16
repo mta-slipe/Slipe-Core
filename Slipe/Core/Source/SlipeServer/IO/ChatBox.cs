@@ -58,19 +58,16 @@ namespace Slipe.Server.IO
         }
 
         #region Events
+#pragma warning disable 67
 
-        internal static void HandleMessage(string message, Element playerOrResource)
-        {
-            OnMessage?.Invoke(playerOrResource, new OnChatMessageArgs(message));
-        }
-
-        public delegate void OnMessageHandler(Element source, OnChatMessageArgs eventArgs);
+        public delegate void OnMessageHandler(Element source, OnChatMessageEventArgs eventArgs);
 
         /// <summary>
         /// The source of the event is either the player or the resource that broadcasted the message
         /// </summary>
         public static event OnMessageHandler OnMessage;
 
+#pragma warning enable 67
         #endregion
     }
 }

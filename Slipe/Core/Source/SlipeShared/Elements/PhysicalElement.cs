@@ -490,16 +490,16 @@ namespace Slipe.Shared.Elements
         #region Events
 #pragma warning disable 67
 
-        public delegate void OnClickedHandler(PhysicalElement source, OnClickedArgs eventArgs);
+        public delegate void OnClickedHandler(PhysicalElement source, OnClickedEventArgs eventArgs);
         public event OnClickedHandler OnClicked;
 
-        public delegate void OnModelChangeHandler(PhysicalElement source, OnModelChangeArgs eventArgs);
+        public delegate void OnModelChangeHandler(PhysicalElement source, OnModelChangeEventArgs eventArgs);
         public event OnModelChangeHandler OnModelChange;
 
-        public delegate void OnStartSyncHandler(PhysicalElement source, OnStartSyncArgs eventArgs);
+        public delegate void OnStartSyncHandler(PhysicalElement source, OnStartSyncEventArgs eventArgs);
         public event OnStartSyncHandler OnStartSync;
 
-        public delegate void OnStopSyncHandler(PhysicalElement source, OnStopSyncArgs eventArgs);
+        public delegate void OnStopSyncHandler(PhysicalElement source, OnStopSyncEventArgs eventArgs);
         public event OnStopSyncHandler OnStopSync;
 
         public delegate void OnStreamInHandler();

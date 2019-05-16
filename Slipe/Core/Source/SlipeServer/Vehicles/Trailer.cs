@@ -67,10 +67,10 @@ namespace Slipe.Server.Vehicles
 
         #pragma warning disable 67
 
-        public delegate void OnAttachHandler(Trailer source, OnAttachArgs eventArgs);
+        public delegate void OnAttachHandler(Trailer source, OnAttachEventArgs eventArgs);
         public event OnAttachHandler OnAttach;
 
-        public delegate void OnDetachHandler(Trailer source, OnDetachArgs eventArgs);
+        public delegate void OnDetachHandler(Trailer source, OnDetachEventArgs eventArgs);
         public event OnDetachHandler OnDetach;
 
         #pragma warning restore 67

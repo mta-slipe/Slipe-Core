@@ -223,47 +223,23 @@ namespace Slipe.Server.Game
         #endregion
 
         #region Events
+#pragma warning disable 67
 
-        internal static void HandlePlayerConnected(string nickName, string Ip, string username, string serial, int versionNumber, string versionString)
-        {
-            OnPlayerConnect?.Invoke((RootElement) Element.Root, new OnPlayerConnectArgs(nickName, Ip, username, serial, versionNumber, versionString));
-        }
-
-        internal static void HandleSettingChange(string setting, string oldValue, string newValue)
-        {
-            OnSettingChange?.Invoke((RootElement) Element.Root, new OnSettingChangeArgs(setting, oldValue, newValue));
-        }
-
-        internal static void HandlePreStart(Resource resource)
-        {
-            OnPreStart?.Invoke(resource);
-        }
-
-        internal static void HandleStart(Resource resource)
-        {
-            OnStart?.Invoke(resource);
-        }
-
-        internal static void HandleStop(Resource resource, bool wasDeleted)
-        {
-            OnStop?.Invoke(resource, wasDeleted);
-        }
-
-        public delegate void OnPreStartHandler(Resource resource);
+        public delegate void OnPreStartHandler(ResourceRootElement source, OnPreStartEventArgs eventARgs);
         public static event OnPreStartHandler OnPreStart;
 
-        public delegate void OnStartHandler(Resource resource);
+        public delegate void OnStartHandler(ResourceRootElement source, OnStartEventArgs eventArgs);
         public static event OnStartHandler OnStart;
 
-        public delegate void OnStopHandler(Resource resource, bool wasDeleted);
+        public delegate void OnStopHandler(ResourceRootElement source, OnStopEventArgs eventArgs);
         public static event OnStopHandler OnStop;
 
-        public delegate void OnPlayerConnectHandler(RootElement source, OnPlayerConnectArgs eventArgs);
+        public delegate void OnPlayerConnectHandler(RootElement source, OnPlayerConnectEventArgs eventArgs);
         public static event OnPlayerConnectHandler OnPlayerConnect;
 
-        public delegate void OnSettingChangeHandler(RootElement source, OnSettingChangeArgs eventArgs);
+        public delegate void OnSettingChangeHandler(RootElement source, OnSettingChangeEventArgs eventArgs);
         public static event OnSettingChangeHandler OnSettingChange;
-
+#pragma warning enable 67
         #endregion
     }
 }

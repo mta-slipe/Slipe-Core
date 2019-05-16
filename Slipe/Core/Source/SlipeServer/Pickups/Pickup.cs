@@ -89,10 +89,10 @@ namespace Slipe.Server.Pickups
 
         #pragma warning disable 67
 
-        public delegate void OnSpawnHandler(Pickup source, OnSpawnArgs eventArgs);
+        public delegate void OnSpawnHandler(Pickup source, OnSpawnEventArgs eventArgs);
         public event OnSpawnHandler OnSpawn;
 
-        public delegate void OnUseHandler(Pickup source, OnUseArgs eventArgs);
+        public delegate void OnUseHandler(Pickup source, OnUseEventArgs eventArgs);
         public event OnUseHandler OnUse;
 
         #pragma warning restore 67

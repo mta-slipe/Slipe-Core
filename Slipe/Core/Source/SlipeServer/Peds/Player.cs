@@ -506,120 +506,112 @@ namespace Slipe.Server.Peds
 
         #pragma warning disable 67
 
-        public delegate void OnConsoleHandler(Player source, OnConsoleArgs eventArgs);
+        public delegate void OnConsoleHandler(Player source, OnConsoleEventArgs eventArgs);
         public event OnConsoleHandler OnConsole;
 
-        public delegate void OnCollisionShapeHitHandler(Player source, OnCollisionShapeHitArgs eventArgs);
+        public delegate void OnCollisionShapeHitHandler(Player source, OnCollisionShapeHitEventArgs eventArgs);
         public event OnCollisionShapeHitHandler OnCollisionShapeHit;
 
-        public delegate void OnCollisionShapeLeaveHandler(Player source, OnCollisionShapeLeaveArgs eventArgs);
+        public delegate void OnCollisionShapeLeaveHandler(Player source, OnCollisionShapeLeaveEventArgs eventArgs);
         public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
 
-        public delegate void OnJoinHandler(Player source, OnJoinArgs eventArgs);
+        public delegate void OnJoinHandler(Player source, OnJoinEventArgs eventArgs);
         public static event OnJoinHandler OnJoin;
 
-        public delegate void OnAcInfoHandler(Player source, OnAcInfoArgs eventArgs);
+        public delegate void OnAcInfoHandler(Player source, OnAcInfoEventArgs eventArgs);
         public event OnAcInfoHandler OnAcInfo;
 
-        public delegate void OnBanAddedHandler(Player source, OnBanAddedArgs eventArgs);
+        public delegate void OnBanAddedHandler(Player source, OnBanAddedEventArgs eventArgs);
         public event OnBanAddedHandler OnBanAdded;
 
-        public delegate void OnBannedHandler(Player source, OnBannedArgs eventArgs);
+        public delegate void OnBannedHandler(Player source, OnBannedEventArgs eventArgs);
         public event OnBannedHandler OnBanned;
 
-        public delegate void OnNicknameChangedHandler(Player source, OnNicknameChangedArgs eventArgs);
+        public delegate void OnNicknameChangedHandler(Player source, OnNicknameChangedEventArgs eventArgs);
         public event OnNicknameChangedHandler OnNicknameChanged;
 
-        public delegate void OnChatHandler(Player source, OnChatArgs eventArgs);
+        public delegate void OnChatHandler(Player source, OnChatEventArgs eventArgs);
         public event OnChatHandler OnChat;
 
-        public delegate void OnClickHandler(Player source, OnClickArgs eventArgs);
+        public delegate void OnClickHandler(Player source, OnClickEventArgs eventArgs);
         public event OnClickHandler OnClick;
 
-        public delegate void OnCommandHandler(Player source, OnCommandArgs eventArgs);
+        public delegate void OnCommandHandler(Player source, OnCommandEventArgs eventArgs);
         public event OnCommandHandler OnCommand;
 
-        public delegate void OnContactHandler(Player source, OnContactArgs eventArgs);
+        public delegate void OnContactHandler(Player source, OnContactEventArgs eventArgs);
         public event OnContactHandler OnContact;
 
-        public delegate void OnDamageHandler(Player source, OnDamageArgs eventArgs);
+        public delegate void OnDamageHandler(Player source, OnDamageEventArgs eventArgs);
         public event OnDamageHandler OnDamage;
 
-        public delegate void OnLoginHandler(Player source, OnLoginArgs eventArgs);
+        public delegate void OnLoginHandler(Player source, OnLoginEventArgs eventArgs);
         public event OnLoginHandler OnLogin;
 
-        public delegate void OnLogoutHandler(Player source, OnLogoutArgs eventArgs);
+        public delegate void OnLogoutHandler(Player source, OnLogoutEventArgs eventArgs);
         public event OnLogoutHandler OnLogout;
 
-        public delegate void OnMarkerHitHandler(Player source, OnMarkerHitArgs eventArgs);
+        public delegate void OnMarkerHitHandler(Player source, OnMarkerHitEventArgs eventArgs);
         public event OnMarkerHitHandler OnMarkerHit;
 
-        public delegate void OnMarkerLeaveHandler(Player source, OnMarkerLeaveArgs eventArgs);
+        public delegate void OnMarkerLeaveHandler(Player source, OnMarkerLeaveEventArgs eventArgs);
         public event OnMarkerLeaveHandler OnMarkerLeave;
 
-        public delegate void OnPickupHitHandler(Player source, OnPickupHitArgs eventArgs);
+        public delegate void OnPickupHitHandler(Player source, OnPickupHitEventArgs eventArgs);
         public event OnPickupHitHandler OnPickupHit;
 
-        public delegate void OnPickupLeaveHandler(Player source, OnPickupLeaveArgs eventArgs);
+        public delegate void OnPickupLeaveHandler(Player source, OnPickupLeaveEventArgs eventArgs);
         public event OnPickupLeaveHandler OnPickupLeave;
 
-        public delegate void OnPickupUseHandler(Player source, OnPickupUseArgs eventArgs);
+        public delegate void OnPickupUseHandler(Player source, OnPickupUseEventArgs eventArgs);
         public event OnPickupUseHandler OnPickupUse;
 
-        public delegate void OnModInfoHandler(Player source, OnModInfoArgs eventArgs);
+        public delegate void OnModInfoHandler(Player source, OnModInfoEventArgs eventArgs);
         public event OnModInfoHandler OnModInfo;
 
-        public delegate void OnMutedHandler(Player source, OnMutedArgs eventArgs);
+        public delegate void OnMutedHandler(Player source, OnMutedEventArgs eventArgs);
         public event OnMutedHandler OnMuted;
 
-        public delegate void OnUnmutedHandler(Player source, OnUnmutedArgs eventArgs);
+        public delegate void OnUnmutedHandler(Player source, OnUnmutedEventArgs eventArgs);
         public event OnUnmutedHandler OnUnmuted;
 
-        public delegate void OnNetworkInteruptionHandler(Player source, OnNetworkInteruptionArgs eventArgs);
+        public delegate void OnNetworkInteruptionHandler(Player source, OnNetworkInteruptionEventArgs eventArgs);
         public event OnNetworkInteruptionHandler OnNetworkInteruption;
 
-        public delegate void OnPrivateMessageHandler(Player source, OnPrivateMessageArgs eventArgs);
+        public delegate void OnPrivateMessageHandler(Player source, OnPrivateMessageEventArgs eventArgs);
         public event OnPrivateMessageHandler OnPrivateMessage;
 
-        public delegate void OnQuitHandler(Player source, OnQuitArgs eventArgs);
+        public delegate void OnQuitHandler(Player source, OnQuitEventArgs eventArgs);
         public event OnQuitHandler OnQuit;
 
-        public delegate void OnScreenShotHandler(Player source, OnScreenShotArgs eventArgs);
+        public delegate void OnScreenShotHandler(Player source, OnScreenShotEventArgs eventArgs);
         public event OnScreenShotHandler OnScreenShot;
 
-        public delegate void OnSpawnHandler(Player source, OnSpawnArgs eventArgs);
+        public delegate void OnSpawnHandler(Player source, OnSpawnEventArgs eventArgs);
         public event OnSpawnHandler OnSpawn;
 
-        public delegate void OnStealthKillHandler(Player source, OnStealthKillArgs eventArgs);
+        public delegate void OnStealthKillHandler(Player source, OnStealthKillEventArgs eventArgs);
         public event OnStealthKillHandler OnStealthKill;
 
-        public delegate void OnTargetHandler(Player source, OnTargetArgs eventArgs);
+        public delegate void OnTargetHandler(Player source, OnTargetEventArgs eventArgs);
         public event OnTargetHandler OnTarget;
 
-        public delegate void OnVehicleEnterHandler(Player source, OnVehicleEnterArgs eventArgs);
+        public delegate void OnVehicleEnterHandler(Player source, OnVehicleEnterEventArgs eventArgs);
         public event OnVehicleEnterHandler OnVehicleEnter;
 
-        public delegate void OnVehicleExitHandler(Player source, OnVehicleExitArgs eventArgs);
+        public delegate void OnVehicleExitHandler(Player source, OnVehicleExitEventArgs eventArgs);
         public event OnVehicleExitHandler OnVehicleExit;
 
-        public delegate void OnVoiceStartHandler(Player source, OnVoiceStartArgs eventArgs);
+        public delegate void OnVoiceStartHandler(Player source, OnVoiceStartEventArgs eventArgs);
         public event OnVoiceStartHandler OnVoiceStart;
 
-        public delegate void OnVoiceStopHandler(Player source, OnVoiceStopArgs eventArgs);
+        public delegate void OnVoiceStopHandler(Player source, OnVoiceStopEventArgs eventArgs);
         public event OnVoiceStopHandler OnVoiceStop;
 
-        public delegate void OnWeaponFireHandler(Player source, OnWeaponFireArgs eventArgs);
+        public delegate void OnWeaponFireHandler(Player source, OnWeaponFireEventArgs eventArgs);
         public event OnWeaponFireHandler OnWeaponFire;
 
         #pragma warning restore 67
-
-        /// This method is just here so that these enums get parsed and are usable in events
-        private void initEnums()
-        {
-            MouseButton m = (MouseButton)Enum.Parse(typeof(MouseButton), "Left", true);
-            MouseButtonState s = (MouseButtonState)Enum.Parse(typeof(MouseButtonState), "Down", true);
-            QuitType q = (QuitType)Enum.Parse(typeof(QuitType), "Disconnected", true);
-        }
 
         #endregion
 

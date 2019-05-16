@@ -5,13 +5,15 @@ using System.Text;
 using System.ComponentModel;
 using Slipe.Server.Peds;
 using Slipe.Server.Accounts.Events;
+using Slipe.Shared.Elements;
+using Slipe.Server.Elements;
 
 namespace Slipe.Server.Accounts
 {
     /// <summary>
     /// A ban is a pointer that represents a banned player arbitrarily.
     /// </summary>
-    public class Ban
+    public sealed class Ban
     {
         private readonly MtaBan ban;
 
@@ -178,21 +180,11 @@ namespace Slipe.Server.Accounts
 
         #region Events
 
-        internal void HandleAdded()
-        {
-            OnAdded?.Invoke(this, new OnAddedArgs());
-        }
+        public delegate void OnRemoveHandler(RootElement source, OnRemovedEventArgs eventArgs);
+        public static event OnRemoveHandler OnRemoved;
 
-        internal void HandleRemoved(Player responsiblePlayer)
-        {
-            OnRemoved?.Invoke(this, new OnRemovedArgs(responsiblePlayer));
-        }
-
-        public delegate void OnRemoveHandler(Ban source, OnRemovedArgs eventArgs);
-        public event OnRemoveHandler OnRemoved;
-
-        public delegate void OnAddedHandler(Ban source, OnAddedArgs eventArgs);
-        public event OnAddedHandler OnAdded;
+        public delegate void OnAddedHandler(RootElement source, OnAddedEventArgs eventArgs);
+        public static event OnAddedHandler OnAdded;
 
         #endregion
 

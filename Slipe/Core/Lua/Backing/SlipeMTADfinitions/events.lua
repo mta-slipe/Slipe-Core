@@ -45,9 +45,8 @@ function initEvents()
 	local events = {}
 
 	-- 1: MTA event name
-	-- 2: table with parameter conversions 
-	-- 3: (optional) events namespace
-	-- 4: (optional) static event class
+	-- 2: events namespace
+	-- 3: table reference to static class, if static event (optional)
 
 	if triggerServerEvent == nil then
 
@@ -65,95 +64,99 @@ function initEvents()
 		local _pickupEvents = Slipe.Server.Pickups.Events
 		local _pedEvents = Slipe.Server.Peds.Events
 		local _vehicleEvents = Slipe.Server.Vehicles.Events
+		local _accountEvents = Slipe.Server.Accounts.Events
+		local _gameEvents = Slipe.Server.Game.Events
+		local _ioEvents = Slipe.Server.IO.Events
 
 		-- Root Element
-		events.onAccountDataChange = {"OnAccountDataChange", {_account, _string, _string}}
-		events.onBan = {"OnBanAdded", {_ban}}
-		events.onUnban = {"OnBanRemoved", {_ban, _element}}
-		events.onPlayerConnect = {"OnPlayerConnect", {_string, _string, _string, _string, _int, _string}}
-		events.onResourcePreStart = {"OnPreStart", {_resource}}
-		events.onResourceStart = {"OnStart", {_resource}}
-		events.onResourceStop = {"OnStop", {_resource, _boolean}}
-		events.onChatMessage = {"OnChatMessage", {_string, _element}}
-		events.onDebugMessage = {"OnDebugMessage", {_string, _int, _string, _int, _color3}}
-		events.onSettingChange = {"OnSettingChange", {_string, _string, _string}}
+		events.onAccountDataChange = {"OnAccountDataChange", _accountEvents, Slipe.Server.Accounts.Account}
+		events.onBan = {"OnBanAdded", _accountEvents, Slipe.Server.Accounts.Ban}
+		events.onUnban = {"OnBanRemoved", _accountEvents, Slipe.Server.Accounts.Ban}
+		events.onPlayerConnect = {"OnPlayerConnect", _gameEvents, Slipe.Server.Game.GameServer}
+		events.onResourcePreStart = {"OnPreStart", _gameEvents, Slipe.Server.Game.GameServer }
+		events.onResourceStart = {"OnStart", _gameEvents, Slipe.Server.Game.GameServer}
+		events.onResourceStop = {"OnStop", _gameEvents, Slipe.Server.Game.GameServer}
+		events.onChatMessage = {"OnChatMessage", _ioEvents, Slipe.Server.IO.ChatBox}
+		events.onDebugMessage = {"OnDebugMessage", _ioEvents, Slipe.Server.IO.MtaDebug}
+		events.onSettingChange = {"OnSettingChange", _gameEvents, Slipe.Server.Game.GameServer}
 
 		-- PhysicalElement
-		events.onElementColShapeHit = {"OnCollisionShapeHit", {_element, _boolean}, _elementEvents}
-		events.onElementColShapeLeave = {"OnCollisionShapeLeave", {_element, _boolean}, _elementEvents}
-		events.onElementClicked = {"OnClicked", {{_enum, mouseButton}, {_enum, mouseButtonState}, _element, _vector3 }, _elementEvents}
-		events.onElementModelChange = {"OnModelChange", {_int, _int}, _elementEvents}
-		events.onElementStartSync = {"OnStartSync", {_element}, _elementEvents}
-		events.onElementStopSync = {"OnStopSync", {_element}, _elementEvents}
+		events.onElementColShapeHit = {"OnCollisionShapeHit", _elementEvents}
+		events.onElementColShapeLeave = {"OnCollisionShapeLeave", _elementEvents}
+		events.onElementClicked = {"OnClicked", _elementEvents}
+		events.onElementModelChange = {"OnModelChange", _elementEvents}
+		events.onElementStartSync = {"OnStartSync", _elementEvents}
+		events.onElementStopSync = {"OnStopSync", _elementEvents}
 
 		-- Collisionshape
-		events.onColShapeHit = {"OnHit", {_element, _boolean}, _colShapeEvents}
-		events.onColShapeLeave = {"OnLeave", {_element, _boolean}, _colShapeEvents}
+		events.onColShapeHit = {"OnHit", _colShapeEvents}
+		events.onColShapeLeave = {"OnLeave", _colShapeEvents}
 
 		-- Element
-		events.onElementDestroy = {"OnDestroy", {}, _elementEvents}
+		events.onElementDestroy = {"OnDestroy", _elementEvents}
 
 		-- Pickup
-		events.onPickupHit = {"OnHit", {_element, _boolean}, _sharedPickupEvents}
-		events.onPickupLeave = {"OnLeave", {_element, _boolean}, _sharedPickupEvents}
-		events.onPickupSpawn = {"OnSpawn", {}, _pickupEvents}
-		events.onPickupUse = {"OnUse", {_element}, _pickupEvents}
+		events.onPickupHit = {"OnHit", _sharedPickupEvents}
+		events.onPickupLeave = {"OnLeave", _sharedPickupEvents}
+		events.onPickupSpawn = {"OnSpawn", _pickupEvents}
+		events.onPickupUse = {"OnUse", _pickupEvents}
 
 		-- Marker
-		events.onMarkerHit = {"OnHit", {_element, _boolean}, _markerEvents}
-		events.onMarkerLeave = {"OnLeave", {_element, _boolean}, _markerEvents}
+		events.onMarkerHit = {"OnHit", _markerEvents}
+		events.onMarkerLeave = {"OnLeave", _markerEvents}
 		
 		-- Ped
-		events.onPedWasted = {"OnWasted", {_int, _element, _int, _int, _boolean}, _pedEvents}
-		events.onPedWeaponSwitch = {"OnWeaponSwitch", {_weaponModel, _weaponModel}, _pedEvents}
+		events.onPedWasted = {"OnWasted", _pedEvents}
+		events.onPedWeaponSwitch = {"OnWeaponSwitch", _pedEvents}
 
 		-- Player
-		events.onConsole = {"OnConsole", {_string}, _pedEvents}
-		events.onPlayerACInfo = {"OnAcInfo", {_stringArray, _int, _string, _string}, _pedEvents}
-		events.onBan = {"OnBanAdded", {_ban}, _pedEvents}
-		events.onPlayerBan = {"OnBanned", {_ban, _element}, _pedEvents}
-		events.onPlayerChangeNick = {"OnNicknameChanged", {_string, _string, _boolean}, _pedEvents}
-		events.onPlayerChat = {"OnChat", {_string, _int}, _pedEvents}
-		events.onPlayerClick = {"OnClick", {{_enum, mouseButton}, {_enum, mouseButtonState}, _element, _vector3, _vector2}, _pedEvents}
-		events.onPlayerCommand = {"OnCommand", {_string}, _pedEvents}
-		events.onPlayerContact = {"OnContact", {_element, _element}, _pedEvents}
-		events.onPlayerDamage = {"OnDamage", {_element, _int, _int, _float}, _pedEvents}
-		events.onPlayerWasted = {"OnWasted", {_int, _element, _int, _int, _boolean}, _pedEvents}
-		events.onPlayerLogin = {"OnLogin", {_account, _account}, _pedEvents}
-		events.onPlayerLogout = {"OnLogout", {_account, _account}, _pedEvents}
-		events.onPlayerMarkerHit = {"OnMarkerHit", {_element, _boolean}, _pedEvents}
-		events.onPlayerMarkerLeave = {"OnMarkerLeave", {_element, _boolean}, _pedEvents}
-		events.onPlayerModInfo = {"OnModInfo", {_string, _stringArray}, _pedEvents}
-		events.onPlayerMute = {"OnMuted", {}, _pedEvents}
-		events.onPlayerUnMute = {"OnUnmuted", {}, _pedEvents}
-		events.onPlayerNetworkStatus = {"OnNetworkInteruption", {_int, _int}, _pedEvents}
-		events.onPlayerPickupHit = {"OnPickupHit", {_element}, _pedEvents}
-		events.onPlayerPickupLeave = {"OnPickupLeave", {_element}, _pedEvents}
-		events.onPlayerPickupUse = {"OnPickupUse", {_element}, _pedEvents}
-		events.onPlayerPrivateMessage = {"OnPrivateMessage", {_string, _element}, _pedEvents}
-		events.onPlayerQuit = {"OnQuit", {{_enum, quitType}, _string, _element}, _pedEvents}
-		events.onPlayerScreenShot = {"OnScreenShot", {_resource, _int, _string, _int, _string}, _pedEvents}
-		events.onPlayerJoin = {"OnJoin", {}, _pedEvents, Slipe.Server.Peds.Player}
-		events.onPlayerSpawn = {"OnSpawn", {_vector3, _float, _element, _int, _int, _int}, _pedEvents}
-		events.onPlayerStealthKill = {"OnStealthKill", {_element}, _pedEvents}
-		events.onPlayerTarget = {"OnTarget", {_element}, _pedEvents}
-		events.onPlayerVehicleEnter = {"OnVehicleEnter", {_element, _int, _element}, _pedEvents}
-		events.onPlayerVehicleExit = {"OnVehicleExit", {_element, _int, _element, _boolean}, _pedEvents}
-		events.onPlayerVoiceStart = {"OnVoiceStart", {}, _pedEvents}
-		events.onPlayerVoiceStop = {"OnVoiceStop", {}, _pedEvents}
-		events.onPlayerWeaponFire = {"OnWeaponFire", {_weaponModel, _vector3, _element, _vector3}, _pedEvents}
-		events.onPlayerWeaponSwitch = {"OnWeaponSwitch", {_weaponModel, _weaponModel}, _pedEvents}
+		events.onPlayerJoin = {"OnJoin", _pedEvents, Slipe.Server.Peds.Player}
+
+		events.onConsole = {"OnConsole", _pedEvents}
+		events.onPlayerACInfo = {"OnAcInfo", _pedEvents}
+		events.onBan = {"OnBanAdded", _pedEvents}
+		events.onPlayerBan = {"OnBanned", _pedEvents}
+		events.onPlayerChangeNick = {"OnNicknameChanged", _pedEvents}
+		events.onPlayerChat = {"OnChat", _pedEvents}
+		events.onPlayerClick = {"OnClick", _pedEvents}
+		events.onPlayerCommand = {"OnCommand", _pedEvents}
+		events.onPlayerContact = {"OnContact", _pedEvents}
+		events.onPlayerDamage = {"OnDamage", _pedEvents}
+		events.onPlayerWasted = {"OnWasted", _pedEvents}
+		events.onPlayerLogin = {"OnLogin", _pedEvents}
+		events.onPlayerLogout = {"OnLogout", _pedEvents}
+		events.onPlayerMarkerHit = {"OnMarkerHit", _pedEvents}
+		events.onPlayerMarkerLeave = {"OnMarkerLeave", _pedEvents}
+		events.onPlayerModInfo = {"OnModInfo", _pedEvents}
+		events.onPlayerMute = {"OnMuted", _pedEvents}
+		events.onPlayerUnMute = {"OnUnmuted", _pedEvents}
+		events.onPlayerNetworkStatus = {"OnNetworkInteruption", _pedEvents}
+		events.onPlayerPickupHit = {"OnPickupHit", _pedEvents}
+		events.onPlayerPickupLeave = {"OnPickupLeave", _pedEvents}
+		events.onPlayerPickupUse = {"OnPickupUse", _pedEvents}
+		events.onPlayerPrivateMessage = {"OnPrivateMessage", _pedEvents}
+		events.onPlayerQuit = {"OnQuit", _pedEvents}
+		events.onPlayerScreenShot = {"OnScreenShot", _pedEvents}
+		events.onPlayerSpawn = {"OnSpawn", _pedEvents}
+		events.onPlayerStealthKill = {"OnStealthKill", _pedEvents}
+		events.onPlayerTarget = {"OnTarget", _pedEvents}
+		events.onPlayerVehicleEnter = {"OnVehicleEnter", _pedEvents}
+		events.onPlayerVehicleExit = {"OnVehicleExit", _pedEvents}
+		events.onPlayerVoiceStart = {"OnVoiceStart", _pedEvents}
+		events.onPlayerVoiceStop = {"OnVoiceStop", _pedEvents}
+		events.onPlayerWeaponFire = {"OnWeaponFire", _pedEvents}
+		events.onPlayerWeaponSwitch = {"OnWeaponSwitch", _pedEvents}
 
 		-- Vehicle
-		events.onTrailerAttach = {"OnAttach", {_element}, _vehicleEvents}
-		events.onTrailerDetach = {"OnDetach", {_element}, _vehicleEvents}
-		events.onVehicleDamage = {"OnDamage", {_float}, _vehicleEvents}
-		events.onVehicleEnter = {"OnEnter", {_element, _int, _element}, _vehicleEvents}
-		events.onVehicleExit = {"OnExit", {_element, _int, _element, _boolean}, _vehicleEvents}
-		events.onVehicleStartEnter = {"OnStartEnter", {_element, _int, _element, _int}}, _vehicleEvents
-		events.onVehicleStartExit = {"OnStartExit", {_element, _int, _element, _int}, _vehicleEvents}
-		events.onVehicleExplode = {"OnExplode", {}, _vehicleEvents}
-		events.onVehicleRespawn = {"OnRespawn", {_boolean}, _vehicleEvents}
+		events.onTrailerAttach = {"OnAttach", _vehicleEvents}
+		events.onTrailerDetach = {"OnDetach", _vehicleEvents}
+		events.onVehicleDamage = {"OnDamage", _vehicleEvents}
+		events.onVehicleEnter = {"OnEnter", _vehicleEvents}
+		events.onVehicleExit = {"OnExit", _vehicleEvents}
+		events.onVehicleStartEnter = {"OnStartEnter", _vehicleEvents}
+		events.onVehicleStartExit = {"OnStartExit", _vehicleEvents}
+		events.onVehicleExplode = {"OnExplode", _vehicleEvents}
+		events.onVehicleRespawn = {"OnRespawn", _vehicleEvents}
 
 	else
 
@@ -312,62 +315,13 @@ function initEvents()
 
 	for e, v in pairs(events) do
 		addEventHandler(e, root, function(...)
-			local instance = m:GetElement1(source)
-			local cls = v[4] and v[4] or instance
-			local varArgs = {}
+			local src = m:GetElement1(source)
+			local cls = v[3] and v[3] or src
 			if cls and cls[v[1]] then
-				if v[2] and #v[2] ~= 0 then
-					local args = {...}
-					local argStep = 1
-					for i=1,#v[2],1 do
-						local mPointer = v[2][i][2]
-						local nArgs = v[2][i][1]
-						local singleValFunc = true
-						if type(mPointer) ~= "function" then
-							mPointer = v[2][i][1][2]
-							nArgs = v[2][i][1][1]
-							singleValFunc = false
-						end
-						local stepArgs = {}
-						for j=1,nArgs,1	do
-							tInsert(stepArgs, args[argStep + j - 1])
-						end
-
-						if not singleValFunc then
-							tInsert(stepArgs, v[2][i][2])
-						end
-
-						tInsert(varArgs, i, mPointer(unpack(stepArgs)))
-						argStep = argStep + nArgs
-					end	
-				end
-				if v[3] and v[2] then -- remove this once refactor is complete
-					cls[v[1]](instance, v[3][v[1] .. "Args"](unpack(varArgs, 1, #v[2])))
-				elseif v[2]
-					cls[v[1]](unpack(varArgs, 1, #v[2]))
-				end
+				cls[v[1]](src, v[2][v[1] .. "EventArgs"](...))
 			end
 		end)
 	end
-
-	-- Handle the static OnPlayerJoin event and register all player classes
-	-- if triggerServerEvent == nil then
-	-- 	addEventHandler("onPlayerJoin", getRootElement(), function()
-	-- 		local player = m:GetElement1(source)
-	-- 		local onJoinEvent = Slipe.Server.Peds.Player.OnJoin
-	-- 		if onJoinEvent ~= nil then
-	-- 			onJoinEvent(player, Slipe.Server.Peds.Events.OnJoinArgs)
-	-- 		end
-	-- 	end)
-	-- else
-	-- 	addEventHandler("onClientPlayerJoin", getRootElement(), function()
-	-- 		local player = m:GetElement1(source)
-	-- 		local onJoinEvent = Slipe.Client.Peds.Player.OnJoin
-	-- 		if onJoinEvent ~= nil then
-	-- 			onJoinEvent(player)
-	-- 		end
-	-- 	end)
-	-- end
 
 	local allElementTypes = {
 		"player",

@@ -169,10 +169,10 @@ namespace Slipe.Server.Peds
 
         #pragma warning disable 67
 
-        public delegate void OnWastedHandler(Ped source, OnWastedArgs eventArgs);
+        public delegate void OnWastedHandler(Ped source, OnWastedEventArgs eventArgs);
         public event OnWastedHandler OnWasted;
 
-        public delegate void OnWeaponSwitchHandler(Ped source, OnWeaponSwitchArgs eventArgs);
+        public delegate void OnWeaponSwitchHandler(Ped source, OnWeaponSwitchEventArgs eventArgs);
         public event OnWeaponSwitchHandler OnWeaponSwitch;
 
         #pragma warning restore 67

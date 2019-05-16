@@ -123,10 +123,10 @@ namespace Slipe.Shared.Markers
 
         #pragma warning disable 67
 
-        public delegate void OnHitHandler(SharedMarker source, OnHitArgs eventArgs);
+        public delegate void OnHitHandler(SharedMarker source, OnHitEventArgs eventArgs);
         public event OnHitHandler OnHit;
 
-        public delegate void OnLeaveHandler(SharedMarker source, OnLeaveArgs eventArgs);
+        public delegate void OnLeaveHandler(SharedMarker source, OnLeaveEventArgs eventArgs);
         public event OnLeaveHandler OnLeave;
 
         #pragma warning restore 67

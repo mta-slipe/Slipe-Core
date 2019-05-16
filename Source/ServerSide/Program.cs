@@ -25,7 +25,7 @@ namespace ServerSide
         public Program()
         {
             // Spawn a player in Blueberry
-            Player.OnJoin += (Player source, OnJoinArgs eventArgs) =>
+            Player.OnJoin += (Player source, OnJoinEventArgs eventArgs) =>
             {
                 source.Spawn(new Vector3(0, 0, 5), PedModel.ballas1);
             };
@@ -40,10 +40,8 @@ namespace ServerSide
             OnSpawn += OnPlayerSpawn;
         }
 
-        private void OnPlayerSpawn(Player source, OnSpawnArgs eventArgs)
+        private void OnPlayerSpawn(Player source, OnSpawnEventArgs eventArgs)
         {
-            Console.WriteLine(eventArgs.Model);
-            Console.WriteLine(eventArgs.Interior);
             Camera.Target = this;
             Camera.Fade(CameraFade.In);
         }
@@ -55,7 +53,7 @@ namespace ServerSide
         public MyVehicle(MtaElement element) : base(element)
         {
             PrimaryColor = Color.ForestGreen;
-            OnEnter += (Vehicle source, OnEnterArgs eventArgs) =>
+            OnEnter += (BaseVehicle source, OnEnterEventArgs eventArgs) =>
             {
                 eventArgs.Player.Model = (int)PedModel.army;
             };

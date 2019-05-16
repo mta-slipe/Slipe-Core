@@ -58,4 +58,6 @@ function runEntryPoint()
 end
 runEntryPoint()
 
+if triggerServerEvent == nil then
 initEvents()
+end

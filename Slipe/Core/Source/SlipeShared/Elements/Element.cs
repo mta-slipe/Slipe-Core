@@ -189,7 +189,7 @@ namespace Slipe.Shared.Elements
 
         #pragma warning disable 67
 
-        public delegate void OnDestroyHandler(Element source, OnDestroyArgs eventArgs);
+        public delegate void OnDestroyHandler(Element source, OnDestroyEventArgs eventArgs);
         public event OnDestroyHandler OnDestroy;
 
         #pragma warning restore 67
