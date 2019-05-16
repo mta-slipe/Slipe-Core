@@ -22,5 +22,7 @@
     href: inheritance.md
   - name: Snippets
     href: snippets.md
+  - name: Exports
+    href: exports.md
 - name: Roadmap
   href: roadmap.md

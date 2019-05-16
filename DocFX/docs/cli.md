@@ -26,8 +26,9 @@ The following commands need to be run in a slipe resource directory. (A director
 
 - **Compile your project**  
 In order to compile your project's C# code to Lua use the `slipe compile` command. This command also runs the `meta-generate` command.  
-Syntax: `slipe compile [-server-only] [-client-only] [-module moduleName]`  
-Example: `slipe compile -server-only`
+Syntax: `slipe compile [-server-only] [-client-only] [-module moduleName] [-exports]`  
+Example: `slipe compile -server-only -exports`  
+When using the `-exports` option the entire project will be scanned for any exported functions.
 
 - **Build your project for deployment**  
 In order to build your project for deployment on a live server use the `slipe build` command. This will generate a built version of the resource without any of the unnecesary files to run the resource on MTA. (Like the DLLs and C# source code). You can also optionally compile the Lua code using luac.mtasa.com by using the `luac` option  

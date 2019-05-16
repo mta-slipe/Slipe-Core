@@ -1,0 +1,35 @@
+# Exports
+Slipe supports exporting static methods as MTA exports. In order to do this you use the `ExportAttribute`.
+
+```cs
+[Export("ExportSample")]
+public static void DoTheThing(string x) {
+    Console.WriteLine("Export has been called with parameter {0}", x);
+}
+```
+The parameter you pass to the `Export` attribute defines the name you can call the export with. In the above example that would be
+```lua
+exports.slipecore:ExportSample("hey")
+```
+If you omit the name from the attribute the fully qualified name of the method is used, with the dots (`.`) removed. For example:
+```cs
+namespace Foo
+{
+	public class Bar
+	{
+		[Export]
+		public void Exporty()
+		{
+
+		}
+	}
+}
+```
+```lua
+exports.slipecore:FooBarExporty()
+```
+
+When adding a new export to your project use the `-exports` option in your compile command. For example
+```
+slipe compile -exports
+```
