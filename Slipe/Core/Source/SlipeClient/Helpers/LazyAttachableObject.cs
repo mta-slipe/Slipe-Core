@@ -4,6 +4,8 @@ using System.Text;
 using System.Numerics;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Helpers;
+using Slipe.Client.Elements;
+using Slipe.Client.Game.Events;
 
 namespace Slipe.Client.Helpers
 {
@@ -96,6 +98,6 @@ namespace Slipe.Client.Helpers
         /// <summary>
         /// Updates this element to the correct position and rotation
         /// </summary>
-        protected abstract void Update(float timeSlice);
+        protected abstract void Update(RootElement source, OnUpdateEventArgs eventArgs);
     }
 }

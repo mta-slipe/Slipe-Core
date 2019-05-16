@@ -9,6 +9,7 @@ using Slipe.Shared.Markers;
 using System.ComponentModel;
 using Slipe.Shared.IO;
 using Slipe.Shared.Peds;
+using Slipe.Shared.Elements.Events;
 
 namespace Slipe.Shared.Elements
 {
@@ -489,22 +490,22 @@ namespace Slipe.Shared.Elements
         #region Events
 #pragma warning disable 67
 
-        public delegate void OnClickedHandler(MouseButton mouseButton, MouseButtonState buttonState, SharedPed clickedBy, Vector3 clickPosition);
+        public delegate void OnClickedHandler(PhysicalElement source, OnClickedEventArgs eventArgs);
         public event OnClickedHandler OnClicked;
 
-        public delegate void OnModelChangeHandler(int oldModel, int newModel);
+        public delegate void OnModelChangeHandler(PhysicalElement source, OnModelChangeEventArgs eventArgs);
         public event OnModelChangeHandler OnModelChange;
 
-        public delegate void OnStartSyncHandler(SharedPed newSyncer);
+        public delegate void OnStartSyncHandler(PhysicalElement source, OnStartSyncEventArgs eventArgs);
         public event OnStartSyncHandler OnStartSync;
 
-        public delegate void OnStopSyncHandler(SharedPed oldSyncer);
+        public delegate void OnStopSyncHandler(PhysicalElement source, OnStopSyncEventArgs eventArgs);
         public event OnStopSyncHandler OnStopSync;
 
-        public delegate void OnStreamInHandler();
+        public delegate void OnStreamInHandler(PhysicalElement source, OnSteamInEventArgs eventArgs);
         public event OnStreamInHandler OnStreamIn;
 
-        public delegate void OnStreamOutHandler();
+        public delegate void OnStreamOutHandler(PhysicalElement source, OnSteamOutEventArgs eventArgs);
         public event OnStreamOutHandler OnStreamOut;
 
         #pragma warning restore 67

@@ -8,6 +8,7 @@ using System.ComponentModel;
 using Slipe.Shared.Weapons;
 using Slipe.Server.Weapons;
 using Slipe.Shared.Elements;
+using Slipe.Server.Peds.Events;
 
 namespace Slipe.Server.Peds
 {
@@ -168,10 +169,10 @@ namespace Slipe.Server.Peds
 
         #pragma warning disable 67
 
-        public delegate void OnWastedHandler(int remainingAmmo, Player attacker, DamageType damageType, BodyPart bodyPart, bool stealth);
+        public delegate void OnWastedHandler(Ped source, OnWastedEventArgs eventArgs);
         public event OnWastedHandler OnWasted;
 
-        public delegate void OnWeaponSwitchHandler(WeaponModel previousWeapon, WeaponModel newWeapon);
+        public delegate void OnWeaponSwitchHandler(Ped source, OnWeaponSwitchEventArgs eventArgs);
         public event OnWeaponSwitchHandler OnWeaponSwitch;
 
         #pragma warning restore 67

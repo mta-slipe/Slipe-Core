@@ -14,6 +14,9 @@ using Slipe.Client.Vehicles;
 using Slipe.Shared.Vehicles;
 using Slipe.Shared.Weapons;
 using Slipe.Client.Game;
+using Slipe.Client.Peds.Events;
+using Slipe.Shared.Elements.Events;
+using Slipe.Client.IO.Events;
 
 namespace Slipe.Client.Peds
 {
@@ -158,54 +161,54 @@ namespace Slipe.Client.Peds
 
         #region Events
 
-        #pragma warning disable 67
+#pragma warning disable 67
 
-        public delegate void OnCollisionShapeHitHandler(CollisionShape colShape, bool matchingDimension);
-        public event OnCollisionShapeHitHandler OnCollisionShapeHit;
-
-        public delegate void OnCollisionShapeLeaveHandler(CollisionShape colShape, bool matchingDimension);
-        public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
-
-        public delegate void OnNicknameChangedHandler(string oldNickname, string newNickname);
-        public event OnNicknameChangedHandler OnNicknameChanged;
-
-        public delegate void OnJoinHandler(Player player);
+        public delegate void OnJoinHandler(Player source, OnJoinEventArgs eventArgs);
         public static event OnJoinHandler OnJoin;
 
-        public delegate void OnPickupHitHandler(Pickup pickupHit, bool matchingDimension);
+        public delegate void OnCollisionShapeHitHandler(Player source, OnCollisionShapeHitEventArgs eventArgs);
+        public event OnCollisionShapeHitHandler OnCollisionShapeHit;
+
+        public delegate void OnCollisionShapeLeaveHandler(Player source, OnCollisionShapeLeaveEventArgs eventArgs);
+        public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
+
+        public delegate void OnNicknameChangedHandler(Player source, OnNicknameChangedEventArgs eventArgs);
+        public event OnNicknameChangedHandler OnNicknameChanged;
+
+        public delegate void OnPickupHitHandler(Player source, OnPickupHitEventArgs eventArgs);
         public event OnPickupHitHandler OnPickupHit;
 
-        public delegate void OnPickupLeaveHandler(Pickup pickupLeft, bool matchingDimension);
+        public delegate void OnPickupLeaveHandler(Player source, OnPickupLeaveEventArgs eventArgs);
         public event OnPickupLeaveHandler OnPickupLeave;
 
-        public delegate void OnQuitHandler(QuitType quitType);
+        public delegate void OnQuitHandler(Player source, OnQuitEventArgs eventArgs);
         public event OnQuitHandler OnQuit;
 
-        public delegate void OnSpawnHandler(Team playerTeam);
+        public delegate void OnSpawnHandler(Player source, OnSpawnEventArgs eventArgs);
         public event OnSpawnHandler OnSpawn;
 
-        public delegate void OnVehicleEnterHandler(Vehicle vehicle, Seat seat);
+        public delegate void OnVehicleEnterHandler(Player source, OnVehicleEnterEventArgs eventArgs);
         public event OnVehicleEnterHandler OnVehicleEnter;
 
-        public delegate void OnVehicleExitHandler(Vehicle vehicle, Seat seat);
+        public delegate void OnVehicleExitHandler(Player source, OnVehicleExitEventArgs eventArgs);
         public event OnVehicleExitHandler OnVehicleExit;
 
-        public delegate void OnVoicePausedHandler();
+        public delegate void OnVoicePausedHandler(Player source, OnVoicePausedEventArgs eventArgs);
         public event OnVoicePausedHandler OnVoicePaused;
 
-        public delegate void OnVoiceResumedHandler();
+        public delegate void OnVoiceResumedHandler(Player source, OnVoiceResumedEventArgs eventArgs);
         public event OnVoiceResumedHandler OnVoiceResumed;
 
-        public delegate void OnVoiceStartHandler();
+        public delegate void OnVoiceStartHandler(Player source, OnVoiceStartEventArgs eventArgs);
         public event OnVoiceStartHandler OnVoiceStart;
 
-        public delegate void OnVoiceStopHandler();
+        public delegate void OnVoiceStopHandler(Player source, OnVoiceStopEventArgs eventArgs);
         public event OnVoiceStopHandler OnVoiceStop;
 
-        public delegate void OnWeaponSwitchHandler(SharedWeaponModel previousWeapon, SharedWeaponModel newWeapon);
+        public delegate void OnWeaponSwitchHandler(Player source, OnWeaponSwitchEventArgs eventArgs);
         public event OnWeaponSwitchHandler OnWeaponSwitch;
 
-        public delegate void OnChatMessageHandler(string text, Color color);
+        public delegate void OnChatMessageHandler(Player source, OnChatMessageEventArgs eventArgs);
         public event OnChatMessageHandler OnChatMessage;
 
         #pragma warning restore 67

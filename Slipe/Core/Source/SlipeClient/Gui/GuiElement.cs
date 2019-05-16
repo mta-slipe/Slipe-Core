@@ -6,6 +6,7 @@ using Slipe.Shared.Elements;
 using System.ComponentModel;
 using System.Numerics;
 using Slipe.Shared.IO;
+using Slipe.Client.Gui.Events;
 
 namespace Slipe.Client.Gui
 {
@@ -237,40 +238,40 @@ namespace Slipe.Client.Gui
 
         #pragma warning disable 67
 
-        public delegate void OnBlurHandler();
+        public delegate void OnBlurHandler(GuiElement source, OnBlurEventArgs eventArgs);
         public event OnBlurHandler OnBlur;
 
-        public delegate void OnFocusHandler();
+        public delegate void OnFocusHandler(GuiElement source, OnFocusEventArgs eventArgs);
         public event OnFocusHandler OnFocus;
 
-        public delegate void OnClickHandler(MouseButton button, MouseButtonState buttonState, Vector2 mousePosition);
+        public delegate void OnClickHandler(GuiElement source, OnClickEventArgs eventArgs);
         public event OnClickHandler OnClick;
 
-        public delegate void OnDoubleClickHandler(MouseButton button, MouseButtonState buttonState, Vector2 mousePosition);
+        public delegate void OnDoubleClickHandler(GuiElement source, OnDoubleClickEventArgs eventArgs);
         public event OnDoubleClickHandler OnDoubleClick;
 
-        public delegate void OnMouseDownHandler(MouseButton button, Vector2 mousePosition);
+        public delegate void OnMouseDownHandler(GuiElement source, OnMouseDownEventArgs eventArgs);
         public event OnMouseDownHandler OnMouseDown;
 
-        public delegate void OnMouseUpHandler(MouseButton button, Vector2 mousePosition);
+        public delegate void OnMouseUpHandler(GuiElement source, OnMouseUpEventArgs eventArgs);
         public event OnMouseUpHandler OnMouseUp;
 
-        public delegate void OnMoveHandler();
+        public delegate void OnMoveHandler(GuiElement source, OnMoveEventArgs eventArgs);
         public event OnMoveHandler OnMove;
 
-        public delegate void OnResizeHandler();
+        public delegate void OnResizeHandler(GuiElement source, OnResizeEventArgs eventArgs);
         public event OnResizeHandler OnResize;
 
-        public delegate void OnMouseEnterHandler(Vector2 mousePosition, GuiElement previousHoverGuiElement);
+        public delegate void OnMouseEnterHandler(GuiElement source, OnMouseEnterEventArgs eventArgs);
         public event OnMouseEnterHandler OnMouseEnter;
 
-        public delegate void OnMouseLeaveHandler(Vector2 mousePosition, GuiElement nextHoverGuiElement);
+        public delegate void OnMouseLeaveHandler(GuiElement source, OnMouseLeaveEventArgs eventArgs);
         public event OnMouseLeaveHandler OnMouseLeave;
 
-        public delegate void OnMouseMoveHandler(Vector2 mousePosition);
+        public delegate void OnMouseMoveHandler(GuiElement source, OnMouseMoveEventArgs eventArgs);
         public event OnMouseMoveHandler OnMouseMove;
 
-        public delegate void OnMouseWheelHandler(MouseWheelState upOrDown);
+        public delegate void OnMouseWheelHandler(GuiElement source, OnMouseWheelEventArgs eventArgs);
         public event OnMouseWheelHandler OnMouseWheel;
 
         #pragma warning restore 67

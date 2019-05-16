@@ -4,6 +4,8 @@ using System.Text;
 using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Utilities;
+using Slipe.Client.Elements;
+using Slipe.Client.Rendering.Events;
 
 namespace Slipe.Client.Dx
 {
@@ -60,7 +62,7 @@ namespace Slipe.Client.Dx
         /// </summary>
         public ImageSection(Vector2 position, Vector2 dimensions, Vector2 sectionUV, Vector2 UVDimensions, Material material, float rotation = 0.0f) : this(position, dimensions, sectionUV, UVDimensions, material, rotation, Vector2.Zero) { }
 
-        public override bool Draw()
+        public override bool Draw(RootElement source, OnRenderEventArgs eventArgs)
         {
             if (usePath)
                 return MtaClient.DxDrawImageSection(Position.X, Position.Y, Dimensions.X, Dimensions.Y, SectionTopLeft.X, SectionTopLeft.Y, SectionDimensions.X, SectionDimensions.Y, FilePath, Rotation, RotationCenter.X, RotationCenter.Y, Color.Hex, PostGUI);

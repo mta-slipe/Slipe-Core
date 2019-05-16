@@ -8,6 +8,7 @@ using Slipe.Shared.Pickups;
 using System.ComponentModel;
 using Slipe.Server.Peds;
 using Slipe.Shared.Elements;
+using Slipe.Server.Pickups.Events;
 
 namespace Slipe.Server.Pickups
 {
@@ -88,10 +89,10 @@ namespace Slipe.Server.Pickups
 
         #pragma warning disable 67
 
-        public delegate void OnSpawnHandler();
+        public delegate void OnSpawnHandler(Pickup source, OnSpawnEventArgs eventArgs);
         public event OnSpawnHandler OnSpawn;
 
-        public delegate void OnUseHandler(Player usingPlayer);
+        public delegate void OnUseHandler(Pickup source, OnUseEventArgs eventArgs);
         public event OnUseHandler OnUse;
 
         #pragma warning restore 67

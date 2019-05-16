@@ -7,6 +7,8 @@ using System.ComponentModel;
 using Slipe.Shared.GameWorld;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Explosions;
+using Slipe.Client.Elements.Events;
+using Slipe.Client.GameWorld.Events;
 
 namespace Slipe.Client.GameWorld
 {
@@ -105,13 +107,13 @@ namespace Slipe.Client.GameWorld
 
         #pragma warning disable 67
 
-        public delegate void OnBreakHandler(PhysicalElement attacker);
+        public delegate void OnBreakHandler(WorldObject source, OnBreakEventArgs eventArgs);
         public event OnBreakHandler OnBreak;
 
-        public delegate void OnDamageHandler(float loss, PhysicalElement attacker);
+        public delegate void OnDamageHandler(WorldObject source, OnDamageEventArgs eventArgs);
         public event OnDamageHandler OnDamage;
 
-        public delegate void OnExplosionHandler(Vector3 position, ExplosionType type);
+        public delegate void OnExplosionHandler(WorldObject source, OnExplosionEventArgs eventArgs);
         public event OnExplosionHandler OnExplosion;
 
         #pragma warning restore 67

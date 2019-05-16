@@ -6,6 +6,8 @@ using Slipe.Shared.Elements;
 using Slipe.Server.Acl;
 using System.ComponentModel;
 using Slipe.Server.Peds;
+using Slipe.Server.Accounts.Events;
+using Slipe.Server.Elements;
 
 namespace Slipe.Server.Accounts
 {
@@ -303,13 +305,8 @@ namespace Slipe.Server.Accounts
 
         #region Events
 
-        internal void HandleDataChange(string key, string value)
-        {
-            OnDataChange?.Invoke(key, value);
-        }
-
-        public delegate void OnDataChangeHandler(string key, string value);
-        public event OnDataChangeHandler OnDataChange;
+        public delegate void OnDataChangeHandler(RootElement source, OnDataChangeEventArgs eventArgs);
+        public static event OnDataChangeHandler OnDataChange;
 
         #endregion
 

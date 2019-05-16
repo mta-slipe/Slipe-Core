@@ -5,6 +5,9 @@ using System.Numerics;
 using Slipe.Shared.Utilities;
 using Slipe.Client.Helpers;
 using Slipe.Client.Game;
+using Slipe.Client.Rendering;
+using Slipe.Client.Game.Events;
+using Slipe.Client.Elements;
 
 namespace Slipe.Client.Dx
 {
@@ -26,7 +29,7 @@ namespace Slipe.Client.Dx
         {
             get
             {
-                Update(0);
+                Update();
                 return pos;
             }
             set
@@ -43,10 +46,10 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// Updates this DxObject to the correct position on screen
         /// </summary>
-        protected override void Update(float timeSlice)
+        protected override void Update(RootElement source = null, OnUpdateEventArgs eventArgs = null)
         {
             if(IsAttached)
-                pos = GameClient.Renderer.ScreenFromWorldPosition(ToAttached.Position + Offset.Translation);
+                pos = Renderer.ScreenFromWorldPosition(ToAttached.Position + Offset.Translation);
         }
     }
 }

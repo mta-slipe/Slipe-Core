@@ -10,48 +10,40 @@ namespace Slipe.Client.Vehicles
     /// <summary>
     /// Represents boats
     /// </summary>
-    public class Boat : Vehicle
+    public class Boat : BaseVehicle
     {
         #region Constructors
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Boat(MtaElement element) : base(element) { }
+
         /// <summary>
         /// Create a plane from a model at a position
         /// </summary>
-        public Boat(BoatModel model, Vector3 position) : base(model, position)
-        {
-
-        }
+        public Boat(BoatModel model, Vector3 position)
+            : this(model, position, Vector3.Zero) { }
 
         /// <summary>
         /// Create a plane using all createVehicle arguments
         /// </summary>
-        public Boat(BoatModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
-        {
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Boat(MtaElement element) : base(element)
-        {
-
-        }
+        public Boat(BoatModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1)
+            : base(model, position, rotation, numberplate, variant1, variant2) { }
 
         #endregion
+
+        public static explicit operator Boat(Vehicle vehicle)
+        {
+            if (VehicleModel.FromId(vehicle.Model) is BoatModel)
+                return new Boat(vehicle.MTAElement);
+
+            throw (new InvalidCastException("The vehicle is not a boat"));
+        }
     }
 
     /// <summary>
     /// Represents models that represent boats
     /// </summary>
-    public class BoatModel : BaseVehicleModel
+    public class BoatModel : VehicleModel
     {
-        public static BoatModel Coastguard { get { return new BoatModel(472); } }
-        public static BoatModel Dinghy { get { return new BoatModel(473); } }
-        public static BoatModel Jetmax { get { return new BoatModel(493); } }
-        public static BoatModel Launch { get { return new BoatModel(595); } }
-        public static BoatModel Marquis { get { return new BoatModel(484); } }
-        public static BoatModel Predator { get { return new BoatModel(430); } }
-        public static BoatModel Reefer { get { return new BoatModel(453); } }
-        public static BoatModel Speeder { get { return new BoatModel(452); } }
-        public static BoatModel Squalo { get { return new BoatModel(446); } }
-        public static BoatModel Tropic { get { return new BoatModel(454); } }
-        protected BoatModel(int id) : base(id) { }
+        internal BoatModel(int id) : base(id) { }
     }
 }

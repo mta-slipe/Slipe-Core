@@ -4,6 +4,8 @@ using System.Text;
 using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Utilities;
+using Slipe.Client.Elements;
+using Slipe.Client.Rendering.Events;
 
 namespace Slipe.Client.Dx
 {
@@ -37,7 +39,7 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// Draw the line
         /// </summary>
-        public bool Draw()
+        public bool Draw(RootElement source, OnRenderEventArgs eventArgs)
         {
             return MtaClient.DxDrawLine((int)Position.X, (int)Position.Y, (int) End.X, (int) End.Y, Color.Hex, Width, PostGUI);
         }

@@ -242,7 +242,8 @@ namespace Slipe.MtaDefinitions {
 		public static dynamic GetNetworkStats (MtaElement thePlayer){ throw new NotImplementedException(); }
 		public static string GetServerConfigSetting (string name){ throw new NotImplementedException(); }
 		public static bool SetServerConfigSetting (string name, string value, bool bSave){ throw new NotImplementedException(); }
-		public static bool AddVehicleSirens (MtaElement theVehicle, int sirenCount, int sirenType, bool argument_360flag, bool checkLosFlag, bool useRandomiser, bool silentFlag){ throw new NotImplementedException(); }
+        public static MtaElement CreateVehicle(int model, float x, float y, float z, float rx, float ry, float rz, string numberplate, bool bDirection, int variant1, int variant2) { throw new NotImplementedException(); }
+        public static bool AddVehicleSirens (MtaElement theVehicle, int sirenCount, int sirenType, bool argument_360flag, bool checkLosFlag, bool useRandomiser, bool silentFlag){ throw new NotImplementedException(); }
 		public static bool BlowVehicle (MtaElement vehicleToBlow, bool explode){ throw new NotImplementedException(); }
 		public static dynamic GetModelHandling (int modelId){ throw new NotImplementedException(); }
 		public static Tuple<float, float, float> GetVehicleRespawnPosition (MtaElement theVehicle){ throw new NotImplementedException(); }

@@ -11,6 +11,7 @@ using Slipe.Shared.Vehicles;
 using Slipe.Client.Peds;
 using Slipe.Shared.Peds;
 using Slipe.Client.SightLines;
+using Slipe.Client.Weapons.Events;
 
 namespace Slipe.Client.Weapons
 {
@@ -110,7 +111,7 @@ namespace Slipe.Client.Weapons
         /// <summary>
         /// Have the weapon target a vehicle tire
         /// </summary>
-        public bool SetTarget(Vehicle vehicle, Tire tire)
+        public bool SetTarget(BaseVehicle vehicle, Tire tire)
         {
             return MtaClient.SetWeaponTarget(element, vehicle.MTAElement, (int)tire);
         }
@@ -161,7 +162,7 @@ namespace Slipe.Client.Weapons
 
         #pragma warning disable 67
 
-        public delegate void OnFireHandler(PhysicalElement hitElement, Vector3 hitPosition, Vector3 hitNormal, SurfaceMaterialType hitMaterial, float lighting, int partHit);
+        public delegate void OnFireHandler(CustomWeapon source, OnFireEventArgs eventArgs);
         public event OnFireHandler OnFire;
 
         #pragma warning restore 67

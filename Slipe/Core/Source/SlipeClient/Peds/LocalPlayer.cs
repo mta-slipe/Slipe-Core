@@ -8,6 +8,7 @@ using System.ComponentModel;
 using Slipe.Shared.Weapons;
 using Slipe.Client.Sounds;
 using Slipe.Shared.Elements;
+using Slipe.Client.Peds.Events;
 
 namespace Slipe.Client.Peds
 {
@@ -191,25 +192,25 @@ namespace Slipe.Client.Peds
 
         #pragma warning disable 67
 
-        public delegate void OnChokeHandler(SharedWeaponModel weaponModel, Ped responsiblePed);
+        public delegate void OnChokeHandler(LocalPlayer source, OnChokeEventArgs eventArgs);
         public event OnChokeHandler OnChoke;
 
-        public delegate void OnRadioSwitchHandler(RadioStation newRadioStation);
+        public delegate void OnRadioSwitchHandler(LocalPlayer source, OnRadioSwitchEventArgs eventArgs);
         public event OnRadioSwitchHandler OnRadioSwitch;
 
-        public delegate void OnStealthKillHandler(Ped victim);
+        public delegate void OnStealthKillHandler(LocalPlayer source, OnStealthKillEventArgs eventArgs);
         public event OnStealthKillHandler OnStealthKill;
 
-        public delegate void OnStuntStartHandler(string stuntType);
+        public delegate void OnStuntStartHandler(LocalPlayer source, OnStuntStartEventArgs eventArgs);
         public event OnStuntStartHandler OnStuntStart;
 
-        public delegate void OnStuntFinishHandler(string stuntType, int stuntTime, float stuntDistance);
+        public delegate void OnStuntFinishHandler(LocalPlayer source, OnStuntFinishEventArgs eventArgs);
         public event OnStuntFinishHandler OnStuntFinish;
 
-        public delegate void OnTargetHandler(PhysicalElement target);
+        public delegate void OnTargetHandler(LocalPlayer source, OnTargetEventArgs eventArgs);
         public event OnTargetHandler OnTarget;
 
-        public delegate void OnConsoleHandler(string text);
+        public delegate void OnConsoleHandler(LocalPlayer source, OnConsoleEventArgs eventArgs);
         public event OnConsoleHandler OnConsole;
 
         #pragma warning restore 67

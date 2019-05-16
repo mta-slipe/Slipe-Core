@@ -6,6 +6,7 @@ using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
 using System.ComponentModel;
+using Slipe.Shared.Markers.Events;
 
 namespace Slipe.Shared.Markers
 {
@@ -122,10 +123,10 @@ namespace Slipe.Shared.Markers
 
         #pragma warning disable 67
 
-        public delegate void OnHitHandler(PhysicalElement hitElement, bool matchingDimension);
+        public delegate void OnHitHandler(SharedMarker source, OnHitEventArgs eventArgs);
         public event OnHitHandler OnHit;
 
-        public delegate void OnLeaveHandler(PhysicalElement leaveElement, bool matchingDimension);
+        public delegate void OnLeaveHandler(SharedMarker source, OnLeaveEventArgs eventArgs);
         public event OnLeaveHandler OnLeave;
 
         #pragma warning restore 67

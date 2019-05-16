@@ -6,6 +6,7 @@ using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Client.Peds;
 using System.Numerics;
+using Slipe.Client.Weapons.Events;
 
 namespace Slipe.Client.Weapons
 {
@@ -128,7 +129,7 @@ namespace Slipe.Client.Weapons
 
         #pragma warning disable 67
 
-        public delegate void OnCreatedHandler(PhysicalElement creator);
+        public delegate void OnCreatedHandler(Projectile source, OnCreatedEventArgs eventArgs);
         public event OnCreatedHandler OnCreated;
 
         #pragma warning restore 67

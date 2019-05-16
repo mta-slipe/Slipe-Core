@@ -290,7 +290,6 @@ namespace Slipe.MtaDefinitions {
 		public static string Utf8_gsub (string input, string pattern, dynamic replace, int match_limit){ throw new NotImplementedException(); }
 		public static int Utf8_width (dynamic input, bool ambi_is_double, int default_width){ throw new NotImplementedException(); }
 		public static bool DetachTrailerFromVehicle (MtaElement theVehicle, MtaElement theTrailer){ throw new NotImplementedException(); }
-		public static MtaElement CreateVehicle (int model, float x, float y, float z, float rx, float ry, float rz, string numberplate, bool bDirection, int variant1, int variant2){ throw new NotImplementedException(); }
 		public static bool FixVehicle (MtaElement theVehicle){ throw new NotImplementedException(); }
 		public static dynamic GetOriginalHandling (int modelID){ throw new NotImplementedException(); }
 		public static bool GetTrainDirection (MtaElement train){ throw new NotImplementedException(); }

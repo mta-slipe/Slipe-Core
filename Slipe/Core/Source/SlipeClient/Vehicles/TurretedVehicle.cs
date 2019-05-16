@@ -5,13 +5,14 @@ using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
 using Slipe.Client.Peds;
+using Slipe.Client.Vehicles.Events;
 
 namespace Slipe.Client.Vehicles
 {
     /// <summary>
     /// Represents vehicles with a turret (firetrucks, rhino etc)
     /// </summary>
-    public class TurretedVehicle : Vehicle
+    public class TurretedVehicle : BaseVehicle
     {
         /// <summary>
         /// Get and set the position of the turret in radians
@@ -29,32 +30,37 @@ namespace Slipe.Client.Vehicles
             }
         }
 
-        /// <summary>
-        /// Create a vehicle from a model at a position
-        /// </summary>
-        public TurretedVehicle(TurretedModel model, Vector3 position) : base(model, position)
-        {
-
-        }
-
-        /// <summary>
-        /// Create a vehicle model using all createVehicle arguments
-        /// </summary>
-        public TurretedVehicle(TurretedModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1) : base(model, position, rotation, numberplate, variant1, variant2)
-        {
-        }
-
+        #region Constructors
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public TurretedVehicle(MtaElement element) : base(element)
-        {
+        public TurretedVehicle(MtaElement element) : base(element) { }
 
+        /// <summary>
+        /// Create a plane from a model at a position
+        /// </summary>
+        public TurretedVehicle(TurretedModel model, Vector3 position)
+            : this(model, position, Vector3.Zero) { }
+
+        /// <summary>
+        /// Create a plane using all createVehicle arguments
+        /// </summary>
+        public TurretedVehicle(TurretedModel model, Vector3 position, Vector3 rotation, string numberplate = "", int variant1 = 1, int variant2 = 1)
+            : base(model, position, rotation, numberplate, variant1, variant2) { }
+
+        #endregion
+
+        public static explicit operator TurretedVehicle(Vehicle vehicle)
+        {
+            if (VehicleModel.FromId(vehicle.Model) is TurretedModel)
+                return new TurretedVehicle(vehicle.MTAElement);
+
+            throw (new InvalidCastException("The vehicle is not a turreted vehicle"));
         }
 
         #region Events
 
-        #pragma warning disable 67
+#pragma warning disable 67
 
-        public delegate void OnPedHitHandler(Ped pedHit);
+        public delegate void OnPedHitHandler(TurretedVehicle source, OnPedHitEventArgs eventArgs);
         public event OnPedHitHandler OnPedHit;
 
         #pragma warning restore 67
@@ -65,11 +71,8 @@ namespace Slipe.Client.Vehicles
     /// <summary>
     /// Represents vehicle models that have a turret
     /// </summary>
-    public class TurretedModel : BaseVehicleModel
+    public class TurretedModel : VehicleModel
     {
-        public static TurretedModel Rhino { get { return new TurretedModel(432); } }
-        public static TurretedModel Swat { get { return new TurretedModel(601); } }
-        public static TurretedModel Firetruck { get { return new TurretedModel(407); } }
-        protected TurretedModel(int id) : base(id) { }
+        internal TurretedModel(int id) : base(id) { }
     }
 }

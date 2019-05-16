@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Slipe.Client.Elements;
+using Slipe.Client.Rendering.Events;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,6 +11,6 @@ namespace Slipe.Client.Dx
     /// </summary>
     public interface IDrawable
     {
-        bool Draw();
+        bool Draw(RootElement source, OnRenderEventArgs eventArgs);
     }
 }
