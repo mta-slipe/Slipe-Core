@@ -7,6 +7,8 @@ using Slipe.Client.Rendering;
 using Slipe.Client.IO;
 using Slipe.Shared.Helpers;
 using Slipe.Client.Resources;
+using Slipe.Client.Elements;
+using Slipe.Client.Game.Events;
 
 namespace Slipe.Client.Game
 {
@@ -16,28 +18,6 @@ namespace Slipe.Client.Game
     public static class GameClient
     {
         #region Properties
-
-        /// <summary>
-        /// Get the renderer object
-        /// </summary>
-        public static Renderer Renderer
-        {
-            get
-            {
-                return Renderer.Instance;
-            }
-        }
-
-        /// <summary>
-        /// Get the input class instance
-        /// </summary>
-        public static Input Input
-        {
-            get
-            {
-                return Input.Instance;
-            }
-        }
 
         /// <summary>
         /// Get the Engine object
@@ -236,53 +216,30 @@ namespace Slipe.Client.Game
 
         #region Events
 
-        internal static void HandleUpdate(float timeSlice)
-        {
-            OnUpdate?.Invoke(timeSlice);
-        }
+#pragma warning disable 67
 
-        internal static void HandleMinimize()
-        {
-            OnMinimize?.Invoke();
-        }
+        public delegate void OnFileDownloadCompleteHandler(ResourceRootElement source, OnFileDownloadCompleteEventArgs eventArgs);
+        public static event OnFileDownloadCompleteHandler OnFileDownloadComplete;
 
-        internal static void HandleNetworkInteruption(NetworkInteruptionStatus status, int ticksSinceInteruptionStarted)
-        {
-            OnNetworkInteruption?.Invoke(status, ticksSinceInteruptionStarted);
-        }
-
-        internal static void HandleRestore(bool didClearRenderTargets)
-        {
-            OnRestore?.Invoke(didClearRenderTargets);
-        }
-
-        internal static void HandleStart(Resource resource)
-        {
-            OnStart?.Invoke(resource);
-        }
-
-        internal static void HandleStop(Resource resource)
-        {
-            OnStop?.Invoke(resource);
-        }
-
-        public delegate void OnStartHandler(Resource resource);
+        public delegate void OnStartHandler(ResourceRootElement source, OnStartEventArgs eventArgs);
         public static event OnStartHandler OnStart;
 
-        public delegate void OnStopHandler(Resource resource);
+        public delegate void OnStopHandler(ResourceRootElement source, OnStopEventArgs eventArgs);
         public static event OnStopHandler OnStop;
 
-        public delegate void OnUpdateHandler(float timeSlice);
+        public delegate void OnUpdateHandler(RootElement source, OnUpdateEventArgs eventArgs);
         public static event OnUpdateHandler OnUpdate;
 
-        public delegate void OnMinimizeHandler();
+        public delegate void OnMinimizeHandler(RootElement source, OnMinimizeEventArgs eventArgs);
         public static event OnMinimizeHandler OnMinimize;
 
-        public delegate void OnNetworkInteruptionBeginHandler(NetworkInteruptionStatus status, int ticksSinceInteruptionStarted);
+        public delegate void OnNetworkInteruptionBeginHandler(RootElement source, OnNetworkInteruptionEventArgs eventArgs);
         public static event OnNetworkInteruptionBeginHandler OnNetworkInteruption;
 
-        public delegate void OnRestoreHandler(bool didClearRenderTargets);
+        public delegate void OnRestoreHandler(RootElement source, OnRestoreEventArgs eventArgs);
         public static event OnRestoreHandler OnRestore;
+
+#pragma warning enable 67
 
         #endregion
     }

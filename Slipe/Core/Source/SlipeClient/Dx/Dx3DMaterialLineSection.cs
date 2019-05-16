@@ -4,6 +4,8 @@ using System.Text;
 using System.Numerics;
 using Slipe.MtaDefinitions;
 using Slipe.Shared.Utilities;
+using Slipe.Client.Elements;
+using Slipe.Client.Rendering.Events;
 
 namespace Slipe.Client.Dx
 {
@@ -44,7 +46,7 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// Draw this line
         /// </summary>
-        public override bool Draw()
+        public override bool Draw(RootElement source, OnRenderEventArgs eventArgs)
         {
             if (FaceToward == Vector3.Zero)
                 return MtaClient.DxDrawMaterialSectionLine3D(StartPosition.X, StartPosition.Y, StartPosition.Z, EndPosition.X, EndPosition.Y, EndPosition.Z, UV.X, UV.Y, UVDimensions.X, UVDimensions.Y, Material?.MaterialElement, Width, Color.Hex, PostGUI);

@@ -5,6 +5,7 @@ using Slipe.Shared.Elements;
 using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
+using Slipe.Client.Gui.Events;
 
 namespace Slipe.Client.Gui
 {
@@ -110,7 +111,7 @@ namespace Slipe.Client.Gui
 
         #pragma warning disable 67
 
-        public delegate void OnAcceptedHandler();
+        public delegate void OnAcceptedHandler(ComboBox source, OnAcceptedEventArgs eventArgs);
         public event OnAcceptedHandler OnAccepted;
 
         #pragma warning restore 67

@@ -5,6 +5,7 @@ using Slipe.Shared.Elements;
 using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
+using Slipe.Client.Gui.Events;
 
 namespace Slipe.Client.Gui
 {
@@ -45,7 +46,7 @@ namespace Slipe.Client.Gui
 
         #pragma warning disable 67
 
-        public delegate void OnScrollHandler();
+        public delegate void OnScrollHandler(ScrollBar source, OnScrollEventArgs eventArgs);
         public event OnScrollHandler OnScroll;
 
         #pragma warning restore 67

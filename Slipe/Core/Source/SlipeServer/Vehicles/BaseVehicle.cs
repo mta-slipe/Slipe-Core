@@ -7,7 +7,8 @@ using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using System.ComponentModel;
 using Slipe.Server.Peds;
-using Slipe.Shared.CollisionShapes;
+using Slipe.Server.Vehicles.Events;
+using Slipe.Shared.Elements.Events;
 
 namespace Slipe.Server.Vehicles
 {
@@ -228,36 +229,36 @@ namespace Slipe.Server.Vehicles
 
         #region Events
 
-        #pragma warning disable 67
+#pragma warning disable 67
 
-        public delegate void OnDamageHandler(float loss);
+        public delegate void OnDamageHandler(BaseVehicle source, OnDamageEventArgs eventArgs);
         public event OnDamageHandler OnDamage;
 
-        public delegate void OnCollisionShapeHitHandler(CollisionShape colShape, bool matchingDimension);
+        public delegate void OnCollisionShapeHitHandler(BaseVehicle source, OnCollisionShapeHitEventArgs eventArgs);
         public event OnCollisionShapeHitHandler OnCollisionShapeHit;
 
-        public delegate void OnCollisionShapeLeaveHandler(CollisionShape colShape, bool matchingDimension);
+        public delegate void OnCollisionShapeLeaveHandler(BaseVehicle source, OnCollisionShapeLeaveEventArgs eventArgs);
         public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
 
-        public delegate void OnEnterHandler(Player player, Seat seat, Player jacked);
+        public delegate void OnEnterHandler(BaseVehicle source, OnEnterEventArgs eventArgs);
         public event OnEnterHandler OnEnter;
 
-        public delegate void OnExitHandler(Player player, Seat seat, Player jacker, bool forcedByScript);
+        public delegate void OnExitHandler(BaseVehicle source, OnExitEventArgs eventArgs);
         public event OnExitHandler OnExit;
 
-        public delegate void OnStartEnterHandler(Player enteringPlayer, Seat seat, Player jacked, Door door);
+        public delegate void OnStartEnterHandler(BaseVehicle source, OnStartEnterEventArgs eventArgs);
         public event OnStartEnterHandler OnStartEnter;
 
-        public delegate void OnStartExitHandler(Player exitingPlayer, Seat seat, Player jacked, Door door);
+        public delegate void OnStartExitHandler(BaseVehicle source, OnStartExitEventArgs eventArgs);
         public event OnStartExitHandler OnStartExit;
 
-        public delegate void OnExplodeHandler();
+        public delegate void OnExplodeHandler(BaseVehicle source, OnExplodeEventArgs eventArgs);
         public event OnExplodeHandler OnExplode;
 
-        public delegate void OnRespawnHandler(bool exploded);
+        public delegate void OnRespawnHandler(BaseVehicle source, OnRespawnEventArgs eventArgs);
         public event OnRespawnHandler OnRespawn;
 
-        #pragma warning restore 67
+#pragma warning restore 67
 
         #endregion
 

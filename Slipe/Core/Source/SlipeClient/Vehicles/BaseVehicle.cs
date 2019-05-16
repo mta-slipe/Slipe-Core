@@ -10,6 +10,9 @@ using Slipe.Client.Peds;
 using Slipe.Shared.CollisionShapes;
 using Slipe.Shared.Weapons;
 using Slipe.Shared.Explosions;
+using Slipe.Client.Elements.Events;
+using Slipe.Shared.Elements.Events;
+using Slipe.Client.Vehicles.Events;
 
 namespace Slipe.Client.Vehicles
 {
@@ -238,40 +241,40 @@ namespace Slipe.Client.Vehicles
 
         #pragma warning disable 67
 
-        public delegate void OnCollisionShapeHitHandler(CollisionShape colShape, bool matchingDimension);
+        public delegate void OnCollisionShapeHitHandler(BaseVehicle source, OnCollisionShapeHitEventArgs eventArgs);
         public event OnCollisionShapeHitHandler OnCollisionShapeHit;
 
-        public delegate void OnCollisionShapeLeaveHandler(CollisionShape colShape, bool matchingDimension);
+        public delegate void OnCollisionShapeLeaveHandler(BaseVehicle source, OnCollisionShapeLeaveEventArgs eventArgs);
         public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
 
-        public delegate void OnCollisionHandler(PhysicalElement hitElement, float force, Part bodyPart, Vector3 collisionPosition, Vector3 normal, int model);
+        public delegate void OnCollisionHandler(BaseVehicle source, OnCollisionEventArgs eventArgs);
         public event OnCollisionHandler OnCollision;
 
-        public delegate void OnDamageHandler(PhysicalElement attacker, SharedWeaponModel weaponModel, float loss, Vector3 damagePosition, Tire damagedTire);
+        public delegate void OnDamageHandler(BaseVehicle source, OnDamageEventArgs eventArgs);
         public event OnDamageHandler OnDamage;
 
-        public delegate void OnEnterHandler(Player player, Seat seat);
+        public delegate void OnEnterHandler(BaseVehicle source, OnEnterEventArgs eventArgs);
         public event OnEnterHandler OnEnter;
 
-        public delegate void OnExitHandler(Player player, Seat seat);
+        public delegate void OnExitHandler(BaseVehicle source, OnExitEventArgs eventArgs);
         public event OnExitHandler OnExit;
 
-        public delegate void OnStartEnterHandler(Player enteringPlayer, Seat seat, Door door);
+        public delegate void OnStartEnterHandler(BaseVehicle source, OnStartEnterEventArgs eventArgs);
         public event OnStartEnterHandler OnStartEnter;
 
-        public delegate void OnStartExitHandler(Player exitingPlayer, Seat seat, Door door);
+        public delegate void OnStartExitHandler(BaseVehicle source, OnStartExitEventArgs eventArgs);
         public event OnStartExitHandler OnStartExit;
 
-        public delegate void OnExplodeHandler();
+        public delegate void OnExplodeHandler(BaseVehicle source, OnExplodeEventArgs eventArgs);
         public event OnExplodeHandler OnExplode;
 
-        public delegate void OnRespawnHandler(bool exploded);
+        public delegate void OnRespawnHandler(BaseVehicle source, OnRespawnEventArgs eventArgs);
         public event OnRespawnHandler OnRespawn;
 
-        public delegate void OnNitroStateChangeHandler(bool state);
+        public delegate void OnNitroStateChangeHandler(BaseVehicle source, OnNitroStateChangeEventArgs eventArgs);
         public event OnNitroStateChangeHandler OnNitroStateChange;
 
-        public delegate void OnExplosionHandler(Vector3 position, ExplosionType type);
+        public delegate void OnExplosionHandler(BaseVehicle source, OnExplosionEventArgs eventArgs);
         public event OnExplosionHandler OnExplosion;
 
         #pragma warning restore 67

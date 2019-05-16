@@ -1,6 +1,7 @@
 ﻿using Slipe.Client.Elements;
+using Slipe.Client.Game;
+using Slipe.Client.Game.Events;
 using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -34,16 +35,16 @@ namespace Slipe.Client.Assets
             this.state = DownloadState.Default;
             this.filepath = filepath;
 
-            ResourceRootElement.OnFileDownloadComplete += HandleDownloadComplete;
+            GameClient.OnFileDownloadComplete += HandleDownloadComplete;
 
         }
 
-        private void HandleDownloadComplete(string path, bool success)
+        private void HandleDownloadComplete(ResourceRootElement source, OnFileDownloadCompleteEventArgs eventArgs)
         {
-            if (path == filepath)
+            if (eventArgs.Path == filepath)
             {
-                this.state = success == true ? DownloadState.Downloaded : DownloadState.Failed;
-                ResourceRootElement.OnFileDownloadComplete -= HandleDownloadComplete;
+                this.state = eventArgs.Success ? DownloadState.Downloaded : DownloadState.Failed;
+                GameClient.OnFileDownloadComplete += HandleDownloadComplete;
                 OnDownloadComplete?.Invoke();
             }
         }

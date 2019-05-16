@@ -10,6 +10,8 @@ using Slipe.Shared.Peds;
 using System.ComponentModel;
 using Slipe.Client.Vehicles;
 using Slipe.Shared.Explosions;
+using Slipe.Client.Elements.Events;
+using Slipe.Client.Peds.Events;
 
 namespace Slipe.Client.Peds
 {
@@ -301,22 +303,22 @@ namespace Slipe.Client.Peds
 
         #pragma warning disable 67
 
-        public delegate void OnDamageHandler(PhysicalElement attacker, DamageType damageType, BodyPart bodyPart, float loss);
+        public delegate void OnDamageHandler(Ped source, OnDamageEventArgs eventArgs);
         public event OnDamageHandler OnDamage;
 
-        public delegate void OnHeliKilledHandler(BaseVehicle responsibleHelicopter);
+        public delegate void OnHeliKilledHandler(Ped source, OnHeliKilledEventArgs eventArgs);
         public event OnHeliKilledHandler OnHeliKilled;
 
-        public delegate void OnWastedHandler(Player killer, DamageType damageType, BodyPart bodyPart, bool stealth);
+        public delegate void OnWastedHandler(Ped source, OnWastedEventArgs eventArgs);
         public event OnWastedHandler OnWasted;
 
-        public delegate void OnWeaponFireHandler(SharedWeaponModel weaponModel, int ammoLeft, int ammoLeftInClip, Vector3 hitPosition, PhysicalElement hitElement);
+        public delegate void OnWeaponFireHandler(Ped source, OnWeaponFireEventArgs eventArgs);
         public event OnWeaponFireHandler OnWeaponFire;
 
-        public delegate void OnStepHandler(bool leftFoot);
+        public delegate void OnStepHandler(Ped source, OnStepEventArgs eventArgs);
         public event OnStepHandler OnStep;
 
-        public delegate void OnExplosionHandler(Vector3 position, ExplosionType type);
+        public delegate void OnExplosionHandler(Ped source, OnExplosionEventArgs eventArgs);
         public event OnExplosionHandler OnExplosion;
 
         #pragma warning restore 67

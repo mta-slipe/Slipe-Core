@@ -5,6 +5,7 @@ using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Elements;
 using System.ComponentModel;
+using Slipe.Client.Vehicles.Events;
 
 namespace Slipe.Client.Vehicles
 {
@@ -66,10 +67,10 @@ namespace Slipe.Client.Vehicles
 
         #pragma warning disable 67
 
-        public delegate void OnAttachHandler(BaseVehicle truck);
+        public delegate void OnAttachHandler(Trailer source, OnAttachEventArgs eventArgs);
         public event OnAttachHandler OnAttach;
 
-        public delegate void OnDetachHandler(BaseVehicle truck);
+        public delegate void OnDetachHandler(Trailer source, OnDetachEventArgs eventArgs);
         public event OnDetachHandler OnDetach;
 
         #pragma warning restore 67

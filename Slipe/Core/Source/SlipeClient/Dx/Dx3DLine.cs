@@ -6,6 +6,9 @@ using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Shared.Utilities;
 using Slipe.Client.Helpers;
+using Slipe.Client.Elements;
+using Slipe.Client.Game.Events;
+using Slipe.Client.Rendering.Events;
 
 namespace Slipe.Client.Dx
 {
@@ -21,7 +24,7 @@ namespace Slipe.Client.Dx
         {
             get
             {
-                Update(0);
+                Update();
                 return startPos;
             }
             set
@@ -38,7 +41,7 @@ namespace Slipe.Client.Dx
         {
             get
             {
-                Update(0);
+                Update();
                 return endPos;
             }
             set
@@ -96,14 +99,14 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// Draw this line
         /// </summary>
-        public virtual bool Draw()
+        public virtual bool Draw(RootElement source, OnRenderEventArgs eventArgs)
         {
             if(Visible)
                 return MtaClient.DxDrawLine3D(StartPosition.X, StartPosition.Y, StartPosition.Z, EndPosition.X, EndPosition.Y, EndPosition.Z, Color.Hex, Width, PostGUI);
             return false;
         }
 
-        protected override void Update(float timeSlice)
+        protected override void Update(RootElement source = null, OnUpdateEventArgs eventArgs = null)
         {
             if(IsAttached)
             {

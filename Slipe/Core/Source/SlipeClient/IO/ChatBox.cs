@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
+using Slipe.Client.IO.Events;
+using Slipe.Shared.Elements;
 
 namespace Slipe.Client.IO
 {
@@ -281,13 +283,13 @@ namespace Slipe.Client.IO
         }
 
         #region Events
-        internal static void HandleMessage(string message, Color color)
-        {
-            OnMessage?.Invoke(message, color);
-        }
 
-        public delegate void OnMessageHandler(string message, Color color);
+#pragma warning disable 67
+
+        public delegate void OnMessageHandler(Element source, OnChatMessageEventArgs eventArgs);
         public static event OnMessageHandler OnMessage;
+
+#pragma warning enable 67
 
         #endregion
     }

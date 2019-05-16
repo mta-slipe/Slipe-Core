@@ -21,6 +21,8 @@ using Slipe.Shared.Vehicles;
 using Slipe.Server.Weapons;
 using Slipe.Shared.Helpers;
 using Slipe.Server.Game;
+using Slipe.Server.Peds.Events;
+using Slipe.Shared.Elements.Events;
 
 namespace Slipe.Server.Peds
 {
@@ -370,9 +372,9 @@ namespace Slipe.Server.Peds
         /// <summary>
         /// Spawn the player at a certain position
         /// </summary>
-        public void Spawn(Vector3 position, int rotation = 0, int skin = 0, int interior = 0, int dimension = 0, Team team = null)
+        public void Spawn(Vector3 position, PedModel skin, int rotation = 0, int interior = 0, int dimension = 0, Team team = null)
         {
-            MtaServer.SpawnPlayer(element, position.X, position.Y, position.Z, rotation, skin, interior, dimension, team == null ? null : team.MTAElement);
+            MtaServer.SpawnPlayer(element, position.X, position.Y, position.Z, rotation, (int) skin, interior, dimension, team == null ? null : team.MTAElement);
         }
 
         /// <summary>
@@ -504,120 +506,112 @@ namespace Slipe.Server.Peds
 
         #pragma warning disable 67
 
-        public delegate void OnConsoleHandler(string message);
+        public delegate void OnConsoleHandler(Player source, OnConsoleEventArgs eventArgs);
         public event OnConsoleHandler OnConsole;
 
-        public delegate void OnCollisionShapeHitHandler(CollisionShape colShape, bool matchingDimension);
+        public delegate void OnCollisionShapeHitHandler(Player source, OnCollisionShapeHitEventArgs eventArgs);
         public event OnCollisionShapeHitHandler OnCollisionShapeHit;
 
-        public delegate void OnCollisionShapeLeaveHandler(CollisionShape colShape, bool matchingDimension);
+        public delegate void OnCollisionShapeLeaveHandler(Player source, OnCollisionShapeLeaveEventArgs eventArgs);
         public event OnCollisionShapeLeaveHandler OnCollisionShapeLeave;
 
-        public delegate void OnJoinHandler(Player player);
+        public delegate void OnJoinHandler(Player source, OnJoinEventArgs eventArgs);
         public static event OnJoinHandler OnJoin;
 
-        public delegate void OnAcInfoHandler(string[] detectedAcList, string d3d9Size, string d3d9Md5, string d3d9Sha256);
+        public delegate void OnAcInfoHandler(Player source, OnAcInfoEventArgs eventArgs);
         public event OnAcInfoHandler OnAcInfo;
 
-        public delegate void OnBanAddedHandler(Ban ban);
+        public delegate void OnBanAddedHandler(Player source, OnBanAddedEventArgs eventArgs);
         public event OnBanAddedHandler OnBanAdded;
 
-        public delegate void OnBannedHandler(Ban ban, Player responsibleBanner);
+        public delegate void OnBannedHandler(Player source, OnBannedEventArgs eventArgs);
         public event OnBannedHandler OnBanned;
 
-        public delegate void OnNicknameChangedHandler(string oldNickname, string newNickname, bool changedByuser);
+        public delegate void OnNicknameChangedHandler(Player source, OnNicknameChangedEventArgs eventArgs);
         public event OnNicknameChangedHandler OnNicknameChanged;
 
-        public delegate void OnChatHandler(string message, MessageType type);
+        public delegate void OnChatHandler(Player source, OnChatEventArgs eventArgs);
         public event OnChatHandler OnChat;
 
-        public delegate void OnClickHandler(MouseButton mouseButton, MouseButtonState buttonState, PhysicalElement clickedElement, Vector3 worldPosition, Vector2 screenPosition);
+        public delegate void OnClickHandler(Player source, OnClickEventArgs eventArgs);
         public event OnClickHandler OnClick;
 
-        public delegate void OnCommandHandler(string command);
+        public delegate void OnCommandHandler(Player source, OnCommandEventArgs eventArgs);
         public event OnCommandHandler OnCommand;
 
-        public delegate void OnContactHandler(PhysicalElement previousElement, PhysicalElement newElement);
+        public delegate void OnContactHandler(Player source, OnContactEventArgs eventArgs);
         public event OnContactHandler OnContact;
 
-        public delegate void OnDamageHandler(Player attacker, DamageType damageType, BodyPart bodyPart, float loss);
+        public delegate void OnDamageHandler(Player source, OnDamageEventArgs eventArgs);
         public event OnDamageHandler OnDamage;
 
-        public delegate void OnLoginHandler(Account previousAccount, Account newAccount);
+        public delegate void OnLoginHandler(Player source, OnLoginEventArgs eventArgs);
         public event OnLoginHandler OnLogin;
 
-        public delegate void OnLogoutHandler(Account previousAccount, Account newAccount);
+        public delegate void OnLogoutHandler(Player source, OnLogoutEventArgs eventArgs);
         public event OnLogoutHandler OnLogout;
 
-        public delegate void OnMarkerHitHandler(Marker markerHit, bool matchingDimension);
+        public delegate void OnMarkerHitHandler(Player source, OnMarkerHitEventArgs eventArgs);
         public event OnMarkerHitHandler OnMarkerHit;
 
-        public delegate void OnMarkerLeaveHandler(Marker markerLeft, bool matchingDimension);
+        public delegate void OnMarkerLeaveHandler(Player source, OnMarkerLeaveEventArgs eventArgs);
         public event OnMarkerLeaveHandler OnMarkerLeave;
 
-        public delegate void OnPickupHitHandler(Pickup pickupHit);
+        public delegate void OnPickupHitHandler(Player source, OnPickupHitEventArgs eventArgs);
         public event OnPickupHitHandler OnPickupHit;
 
-        public delegate void OnPickupLeaveHandler(Pickup pickupLeft);
+        public delegate void OnPickupLeaveHandler(Player source, OnPickupLeaveEventArgs eventArgs);
         public event OnPickupLeaveHandler OnPickupLeave;
 
-        public delegate void OnPickupUseHandler(Pickup pickupUse);
+        public delegate void OnPickupUseHandler(Player source, OnPickupUseEventArgs eventArgs);
         public event OnPickupUseHandler OnPickupUse;
 
-        public delegate void OnModInfoHandler(string fileName, dynamic[] items);
+        public delegate void OnModInfoHandler(Player source, OnModInfoEventArgs eventArgs);
         public event OnModInfoHandler OnModInfo;
 
-        public delegate void OnMutedHandler();
+        public delegate void OnMutedHandler(Player source, OnMutedEventArgs eventArgs);
         public event OnMutedHandler OnMuted;
 
-        public delegate void OnUnmutedHandler();
+        public delegate void OnUnmutedHandler(Player source, OnUnmutedEventArgs eventArgs);
         public event OnUnmutedHandler OnUnmuted;
 
-        public delegate void OnNetworkInteruptionBeginHandler(NetworkInteruptionStatus status, int ticksSinceInteruptionStarted);
-        public event OnNetworkInteruptionBeginHandler OnNetworkInteruption;
+        public delegate void OnNetworkInteruptionHandler(Player source, OnNetworkInteruptionEventArgs eventArgs);
+        public event OnNetworkInteruptionHandler OnNetworkInteruption;
 
-        public delegate void OnPrivateMessageHandler(string message, Player recipient);
+        public delegate void OnPrivateMessageHandler(Player source, OnPrivateMessageEventArgs eventArgs);
         public event OnPrivateMessageHandler OnPrivateMessage;
 
-        public delegate void OnQuitHandler(QuitType quitType, string reason, Player responsiblePlayer);
+        public delegate void OnQuitHandler(Player source, OnQuitEventArgs eventArgs);
         public event OnQuitHandler OnQuit;
 
-        public delegate void OnScreenShotHandler(Resource resource, StatusCode status, string imageData, int timeStamp, string tag);
+        public delegate void OnScreenShotHandler(Player source, OnScreenShotEventArgs eventArgs);
         public event OnScreenShotHandler OnScreenShot;
 
-        public delegate void OnSpawnHandler(Vector3 position, float rotation, Team team, PedModel model, int interior, int dimension);
+        public delegate void OnSpawnHandler(Player source, OnSpawnEventArgs eventArgs);
         public event OnSpawnHandler OnSpawn;
 
-        public delegate void OnStealthKillHandler(Ped victim);
+        public delegate void OnStealthKillHandler(Player source, OnStealthKillEventArgs eventArgs);
         public event OnStealthKillHandler OnStealthKill;
 
-        public delegate void OnTargetHandler(PhysicalElement target);
+        public delegate void OnTargetHandler(Player source, OnTargetEventArgs eventArgs);
         public event OnTargetHandler OnTarget;
 
-        public delegate void OnVehicleEnterHandler(BaseVehicle vehicle, Seat seat, Player jacked);
+        public delegate void OnVehicleEnterHandler(Player source, OnVehicleEnterEventArgs eventArgs);
         public event OnVehicleEnterHandler OnVehicleEnter;
 
-        public delegate void OnVehicleExitHandler(BaseVehicle vehicle, Seat seat, Player jacker, bool forcedByScript);
+        public delegate void OnVehicleExitHandler(Player source, OnVehicleExitEventArgs eventArgs);
         public event OnVehicleExitHandler OnVehicleExit;
 
-        public delegate void OnVoiceStartHandler();
+        public delegate void OnVoiceStartHandler(Player source, OnVoiceStartEventArgs eventArgs);
         public event OnVoiceStartHandler OnVoiceStart;
 
-        public delegate void OnVoiceStopHandler();
+        public delegate void OnVoiceStopHandler(Player source, OnVoiceStopEventArgs eventArgs);
         public event OnVoiceStopHandler OnVoiceStop;
 
-        public delegate void OnWeaponFireHandler(WeaponModel weapon, Vector3 endPosition, PhysicalElement hitElement, Vector3 startPosition);
+        public delegate void OnWeaponFireHandler(Player source, OnWeaponFireEventArgs eventArgs);
         public event OnWeaponFireHandler OnWeaponFire;
 
         #pragma warning restore 67
-
-        /// This method is just here so that these enums get parsed and are usable in events
-        private void initEnums()
-        {
-            MouseButton m = (MouseButton)Enum.Parse(typeof(MouseButton), "Left", true);
-            MouseButtonState s = (MouseButtonState)Enum.Parse(typeof(MouseButtonState), "Down", true);
-            QuitType q = (QuitType)Enum.Parse(typeof(QuitType), "Disconnected", true);
-        }
 
         #endregion
 

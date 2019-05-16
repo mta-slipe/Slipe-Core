@@ -5,32 +5,23 @@ using System.Numerics;
 using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using Slipe.Client.Elements;
+using Slipe.Client.Rendering.Events;
 
 namespace Slipe.Client.Rendering
 {
     /// <summary>
     /// Singleton responsible for rendering
     /// </summary>
-    public class Renderer
+    public static class Renderer
     {
-        protected static Renderer instance;
-        private Status status;
-
-        public static Renderer Instance
-        {
-            get
-            {
-                instance = instance ?? new Renderer();
-                return instance;
-            }
-        }
+        private static Status status;
 
         #region Properties
 
         /// <summary>
         /// Get and set the limit at which the game is rendered
         /// </summary>
-        public int FpsLimit
+        public static int FpsLimit
         {
             get
             {
@@ -45,7 +36,7 @@ namespace Slipe.Client.Rendering
         /// <summary>
         /// Returns the size of the screen as a Vector2
         /// </summary>
-        public Vector2 ScreenSize
+        public static Vector2 ScreenSize
         {
             get
             {
@@ -57,7 +48,7 @@ namespace Slipe.Client.Rendering
         /// <summary>
         /// Get and set the blendmode of the renderer
         /// </summary>
-        public BlendMode BlendMode
+        public static BlendMode BlendMode
         {
             get
             {
@@ -72,7 +63,7 @@ namespace Slipe.Client.Rendering
         /// <summary>
         /// This function is used for testing scripts written using guiCreateFont, dxCreateFont, dxCreateShader and dxCreateRenderTarget.
         /// </summary>
-        public TestMode TestMode
+        public static TestMode TestMode
         {
             set
             {
@@ -83,7 +74,7 @@ namespace Slipe.Client.Rendering
         /// <summary>
         /// Gets information about various internal datum
         /// </summary>
-        public Status Status
+        public static Status Status
         {
             get
             {
@@ -95,25 +86,12 @@ namespace Slipe.Client.Rendering
 
         #endregion
 
-        #region Constructor
-        /// <summary>
-        /// Creates an instance of the renderer
-        /// </summary>
-        public Renderer()
-        {
-            instance = this;
-
-            RootElement.OnRender += () => { OnRender?.Invoke(); };
-            RootElement.OnHUDRender += () => { OnHudRender?.Invoke(); };
-        }
-        #endregion
-
         #region Methods
 
         /// <summary>
         /// This function changes the drawing destination for the dx functions.
         /// </summary>
-        public bool SetRenderTarget(RenderTarget target, bool clear = false)
+        public static bool SetRenderTarget(RenderTarget target, bool clear = false)
         {
             return MtaClient.DxSetRenderTarget(target.MaterialElement, clear);
         }
@@ -122,7 +100,7 @@ namespace Slipe.Client.Rendering
         /// Reverts the current rendertarget to the screen
         /// </summary>
         /// <returns></returns>
-        public bool RevertRenderTargetToScreen()
+        public static bool RevertRenderTargetToScreen()
         {
             return MtaClient.DxSetRenderTarget();
         }
@@ -130,7 +108,7 @@ namespace Slipe.Client.Rendering
         /// <summary>
         /// This function allows for the positioning of dxDraw calls to be automatically adjusted according to the client's aspect ratio setting. This lasts for a single execution of an event handler for one of the following events: onClientRender, onClientPreRender and onClientHUDRender. So the function has to be called every frame, just like dxDraws.
         /// </summary>
-        public bool SetAspectRatioAdjustmentEnabled(bool enabled, float sourceRatio = 4 / 3)
+        public static bool SetAspectRatioAdjustmentEnabled(bool enabled, float sourceRatio = 4 / 3)
         {
             return MtaClient.DxSetAspectRatioAdjustmentEnabled(enabled, sourceRatio);
         }
@@ -138,7 +116,7 @@ namespace Slipe.Client.Rendering
         /// <summary>
         /// Get the World position from a screen position
         /// </summary>
-        public Vector3 WorldFromScreenPosition(Vector2 screenPosition, float depth)
+        public static Vector3 WorldFromScreenPosition(Vector2 screenPosition, float depth)
         {
             Tuple<float, float, float> result = MtaClient.GetWorldFromScreenPosition(screenPosition.X, screenPosition.Y, depth);
             return new Vector3(result.Item1, result.Item2, result.Item3);
@@ -147,7 +125,7 @@ namespace Slipe.Client.Rendering
         /// <summary>
         /// Get the screen position from a world position
         /// </summary>
-        public Vector2 ScreenFromWorldPosition(Vector3 worldPosition, float edgeTolerance = 0.0f, bool relative = true)
+        public static Vector2 ScreenFromWorldPosition(Vector3 worldPosition, float edgeTolerance = 0.0f, bool relative = true)
         {
             Tuple<float, float> result = MtaClient.GetScreenFromWorldPosition(worldPosition.X, worldPosition.Y, worldPosition.Z, edgeTolerance, relative);
             return new Vector2(result.Item1, result.Item2);
@@ -157,11 +135,15 @@ namespace Slipe.Client.Rendering
 
         #region Events
 
-        public delegate void OnRenderHandler();
-        public event OnRenderHandler OnRender;
+#pragma warning disable 67
 
-        public delegate void OnHudRenderHandler();
-        public event OnHudRenderHandler OnHudRender;
+        public delegate void OnRenderHandler(RootElement source, OnRenderEventArgs eventArgs);
+        public static event OnRenderHandler OnRender;
+
+        public delegate void OnHudRenderHandler(RootElement source, OnHudRenderEventArgs eventArgs);
+        public static event OnHudRenderHandler OnHudRender;
+
+#pragma warning enable 67
 
         #endregion
     }

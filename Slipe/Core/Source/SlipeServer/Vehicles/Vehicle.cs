@@ -1,6 +1,5 @@
 ﻿using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
-using Slipe.Shared.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
