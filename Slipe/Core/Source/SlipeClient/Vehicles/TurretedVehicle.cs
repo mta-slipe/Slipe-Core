@@ -5,6 +5,7 @@ using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
 using Slipe.Client.Peds;
+using Slipe.Client.Vehicles.Events;
 
 namespace Slipe.Client.Vehicles
 {
@@ -59,7 +60,7 @@ namespace Slipe.Client.Vehicles
 
 #pragma warning disable 67
 
-        public delegate void OnPedHitHandler(Ped pedHit);
+        public delegate void OnPedHitHandler(TurretedVehicle source, OnPedHitEventArgs eventArgs);
         public event OnPedHitHandler OnPedHit;
 
         #pragma warning restore 67

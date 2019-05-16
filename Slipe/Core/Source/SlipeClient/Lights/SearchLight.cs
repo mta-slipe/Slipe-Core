@@ -7,6 +7,8 @@ using Slipe.Shared.Elements;
 using Slipe.Shared.Helpers;
 using System.ComponentModel;
 using Slipe.Client.Game;
+using Slipe.Client.Elements;
+using Slipe.Client.Game.Events;
 
 namespace Slipe.Client.Lights
 {
@@ -145,7 +147,7 @@ namespace Slipe.Client.Lights
         {
             toAttached = toElement;
             Offset = offsetMatrix;
-            Game.GameClient.OnUpdate += Update;
+            GameClient.OnUpdate += Update;
         }
 
         /// <summary>
@@ -177,13 +179,13 @@ namespace Slipe.Client.Lights
         /// </summary>
         public void Detach()
         {
-            Game.GameClient.OnUpdate -= Update;
+            GameClient.OnUpdate -= Update;
         }
 
         /// <summary>
         /// Updates this element to the correct position and rotation
         /// </summary>
-        protected void Update(float timeSlice)
+        protected void Update(RootElement source, OnUpdateEventArgs eventArgs)
         {
             StartPosition = ToAttached.Position + Offset.Translation;
             EndPosition = Vector3.Transform(relativeEndPosition, ToAttached.Matrix * Offset);

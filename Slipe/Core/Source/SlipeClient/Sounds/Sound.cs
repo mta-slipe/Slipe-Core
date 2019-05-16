@@ -5,6 +5,7 @@ using Slipe.MtaDefinitions;
 using System.ComponentModel;
 using Slipe.Shared.Elements;
 using Slipe.Client.Peds;
+using Slipe.Client.Sounds.Events;
 
 namespace Slipe.Client.Sounds
 {
@@ -252,22 +253,22 @@ namespace Slipe.Client.Sounds
 
         #pragma warning disable 67
 
-        public delegate void OnBeatHandler(float time);
+        public delegate void OnBeatHandler(Sound source, OnBeatEventArgs eventArgs);
         public event OnBeatHandler OnBeat;
 
-        public delegate void OnMetaChangedHandler(string streamTitle);
+        public delegate void OnMetaChangedHandler(Sound source, OnMetaChangedEventArgs eventArgs);
         public event OnMetaChangedHandler OnMetaChanged;
 
-        public delegate void OnDownloadFinishedHandler(int length);
+        public delegate void OnDownloadFinishedHandler(Sound source, OnDownloadFinishedEventArgs eventArgs);
         public event OnDownloadFinishedHandler OnDownloadFinished;
 
-        public delegate void OnStartHandler(string reason);
+        public delegate void OnStartHandler(Sound source, OnStartEventArgs eventArgs);
         public event OnStartHandler OnStart;
 
-        public delegate void OnStopHandler(string reason);
+        public delegate void OnStopHandler(Sound source, OnStopEventArgs eventArgs);
         public event OnStopHandler OnStop;
 
-        public delegate void OnStreamHandler(bool success, int length, string streamName, string errorMessage);
+        public delegate void OnStreamHandler(Sound source, OnStreamEventArgs eventArgs);
         public event OnStreamHandler OnStream;
 
         #pragma warning restore 67

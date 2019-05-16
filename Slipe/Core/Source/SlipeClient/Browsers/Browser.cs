@@ -6,6 +6,8 @@ using System.Text;
 using Slipe.Shared.Elements;
 using System.ComponentModel;
 using Slipe.Shared.IO;
+using Slipe.Client.Browsers.Events;
+using Slipe.Client.Elements;
 
 namespace Slipe.Client.Browsers
 {
@@ -240,42 +242,37 @@ namespace Slipe.Client.Browsers
 
         #pragma warning disable 67
 
-        internal static void HandleWhiteListChange(string[] changedDomains)
-        {
-            OnWhiteListChange?.Invoke(changedDomains);
-        }
-
-        public delegate void OnCreatedHandler();
+        public delegate void OnCreatedHandler(Browser source, OnCreatedEventArgs eventArgs);
         public event OnCreatedHandler OnCreated;
 
-        public delegate void OnCursorChangeHandler(int cursorId);
+        public delegate void OnCursorChangeHandler(Browser source, OnCursorChangeEventArgs eventArgs);
         public event OnCursorChangeHandler OnCursorChange;
 
-        public delegate void OnDocumentReadyHandler(string url);
+        public delegate void OnDocumentReadyHandler(Browser source, OnDocumentReadEventArgs eventArgs);
         public event OnDocumentReadyHandler OnDocumentReady;
 
-        public delegate void OnInputFocusChangeHandler(bool gainedFocus);
+        public delegate void OnInputFocusChangeHandler(Browser source, OnInputFocusChangeEventArgs eventArgs);
         public event OnInputFocusChangeHandler OnInputFocusChange;
 
-        public delegate void OnLoadFailHandler(string url, int errorCode, string errorDescription);
+        public delegate void OnLoadFailHandler(Browser source, OnLoadFailEventArgs eventArgs);
         public event OnLoadFailHandler OnLoadFail;
 
-        public delegate void OnLoadStartHandler(string url);
+        public delegate void OnLoadStartHandler(Browser source, OnLoadStartEventArgs eventArgs);
         public event OnLoadStartHandler OnLoadStart;
 
-        public delegate void OnNavigateHandler(string target, bool isBlocked);
+        public delegate void OnNavigateHandler(Browser source, OnNavigateEventArgs eventArgs);
         public event OnNavigateHandler OnNavigate;
 
-        public delegate void OnPopupHandler(string target, string opener, bool isPopup);
+        public delegate void OnPopupHandler(Browser source, OnPopupEventArgs eventArgs);
         public event OnPopupHandler OnPopup;
 
-        public delegate void OnResourceBlockedHandler(string url, string domain, int reason);
+        public delegate void OnResourceBlockedHandler(Browser source, OnResourceBlockedEventArgs eventArgs);
         public event OnResourceBlockedHandler OnResourceBlocked;
 
-        public delegate void OnTooltipHandler(string tooltip);
+        public delegate void OnTooltipHandler(Browser source, OnTooltipEventArgs eventArgs);
         public event OnTooltipHandler OnTooltip;
 
-        public delegate void OnWhiteListChangeHandler(string[] changedDomains);
+        public delegate void OnWhiteListChangeHandler(RootElement source, OnWhiteListChangeEventArgs eventArgs);
         public static event OnWhiteListChangeHandler OnWhiteListChange;
 
 #pragma warning restore 67

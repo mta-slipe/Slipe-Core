@@ -4,6 +4,8 @@ using System.Text;
 using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Utilities;
+using Slipe.Client.Rendering.Events;
+using Slipe.Client.Elements;
 
 namespace Slipe.Client.Dx
 {
@@ -71,7 +73,7 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// Draw this circle
         /// </summary>
-        public bool Draw()
+        public bool Draw(RootElement source, OnRenderEventArgs eventArgs)
         {
             return MtaClient.DxDrawCircle(Position.X, Position.Y, Radius, StartAngle, StopAngle, Color.Hex, CenterColor.Hex, Segments, Ratio, PostGUI);
         }

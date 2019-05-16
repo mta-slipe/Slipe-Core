@@ -1,4 +1,6 @@
-﻿using Slipe.MtaDefinitions;
+﻿using Slipe.Client.Elements;
+using Slipe.Client.IO.Events;
+using Slipe.MtaDefinitions;
 using Slipe.Shared.IO;
 using Slipe.Shared.Utilities;
 using System;
@@ -9,12 +11,7 @@ namespace Slipe.Client.IO
 {
     public class MtaDebug : SharedMtaDebug
     {
-        protected internal MtaDebug()
-        {
-
-        }
-
-        public bool Active
+        public static bool Active
         {
             get
             {
@@ -22,12 +19,11 @@ namespace Slipe.Client.IO
             }
         }
 
-        internal void HandleMessage(string message, DebugMessageLevel level, string file, int line, Color color)
-        {
-            OnMessage?.Invoke(message, level, file, line, color);
-        }
+#pragma warning disable 67
 
-        public delegate void OnMessageHandler(string message, DebugMessageLevel level, string file, int line, Color color);
+        public delegate void OnMessageHandler(RootElement source, OnDebugMessageEventArgs eventArgs);
         public static event OnMessageHandler OnMessage;
+
+#pragma warning enable 67
     }
 }

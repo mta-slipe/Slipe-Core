@@ -38,7 +38,7 @@ namespace Slipe.Server.Peds.Events
         internal OnClickEventArgs(dynamic mouseButton, dynamic buttonState, MtaElement clickedElement, dynamic wx, dynamic wy, dynamic wz, dynamic sx, dynamic sy)
         {
             MouseButton = (MouseButton)Enum.Parse(typeof(MouseButton), (string)mouseButton);
-            MouseButtonState = (MouseButtonState)Enum.Parse(typeof(MouseButtonState), (string)mouseButton);
+            MouseButtonState = (MouseButtonState)Enum.Parse(typeof(MouseButtonState), (string)buttonState);
             ClickedElement = ElementManager.Instance.GetElement<PhysicalElement>(clickedElement);
             WorldPosition = new Vector3((float) wx, (float) wy, (float) wz);
             ScreenPosition = new Vector2((float)sx, (float)sy);

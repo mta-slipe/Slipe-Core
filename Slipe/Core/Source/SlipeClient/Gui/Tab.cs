@@ -5,6 +5,7 @@ using Slipe.Shared.Elements;
 using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
+using Slipe.Client.Gui.Events;
 
 namespace Slipe.Client.Gui
 {
@@ -40,7 +41,7 @@ namespace Slipe.Client.Gui
 
         #pragma warning disable 67
 
-        public delegate void OnOpenHandler();
+        public delegate void OnOpenHandler(Tab source, OnOpenEventArgs eventArgs);
         public event OnOpenHandler OnOpen;
 
         #pragma warning restore 67

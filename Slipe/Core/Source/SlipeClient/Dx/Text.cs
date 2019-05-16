@@ -4,6 +4,8 @@ using System.Text;
 using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Utilities;
+using Slipe.Client.Elements;
+using Slipe.Client.Rendering.Events;
 
 namespace Slipe.Client.Dx
 {
@@ -169,7 +171,7 @@ namespace Slipe.Client.Dx
         public Text(string text, Vector2 position) : this(text, position, Vector2.Zero, Color.White) { }
 
 
-        public bool Draw()
+        public bool Draw(RootElement source, OnRenderEventArgs eventArgs)
         {
             if (useCustomFont)
                 return MtaClient.DxDrawText(Content, Position.X, Position.Y, BottomRight.X, BottomRight.Y, Color.Hex, Scale.X, Scale.Y, CustomFont.MTAFont, HorizontalAlignment.ToString().ToLower(), VerticalAlignment.ToString().ToLower(), Clip, WordBreak, PostGUI, ColorCoded, SubPixelPositioning, Rotation, RotationOrigin.X, RotationOrigin.Y);

@@ -8,6 +8,7 @@ using Slipe.Shared.Elements;
 using Slipe.Client.Game;
 using Slipe.Client.Rendering;
 using Slipe.Client.Elements;
+using Slipe.Client.Rendering.Events;
 
 namespace Slipe.Client.SightLines
 {
@@ -80,9 +81,9 @@ namespace Slipe.Client.SightLines
             set
             {
                 if(value)
-                    GameClient.Renderer.OnRender += DebugDraw;
+                    Renderer.OnRender += DebugDraw;
                 else
-                    GameClient.Renderer.OnRender -= DebugDraw;
+                    Renderer.OnRender -= DebugDraw;
                 Visible = value;
             }            
         }
@@ -161,9 +162,9 @@ namespace Slipe.Client.SightLines
             IgnoredElement = ignoredElement;
         }
 
-        private void DebugDraw()
+        private void DebugDraw(RootElement source, OnRenderEventArgs eventArgs)
         {
-            Draw();
+            Draw(source, eventArgs);
         }
 
         #endregion

@@ -4,6 +4,8 @@ using System.Text;
 using Slipe.MtaDefinitions;
 using System.Numerics;
 using Slipe.Shared.Utilities;
+using Slipe.Client.Elements;
+using Slipe.Client.Rendering.Events;
 
 namespace Slipe.Client.Dx
 {
@@ -39,7 +41,7 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// Draw this rectangle
         /// </summary>
-        public bool Draw()
+        public bool Draw(RootElement source, OnRenderEventArgs eventArgs)
         {
             return MtaClient.DxDrawRectangle(Position.X, Position.Y, Dimensions.X, Dimensions.Y, Color.Hex, PostGUI, SubPixelPositioning);
         }
