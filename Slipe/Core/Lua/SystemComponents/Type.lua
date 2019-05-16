@@ -407,7 +407,7 @@ function System.cast(cls, obj)
       setmetatable(obj, cls)
       return obj
     end
-    if cls == nil or isTypeOf(obj, cls) then
+    if isTypeOf(obj, cls) then
       return obj
     end
     throw(InvalidCastException(), 1)

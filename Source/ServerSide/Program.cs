@@ -11,6 +11,7 @@ using System.Numerics;
 using Slipe.Shared.Rendering;
 using Slipe.Sql;
 using System.Threading.Tasks;
+using Slipe.Shared.Exports;
 
 namespace ServerSide
 {
@@ -83,6 +84,11 @@ namespace ServerSide
         public MyVehicle(Vector3 pos, bool test, Vector2 bla) : base(VehicleModel.Alpha, pos)
         {
             PrimaryColor = Color.ForestGreen;
+        }
+
+        [Export("DoTheThing")]
+        public static void DoTheThing(string x) {
+            Console.WriteLine("Export has been called with parameter {0}", x);
         }
 
     }

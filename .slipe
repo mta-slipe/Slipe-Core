@@ -117,6 +117,13 @@
       "assetDirectories": []
     }
   ],
+  "exports": [
+    {
+      "name": "ServerSide.MyVehicle.DoTheThing",
+      "niceName": "DoTheThing",
+      "type": "server"
+    }
+  ],
   "clientMinVersion": null,
   "serverMinVersion": null
 }
