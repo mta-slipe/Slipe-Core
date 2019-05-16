@@ -404,7 +404,6 @@ function System.cast(cls, obj)
   else 
     -- workaround for RPCs, since metatables are not included during transfer
     if getmetatable(obj) == nil then
-      System.Console.WriteLine(debug.traceback())
       setmetatable(obj, cls)
       return obj
     end
