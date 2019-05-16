@@ -43,7 +43,7 @@ namespace Slipe.Client.Assets
         {
             if (eventArgs.Path == filepath)
             {
-                this.state = eventArgs.Success == true ? DownloadState.Downloaded : DownloadState.Failed;
+                this.state = eventArgs.Success ? DownloadState.Downloaded : DownloadState.Failed;
                 GameClient.OnFileDownloadComplete += HandleDownloadComplete;
                 OnDownloadComplete?.Invoke();
             }
