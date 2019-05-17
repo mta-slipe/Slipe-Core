@@ -32,8 +32,8 @@ namespace Slipe.Shared.Elements.Events
 
         internal OnClickedEventArgs(dynamic mouseButton, dynamic buttonState, MtaElement clickedBy, dynamic x, dynamic y, dynamic z)
         {
-            MouseButton = (MouseButton) Enum.Parse(typeof(MouseButton), (string)mouseButton);
-            MouseButtonState = (MouseButtonState)Enum.Parse(typeof(MouseButtonState), (string)mouseButton);
+            MouseButton = (MouseButton) Enum.Parse(typeof(MouseButton), (string)mouseButton, true);
+            MouseButtonState = (MouseButtonState)Enum.Parse(typeof(MouseButtonState), (string)buttonState, true);
             Player = ElementManager.Instance.GetElement<SharedPed>(clickedBy);
             Position = new Vector3((float)x, (float)y, (float)z);
         }
