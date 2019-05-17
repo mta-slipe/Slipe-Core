@@ -23,10 +23,10 @@ namespace Slipe.Client.Gui.Events
         /// </summary>
         public Vector2 ScreenPosition { get; }
 
-        internal OnClickEventArgs(dynamic button, dynamic state, dynamic x, dynamic y)
+        internal OnClickEventArgs(dynamic mouseButton, dynamic buttonState, dynamic x, dynamic y)
         {
-            MouseButton = (MouseButton)Enum.Parse(typeof(MouseButton), (string)button);
-            MouseButtonState = (MouseButtonState)Enum.Parse(typeof(MouseButtonState), (string)state);
+            MouseButton = (MouseButton)Enum.Parse(typeof(MouseButton), (string)mouseButton, true);
+            MouseButtonState = (MouseButtonState)Enum.Parse(typeof(MouseButtonState), (string)buttonState, true);
             ScreenPosition = new Vector2((float)x, (float)y);
         }
     }
