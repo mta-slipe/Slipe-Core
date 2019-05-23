@@ -153,7 +153,7 @@ namespace Slipe.Client.GameWorld
         }
 
         /// <summary>
-        /// This function gets the Z level of the highest ground below a point.
+        /// This function gets the position of the highest ground below a point.
         /// </summary>
         public float GetGroundPosition(Vector3 position)
         {

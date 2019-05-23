@@ -146,7 +146,7 @@ function initEvents()
 		-- Root element
 		events.onClientKey = {"OnKey", _ioEvents, Slipe.Client.IO.Input}
 		events.onClientRender = {"OnRender", _renderEvents, Slipe.Client.Rendering.Renderer}
-		events.onClientPreRender = {"OnPreRender", _gameEvents, Slipe.Client.Game.GameClient}
+		events.onClientPreRender = {"OnUpdate", _gameEvents, Slipe.Client.Game.GameClient}
 		events.onClientHUDRender = {"OnHUDRender", _renderEvents, Slipe.Client.Rendering.Renderer}
 		events.onClientBrowserWhitelistChange = {"OnWhiteListChange", _browserEvents, Slipe.Client.Browsers.Browser}
 		events.onClientCharacter = {"OnCharacter", _ioEvents, Slipe.Client.IO.Input}

@@ -19,7 +19,7 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// The start position of the 3D line
         /// </summary>
-        public Vector3 startPos;
+        protected Vector3 startPos;
         public Vector3 StartPosition
         {
             get
@@ -36,7 +36,7 @@ namespace Slipe.Client.Dx
         /// <summary>
         /// The end position of the 3D line
         /// </summary>
-        public Vector3 endPos;
+        protected Vector3 endPos;
         public Vector3 EndPosition
         {
             get

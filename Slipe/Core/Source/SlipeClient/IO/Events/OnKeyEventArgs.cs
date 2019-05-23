@@ -19,7 +19,7 @@ namespace Slipe.Client.IO.Events
         internal OnKeyEventArgs(dynamic key, dynamic isPressed)
         {
             Key = (string)key;
-            isPressed = (bool)isPressed;
+            IsPressed = (bool)isPressed;
         }
     }
 }

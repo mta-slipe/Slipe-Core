@@ -33,6 +33,7 @@ namespace Slipe.Client.Rendering
             }
         }
 
+        private static Vector2 screenSize;
         /// <summary>
         /// Returns the size of the screen as a Vector2
         /// </summary>
@@ -40,8 +41,12 @@ namespace Slipe.Client.Rendering
         {
             get
             {
-                Tuple<float, float> size = MtaClient.GuiGetScreenSize();
-                return new Vector2(size.Item1, size.Item2);
+                if (screenSize == Vector2.Zero)
+                {
+                    Tuple<float, float> size = MtaClient.GuiGetScreenSize();
+                    screenSize = new Vector2(size.Item1, size.Item2);
+                }
+                return screenSize;
             }
         }
 

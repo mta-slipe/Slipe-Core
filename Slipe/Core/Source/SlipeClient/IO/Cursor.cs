@@ -7,6 +7,7 @@ using Slipe.Shared.IO;
 using Slipe.Shared.Elements;
 using Slipe.Client.Elements;
 using Slipe.Client.IO.Events;
+using Slipe.Client.Rendering;
 
 namespace Slipe.Client.IO
 {
@@ -18,14 +19,27 @@ namespace Slipe.Client.IO
         #region Properties
 
         /// <summary>
-        /// Get and set the screen position of the cursor
+        /// Get and set the screen position of the cursor as a relative float between 0 and 1
+        /// </summary>
+        public static Vector2 RelativePosition
+        {
+            get
+            {
+                Tuple<float, float, float, float, float> r = MtaClient.GetCursorPosition();
+                return new Vector2(r.Item1, r.Item2);
+            }
+        }
+
+        /// <summary>
+        /// Get the absolute screen position of the cursor in pixel coordinates
         /// </summary>
         public static Vector2 Position
         {
             get
             {
                 Tuple<float, float, float, float, float> r = MtaClient.GetCursorPosition();
-                return new Vector2(r.Item1, r.Item2);
+
+                return new Vector2(r.Item1 * Renderer.ScreenSize.X, r.Item2 * Renderer.ScreenSize.Y);
             }
             set
             {

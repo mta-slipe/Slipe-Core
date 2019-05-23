@@ -518,12 +518,13 @@ System.define("Slipe.MtaDefinitions.MtaClient", {
  for i = 15, #args do
  tertiaryArguments[i - 14] = args[i]
  end
- local tertiaryTuple = System.Tuple(unpack(tertiaryArguments))
+ local tertiaryTuple = System.tuple(unpack(tertiaryArguments))
  secondaryArguments[8] = tertiaryTuple
- local secondaryTuple = System.Tuple(unpack(secondaryArguments))
+ local secondaryTuple = System.tuple(unpack(secondaryArguments))
  primaryArguments[8] = secondaryTuple
 
- return System.Tuple(unpack(primaryArguments))
+ local r = System.tuple(unpack(primaryArguments))
+ return r
 end,
 	SetInteriorFurnitureEnabled = setInteriorFurnitureEnabled,
 	SetBirdsEnabled = setBirdsEnabled,

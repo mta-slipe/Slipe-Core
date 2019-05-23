@@ -180,11 +180,15 @@ namespace Slipe.Server.Accounts
 
         #region Events
 
+#pragma warning disable 67
+
         public delegate void OnRemoveHandler(RootElement source, OnRemovedEventArgs eventArgs);
         public static event OnRemoveHandler OnRemoved;
 
         public delegate void OnAddedHandler(RootElement source, OnAddedEventArgs eventArgs);
         public static event OnAddedHandler OnAdded;
+
+#pragma warning enable 67
 
         #endregion
 

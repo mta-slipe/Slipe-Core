@@ -9,11 +9,17 @@ namespace Slipe.Client.Game.Events
         /// <summary>
         /// The interval between this frame and the previous one in milliseconds.
         /// </summary>
-        public float Delta { get; }
+        public float TimeSlice { get; }
+
+        /// <summary>
+        /// The interval between this frame and the previous one in seconds
+        /// </summary>
+        public float DeltaTime { get; }
 
         internal OnUpdateEventArgs(dynamic timeSlice)
         {
-            Delta = timeSlice;
+            TimeSlice = timeSlice;
+            DeltaTime = timeSlice / 1000;
         }
     }
 }

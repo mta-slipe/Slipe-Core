@@ -305,8 +305,12 @@ namespace Slipe.Server.Accounts
 
         #region Events
 
+#pragma warning disable 67
+
         public delegate void OnDataChangeHandler(RootElement source, OnDataChangeEventArgs eventArgs);
         public static event OnDataChangeHandler OnDataChange;
+
+#pragma warning enable 67
 
         #endregion
 
