@@ -38,6 +38,7 @@ local setmetatable = setmetatable
 local rawget = rawget
 local type = type
 local unpack = table.unpack
+local select = select
 
 local TargetException = define("System.Reflection.TargetException", {
   __tostring = Exception.ToString,
@@ -60,11 +61,16 @@ local AmbiguousMatchException = define("System.Reflection.AmbiguousMatchExceptio
   end,
 })
 
-local function checkMatadata(metadata)
-  if not metadata then
-    throw(NotSupportedException("not found metadata for this"), 1)
+local MissingMethodException = define("System.MissingMethodException", {
+  __tostring = Exception.ToString,
+  __inherits__ = { Exception },
+  __ctor__ = function(this, message, innerException) 
+    Exception.__ctor__(this, message or "Specified method could not be found.", innerException)
   end
-  return metadata
+})
+
+local function throwNoMatadata(sign)
+  throw(NotSupportedException("not found metadata for " .. sign), 1)
 end
 
 local function eq(left, right)
@@ -73,6 +79,14 @@ end
 
 local function getName(this)
   return this.name
+end
+
+local function isAccessibility(memberInfo, kind)
+  local metadata = memberInfo.metadata
+  if not metadata then
+    throwNoMatadata(memberInfo.c.__name__ .. "." .. memberInfo.name)
+  end
+  return band(metadata[2], 0x7) == kind
 end
 
 local MemberInfo = define("System.Reflection.MemberInfo", {
@@ -90,18 +104,38 @@ local MemberInfo = define("System.Reflection.MemberInfo", {
     return typeof(this.c)
   end,
   getIsStatic = function (this)
-    return band(checkMatadata(this.metadata)[2], 0x8) == 1
-  end,
-  getIsPublic = function (this)
-    return band(checkMatadata(this.metadata)[2], 0x7) == 6
+    local metadata = this.metadata
+    if not metadata then
+      throwNoMatadata(this.c.__name__ .. "." .. this.name)
+    end
+    return band(metadata[2], 0x8) == 1
   end,
   getIsPrivate = function (this)
-    return band(checkMatadata(this.metadata)[2], 0x7) == 1
+    return isAccessibility(this, 1)
+  end,
+  getIsFamilyAndAssembly = function (this)
+    return isAccessibility(this, 2)
+  end,
+  getIsFamily = function (this)
+    return isAccessibility(this, 3)
+  end,
+  getIsAssembly = function (this)
+    return isAccessibility(this, 4)
+  end,
+  getIsFamilyOrAssembly = function (this)
+    return isAccessibility(this, 5)
+  end,
+  getIsPublic = function (this)
+    return isAccessibility(this, 6)
   end
 })
 
 local function getFieldOrPropertyType(this)
-  return typeof(checkMatadata(this.metadata)[3])
+  local metadata = this.metadata
+  if not metadata then
+    throwNoMatadata(this.c.__name__ .. "." .. this.name)
+  end
+  return typeof(metadata[3])
 end
 
 local function checkObj(obj, cls)
@@ -359,15 +393,24 @@ local PropertyInfo = define("System.Reflection.PropertyInfo", {
   end
 })
 
+local function hasPublicFlag(flags)
+  return band(flags, 0x7) == 6
+end
+
+local function getMethodParameterCount(flags)
+  local count = band(flags, 0xFF00)
+  if count ~= 0 then
+    count = count / 256
+  end
+  return count
+end
+
 local function getMethodAttributesIndex(metadata)
   local flags = metadata[2]
   local index
   local typeParametersCount = band(flags, 0xFF0000)
   if typeParametersCount == 0 then
-    local parameterCount = band(flags, 0xFF00)
-    if parameterCount ~= 0 then
-      parameterCount = parameterCount / 256
-    end
+    local parameterCount = getMethodParameterCount(flags)
     if band(flags, 0x80) == 0 then
       index = 4 + parameterCount
     else
@@ -384,7 +427,10 @@ local MethodInfo = define("System.Reflection.MethodInfo", {
   __inherits__ = { MemberInfo },
   memberType = 8,
   getReturnType = function (this)
-    local metadata = checkMatadata(this.metadata)
+    local metadata = this.metadata
+    if not metadata then
+      throwNoMatadata(this.c.__name__ .. "." .. this.name)
+    end
     local flags = metadata[2]
     if band(flags, 0x80) == 0 then
       return Type.Void
@@ -550,8 +596,10 @@ function Type.GetFields(this)
       if fields then
         for i = 1, #fields do
           local field = fields[i]
-          t[count] = buildFieldInfo(cls, field[1], field)
-          count = count + 1
+          if hasPublicFlag(field[2]) then
+            t[count] = buildFieldInfo(cls, field[1], field)
+            count = count + 1
+          end
         end
       else
         metadata = nil
@@ -602,8 +650,10 @@ function Type.GetProperties(this)
       if properties then
         for i = 1, #properties do
           local property = properties[i]
-          t[count] = buildPropertyInfo(cls, property[1], property)
-          count = count + 1
+          if hasPublicFlag(property[2]) then
+            t[count] = buildPropertyInfo(cls, property[1], property)
+            count = count + 1
+          end
         end
       end
     end
@@ -647,8 +697,10 @@ function Type.GetMethods(this)
       if methods then
         for i = 1, #methods do
           local method = methods[i]
-          t[count] = buildMethodInfo(cls, method[1], method)
-          count = count + 1
+          if hasPublicFlag(method[2]) then
+            t[count] = buildMethodInfo(cls, method[1], method)
+            count = count + 1
+          end
         end
       else
         metadata = nil
@@ -665,6 +717,14 @@ function Type.GetMethods(this)
     cls = getmetatable(cls)
   until cls == nil 
   return arrayFromTable(t, MethodInfo)
+end
+
+function Type.GetMembers(this)
+  local t = arrayFromTable({}, MemberInfo)
+  t:addRange(this:GetFields())
+  t:addRange(this:GetProperties())
+  t:addRange(this:GetMethods())
+  return t
 end
 
 function Type.IsDefined(this, attributeType, inherit)
@@ -742,12 +802,51 @@ function Type.getAttributes(this)
   local cls = this[1]
   local metadata = rawget(cls, "__metadata__")
   if metadata then
-    local classMetadata = metadata.class
-    if classMetadata then
-      return classMetadata[1]
+    metadata = metadata.class
+    if metadata then
+      return metadata[1]
     end
   end
-  return 0
+  throwNoMatadata(cls.__name__)
+end
+
+function Type.GetGenericArguments(this)
+  local t = {}
+  local count = 1
+
+  local cls = this[1]
+  local metadata = rawget(cls, "__metadata__")
+  if metadata then
+    metadata = metadata.class
+    if metadata then
+      local flags = metadata[1]
+      local typeParameterCount = band(flags, 0xFF00)
+      if typeParameterCount ~= 0 then
+        typeParameterCount = typeParameterCount / 256
+        for i = 2, 1 + typeParameterCount do
+          t[count] = typeof(metadata[i])
+          count = count + 1
+        end
+      end
+      return arrayFromTable(t, Type)
+    end
+  end
+
+  local name = cls.__name__ 
+  local i = name:find("%[")
+  if i then
+    while true do
+      i = i + 1
+      local j = name:find(",", i) or -1
+      local clsName = name:sub(i, j - 1)
+      t[count] = typeof(System.getClass(clsName))
+      count = count + 1
+      if j == -1 then
+        break
+      end
+    end
+  end
+  return arrayFromTable(t, Type)
 end
 
 local Assembly = define("System.Reflection.Assembly", {
@@ -786,3 +885,95 @@ local Assembly = define("System.Reflection.Assembly", {
 
 assembly = Assembly()
 assembly.name = System.config.assemblyName or "CSharp.lua, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+
+local function createInstance(T, nonPublic)
+  local metadata = rawget(T, "__metadata__")
+  if metadata then
+    local ctorMetadata = metadata.methods[1]
+    if ctorMetadata[1] == ".ctor" then
+      local flags = ctorMetadata[2]
+      if nonPublic or hasPublicFlag(flags) then
+        local parameterCount = getMethodParameterCount(flags)
+        if parameterCount == 0 then
+          return T()
+        end
+      end
+      throw(MissingMethodException())
+    end
+  end
+  return T()
+end
+
+local function isCtorMatch(method, n, f, ...)
+  local flags = method[2]
+  if hasPublicFlag(flags) then
+    local parameterCount = getMethodParameterCount(flags)
+    if parameterCount == n then
+      for j = 4, 3 + parameterCount do
+        local p = f(j - 3, ...)
+        if not is(p, method[j]) then
+          return false
+        end
+      end
+      return true
+    end
+  end
+  return false
+end
+
+local function findMatchCtor(T, n, f, ...)
+  local metadata = rawget(T, "__metadata__")
+  if metadata then
+    local hasCtor
+    local methods = metadata.methods
+    for i = 1, #methods do
+      local method = methods[i]
+      if method[1] == ".ctor" then
+        if isCtorMatch(method, n, f, ...) then
+          return i
+        end
+        hasCtor = true
+      else
+        break
+      end
+    end
+    if hasCtor then
+      throw(MissingMethodException())
+    end
+  end
+end
+
+define("System.Activator", {
+  CreateInstance = function (type, ...)
+    if type == nil then throw(ArgumentNullException("type")) end
+    if getmetatable(type) ~= Type then
+      return createInstance(type)
+    end
+    local T, n = type[1], select("#", ...)
+    if n == 0 then
+      return createInstance(T)
+    elseif n == 1 then
+      local args = ...
+      if System.isArrayLike(args) then
+        n = #args
+        if n == 0 then
+          return createInstance(T)
+        end
+        local i = findMatchCtor(T, n, function (i, args) return args:get(i - 1) end, args)
+        if i and i ~= 1 then
+          return System.new(T, i, unpack(args, 1, n))
+        end
+        return T(unpack(args, 1, n))
+      end
+    end
+    local i = findMatchCtor(T, n, function (i, ...) return select(i, ...) end, ...)
+    if i and i ~= 1 then
+      return System.new(T, i, ...)
+    end
+    return T(...)
+  end,
+  CreateInstance1 = function (type, nonPublic)
+    if type == nil then throw(ArgumentNullException("type")) end
+    return createInstance(type[1], nonPublic)
+  end
+})

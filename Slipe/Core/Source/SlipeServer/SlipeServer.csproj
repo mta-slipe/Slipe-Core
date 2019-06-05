@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="cd ..\..\..\..\ &amp;&amp; slipe compile -module SlipeCore -server-only" />
+    <Exec Command="cd ../../../../ &amp;&amp; slipe compile -module SlipeCore -server-only" />
   </Target>
 
 </Project>

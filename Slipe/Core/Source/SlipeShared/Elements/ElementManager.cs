@@ -171,7 +171,7 @@ namespace Slipe.Shared.Elements
         /// </summary>
         public List<T> GetByType<T>() where T : Element
         {
-            return GetByType<T>(root);
+            return GetByType<T>(Root);
         }
 
         protected internal void AddEventHandler(Element element, string eventName, bool propagated = true, string priorty = "normal")

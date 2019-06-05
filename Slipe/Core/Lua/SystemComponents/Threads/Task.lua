@@ -28,6 +28,7 @@ local NotImplementedException = System.NotImplementedException
 local ArgumentNullException = System.ArgumentNullException
 local ArgumentOutOfRangeException = System.ArgumentOutOfRangeException
 local InvalidOperationException = System.InvalidOperationException
+local AggregateException = System.AggregateException
 
 local type = type
 local table = table
@@ -43,15 +44,14 @@ local cyield = coroutine.yield
 local TaskCanceledException = define("System.TaskCanceledException", {
   __tostring = Exception.ToString,
   __inherits__ = { Exception },
-
-  __ctor__ = function(this, task)
+  __ctor__ = function (this, task)
     this.task = task  
     Exception.__ctor__(this, "A task was canceled.")
   end,
 
   getTask = function(this) 
     return this.task
-  end,
+  end
 })
 
 local TaskStatusCreated = 0
@@ -134,7 +134,7 @@ local function createExceptionObject(this)
   if not this.isHandled then
     this.isHandled = true
   end
-  return this.exception
+  return AggregateException(holder.exception)
 end
 
 local Task

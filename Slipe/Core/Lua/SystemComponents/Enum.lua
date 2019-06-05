@@ -19,13 +19,17 @@ local throw = System.throw
 local Int = System.Int
 local Number = System.Number
 local band = System.band
+local bor = System.bor
 local ArgumentNullException = System.ArgumentNullException
 local ArgumentException = System.ArgumentException
 
+local assert = assert
 local pairs = pairs
 local tostring = tostring
+local type = type
 
 local function toString(this, cls)
+  if this == nil then return "" end
   if cls then
     for k, v in pairs(cls) do
       if v == this then
@@ -37,11 +41,15 @@ local function toString(this, cls)
 end
 
 local function hasFlag(this, flag)
+  if this == flag then
+    return true
+  end
   return band(this, flag) ~= 0
 end
 
 Number.ToEnumString = toString
 Number.HasFlag = hasFlag
+System.ToEnumString = toString
 
 local function tryParseEnum(enumType, value, ignoreCase)
   if enumType == nil then throw(ArgumentNullException("enumType")) end
@@ -49,21 +57,36 @@ local function tryParseEnum(enumType, value, ignoreCase)
   if value == nil then
     return
   end
-  value = value:Trim()
-  if #value == 0 then
-    return
-  end
   if ignoreCase then
     value = value:lower()
   end
-  for k, v in pairs(enumType[1]) do
-    if ignoreCase then
-      k = k:lower()
+
+  local cls, i, j, s, r = enumType[1], 1
+  while true do
+    i, j, s = value:find("%s*(%a+)%s*", i)
+    if not i then
+      return
     end
-    if k == value then
-      return v
+    for k, v in pairs(cls) do
+      if ignoreCase then
+        k = k:lower()
+      end
+      if k == s then
+        if not r then
+          r = v
+        else
+          r = bor(r, v)
+        end
+        break
+      end
     end
+    i = value:find(',', j + 1)
+    if not i then
+      break
+    end
+    i = i + 1
   end
+  return r
 end
 
 System.define("System.Enum", {
@@ -82,7 +105,6 @@ System.define("System.Enum", {
         return k
       end
     end
-    throw(ArgumentException())
   end,
   GetNames = function (enumType)
     if enumType == nil then throw(ArgumentNullException("enumType")) end
@@ -90,8 +112,10 @@ System.define("System.Enum", {
     local t = {}
     local count = 1
     for k, v in pairs(enumType[1]) do
-      t[count] = k
-      count = count + 1
+      if type(v) == "number" then
+        t[count] = k
+        count = count + 1
+      end
     end
     return System.arrayFromTable(t, System.String)
   end,
@@ -101,15 +125,35 @@ System.define("System.Enum", {
     local t = {}
     local count = 1
     for k, v in pairs(enumType[1]) do
-      t[count] = v
-      count = count + 1
+      if type(v) == "number" then
+        t[count] = v
+        count = count + 1
+      end
     end
-    return System.arrayFromTable(t, Int)
+    return System.arrayFromTable(t, System.Int32)
+  end,
+  IsDefined = function (enumType, value)
+    if enumType == nil then throw(ArgumentNullException("enumType")) end
+    if value == nil then throw(ArgumentNullException("value")) end
+    if not enumType:getIsEnum() then throw(ArgumentException("Arg_MustBeEnum")) end
+    local cls = enumType[1]
+    local t = type(value)
+    if t == "string" then
+      return cls[value] ~= nil
+    elseif t == "number" then
+      for k, v in pairs(cls) do
+        if v == value then
+          return true
+        end
+      end
+      return false
+    end
+    throw(System.InvalidOperationException())
   end,
   Parse = function (enumType, value, ignoreCase)
     local result = tryParseEnum(enumType, value, ignoreCase)
     if result == nil then
-      throw(ArgumentException("parse enum fail: ".. value))
+      throw(ArgumentException("Requested value '" .. value .. "' was not found."))
     end
     return result
   end,

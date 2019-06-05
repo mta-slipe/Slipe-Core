@@ -21,8 +21,6 @@ local String = System.String
 local Boolean = System.Boolean
 local Delegate = System.Delegate
 local getClass = System.getClass
-local try = System.try
-local new = System.new
 local arrayFromTable = System.arrayFromTable
 
 local InvalidCastException = System.InvalidCastException
@@ -81,7 +79,7 @@ local function isSubclassOf(this, c)
     if p == c then
       return true
     end
-    p = getBaseType(p)
+    p = getmetatable(p)
   end
   return false
 end
@@ -90,29 +88,32 @@ local function getIsInterface(this)
   return this[1].class == "I"
 end
 
-local function getIsValueType(this)
-  return this[1].class == "S"
+local function fillInterfaces(t, cls, set)
+  local base = getmetatable(cls)
+  if base then
+    fillInterfaces(t, base, set)
+  end
+  local interface = cls.interface
+  if interface then
+    for i = 1, #interface do
+      local it = interface[i]
+      if not set[it] then
+        t[#t + 1] = typeof(it)
+        set[it] = true
+      end
+      fillInterfaces(t, it, set)
+    end
+  end
 end
 
 local function getInterfaces(this)
-  local interfaces = this.interfaces
-  if interfaces == nil then
-    interfaces = arrayFromTable({}, Type, true)
-    local count = 1
-    local p = this[1]
-    repeat
-      local interface = p.interface
-      if interface ~= nil then
-        for i = 1, #interface do
-          interfaces[count] = typeof(interface[i])
-          count = count + 1
-        end
-      end
-      p = getmetatable(p)
-    until p == nil
-    this.interfaces = interfaces
+  local t = this.interfaces
+  if t == nil then
+    t = arrayFromTable({}, Type, true)
+    fillInterfaces(t, this[1], {})
+    this.interfaces = t
   end
-  return interfaces
+  return t
 end
 
 local function implementInterface(this, ifaceType)
@@ -137,13 +138,26 @@ local function isAssignableFrom(this, c)
     return false 
   end
   if this == c then 
-    return true 
+    return true
   end
-  if getIsInterface(this) then
+  local left, right = this[1], c[1]
+  if left == Object then
+    return true
+  end
+
+  if isSubclassOf(right, left) then
+    return true
+  end
+
+  if left.class == "I" then
     return implementInterface(c, this)
-  else 
-    return isSubclassOf(c, this)
   end
+
+  return false
+end
+
+local function isGenericTypeDefinition(this)
+  return not rawget(this[1], "__name__")
 end
 
 Type = System.define("System.Type", {
@@ -154,6 +168,19 @@ Type = System.define("System.Type", {
   getContainsGenericParameters = function (this)
     return isGenericName(this[1].__name__)
   end,
+  getIsGenericTypeDefinition = isGenericTypeDefinition,
+  GetGenericTypeDefinition = function (this)
+    if isGenericTypeDefinition(this) then
+      return this
+    end
+    local name = this[1].__name__
+    local i = name:find('`')
+    if i then
+      local genericTypeName = name:sub(1, i - 1)
+      return typeof(System.getClass(genericTypeName))
+    end
+    throw(System.InvalidOperationException())
+  end,
   MakeGenericType = function (this, ...)
     local args = { ... }
     for i = 1, #args do
@@ -163,6 +190,12 @@ Type = System.define("System.Type", {
   end,
   getIsEnum = function (this)
     return this[1].class == "E"
+  end,
+  getIsClass = function (this)
+    return this[1].class == "C"
+  end,
+  getIsValueType = function (this)
+    return this[1].class == "S" 
   end,
   getName = function (this)
     local name = this.name
@@ -187,10 +220,26 @@ Type = System.define("System.Type", {
     end
     return namespace
   end,
-  getBaseType = getBaseType,
-  IsSubclassOf = isSubclassOf,
+  getBaseType = function (this)
+    local cls = this[1]
+    if cls.class ~= "I" and cls ~= Object then
+      while true do
+        local base = getmetatable(cls)
+        if not base then
+          break
+        end
+        if base.__index == base then
+          return typeof(base)
+        end
+        cls = base
+      end
+    end
+    return nil
+  end,
+  IsSubclassOf = function (this, c)
+    return isSubclassOf(this[1], c[1])
+  end,
   getIsInterface = getIsInterface,
-  getIsValueType = getIsValueType,
   GetInterfaces = getInterfaces,
   IsAssignableFrom = isAssignableFrom,
   IsInstanceOfType = function (this, obj)
@@ -262,16 +311,16 @@ local customTypeOf = System.config.customTypeOf
 
 function typeof(cls)
   assert(cls)
-  local type = types[cls]
-  if type == nil then
+  local t = types[cls]
+  if t == nil then
     if customTypeOf then
-      type = customTypeOf(cls)
+      t = customTypeOf(cls)
     else
-      type = setmetatable({ cls }, Type)
+      t = setmetatable({ cls }, Type)
     end
-    types[cls] = type
+    types[cls] = t
   end
-  return type
+  return t
 end
 
 local function getType(obj)
@@ -281,139 +330,104 @@ end
 System.typeof = typeof
 System.Object.GetType = getType
 
-local function isInterfaceOf(t, ifaceType)
+local function addCheckInterface(set, cls)
+  local interface = cls.interface
+  if interface then
+    for i = 1, #interface do
+      local it = interface[i]
+      set[it] = true
+      addCheckInterface(set, it)
+    end
+  end
+end
+
+local function getCheckSet(cls)
+  local set = {}
+  local p = cls
   repeat
-    local interfaces = t.interface
-    if interfaces then
-      for i = 1, #interfaces do
-        local it = interfaces[i]
-        if it == ifaceType or isInterfaceOf(it, ifaceType) then
-          return true
-        end
-      end 
-    end
-    t = getmetatable(t)
-  until t == nil
-  return false
+    set[p] = true
+    addCheckInterface(set, p)
+    p = getmetatable(p)
+  until not p
+  return set
 end
 
-local isUserdataTypeOf = System.config.isUserdataTypeOf
-local numbers = {
-  [Char] = { 0, 65535 },
-  [SByte] = { -128, 127 },
-  [Byte] = { 0, 255 },
-  [Int16] = { -32768, 32767 },
-  [UInt16] = { 0, 65535 },
-  [Int32] = { -2147483648, 2147483647 },
-  [UInt32] = { 0, 4294967295 },
-  [Int64] = { -9223372036854775808, 9223372036854775807 },
-  [UInt64] = { 0, 18446744073709551615 },
-  [Single] = { -3.40282347E+38, 3.40282347E+38, 1 },
-  [Double] = { nil, nil, 2 }
-}
-numbers[Int] = numbers[Int32]
+local customTypeCheck = System.config.customTypeCheck
 
-local function isTypeOf(obj, cls)    
-  if cls == Object then return true end
-  local typename = type(obj)
-  if typename == "table" then
-    local t = getmetatable(obj)
-    if t == cls then
-      return true
-    end
-    if cls.class == "I" then
-      return isInterfaceOf(t, cls)
-    else
-      local base = getmetatable(t)
-      while base ~= nil do
-        if base == cls then
-          return true
-        end
-        base = getmetatable(base)
+local checks = setmetatable({}, {
+  __index = function (checks, cls)
+    if customTypeCheck then
+      local add, f = customTypeCheck(cls)
+      if add then
+        checks[cls] = f
       end
-      return false
+      return f
     end
-  elseif typename == "number" then
-    local info = numbers[cls]
-    if info ~= nil then
-      local min, max, sign = info[1], info[2], info[3]
-      if sign == nil then
-        if obj < min or obj > max then
-          return false
-        end
-        if floor(obj) ~= obj then
-          return false
-        end
-      elseif sign == 1 then
-        if obj < min or obj > max then
-          return false
-        end
-      end
-      return true
-    elseif cls.class == "I" then
-      return isInterfaceOf(Number, cls)
-    elseif cls == ValueType  then
-      return true
+
+    local set = getCheckSet(cls)
+    local function check(obj, T)
+      return set[T] == true
     end
-    return false
-  elseif typename == "string" then
-    if cls == String then
-      return true
-    end
-    if cls.class == "I" then
-      return isInterfaceOf(String, cls)
-    end
-    return false
-  elseif typename == "boolean" then
-    if cls == Boolean or cls == ValueType then
-      return true
-    end
-    if cls.class == "I" then
-      return isInterfaceOf(Boolean, cls)
-    end
-    return false
-  elseif typename == "function" then 
-    return cls == Delegate
-  elseif typename == "userdata" then
-    if isUserdataTypeOf then
-      return isUserdataTypeOf(obj, cls)
-    end
-    return true
-  else
-    assert(false)
+    checks[cls] = check
+    return check
   end
+})
+
+checks[Number] = function (obj, T)
+  local set = getCheckSet(Number)
+  local numbers = {
+    [Char] = function (obj) return type(obj) == "number" and obj >= 0 and obj <= 65535 and floor(obj) == obj end,
+    [SByte] = function (obj) return type(obj) == "number" and obj >= -128 and obj <= 127 and floor(obj) == obj end,
+    [Byte] = function (obj) return type(obj) == "number" and obj >= 0 and obj <= 255 and floor(obj) == obj end,
+    [Int16] = function (obj) return type(obj) == "number" and obj >= -32768 and obj <= 32767 and floor(obj) == obj end,
+    [UInt16] = function (obj) return type(obj) == "number" and obj >= 0 and obj <= 32767 and floor(obj) == obj end,
+    [Int32] = function (obj) return type(obj) == "number" and obj >= -2147483648 and obj <= 2147483647 and floor(obj) == obj end,
+    [UInt32] = function (obj) return type(obj) == "number" and obj >= 0 and obj <= 4294967295 and floor(obj) == obj end,
+    [Int64] = function (obj) return type(obj) == "number" and obj >= -9223372036854775808 and obj <= 9223372036854775807 and floor(obj) == obj end,
+    [UInt64] = function (obj) return type(obj) == "number" and obj >= 0 and obj <= 18446744073709551615 and floor(obj) == obj end,
+    [Single] = function (obj) return type(obj) == "number" and obj >= -3.40282347E+38 and obj <= 3.40282347E+38 end,
+    [Double] = function (obj) return type(obj) == "number" end
+  }
+  local function check(obj, T)
+    local number = numbers[T]
+    if number then
+      return number(obj)
+    end
+    return set[T] == true
+  end
+  checks[Number] = check
+  return check(obj, T)
 end
 
-function System.is(obj, cls)
-  if obj ~= nil then
-    return isTypeOf(obj, cls)
-  end
-  return cls == nil
+local function is(obj, T)
+  return checks[getmetatable(obj)](obj, T)
 end
+
+System.is = is
 
 function System.as(obj, cls)
-  if obj ~= nil and isTypeOf(obj, cls) then
+  if obj ~= nil and is(obj, cls) then
     return obj
   end
   return nil
 end
 
 local function cast(cls, obj, nullable)
-  if obj == nil then
-    if cls.class ~= "S" or nullable then
-      return nil
-    end
-    throw(NullReferenceException(), 1)
-  else 
+  if obj ~= nil then
     -- workaround for RPCs, since metatables are not included during transfer
     if getmetatable(obj) == nil then
       setmetatable(obj, cls)
       return obj
     end
-    if isTypeOf(obj, cls) then
+    if is(obj, cls) then
       return obj
     end
-    throw(InvalidCastException(), 1)
+    throw(InvalidCastException(("Unable to cast object of type '%s' to type '%s'."):format(obj.__name__, cls.__name__)), 1)
+  else
+    if cls.class ~= "S" or nullable then
+      return nil
+    end
+    throw(NullReferenceException(), 1)
   end
 end
 
@@ -424,60 +438,4 @@ function System.castWithNullable(cls, obj)
     return cast(cls.__genericT__, obj, true)
   end
   return cast(cls, obj)
-end
-
-local function tryMatchParameters(parameter, argument)
-  if type(argument) == "table" then
-      return typeof(parameter) == typeof(argument)
-  end
-  -- If userdata or nil is handled then the parameter type can be ignored
-  if type(argument) == "userdata" then 
-    return true 
-  end
-  return type(argument) == type(parameter)
-end
-
-local function tryCallConstructor(cls, ...)
-  if not cls.__ctor__ then
-    throw(MissingMethodException("No matching constructor was found"))
-  end
-  if type(cls.__ctor__) == "table" then
-    if cls.__metadata__ and cls.__metadata__.methods then
-      local methods = cls.__metadata__.methods
-      local args = { ... }
-      for i = 1, #methods do
-        if methods[i][1] == ".ctor" then 
-          local index = 4
-          local matched = true
-          -- Use pairs as arguments can be nil
-          for _,arg in pairs(args) do
-            if not tryMatchParameters(methods[i][index]) then
-              matched = false
-            end
-            index = index + 1
-          end
-          if matched then
-            return new(cls, i, ...)
-          end
-        end
-      end
-      throw(MissingMethodException("No matching constructor was found"))
-    else
-      -- For backward compability we use the first constructor if no metadata is present, this can later be changed to throwing the exception below
-      return new(cls, 1, ...)
-      -- throw(MissingMethodException("CSharp.lua can't find a constructor out of multiple constructors in class ".. typeof(cls):getName() .." without defined metadata, use @CSharpLua.Metadata at constructors"))
-    end
-  else
-    return cls(...)
-  end
-end
-
-function System.CreateInstance(type, ...)
-  if type == nil then
-    throw(ArgumentNullException("type"))
-  end
-  if getmetatable(type) ~= Type then   -- is T
-    return type()
-  end
-  return tryCallConstructor(type[1], ...)
 end

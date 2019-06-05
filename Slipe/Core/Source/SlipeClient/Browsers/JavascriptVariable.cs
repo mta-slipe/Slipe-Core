@@ -67,5 +67,25 @@ namespace Slipe.Client.Browsers
         {
             return stringRepresentation;
         }
+
+        public static implicit operator JavascriptVariable(string value)
+        {
+            return new JavascriptVariable(value);
+        }
+
+        public static implicit operator JavascriptVariable(bool value)
+        {
+            return new JavascriptVariable(value);
+        }
+
+        public static implicit operator JavascriptVariable(int value)
+        {
+            return new JavascriptVariable(value);
+        }
+
+        public static implicit operator JavascriptVariable(float value)
+        {
+            return new JavascriptVariable(value);
+        }
     }
 }

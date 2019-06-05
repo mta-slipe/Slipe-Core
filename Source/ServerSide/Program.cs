@@ -30,7 +30,7 @@ namespace ServerSide
                 source.Spawn(new Vector3(0, 0, 5), PedModel.ballas1);
             };
 
-            foreach (MyPlayer player in ElementManager.Instance.GetByType<MyPlayer>(Element.Root))
+            foreach (MyPlayer player in ElementManager.Instance.GetByType<MyPlayer>())
             {
                 player.Spawn(new Vector3(0, 0, 5), PedModel.ballas1);
             }

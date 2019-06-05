@@ -117,6 +117,7 @@
       "assetDirectories": []
     }
   ],
+  "exports": [],
   "clientMinVersion": null,
   "serverMinVersion": null
 }

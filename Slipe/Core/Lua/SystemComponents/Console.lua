@@ -20,6 +20,7 @@ local select = select
 local string = string
 local byte = string.byte
 local char = string.char
+local Format = string.Format
 
 local outputFunction = triggerServerEvent == nil and outputServerLog or outputConsole
 

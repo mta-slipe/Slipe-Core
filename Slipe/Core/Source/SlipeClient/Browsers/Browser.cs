@@ -172,7 +172,7 @@ namespace Slipe.Client.Browsers
         /// <summary>
         /// Execute a javascript function using formatted js arguments
         /// </summary>
-        public bool ExecuteJavascript(string function, JavascriptVariable[] arguments)
+        public bool ExecuteJavascript(string function, IEnumerable<JavascriptVariable> arguments)
         {
             string javascriptString = function + "(";
 

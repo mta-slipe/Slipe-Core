@@ -36,6 +36,7 @@ local type = type
 local tonumber = tonumber
 local floor = math.floor
 local setmetatable = setmetatable
+local tostring = tostring
 
 local function compareInt(this, v)
   if this < v then return -1 end
@@ -177,7 +178,7 @@ setmetatable(Int64, Int)
 
 local UInt64 = define("System.UInt64", {
   Parse = function (s)
-    return parseIntWithException(s, 0, 18446744073709551615)
+    return parseIntWithException(s, 0, 18446744073709551615.0)
   end,
   TryParse = function (s)
     return tryParseInt(s, 0, 18446744073709551615)
@@ -211,12 +212,30 @@ local function equalsDouble(this, v)
   return isNaN(this) and isNaN(v)
 end
 
+local function toStringWithFormat(this, format)
+  if #format ~= 0 then
+    local i, j, x, n = format:find("^%s*([xX])(%d?)%s*$")
+    if i then
+      format = n == "" and "%" .. x or "%0" .. n .. x
+      return format:format(this)
+    end
+  end
+  return tostring(this)
+end
+
+local function toString(this, format)
+  if format then
+    return toStringWithFormat(this, format)
+  end
+  return tostring(this)
+end
+
 local Number = define("System.Number", {
   __inherits__ = inherits,
   default = zeroFn,
   CompareTo = compareDouble,
   Equals = equalsDouble,
-  ToString = tostring,
+  ToString = toString,
   NaN = nan,
   IsNaN = isNaN,
   NegativeInfinity = negInf,
@@ -236,6 +255,9 @@ local Number = define("System.Number", {
   end,
   GetHashCode = function (this)
     return isNaN(this) and nanHashCode or this
+  end,
+  IsFinite = function (v)
+    return v ~= posInf and v ~= negInf and not isNaN(v)
   end,
   IsInfinity = function (v)
     return v == posInf or v == negInf
