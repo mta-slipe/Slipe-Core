@@ -55,7 +55,7 @@ local TargetParameterCountException = define("System.Reflection.TargetParameterC
 
 local AmbiguousMatchException = define("System.Reflection.AmbiguousMatchException", {
   __tostring = Exception.ToString,
-  __inherits__ = { Exception },
+  __inherits__ = { System.SystemException },
   __ctor__ = function(this, message, innerException) 
     Exception.__ctor__(this, message or "Ambiguous match found.", innerException)
   end,
@@ -954,7 +954,7 @@ define("System.Activator", {
       return createInstance(T)
     elseif n == 1 then
       local args = ...
-      if System.isArrayLike(args) then
+      if type(args) == "table" and System.isArrayLike(args) then
         n = #args
         if n == 0 then
           return createInstance(T)
@@ -977,3 +977,5 @@ define("System.Activator", {
     return createInstance(type[1], nonPublic)
   end
 })
+
+System.CreateInstance = System.Activator.CreateInstance

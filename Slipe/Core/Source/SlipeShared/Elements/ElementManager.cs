@@ -100,7 +100,8 @@ namespace Slipe.Shared.Elements
                 }
                 try
                 {
-                    return (T)Activator.CreateInstance(elementType, element);
+                    object instance = Activator.CreateInstance(elementType, element);
+                    return (T)instance;
                 } catch(Exception)
                 {
                     return null;

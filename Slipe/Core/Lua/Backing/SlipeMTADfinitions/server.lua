@@ -105,7 +105,8 @@ System.define("Slipe.MtaDefinitions.MtaServer", {
 	TriggerClientEvent = triggerClientEvent,
 	AddCommandHandler = function(command, callback, ...) addCommandHandler(command, function(source, command, ...) callback(source, command, System.arrayFromTable({...}, 'System.String')) end, ...) end,
 	BindKey = bindKey,
-	GetControlState = getControlState,
+	-- Removed because of deprecation
+	-- GetControlState = getControlState,
 	GetFunctionsBoundToKey = function(...) local results = {getFunctionsBoundToKey(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	IsControlEnabled = isControlEnabled,
 	GetKeyBoundToFunction = function(...) local results = {getKeyBoundToFunction(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,

@@ -109,7 +109,8 @@ namespace Slipe.MtaDefinitions {
 		public static bool BindKey (MtaElement thePlayer, string key, string keyState, dynamic handlerFunction, dynamic arguments){ throw new NotImplementedException(); }
 		public static bool AddCommandHandler (string commandName, Action<MtaElement, string, string[]> handlerFunction, bool restricted, bool caseSensitive){ throw new NotImplementedException(); }
 		public static bool ExecuteCommandHandler (string commandName, MtaElement thePlayer, string args){ throw new NotImplementedException(); }
-		public static bool GetControlState (MtaElement thePlayer, string controlName){ throw new NotImplementedException(); }
+		// Removed because of deprecation
+		// public static bool GetControlState (MtaElement thePlayer, string controlName){ throw new NotImplementedException(); }
 		public static dynamic GetFunctionsBoundToKey (MtaElement thePlayer, string key, string keyState){ throw new NotImplementedException(); }
 		public static string GetKeyBoundToFunction (MtaElement thePlayer, dynamic theFunction){ throw new NotImplementedException(); }
 		public static bool IsKeyBound (MtaElement thePlayer, string key, string keyState, dynamic handler){ throw new NotImplementedException(); }

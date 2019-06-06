@@ -1,3 +1,7 @@
+System.define("Slipe.MtaDefinitions.MtaElement", {
+
+})
+
 System.define("Slipe.MtaDefinitions.MtaShared", {
 	GetBlipVisibleDistance = function(...) local results = {getBlipVisibleDistance(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	GetBlipColor = function(...) return System.tuple(getBlipColor(...)) end,
@@ -107,7 +111,8 @@ System.define("Slipe.MtaDefinitions.MtaShared", {
 	HttpSetResponseCookie = httpSetResponseCookie,
 	GetCommandHandlers = function(...) local results = {getCommandHandlers(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	RemoveCommandHandler = removeCommandHandler,
-	SetControlState = setControlState,
+	-- Removed because of deprecation
+	-- SetControlState = setControlState,
 	GetMarkerCount = function(...) local results = {getMarkerCount(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	GetMarkerColor = function(...) return System.tuple(getMarkerColor(...)) end,
 	GetMarkerIcon = function(...) local results = {getMarkerIcon(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,

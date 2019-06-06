@@ -110,7 +110,8 @@ namespace Slipe.MtaDefinitions {
 		public static bool FileRename (string filePath, string newFilePath){ throw new NotImplementedException(); }
 		public static dynamic GetCommandHandlers (MtaResource theResource){ throw new NotImplementedException(); }
 		public static bool RemoveCommandHandler (string commandName, dynamic handler){ throw new NotImplementedException(); }
-		public static bool SetControlState (MtaElement thePlayer, string control, bool state){ throw new NotImplementedException(); }
+		// Removed because of deprecation
+		// public static bool SetControlState (MtaElement thePlayer, string control, bool state){ throw new NotImplementedException(); }
 		public static int GetMarkerCount (){ throw new NotImplementedException(); }
 		public static string GetMarkerIcon (MtaElement theMarker){ throw new NotImplementedException(); }
 		public static Tuple<int, int, int, int> GetMarkerColor (MtaElement theMarker){ throw new NotImplementedException(); }
