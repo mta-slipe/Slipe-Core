@@ -18,6 +18,8 @@ Example: `slipe new testProject`
 - **Update the CLI**  
 In order to update the CLi run the `slipe update` command.  
 Syntax: `slipe update`
+- **Run build webhook**  
+For more information on the build webhook visit [the webhook docs](/docs/webhook.html)
 
 ## Resource specific commands
 The following commands need to be run in a slipe resource directory. (A directory created with `slipe new`)
