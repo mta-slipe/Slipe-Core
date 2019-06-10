@@ -254,6 +254,10 @@ namespace Slipe.Server.Accounts
             {
                 return null;
             }
+            if (accounts == null)
+            {
+                accounts = new Dictionary<object, Account>();
+            }
             if (!accounts.ContainsKey(account))
             {
                 return new Account(account);

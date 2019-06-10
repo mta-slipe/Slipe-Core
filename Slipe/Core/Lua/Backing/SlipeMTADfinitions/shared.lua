@@ -1,6 +1,24 @@
 System.define("Slipe.MtaDefinitions.MtaElement", {
 
 })
+System.define("Slipe.MtaDefinitions.MtaAccount", {
+	
+})
+System.define("Slipe.MtaDefinitions.MtaTimer", {
+	
+})
+System.define("Slipe.MtaDefinitions.MtaAcl", {
+	
+})
+System.define("Slipe.MtaDefinitions.MtaAclGroup", {
+	
+})
+System.define("Slipe.MtaDefinitions.MtaBan", {
+	
+})
+System.define("Slipe.MtaDefinitions.MtaResource", {
+	
+})
 
 System.define("Slipe.MtaDefinitions.MtaShared", {
 	GetBlipVisibleDistance = function(...) local results = {getBlipVisibleDistance(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,

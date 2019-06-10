@@ -1,11 +1,14 @@
 require = function() end
 
+local isServer = triggerServerEvent == nil
+local isClient = not isServer
+
 local allClasses = {}	
 local mainString	
 
- local oldInit = System.init	
+local oldInit = System.init	
 
- local prepareInit = function(classes)	
+local prepareInit = function(classes)	
 	for _, class in ipairs(classes) do	
 		allClasses[#allClasses + 1] = class	
 	end	
@@ -38,15 +41,20 @@ function finalizeManifest(filepath)
 end
 
 function prepareModule(path)
-	local path = path .. "/Lua/Compiled/" .. ( triggerServerEvent == nil and "Server" or "Client") .. "/manifest.lua"
+	local path = path .. "/Lua/Compiled/" .. ( isServer and "Server" or "Client") .. "/manifest.lua"
 	prepareManifest(path)
 end
 prepareModule("Slipe/Core")
 
-local mainManifest = triggerServerEvent == nil and "Dist/Server/manifest.lua" or "Dist/Client/manifest.lua"
+local mainManifest = isServer and "Dist/Server/manifest.lua" or "Dist/Client/manifest.lua"
 finalizeManifest(mainManifest)
 
 function runEntryPoint()
+	if (isClient) then
+		-- instantiate the local player to ensure ElementManager.GetElement will always return a LocalPlayer instance
+		local localPlayer = Slipe.Client.Peds.LocalPlayer.getInstance()
+	end
+
 	local stringEntryPoint = System.entryPoint
 
 	local splits = split(stringEntryPoint, ".") 

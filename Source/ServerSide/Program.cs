@@ -12,6 +12,7 @@ using Slipe.Sql;
 using System.Threading.Tasks;
 using Slipe.Shared.Exports;
 using Slipe.Server.Vehicles.Events;
+using Slipe.Server.Accounts;
 
 namespace ServerSide
 {
@@ -33,7 +34,15 @@ namespace ServerSide
             foreach (MyPlayer player in ElementManager.Instance.GetByType<MyPlayer>())
             {
                 player.Spawn(new Vector3(0, 0, 5), PedModel.ballas1);
+
+                player.OnLogin += OnPlayerLogin;
             }
+
+        }
+
+        private void OnPlayerLogin(Player source, OnLoginEventArgs eventArgs)
+        {
+            Console.WriteLine(string.Format("{0} has logged in with the account: {1} (previous was {2})", source.Name, eventArgs.NewAccount.Name, eventArgs.PreviousAccount.Name));
         }
     }
 

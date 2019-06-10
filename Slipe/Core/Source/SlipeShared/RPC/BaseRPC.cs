@@ -1,4 +1,5 @@
-﻿using Slipe.Shared.Elements;
+﻿using Slipe.MtaDefinitions;
+using Slipe.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,9 +14,21 @@ namespace Slipe.Shared.RPC
             return Slipe.MtaDefinitions.MtaShared.GetArrayFromTable<T>(table, "");
         }
 
-        public T[] GetElementArray<T>(dynamic table) where T: Element
+        public MtaElement[] CreateElementArray(Element[] elements)
         {
-            dynamic[] mtaElements = Slipe.MtaDefinitions.MtaShared.GetArrayFromTable<dynamic>(table, "");
+            MtaElement[] mtaElements = new MtaElement[elements.Length];
+
+            for (int i = 0; i < elements.Length; i++)
+            {
+                mtaElements[i] = elements[i].MTAElement;
+            }
+
+            return mtaElements;
+        }
+
+        public T[] GetElementArray<T>(dynamic table) where T : Element
+        {
+            MtaElement[] mtaElements = Slipe.MtaDefinitions.MtaShared.GetArrayFromTable<MtaElement>(table, "");
 
             T[] elements = new T[mtaElements.Length];
             for (int i = 0; i < mtaElements.Length; i++)
