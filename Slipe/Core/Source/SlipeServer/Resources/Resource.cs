@@ -118,7 +118,7 @@ namespace Slipe.Server.Resources
         /// Create a resource from an MTA resource element
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        internal Resource(MtaResource resource)
+        protected Resource(MtaResource resource)
         {
             resources.Add(resource, this);
             MtaResource = resource;
