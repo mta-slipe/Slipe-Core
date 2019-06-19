@@ -104,10 +104,11 @@ namespace Slipe.MtaDefinitions {
 		public static dynamic GetLatentEventStatus (MtaElement thePlayer, int handle){ throw new NotImplementedException(); }
 		public static dynamic GetLatentEventHandles (MtaElement thePlayer){ throw new NotImplementedException(); }
 		public static bool TriggerClientEvent (MtaElement targetElement, string eventName, MtaElement sourceElement, dynamic arguments){ throw new NotImplementedException(); }
-		public static bool TriggerLatentClientEvent (dynamic sendTo){ throw new NotImplementedException(); }
+		public static bool TriggerLatentClientEvent (MtaElement targetElement, string eventName, int bandwith, bool persists, MtaElement sourceElement, dynamic arguments){ throw new NotImplementedException(); }
 		public static bool CreateExplosion (float x, float y, float z, int theType, MtaElement creator){ throw new NotImplementedException(); }
-		public static bool BindKey (MtaElement thePlayer, string key, string keyState, dynamic handlerFunction, dynamic arguments){ throw new NotImplementedException(); }
-		public static bool AddCommandHandler (string commandName, Action<MtaElement, string, string[]> handlerFunction, bool restricted, bool caseSensitive){ throw new NotImplementedException(); }
+		public static bool BindKey (MtaElement thePlayer, string key, string keyState, string command){ throw new NotImplementedException(); }
+        public static bool BindKey(MtaElement thePlayer, string key, string keyState, Action<MtaElement,string, string> handlerFunction) { throw new NotImplementedException(); }
+        public static bool AddCommandHandler (string commandName, Action<MtaElement, string, string[]> handlerFunction, bool restricted, bool caseSensitive){ throw new NotImplementedException(); }
 		public static bool ExecuteCommandHandler (string commandName, MtaElement thePlayer, string args){ throw new NotImplementedException(); }
 		// Removed because of deprecation
 		// public static bool GetControlState (MtaElement thePlayer, string controlName){ throw new NotImplementedException(); }
@@ -120,7 +121,8 @@ namespace Slipe.MtaDefinitions {
 		public static MtaElement LoadMapData (MtaElement node, MtaElement parent){ throw new NotImplementedException(); }
 		public static bool ToggleControl (MtaElement thePlayer, string control, bool enabled){ throw new NotImplementedException(); }
 		public static bool UnbindKey (MtaElement thePlayer, string key, string keyState, string command){ throw new NotImplementedException(); }
-		public static bool SaveMapData (MtaElement node, MtaElement baseElement, bool childrenOnly){ throw new NotImplementedException(); }
+        public static bool UnbindKey(MtaElement thePlayer, string key, string keyState, Action<MtaElement, string, string> handlerFunction) { throw new NotImplementedException(); }
+        public static bool SaveMapData (MtaElement node, MtaElement baseElement, bool childrenOnly){ throw new NotImplementedException(); }
 		public static MtaElement CreateMarker (float x, float y, float z, string theType, float size, int r, int g, int b, int a, MtaElement visibleTo){ throw new NotImplementedException(); }
 		public static dynamic GetLoadedModules (){ throw new NotImplementedException(); }
 		public static dynamic GetModuleInfo (string moduleName){ throw new NotImplementedException(); }
@@ -142,8 +144,9 @@ namespace Slipe.MtaDefinitions {
 		public static bool SetPickupRespawnInterval (MtaElement thePickup, int ms){ throw new NotImplementedException(); }
 		public static bool ForcePlayerMap (MtaElement thePlayer, bool forceOn){ throw new NotImplementedException(); }
 		public static dynamic GetAlivePlayers (){ throw new NotImplementedException(); }
-		public static dynamic GetPlayerACInfo (MtaElement thePlayer){ throw new NotImplementedException(); }
-		public static dynamic GetDeadPlayers (){ throw new NotImplementedException(); }
+        // Removed because of deprecation
+        // public static dynamic GetPlayerACInfo (MtaElement thePlayer){ throw new NotImplementedException(); }
+        public static dynamic GetDeadPlayers (){ throw new NotImplementedException(); }
 		public static int GetPlayerBlurLevel (MtaElement thePlayer){ throw new NotImplementedException(); }
 		public static int GetPlayerCount (){ throw new NotImplementedException(); }
 		public static string GetPlayerAnnounceValue (MtaElement thePlayer, string key){ throw new NotImplementedException(); }

@@ -113,3 +113,8 @@ In order to update a module use the `slipe update-module` command.
 Syntax: `slipe update-module {filepath / url}`  
 Example: `slipe update-module ./TestModule.zip`  
 Example: `slipe update-module https://mta-slipe.com/TestModule.zip`
+
+## Running development builds
+By default the `slipe update` and `slipe update-core` commands will update to the latest release build of Slipe.
+If you however wish to use a current work in progress development build you can use the `-dev` option with either of these commands.  
+Do note that you could run into issues in development builds which are not present in release builds.

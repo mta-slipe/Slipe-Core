@@ -39,5 +39,10 @@ namespace Slipe.Client.Assets
 
             MtaClient.EngineReplaceModel(this.dff, model, supportsAlpha);
         }
+
+        public static void Restore(int model)
+        {
+            MtaClient.EngineRestoreModel(model);
+        }
     }
 }

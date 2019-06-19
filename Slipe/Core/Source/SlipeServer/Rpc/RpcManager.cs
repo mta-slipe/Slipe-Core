@@ -74,5 +74,21 @@ namespace Slipe.Server.Rpc
         {
             MtaServer.TriggerClientEvent(Element.Root.MTAElement, key, Element.Root.MTAElement, argument);
         }
+
+        /// <summary>
+        /// Trigger an RPC with limited bandwidth
+        /// </summary>
+        public void TriggerLatentRPC(Player target, string key, int bandwidth, object argument, bool persists = false)
+        {
+            MtaServer.TriggerLatentClientEvent(target.MTAElement, key, bandwidth, persists, Element.Root.MTAElement, argument);
+        }
+
+        /// <summary>
+        /// Trigger an RPC with limited bandwidth
+        /// </summary>
+        public void TriggerLatentRPC(string key, int bandwidth, object argument, bool persists = false)
+        {
+            MtaServer.TriggerLatentClientEvent(Element.Root.MTAElement, key, bandwidth, persists, Element.Root.MTAElement, argument);
+        }
     }
 }

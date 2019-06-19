@@ -79,7 +79,7 @@ namespace Slipe.Server.Peds
                 try
                 {
                     return ElementManager.Instance.GetElement<Team>(MtaShared.GetPlayerTeam(element));
-                }catch(MtaException)
+                } catch(MtaException)
                 {
                     return null;
                 }                
@@ -479,6 +479,28 @@ namespace Slipe.Server.Peds
         public bool DetonateSatchels()
         {
             return MtaServer.DetonateSatchels(element);
+        }
+
+        /// <summary>
+        /// Kicks a player from the server
+        /// </summary>
+        /// <param name="reason"></param>
+        /// <param name="responsiblePlayer"></param>
+        /// <returns></returns>
+        public bool Kick(string reason, Player responsiblePlayer = null)
+        {
+            return MtaServer.KickPlayer(this.MTAElement, responsiblePlayer.MTAElement, reason);
+        }
+
+        /// <summary>
+        /// Kicks a player from the server
+        /// </summary>
+        /// <param name="reason"></param>
+        /// <param name="responsiblePlayer"></param>
+        /// <returns></returns>
+        public bool Kick(string reason, string responsiblePlayer = null)
+        {
+            return MtaServer.KickPlayer(this.MTAElement, responsiblePlayer, reason);
         }
 
         #endregion

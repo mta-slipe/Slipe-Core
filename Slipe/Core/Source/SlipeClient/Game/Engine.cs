@@ -69,5 +69,10 @@ namespace Slipe.Client.Game
             return MtaClient.EngineReplaceAnimation(ped.MTAElement, internalBlock, internalAnim, customBlock, customAnim);
         }
 
+        public bool RestoreAnimation(Ped ped, string internalBlock, string internalAnim)
+        {
+            return MtaClient.EngineRestoreAnimation(ped.MTAElement, internalBlock, internalAnim);
+        }
+
     }
 }

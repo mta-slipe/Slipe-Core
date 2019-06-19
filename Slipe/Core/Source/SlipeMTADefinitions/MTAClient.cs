@@ -20,16 +20,18 @@ namespace Slipe.MtaDefinitions {
 		public static dynamic GetLatentEventStatus (int handle){ throw new NotImplementedException(); }
 		public static dynamic GetLatentEventHandles (){ throw new NotImplementedException(); }
 		public static bool CreateExplosion (float x, float y, float z, int theType, bool makeSound, float camShake){ throw new NotImplementedException(); }
-		public static bool BindKey (string key, string keyState, dynamic handlerFunction, dynamic arguments){ throw new NotImplementedException(); }
-		public static bool AddCommandHandler (string commandName, Action<string, string[]> handlerFunction, bool caseSensitive){ throw new NotImplementedException(); }
+        public static bool BindKey(string key, string keyState, string command) { throw new NotImplementedException(); }
+        public static bool BindKey(string key, string keyState, Action<string, string> handlerFunction) { throw new NotImplementedException(); }
+        public static bool AddCommandHandler (string commandName, Action<string, string[]> handlerFunction, bool caseSensitive){ throw new NotImplementedException(); }
 		public static bool ExecuteCommandHandler (string commandName, string args){ throw new NotImplementedException(); }
 		public static dynamic GetFunctionsBoundToKey (string key, string keyState){ throw new NotImplementedException(); }
 		public static string GetKeyBoundToFunction (dynamic theFunction){ throw new NotImplementedException(); }
 		public static bool IsControlEnabled (string control){ throw new NotImplementedException(); }
 		public static bool ToggleAllControls (bool enabled, bool gtaControls, bool mtaControls){ throw new NotImplementedException(); }
 		public static bool ToggleControl (string control, bool enabled){ throw new NotImplementedException(); }
-		public static bool UnbindKey (string key, string keyState, string command){ throw new NotImplementedException(); }
-		public static MtaElement CreateMarker (float x, float y, float z, string theType, float size, int r, int g, int b, int a){ throw new NotImplementedException(); }
+        public static bool UnbindKey(string key, string keyState, string command) { throw new NotImplementedException(); }
+        public static bool UnbindKey(string key, string keyState, Action<string, string> handlerFunction) { throw new NotImplementedException(); }
+        public static MtaElement CreateMarker (float x, float y, float z, string theType, float size, int r, int g, int b, int a){ throw new NotImplementedException(); }
 		public static bool OutputChatBox (string text, int r, int g, int b, bool colorCoded){ throw new NotImplementedException(); }
 		public static bool ClearChatBox (){ throw new NotImplementedException(); }
 		public static bool OutputConsole (string text){ throw new NotImplementedException(); }
@@ -225,7 +227,7 @@ namespace Slipe.MtaDefinitions {
 		public static dynamic EngineResetSurfaceProperties (int surfaceID){ throw new NotImplementedException(); }
 		public static bool EngineSetSurfaceProperties (int surfaceID, string property, dynamic value){ throw new NotImplementedException(); }
 		public static dynamic EngineGetSurfaceProperties (int surfaceID, string property){ throw new NotImplementedException(); }
-		public static bool TriggerLatentServerEvent (string argument_event, int bandwidth, bool persist, MtaElement theElement){ throw new NotImplementedException(); }
+		public static bool TriggerLatentServerEvent (string argument_event, int bandwidth, bool persist, MtaElement theElement, dynamic arguments) { throw new NotImplementedException(); }
 		public static bool TriggerServerEvent (string eventName, MtaElement sourceElement, dynamic arguments){ throw new NotImplementedException(); }
 		public static bool ExtinguishFire (float x, float y, float z, float radius){ throw new NotImplementedException(); }
 		public static bool CreateFire (float x, float y, float z, float size){ throw new NotImplementedException(); }

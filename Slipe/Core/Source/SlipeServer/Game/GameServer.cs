@@ -177,6 +177,24 @@ namespace Slipe.Server.Game
             }
         }
 
+        private static Announcement announcement;
+        /// <summary>
+        /// Returns the MTA Server Log
+        /// </summary>
+        public static Announcement Announcement
+        {
+            get
+            {
+                if (announcement == null)
+                {
+                    announcement = new Announcement();
+                }
+                return announcement;
+            }
+        }
+
+
+
         /// <summary>
         /// Get and set the limit at which clients can run their game on this server
         /// </summary>

@@ -38,5 +38,10 @@ namespace Slipe.Client.Assets
 
             MtaClient.EngineReplaceCOL(this.col, model);
         }
+
+        public static void Restore(int model)
+        {
+            MtaClient.EngineRestoreCOL(model);
+        }
     }
 }

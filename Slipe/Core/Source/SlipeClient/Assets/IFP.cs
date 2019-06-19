@@ -17,7 +17,7 @@ namespace Slipe.Client.Assets
         /// <summary>
         /// Loads the IFP file into the animation block
         /// </summary>
-        /// <param name="filteringEnabled"></param>
+        /// <param name="customBlockName"></param>
         public void Load(string customBlockName)
         {
             this.ifp = MtaClient.EngineLoadIFP(this.filepath, customBlockName);

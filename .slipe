@@ -117,7 +117,14 @@
       "assetDirectories": []
     }
   ],
-  "exports": [],
+  "exports": [
+    {
+      "name": "ServerSide.MyVehicle.DoTheThing",
+      "niceName": "DoTheThing",
+      "type": "server",
+      "isHttp": true
+    }
+  ],
   "clientMinVersion": "1.5.5-9.14060",
   "serverMinVersion": "1.5.5-9.14060"
 }

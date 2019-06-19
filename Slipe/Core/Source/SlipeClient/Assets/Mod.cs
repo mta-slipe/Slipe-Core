@@ -126,5 +126,17 @@ namespace Slipe.Client.Assets
                 this.col.ApplyTo(model);
             }
         }
+
+        public void Restore(int model)
+        {
+            if (this.dff != null)
+            {
+                Dff.Restore(model);
+            }
+            if (this.col != null)
+            {
+                Col.Restore(model);
+            }
+        }
     }
 }

@@ -44,7 +44,9 @@ function prepareModule(path)
 	local path = path .. "/Lua/Compiled/" .. ( isServer and "Server" or "Client") .. "/manifest.lua"
 	prepareManifest(path)
 end
-prepareModule("Slipe/Core")
+for _, modulePath in ipairs(moduleTable) do
+	prepareModule(modulePath)
+end
 
 local mainManifest = isServer and "Dist/Server/manifest.lua" or "Dist/Client/manifest.lua"
 finalizeManifest(mainManifest)

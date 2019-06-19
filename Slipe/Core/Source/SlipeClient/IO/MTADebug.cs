@@ -17,6 +17,10 @@ namespace Slipe.Client.IO
             {
                 return MtaClient.IsDebugViewActive();
             }
+            set
+            {
+                MtaClient.SetDebugViewActive(value);
+            }
         }
 
 #pragma warning disable 67

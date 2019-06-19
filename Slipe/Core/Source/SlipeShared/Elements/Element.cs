@@ -129,6 +129,41 @@ namespace Slipe.Shared.Elements
         #region Methods
 
         /// <summary>
+        /// Sets element data
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="synchronised"></param>
+        public void SetData(string key, dynamic value, bool synchronize = false)
+        {
+            MtaShared.SetElementData(this.MTAElement, key, value, synchronize);
+        }
+
+        /// <summary>
+        /// Gets element data
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="inherit"></param>
+        /// <returns></returns>
+        public dynamic GetData(string key, bool inherit = false)
+        {
+            return MtaShared.GetElementData(this.MTAElement, key, inherit);
+        }
+
+        /// <summary>
+        /// Gets element data
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="inherit"></param>
+        /// <returns></returns>
+        public dynamic GetData<T>(string key, bool inherit = false)
+        {
+            return (T)GetData(key, inherit);
+        }
+
+
+        /// <summary>
         /// Desetroys the element
         /// </summary>
         public virtual bool Destroy()
@@ -170,6 +205,15 @@ namespace Slipe.Shared.Elements
             return ElementManager.Instance.GetElement(MtaShared.GetElementByID(id, index));
         }
 
+        /// <summary>
+        /// gets Slipe Element from Mta element
+        /// </summary>
+        /// <param name="mtaElement"></param>
+        public static explicit operator Element(MtaElement mtaElement)
+        {
+            return ElementManager.Instance.GetElement(mtaElement);
+        }
+
         #endregion
 
         #region Events
@@ -192,7 +236,7 @@ namespace Slipe.Shared.Elements
         public delegate void OnDestroyHandler(Element source, OnDestroyEventArgs eventArgs);
         public event OnDestroyHandler OnDestroy;
 
-        #pragma warning restore 67
+#pragma warning restore 67
 
         #endregion
 

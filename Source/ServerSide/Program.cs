@@ -29,6 +29,8 @@ namespace ServerSide
             Player.OnJoin += (Player source, OnJoinEventArgs eventArgs) =>
             {
                 source.Spawn(new Vector3(0, 0, 5), PedModel.ballas1);
+
+                source.OnLogin += OnPlayerLogin;
             };
 
             foreach (MyPlayer player in ElementManager.Instance.GetByType<MyPlayer>())

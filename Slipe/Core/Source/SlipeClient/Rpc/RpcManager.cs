@@ -63,5 +63,13 @@ namespace Slipe.Client.Rpc
         {
             MtaClient.TriggerServerEvent(key, Element.Root.MTAElement, argument);
         }
+
+        /// <summary>
+        /// Trigger an RPC with limited bandwidth
+        /// </summary>
+        public void TriggerLatentRPC(string key, int bandwidth, object argument, bool persists = false)
+        {
+            MtaClient.TriggerLatentServerEvent(key, bandwidth, persists, Element.Root.MTAElement, argument);
+        }
     }
 }
