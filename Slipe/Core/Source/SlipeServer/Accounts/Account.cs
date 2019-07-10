@@ -47,7 +47,7 @@ namespace Slipe.Server.Accounts
         /// <summary>
         /// Get the ID of the account
         /// </summary>
-        public int ID
+        public int Id
         {
             get
             {
@@ -58,7 +58,7 @@ namespace Slipe.Server.Accounts
         /// <summary>
         /// Get the IP of the account
         /// </summary>
-        public string IP
+        public string Ip
         {
             get
             {
@@ -98,7 +98,7 @@ namespace Slipe.Server.Accounts
         /// <summary>
         /// Returns the identifiable string user.{name}
         /// </summary>
-        public string ACLIdentifier
+        public string AclIdentifier
         {
             get
             {
@@ -197,11 +197,38 @@ namespace Slipe.Server.Accounts
         }
 
         /// <summary>
+        /// This function tries to retrieve the data value and returns true if this was succesful
+        /// </summary>
+        /// <param name="key">The key at which data is stored</param>
+        /// <param name="data">The string to which to write the data to</param>
+        /// <returns>True if the data was succesfully retrieved, false otherwise</returns>
+        public bool TryGetData(string key, out string data)
+        {
+            try
+            {
+                data = MtaServer.GetAccountData(MTAAccount, key);
+                return true;
+            } catch(Exception)
+            {
+                data = "";
+                return false;
+            }
+        }
+
+        /// <summary>
         /// This function sets a string to be stored in an account.
         /// </summary>
         public bool SetData(string key, string value)
         {
             return MtaServer.SetAccountData(MTAAccount, key, value);
+        }
+
+        /// <summary>
+        /// This function removes data under a specific key
+        /// </summary>
+        public bool ClearData(string key)
+        {
+            return MtaServer.SetAccountData(MTAAccount, key, false);
         }
 
         /// <summary>
@@ -233,7 +260,7 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public bool HasPermissionTo(string action, bool defaultPermission = true)
         {
-            return MtaServer.HasObjectPermissionTo(ACLIdentifier, action, defaultPermission);
+            return MtaServer.HasObjectPermissionTo(AclIdentifier, action, defaultPermission);
         }
 
         /// <summary>
@@ -241,7 +268,7 @@ namespace Slipe.Server.Accounts
         /// </summary>
         public bool IsInACLGroup(AclGroup group)
         {
-            return MtaServer.IsObjectInACLGroup(ACLIdentifier, group.ACL);
+            return MtaServer.IsObjectInACLGroup(AclIdentifier, group.ACL);
         }
 
         #endregion

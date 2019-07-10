@@ -12,7 +12,7 @@ namespace Slipe.MtaDefinitions {
 		public static string GetAccountName (MtaAccount theAccount){ throw new NotImplementedException(); }
 		public static bool IsGuestAccount (MtaAccount theAccount){ throw new NotImplementedException(); }
 		public static bool RemoveAccount (MtaAccount theAccount){ throw new NotImplementedException(); }
-		public static bool SetAccountData (MtaAccount theAccount, string key, string value){ throw new NotImplementedException(); }
+		public static bool SetAccountData (MtaAccount theAccount, string key, dynamic value){ throw new NotImplementedException(); }
 		public static bool LogOut (MtaElement thePlayer){ throw new NotImplementedException(); }
 		public static bool LogIn (MtaElement thePlayer, MtaAccount theAccount, string thePassword){ throw new NotImplementedException(); }
 		public static MtaAccount GetPlayerAccount (MtaElement thePlayer){ throw new NotImplementedException(); }

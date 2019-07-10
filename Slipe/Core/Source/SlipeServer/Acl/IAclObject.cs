@@ -12,7 +12,7 @@ namespace Slipe.Server.Acl
         /// <summary>
         /// Formatted ACL entry; example: user.{name} or resource.{name}
         /// </summary>
-        string ACLIdentifier
+        string AclIdentifier
         {
             get;
         }
