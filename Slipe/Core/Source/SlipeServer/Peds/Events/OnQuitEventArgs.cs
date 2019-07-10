@@ -24,11 +24,19 @@ namespace Slipe.Server.Peds.Events
         /// </summary>
         public Player ResponsiblePlayer { get; }
 
-        internal OnQuitEventArgs(dynamic quitType, dynamic reason, MtaElement responsiblePlayer)
+        internal OnQuitEventArgs(dynamic quitType, dynamic reason, dynamic responsiblePlayer)
         {
             QuitType = (QuitType)Enum.Parse(typeof(QuitType), (string)quitType);
-            Reason = (string) reason;
-            ResponsiblePlayer = ElementManager.Instance.GetElement<Player>(responsiblePlayer);
+
+            if (reason == false)
+                Reason = "";
+            else
+                Reason = (string) reason;
+
+            if (responsiblePlayer is bool)
+                ResponsiblePlayer = null;
+            else
+                ResponsiblePlayer = ElementManager.Instance.GetElement<Player>(responsiblePlayer);
         }
     }
 }
