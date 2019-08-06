@@ -8,7 +8,7 @@ namespace Slipe.Shared.Vehicles
     /// <summary>
     /// Class representation of different vehicle models
     /// </summary>
-    public class SharedVehicleModel
+    public abstract class SharedVehicleModel
     {
         #region Fields
         protected static int[] boatModels = { 472, 473, 493, 595, 484, 430, 453, 452, 446, 454 };

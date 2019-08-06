@@ -310,7 +310,7 @@ namespace Slipe.Server.Resources
         /// </summary>
         public static Resource Get(string name)
         {
-            return new Resource(MtaShared.GetResourceFromName(name));
+            return Get(MtaShared.GetResourceFromName(name));
         }
 
         internal static Resource Get(MtaResource resource)

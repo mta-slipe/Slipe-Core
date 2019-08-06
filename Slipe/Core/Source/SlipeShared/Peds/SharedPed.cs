@@ -504,6 +504,17 @@ namespace Slipe.Shared.Peds
             Rotation = NumericHelper.RotationBetweenPositions(target.Position, Position);
         }
 
+        /// <summary>
+        /// Get if a skin id is valid
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public static bool IsValidSkin(int model)
+        {
+            List<int> models = MtaShared.GetListFromTable(MtaShared.GetValidPedModels(), "System.Int32");
+            return models.Contains(model);
+        }
+
         #endregion
 
     }

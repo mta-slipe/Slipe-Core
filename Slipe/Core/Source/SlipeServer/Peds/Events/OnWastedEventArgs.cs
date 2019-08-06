@@ -34,10 +34,14 @@ namespace Slipe.Server.Peds.Events
         /// </summary>
         public bool IsStealthKill { get; }
 
-        internal OnWastedEventArgs(dynamic remainingAmmo, MtaElement killer, dynamic damageType, dynamic bodyPart, dynamic stealth)
+        internal OnWastedEventArgs(dynamic remainingAmmo, dynamic killer, dynamic damageType, dynamic bodyPart, dynamic stealth)
         {
             RemainingAmmo = (int) remainingAmmo;
-            Killer =  ElementManager.Instance.GetElement<PhysicalElement>(killer);
+
+            if (killer == false)
+                Killer = null;
+            else
+                Killer =  ElementManager.Instance.GetElement<PhysicalElement>(killer);
             DamageType = (DamageType) damageType;
             BodyPart = (BodyPart) bodyPart;
             IsStealthKill = (bool) stealth;

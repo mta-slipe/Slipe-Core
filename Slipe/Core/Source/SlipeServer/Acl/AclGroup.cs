@@ -128,7 +128,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public bool AddObject(IAclObject obj)
         {
-            return MtaServer.AclGroupAddObject(group, obj.ACLIdentifier);
+            return MtaServer.AclGroupAddObject(group, obj.AclIdentifier);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Slipe.Server.Acl
         /// </summary>
         public bool RemoveObject(IAclObject obj)
         {
-            return MtaServer.AclGroupRemoveObject(group, obj.ACLIdentifier);
+            return MtaServer.AclGroupRemoveObject(group, obj.AclIdentifier);
         }
 
         /// <summary>
