@@ -7,6 +7,7 @@ using Slipe.Shared.Elements;
 using Slipe.Shared.Resources;
 using Slipe.Server.Acl;
 using System.ComponentModel;
+using Slipe.Server.Game;
 
 namespace Slipe.Server.Resources
 {
@@ -122,6 +123,33 @@ namespace Slipe.Server.Resources
         {
             resources.Add(resource, this);
             MtaResource = resource;
+
+            GameServer.OnStart += (Elements.ResourceRootElement source, Game.Events.OnStartEventArgs eventArgs) =>
+            {
+                if (eventArgs.Resource.MtaResource != this.MtaResource)
+                {
+                    return;
+                }
+                OnStart?.Invoke();
+            };
+
+            GameServer.OnPreStart += (Elements.ResourceRootElement source, Game.Events.OnPreStartEventArgs eventArgs) =>
+            {
+                if (eventArgs.Resource.MtaResource != this.MtaResource)
+                {
+                    return;
+                }
+                OnPreStart?.Invoke();
+            };
+
+            GameServer.OnStop += (Elements.ResourceRootElement source, Game.Events.OnStopEventArgs eventArgs) =>
+            {
+                if (eventArgs.Resource.MtaResource != this.MtaResource)
+                {
+                    return;
+                }
+                OnStop?.Invoke();
+            };
         }
 
         /// <summary>
@@ -311,29 +339,14 @@ namespace Slipe.Server.Resources
         #endregion
 
         #region Events
-
-        internal void HandlePreStart()
-        {
-            OnPreStart?.Invoke();
-        }
-
-        internal void HandleStart()
-        {
-            OnStart?.Invoke();
-        }
-
-        internal void HandleStop(bool wasDeleted)
-        {
-            OnStop?.Invoke(wasDeleted);
-        }
-
+        
         public delegate void OnPreStartHandler();
         public event OnPreStartHandler OnPreStart;
 
         public delegate void OnStartHandler();
         public event OnStartHandler OnStart;
 
-        public delegate void OnStopHandler(bool wasDeleted);
+        public delegate void OnStopHandler();
         public event OnStopHandler OnStop;
 
         #endregion

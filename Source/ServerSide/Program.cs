@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Slipe.Shared.Exports;
 using Slipe.Server.Vehicles.Events;
 using Slipe.Server.Accounts;
+using Slipe.Server.Resources;
 
 namespace ServerSide
 {
@@ -25,6 +26,8 @@ namespace ServerSide
 
         public Program()
         {
+            new KillMessagesResource().Start();
+
             // Spawn a player in Blueberry
             Player.OnJoin += (Player source, OnJoinEventArgs eventArgs) =>
             {
@@ -45,6 +48,14 @@ namespace ServerSide
         private void OnPlayerLogin(Player source, OnLoginEventArgs eventArgs)
         {
             Console.WriteLine(string.Format("{0} has logged in with the account: {1} (previous was {2})", source.Name, eventArgs.NewAccount.Name, eventArgs.PreviousAccount.Name));
+        }
+    }
+
+    public class KillMessagesResource: Resource
+    {
+        public KillMessagesResource(): base("killmessages")
+        {
+            this.OnStart += () => Console.WriteLine("TTT");
         }
     }
 
