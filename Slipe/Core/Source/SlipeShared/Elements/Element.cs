@@ -178,7 +178,7 @@ namespace Slipe.Shared.Elements
         /// <param name="key"></param>
         /// <param name="inherit"></param>
         /// <returns></returns>
-        public dynamic GetData<T>(string key, bool inherit = false)
+        public T GetData<T>(string key, bool inherit = false)
         {
             return (T)GetData(key, inherit);
         }
