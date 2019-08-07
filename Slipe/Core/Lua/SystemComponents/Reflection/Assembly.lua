@@ -954,7 +954,7 @@ define("System.Activator", {
       return createInstance(T)
     elseif n == 1 then
       local args = ...
-      if type(args) == "table" and System.isArrayLike(args) then
+      if System.isArrayLike(args) then
         n = #args
         if n == 0 then
           return createInstance(T)
@@ -966,7 +966,7 @@ define("System.Activator", {
         return T(unpack(args, 1, n))
       end
     end
-    local i = findMatchCtor(T, n, function (i, ...) return select(i, ...) end, ...)
+    local i = findMatchCtor(T, n, select, ...)
     if i and i ~= 1 then
       return System.new(T, i, ...)
     end
@@ -977,5 +977,3 @@ define("System.Activator", {
     return createInstance(type[1], nonPublic)
   end
 })
-
-System.CreateInstance = System.Activator.CreateInstance

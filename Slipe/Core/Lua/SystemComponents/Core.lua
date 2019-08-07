@@ -72,9 +72,9 @@ local function xpcallErr(e)
     e = System.Exception("script error")
     e:traceback()
   elseif type(e) == "string" then
-    if e:find("attempt to index a nil value") then
+    if sfind(e, "attempt to index") then
       e = System.NullReferenceException()
-    elseif e:find("attempt to divide by zero") then  
+    elseif sfind(e, "attempt to divide by zero") then  
       e = System.DivideByZeroException()
     else
       e = System.Exception(e)
@@ -509,12 +509,21 @@ if version < 5.3 then
     return trunc(x / y)
   end
 
+  function System.divOfNull(x, y)
+    if x == nil or y == nil then
+      return nil
+    end
+    if y == 0 then throw(System.DivideByZeroException(), 1) end
+    return trunc(x / y)
+  end
+
   function System.mod(x, y) 
     if y == 0 then throw(System.DivideByZeroException(), 1) end
-    if x * y < 0 then
-      return x % y - y
+    local v = x % y
+    if v ~= 0 and x * y < 0 then
+      return v - y
     end
-    return x % y
+    return v
   end
 
   function System.toUInt(v, max, mask, checked)
@@ -678,28 +687,43 @@ if version < 5.3 then
   if table.move == nil then
     table.move = function(a1, f, e, t, a2)
       if a2 == nil then a2 = a1 end
-      t = e - f + t
-      while e >= f do
-        a2[t] = a1[e]
-        t = t - 1
-        e = e - 1
+      if t > f then
+        t = e - f + t
+        while e >= f do
+          a2[t] = a1[e]
+          t = t - 1
+          e = e - 1
+        end
+      else
+        while f <= e do
+          a2[t] = a1[f]
+          t = t + 1
+          f = f + 1
+        end
       end
     end
   end
-else  
+else
   load[[
   local System = System
   local throw = System.throw
   local trunc = System.trunc
   
-  function System.bnot(x) return ~v end 
+  function System.bnot(x) return ~x end 
   function System.band(x, y) return x & y end
   function System.bor(x, y) return x | y end
   function System.xor(x, y) return x ~ y end
   function System.sl(x, y) return x << y end
   function System.sr(x, y) return x >> y end
-  function System.div(x, y) if x * y < 0 then return -(-x // y) end return x // y end
-  function System.mod(x, y) if x * y < 0 then return x % y - y end return x % y end
+  function System.div(x, y) if x ~ y < 0 then return -(-x // y) end return x // y end
+  
+  function System.mod(x, y)
+    local v = x % y
+    if v ~= 0 and 1.0 * x * y < 0 then
+      return v - y
+    end
+    return v
+  end
   
   local function toUInt (v, max, mask, checked)  
     if v >= 0 and v <= max then
@@ -1011,6 +1035,7 @@ local function compareObj(a, b)
   throw(System.ArgumentException("Argument_ImplementIComparable"))
 end
 
+System.equalsObj = equalsObj
 System.compareObj = compareObj
 
 Object = defCls("System.Object", {

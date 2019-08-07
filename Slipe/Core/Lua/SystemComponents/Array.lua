@@ -56,6 +56,8 @@ local null = {}
 local arrayEnumerator
 local arrayFromTable
 
+local versions = setmetatable({}, { __mode = "k" })
+
 local function throwFailedVersion()
   throw(InvalidOperationException("Collection was modified; enumeration operation may not execute."))
 end
@@ -88,9 +90,9 @@ local function unWrap(v)
 end
 
 local function ipairs(t)
-  local version = t.version
+  local version = versions[t]
   return function (t, i)
-    if version ~= t.version then
+    if version ~= versions[t] then
       throwFailedVersion()
     end
     local v = t[i]
@@ -170,13 +172,13 @@ local function set(t, index, v)
     throw(ArgumentOutOfRangeException("index"))
   end
   t[index] = v == nil and null or v
-  t.version = t.version + 1
+  versions[t] = (versions[t] or 0) + 1
 end
 
 local function add(t, v)
   local n = #t
   t[n + 1] = v == nil and null or v
-  t.version = t.version + 1
+  versions[t] = (versions[t] or 0) + 1
   return n
 end
 
@@ -191,7 +193,7 @@ local function addRange(t, collection)
       count = count + 1
     end
   end
-  t.version = t.version + 1
+  versions[t] = (versions[t] or 0) + 1
 end
 
 local function unset()
@@ -314,7 +316,7 @@ local function removeRange(t, index, count)
       tmove(t, index + count + 1, n, index + 1)
     end
     fill(t, n - count + 1, n, nil)
-    t.version = t.version + 1
+    versions[t] = (versions[t] or 0) + 1
   end
 end
 
@@ -355,7 +357,7 @@ end
 local function sort(t, comparer)
   if #t > 1 then
     tsort(t, getComp(t, comparer))
-    t.version = t.version + 1
+    versions[t] = (versions[t] or 0) + 1
   end
 end
 
@@ -372,7 +374,7 @@ end, {
   end,
   MoveNext = function (this)
     local t = this.list
-    if this.version ~= t.version then
+    if this.version ~= versions[t] then
       throwFailedVersion()
     end
     local index = this.index
@@ -393,7 +395,7 @@ end, {
 
 arrayEnumerator = function (t, T)
   if not T then T = t.__genericT__ end
-  return setmetatable({ list = t, index = 1, version = t.version, currnet = T:default() }, ArrayEnumerator(T))
+  return setmetatable({ list = t, index = 1, version = versions[t], currnet = T:default() }, ArrayEnumerator(T))
 end
 
 local ArrayReverseEnumerator = define("System.ArrayReverseEnumerator", function (T)
@@ -409,7 +411,7 @@ end, {
   end,
   MoveNext = function (this)
     local t = this.list
-    if this.version ~= t.version then
+    if this.version ~= versions[t] then
       throwFailedVersion()
     end
     local index = this.index
@@ -430,7 +432,7 @@ end, {
 
 local function reverseEnumerator(t)
   local T = t.__genericT__
-  return setmetatable({ list = t, index = #t, version = t.version, currnet = T:default() }, ArrayReverseEnumerator(T))
+  return setmetatable({ list = t, index = #t, version = versions[t], currnet = T:default() }, ArrayReverseEnumerator(T))
 end
 
 local function checkArrayIndex(index1, index2)
@@ -475,7 +477,7 @@ Array = {
       for i = 1, size do
         t[i] = nil
       end
-      t.version = t.version + 1
+      versions[t] = (versions[t] or 0) + 1
     end
   end,
   contains = function (t, v)
@@ -500,13 +502,14 @@ Array = {
     if v ~= null then
       return v
     end
+    return nil
   end,
   insert = function (t, index, v)
     if index < 0 or index > #t then
       throw(ArgumentOutOfRangeException("index"))
     end
     tinsert(t, index + 1, v == nil and null or v)
-    t.version = t.version + 1
+    versions[t] = (versions[t] or 0) + 1
   end,
   insertRange = function (t, index, collection) 
     if collection == nil then throw(ArgumentNullException("collection")) end
@@ -533,7 +536,7 @@ Array = {
         tinsert(t, index, v == nil and null or v)
       end
     end
-    t.version = t.version + 1
+    versions[t] = (versions[t] or 0) + 1
   end,
   last = function (t)
     local n = #t
@@ -542,15 +545,17 @@ Array = {
     if v ~= null then
       return v
     end
+    return nil
   end,
   popFirst = function (t)
     if #t == 0 then throw(InvalidOperationException()) end
     local v = t[1]
     tremove(t, 1)
-    t.version = t.version + 1
+    versions[t] = (versions[t] or 0) + 1
     if v ~= null then
       return v
     end
+    return nil
   end,
   popLast = function (t)
     local n = #t
@@ -560,13 +565,14 @@ Array = {
     if v ~= null then
       return v
     end
+    return nil
   end,
   removeRange = removeRange,
   remove = function (t, v)
     local index = indexOf(t, v)
     if index >= 0 then
       tremove(t, index + 1)
-      t.version = t.version + 1
+      versions[t] = (versions[t] or 0) + 1
       return true
     end
     return false
@@ -611,7 +617,7 @@ Array = {
     if v == nil then
       throw(ArgumentOutOfRangeException("index"))
     end
-    t.version = t.version + 1
+    versions[t] = (versions[t] or 0) + 1
   end,
   getRange = function (t, index, count)
     if count < 0 or index > #t - count then
@@ -621,9 +627,7 @@ Array = {
     tmove(t, index + 1, index + count, 1, list)
     return setmetatable(list, System.List(t.__genericT__))
   end,
-  reverseEnumerator = function (t)
-    return setmetatable({ list = t, index = #t, version = t.version }, ArrayReverseEnumerator)
-  end,
+  reverseEnumerator = reverseEnumerator,
   getCount = lengthFn,
   getSyncRoot = System.identityFn,
   getLongLength = lengthFn,
@@ -846,7 +850,7 @@ Array = {
       i = i + 1
       j = j - 1
     end
-    t.version = t.version + 1
+    versions[t] = (versions[t] or 0) + 1
   end,
   Sort = function (t, ...)
     if t == nil then throw(ArgumentNullException("array")) end
@@ -869,7 +873,7 @@ Array = {
           tsort(arr, comp)
           tmove(arr, 1, count, index + 1, t)
         end
-        t.version = t.version + 1
+        versions[t] = (versions[t] or 0) + 1
       end
     end
   end,

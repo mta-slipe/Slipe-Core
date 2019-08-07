@@ -154,7 +154,7 @@ namespace Slipe.Shared.Elements
                 return elements;
             }
 
-            List<dynamic> mtaElements = MtaShared.GetListFromTable(MtaClient.GetElementsByType(defaultElementTypeNames[typeof(T)], startAt.MTAElement, streamedIn), "element");
+            List<dynamic> mtaElements = MtaShared.GetListFromTable(MtaClient.GetElementsByType(defaultElementTypeNames[typeof(T)], startAt?.MTAElement, streamedIn), "element");
             foreach (dynamic mtaElement in mtaElements)
             {
                 T element = GetElement<T>(mtaElement);

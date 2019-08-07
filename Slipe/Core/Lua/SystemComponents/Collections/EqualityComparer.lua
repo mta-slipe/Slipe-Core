@@ -14,6 +14,7 @@ limitations under the License.
 local System = System
 local define = System.define
 local throw = System.throw
+local equalsObj = System.equalsObj
 local compareObj = System.compareObj
 local ArgumentException = System.ArgumentException
 local ArgumentNullException = System.ArgumentNullException
@@ -31,13 +32,7 @@ EqualityComparer = define("System.EqualityComparer", function (T)
       end 
     end
   else
-    if T.class == 'S' then
-      equals = T.EqualsObj
-    else
-      equals = function (x, y) 
-        return x:EqualsObj(y) 
-      end
-    end
+    equals = equalsObj
   end
   local defaultComparer
   return {

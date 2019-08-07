@@ -158,7 +158,7 @@ local DictionaryEnumerator = define("System.DictionaryEnumerator", {
       return true
     else
       if kind then
-        kind.Key, kind.Value = kind.Key:default(), kind.Value:default()
+        kind.Key, kind.Value = kind.__genericTKey__:default(), kind.__genericTValue__:default()
       elseif kind == false then
         this.current = t.__genericTValue__:default()
       else
@@ -368,6 +368,7 @@ local Dictionary = {
     if value ~= null then
       return value
     end
+    return nil
   end,
   set = function (this, key, value)
     if key == nil then throw(ArgumentNullException("key")) end
