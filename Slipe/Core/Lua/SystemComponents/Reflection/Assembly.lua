@@ -954,7 +954,7 @@ define("System.Activator", {
       return createInstance(T)
     elseif n == 1 then
       local args = ...
-      if System.isArrayLike(args) then
+      if type(args) == "table" and System.isArrayLike(args) then
         n = #args
         if n == 0 then
           return createInstance(T)

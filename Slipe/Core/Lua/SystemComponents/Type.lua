@@ -400,7 +400,7 @@ checks[Number] = function (obj, T)
 end
 
 local function is(obj, T)
-  return checks[getmetatable(obj)](obj, T)
+  return type(obj) == "userdata" and T == Slipe.MtaDefinitions.MtaElement or checks[getmetatable(obj)](obj, T)
 end
 
 System.is = is
