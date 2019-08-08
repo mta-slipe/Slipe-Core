@@ -36,7 +36,6 @@ namespace Slipe.Client.Assets
             this.filepath = filepath;
 
             GameClient.OnFileDownloadComplete += HandleDownloadComplete;
-
         }
 
         private void HandleDownloadComplete(ResourceRootElement source, OnFileDownloadCompleteEventArgs eventArgs)
@@ -44,7 +43,7 @@ namespace Slipe.Client.Assets
             if (eventArgs.Path == filepath)
             {
                 this.state = eventArgs.Success ? DownloadState.Downloaded : DownloadState.Failed;
-                GameClient.OnFileDownloadComplete += HandleDownloadComplete;
+                GameClient.OnFileDownloadComplete -= HandleDownloadComplete;
                 OnDownloadComplete?.Invoke();
             }
         }

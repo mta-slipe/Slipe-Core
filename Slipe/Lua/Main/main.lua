@@ -66,6 +66,5 @@ function runEntryPoint()
 	end
 	result()
 end
-runEntryPoint()
-
 initEvents()
+runEntryPoint()
