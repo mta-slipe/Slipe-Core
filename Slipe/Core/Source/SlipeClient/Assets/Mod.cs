@@ -103,7 +103,6 @@ namespace Slipe.Client.Assets
 
         private void ApplyFiles(int model = -1)
         {
-            Debug.WriteLine(model);
             if (model == -1)
             {
                 foreach(int numericModel in modelsToApply)
