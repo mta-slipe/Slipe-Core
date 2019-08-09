@@ -9,54 +9,48 @@ RPCs work somewhat similar to how client & server events do in MTA, where you wi
 ## RPC payload classes
 In an RPC you can send a single object / instance of a class (or enum) along with any trigger. This means you will have to define a class to encapsulate the values you want to transmit from server to client, or the other way around.
 
-An RPC payload is split up into two classes, one "incoming" class, and one "outgoing" class. Where the outgoing class will send the data, and the incoming class will parse the data.
+An RPC payload is a simple class which implements the `IRpc` interface. 
+Any RPC payload class will have 3 methods:
+* A (parameterless) default constructor  
+  This constructor is used internally, when it's missing Visual Studio will show an error
+* A constructor for passing in data  
+  This is the constructor used by your code to populate the RPC payload (this is optional)
+* A Parse method
+  This is the method which parses a single Lua table value back to the payload class
 
 Here's an example:
 ```cs
-public class BasicOutgoingRpc : IRpc
+public class ElementRpc: BaseRpc
 {
-    // the fields to transmit
-    public string name;
-    public int x;
-    public MtaElement element;
+    public Element Element { get; set; }
 
-    
-    // the constructor which sets the fields
-    public BasicOutgoingRpc(string name, int x, Element element)
+    public ElementRpc()
     {
-        this.name = name;
-        this.x = x;
-        this.element = element.MTAElement;
+
+    }
+
+    public ElementRpc(Element element)
+    {
+        this.Element = element;
+    }
+
+    public override void Parse(dynamic value)
+    {
+        this.Element = GetElement<Element>(value.Element);
     }
 }
 ```
-
-```cs
-public class BasicIncomingRpc : IRpc
-{
-    public string name;
-    public int x;
-    public Element element;
-
-    // Parsing the single `dynamic` vlaue to the proper type fields
-    public BasicIncomingRpc(dynamic value)
-    {
-        this.x = (int)value.x;
-        this.name = (string)value.name;
-        this.element = Slipe.Shared.Elements.ElementManager.Instance.GetElement(value.element);
-    }
-}
-```
-It is import that you cast the data in `value` to the appropriate types when using incoming RPCs. Because when transferring over the network all metatable data (which class / datatype something is) is lost.
+It is import that you cast the data in `value` to the appropriate types when using incoming RPCs. Because when transferring over the network all metatable data (which class / datatype something is) is lost.  
+The abstract `BaseRpc` class has several methods to make this process easier.
 
 ## Registering an RPC
-In order to register an RPC you have to call the `RegisterRPC` method on the singleton `Instance` of the `RpcManager`. The `RegisterRPC` method is a generic method, meaning you need to supply a type argument, this type argument is the `IncomingRpc` type you wish to receive.
+In order to register an RPC you have to call the `RegisterRPC` method on the singleton `Instance` of the `RpcManager`. The `RegisterRPC` method is a generic method, meaning you need to supply a type argument, this type argument is the `IRpc` payload class type you wish to receive.
 ```cs
-RpcManager.Instance.RegisterRPC<BasicIncomingRpc>("testRPC", HandleTestRPC);
+RpcManager.Instance.RegisterRPC<ElementRpc>("announce", HandleAnnouncement);
 
-public void HandleTestRPC(BasicIncomingRpc arguments)
+public void HandleAnnouncement(Player player, ElementRpc rpc)
 {
-    Debug.WriteLine("Handling testRPC, name: {0}, x: {1}, player name: {2}", arguments.name, arguments.x, ((Player)arguments.element).Name);
+    ChatBox.WriteLine(rpc.Element.Type);
 }
 ```
 
@@ -65,15 +59,15 @@ Trigger RPCs is quite easy. You use the `TriggerRpc` method on the `RpcManager`.
 
 Client:
 ```cs
-RpcManager.Instance.TriggerRPC("onPlayerReady", new EmptyOutgoingRpc());
+RpcManager.Instance.TriggerRPC("announce", new ElementRpc(Player.Local));
 ```
 
 Server:
 ```cs
 // send to a specific player
 Player nano = (Player)Player.GetFromName("SAES>Nanobob");
-RpcManager.Instance.TriggerRPC(nano, "testRPC", new BasicOutgoingRpc("Vehicle damage", (int)loss, nano));
+RpcManager.Instance.TriggerRPC(nano, "testRPC", new ElementRpc(someElement));
 
 // send to everyone
-RpcManager.Instance.TriggerRPC(Element.Root, "testRPC", new BasicOutgoingRpc("Vehicle damage", (int)loss, nano));
+RpcManager.Instance.TriggerRPC(Element.Root, "testRPC", new ElementRpc(someElement));
 ```
