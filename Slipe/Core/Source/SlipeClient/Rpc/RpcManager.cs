@@ -5,6 +5,8 @@ using System.Text;
 using System.Diagnostics;
 using Slipe.Shared.Elements;
 using Slipe.Client.Elements;
+using Slipe.Shared.Rpc;
+using Slipe.Client.IO;
 
 namespace Slipe.Client.Rpc
 {
@@ -23,18 +25,24 @@ namespace Slipe.Client.Rpc
             }
         }
 
-        private Dictionary<string, Action<object>> RegisteredRPCs;
+        private Dictionary<string, RegisteredRpc> RegisteredRPCs;
 
         private RpcManager()
         {
-            RegisteredRPCs = new Dictionary<string, Action<object>>();
+            RegisteredRPCs = new Dictionary<string, RegisteredRpc>();
 
             RootElement.OnMiscelaniousEvent += (eventName, source, p1, p2, p3, p4, p5, p6, p7, p8) =>
             {
-                Console.WriteLine("CLIENT RPC TRIGGER");
                 if (RegisteredRPCs.ContainsKey(eventName))
                 {
-                    RegisteredRPCs[eventName].Invoke(p1);
+
+                    var registeredRpc = RegisteredRPCs[eventName];
+
+                    var method = registeredRpc.callback;
+
+                    IRpc rpc = (IRpc)Activator.CreateInstance(registeredRpc.type);
+                    rpc.Parse(p1);
+                    method.Invoke(rpc);
                 }
             };
         }
@@ -42,16 +50,12 @@ namespace Slipe.Client.Rpc
         /// <summary>
         /// Register an RPC
         /// </summary>
-        public void RegisterRPC<CallbackType>(string key, Action<CallbackType> callback)
+        public void RegisterRPC<CallbackType>(string key, Action<CallbackType> callback) where CallbackType: IRpc
         {
-            RegisteredRPCs[key] = (parameters) =>
+            RegisteredRPCs[key] = new RegisteredRpc((parameters) =>
             {
-                /*
-                [[
-                    callback(CallbackType(parameters))
-                ]]
-                 */
-            };
+                callback((CallbackType)parameters);
+            }, typeof(CallbackType));
             MtaShared.AddEvent(key, true);
             Element.Root.ListenForEvent(key);
         }
@@ -59,7 +63,7 @@ namespace Slipe.Client.Rpc
         /// <summary>
         /// Trigger an RPC
         /// </summary>
-        public void TriggerRPC(string key, object argument)
+        public void TriggerRPC(string key, IRpc argument)
         {
             MtaClient.TriggerServerEvent(key, Element.Root.MTAElement, argument);
         }
@@ -67,9 +71,21 @@ namespace Slipe.Client.Rpc
         /// <summary>
         /// Trigger an RPC with limited bandwidth
         /// </summary>
-        public void TriggerLatentRPC(string key, int bandwidth, object argument, bool persists = false)
+        public void TriggerLatentRPC(string key, int bandwidth, IRpc argument, bool persists = false)
         {
             MtaClient.TriggerLatentServerEvent(key, bandwidth, persists, Element.Root.MTAElement, argument);
+        }
+    }
+
+    struct RegisteredRpc
+    {
+        public Type type;
+        public Action<IRpc> callback;
+
+        public RegisteredRpc(Action<IRpc> callback, Type type)
+        {
+            this.callback = callback;
+            this.type = type;
         }
     }
 }

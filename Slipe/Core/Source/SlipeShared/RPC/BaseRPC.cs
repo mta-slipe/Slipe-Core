@@ -4,17 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.RPC
+namespace Slipe.Shared.Rpc
 {
-    public class BaseRPC
+    public abstract class BaseRpc: IRpc
     {
-
-        public T[] GetArray<T>(dynamic table)
+        protected T[] GetArray<T>(dynamic table)
         {
             return Slipe.MtaDefinitions.MtaShared.GetArrayFromTable<T>(table, "");
         }
 
-        public MtaElement[] CreateElementArray(Element[] elements)
+        protected MtaElement[] CreateElementArray(Element[] elements)
         {
             MtaElement[] mtaElements = new MtaElement[elements.Length];
 
@@ -26,7 +25,7 @@ namespace Slipe.Shared.RPC
             return mtaElements;
         }
 
-        public T[] GetElementArray<T>(dynamic table) where T : Element
+        protected T[] GetElementArray<T>(dynamic table) where T : Element
         {
             MtaElement[] mtaElements = Slipe.MtaDefinitions.MtaShared.GetArrayFromTable<MtaElement>(table, "");
 
@@ -38,12 +37,12 @@ namespace Slipe.Shared.RPC
             return elements;
         }
 
-        public T GetElement<T>(dynamic mtaElement) where T: Element
+        protected T GetElement<T>(dynamic mtaElement) where T: Element
         {
-            return ElementManager.Instance.GetElement<T>(mtaElement);
+            return ElementManager.Instance.GetElement<T>(mtaElement.element);
         }
-
-
+        
+        public abstract void Parse(dynamic value);
 
     }
 }

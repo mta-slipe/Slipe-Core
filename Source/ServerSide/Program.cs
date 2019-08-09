@@ -14,6 +14,9 @@ using Slipe.Shared.Exports;
 using Slipe.Server.Vehicles.Events;
 using Slipe.Server.Accounts;
 using Slipe.Server.Resources;
+using Slipe.Server.Rpc;
+using Slipe.Shared.Rpc;
+using Slipe.Server.IO;
 
 namespace ServerSide
 {
@@ -42,6 +45,12 @@ namespace ServerSide
 
                 player.OnLogin += OnPlayerLogin;
             }
+
+            RpcManager.Instance.RegisterRPC<ElementRpc<Player>>("announce", (player, rpc) =>
+            {
+                ChatBox.WriteLine(rpc.Element.Name);
+                RpcManager.Instance.TriggerRPC("announce-response", new EmptyRpc());
+            });
 
         }
 

@@ -25,6 +25,15 @@ namespace Slipe.Server.IO
         {
             MtaServer.OutputChatBox(message, player.MTAElement, color.R, color.G, color.B, colorCoded);
         }
+        /// <summary>
+        /// Writes a line to the chatbox
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="player"></param>
+        public static void WriteLine(string message, Player player)
+        {
+            WriteLine(message, player, Color.White);
+        }
 
         /// <summary>
         /// Writes a line to the chatbox
@@ -35,6 +44,17 @@ namespace Slipe.Server.IO
         public static void WriteLine(string message, Color color, bool colorCoded = false)
         {
             MtaServer.OutputChatBox(message, Element.Root.MTAElement, color.R, color.G, color.B, colorCoded);
+        }
+
+        /// <summary>
+        /// Writes a line to the chatbox
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="color"></param>
+        /// <param name="colorCoded"></param>
+        public static void WriteLine(string message)
+        {
+            WriteLine(message, Color.White);
         }
 
         /// <summary>

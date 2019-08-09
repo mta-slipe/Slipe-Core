@@ -6,6 +6,6 @@ namespace Slipe.Shared.Rpc
 {
     public interface IRpc
     {
-
+        void Parse(dynamic value);
     }
 }
