@@ -1,4 +1,7 @@
-﻿namespace ClientSide
+﻿using Slipe.Client.IO;
+using Slipe.Client.Peds;
+
+namespace ClientSide
 {
     class Program
     {

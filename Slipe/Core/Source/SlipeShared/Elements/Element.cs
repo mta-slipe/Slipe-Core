@@ -184,6 +184,28 @@ namespace Slipe.Shared.Elements
         }
 
         /// <summary>
+        /// This function tries to retrieve the data value and returns true if this was succesful
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key">The key at which data is stored</param>
+        /// <param name="data">The string to which to write the data to</param>
+        /// <param name="inherit"></param>
+        /// <returns>True if the data was succesfully retrieved, false otherwise</returns>
+        public bool TryGetData<T>(string key, out T data, bool inherit = false)
+        {
+            try
+            {
+                data = (T)MtaShared.GetElementData(this.MTAElement, key, inherit);
+                return true;
+            }
+            catch (Exception)
+            {
+                data = default(T);
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Desetroys the element
         /// </summary>
         public virtual bool Destroy()

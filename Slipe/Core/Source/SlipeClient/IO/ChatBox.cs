@@ -275,6 +275,15 @@ namespace Slipe.Client.IO
         }
 
         /// <summary>
+        /// Writes a line to the chatbox
+        /// </summary>
+        /// <param name="message"></param>
+        public static void WriteLine(string message)
+        {
+            WriteLine(message, Color.White);
+        }
+
+        /// <summary>
         /// Clears the chatbox
         /// </summary>
         public static void Clear()
