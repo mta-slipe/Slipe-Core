@@ -5,6 +5,7 @@ using Slipe.Shared.Elements;
 using Slipe.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
+using Slipe.Client.IO;
 
 namespace Slipe.Client.Gui
 {
@@ -42,7 +43,7 @@ namespace Slipe.Client.Gui
         }
 
         /// <summary>
-        /// Get the amount of selected items
+        /// Get the amount of selected items, returns null if nothing is selected.
         /// </summary>
         public int SelectedCount
         {
@@ -57,7 +58,11 @@ namespace Slipe.Client.Gui
             get
             {
                 Tuple<int, int> item = MtaClient.GuiGridListGetSelectedItem(element);
-                return new GridItem(columns[item.Item1], rows[item.Item2], this);
+                if (item.Item1 == -1 || item.Item2 == -1)
+                {
+                    return null;
+                }
+                return new GridItem(columns[item.Item2], rows[item.Item1], this);
             }
             set
             {
