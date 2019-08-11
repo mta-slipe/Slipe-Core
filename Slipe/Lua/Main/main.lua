@@ -23,6 +23,9 @@ end
 end
 
 function prepareManifest(filepath)
+	if not fileExists(filepath) then
+		return
+	end
 	System.init = prepareInit	
 	local file = fileOpen(filepath)
 	local content = fileRead(file, fileGetSize(file))
@@ -32,6 +35,9 @@ function prepareManifest(filepath)
 end
 
 function finalizeManifest(filepath)
+	if not fileExists(filepath) then
+		return
+	end
 	System.init = finalizeInit
 	local file = fileOpen(filepath)
 	local content = fileRead(file, fileGetSize(file))

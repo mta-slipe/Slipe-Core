@@ -196,9 +196,9 @@ limitations under the License.
           <arg type="System.Type" />
           <arg type="System.Boolean" />
         </method>
-        <method name="CreateInstance" ArgCount="3" Baned="true" />
-        <method name="CreateInstance" ArgCount="5" Baned="true" />
-        <method name="CreateInstance" ArgCount="6" Baned="true" />
+        <method name="CreateInstance" ArgCount="3"/>
+        <method name="CreateInstance" ArgCount="5"/>
+        <method name="CreateInstance" ArgCount="6"/>
       </class>
       <class name="Tuple">
         <method name="Create" ArgCount="1" Template="System.tuple({0})" />
