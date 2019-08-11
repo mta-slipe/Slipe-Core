@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Slipe.Client.IO;
 using Slipe.MtaDefinitions;
 using Slipe.Shared.Utilities;
 
