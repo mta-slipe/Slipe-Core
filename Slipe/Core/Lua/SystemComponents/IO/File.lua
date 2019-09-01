@@ -47,7 +47,7 @@ function File.ReadAllLines(path)
   local file = fileOpen(path, true)
   local contents = fileRead(file, fileGetSize(file))
   fileClose(file)
-  return System.arrayFromTable(split(contents, "\n"))
+  return System.arrayFromTable(split(contents, "\n"), "System.String")
 end
 
 function File.WriteAllBytes(path, contents)

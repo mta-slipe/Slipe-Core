@@ -38,9 +38,12 @@ namespace Slipe.Client.Assets
         /// <param name="txdFilepath"></param>
         /// <param name="dffFilepath"></param>
         /// <param name="colFilepath"></param>
-        public Mod(string txdFilepath, string dffFilepath = null, string colFilepath = null)
+        public Mod(string txdFilepath = null, string dffFilepath = null, string colFilepath = null)
         {
-            this.txd = new Txd(txdFilepath);
+            if(txdFilepath != null)
+            {
+                this.txd = new Txd(txdFilepath);
+            }            
             if (dffFilepath != null)
             {
                 this.dff = new Dff(dffFilepath);
@@ -71,8 +74,11 @@ namespace Slipe.Client.Assets
             this.state = DownloadState.Downloading;
             modelsToApply.Add(model);
 
-            this.txd.OnDownloadComplete += OnFileDownload;
-            this.txd.Download();
+            if (this.txd != null)
+            {
+                this.txd.OnDownloadComplete += OnFileDownload;
+                this.txd.Download();
+            }
 
             if (this.dff != null)
             {
@@ -90,7 +96,7 @@ namespace Slipe.Client.Assets
         private void OnFileDownload()
         {
             if (
-                this.txd.State != DownloadState.Downloaded ||
+                this.txd != null && this.txd.State != DownloadState.Downloaded ||
                 this.dff != null && this.dff.State != DownloadState.Downloaded ||
                 this.col != null && this.col.State != DownloadState.Downloaded
             )
@@ -111,8 +117,11 @@ namespace Slipe.Client.Assets
                 }
                 return;
             }
-            this.txd.Load();
-            this.txd.ApplyTo(model);
+            if (this.txd != null)
+            {
+                this.txd.Load();
+                this.txd.ApplyTo(model);
+            }
             if (this.dff != null)
             {
                 this.dff.Load();
