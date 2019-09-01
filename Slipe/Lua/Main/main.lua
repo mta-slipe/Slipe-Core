@@ -71,6 +71,12 @@ function runEntryPoint()
 		result = result[split] 
 	end
 	result()
+
+	-- Let the server know we are ready to accept incoming rpcs
+	if(triggerServerEvent ~= nil) then
+		triggerServerEvent("slipe-client-ready-rpc", root)
+	end
+
 end
 initEvents()
 runEntryPoint()
