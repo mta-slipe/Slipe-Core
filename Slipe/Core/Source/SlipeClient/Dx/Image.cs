@@ -117,9 +117,9 @@ namespace Slipe.Client.Dx
         public virtual bool Draw(RootElement source, OnRenderEventArgs eventArgs)
         {
             if (usePath)
-                return MtaClient.DxDrawImage(Position.X, Position.Y, Dimensions.X, Dimensions.Y, FilePath, Rotation, RotationCenter.X, RotationCenter.Y, Color.Hex);
+                return MtaClient.DxDrawImage(Position.X, Position.Y, Dimensions.X, Dimensions.Y, FilePath, Rotation, RotationCenter.X, RotationCenter.Y, Color.Hex, PostGUI);
             else
-                return MtaClient.DxDrawImage(Position.X, Position.Y, Dimensions.X, Dimensions.Y, Material?.MaterialElement, Rotation, RotationCenter.X, RotationCenter.Y, Color.Hex);
+                return MtaClient.DxDrawImage(Position.X, Position.Y, Dimensions.X, Dimensions.Y, Material?.MaterialElement, Rotation, RotationCenter.X, RotationCenter.Y, Color.Hex, PostGUI);
         }
     }
 }

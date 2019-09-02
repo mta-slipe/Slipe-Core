@@ -59,4 +59,17 @@ namespace Slipe.Client.Dx
         png,
         jpeg
     }
+
+    /// <summary>
+    /// Represents different primitive types
+    /// </summary>
+    public enum PrimitiveType
+    {
+        PointList,
+        LineList,
+        LineStrip,
+        TriangleList,
+        TriangleStrip,
+        TriangleFan
+    }
 }

@@ -1,7 +1,9 @@
-﻿using Slipe.Client.IO;
+﻿using Slipe.Client.Dx;
+using Slipe.Client.IO;
 using Slipe.Client.Peds;
 using Slipe.Client.Rpc;
 using Slipe.Shared.Rpc;
+using System.Numerics;
 
 namespace ClientSide
 {
@@ -20,6 +22,8 @@ namespace ClientSide
             {
                 ChatBox.WriteLine("Hey, we responded!");
             });
+
+            Dx.DrawCircle(Vector2.Zero, 4);
         }
     }
 }
