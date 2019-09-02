@@ -103,8 +103,8 @@ namespace Slipe.MtaDefinitions {
 		public static bool CancelLatentEvent (MtaElement thePlayer, int handle){ throw new NotImplementedException(); }
 		public static dynamic GetLatentEventStatus (MtaElement thePlayer, int handle){ throw new NotImplementedException(); }
 		public static dynamic GetLatentEventHandles (MtaElement thePlayer){ throw new NotImplementedException(); }
-		public static bool TriggerClientEvent (MtaElement targetElement, string eventName, MtaElement sourceElement, dynamic arguments){ throw new NotImplementedException(); }
-		public static bool TriggerLatentClientEvent (MtaElement targetElement, string eventName, int bandwith, bool persists, MtaElement sourceElement, dynamic arguments){ throw new NotImplementedException(); }
+		public static bool TriggerClientEvent (dynamic targetElement, string eventName, MtaElement sourceElement, dynamic arguments){ throw new NotImplementedException(); }
+		public static bool TriggerLatentClientEvent (dynamic targetElement, string eventName, int bandwith, bool persists, MtaElement sourceElement, dynamic arguments){ throw new NotImplementedException(); }
 		public static bool CreateExplosion (float x, float y, float z, int theType, MtaElement creator){ throw new NotImplementedException(); }
 		public static bool BindKey (MtaElement thePlayer, string key, string keyState, string command){ throw new NotImplementedException(); }
         public static bool BindKey(MtaElement thePlayer, string key, string keyState, Action<MtaElement,string, string> handlerFunction) { throw new NotImplementedException(); }

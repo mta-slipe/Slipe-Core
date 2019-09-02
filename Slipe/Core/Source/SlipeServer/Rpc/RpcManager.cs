@@ -112,6 +112,25 @@ namespace Slipe.Server.Rpc
         }
 
         /// <summary>
+        /// Trigger an RPC for a specified list of players
+        /// </summary>
+        /// <param name="targets"></param>
+        /// <param name="key"></param>
+        /// <param name="argument"></param>
+        public void TriggerRPC(List<Player> targets, string key, IRpc argument)
+        {
+            List<MtaElement> playerElements = new List<MtaElement>();
+            foreach(Player player in targets)
+            {
+                if (player.IsReadyForIncomingRequests)
+                    playerElements.Add(player.MTAElement);
+                else if (argument.OnClientRpcFailed == ClientRpcFailedAction.Queue)
+                    QueueRpc(player, key, argument);
+            }
+            MtaServer.TriggerClientEvent(playerElements, key, Element.Root.MTAElement, argument);
+        }
+
+        /// <summary>
         /// Trigger an RPC with limited bandwidth
         /// </summary>
         public void TriggerLatentRPC(Player target, string key, int bandwidth, IRpc argument, bool persists = false)
@@ -128,6 +147,25 @@ namespace Slipe.Server.Rpc
         public void TriggerLatentRPC(string key, int bandwidth, IRpc argument, bool persists = false)
         {
             MtaServer.TriggerLatentClientEvent(Element.Root.MTAElement, key, bandwidth, persists, Element.Root.MTAElement, argument);
+        }
+
+        /// <summary>
+        /// Trigger an RPC with limited bandwidth for a specified list of players
+        /// </summary>
+        /// <param name="targets"></param>
+        /// <param name="key"></param>
+        /// <param name="argument"></param>
+        public void TriggerRPC(List<Player> targets, string key, int bandwidth, IRpc argument, bool persists = false)
+        {
+            List<MtaElement> playerElements = new List<MtaElement>();
+            foreach (Player player in targets)
+            {
+                if (player.IsReadyForIncomingRequests)
+                    playerElements.Add(player.MTAElement);
+                else if (argument.OnClientRpcFailed == ClientRpcFailedAction.Queue)
+                    QueueRpc(player, key, argument, bandwidth, persists);
+            }
+            MtaServer.TriggerLatentClientEvent(playerElements, key, bandwidth, persists, Element.Root.MTAElement, argument);
         }
     }
 
