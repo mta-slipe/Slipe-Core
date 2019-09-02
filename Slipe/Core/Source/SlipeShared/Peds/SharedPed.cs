@@ -398,9 +398,9 @@ namespace Slipe.Shared.Peds
         /// <summary>
         /// Sets the animation of this ped
         /// </summary>
-        public bool SetAnimation(Animation animation, bool loop = true, int time = -1, bool updatePosition = true, bool interruptable = true, bool freeLastFrame = true, int blendTime = 250)
+        public bool SetAnimation(Animation animation, bool loop = true, int time = -1, bool updatePosition = true, bool interruptable = true, bool freeLastFrame = true, int blendTime = 250, bool retainPedState = false)
         {
-            return MtaShared.SetPedAnimation(element, animation.Group, animation.Anim, time, loop, updatePosition, interruptable, freeLastFrame, blendTime);
+            return MtaShared.SetPedAnimation(element, animation.Group, animation.Anim, time, loop, updatePosition, interruptable, freeLastFrame, blendTime, retainPedState);
         }
 
         /// <summary>
@@ -408,7 +408,7 @@ namespace Slipe.Shared.Peds
         /// </summary>
         public bool ResetAnimation()
         {
-            return MtaShared.SetPedAnimation(element, null, null, -1, true, true, true, true, 250);
+            return MtaShared.SetPedAnimation(element, null, null, -1, true, true, true, true, 250, false);
         }
 
         /// <summary>

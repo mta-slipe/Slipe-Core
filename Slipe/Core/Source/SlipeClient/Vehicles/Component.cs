@@ -13,6 +13,7 @@ namespace Slipe.Client.Vehicles
     {
         private BaseVehicle vehicle;
         private string component;
+        private string relativeBase;
 
         #region Properties
         /// <summary>
@@ -22,12 +23,12 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                Tuple<float, float, float> r = MtaClient.GetVehicleComponentPosition(vehicle.MTAElement, component, Base.ToString().ToLower());
+                Tuple<float, float, float> r = MtaClient.GetVehicleComponentPosition(vehicle.MTAElement, component, relativeBase);
                 return new Vector3(r.Item1, r.Item2, r.Item3);
             }
             set
             {
-                MtaClient.SetVehicleComponentPosition(vehicle.MTAElement, component, value.X, value.Y, value.Z, Base.ToString().ToLower());
+                MtaClient.SetVehicleComponentPosition(vehicle.MTAElement, component, value.X, value.Y, value.Z, relativeBase);
             }
         }
 
@@ -38,12 +39,12 @@ namespace Slipe.Client.Vehicles
         {
             get
             {
-                Tuple<float, float, float> r = MtaClient.GetVehicleComponentRotation(vehicle.MTAElement, component, Base.ToString().ToLower());
+                Tuple<float, float, float> r = MtaClient.GetVehicleComponentRotation(vehicle.MTAElement, component, relativeBase);
                 return new Vector3(r.Item1, r.Item2, r.Item3);
             }
             set
             {
-                MtaClient.SetVehicleComponentRotation(vehicle.MTAElement, component, value.X, value.Y, value.Z, Base.ToString().ToLower());
+                MtaClient.SetVehicleComponentRotation(vehicle.MTAElement, component, value.X, value.Y, value.Z, relativeBase);
             }
         }
 
@@ -61,6 +62,22 @@ namespace Slipe.Client.Vehicles
                 MtaClient.SetVehicleComponentVisible(vehicle.MTAElement, component, value);
             }
         }
+
+        /// <summary>
+        /// Get and set the scale of this component
+        /// </summary>
+        public Vector3 Scale
+        {
+            get
+            {
+                Tuple<float, float, float> r = MtaClient.GetVehicleComponentScale(vehicle.MTAElement, component, relativeBase);
+                return new Vector3(r.Item1, r.Item2, r.Item3);
+            }
+            set
+            {
+                MtaClient.SetVehicleComponentScale(vehicle.MTAElement, component, value.X, value.Y, value.Z, relativeBase);
+            }
+        }
         #endregion
 
         #region Constructors
@@ -71,7 +88,7 @@ namespace Slipe.Client.Vehicles
         {
             this.vehicle = vehicle;
             this.component = type.ToString().ToLower();
-            Base = relativeBase;
+            this.relativeBase = relativeBase.ToString().ToLower();
         }
 
         /// <summary>
@@ -81,7 +98,7 @@ namespace Slipe.Client.Vehicles
         {
             this.vehicle = vehicle;
             this.component = type;
-            Base = relativeBase;
+            this.relativeBase = relativeBase.ToString().ToLower();
         }
 
         /// <summary>
@@ -106,6 +123,11 @@ namespace Slipe.Client.Vehicles
         public bool ResetRotation()
         {
             return MtaClient.ResetVehicleComponentRotation(vehicle.MTAElement, component);
+        }
+
+        public bool ResetScale()
+        {
+            return MtaClient.ResetVehicleComponentScale(vehicle.MTAElement, component);
         }
 
         #endregion

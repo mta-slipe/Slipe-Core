@@ -174,6 +174,7 @@ function initEvents()
 		events.onClientElementColShapeLeave = {"OnCollisionShapeLeave", _elementEvents}
 		events.onClientElementStreamIn = {"OnStreamIn", _elementEvents}
 		events.onClientElementStreamOut = {"OnStreamOut", _elementEvents}
+		events.onClientWorldSound = {"OnWorldSound", _clientElementEvents}
 
 		-- Marker
 		events.onClientMarkerHit = {"OnHit", _markerEvents}
@@ -264,6 +265,7 @@ function initEvents()
 		events.onClientVehicleNitroStateChange = {"OnNitroStateChange", _vehicleEvents}
 		events.onClientPedHitByWaterCannon = {"OnPedHit", _vehicleEvents}
 		events.onClientPlayerHitByWaterCannon = {"OnPedHit", _vehicleEvents}
+		events.onClientVehicleWeaponHit = {"OnWeaponHit", _vehicleEvents}
 
 		-- Custom Weapon
 		events.onClientWeaponFire = {"OnFire", _weaponEvents}

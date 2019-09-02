@@ -321,7 +321,10 @@ namespace Slipe.Client.Peds
         public delegate void OnExplosionHandler(Ped source, OnExplosionEventArgs eventArgs);
         public event OnExplosionHandler OnExplosion;
 
-        #pragma warning restore 67
+        public delegate void OnWorldSoundHandler(Ped source, OnWorldSoundEventArgs eventArgs);
+        public event OnWorldSoundHandler OnWorldSound;
+
+#pragma warning restore 67
 
         #endregion
 

@@ -1,15 +1,20 @@
 ﻿using Slipe.Client.GameWorld;
-using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
+using Slipe.Shared.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
-namespace Slipe.Client.Weapons.Events
+namespace Slipe.Client.Vehicles.Events
 {
-    public class OnFireEventArgs
+    public class OnWeaponHitEventArgs
     {
+        /// <summary>
+        /// The type of the weapon
+        /// </summary>
+        public Weapon WeaponType { get; }
+
         /// <summary>
         /// The element that was hit, if any
         /// </summary>
@@ -21,33 +26,23 @@ namespace Slipe.Client.Weapons.Events
         public Vector3 Position { get; }
 
         /// <summary>
-        /// The normal of the impact
-        /// </summary>
-        public Vector3 Normal { get; }
-
-        /// <summary>
         /// The material that was hit
         /// </summary>
         public SurfaceMaterialType Material { get; }
 
         /// <summary>
-        /// The lighting at the impact
+        /// The model of the element that was hit
         /// </summary>
-        public float Lighting { get; }
+        public int Model { get; }
 
-        /// <summary>
-        /// The piece of the entity hit
-        /// </summary>
-        public int Piece { get; }
-
-        internal OnFireEventArgs(MtaElement hitElement, dynamic x, dynamic y, dynamic z, dynamic nx, dynamic ny, dynamic nz, dynamic hitMaterial, dynamic lighting, dynamic partHit)
+        internal OnWeaponHitEventArgs(dynamic weaponType, dynamic hitElement, dynamic x, dynamic y, dynamic z, dynamic hitModel, dynamic materialId)
         {
+            WeaponType = (Weapon)weaponType;
             HitElement = ElementManager.Instance.GetElement<PhysicalElement>(hitElement);
             Position = new Vector3((float)x, (float)y, (float)z);
-            Normal = new Vector3((float)nx, (float)ny, (float)nz);
-            Material = (SurfaceMaterialType)hitMaterial;
-            Lighting = (float)lighting;
-            Piece = (int)partHit;
+            Material = (SurfaceMaterialType)materialId;
+            Model = (int)hitModel;
+
         }
     }
 }

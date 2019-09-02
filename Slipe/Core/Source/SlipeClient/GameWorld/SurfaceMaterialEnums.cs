@@ -2,8 +2,30 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.SightLines
+namespace Slipe.Client.GameWorld
 {
+    public enum SurfaceMaterialProperty
+    {
+        Glass,
+        Stairs,
+        StepWaterSplash,
+        SoftLanding,
+        SteepSlope,
+        FootEffect,
+        SeeThrough,
+        ShootThrough,
+        Audio,
+        BulletEffect,
+        TyreGrip,
+        WetGrip,
+        CanClimb,
+        AdhesionGroup,
+        Roughness,
+        FractionEffect,
+        WheelEffect,
+        SkidmarkType
+    }
+
     /// <summary>
     /// Represents the type of a surface in GTA:SA
     /// </summary>

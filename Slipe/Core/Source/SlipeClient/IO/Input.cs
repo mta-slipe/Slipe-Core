@@ -146,6 +146,15 @@ namespace Slipe.Client.IO
             return MtaClient.ToggleAllControls(value, gtaControls, mtaControls);
         }
 
+        /// <summary>
+        /// This method gets the player's keyboard layout settings, which they are currently (keyboard layout can be changed at any moment) using at the time of invocation.
+        /// </summary>
+        /// <returns>A string "ltr", "rtl", "ttb-rtl-ltr" or "ttb-ltr"</returns>
+        public static string KeyboardReadingLayout()
+        {
+            return MtaClient.GetKeyboardReadingLayout();
+        }
+
         #region Events
 
 #pragma warning disable 67

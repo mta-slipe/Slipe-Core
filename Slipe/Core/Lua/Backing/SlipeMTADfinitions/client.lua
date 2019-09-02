@@ -503,6 +503,14 @@ System.define("Slipe.MtaDefinitions.MtaClient", {
 	SetAmbientSoundEnabled = setAmbientSoundEnabled,
 	GetNearClipDistance = function(...) local results = {getNearClipDistance(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	GetScreenFromWorldPosition = function(...) return System.tuple(getScreenFromWorldPosition(...)) end,
+	GetVehicleComponentScale = function(...) return System.tuple(getVehicleComponentScale(...)) end,
+	SetVehicleComponentScale = setVehicleComponentScale,
+	ResetVehicleComponentScale = resetVehicleComponentScale,
+	GuiGridListIsSortingEnabled = guiGridListIsSortingEnabled,
+	GuiGridListGetSelectionMode = guiGridListGetSelectionMode,
+	GetVehicleModelDummyPosition = function(...) local results = {getVehicleModelDummyPosition(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
+	SetVehicleModelDummyPosition = setVehicleModelDummyPosition,
+	GetKeyboardReadingLayout = function() return getKeyboardLayout().readingLayout end,
 	ProcessLineOfSight = function(...) 
  local args = {processLineOfSight(...)}
  local primaryArguments = {}
