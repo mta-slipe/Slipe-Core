@@ -196,9 +196,9 @@ limitations under the License.
           <arg type="System.Type" />
           <arg type="System.Boolean" />
         </method>
-        <method name="CreateInstance" ArgCount="3"/>
-        <method name="CreateInstance" ArgCount="5"/>
-        <method name="CreateInstance" ArgCount="6"/>
+        <method name="CreateInstance" ArgCount="3" Baned="true" />
+        <method name="CreateInstance" ArgCount="5" Baned="true" />
+        <method name="CreateInstance" ArgCount="6" Baned="true" />
       </class>
       <class name="Tuple">
         <method name="Create" ArgCount="1" Template="System.tuple({0})" />
@@ -441,6 +441,12 @@ limitations under the License.
           <arg type="System.String" />
           <arg type="System.Object" />
           <arg type="System.String" />
+        </method>
+      </class>
+      <class name="ObjectDisposedException">
+        <method name=".ctor" Template="System.ObjectDisposedException(nil, {0}, {1})">
+          <arg type="System.String" />
+          <arg type="System.Exception" />
         </method>
       </class>
     </namespace>
@@ -709,7 +715,15 @@ limitations under the License.
         <property name="ApartmentState" IsField="true" />
         <property name="IsThreadPoolThread" IsField="true" />
       </class>
-    </namespace>  
+      <class name="CancellationToken" Readonly="true">
+        <method name="op_Equality" Template="{0} == {1}" />
+        <method name="op_Inequality" Template="{0} ~= {1}" />
+      </class>
+      <class name="CancellationTokenRegistration" Readonly="true">
+        <method name="op_Equality" Template="{0} == {1}" />
+        <method name="op_Inequality" Template="{0} ~= {1}" />
+      </class>
+    </namespace>
     <namespace name="System.Threading.Tasks" Name="System">
       <class name="Task^1" IgnoreGeneric="true" />
       <class name="TaskCompletionSource^1" IgnoreGeneric="true" />
