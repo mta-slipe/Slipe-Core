@@ -32,7 +32,7 @@ local NullReferenceException = System.NullReferenceException
 local ArgumentNullException = System.ArgumentNullException
 local ArgumentOutOfRangeException = System.ArgumentOutOfRangeException
 local InvalidOperationException = System.InvalidOperationException
-local EqualityComparer_1 = System.EqualityComparer_1
+local EqualityComparer_1 = System.EqualityComparer
 local Comparer_1 = System.Comparer_1
 local Empty = System.Array.Empty
 
@@ -739,7 +739,7 @@ end
 function Enumerable.SequenceEqual(first, second, comparer)
   if first == nil then throw(ArgumentNullException("first")) end
   if second == nil then throw(ArgumentNullException("second")) end
-  local equals = getComparer(first, comparer).Equals
+  local equals = getComparer(first, comparer).EqualsOf
   local e1 = first:GetEnumerator()
   local e2 = second:GetEnumerator()
   while e1:MoveNext() do
@@ -1119,7 +1119,7 @@ end
 
 function Enumerable.Contains(source, value, comparer)
   if source == nil then throw(ArgumentNullException("source")) end
-  local equals = getComparer(source, comparer).Equals
+  local equals = getComparer(source, comparer).EqualsOf
   for _, v in each(source) do
     if equals(v, value) then
       return true
