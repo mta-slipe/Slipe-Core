@@ -153,6 +153,7 @@ namespace Slipe.Client.Dx
             WordBreak = wordBreak;
             ColorCoded = colorCoded;
             useCustomFont = false;
+            BottomRight = bottomRight;
         }
 
         /// <summary>
