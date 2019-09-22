@@ -4,13 +4,12 @@ using Slipe.Shared.Elements;
 using Slipe.Shared.IO;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Slipe.Server.IO
 {
     public static class Input
     {
-        private static Dictionary<Action<Player, string, KeyState>, Action<MtaElement, string, string>> closures 
+        private static Dictionary<Action<Player, string, KeyState>, Action<MtaElement, string, string>> closures
             = new Dictionary<Action<Player, string, KeyState>, Action<MtaElement, string, string>>();
 
         /// <summary>
@@ -51,7 +50,7 @@ namespace Slipe.Server.IO
         {
             Action<MtaElement, string, string> rawClosure = (MtaElement element, string command, string state) =>
             {
-                handler((Player)ElementManager.Instance.GetElement(element), command, Enum.Parse<KeyState>(state));
+                handler((Player)ElementManager.Instance.GetElement(element), command, (KeyState)Enum.Parse(typeof(KeyState), state, true));
             };
             closures[handler] = rawClosure;
             return MtaServer.BindKey(player.MTAElement, key, state.ToString().ToLower(), rawClosure);
