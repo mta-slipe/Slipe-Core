@@ -52,6 +52,11 @@ namespace ServerSide
                 RpcManager.Instance.TriggerRPC("announce-response", new EmptyRpc());
             });
 
+            RpcManager.Instance.RegisterRPC<ElementRpc<Player>>("announce", (player, rpc) =>
+            {
+                ChatBox.WriteLine($"Number two: {rpc.Element.Name}");
+            });
+
         }
 
         private void OnPlayerLogin(Player source, OnLoginEventArgs eventArgs)

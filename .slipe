@@ -1,10 +1,16 @@
 {
   "compileTargets": {
     "client": [
-      "ClientSide"
+      {
+        "path": "ClientSide",
+        "BlockEntryPoint": null
+      }
     ],
     "server": [
-      "ServerSide"
+      {
+        "path": "ServerSide",
+        "BlockEntryPoint": null
+      }
     ]
   },
   "dlls": [],
@@ -23,12 +29,24 @@
       "path": "Slipe/Core",
       "compileTargets": {
         "client": [
-          "Source/SlipeShared",
-          "Source/SlipeClient"
+          {
+            "path": "Source/SlipeShared",
+            "BlockEntryPoint": null
+          },
+          {
+            "path": "Source/SlipeClient",
+            "BlockEntryPoint": null
+          }
         ],
         "server": [
-          "Source/SlipeShared",
-          "Source/SlipeServer"
+          {
+            "path": "Source/SlipeShared",
+            "BlockEntryPoint": null
+          },
+          {
+            "path": "Source/SlipeServer",
+            "BlockEntryPoint": null
+          }
         ]
       },
       "dlls": [
@@ -122,7 +140,7 @@
       "name": "ServerSide.MyVehicle.DoTheThing",
       "niceName": "DoTheThing",
       "type": "server",
-      "isHttp": true
+      "isHttp": false
     }
   ],
   "clientMinVersion": "1.5.5-9.14060",
