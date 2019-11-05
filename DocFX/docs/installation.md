@@ -6,10 +6,8 @@ Slipe is an open source framework that enables anyone to write scripts for [MTA:
 
 ## Prerequisites
 
-* [.NET Core 3.0 (preview)](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 * [Visual studio 2019](https://visualstudio.microsoft.com/downloads/)
-
-Since .NET Core 3.0 is still in preview you need to manually activate it in Visual Studio. You need to go to `Tools > Options > Environment > Preview features` and check the "Use previews of the .NET Core SDK" checkbox.
+    * Make sure you're running the latest version, and you enable the ".NET Core cross-platform development" workload when installing.
 
 ## Installing Slipe
 
