@@ -1,4 +1,4 @@
-﻿using Slipe.Client.SightLines;
+﻿using Slipe.Client.GameWorld;
 using Slipe.MtaDefinitions;
 using Slipe.Shared.Elements;
 using System;

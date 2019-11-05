@@ -8,6 +8,7 @@ using Slipe.Shared.Elements;
 using Slipe.Shared.Peds;
 using Slipe.Shared.Helpers;
 using System.Diagnostics;
+using Slipe.Client.GameWorld;
 
 namespace Slipe.Client.SightLines
 {

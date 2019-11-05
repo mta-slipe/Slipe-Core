@@ -159,7 +159,7 @@ namespace Slipe.MtaDefinitions {
 		public static bool RemovePedClothes (MtaElement thePed, int clothesType, string clothesTexture, string clothesModel){ throw new NotImplementedException(); }
 		public static bool SetPedAnimationSpeed (MtaElement thePed, string anim, float speed){ throw new NotImplementedException(); }
 		public static bool SetPedDoingGangDriveby (MtaElement thePed, bool state){ throw new NotImplementedException(); }
-		public static bool SetPedAnimation (MtaElement thePed, string block, string anim, int time, bool freezeLastFrame, int blendTime){ throw new NotImplementedException(); }
+		public static bool SetPedAnimation (MtaElement thePed, string block, string anim, int time, bool freezeLastFrame, int blendTime, bool retainPedState){ throw new NotImplementedException(); }
 		public static bool SetPedHeadless (MtaElement thePed, bool headState){ throw new NotImplementedException(); }
 		public static bool SetPedOnFire (MtaElement thePed, bool isOnFire){ throw new NotImplementedException(); }
 		public static bool WarpPedIntoVehicle (MtaElement thePed, MtaElement theVehicle, int seat){ throw new NotImplementedException(); }
@@ -469,6 +469,6 @@ namespace Slipe.MtaDefinitions {
 		public static MtaElement CreateWater (float x1, float y1, float z1, float x2, float y2, float z2, float x3, float y3, float z3, bool bShallow){ throw new NotImplementedException(); }
 		public static bool SetWaterLevel (float level, bool includeWaterFeatures, bool includeWaterElements){ throw new NotImplementedException(); }
 		public static bool SetTrafficLightState (dynamic state){ throw new NotImplementedException(); }
-		public static bool SetPedAnimation (MtaElement thePed, string block, string anim, int time, bool loop, bool updatePosition, bool interruptable, bool freezeLastFrame, int blendTime){ throw new NotImplementedException(); }
+		public static bool SetPedAnimation (MtaElement thePed, string block, string anim, int time, bool loop, bool updatePosition, bool interruptable, bool freezeLastFrame, int blendTime, bool retainPedState) { throw new NotImplementedException(); }
 	}
 }

@@ -6,6 +6,7 @@ namespace Slipe.Shared.Rpc
 {
     public interface IRpc
     {
+        ClientRpcFailedAction OnClientRpcFailed { get; set; }
         void Parse(dynamic value);
     }
 }

@@ -34,6 +34,8 @@ namespace Slipe.Server.Peds
     {
         #region Properties
 
+        internal bool IsReadyForIncomingRequests { get; set; }
+
         /// <summary>
         /// Get the camera of the player
         /// </summary>

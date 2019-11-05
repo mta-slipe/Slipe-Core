@@ -140,7 +140,13 @@ System.define("Slipe.MtaDefinitions.MtaClient", {
 	DxDrawLine3D = dxDrawLine3D,
 	DxDrawMaterialSectionLine3D = dxDrawMaterialSectionLine3D,
 	DxGetPixelColor = function(...) return System.tuple(dxGetPixelColor(...)) end,
-	DxDrawPrimitive = dxDrawPrimitive,
+	DxDrawPrimitive = function(pType, postGui, amount, vectors, colors) 
+		local vertices = {}
+		for i=1, amount do
+			vertices[i] = {vectors:get(i).X, vectors:get(i).Y, colors:get(i)}
+		end
+		dxDrawPrimitive(pType, postGui, unpack(vertices))	
+	end,
 	DxDrawRectangle = dxDrawRectangle,
 	DxGetBlendMode = function(...) local results = {dxGetBlendMode(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	DxDrawMaterialLine3D = dxDrawMaterialLine3D,
@@ -149,7 +155,13 @@ System.define("Slipe.MtaDefinitions.MtaClient", {
 	DxGetMaterialSize = function(...) return System.tuple(dxGetMaterialSize(...)) end,
 	DxGetPixelsFormat = function(...) local results = {dxGetPixelsFormat(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	DxSetAspectRatioAdjustmentEnabled = dxSetAspectRatioAdjustmentEnabled,
-	DxDrawMaterialPrimitive = dxDrawMaterialPrimitive,
+	DxDrawMaterialPrimitive = function(pType, materialOrFilePath, postGui, amount, vectors, colors, topLefts) 
+		local vertices = {}
+		for i=1, amount do
+			vertices[i] = {vectors:get(i).X, vectors:get(i).Y, colors:get(i), topLefts:get(i).X, topLefts:get(i).Y}
+		end
+		dxDrawMaterialPrimitive(pType, materialOrFilePath, postGui, unpack(vertices))	
+	end,
 	DxSetShaderTransform = dxSetShaderTransform,
 	DxGetStatus = function(...) local results = {dxGetStatus(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	DxGetPixelsSize = function(...) return System.tuple(dxGetPixelsSize(...)) end,
@@ -503,6 +515,14 @@ System.define("Slipe.MtaDefinitions.MtaClient", {
 	SetAmbientSoundEnabled = setAmbientSoundEnabled,
 	GetNearClipDistance = function(...) local results = {getNearClipDistance(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	GetScreenFromWorldPosition = function(...) return System.tuple(getScreenFromWorldPosition(...)) end,
+	GetVehicleComponentScale = function(...) return System.tuple(getVehicleComponentScale(...)) end,
+	SetVehicleComponentScale = setVehicleComponentScale,
+	ResetVehicleComponentScale = resetVehicleComponentScale,
+	GuiGridListIsSortingEnabled = guiGridListIsSortingEnabled,
+	GuiGridListGetSelectionMode = guiGridListGetSelectionMode,
+	GetVehicleModelDummyPosition = function(...) local results = {getVehicleModelDummyPosition(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
+	SetVehicleModelDummyPosition = setVehicleModelDummyPosition,
+	GetKeyboardReadingLayout = function() return getKeyboardLayout().readingLayout end,
 	ProcessLineOfSight = function(...) 
  local args = {processLineOfSight(...)}
  local primaryArguments = {}

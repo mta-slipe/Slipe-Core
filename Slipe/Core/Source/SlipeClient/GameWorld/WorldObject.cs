@@ -61,6 +61,97 @@ namespace Slipe.Client.GameWorld
             }
         }
 
+        /// <summary>
+        /// Get and set the turning mass of the object
+        /// </summary>
+        public float TurnMass
+        {
+            get
+            {
+                return MtaClient.GetObjectProperty(element, "turn_mass");
+            }
+            set
+            {
+                MtaClient.SetObjectProperty(element, "turn_mass", value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the accuracy of the object
+        /// </summary>
+        public float Accuracy
+        {
+            get
+            {
+                return MtaClient.GetObjectProperty(element, "accuracy");
+            }
+            set
+            {
+                MtaClient.SetObjectProperty(element, "accuracy", value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the air resistance of the object
+        /// </summary>
+        public float AirResistance
+        {
+            get
+            {
+                return MtaClient.GetObjectProperty(element, "air_resistance");
+            }
+            set
+            {
+                MtaClient.SetObjectProperty(element, "air_resistance", value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the elasticity of the object
+        /// </summary>
+        public float Elasticity
+        {
+            get
+            {
+                return MtaClient.GetObjectProperty(element, "elasticity");
+            }
+            set
+            {
+                MtaClient.SetObjectProperty(element, "elasticity", value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the buoyancy of the object
+        /// </summary>
+        public float Buoyancy
+        {
+            get
+            {
+                return MtaClient.GetObjectProperty(element, "buoyancy");
+            }
+            set
+            {
+                MtaClient.SetObjectProperty(element, "buoyancy", value);
+            }
+        }
+
+        /// <summary>
+        /// Get and set the center of mass of the object
+        /// </summary>
+        public Vector3 CenterOfMass
+        {
+            get
+            {
+                Tuple<float, float, float> r = MtaClient.GetObjectProperty(element, "center_of_mass");
+                return new Vector3(r.Item1, r.Item2, r.Item3);
+            }
+            set
+            {
+                MtaClient.SetObjectProperty(element, "center_of_mass", new Tuple<float, float, float>(value.X, value.Y, value.Z));
+            }
+        }
+
         #endregion
 
         #region Constructors

@@ -8,6 +8,24 @@ namespace Slipe.Shared.Rpc
 {
     public abstract class BaseRpc: IRpc
     {
+        private ClientRpcFailedAction rpcFailedAction;
+        public ClientRpcFailedAction OnClientRpcFailed
+        {
+            get
+            {
+                return rpcFailedAction;
+            }
+            set
+            {
+                rpcFailedAction = value;
+            }
+        }
+
+        public BaseRpc()
+        {
+            rpcFailedAction = ClientRpcFailedAction.Ignore;
+        }
+
         protected T[] GetArray<T>(dynamic table)
         {
             return Slipe.MtaDefinitions.MtaShared.GetArrayFromTable<T>(table, "");

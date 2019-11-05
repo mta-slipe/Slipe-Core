@@ -96,6 +96,10 @@ namespace Slipe.Client.Gui
         /// </summary>
         public SelectionMode SelectionMode
         {
+            get
+            {
+                return (SelectionMode) MtaClient.GuiGridListGetSelectionMode(element);
+            }
             set
             {
                 MtaClient.GuiGridListSetSelectionMode(element, (int)value);
@@ -137,6 +141,10 @@ namespace Slipe.Client.Gui
         /// </summary>
         public bool SortingEnabled
         {
+            get
+            {
+                return MtaClient.GuiGridListIsSortingEnabled(element);
+            }
             set
             {
                 MtaClient.GuiGridListSetSortingEnabled(element, value);

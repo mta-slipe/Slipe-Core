@@ -28,19 +28,22 @@ namespace Slipe.Server.Rpc
             }
         }
 
-        private readonly Dictionary<string, List<RegisteredRpc>> registeredRPCs;
+        private Dictionary<string, RegisteredRpc> RegisteredRpcs;
+        private Dictionary<Player, List<QueuedRpc>> QueuedRpcs;
 
         private RpcManager()
         {
-            registeredRPCs = new Dictionary<string, List<RegisteredRpc>>();
+            MtaShared.AddEvent("slipe-client-ready-rpc", true);
+            RegisteredRpcs = new Dictionary<string, RegisteredRpc>();
+            QueuedRpcs = new Dictionary<Player, List<QueuedRpc>>();
 
             RootElement.OnMiscelaniousEvent += (eventName, source, p1, p2, p3, p4, p5, p6, p7, p8) =>
             {
-                if (registeredRPCs.ContainsKey(eventName))
+                if (RegisteredRpcs.ContainsKey(eventName))
                 {
                     Player player = ElementManager.Instance.GetElement<Player>(source);
 
-                    var registeredRpcs = registeredRPCs[eventName];
+                    var registeredRpc = RegisteredRpcs[eventName];
 
                     foreach (var registeredRpc in registeredRpcs)
                     {
@@ -51,6 +54,23 @@ namespace Slipe.Server.Rpc
                         method.Invoke(player, rpc);
                     }
                 }
+                else if(eventName == "slipe-client-ready-rpc")
+                {
+                    Player player = ElementManager.Instance.GetElement<Player>(source);
+                    List<QueuedRpc> queuedRpcList;
+                    QueuedRpcs.TryGetValue(player, out queuedRpcList);
+                    if(queuedRpcList != null)
+                    {
+                        foreach(QueuedRpc queuedRpc in queuedRpcList)
+                        {
+                            if (queuedRpc.bandwidth != -1)
+                                TriggerLatentRPC(player, queuedRpc.key, queuedRpc.bandwidth, queuedRpc.rpc, queuedRpc.persists);
+                            else
+                                TriggerRPC(player, queuedRpc.key, queuedRpc.rpc);
+                        }
+                        QueuedRpcs.Remove(player);
+                    }
+                }
             };
         }
 
@@ -59,6 +79,7 @@ namespace Slipe.Server.Rpc
         /// </summary>
         public void RegisterRPC<CallbackType>(string key, Action<Player, CallbackType> callback)
         {
+<<<<<<< HEAD
             if (!registeredRPCs.ContainsKey(key))
             {
                 registeredRPCs[key] = new List<RegisteredRpc>();
@@ -66,9 +87,20 @@ namespace Slipe.Server.Rpc
                 Element.Root.ListenForEvent(key);
             }
             registeredRPCs[key].Add(new RegisteredRpc((player, parameters) =>
+=======
+            RegisteredRpcs[key] = new RegisteredRpc((player, parameters) =>
+>>>>>>> c3f5809629617f4f89bc145ac7d75546da119869
             {
                 callback.Invoke(player, (CallbackType)parameters);
             }, typeof(CallbackType)));
+        }
+
+        private void QueueRpc(Player target, string key, IRpc argument, int bandwidth = -1, bool persists = false)
+        {
+            if (!QueuedRpcs.ContainsKey(target))
+                QueuedRpcs[target] = new List<QueuedRpc>();
+
+            QueuedRpcs[target].Add(new QueuedRpc(key, argument, bandwidth, persists));
         }
 
         /// <summary>
@@ -76,7 +108,10 @@ namespace Slipe.Server.Rpc
         /// </summary>
         public void TriggerRPC(Player target, string key, IRpc argument)
         {
-            MtaServer.TriggerClientEvent(target.MTAElement, key, Element.Root.MTAElement, argument);
+            if(!target.IsReadyForIncomingRequests && argument.OnClientRpcFailed == ClientRpcFailedAction.Queue)
+                QueueRpc(target, key, argument);
+            else
+                MtaServer.TriggerClientEvent(target.MTAElement, key, Element.Root.MTAElement, argument);
         }
 
         /// <summary>
@@ -88,11 +123,33 @@ namespace Slipe.Server.Rpc
         }
 
         /// <summary>
+        /// Trigger an RPC for a specified list of players
+        /// </summary>
+        /// <param name="targets"></param>
+        /// <param name="key"></param>
+        /// <param name="argument"></param>
+        public void TriggerRPC(List<Player> targets, string key, IRpc argument)
+        {
+            List<MtaElement> playerElements = new List<MtaElement>();
+            foreach(Player player in targets)
+            {
+                if (player.IsReadyForIncomingRequests)
+                    playerElements.Add(player.MTAElement);
+                else if (argument.OnClientRpcFailed == ClientRpcFailedAction.Queue)
+                    QueueRpc(player, key, argument);
+            }
+            MtaServer.TriggerClientEvent(playerElements, key, Element.Root.MTAElement, argument);
+        }
+
+        /// <summary>
         /// Trigger an RPC with limited bandwidth
         /// </summary>
         public void TriggerLatentRPC(Player target, string key, int bandwidth, IRpc argument, bool persists = false)
         {
-            MtaServer.TriggerLatentClientEvent(target.MTAElement, key, bandwidth, persists, Element.Root.MTAElement, argument);
+            if (!target.IsReadyForIncomingRequests && argument.OnClientRpcFailed == ClientRpcFailedAction.Queue)
+                QueueRpc(target, key, argument, bandwidth, persists);
+            else
+                MtaServer.TriggerLatentClientEvent(target.MTAElement, key, bandwidth, persists, Element.Root.MTAElement, argument);
         }
 
         /// <summary>
@@ -101,6 +158,25 @@ namespace Slipe.Server.Rpc
         public void TriggerLatentRPC(string key, int bandwidth, IRpc argument, bool persists = false)
         {
             MtaServer.TriggerLatentClientEvent(Element.Root.MTAElement, key, bandwidth, persists, Element.Root.MTAElement, argument);
+        }
+
+        /// <summary>
+        /// Trigger an RPC with limited bandwidth for a specified list of players
+        /// </summary>
+        /// <param name="targets"></param>
+        /// <param name="key"></param>
+        /// <param name="argument"></param>
+        public void TriggerRPC(List<Player> targets, string key, int bandwidth, IRpc argument, bool persists = false)
+        {
+            List<MtaElement> playerElements = new List<MtaElement>();
+            foreach (Player player in targets)
+            {
+                if (player.IsReadyForIncomingRequests)
+                    playerElements.Add(player.MTAElement);
+                else if (argument.OnClientRpcFailed == ClientRpcFailedAction.Queue)
+                    QueueRpc(player, key, argument, bandwidth, persists);
+            }
+            MtaServer.TriggerLatentClientEvent(playerElements, key, bandwidth, persists, Element.Root.MTAElement, argument);
         }
     }
 
@@ -113,6 +189,22 @@ namespace Slipe.Server.Rpc
         {
             this.callback = callback;
             this.type = type;
+        }
+    }
+
+    struct QueuedRpc
+    {
+        public string key;
+        public IRpc rpc;
+        public bool persists;
+        public int bandwidth;
+
+        public QueuedRpc(string key, IRpc rpc, int bandwidth, bool persists)
+        {
+            this.key = key;
+            this.rpc = rpc;
+            this.bandwidth = bandwidth;
+            this.persists = persists;
         }
     }
 }

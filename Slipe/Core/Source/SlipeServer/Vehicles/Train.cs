@@ -84,7 +84,7 @@ namespace Slipe.Server.Vehicles
             }
             set
             {
-                MtaShared.SetTrainDerailable(element, value);
+                MtaShared.SetTrainDerailed(element, true);
             }
         }
 

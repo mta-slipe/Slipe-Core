@@ -421,4 +421,16 @@ namespace Slipe.Shared.Vehicles
         RearLeft,
         RearRight
     }
+
+    /// <summary>
+    /// Represents different types of vehicle weapons
+    /// </summary>
+    public enum Weapon
+    {
+        Invalid,
+        WaterCannon,
+        TankGun,
+        Rocket,
+        HeatSeekingRocket
+    }
 }

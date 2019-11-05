@@ -46,4 +46,3 @@ function Debug.WriteLineIf(expression, ...)
 end
 
 System.define("System.Diagnostics.Debug", Debug)
-System.Debug = Debug

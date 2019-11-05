@@ -262,21 +262,161 @@ namespace Slipe.Client.Vehicles
         #endregion
 
         #region Properties
+
         /// <summary>
-        /// Get and set the position of the exhaust fumes the vehicle model emits.
+        /// Get the Primary front lights as a dummy
         /// </summary>
-        public Vector3 ExhaustPosition
+        public VehicleModelDummy PrimaryFrontLights
         {
             get
             {
-                Tuple<float, float, float> r = MtaClient.GetVehicleModelExhaustFumesPosition(Id);
-                return new Vector3(r.Item1, r.Item2, r.Item3);
-            }
-            set
-            {
-                MtaClient.SetVehicleModelExhaustFumesPosition(Id, value.X, value.Y, value.Z);
+                return new VehicleModelDummy(this, "light_front_main");
             }
         }
+
+        /// <summary>
+        /// Get the Primary rear lights as a dummy
+        /// </summary>
+        public VehicleModelDummy PrimaryRearLights
+        {
+            get
+            {
+                return new VehicleModelDummy(this, "light_rear_main");
+            }
+        }
+
+        /// <summary>
+        /// Get the Secondary front lights as a dummy
+        /// </summary>
+        public VehicleModelDummy SecondaryFrontLights
+        {
+            get
+            {
+                return new VehicleModelDummy(this, "light_front_second");
+            }
+        }
+
+        /// <summary>
+        /// Get the Secondary rear lights as a dummy
+        /// </summary>
+        public VehicleModelDummy SecondaryRearLights
+        {
+            get
+            {
+                return new VehicleModelDummy(this, "light_rear_second");
+            }
+        }
+
+        /// <summary>
+        /// Get the front seat as a dummy
+        /// </summary>
+        public VehicleModelDummy FrontSeat
+        {
+            get
+            {
+                return new VehicleModelDummy(this, "seat_front");
+            }
+        }
+
+        /// <summary>
+        /// Get the rear seat as a dummy
+        /// </summary>
+        public VehicleModelDummy RearSeat
+        {
+            get
+            {
+                return new VehicleModelDummy(this, "seat_rear");
+            }
+        }
+
+        /// <summary>
+        /// Get the exhaust as a dummy
+        /// </summary>
+        public VehicleModelDummy Exhaust
+        {
+            get
+            {
+                return new VehicleModelDummy(this, "exhaust");
+            }
+        }
+
+        /// <summary>
+        /// Get the engine as a dummy
+        /// </summary>
+        public VehicleModelDummy Engine
+        {
+            get
+            {
+                return new VehicleModelDummy(this, "engine");
+            }
+        }
+
+        /// <summary>
+        /// Get the gas cap as a dummy
+        /// </summary>
+        public VehicleModelDummy GasCap
+        {
+            get
+            {
+                return new VehicleModelDummy(this, "gas_cap");
+            }
+        }
+
+        /// <summary>
+        /// Get the trailer hook as a dummy
+        /// </summary>
+        public VehicleModelDummy TrailerHook
+        {
+            get
+            {
+                return new VehicleModelDummy(this, "trailer_attach");
+            }
+        }
+
+        /// <summary>
+        /// Get the hand rest as a dummy
+        /// </summary>
+        public VehicleModelDummy HandRest
+        {
+            get
+            {
+                return new VehicleModelDummy(this, "hand_rest");
+            }
+        }
+
+        /// <summary>
+        /// Get the secondary exhaust as a dummy
+        /// </summary>
+        public VehicleModelDummy SecondaryExhaust
+        {
+            get
+            {
+                return new VehicleModelDummy(this, "exhaust_second");
+            }
+        }
+
+        /// <summary>
+        /// Get the air trail as a dummy
+        /// </summary>
+        public VehicleModelDummy AirTrail
+        {
+            get
+            {
+                return new VehicleModelDummy(this, "wing_airtrail");
+            }
+        }
+
+        /// <summary>
+        /// Get the vehicle gun as a dummy
+        /// </summary>
+        public VehicleModelDummy VehicleGun
+        {
+            get
+            {
+                return new VehicleModelDummy(this, "veh_gun");
+            }
+        }
+
         #endregion
 
         protected VehicleModel(int id) : base(id) { }

@@ -265,6 +265,37 @@ namespace Slipe.Client.GameWorld
             return MtaClient.GetWaterLevel(position.X, position.Y, position.Z, checkWaves);
         }
 
+        /// <summary>
+        /// This method retrieves the value of a surface property.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="property"></param>
+        /// <returns>A dynamic range of values, for a full list checkout: https://wiki.multitheftauto.com/wiki/EngineGetSurfaceProperties </returns>
+        public dynamic GetSurfaceProperty(SurfaceMaterialType type, SurfaceMaterialProperty property)
+        {
+            return MtaClient.EngineGetSurfaceProperties((int)type, property.ToString().ToLower());
+        }
+
+        /// <summary>
+        /// This method sets the value of a surface property
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="property"></param>
+        /// <param name="value">A range of possible values. Checkout: https://wiki.multitheftauto.com/wiki/EngineSetSurfaceProperties</param>
+        public void SetSurfaceProperty(SurfaceMaterialType type, SurfaceMaterialProperty property, dynamic value)
+        {
+            MtaClient.EngineSetSurfaceProperties((int)type, property.ToString().ToLower(), value);
+        }
+
+        /// <summary>
+        /// Resets the surface properties of a material to the default values
+        /// </summary>
+        /// <param name="type"></param>
+        public void ResetSurfaceProperty(SurfaceMaterialType type)
+        {
+            MtaClient.EngineResetSurfaceProperties((int)type);
+        }
+
         #endregion
 
     }

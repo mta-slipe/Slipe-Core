@@ -277,7 +277,13 @@ namespace Slipe.Client.Vehicles
         public delegate void OnExplosionHandler(BaseVehicle source, OnExplosionEventArgs eventArgs);
         public event OnExplosionHandler OnExplosion;
 
-        #pragma warning restore 67
+        public delegate void OnWorldSoundHandler(BaseVehicle source, OnWorldSoundEventArgs eventArgs);
+        public event OnWorldSoundHandler OnWorldSound;
+
+        public delegate void OnWeaponHitHandler(BaseVehicle source, OnWeaponHitEventArgs eventArgs);
+        public event OnWeaponHitHandler OnWeaponHit;
+
+#pragma warning restore 67
 
         #endregion
 
