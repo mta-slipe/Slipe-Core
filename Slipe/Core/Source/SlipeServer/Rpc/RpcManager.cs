@@ -28,25 +28,28 @@ namespace Slipe.Server.Rpc
             }
         }
 
-        private Dictionary<string, RegisteredRpc> RegisteredRPCs;
+        private readonly Dictionary<string, List<RegisteredRpc>> registeredRPCs;
 
         private RpcManager()
         {
-            RegisteredRPCs = new Dictionary<string, RegisteredRpc>();
+            registeredRPCs = new Dictionary<string, List<RegisteredRpc>>();
 
             RootElement.OnMiscelaniousEvent += (eventName, source, p1, p2, p3, p4, p5, p6, p7, p8) =>
             {
-                if (RegisteredRPCs.ContainsKey(eventName))
+                if (registeredRPCs.ContainsKey(eventName))
                 {
                     Player player = ElementManager.Instance.GetElement<Player>(source);
 
-                    var registeredRpc = RegisteredRPCs[eventName];
+                    var registeredRpcs = registeredRPCs[eventName];
 
-                    var method = registeredRpc.callback;
+                    foreach (var registeredRpc in registeredRpcs)
+                    {
+                        var method = registeredRpc.callback;
 
-                    IRpc rpc = (IRpc)Activator.CreateInstance(registeredRpc.type);
-                    rpc.Parse(p1);
-                    method.Invoke(player, rpc);
+                        IRpc rpc = (IRpc)Activator.CreateInstance(registeredRpc.type);
+                        rpc.Parse(p1);
+                        method.Invoke(player, rpc);
+                    }
                 }
             };
         }
@@ -56,12 +59,16 @@ namespace Slipe.Server.Rpc
         /// </summary>
         public void RegisterRPC<CallbackType>(string key, Action<Player, CallbackType> callback)
         {
-            RegisteredRPCs[key] = new RegisteredRpc((player, parameters) =>
+            if (!registeredRPCs.ContainsKey(key))
+            {
+                registeredRPCs[key] = new List<RegisteredRpc>();
+                MtaShared.AddEvent(key, true);
+                Element.Root.ListenForEvent(key);
+            }
+            registeredRPCs[key].Add(new RegisteredRpc((player, parameters) =>
             {
                 callback.Invoke(player, (CallbackType)parameters);
-            }, typeof(CallbackType));
-            MtaShared.AddEvent(key, true);
-            Element.Root.ListenForEvent(key);
+            }, typeof(CallbackType)));
         }
 
         /// <summary>

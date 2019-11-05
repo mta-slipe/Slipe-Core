@@ -140,7 +140,7 @@
       "name": "ServerSide.MyVehicle.DoTheThing",
       "niceName": "DoTheThing",
       "type": "server",
-      "isHttp": true
+      "isHttp": false
     }
   ],
   "clientMinVersion": "1.5.5-9.14060",

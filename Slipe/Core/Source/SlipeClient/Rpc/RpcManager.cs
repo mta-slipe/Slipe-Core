@@ -25,24 +25,26 @@ namespace Slipe.Client.Rpc
             }
         }
 
-        private Dictionary<string, RegisteredRpc> RegisteredRPCs;
+        private readonly Dictionary<string, List<RegisteredRpc>> registeredRPCs;
 
         private RpcManager()
         {
-            RegisteredRPCs = new Dictionary<string, RegisteredRpc>();
+            registeredRPCs = new Dictionary<string, List<RegisteredRpc>>();
 
             RootElement.OnMiscelaniousEvent += (eventName, source, p1, p2, p3, p4, p5, p6, p7, p8) =>
             {
-                if (RegisteredRPCs.ContainsKey(eventName))
+                if (registeredRPCs.ContainsKey(eventName))
                 {
+                    var registeredRpcs = registeredRPCs[eventName];
 
-                    var registeredRpc = RegisteredRPCs[eventName];
+                    foreach(var registeredRpc in registeredRpcs)
+                    {
+                        var method = registeredRpc.callback;
 
-                    var method = registeredRpc.callback;
-
-                    IRpc rpc = (IRpc)Activator.CreateInstance(registeredRpc.type);
-                    rpc.Parse(p1);
-                    method.Invoke(rpc);
+                        IRpc rpc = (IRpc)Activator.CreateInstance(registeredRpc.type);
+                        rpc.Parse(p1);
+                        method.Invoke(rpc);
+                    }
                 }
             };
         }
@@ -52,12 +54,16 @@ namespace Slipe.Client.Rpc
         /// </summary>
         public void RegisterRPC<CallbackType>(string key, Action<CallbackType> callback) where CallbackType: IRpc
         {
-            RegisteredRPCs[key] = new RegisteredRpc((parameters) =>
+            if (!registeredRPCs.ContainsKey(key))
+            {
+                registeredRPCs[key] = new List<RegisteredRpc>();
+                MtaShared.AddEvent(key, true);
+                Element.Root.ListenForEvent(key);
+            }
+            registeredRPCs[key].Add(new RegisteredRpc((parameters) =>
             {
                 callback((CallbackType)parameters);
-            }, typeof(CallbackType));
-            MtaShared.AddEvent(key, true);
-            Element.Root.ListenForEvent(key);
+            }, typeof(CallbackType)));
         }
 
         /// <summary>

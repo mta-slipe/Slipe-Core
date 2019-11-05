@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Slipe.MtaDefinitions;
 using Slipe.Shared.Utilities;
 
@@ -12,7 +10,6 @@ namespace Slipe.Client.Gui
     public class GridItem
     {
         private GridList glist;
-        private bool textSet;
 
         #region Properties
 
@@ -54,7 +51,6 @@ namespace Slipe.Client.Gui
             set
             {
                 MtaClient.GuiGridListSetItemText(glist.MTAElement, Row.ID, Column.ID, value, false, false);
-                textSet = true;
             }
         }
 
@@ -65,14 +61,18 @@ namespace Slipe.Client.Gui
         {
             get
             {
-                if (!textSet)
+                if (string.IsNullOrEmpty(Content))
+                {
                     Content = "";
+                }
                 return MtaClient.GuiGridListGetItemData(glist.MTAElement, Row.ID, Column.ID);
             }
             set
             {
-                if (!textSet)
+                if(string.IsNullOrEmpty(Content))
+                {
                     Content = "";
+                }
                 MtaClient.GuiGridListSetItemData(glist.MTAElement, Row.ID, Column.ID, value);
             }
         }
