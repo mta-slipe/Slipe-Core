@@ -33,9 +33,11 @@ namespace Slipe.Server.Rpc
         private readonly Dictionary<string, List<RegisteredRpc>> registeredAsyncRPCs;
         private Dictionary<Player, List<QueuedRpc>> QueuedRpcs;
 
+        private int asyncRpcIndex;
+
         private RpcManager()
         {
-            MtaShared.AddEvent("slipe-client-ready-rpc", true);
+            this.asyncRpcIndex = 0;
             QueuedRpcs = new Dictionary<Player, List<QueuedRpc>>();
             registeredRPCs = new Dictionary<string, List<RegisteredRpc>>();
             registeredAsyncRPCs = new Dictionary<string, List<RegisteredRpc>>();
@@ -203,7 +205,8 @@ namespace Slipe.Server.Rpc
             Task<TResponseRpc> task = null;
             Action<Player, AsyncRpc> callback = null;
 
-            string identifier = $"{MtaShared.GetTickCount()}{(new Random()).Next(0, 1000000)}";
+            this.asyncRpcIndex++;
+            string identifier = $"{this.asyncRpcIndex}";
 
             /*
             [[
