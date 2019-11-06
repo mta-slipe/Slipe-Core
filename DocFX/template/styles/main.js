@@ -29,8 +29,15 @@ $(document).ready(() => {
 		}
 	});
 
-	// This is necesary since the sidebar toc is  asycnrhonously loaded after document ready
+	// This is necesary since the sidebar toc is  asynchronously loaded after document ready
 	setTimeout(() => {
 		$('.sidetoc .nav a[title*=".On"]').hide();
 	}, 1000);
+
+	for (let element of document.querySelectorAll(".js-platform-link")) {
+		let newHref = element.getAttribute("data-href-" + navigator.platform.toLowerCase())
+		if (newHref) {
+			element.setAttribute("href", newHref);
+		}
+	}
 });

@@ -7,6 +7,7 @@ using Slipe.Server.Peds;
 using Slipe.Server.Elements;
 using Slipe.Shared.Rpc;
 using Slipe.Server.IO;
+using System.Threading.Tasks;
 
 namespace Slipe.Server.Rpc
 {
@@ -28,22 +29,24 @@ namespace Slipe.Server.Rpc
             }
         }
 
-        private Dictionary<string, RegisteredRpc> RegisteredRpcs;
+        private readonly Dictionary<string, List<RegisteredRpc>> registeredRPCs;
+        private readonly Dictionary<string, List<RegisteredRpc>> registeredAsyncRPCs;
         private Dictionary<Player, List<QueuedRpc>> QueuedRpcs;
 
         private RpcManager()
         {
             MtaShared.AddEvent("slipe-client-ready-rpc", true);
-            RegisteredRpcs = new Dictionary<string, RegisteredRpc>();
             QueuedRpcs = new Dictionary<Player, List<QueuedRpc>>();
+            registeredRPCs = new Dictionary<string, List<RegisteredRpc>>();
+            registeredAsyncRPCs = new Dictionary<string, List<RegisteredRpc>>();
 
             RootElement.OnMiscelaniousEvent += (eventName, source, p1, p2, p3, p4, p5, p6, p7, p8) =>
             {
-                if (RegisteredRpcs.ContainsKey(eventName))
+                if (registeredRPCs.ContainsKey(eventName))
                 {
                     Player player = ElementManager.Instance.GetElement<Player>(source);
 
-                    var registeredRpc = RegisteredRpcs[eventName];
+                    var registeredRpcs = registeredRPCs[eventName];
 
                     foreach (var registeredRpc in registeredRpcs)
                     {
@@ -54,24 +57,40 @@ namespace Slipe.Server.Rpc
                         method.Invoke(player, rpc);
                     }
                 }
-                else if(eventName == "slipe-client-ready-rpc")
+                else if (registeredAsyncRPCs.ContainsKey(eventName))
                 {
                     Player player = ElementManager.Instance.GetElement<Player>(source);
-                    List<QueuedRpc> queuedRpcList;
-                    QueuedRpcs.TryGetValue(player, out queuedRpcList);
-                    if(queuedRpcList != null)
+
+                    var registeredRpcs = registeredAsyncRPCs[eventName];
+
+                    foreach (var registeredRpc in registeredRpcs)
                     {
-                        foreach(QueuedRpc queuedRpc in queuedRpcList)
-                        {
-                            if (queuedRpc.bandwidth != -1)
-                                TriggerLatentRPC(player, queuedRpc.key, queuedRpc.bandwidth, queuedRpc.rpc, queuedRpc.persists);
-                            else
-                                TriggerRPC(player, queuedRpc.key, queuedRpc.rpc);
-                        }
-                        QueuedRpcs.Remove(player);
+                        var method = registeredRpc.callback;
+
+                        AsyncRpc asyncRpc = Activator.CreateInstance<AsyncRpc>();
+                        asyncRpc.Parse(p1);
+
+                        method.Invoke(player, asyncRpc);
                     }
                 }
             };
+
+            RegisterRPC<EmptyRpc>("slipe-client-ready-rpc", (player, rpc) =>
+            {
+                List<QueuedRpc> queuedRpcList;
+                QueuedRpcs.TryGetValue(player, out queuedRpcList);
+                if (queuedRpcList != null)
+                {
+                    foreach (QueuedRpc queuedRpc in queuedRpcList)
+                    {
+                        if (queuedRpc.bandwidth != -1)
+                            TriggerLatentRPC(player, queuedRpc.key, queuedRpc.bandwidth, queuedRpc.rpc, queuedRpc.persists);
+                        else
+                            TriggerRPC(player, queuedRpc.key, queuedRpc.rpc);
+                    }
+                    QueuedRpcs.Remove(player);
+                }
+            });
         }
 
         /// <summary>
@@ -79,7 +98,6 @@ namespace Slipe.Server.Rpc
         /// </summary>
         public void RegisterRPC<CallbackType>(string key, Action<Player, CallbackType> callback)
         {
-<<<<<<< HEAD
             if (!registeredRPCs.ContainsKey(key))
             {
                 registeredRPCs[key] = new List<RegisteredRpc>();
@@ -87,9 +105,6 @@ namespace Slipe.Server.Rpc
                 Element.Root.ListenForEvent(key);
             }
             registeredRPCs[key].Add(new RegisteredRpc((player, parameters) =>
-=======
-            RegisteredRpcs[key] = new RegisteredRpc((player, parameters) =>
->>>>>>> c3f5809629617f4f89bc145ac7d75546da119869
             {
                 callback.Invoke(player, (CallbackType)parameters);
             }, typeof(CallbackType)));
@@ -178,6 +193,77 @@ namespace Slipe.Server.Rpc
             }
             MtaServer.TriggerLatentClientEvent(playerElements, key, bandwidth, persists, Element.Root.MTAElement, argument);
         }
+
+        public Task<TResponseRpc> TriggerAsyncRpc<TResponseRpc>(Player target, string key, IRpc argument)
+             where TResponseRpc: IRpc
+        {
+            int tickCount = MtaShared.GetTickCount();
+            string responseKey = $"response-{key}";
+
+            Task<TResponseRpc> task = null;
+            Action<Player, AsyncRpc> callback = null;
+
+            string identifier = $"{MtaShared.GetTickCount()}{(new Random()).Next(0, 1000000)}";
+
+            /*
+            [[
+                local asyncCallback
+                callback = function(player, parameters)
+                    if (parameters.Identifier == identifier) then
+                        local asyncRpc = System.cast(SlipeSharedRpc.AsyncRpc, parameters)
+                        local arguments = System.cast(TResponseRpc, System.Activator.CreateInstance(System.typeof(TResponseRpc)))
+                        arguments:Parse(asyncRpc.Rpc)
+
+                        asyncCallback(player, arguments)
+                    end
+                end
+
+                task, asyncCallback = System.Task.Callback(function(player, responseRpc)
+                    this.registeredRPCs:get(responseKey):Remove(callback)
+                    return responseRpc;
+                end)
+            ]]
+            */
+
+            this.RegisterRPC(responseKey, callback);
+
+            if (target.IsReadyForIncomingRequests)
+            {
+                MtaServer.TriggerClientEvent(target.MTAElement, key, Element.Root.MTAElement, new AsyncRpc(identifier, argument));
+            } else
+            {
+                QueueRpc(target, key, new AsyncRpc(identifier, argument));
+            }
+
+            return task;
+        }
+
+
+        /// <summary>
+        /// Register an async RPC
+        /// </summary>
+        public void RegisterAsyncRPC<ResponseRpc, RequestRpc>(string key, Func<Player, RequestRpc, ResponseRpc> callback)
+            where ResponseRpc : IRpc where RequestRpc : IRpc
+        {
+            if (!registeredAsyncRPCs.ContainsKey(key))
+            {
+                registeredAsyncRPCs[key] = new List<RegisteredRpc>();
+                MtaShared.AddEvent(key, true);
+                Element.Root.ListenForEvent(key);
+            }
+
+            string responseKey = $"response-{key}";
+            registeredAsyncRPCs[key].Add(new RegisteredRpc((player, parameters) =>
+            {
+                var asyncRpc = (AsyncRpc)parameters;
+                RequestRpc arguments = (RequestRpc)Activator.CreateInstance(typeof(RequestRpc));
+                arguments.Parse(asyncRpc.Rpc);
+
+                var result = callback.Invoke(player, arguments);
+                this.TriggerRPC(responseKey, new AsyncRpc(asyncRpc.Identifier, result));
+            }, typeof(AsyncRpc)));
+        }
+
     }
 
     struct RegisteredRpc

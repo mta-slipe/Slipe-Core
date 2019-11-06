@@ -17,7 +17,7 @@ documentType: index
       <h3 class="title sub-title">Sharpen your MTA development experience</h3>
       <div class="buttons-unit">
           <a href="/docs/installation.html" class="button b-1"><i class="glyphicon glyphicon-chevron-right"></i>Getting Started</a>
-          <a href="/downloads/SlipeInstaller.exe" target="_blank" class="button b-2"><i class="glyphicon glyphicon-download-alt"></i>Download Latest</a>
+          <a href="/downloads/cli-linux.zip" data-href-win32="/downloads/SlipeWpfInstaller.exe" target="_blank" class="button b-2 js-platform-link"><i class="glyphicon glyphicon-download-alt"></i>Download Latest</a>
       </div>
     </div>
   </div>

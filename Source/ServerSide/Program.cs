@@ -17,6 +17,8 @@ using Slipe.Server.Resources;
 using Slipe.Server.Rpc;
 using Slipe.Shared.Rpc;
 using Slipe.Server.IO;
+using Slipe.Server.Game;
+using Slipe.Server.GameWorld;
 
 namespace ServerSide
 {
@@ -44,6 +46,11 @@ namespace ServerSide
                 player.Spawn(new Vector3(0, 0, 5), PedModel.ballas1);
 
                 player.OnLogin += OnPlayerLogin;
+
+                Task.Run(async () => {
+                    var result = await RpcManager.Instance.TriggerAsyncRpc<SingleCastRpc<string>>(player, "Async.RequestLocalization", new EmptyRpc());
+                    Console.WriteLine($"Localization for {player.Name}: {result.Value}");
+                });
             }
 
             RpcManager.Instance.RegisterRPC<ElementRpc<Player>>("announce", (player, rpc) =>
@@ -55,6 +62,11 @@ namespace ServerSide
             RpcManager.Instance.RegisterRPC<ElementRpc<Player>>("announce", (player, rpc) =>
             {
                 ChatBox.WriteLine($"Number two: {rpc.Element.Name}");
+            });
+
+            RpcManager.Instance.RegisterAsyncRPC<SingleCastRpc<string>, EmptyRpc>("Async.RequestMapName", (player, request) =>
+            {
+                return new SingleCastRpc<string>(GameServer.Announcement.MapName);
             });
 
         }

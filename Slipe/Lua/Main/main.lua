@@ -74,7 +74,11 @@ function runEntryPoint()
 
 	-- Let the server know we are ready to accept incoming rpcs
 	if(triggerServerEvent ~= nil) then
+		Slipe.Client.Rpc.RpcManager.getInstance()
 		triggerServerEvent("slipe-client-ready-rpc", root)
+	else
+		Slipe.Server.Rpc.RpcManager.getInstance()
+		addEvent("slipe-client-ready-rpc", true)	
 	end
 
 end
