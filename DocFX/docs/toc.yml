@@ -26,5 +26,7 @@
     href: snippets.md
   - name: Exports
     href: exporting.md
+  - name: Modules
+    href: modules.md
 - name: Roadmap
   href: roadmap.md
