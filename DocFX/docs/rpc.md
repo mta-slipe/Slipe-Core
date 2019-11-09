@@ -72,7 +72,7 @@ RpcManager.Instance.TriggerRPC(nano, "testRPC", new ElementRpc(someElement));
 RpcManager.Instance.TriggerRPC(Element.Root, "testRPC", new ElementRpc(someElement));
 ```
 
-**Async RPCs**
+## Async RPCs
 Async RPCs allow you to return a value over an RPC, and use `async / await` in order to use it. You will no longer need to bounce RPCs back and forth to get a value from the server to the client or vice versa.
 
 Example:
