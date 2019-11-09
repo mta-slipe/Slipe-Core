@@ -252,7 +252,6 @@ namespace Slipe.Client.Gui
         public bool Clear()
         {
             rows.Clear();
-            columns.Clear();
             return MtaClient.GuiGridListClear(element);
         }
 
