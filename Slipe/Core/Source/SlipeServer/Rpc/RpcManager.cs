@@ -233,7 +233,8 @@ namespace Slipe.Server.Rpc
             if (target.IsReadyForIncomingRequests)
             {
                 MtaServer.TriggerClientEvent(target.MTAElement, key, Element.Root.MTAElement, new AsyncRpc(identifier, argument));
-            } else
+            }
+            else if (argument.OnClientRpcFailed == ClientRpcFailedAction.Queue)
             {
                 QueueRpc(target, key, new AsyncRpc(identifier, argument));
             }
