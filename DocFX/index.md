@@ -27,18 +27,18 @@ documentType: index
         <div class="col-12 col-lg-6">
           <h2>Windows downloads</h2>
           <ul>
-            <li><a target="_blank" href="/SlipeStandaloneInstaller.exe">CLI Installer standalone (~ 90MB)</a></li>
-            <li><a target="_blank" href="/SlipeWpfInstaller.exe">CLI Installer (&lt;1 MB)</a></li>
-            <li><a target="_blank" href="/cli.zip">CLI Binaries</a></li>
-            <li><a target="_blank" href="/core.zip">Slipe Core</a></li>
+            <li><a target="_blank" href="/downloads/SlipeStandaloneInstaller.exe">CLI Installer standalone (~ 90MB)</a></li>
+            <li><a target="_blank" href="/downloads/SlipeWpfInstaller.exe">CLI Installer (&lt;1 MB)</a></li>
+            <li><a target="_blank" href="/downloads/cli.zip">CLI Binaries</a></li>
+            <li><a target="_blank" href="/downloads/core.zip">Slipe Core</a></li>
           </ul>
           <p>The standalone installer does not require dotnet core to be installed</p>
         </div>
         <div class="col-12 col-lg-6">
           <h2>Linux downloads</h2>
           <ul>
-            <li><a target="_blank" href="/cli-linux.zip">CLI Installer / Binaries</a></li>
-            <li><a target="_blank" href="/core.zip">Slipe Core</a></li>
+            <li><a target="_blank" href="/downloads/cli-linux.zip">CLI Installer / Binaries</a></li>
+            <li><a target="_blank" href="/downloads/core.zip">Slipe Core</a></li>
           </ul>
         </div>
       </div>
