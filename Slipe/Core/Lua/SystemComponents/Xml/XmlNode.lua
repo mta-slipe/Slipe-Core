@@ -130,7 +130,7 @@ XmlNode.CloneNode = function (this, deep)
 end
 
 XmlNode.GetEnumerator = function (this)
-	return System.Collection.arrayEnumerator(this.children)
+	return System.Array.GetEnumerator(this.children, System.Xml.XmlNode)
 end
 
 XmlNode.GetNamespaceOfPrefix = function (this, prefix)

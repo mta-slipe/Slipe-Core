@@ -206,7 +206,7 @@ namespace Slipe.Shared.Elements
         }
 
         /// <summary>
-        /// Desetroys the element
+        /// Destroys the element
         /// </summary>
         public virtual bool Destroy()
         {
