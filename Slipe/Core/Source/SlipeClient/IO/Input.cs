@@ -56,7 +56,7 @@ namespace Slipe.Client.IO
         {
             Action<string, string> rawClosure = (string command, string state) =>
             {
-                handler(command, Enum.Parse<KeyState>(state));
+                handler(command, (KeyState)Enum.Parse(typeof(KeyState), state, true));
             };
             closures[handler] = rawClosure;
             return MtaClient.BindKey(key, state.ToString().ToLower(), rawClosure);
