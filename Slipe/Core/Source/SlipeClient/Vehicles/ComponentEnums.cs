@@ -30,7 +30,7 @@ namespace Slipe.Client.Vehicles
         wheel_rf_dummy,
         door_lb_dummy,
         door_rb_dummy,
-        door_lf_dumm,
+        door_lf_dummy,
         door_rf_dummy,
         windscreen_dummy,
         plate_rear,
