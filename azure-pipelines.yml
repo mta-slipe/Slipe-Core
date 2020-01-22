@@ -43,6 +43,15 @@ steps:
   inputs:
     script: 'sudo bash $(Build.SourcesDirectory)/install.sh'
 
+- task: CmdLine@2
+  displayName: 'Debug'
+  inputs:
+    script: 'pwd'
+
+- task: CmdLine@2
+  displayName: 'Debug'
+  inputs:
+    script: 'slipe'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
