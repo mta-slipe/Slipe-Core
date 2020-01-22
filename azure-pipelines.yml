@@ -36,14 +36,12 @@ steps:
 - task: CmdLine@2
   displayName: 'Sanitize install.sh'
   inputs:
-    script: 'sed -i 's/\r//g' $(Build.SourcesDirectory)/install.sh'
-
+    script: 'sed -i ''s/\r//g'' $(Build.SourcesDirectory)/install.sh'
 
 - task: CmdLine@2
   displayName: 'Install CLI'
   inputs:
     script: 'bash $(Build.SourcesDirectory)/install.sh'
-
 
 
 - task: DotNetCoreCLI@2
