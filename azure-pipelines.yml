@@ -61,6 +61,11 @@ steps:
 - task: CmdLine@2
   displayName: 'Debug'
   inputs:
+    script: '/bin/slipe'
+
+- task: CmdLine@2
+  displayName: 'Debug'
+  inputs:
     script: 'slipe'
 
 - task: DotNetCoreCLI@2
