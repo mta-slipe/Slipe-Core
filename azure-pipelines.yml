@@ -40,7 +40,7 @@ steps:
 - task: CmdLine@2
   displayName: 'Remove postbuilds'
   inputs:
-    script: 'sed -i ''/PostBuild/g'' Slipe/Core/Source/SlipeClient/SlipeClient.csproj'
+    script: 'sed -i ''/Name="PostBuild"/g'' Slipe/Core/Source/SlipeClient/SlipeClient.csproj'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build client'
@@ -51,7 +51,7 @@ steps:
 - task: CmdLine@2
   displayName: 'Remove postbuilds'
   inputs:
-    script: 'sed -i ''/PostBuild/g'' Slipe/Core/Source/SlipeClient/SlipeServer.csproj'
+    script: 'sed -i ''/Name="PostBuild"/g'' Slipe/Core/Source/SlipeClient/SlipeServer.csproj'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build server'
