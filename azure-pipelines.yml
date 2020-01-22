@@ -61,6 +61,11 @@ steps:
 - task: CmdLine@2
   displayName: 'Debug'
   inputs:
+    script: 'printf ''#!/bin/bash\ndotnet /var/Slipe/Slipe.dll "$@"'' > "/bin/slipe"'
+
+- task: CmdLine@2
+  displayName: 'Debug'
+  inputs:
     script: 'cat /bin/slipe'
 
 - task: CmdLine@2
