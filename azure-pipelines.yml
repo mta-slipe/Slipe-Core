@@ -51,6 +51,16 @@ steps:
 - task: CmdLine@2
   displayName: 'Debug'
   inputs:
+    script: 'cat $(Build.SourcesDirectory)/install.sh'
+
+- task: CmdLine@2
+  displayName: 'Debug'
+  inputs:
+    script: 'ls /bin'
+
+- task: CmdLine@2
+  displayName: 'Debug'
+  inputs:
     script: 'slipe'
 
 - task: DotNetCoreCLI@2
