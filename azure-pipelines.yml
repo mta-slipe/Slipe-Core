@@ -15,7 +15,7 @@ steps:
     project: '7672f4c6-33ca-42f2-bfd8-1f88e64fbda5'
     pipeline: '1'
     buildVersionToDownload: 'latestFromBranch'
-    branchName: 'refs/heads/master'
+    branchName: 'refs/heads/development'
     downloadType: 'single'
     artifactName: 'drop'
     downloadPath: '$(Agent.BuildDirectory)'
