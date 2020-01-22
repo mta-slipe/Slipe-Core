@@ -10,6 +10,7 @@ variables:
 steps:
 
 - task: DownloadBuildArtifacts@0
+  displayName: 'Download CLI'
   inputs:
     buildType: 'specific'
     project: '7672f4c6-33ca-42f2-bfd8-1f88e64fbda5'
@@ -21,14 +22,21 @@ steps:
     downloadPath: '$(Build.SourcesDirectory)'
 
 - task: ExtractFiles@1
+  displayName: 'Extract CLI'
   inputs:
     archiveFilePatterns: '$(Build.SourcesDirectory)*.zip'
     destinationFolder: '$(Build.SourcesDirectory)'
     cleanDestinationFolder: false
 
 - task: CmdLine@2
+  displayName: 'Debug'
   inputs:
-    script: 'sudo apt-get install tree && pwd && tree && chmod +x $(Build.SourcesDirectory)/install.sh && $(Build.SourcesDirectory)/install.sh'
+    script: 'sudo apt-get install tree && pwd && tree && bash $(Build.SourcesDirectory)/install.sh'
+
+- task: CmdLine@2
+  displayName: 'Install CLI'
+  inputs:
+    script: 'bash $(Build.SourcesDirectory)/install.sh'
 
 
 
