@@ -61,7 +61,7 @@ steps:
 - task: CmdLine@2
   displayName: 'Debug'
   inputs:
-    script: '/bin/slipe'
+    script: 'cat /bin/slipe'
 
 - task: CmdLine@2
   displayName: 'Debug'
