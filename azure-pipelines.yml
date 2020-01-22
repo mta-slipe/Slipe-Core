@@ -51,6 +51,11 @@ steps:
 - task: CmdLine@2
   displayName: 'Debug'
   inputs:
+    script: 'echo $PATH'
+
+- task: CmdLine@2
+  displayName: 'Debug'
+  inputs:
     script: 'cat $(Build.SourcesDirectory)/install.sh'
 
 - task: CmdLine@2
@@ -61,7 +66,7 @@ steps:
 - task: CmdLine@2
   displayName: 'Debug'
   inputs:
-    script: 'sudo printf ''#!/bin/bash\ndotnet /var/Slipe/Slipe.dll "$@"'' > "/bin/slipe"'
+    script: 'sudo printf ''#!/bin/bash\ndotnet $(Build.SourcesDirectory)/Slipe.dll "$@"'' > "/bin/slipe"'
 
 - task: CmdLine@2
   displayName: 'Debug'
