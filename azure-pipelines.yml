@@ -41,7 +41,7 @@ steps:
 - task: CmdLine@2
   displayName: 'Install CLI'
   inputs:
-    script: 'bash $(Build.SourcesDirectory)/install.sh'
+    script: 'sudo bash $(Build.SourcesDirectory)/install.sh'
 
 
 - task: DotNetCoreCLI@2
