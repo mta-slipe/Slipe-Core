@@ -31,7 +31,13 @@ steps:
 - task: CmdLine@2
   displayName: 'Debug'
   inputs:
-    script: 'sudo apt-get install tree && pwd && tree && bash $(Build.SourcesDirectory)/install.sh'
+    script: 'sudo apt-get install tree && pwd && tree'
+
+- task: CmdLine@2
+  displayName: 'Sanitize install.sh'
+  inputs:
+    script: 'sed -i 's/\r//g' $(Build.SourcesDirectory)/install.sh'
+
 
 - task: CmdLine@2
   displayName: 'Install CLI'
