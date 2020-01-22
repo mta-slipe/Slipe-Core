@@ -66,12 +66,12 @@ steps:
 - task: CmdLine@2
   displayName: 'Debug'
   inputs:
-    script: 'sudo printf ''#!/bin/bash\ndotnet $(Build.SourcesDirectory)/Slipe.dll "$@"'' > "/bin/slipe"'
+    script: 'sudo printf ''#!/bin/bash\ndotnet $(Build.SourcesDirectory)/Slipe.dll "$@"'' > "/usr/local/bin/slipe"'
 
 - task: CmdLine@2
   displayName: 'Debug'
   inputs:
-    script: 'cat /bin/slipe'
+    script: 'cat /usr/local/bin/slipe'
 
 - task: CmdLine@2
   displayName: 'Debug'
