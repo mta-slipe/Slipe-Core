@@ -37,8 +37,21 @@ steps:
     command: 'restore'
     feedsToUse: 'select'
 
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build MTA Definitions'
+  inputs:
+    command: 'build'
+    workingDirectory: 'Slipe/Core/Source/SlipeMTADefinitions'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build SQL'
+  inputs:
+    command: 'build'
+    workingDirectory: 'Slipe/Core/Source/SlipeSql'
+
 - task: CmdLine@2
   displayName: 'Remove postbuilds'
+  enabled: False
   inputs:
     script: 'sed -i ''/RunPostBuildEvent/g'' Slipe/Core/Source/SlipeClient/SlipeClient.csproj'
 
@@ -50,6 +63,7 @@ steps:
 
 - task: CmdLine@2
   displayName: 'Remove postbuilds'
+  enabled: False
   inputs:
     script: 'sed -i ''/RunPostBuildEvent/g'' Slipe/Core/Source/SlipeClient/SlipeServer.csproj'
 
