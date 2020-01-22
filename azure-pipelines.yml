@@ -28,7 +28,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'sudo apt-get install tree && pwd && tree'
+    script: 'sudo apt-get install tree && pwd && tree && chmod +x $(Build.SourcesDirectory)/install.sh && $(Build.SourcesDirectory)/install.sh'
 
 
 
