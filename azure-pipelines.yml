@@ -2,6 +2,9 @@ trigger:
 - master
 - development
 
+pool:
+  vmImage: 'windows-latest'
+
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
@@ -34,11 +37,21 @@ steps:
     command: 'restore'
     feedsToUse: 'select'
 
+- task: CmdLine@2
+  displayName: 'Remove postbuilds'
+  inputs:
+    script: 'sed -i ''s/PostBuild/g'' Slipe/Core/Source/SlipeClient/SlipeClient.csproj'
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build client'
   inputs:
     command: 'build'
     workingDirectory: 'Slipe/Core/Source/SlipeClient'
+
+- task: CmdLine@2
+  displayName: 'Remove postbuilds'
+  inputs:
+    script: 'sed -i ''s/PostBuild/g'' Slipe/Core/Source/SlipeClient/SlipeServer.csproj'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build server'
