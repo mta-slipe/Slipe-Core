@@ -28,7 +28,9 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'tree'
+    script: 'apt-get install tree && tree'
+
+
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
