@@ -18,17 +18,17 @@ steps:
     branchName: 'refs/heads/development'
     downloadType: 'single'
     artifactName: 'drop'
-    downloadPath: '$(Agent.BuildDirectory)'
+    downloadPath: '$(Build.SourcesDirectory)'
 
 - task: ExtractFiles@1
   inputs:
-    archiveFilePatterns: '$(Agent.BuildDirectory)*.zip'
-    destinationFolder: '$(Agent.BuildDirectory)'
+    archiveFilePatterns: '$(Build.SourcesDirectory)*.zip'
+    destinationFolder: '$(Build.SourcesDirectory)'
     cleanDestinationFolder: false
 
 - task: CmdLine@2
   inputs:
-    script: 'sudo apt-get install tree && tree'
+    script: 'sudo apt-get install tree && pwd && tree'
 
 
 
