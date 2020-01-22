@@ -8,6 +8,28 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+
+- task: DownloadBuildArtifacts@0
+  inputs:
+    buildType: 'specific'
+    project: '7672f4c6-33ca-42f2-bfd8-1f88e64fbda5'
+    pipeline: '1'
+    buildVersionToDownload: 'latestFromBranch'
+    branchName: 'refs/heads/master'
+    downloadType: 'single'
+    artifactName: 'drop'
+    downloadPath: '$(Agent.BuildDirectory)'
+
+- task: ExtractFiles@1
+  inputs:
+    archiveFilePatterns: '$(Agent.BuildDirectory)*.zip'
+    destinationFolder: '$(Agent.BuildDirectory)'
+    cleanDestinationFolder: false
+
+- task: CmdLine@2
+  inputs:
+    script: 'dir'
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
