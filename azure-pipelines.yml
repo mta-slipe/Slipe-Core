@@ -28,7 +28,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'apt-get install tree && tree'
+    script: 'sudo apt-get install tree && tree'
 
 
 
