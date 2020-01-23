@@ -43,29 +43,44 @@ steps:
     command: 'build'
     workingDirectory: 'Slipe/Core/Source/SlipeMTADefinitions'
 
+- task: CopyFiles@2
+  displayName: 'Copy MTA definitions DLL'
+  inputs:
+    SourceFolder: 'Slipe/Core/Source/SlipeMTADefinitions/bin/Release/netcoreapp3.0/'
+    Contents: 'SlipeMTADefinitions.dll'
+    TargetFolder: 'Slipe/Core/DLL'
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build SQL'
   inputs:
     command: 'build'
     workingDirectory: 'Slipe/Core/Source/SlipeSql'
 
-- task: CmdLine@2
-  displayName: 'Remove postbuilds'
-  enabled: False
+- task: CopyFiles@2
+  displayName: 'Copy SQL DLL'
   inputs:
-    script: 'sed -i ''/RunPostBuildEvent/g'' Slipe/Core/Source/SlipeClient/SlipeClient.csproj'
+    SourceFolder: 'Slipe/Core/Source/SlipeSql/bin/Release/netcoreapp3.0/'
+    Contents: 'Slipe.Sql.dll'
+    TargetFolder: 'Slipe/Core/DLL'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build shared'
+  inputs:
+    command: 'build'
+    workingDirectory: 'Slipe/Core/Source/SlipeShared'
+
+- task: CopyFiles@2
+  displayName: 'Copy shared DLL'
+  inputs:
+    SourceFolder: 'Slipe/Core/Source/SlipeShared/bin/Release/netcoreapp3.0/'
+    Contents: 'SlipeShared.dll'
+    TargetFolder: 'Slipe/Core/DLL'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build client'
   inputs:
     command: 'build'
     workingDirectory: 'Slipe/Core/Source/SlipeClient'
-
-- task: CmdLine@2
-  displayName: 'Remove postbuilds'
-  enabled: False
-  inputs:
-    script: 'sed -i ''/RunPostBuildEvent/g'' Slipe/Core/Source/SlipeClient/SlipeServer.csproj'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build server'
