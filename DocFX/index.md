@@ -2,6 +2,50 @@
 title: Welcome to DocFX website!
 documentType: index
 ---
+
+<div class="download-modal-container" style="
+  position: fixed; 
+  width: 100vw; 
+  height: 100vh; 
+  background-color: rgba(0, 0, 0, 0.4); 
+  z-index: 100;
+  display: none;">
+  <div class="download-modal-wrapper" style="
+    width: 100vw; 
+    height: 100vh; 
+    justify-content: center; 
+    align-items: center; 
+    display: flex; 
+  ">
+    <div class="download-modal" style="
+      background-color: rgba(255, 255, 255, 1);
+      padding: 30px;
+      display: inline-block
+      min-width: 70vw;
+      max-width: 95vw;">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <h2>Windows downloads</h2>
+          <ul>
+            <li><a target="_blank" href="/downloads/SlipeStandaloneInstaller.exe">CLI Installer standalone (~ 90MB)</a></li>
+            <li><a target="_blank" href="/downloads/SlipeWpfInstaller.exe">CLI Installer (&lt;1 MB)</a></li>
+            <li><a target="_blank" href="/downloads/cli.zip">CLI Binaries</a></li>
+            <li><a target="_blank" href="/downloads/core.zip">Slipe Core</a></li>
+          </ul>
+          <p>The standalone installer does not require dotnet core to be installed</p>
+        </div>
+        <div class="col-12 col-lg-6">
+          <h2>Linux downloads</h2>
+          <ul>
+            <li><a target="_blank" href="/downloads/cli-linux.zip">CLI Installer / Binaries</a></li>
+            <li><a target="_blank" href="/downloads/core.zip">Slipe Core</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="hero">
   <div class="wrap">
     <div class="col-lg-offset-2 col-lg-4 col-sm-offset-1 col-sm-4 col-xs-12">
@@ -17,7 +61,7 @@ documentType: index
       <h3 class="title sub-title">Sharpen your MTA development experience</h3>
       <div class="buttons-unit">
           <a href="/docs/installation.html" class="button b-1"><i class="glyphicon glyphicon-chevron-right"></i>Getting Started</a>
-          <a href="/downloads/cli-linux.zip" data-href-win32="/downloads/SlipeWpfInstaller.exe" target="_blank" class="button b-2 js-platform-link"><i class="glyphicon glyphicon-download-alt"></i>Download Latest</a>
+          <a href="#" class="button b-2 js-download-button"><i class="glyphicon glyphicon-download-alt"></i>Download Latest</a>
       </div>
     </div>
   </div>

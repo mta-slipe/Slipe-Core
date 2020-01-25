@@ -18,7 +18,7 @@ XmlNodeList.Item = function(this, index)
 end
 
 XmlNodeList.GetEnumerator = function(this)
-	return System.Collection.arrayEnumerator(this.values)
+	return System.Array.GetEnumerator(this.values, System.Xml.XmlNode)
 end
 
 System.define("System.Xml.XmlNodeList", XmlNodeList)

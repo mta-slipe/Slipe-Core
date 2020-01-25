@@ -71,3 +71,23 @@ RpcManager.Instance.TriggerRPC(nano, "testRPC", new ElementRpc(someElement));
 // send to everyone
 RpcManager.Instance.TriggerRPC(Element.Root, "testRPC", new ElementRpc(someElement));
 ```
+
+## Async RPCs
+Async RPCs allow you to return a value over an RPC, and use `async / await` in order to use it. You will no longer need to bounce RPCs back and forth to get a value from the server to the client or vice versa.
+
+Example:
+Server:
+```cs
+RpcManager.Instance.RegisterAsyncRPC<SingleCastRpc<string>, EmptyRpc>("Async.RequestMapName", (player, request) =>
+{
+    return new SingleCastRpc<string>(GameServer.Announcement.MapName);
+});
+```
+Client:
+```cs
+Task.Run(async () =>
+{
+    string name = (await RpcManager.Instance.TriggerAsyncRpc<SingleCastRpc<string>>("Async.RequestMapName", new EmptyRpc())).Value;
+    ChatBox.WriteLine($"Map name: {name}");
+});
+``

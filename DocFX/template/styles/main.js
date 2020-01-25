@@ -40,4 +40,14 @@ $(document).ready(() => {
 			element.setAttribute("href", newHref);
 		}
 	}
+
+	$(".js-download-button").on("click", (event, element) => {
+		$(".download-modal-container").toggle()
+	})
+	$(".download-modal-container").on("click", (event, element) => {
+		$(".download-modal-container").toggle()
+	})
+	$(".download-modal").on("click", (event, element) => {
+		event.stopPropagation();
+	})
 });

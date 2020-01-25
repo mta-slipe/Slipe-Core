@@ -32,7 +32,8 @@ namespace ClientSide
 
             Task.Run(async () =>
             {
-                string name = (await RpcManager.Instance.TriggerAsyncRpc<SingleCastRpc<string>>("Async.RequestMapName", new EmptyRpc())).Value;
+                var responseRpc = await RpcManager.Instance.TriggerAsyncRpc<SingleCastRpc<string>>("Async.RequestMapName", new EmptyRpc());
+                string name = responseRpc.Value;
                 ChatBox.WriteLine($"Map name: {name}");
             });
 
