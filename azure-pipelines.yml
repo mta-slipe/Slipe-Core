@@ -96,8 +96,7 @@ steps:
   displayName: 'dotnet build Docs'
   inputs:
     command: 'build'
-    workingDirectory: 'DocFX'
-    arguments: '--configuration $(buildConfiguration)'
+    arguments: 'DocFX/DocFX.csproj --configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
