@@ -1,0 +1,147 @@
+trigger:
+- master
+- development
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: DownloadBuildArtifacts@0
+  displayName: 'Download CLI'
+  inputs:
+    buildType: 'specific'
+    project: '7672f4c6-33ca-42f2-bfd8-1f88e64fbda5'
+    pipeline: '1'
+    buildVersionToDownload: 'latestFromBranch'
+    branchName: 'refs/heads/development'
+    downloadType: 'single'
+    artifactName: 'drop'
+    downloadPath: '$(Build.SourcesDirectory)'
+
+- task: ExtractFiles@1
+  displayName: 'Extract CLI'
+  inputs:
+    archiveFilePatterns: '$(Build.SourcesDirectory)*.zip'
+    destinationFolder: '$(Build.SourcesDirectory)'
+    cleanDestinationFolder: false
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: 'restore'
+    feedsToUse: 'select'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build MTA Definitions'
+  inputs:
+    command: 'build'
+    workingDirectory: 'Slipe/Core/Source/SlipeMTADefinitions'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: CopyFiles@2
+  displayName: 'Copy MTA definitions DLL'
+  inputs:
+    SourceFolder: 'Slipe/Core/Source/SlipeMTADefinitions/bin/$(buildConfiguration)/netcoreapp3.0/'
+    Contents: 'SlipeMTADefinitions.dll'
+    TargetFolder: 'Slipe/Core/DLL'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build SQL'
+  inputs:
+    command: 'build'
+    workingDirectory: 'Slipe/Core/Source/SlipeSql'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: CopyFiles@2
+  displayName: 'Copy SQL DLL'
+  inputs:
+    SourceFolder: 'Slipe/Core/Source/SlipeSql/bin/$(buildConfiguration)/netcoreapp3.0/'
+    Contents: 'Slipe.Sql.dll'
+    TargetFolder: 'Slipe/Core/DLL'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build shared'
+  inputs:
+    command: 'build'
+    workingDirectory: 'Slipe/Core/Source/SlipeShared'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: CopyFiles@2
+  displayName: 'Copy shared DLL'
+  inputs:
+    SourceFolder: 'Slipe/Core/Source/SlipeShared/bin/$(buildConfiguration)/netcoreapp3.0/'
+    Contents: 'SlipeShared.dll'
+    TargetFolder: 'Slipe/Core/DLL'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build client'
+  inputs:
+    command: 'build'
+    workingDirectory: 'Slipe/Core/Source/SlipeClient'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build server'
+  inputs:
+    command: 'build'
+    workingDirectory: 'Slipe/Core/Source/SlipeServer'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build Docs'
+  inputs:
+    command: 'build'
+    arguments: 'DocFX/DocFX.csproj --configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
+  inputs:
+    command: 'test'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '**/*.sln'
+    arguments: '--output $(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'publish artifacts'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
+- task: DeleteFiles@1
+  inputs:
+    SourceFolder: 
+    Contents: 'Slipe/Core/Source/*'
+
+- task: DeleteFiles@1
+  inputs:
+    SourceFolder: 
+    Contents: '**/Build/*'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'publish artifacts'
+  inputs:
+    PathtoPublish: 'Slipe'
+    ArtifactName: 'slipe'
+    publishLocation: 'Container'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'publish artifacts'
+  inputs:
+    PathtoPublish: 'DocFX/_site'
+    ArtifactName: 'site'
+    publishLocation: 'Container'
+
+- task: CmdLine@2
+  inputs:
+    script: 'tree'
