@@ -19,6 +19,7 @@ using Slipe.Shared.Rpc;
 using Slipe.Server.IO;
 using Slipe.Server.Game;
 using Slipe.Server.GameWorld;
+using System.Xml;
 
 namespace ServerSide
 {
@@ -31,7 +32,7 @@ namespace ServerSide
 
         public Program()
         {
-            new KillMessagesResource().Start();
+            //new KillMessagesResource().Start();
 
             // Spawn a player in Blueberry
             Player.OnJoin += (Player source, OnJoinEventArgs eventArgs) =>
@@ -69,11 +70,33 @@ namespace ServerSide
                 return new SingleCastRpc<string>(GameServer.Announcement.MapName);
             });
 
+            //XmlStuff();
         }
 
         private void OnPlayerLogin(Player source, OnLoginEventArgs eventArgs)
         {
             Console.WriteLine(string.Format("{0} has logged in with the account: {1} (previous was {2})", source.Name, eventArgs.NewAccount.Name, eventArgs.PreviousAccount.Name));
+        }
+
+        public void XmlStuff()
+        {
+            XmlDocument document = new XmlDocument();
+            document.Load("test.xml"); // Load test.xml from the root folder
+
+            // Writes 1 to 5
+            foreach (XmlElement item in document.FirstChild.FirstChild.ChildNodes)
+            {
+                Console.WriteLine(item.Value);
+            }
+
+            XmlElement newElement = document.CreateElement("new"); // Create a new element
+            newElement.Value = "test";
+
+            // Append the element to the first child (<test>)
+            document.FirstChild.AppendChild(newElement);
+
+            // Save the xml file
+            document.Save("test.xml");
         }
     }
 
@@ -121,7 +144,5 @@ namespace ServerSide
         public static void DoTheThing(string x) {
             Console.WriteLine("Export has been called with parameter {0}", x);
         }
-
     }
-
 }
