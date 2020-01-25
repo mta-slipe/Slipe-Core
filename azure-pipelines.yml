@@ -93,6 +93,13 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
+  displayName: 'dotnet build Docs'
+  inputs:
+    command: 'build'
+    workingDirectory: 'DocFX'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
   displayName: 'dotnet test'
   inputs:
     command: 'test'
