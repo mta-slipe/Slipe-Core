@@ -11,7 +11,6 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-
 - task: DownloadBuildArtifacts@0
   displayName: 'Download CLI'
   inputs:
@@ -112,7 +111,17 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-    
+
+- task: DeleteFiles@1
+  inputs:
+    SourceFolder: 
+    Contents: 'Slipe/Core/Source/*'
+
+- task: DeleteFiles@1
+  inputs:
+    SourceFolder: 
+    Contents: '**/Build/*'
+
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
   inputs:
