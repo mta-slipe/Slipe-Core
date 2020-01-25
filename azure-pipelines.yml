@@ -134,3 +134,7 @@ steps:
     PathtoPublish: 'Slipe'
     ArtifactName: 'slipe'
     publishLocation: 'Container'
+
+- task: CmdLine@2
+  inputs:
+    script: 'tree'
