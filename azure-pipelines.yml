@@ -1,6 +1,9 @@
 trigger:
 - master
 - development
+pr:
+- master
+- development
 
 pool:
   vmImage: 'windows-latest'
