@@ -135,6 +135,13 @@ steps:
     ArtifactName: 'slipe'
     publishLocation: 'Container'
 
+- task: PublishBuildArtifacts@1
+  displayName: 'publish artifacts'
+  inputs:
+    PathtoPublish: 'DocFX/_site'
+    ArtifactName: 'site'
+    publishLocation: 'Container'
+
 - task: CmdLine@2
   inputs:
     script: 'tree'
