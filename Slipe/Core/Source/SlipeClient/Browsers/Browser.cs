@@ -165,7 +165,6 @@ namespace Slipe.Client.Browsers
         /// </summary>
         public bool ExecuteJavascript(string javascript)
         {
-            Console.WriteLine("Executing " + javascript);
             return MtaClient.ExecuteBrowserJavascript(element, javascript);
         }
 
