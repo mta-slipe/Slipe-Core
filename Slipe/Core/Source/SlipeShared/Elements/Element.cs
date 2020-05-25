@@ -54,6 +54,17 @@ namespace Slipe.Shared.Elements
             }
         }
 
+        /// <summary>
+        /// Returns whether or not the element still exists.
+        /// </summary>
+        public bool Exists
+        {
+            get
+            {
+                return MtaShared.IsElement(this.MTAElement);
+            }
+        }
+
         #endregion
 
         #region Family Properties
