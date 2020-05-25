@@ -20,6 +20,10 @@ namespace Slipe.Client.Assets
         /// <param name="filteringEnabled"></param>
         public void Load(bool filteringEnabled = true)
         {
+            if (this.txd != null)
+            {
+                return;
+            }
             this.txd = MtaClient.EngineLoadTXD(this.filepath, filteringEnabled);
         }
 

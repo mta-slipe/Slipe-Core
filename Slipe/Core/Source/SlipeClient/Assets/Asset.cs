@@ -54,8 +54,11 @@ namespace Slipe.Client.Assets
         /// </summary>
         public void Download()
         {
-            this.state = DownloadState.Downloading;
-            MtaClient.DownloadFile(this.filepath);
+            if (this.state != DownloadState.Downloaded)
+            {
+                this.state = DownloadState.Downloading;
+                MtaClient.DownloadFile(this.filepath);
+            }
         }
 
         public delegate void OnDownloadCompleteHandler();
