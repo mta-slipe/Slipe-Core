@@ -36,6 +36,21 @@ namespace Slipe.Client.Dx
         }
 
         /// <summary>
+        /// Set a named parameter to compound values
+        /// </summary>
+        public bool SetValue(string parameterName, params dynamic[] values)
+        {
+            /*
+            [[
+                do
+	                return SlipeMtaDefinitions.MtaClient.DxSetShaderValue(this.materialElement, parameterName, unpack(values))
+                end
+            ]]
+            */
+            return MtaClient.DxSetShaderValue(materialElement, parameterName, values);
+        }
+
+        /// <summary>
         /// Using tessellation allows a shader to manipulate the shape of the rendered image at each sub-division boundary.
         /// </summary>
         public bool SetTessellation(Vector2 tesselation)
@@ -77,7 +92,6 @@ namespace Slipe.Client.Dx
         /// <returns></returns>
         public bool Apply(string textureName, Element targetElement, bool appendLayers = false)
         {
-
             return MtaClient.EngineApplyShaderToWorldTexture(this.materialElement, textureName, targetElement.MTAElement, appendLayers);
         }
 
@@ -89,8 +103,7 @@ namespace Slipe.Client.Dx
         /// <returns></returns>
         public bool Apply(string textureName, bool appendLayers = false)
         {
-
-            return Apply(textureName, Element.Root, appendLayers);
+            return MtaClient.EngineApplyShaderToWorldTexture(this.materialElement, textureName, null, appendLayers);
         }
 
         /// <summary>

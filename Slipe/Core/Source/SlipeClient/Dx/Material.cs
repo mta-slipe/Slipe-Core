@@ -47,5 +47,13 @@ namespace Slipe.Client.Dx
                 return new Vector3(result.Item1, result.Item2, result.Item3);
             }
         }
+
+        /// <summary>
+        /// Destroys the material element
+        /// </summary>
+        public void Destroy()
+        {
+            MtaShared.DestroyElement(this.materialElement);
+        }
     }
 }
