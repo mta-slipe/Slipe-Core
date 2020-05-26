@@ -31,14 +31,14 @@ namespace Slipe.Server.Rpc
 
         private readonly Dictionary<string, List<RegisteredRpc>> registeredRPCs;
         private readonly Dictionary<string, List<RegisteredRpc>> registeredAsyncRPCs;
-        private Dictionary<Player, List<QueuedRpc>> QueuedRpcs;
+        private readonly Dictionary<Player, Queue<QueuedRpc>> QueuedRpcs;
 
         private int asyncRpcIndex;
 
         private RpcManager()
         {
             this.asyncRpcIndex = 0;
-            QueuedRpcs = new Dictionary<Player, List<QueuedRpc>>();
+            QueuedRpcs = new Dictionary<Player, Queue<QueuedRpc>>();
             registeredRPCs = new Dictionary<string, List<RegisteredRpc>>();
             registeredAsyncRPCs = new Dictionary<string, List<RegisteredRpc>>();
 
@@ -79,18 +79,17 @@ namespace Slipe.Server.Rpc
 
             RegisterRPC<EmptyRpc>("slipe-client-ready-rpc", (player, rpc) =>
             {
-                List<QueuedRpc> queuedRpcList;
-                QueuedRpcs.TryGetValue(player, out queuedRpcList);
-                if (queuedRpcList != null)
+                if (QueuedRpcs.TryGetValue(player, out Queue<QueuedRpc> rpcQueue))
                 {
-                    foreach (QueuedRpc queuedRpc in queuedRpcList)
+                    player.IsReadyForIncomingRequests = true;
+                    QueuedRpcs.Remove(player);
+                    while (rpcQueue.TryDequeue(out QueuedRpc queuedRpc))
                     {
                         if (queuedRpc.bandwidth != -1)
                             TriggerLatentRPC(player, queuedRpc.key, queuedRpc.bandwidth, queuedRpc.rpc, queuedRpc.persists);
                         else
                             TriggerRPC(player, queuedRpc.key, queuedRpc.rpc);
                     }
-                    QueuedRpcs.Remove(player);
                 }
             });
         }
@@ -115,9 +114,9 @@ namespace Slipe.Server.Rpc
         private void QueueRpc(Player target, string key, IRpc argument, int bandwidth = -1, bool persists = false)
         {
             if (!QueuedRpcs.ContainsKey(target))
-                QueuedRpcs[target] = new List<QueuedRpc>();
+                QueuedRpcs[target] = new Queue<QueuedRpc>();
 
-            QueuedRpcs[target].Add(new QueuedRpc(key, argument, bandwidth, persists));
+            QueuedRpcs[target].Enqueue(new QueuedRpc(key, argument, bandwidth, persists));
         }
 
         /// <summary>

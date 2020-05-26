@@ -40,6 +40,8 @@ namespace ServerSide
                 source.Spawn(new Vector3(0, 0, 5), PedModel.ballas1);
 
                 source.OnLogin += OnPlayerLogin;
+
+                RpcManager.Instance.TriggerRPC(source, "queue", new EmptyRpc() { OnClientRpcFailed = ClientRpcFailedAction.Queue });
             };
 
             foreach (MyPlayer player in ElementManager.Instance.GetByType<MyPlayer>())
@@ -52,7 +54,10 @@ namespace ServerSide
                     var result = await RpcManager.Instance.TriggerAsyncRpc<SingleCastRpc<string>>(player, "Async.RequestLocalization", new EmptyRpc());
                     Console.WriteLine($"Localization for {player.Name}: {result.Value}");
                 });
+
+                RpcManager.Instance.TriggerRPC(player, "queue", new EmptyRpc() { OnClientRpcFailed = ClientRpcFailedAction.Queue });
             }
+
 
             RpcManager.Instance.RegisterRPC<ElementRpc<Player>>("announce", (player, rpc) =>
             {
