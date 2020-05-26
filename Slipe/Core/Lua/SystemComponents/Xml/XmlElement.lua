@@ -15,11 +15,13 @@ XmlElement.__ctor__ = function(this, prefix, name, nameSpace, document)
 end
 
 XmlElement.SetAttribute = function (this, name, value)
-	this.attributes[name] = value
+	local attribute = System.Xml.XmlAttribute("", name, "", this.owner)
+	attribute.value = value
+	this.attributes:set(name, attribute)
 end
 
 XmlElement.GetAttribute = function (this, name, namespace)
-	return this.attributes[name]
+	return this.attributes:get(name, value).value
 end
 
 
