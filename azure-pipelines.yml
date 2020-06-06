@@ -95,11 +95,11 @@ steps:
     workingDirectory: 'Slipe/Core/Source/SlipeServer'
     arguments: '--configuration $(buildConfiguration)'
 
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet build Docs'
-  inputs:
-    command: 'build'
-    arguments: 'DocFX/DocFX.csproj --configuration $(buildConfiguration)'
+# - task: DotNetCoreCLI@2
+#   displayName: 'dotnet build Docs'
+#   inputs:
+#     command: 'build'
+#     arguments: 'DocFX/DocFX.csproj --configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
