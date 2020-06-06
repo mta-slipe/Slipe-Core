@@ -15,9 +15,10 @@ variables:
 
 steps:
 - task: UseDotNet@2
+  displayName: 'Use latest preview of .Net Core sdk 3.x'
   inputs:
-    packageType: 'sdk'
-    version: '3.1.x'
+    version: 3.x
+    includePreviewVersions: true
 
 - task: DownloadBuildArtifacts@0
   displayName: 'Download CLI'
