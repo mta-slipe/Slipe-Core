@@ -106,7 +106,7 @@ steps:
   inputs:
     solution: '**\*.sln'
     vsVersion: '16.0'
-    msbuildArgs: 'DocFX/DocFX.csproj --configuration $(buildConfiguration)'
+    msbuildArgs: 'DocFX/DocFX.csproj'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
