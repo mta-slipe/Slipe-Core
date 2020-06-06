@@ -101,11 +101,14 @@ steps:
     command: 'build'
     arguments: 'DocFX/DocFX.csproj --configuration $(buildConfiguration)'
 
+
+
 - task: VSBuild@1
   displayName: 'Visual Studio build Docs'
   inputs:
     solution: '**\*.sln'
     configuration: '$(buildConfiguration)'
+
 
 
 - task: DotNetCoreCLI@2
