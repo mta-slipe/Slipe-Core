@@ -12,12 +12,12 @@ Slipe is an open source framework that enables anyone to write scripts for [MTA:
 ## Installing Slipe
 
 ### Windows
-* Download the [Slipe installer](/downloads/SlipeInstaller.exe)
+* Download the <a target="_blank" class="js-prod-link" href="https://slipestorage.blob.core.windows.net/cli-production/SlipeWpfInstaller.exe">Slipe Installer</a>
 * Run the installer .exe file
 * Run the `slipe` command anywhere on your system in a command prompt to verify installation worked.
 
 ### Linux
-* Download the latest version of [Slipe-CLI](/downloads/cli-linux.zip)
+* Download the latest version of <a target="_blank" class="js-prod-link" href="https://slipestorage.blob.core.windows.net/cli-production/cli-linux.zip">Slipe CLI</a>
 * Unzip the downloaded file
 * run `sudo ./install.sh`
 * Run the `slipe` command anywhere on your system in a command prompt to verify installation worked.
