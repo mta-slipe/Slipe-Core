@@ -50,4 +50,10 @@ $(document).ready(() => {
 	$(".download-modal").on("click", (event, element) => {
 		event.stopPropagation();
 	})
+
+	$(".js-prod-link").each((index, link) => {
+		if (document.location.href.indexOf("development.") > 0) {
+			link.href = link.href.replace("-production", "-development");
+		}
+	});
 });
