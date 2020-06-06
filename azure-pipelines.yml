@@ -140,7 +140,7 @@ steps:
 
 - powershell: |
     choco install docfx -y
-    docfx DocFX/docfx.json
+    cd docFX && docfx docfx.json
     if ($lastexitcode -ne 0){
       throw ("Error generating document")
     }
