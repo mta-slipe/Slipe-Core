@@ -101,14 +101,6 @@ steps:
     command: 'build'
     arguments: 'DocFX/DocFX.csproj --configuration $(buildConfiguration)'
 
-- powershell: |
-    choco install docfx -y
-    docfx DocFX/docfx.json
-    if ($lastexitcode -ne 0){
-      throw ("Error generating document")
-    }
-  displayName: "docfx build"
-
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
   inputs:
@@ -145,6 +137,14 @@ steps:
     PathtoPublish: 'Slipe'
     ArtifactName: 'slipe'
     publishLocation: 'Container'
+
+- powershell: |
+    choco install docfx -y
+    docfx DocFX/docfx.json
+    if ($lastexitcode -ne 0){
+      throw ("Error generating document")
+    }
+  displayName: "docfx build"
 
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
