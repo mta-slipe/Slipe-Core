@@ -101,6 +101,13 @@ steps:
     command: 'build'
     arguments: 'DocFX/DocFX.csproj --configuration $(buildConfiguration)'
 
+- task: VSBuild@1
+  displayName: 'VsBuild docs'
+  inputs:
+    solution: '**\*.sln'
+    vsVersion: '16.0'
+    msbuildArgs: 'DocFX/DocFX.csproj --configuration $(buildConfiguration)'
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
   inputs:
