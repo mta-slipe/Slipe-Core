@@ -22,6 +22,10 @@ namespace Slipe.Client.Assets
         /// </summary>
         public void Load()
         {
+            if (this.dff != null)
+            {
+                return;
+            }
             this.dff = MtaClient.EngineLoadDFF(this.filepath);
         }
 

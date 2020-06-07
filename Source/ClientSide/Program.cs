@@ -25,6 +25,11 @@ namespace ClientSide
                 ChatBox.WriteLine("Hey, we responded!");
             });
 
+            RpcManager.Instance.RegisterRPC<EmptyRpc>("queue", (rpc) =>
+            {
+                ChatBox.WriteLine("I was queued!");
+            });
+
             RpcManager.Instance.RegisterAsyncRPC<SingleCastRpc<string>, EmptyRpc>("Async.RequestLocalization", (request) =>
             {
                 return new SingleCastRpc<string>(GameClient.Localization.Item1);

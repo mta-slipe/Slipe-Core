@@ -45,12 +45,12 @@ namespace Slipe.Shared.Rpc
 
         protected T[] GetElementArray<T>(dynamic table) where T : Element
         {
-            MtaElement[] mtaElements = Slipe.MtaDefinitions.MtaShared.GetArrayFromTable<MtaElement>(table, "");
+            dynamic[] mtaElements = Slipe.MtaDefinitions.MtaShared.GetArrayFromTable<MtaElement>(table, "");
 
             T[] elements = new T[mtaElements.Length];
             for (int i = 0; i < mtaElements.Length; i++)
             {
-                elements[i] = ElementManager.Instance.GetElement<T>(mtaElements[i]);
+                elements[i] = GetElement<T>(mtaElements[i]);
             }
             return elements;
         }

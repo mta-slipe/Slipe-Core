@@ -22,6 +22,10 @@ namespace Slipe.Client.Assets
         /// </summary>
         public void Load()
         {
+            if (this.col != null)
+            {
+                return;
+            }
             this.col = MtaClient.EngineLoadCOL(this.filepath);
         }
 

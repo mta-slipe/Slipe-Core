@@ -93,7 +93,7 @@ namespace Slipe.Client.SightLines
         /// <summary>
         /// Create a data instance from the raw ProcessLineOfSight output
         /// </summary>
-        public SightLineData(Tuple<bool, float, float, float, MtaElement, float, float, Tuple<float, int, float, int, int, float, float, Tuple<float, float, float, float, int>>> d)
+        public SightLineData(Tuple<bool, float, float, float, MtaElement, float, float, Tuple<float, int, float, int, int?, float, float, Tuple<float, float, float, float, int>>> d)
         {
             DidHit = d.Item1;
             if (DidHit)
@@ -105,9 +105,13 @@ namespace Slipe.Client.SightLines
                 SurfaceMaterial = (SurfaceMaterialType)d.Rest.Item2;
                 Lighting = d.Rest.Item3;
                 piece = d.Rest.Item4;
-                WorldModelID = d.Rest.Item5;
-                WorldModelMatrix = Matrix4x4.CreateTranslation(d.Rest.Item6, d.Rest.Item7, d.Rest.Rest.Item1) + Matrix4x4.CreateFromQuaternion(NumericHelper.EulerToQuaternion(new Vector3(d.Rest.Rest.Item2, d.Rest.Rest.Item3, d.Rest.Rest.Item4)));
-                WorldLODModelID = d.Rest.Item5;
+
+                if (d.Rest.Item5 != null)
+                {
+                    WorldModelID = d.Rest.Item5.Value;
+                    WorldModelMatrix = Matrix4x4.CreateTranslation(d.Rest.Item6, d.Rest.Item7, d.Rest.Rest.Item1) + Matrix4x4.CreateFromQuaternion(NumericHelper.EulerToQuaternion(new Vector3(d.Rest.Rest.Item2, d.Rest.Rest.Item3, d.Rest.Rest.Item4)));
+                    WorldLODModelID = d.Rest.Rest.Item5;
+                }
             }
 
         }

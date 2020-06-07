@@ -13,7 +13,7 @@ namespace Slipe.Client.Assets
         private Dff dff;
         private Txd txd;
         private Col col;
-        private List<int> modelsToApply;
+        private List<Tuple<int, bool>> modelsToApply;
 
         private DownloadState state;
 
@@ -29,7 +29,7 @@ namespace Slipe.Client.Assets
             this.dff = dff;
             this.col = col;
             this.state = DownloadState.Default;
-            this.modelsToApply = new List<int>();
+            this.modelsToApply = new List<Tuple<int, bool>>();
         }
 
         /// <summary>
@@ -53,26 +53,26 @@ namespace Slipe.Client.Assets
                 this.col = new Col(colFilepath);
             }
             this.state = DownloadState.Default;
-            this.modelsToApply = new List<int>();
+            this.modelsToApply = new List<Tuple<int, bool>>();
         }
 
         /// <summary>
         /// Downloads, loads and applies all files required for this mod.
         /// </summary>
-        public void ApplyTo(int model)
+        public void ApplyTo(int model, bool supportsAlpha = false)
         {
             if (this.state == DownloadState.Downloaded)
             {
-                ApplyFiles(model);
+                ApplyFiles(model, supportsAlpha);
                 return;
             } else if(this.state == DownloadState.Downloading)
             {
-                modelsToApply.Add(model);
+                modelsToApply.Add(new Tuple<int, bool>(model, supportsAlpha));
                 return;
             }
 
             this.state = DownloadState.Downloading;
-            modelsToApply.Add(model);
+            modelsToApply.Add(new Tuple<int, bool>(model, supportsAlpha));
 
             if (this.txd != null)
             {
@@ -104,16 +104,17 @@ namespace Slipe.Client.Assets
                 return;
             }
             this.state = DownloadState.Downloaded;
+            this.OnDownloadComplete?.Invoke();
             ApplyFiles();
         }
 
-        private void ApplyFiles(int model = -1)
+        private void ApplyFiles(int model = -1, bool supportsAlpha = false)
         {
             if (model == -1)
             {
-                foreach(int numericModel in modelsToApply)
+                foreach(var mod in modelsToApply)
                 {
-                    ApplyFiles(numericModel);
+                    ApplyFiles(mod.Item1, supportsAlpha || mod.Item2);
                 }
                 return;
             }
@@ -125,7 +126,7 @@ namespace Slipe.Client.Assets
             if (this.dff != null)
             {
                 this.dff.Load();
-                this.dff.ApplyTo(model);
+                this.dff.ApplyTo(model, supportsAlpha);
             }
 
             if (this.col != null)
@@ -146,5 +147,11 @@ namespace Slipe.Client.Assets
                 Col.Restore(model);
             }
         }
+
+        public delegate void OnDownloadCompleteHandler();
+        /// <summary>
+        /// Event that is called after the file has been downloaded
+        /// </summary>
+        public event OnDownloadCompleteHandler OnDownloadComplete;
     }
 }
