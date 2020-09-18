@@ -72,6 +72,11 @@ namespace Slipe.Shared.Elements
         public void RegisterElement(Element element)
         {
             elements[element.MTAElement] = element;
+
+            element.OnDestroy += (source, args) =>
+            {
+                elements.Remove(source);
+            };
         }
 
         /// <summary>
