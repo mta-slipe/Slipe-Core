@@ -58,7 +58,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy MTA definitions DLL'
   inputs:
-    SourceFolder: 'Slipe/Core/Source/SlipeMTADefinitions/bin/$(buildConfiguration)/netcoreapp3.0/'
+    SourceFolder: 'Slipe/Core/Source/SlipeMTADefinitions/bin/$(buildConfiguration)/netcoreapp3.1/'
     Contents: 'SlipeMTADefinitions.dll'
     TargetFolder: 'Slipe/Core/DLL'
 
@@ -72,7 +72,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy SQL DLL'
   inputs:
-    SourceFolder: 'Slipe/Core/Source/SlipeSql/bin/$(buildConfiguration)/netcoreapp3.0/'
+    SourceFolder: 'Slipe/Core/Source/SlipeSql/bin/$(buildConfiguration)/netcoreapp3.1/'
     Contents: 'Slipe.Sql.dll'
     TargetFolder: 'Slipe/Core/DLL'
 
@@ -86,7 +86,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy shared DLL'
   inputs:
-    SourceFolder: 'Slipe/Core/Source/SlipeShared/bin/$(buildConfiguration)/netcoreapp3.0/'
+    SourceFolder: 'Slipe/Core/Source/SlipeShared/bin/$(buildConfiguration)/netcoreapp3.1/'
     Contents: 'SlipeShared.dll'
     TargetFolder: 'Slipe/Core/DLL'
 
