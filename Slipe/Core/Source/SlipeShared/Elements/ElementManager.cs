@@ -75,7 +75,7 @@ namespace Slipe.Shared.Elements
 
             element.OnDestroy += (source, args) =>
             {
-                elements.Remove(source);
+                elements.Remove(source.MTAElement);
             };
         }
 
