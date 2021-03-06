@@ -14,6 +14,12 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build Docs'
+  inputs:
+    command: 'build'
+    arguments: 'DocFX/DocFX.csproj --configuration $(buildConfiguration)'
+    
 - task: DownloadBuildArtifacts@0
   displayName: 'Download CLI'
   inputs:
@@ -58,7 +64,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy MTA definitions DLL'
   inputs:
-    SourceFolder: 'Slipe/Core/Source/SlipeMTADefinitions/bin/$(buildConfiguration)/netcoreapp3.1/'
+    SourceFolder: 'Slipe/Core/Source/SlipeMTADefinitions/bin/$(buildConfiguration)/netcoreapp3.0/'
     Contents: 'SlipeMTADefinitions.dll'
     TargetFolder: 'Slipe/Core/DLL'
 
@@ -72,7 +78,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy SQL DLL'
   inputs:
-    SourceFolder: 'Slipe/Core/Source/SlipeSql/bin/$(buildConfiguration)/netcoreapp3.1/'
+    SourceFolder: 'Slipe/Core/Source/SlipeSql/bin/$(buildConfiguration)/netcoreapp3.0/'
     Contents: 'Slipe.Sql.dll'
     TargetFolder: 'Slipe/Core/DLL'
 
@@ -86,7 +92,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy shared DLL'
   inputs:
-    SourceFolder: 'Slipe/Core/Source/SlipeShared/bin/$(buildConfiguration)/netcoreapp3.1/'
+    SourceFolder: 'Slipe/Core/Source/SlipeShared/bin/$(buildConfiguration)/netcoreapp3.0/'
     Contents: 'SlipeShared.dll'
     TargetFolder: 'Slipe/Core/DLL'
 
@@ -108,12 +114,6 @@ steps:
     command: 'build'
     workingDirectory: 'Slipe/Core/Source/SlipeServer'
     arguments: '--configuration $(buildConfiguration)'
-
-# - task: DotNetCoreCLI@2
-#   displayName: 'dotnet build Docs'
-#   inputs:
-#     command: 'build'
-#     arguments: 'DocFX/DocFX.csproj --configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
