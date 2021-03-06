@@ -26,18 +26,19 @@ steps:
     artifactName: 'drop'
     downloadPath: '$(Build.SourcesDirectory)'
 
-- task: CmdLine@2
-  inputs:
-    script: 'dir'
 
 - task: CmdLine@2
   inputs:
     script: 'tree'
+    
+- task: CmdLine@2
+  inputs:
+    script: 'dir drop'
 
 - task: ExtractFiles@1
   displayName: 'Extract CLI'
   inputs:
-    archiveFilePatterns: '$(Build.SourcesDirectory)/*.zip'
+    archiveFilePatterns: '$(Build.SourcesDirectory)/drop/s.zip'
     destinationFolder: '$(Build.SourcesDirectory)'
     cleanDestinationFolder: false
 
