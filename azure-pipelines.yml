@@ -26,15 +26,6 @@ steps:
     artifactName: 'drop'
     downloadPath: '$(Build.SourcesDirectory)'
 
-
-- task: CmdLine@2
-  inputs:
-    script: 'tree'
-    
-- task: CmdLine@2
-  inputs:
-    script: 'dir drop'
-
 - task: ExtractFiles@1
   displayName: 'Extract CLI'
   inputs:
