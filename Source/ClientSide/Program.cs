@@ -3,6 +3,7 @@ using Slipe.Client.Game;
 using Slipe.Client.IO;
 using Slipe.Client.Peds;
 using Slipe.Client.Rpc;
+using Slipe.Client.Vehicles;
 using Slipe.Shared.Rpc;
 using System.Numerics;
 using System.Threading.Tasks;
@@ -43,6 +44,10 @@ namespace ClientSide
             });
 
             Dx.DrawCircle(Vector2.Zero, 4);
+
+            var vehicle = new Vehicle(VehicleModel.Cars.Alpha, new Vector3(20, 20, 5), Vector3.Zero, "CLIENT");
+            vehicle.OnStreamIn += (o, args) => ChatBox.WriteLine("Streamed in!");
+            vehicle.OnStreamOut += (o, args) => ChatBox.WriteLine("Streamed out!");
         }
     }
 }

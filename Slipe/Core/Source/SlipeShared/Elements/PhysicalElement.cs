@@ -502,10 +502,10 @@ namespace Slipe.Shared.Elements
         public delegate void OnStopSyncHandler(PhysicalElement source, OnStopSyncEventArgs eventArgs);
         public event OnStopSyncHandler OnStopSync;
 
-        public delegate void OnStreamInHandler(PhysicalElement source, OnSteamInEventArgs eventArgs);
+        public delegate void OnStreamInHandler(PhysicalElement source, OnStreamInEventArgs eventArgs);
         public event OnStreamInHandler OnStreamIn;
 
-        public delegate void OnStreamOutHandler(PhysicalElement source, OnSteamOutEventArgs eventArgs);
+        public delegate void OnStreamOutHandler(PhysicalElement source, OnStreamOutEventArgs eventArgs);
         public event OnStreamOutHandler OnStreamOut;
 
         #pragma warning restore 67

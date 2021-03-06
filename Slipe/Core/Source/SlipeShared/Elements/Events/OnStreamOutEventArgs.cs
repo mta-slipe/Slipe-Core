@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Slipe.Shared.Elements.Events
 {
-    public class OnSteamOutEventArgs
+    public class OnStreamOutEventArgs
     {
-        internal OnSteamOutEventArgs() { }
+        internal OnStreamOutEventArgs() { }
     }
 }
