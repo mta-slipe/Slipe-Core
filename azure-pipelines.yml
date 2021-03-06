@@ -29,7 +29,7 @@ steps:
 - task: ExtractFiles@1
   displayName: 'Extract CLI'
   inputs:
-    archiveFilePatterns: '$(Build.SourcesDirectory)*.zip'
+    archiveFilePatterns: '$(Build.SourcesDirectory)/*.zip'
     destinationFolder: '$(Build.SourcesDirectory)'
     cleanDestinationFolder: false
 
