@@ -29,7 +29,7 @@ steps:
 - task: ExtractFiles@1
   displayName: 'Extract CLI'
   inputs:
-    archiveFilePatterns: '$(Build.SourcesDirectory)*.zip'
+    archiveFilePatterns: '$(Build.SourcesDirectory)/drop/s.zip'
     destinationFolder: '$(Build.SourcesDirectory)'
     cleanDestinationFolder: false
 
@@ -89,11 +89,6 @@ steps:
     SourceFolder: 'Slipe/Core/Source/SlipeShared/bin/$(buildConfiguration)/netcoreapp3.1/'
     Contents: 'SlipeShared.dll'
     TargetFolder: 'Slipe/Core/DLL'
-
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '3.0.x'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build client'
