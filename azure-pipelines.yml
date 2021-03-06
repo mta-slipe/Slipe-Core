@@ -90,11 +90,6 @@ steps:
     Contents: 'SlipeShared.dll'
     TargetFolder: 'Slipe/Core/DLL'
 
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '3.0.x'
-
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build client'
   inputs:
