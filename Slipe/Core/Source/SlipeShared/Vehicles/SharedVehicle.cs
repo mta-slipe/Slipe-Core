@@ -42,7 +42,7 @@ namespace Slipe.Shared.Vehicles
             get
             {
                 Tuple<int, int, int, int, int, int, int, Tuple<int, int, int, int, int>> r = MtaShared.GetVehicleColor(element, true);
-                return new Color((byte)r.Item3, (byte)r.Item5, (byte)r.Item6);
+                return new Color((byte)r.Item4, (byte)r.Item5, (byte)r.Item6);
             }
             set
             {
