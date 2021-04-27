@@ -30,7 +30,7 @@ public  void DropWeapon()
 
 #### Quaternions
 
-Although not requiered, some elements can be rotated using [Quaternions](https://docs.microsoft.com/en-us/dotnet/api/system.numerics.quaternion?view=netframework-4.7.2) instead of regular Euler angles ([Vector3](https://docs.microsoft.com/en-us/dotnet/api/system.numerics.vector3?view=netframework-4.7.2)). Using quaternions is in some cases even the only solution to complex rotational problems. The downside of using Euler angles is mainly that they are prone to [Gimbal lock](https://en.wikipedia.org/wiki/Gimbal_lock), something that some may have experienced in plain MTA already. Slipe allows you to get and set rotations using Quaternions if desired.
+Although not required, some elements can be rotated using [Quaternions](https://docs.microsoft.com/en-us/dotnet/api/system.numerics.quaternion?view=netframework-4.7.2) instead of regular Euler angles ([Vector3](https://docs.microsoft.com/en-us/dotnet/api/system.numerics.vector3?view=netframework-4.7.2)). Using quaternions is in some cases even the only solution to complex rotational problems. The downside of using Euler angles is mainly that they are prone to [Gimbal lock](https://en.wikipedia.org/wiki/Gimbal_lock), something that some may have experienced in plain MTA already. Slipe allows you to get and set rotations using Quaternions if desired.
 
   
 
