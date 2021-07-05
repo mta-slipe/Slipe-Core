@@ -1,5 +1,5 @@
 # Visual Studio
-Visual Studio is Microsoft's IDE, suitabel for many frameworks and programming languages. We recommend using Visual Studio for your slipe project.
+Visual Studio is Microsoft's IDE, suitable for many frameworks and programming languages. We recommend using Visual Studio for your slipe project.
 
 If you want to use Visual Studio for slipe you will need the 2019 version, the community edition is available for free at [visualstudio.microsoft.com](https://visualstudio.microsoft.com/downloads/).
 
