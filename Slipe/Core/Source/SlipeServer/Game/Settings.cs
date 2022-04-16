@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Game
+namespace SlipeLua.Server.Game
 {
     public static class Settings
     {
@@ -13,7 +13,7 @@ namespace Slipe.Server.Game
         /// <param name="value"></param>
         public static void Set(string setting, dynamic value)
         {
-            Slipe.MtaDefinitions.MtaServer.Set(setting, value);
+            SlipeLua.MtaDefinitions.MtaServer.Set(setting, value);
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Slipe.Server.Game
         /// <returns></returns>
         public static dynamic Get(string setting)
         {
-            return Slipe.MtaDefinitions.MtaServer.Get(setting);
+            return SlipeLua.MtaDefinitions.MtaServer.Get(setting);
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Browsers
+namespace SlipeLua.Client.Browsers
 {
     /// <summary>
     /// The reason why the resource was blocked

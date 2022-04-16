@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Shared.Utilities
+namespace SlipeLua.Shared.Utilities
 {
     /// <summary>
     /// Class defining a color and an alpha value

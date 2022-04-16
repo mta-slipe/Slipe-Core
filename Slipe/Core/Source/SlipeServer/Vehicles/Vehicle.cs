@@ -1,12 +1,12 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Numerics;
 using System.Text;
 
-namespace Slipe.Server.Vehicles
+namespace SlipeLua.Server.Vehicles
 {
     /// <summary>
     /// Class representing all regular vehicle types

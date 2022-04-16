@@ -1,10 +1,10 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
-namespace Slipe.Client.Vehicles
+namespace SlipeLua.Client.Vehicles
 {
     /// <summary>
     /// Represents a "dummy" part of a vehicle model

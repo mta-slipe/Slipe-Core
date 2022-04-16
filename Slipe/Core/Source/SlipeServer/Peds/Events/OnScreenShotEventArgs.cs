@@ -1,11 +1,11 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Server.Resources;
-using Slipe.Shared.Helpers;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Server.Resources;
+using SlipeLua.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Peds.Events
+namespace SlipeLua.Server.Peds.Events
 {
     public class OnScreenShotEventArgs
     {

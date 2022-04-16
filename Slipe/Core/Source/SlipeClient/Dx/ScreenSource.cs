@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Client.Dx
+namespace SlipeLua.Client.Dx
 {
     /// <summary>
     /// A special type of texture that contains the screen as rendered by GTA

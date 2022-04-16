@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Helpers;
-using Slipe.Client.Elements;
-using Slipe.Client.Game.Events;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Helpers;
+using SlipeLua.Client.Elements;
+using SlipeLua.Client.Game.Events;
 
-namespace Slipe.Client.Helpers
+namespace SlipeLua.Client.Helpers
 {
     /// <summary>
     /// Abstract class that implements attaching functionality in a lazy way (updates only when update is called)

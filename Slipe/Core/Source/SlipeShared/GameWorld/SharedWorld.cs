@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Shared.Utilities;
+using SlipeLua.Shared.Utilities;
 
-namespace Slipe.Shared.GameWorld
+namespace SlipeLua.Shared.GameWorld
 {
     /// <summary>
     /// Shared singleton of the GTA world

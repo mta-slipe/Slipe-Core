@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Rendering.Events
+namespace SlipeLua.Client.Rendering.Events
 {
     public class OnHudRenderEventArgs
     {

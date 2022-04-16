@@ -1,10 +1,10 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Vehicles.Events
+namespace SlipeLua.Server.Vehicles.Events
 {
     public class OnDetachEventArgs
     {

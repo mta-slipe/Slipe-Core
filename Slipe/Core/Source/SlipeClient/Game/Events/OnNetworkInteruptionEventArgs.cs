@@ -1,9 +1,9 @@
-﻿using Slipe.Shared.Helpers;
+﻿using SlipeLua.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Game.Events
+namespace SlipeLua.Client.Game.Events
 {
     public class OnNetworkInteruptionEventArgs
     {

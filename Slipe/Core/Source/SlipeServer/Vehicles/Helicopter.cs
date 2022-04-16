@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.ComponentModel;
 
-namespace Slipe.Server.Vehicles
+namespace SlipeLua.Server.Vehicles
 {
     /// <summary>
     /// Represents helicopter vehicles

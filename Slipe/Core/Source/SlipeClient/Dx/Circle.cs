@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Shared.Utilities;
-using Slipe.Client.Rendering.Events;
-using Slipe.Client.Elements;
+using SlipeLua.Shared.Utilities;
+using SlipeLua.Client.Rendering.Events;
+using SlipeLua.Client.Elements;
 
-namespace Slipe.Client.Dx
+namespace SlipeLua.Client.Dx
 {
     /// <summary>
     /// Represents a drawable circle

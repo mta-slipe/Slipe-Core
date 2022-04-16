@@ -1,10 +1,10 @@
-﻿using Slipe.Client.Peds;
-using Slipe.MtaDefinitions;
+﻿using SlipeLua.Client.Peds;
+using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Game
+namespace SlipeLua.Client.Game
 {
     public class Engine
     {

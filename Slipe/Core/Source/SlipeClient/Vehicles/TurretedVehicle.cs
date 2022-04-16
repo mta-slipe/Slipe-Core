@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
-using Slipe.Client.Peds;
-using Slipe.Client.Vehicles.Events;
+using SlipeLua.Client.Peds;
+using SlipeLua.Client.Vehicles.Events;
 
-namespace Slipe.Client.Vehicles
+namespace SlipeLua.Client.Vehicles
 {
     /// <summary>
     /// Represents vehicles with a turret (firetrucks, rhino etc)

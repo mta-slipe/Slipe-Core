@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
 
-namespace Slipe.Client.Vehicles
+namespace SlipeLua.Client.Vehicles
 {
     /// <summary>
     /// Planes as a special type of vehicle

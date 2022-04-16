@@ -1,11 +1,11 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Peds;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Peds;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Peds.Events
+namespace SlipeLua.Server.Peds.Events
 {
     public class OnDamageEventArgs
     {

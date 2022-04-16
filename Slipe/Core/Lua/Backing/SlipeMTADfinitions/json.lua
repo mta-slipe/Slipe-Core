@@ -62,7 +62,7 @@ MtaJson.Deserialize = function (json, T)
 	return value
 end
 
-System.define("Slipe.Json.Json", MtaJson)
+System.define("SlipeLua.Json.Json", MtaJson)
 System.defEnum("Slipe.Json.JsonPrettyType", {
 	None = 0,
 	Spaces = 1,

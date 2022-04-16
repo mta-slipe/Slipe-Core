@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.ComponentModel;
-using Slipe.Shared.Elements;
-using Slipe.Client.Peds;
-using Slipe.Client.Sounds.Events;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Client.Peds;
+using SlipeLua.Client.Sounds.Events;
 
-namespace Slipe.Client.Sounds
+namespace SlipeLua.Client.Sounds
 {
     /// <summary>
     /// Represents a sound played for the player

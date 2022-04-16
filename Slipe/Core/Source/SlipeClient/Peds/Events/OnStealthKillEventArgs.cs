@@ -1,10 +1,10 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Peds.Events
+namespace SlipeLua.Client.Peds.Events
 {
     public class OnStealthKillEventArgs
     {

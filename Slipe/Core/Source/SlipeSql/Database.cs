@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Slipe.Sql
+namespace SlipeLua.Sql
 {
     public class Database
     {

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Peds;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Peds;
 using System.ComponentModel;
-using Slipe.Shared.Weapons;
-using Slipe.Server.Weapons;
-using Slipe.Shared.Elements;
-using Slipe.Server.Peds.Events;
+using SlipeLua.Shared.Weapons;
+using SlipeLua.Server.Weapons;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Server.Peds.Events;
 
-namespace Slipe.Server.Peds
+namespace SlipeLua.Server.Peds
 {
     /// <summary>
     /// Represents a pedestrian 

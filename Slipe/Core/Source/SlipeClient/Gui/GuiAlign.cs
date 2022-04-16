@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Gui
+namespace SlipeLua.Client.Gui
 {
     /// <summary>
     /// Represents text alignment in gui's

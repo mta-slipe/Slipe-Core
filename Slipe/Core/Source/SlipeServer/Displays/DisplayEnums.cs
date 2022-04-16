@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Displays
+namespace SlipeLua.Server.Displays
 {
     /// <summary>
     /// Represents the priority at which a display should be updates

@@ -158,4 +158,4 @@ Database.Query1 = function (this, query, parameters)
   return task;
 end
 
-System.define("Slipe.Sql.Database", Database)
+System.define("SlipeLua.Sql.Database", Database)

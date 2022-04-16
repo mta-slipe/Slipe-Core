@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Game.Events
+namespace SlipeLua.Server.Game.Events
 {
     public class OnSettingChangeEventArgs
     {

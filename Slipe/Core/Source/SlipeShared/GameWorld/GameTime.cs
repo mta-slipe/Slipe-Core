@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.GameWorld
+namespace SlipeLua.Shared.GameWorld
 {
     /// <summary>
     /// Class representing a game time, contrary to real time
@@ -17,8 +17,8 @@ namespace Slipe.Shared.GameWorld
         /// </summary>
         public GameTime(int hour, int minute)
         {
-            Hour = Math.Clamp(hour, 0, 23);
-            Minute = Math.Clamp(minute, 0, 59);
+            Hour = Math.Max(Math.Min(hour, 0), 23);
+            Minute = Math.Max(Math.Min(minute, 0), 59);
         }
 
         /// <summary>

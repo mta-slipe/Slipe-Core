@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Utilities;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Utilities;
 using System.ComponentModel;
 
-namespace Slipe.Client.Lights
+namespace SlipeLua.Client.Lights
 {
     [DefaultElementClass(ElementType.Light)]
     public class Light : PhysicalElement

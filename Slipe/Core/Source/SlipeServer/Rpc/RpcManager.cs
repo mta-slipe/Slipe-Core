@@ -1,15 +1,16 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.Elements;
-using Slipe.Server.Peds;
-using Slipe.Server.Elements;
-using Slipe.Shared.Rpc;
-using Slipe.Server.IO;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Server.Peds;
+using SlipeLua.Server.Elements;
+using SlipeLua.Shared.Rpc;
+using SlipeLua.Server.IO;
 using System.Threading.Tasks;
+using System.Linq;
 
-namespace Slipe.Server.Rpc
+namespace SlipeLua.Server.Rpc
 {
     /// <summary>
     /// Manager class that handles RPC's between server and clients
@@ -83,8 +84,9 @@ namespace Slipe.Server.Rpc
                 {
                     player.IsReadyForIncomingRequests = true;
                     QueuedRpcs.Remove(player);
-                    while (rpcQueue.TryDequeue(out QueuedRpc queuedRpc))
+                    while (rpcQueue.Any())
                     {
+                        var queuedRpc = rpcQueue.Dequeue();
                         if (queuedRpc.bandwidth != -1)
                             TriggerLatentRPC(player, queuedRpc.key, queuedRpc.bandwidth, queuedRpc.rpc, queuedRpc.persists);
                         else

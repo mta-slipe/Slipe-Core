@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
 
-namespace Slipe.Shared.Vehicles
+namespace SlipeLua.Shared.Vehicles
 {
     /// <summary>
     /// Represents vehicle handling properties

@@ -1,12 +1,12 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.Shared.Elements;
+using SlipeLua.Shared.Elements;
 using System.ComponentModel;
 
-namespace Slipe.Shared.CollisionShapes
+namespace SlipeLua.Shared.CollisionShapes
 {
     /// <summary>
     /// This is a shape that has a position, width, depth and height.

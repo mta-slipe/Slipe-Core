@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Shared.Cryptography
+namespace SlipeLua.Shared.Cryptography
 {
     /// <summary>
     /// Represents static wrappers for hasing strings with Bcrypt

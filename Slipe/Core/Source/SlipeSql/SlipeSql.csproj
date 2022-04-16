@@ -1,9 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>Slipe.Sql</AssemblyName>
+		<RootNamespace>Slipe.Sql</RootNamespace>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>Slipe.Sql</AssemblyName>
-    <RootNamespace>Slipe.Sql</RootNamespace>
-  </PropertyGroup>
-
+	<ItemGroup>
+		<None Update="Lua\**\*">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 </Project>

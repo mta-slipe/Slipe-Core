@@ -1,9 +1,9 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Browsers.Events
+namespace SlipeLua.Client.Browsers.Events
 {
     public class OnWhiteListChangeEventArgs
     {

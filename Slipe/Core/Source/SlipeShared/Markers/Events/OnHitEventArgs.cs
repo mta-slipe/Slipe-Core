@@ -1,10 +1,10 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Markers.Events
+namespace SlipeLua.Shared.Markers.Events
 {
     public class OnHitEventArgs
     {

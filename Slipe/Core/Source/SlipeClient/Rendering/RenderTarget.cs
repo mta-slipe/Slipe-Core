@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Client.Dx;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Client.Dx;
 
-namespace Slipe.Client.Rendering
+namespace SlipeLua.Client.Rendering
 {
     /// <summary>
     /// A special type of texture that can be drawn on with the dx functions

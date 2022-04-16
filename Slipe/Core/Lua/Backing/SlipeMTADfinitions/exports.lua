@@ -14,4 +14,4 @@ Export.Invoke = function (resource, func, ...)
 	return export[func](export, ...)	
 end
 
-System.define("Slipe.Exports.Export", Export)
+System.define("SlipeLua.Exports.Export", Export)

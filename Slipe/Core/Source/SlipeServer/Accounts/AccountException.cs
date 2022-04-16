@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Accounts
+namespace SlipeLua.Server.Accounts
 {
     public class AccountException : Exception
     {

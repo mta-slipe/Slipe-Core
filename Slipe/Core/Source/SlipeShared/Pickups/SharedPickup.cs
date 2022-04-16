@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Weapons;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Weapons;
 using System.ComponentModel;
-using Slipe.Shared.Peds;
-using Slipe.Shared.Pickups.Events;
+using SlipeLua.Shared.Peds;
+using SlipeLua.Shared.Pickups.Events;
 
-namespace Slipe.Shared.Pickups
+namespace SlipeLua.Shared.Pickups
 {
     /// <summary>
     /// Class representing a pickup element

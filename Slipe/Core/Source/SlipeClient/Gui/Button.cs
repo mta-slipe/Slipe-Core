@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using Slipe.Shared.Elements;
-using Slipe.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
 
-namespace Slipe.Client.Gui
+namespace SlipeLua.Client.Gui
 {
     /// <summary>
     /// Represents a Cegui button

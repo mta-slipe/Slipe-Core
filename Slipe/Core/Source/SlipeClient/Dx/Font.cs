@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Client.Enums;
-using Slipe.MtaDefinitions;
+using SlipeLua.Client.Enums;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Client.Dx
+namespace SlipeLua.Client.Dx
 {
     /// <summary>
     /// Class representing custom font elements

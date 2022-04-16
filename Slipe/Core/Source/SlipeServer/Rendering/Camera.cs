@@ -1,14 +1,14 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Utilities;
-using Slipe.Server.Peds;
-using Slipe.Shared.Rendering;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Utilities;
+using SlipeLua.Server.Peds;
+using SlipeLua.Shared.Rendering;
 
-namespace Slipe.Server.Rendering
+namespace SlipeLua.Server.Rendering
 {
     /// <summary>
     /// The camera object attached to a player

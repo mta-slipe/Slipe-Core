@@ -1,18 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Slipe.Client</RootNamespace>
-    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<RootNamespace>Slipe.Client</RootNamespace>
+		<RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SlipeMTADefinitions\SlipeMTADefinitions.csproj" />
-    <ProjectReference Include="..\SlipeShared\SlipeShared.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+	</ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="cd ../../../../ &amp;&amp; slipe compile -module SlipeCore -client-only" />
-  </Target>
+	<ItemGroup>
+		<ProjectReference Include="..\SlipeMTADefinitions\SlipeMTADefinitions.csproj" />
+		<ProjectReference Include="..\SlipeShared\SlipeShared.csproj" />
+		<ProjectReference Include="..\..\..\..\..\CodeGenerator\CodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Lua\**\*">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>

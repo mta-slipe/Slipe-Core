@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace Slipe.Client.Assets
+namespace SlipeLua.Client.Assets
 {
     /// <summary>
     /// A single mod, consisting of a .txd and optionally a .dff and .col

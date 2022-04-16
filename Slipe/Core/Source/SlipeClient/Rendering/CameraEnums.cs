@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Rendering
+namespace SlipeLua.Client.Rendering
 {
     /// <summary>
     /// Represents different google view effects

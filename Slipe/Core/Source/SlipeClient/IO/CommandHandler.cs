@@ -1,10 +1,10 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.IO
+namespace SlipeLua.Client.IO
 {
 
     /// <summary>

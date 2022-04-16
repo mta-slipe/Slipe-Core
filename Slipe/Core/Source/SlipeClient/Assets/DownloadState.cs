@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Assets
+namespace SlipeLua.Client.Assets
 {
     /// <summary>
     /// Indicates the download state of an asset file

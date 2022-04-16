@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Client.Sounds
+namespace SlipeLua.Client.Sounds
 {
     /// <summary>
     /// Represents different sound properties

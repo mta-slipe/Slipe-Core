@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.IO.Events
+namespace SlipeLua.Client.IO.Events
 {
     public class OnCharacterEventArgs
     {

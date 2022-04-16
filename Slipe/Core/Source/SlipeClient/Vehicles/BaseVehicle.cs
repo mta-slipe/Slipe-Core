@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Vehicles;
-using Slipe.Shared.Elements;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Vehicles;
+using SlipeLua.Shared.Elements;
 using System.ComponentModel;
-using Slipe.Client.Peds;
-using Slipe.Shared.CollisionShapes;
-using Slipe.Shared.Weapons;
-using Slipe.Shared.Explosions;
-using Slipe.Client.Elements.Events;
-using Slipe.Shared.Elements.Events;
-using Slipe.Client.Vehicles.Events;
+using SlipeLua.Client.Peds;
+using SlipeLua.Shared.CollisionShapes;
+using SlipeLua.Shared.Weapons;
+using SlipeLua.Shared.Explosions;
+using SlipeLua.Client.Elements.Events;
+using SlipeLua.Shared.Elements.Events;
+using SlipeLua.Client.Vehicles.Events;
 
-namespace Slipe.Client.Vehicles
+namespace SlipeLua.Client.Vehicles
 {
     /// <summary>
     /// Abstract class for client-side vehicles

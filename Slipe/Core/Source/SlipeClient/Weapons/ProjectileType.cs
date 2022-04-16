@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Weapons
+namespace SlipeLua.Client.Weapons
 {
     /// <summary>
     /// Represents different projectiles

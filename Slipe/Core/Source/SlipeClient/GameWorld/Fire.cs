@@ -1,10 +1,10 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
-namespace Slipe.Client.GameWorld
+namespace SlipeLua.Client.GameWorld
 {
     public static class Fire
     {

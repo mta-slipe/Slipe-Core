@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Assets
+namespace SlipeLua.Client.Assets
 {
     public class CustomAnimation
     {

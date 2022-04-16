@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Weapons
+namespace SlipeLua.Shared.Weapons
 {
     /// <summary>
     /// Represents the slot of a weapon

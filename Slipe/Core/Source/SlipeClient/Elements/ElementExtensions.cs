@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Shared.Elements;
+using SlipeLua.Shared.Elements;
 
-namespace Slipe.Client.Elements
+namespace SlipeLua.Client.Elements
 {
     /// <summary>
     /// Extensions for clientsided elements

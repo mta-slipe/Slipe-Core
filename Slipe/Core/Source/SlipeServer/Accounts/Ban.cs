@@ -1,14 +1,14 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
-using Slipe.Server.Peds;
-using Slipe.Server.Accounts.Events;
-using Slipe.Shared.Elements;
-using Slipe.Server.Elements;
+using SlipeLua.Server.Peds;
+using SlipeLua.Server.Accounts.Events;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Server.Elements;
 
-namespace Slipe.Server.Accounts
+namespace SlipeLua.Server.Accounts
 {
     /// <summary>
     /// A ban is a pointer that represents a banned player arbitrarily.

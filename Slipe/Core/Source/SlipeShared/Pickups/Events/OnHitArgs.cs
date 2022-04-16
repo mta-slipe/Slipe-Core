@@ -1,11 +1,11 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Peds;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Peds;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Pickups.Events
+namespace SlipeLua.Shared.Pickups.Events
 {
     public class OnHitArgs
     {

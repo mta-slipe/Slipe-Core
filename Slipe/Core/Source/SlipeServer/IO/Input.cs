@@ -1,11 +1,11 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Server.Peds;
-using Slipe.Shared.Elements;
-using Slipe.Shared.IO;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Server.Peds;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.IO;
 using System;
 using System.Collections.Generic;
 
-namespace Slipe.Server.IO
+namespace SlipeLua.Server.IO
 {
     public static class Input
     {
@@ -48,9 +48,9 @@ namespace Slipe.Server.IO
         /// <returns></returns>
         public static bool BindKey(Player player, string key, KeyState state, Action<Player, string, KeyState> handler)
         {
-            Action<MtaElement, string, string> rawClosure = (MtaElement element, string command, string state) =>
+            Action<MtaElement, string, string> rawClosure = (MtaElement element, string command, string closureState) =>
             {
-                handler((Player)ElementManager.Instance.GetElement(element), command, (KeyState)Enum.Parse(typeof(KeyState), state, true));
+                handler((Player)ElementManager.Instance.GetElement(element), command, (KeyState)Enum.Parse(typeof(KeyState), closureState, true));
             };
             closures[handler] = rawClosure;
             return MtaServer.BindKey(player.MTAElement, key, state.ToString().ToLower(), rawClosure);

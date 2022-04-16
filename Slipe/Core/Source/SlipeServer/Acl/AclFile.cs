@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Server.Acl
+namespace SlipeLua.Server.Acl
 {
     /// <summary>
     /// Class that wraps static ACL functions

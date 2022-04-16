@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.IO
+namespace SlipeLua.Client.IO
 {
     /// <summary>
     /// Represents fonts for chatboxes

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Xml;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Resources;
-using Slipe.Server.Acl;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Resources;
+using SlipeLua.Server.Acl;
 using System.ComponentModel;
-using Slipe.Server.Game;
+using SlipeLua.Server.Game;
 
-namespace Slipe.Server.Resources
+namespace SlipeLua.Server.Resources
 {
     /// <summary>
     /// Represents an MTA resource

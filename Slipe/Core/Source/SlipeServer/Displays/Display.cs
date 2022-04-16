@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Server.Peds;
-using Slipe.Shared.Elements;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Server.Peds;
+using SlipeLua.Shared.Elements;
 
-namespace Slipe.Server.Displays
+namespace SlipeLua.Server.Displays
 {
     /// <summary>
     /// Represents a text display that's visible to a selection of players

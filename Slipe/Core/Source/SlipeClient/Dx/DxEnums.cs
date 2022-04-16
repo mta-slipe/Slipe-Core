@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Dx
+namespace SlipeLua.Client.Dx
 {
     /// <summary>
     /// Representing the desired texture format

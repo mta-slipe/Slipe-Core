@@ -1,15 +1,15 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Numerics;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.Elements;
+using SlipeLua.Shared.Elements;
 using System.ComponentModel;
-using Slipe.Shared.IO;
-using Slipe.Client.Browsers.Events;
-using Slipe.Client.Elements;
+using SlipeLua.Shared.IO;
+using SlipeLua.Client.Browsers.Events;
+using SlipeLua.Client.Elements;
 
-namespace Slipe.Client.Browsers
+namespace SlipeLua.Client.Browsers
 {
     /// <summary>
     /// Class that wraps MTA browsers

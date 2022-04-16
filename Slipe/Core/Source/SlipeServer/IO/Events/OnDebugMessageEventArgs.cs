@@ -1,10 +1,10 @@
-﻿using Slipe.Shared.IO;
-using Slipe.Shared.Utilities;
+﻿using SlipeLua.Shared.IO;
+using SlipeLua.Shared.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.IO.Events
+namespace SlipeLua.Server.IO.Events
 {
     public class OnDebugMessageEventArgs
     {

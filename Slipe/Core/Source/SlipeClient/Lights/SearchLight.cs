@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Helpers;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Helpers;
 using System.ComponentModel;
-using Slipe.Client.Game;
-using Slipe.Client.Elements;
-using Slipe.Client.Game.Events;
+using SlipeLua.Client.Game;
+using SlipeLua.Client.Elements;
+using SlipeLua.Client.Game.Events;
 
-namespace Slipe.Client.Lights
+namespace SlipeLua.Client.Lights
 {
     /// <summary>
     /// This function creates a searchlight. A searchlight is a spotlight which looks like the one available in the Police Maverick.

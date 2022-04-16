@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Utilities;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Utilities;
 using System.ComponentModel;
 
-namespace Slipe.Shared.Vehicles
+namespace SlipeLua.Shared.Vehicles
 {
     /// <summary>
     /// Represents a vehicle in the GTA world

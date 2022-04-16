@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Vehicles;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Vehicles;
 
-namespace Slipe.Server.Vehicles
+namespace SlipeLua.Server.Vehicles
 {
     public class ModelHandling : Handling
     {

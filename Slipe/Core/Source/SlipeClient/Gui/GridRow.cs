@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Client.Gui
+namespace SlipeLua.Client.Gui
 {
     /// <summary>
     /// Represents a row in a grid list

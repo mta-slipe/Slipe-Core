@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 
-namespace Slipe.Shared.Helpers
+namespace SlipeLua.Shared.Helpers
 {
     /// <summary>
     /// Adds some required numeric translations

@@ -1,26 +1,26 @@
-System.define("Slipe.MtaDefinitions.MtaElement", {
+System.define("SlipeLua.MtaDefinitions.MtaElement", {
 
 })
-System.define("Slipe.MtaDefinitions.MtaAccount", {
+System.define("SlipeLua.MtaDefinitions.MtaAccount", {
 	
 })
-System.define("Slipe.MtaDefinitions.MtaTimer", {
+System.define("SlipeLua.MtaDefinitions.MtaTimer", {
 	
 })
-System.define("Slipe.MtaDefinitions.MtaAcl", {
+System.define("SlipeLua.MtaDefinitions.MtaAcl", {
 	
 })
-System.define("Slipe.MtaDefinitions.MtaAclGroup", {
+System.define("SlipeLua.MtaDefinitions.MtaAclGroup", {
 	
 })
-System.define("Slipe.MtaDefinitions.MtaBan", {
+System.define("SlipeLua.MtaDefinitions.MtaBan", {
 	
 })
-System.define("Slipe.MtaDefinitions.MtaResource", {
+System.define("SlipeLua.MtaDefinitions.MtaResource", {
 	
 })
 
-System.define("Slipe.MtaDefinitions.MtaShared", {
+System.define("SlipeLua.MtaDefinitions.MtaShared", {
 	GetBlipVisibleDistance = function(...) local results = {getBlipVisibleDistance(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	GetBlipColor = function(...) return System.tuple(getBlipColor(...)) end,
 	GetBlipOrdering = function(...) local results = {getBlipOrdering(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
@@ -504,7 +504,7 @@ end,
 		return System.DateTime(ts.year + 1900, ts.month + 1, ts.monthday, ts.hour, ts.minute, ts.second)
 	end,
 })
-System.define("Slipe.MtaDefinitions.MtaException", {
+System.define("SlipeLua.MtaDefinitions.MtaException", {
   __tostring = function()
 	return "";
   end,
@@ -515,7 +515,7 @@ System.define("Slipe.MtaDefinitions.MtaException", {
 	this.innerException = innerException
   end
 })
-System.define("Slipe.MtaDefinitions.MtaPasswords", {
+System.define("SlipeLua.MtaDefinitions.MtaPasswords", {
 	Hash = function(input, cost)
 		local options = {}
 		options.cost = cost

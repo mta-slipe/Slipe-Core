@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.ComponentModel;
-using Slipe.Shared.GameWorld;
-using Slipe.Shared.Elements;
+using SlipeLua.Shared.GameWorld;
+using SlipeLua.Shared.Elements;
 
-namespace Slipe.Server.GameWorld
+namespace SlipeLua.Server.GameWorld
 {
     /// <summary>
     /// Class representing an Object in MTA

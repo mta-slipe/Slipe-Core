@@ -1,8 +1,8 @@
 ﻿using System;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Utilities;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Utilities;
 
-namespace Slipe.Client.Gui
+namespace SlipeLua.Client.Gui
 {
     /// <summary>
     /// Represents a single item in a Gui gridlist

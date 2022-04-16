@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Client.Enums;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Weapons;
-using Slipe.Shared.Peds;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Client.Enums;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Weapons;
+using SlipeLua.Shared.Peds;
 using System.ComponentModel;
-using Slipe.Client.Vehicles;
-using Slipe.Shared.Explosions;
-using Slipe.Client.Elements.Events;
-using Slipe.Client.Peds.Events;
+using SlipeLua.Client.Vehicles;
+using SlipeLua.Shared.Explosions;
+using SlipeLua.Client.Elements.Events;
+using SlipeLua.Client.Peds.Events;
 
-namespace Slipe.Client.Peds
+namespace SlipeLua.Client.Peds
 {
     /// <summary>
     /// Represents a pedestrian 

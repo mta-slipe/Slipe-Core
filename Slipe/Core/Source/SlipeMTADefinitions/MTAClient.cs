@@ -1,6 +1,6 @@
 using System;
 
-namespace Slipe.MtaDefinitions {
+namespace SlipeLua.MtaDefinitions {
     public class MtaClient
     {
         public static bool PlaySoundFrontEnd(int sound) { throw new NotImplementedException(); }

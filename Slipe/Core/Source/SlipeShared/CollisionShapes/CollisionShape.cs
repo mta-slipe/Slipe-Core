@@ -1,13 +1,13 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.Shared.Elements;
+using SlipeLua.Shared.Elements;
 using System.ComponentModel;
-using Slipe.Shared.CollisionShapes.Events;
+using SlipeLua.Shared.CollisionShapes.Events;
 
-namespace Slipe.Shared.CollisionShapes
+namespace SlipeLua.Shared.CollisionShapes
 {
     /// <summary>
     /// Base class for collision shapes

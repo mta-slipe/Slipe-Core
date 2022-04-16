@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Elements
+namespace SlipeLua.Shared.Elements
 {
     /// <summary>
     /// Represents the type of an Mta Element

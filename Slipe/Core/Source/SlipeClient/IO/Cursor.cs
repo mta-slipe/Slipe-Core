@@ -1,15 +1,15 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.Shared.IO;
-using Slipe.Shared.Elements;
-using Slipe.Client.Elements;
-using Slipe.Client.IO.Events;
-using Slipe.Client.Rendering;
+using SlipeLua.Shared.IO;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Client.Elements;
+using SlipeLua.Client.IO.Events;
+using SlipeLua.Client.Rendering;
 
-namespace Slipe.Client.IO
+namespace SlipeLua.Client.IO
 {
     /// <summary>
     /// Class representing the cursor of the local player

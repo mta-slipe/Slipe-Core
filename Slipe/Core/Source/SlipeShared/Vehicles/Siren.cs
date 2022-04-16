@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Utilities;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Utilities;
 
-namespace Slipe.Shared.Vehicles
+namespace SlipeLua.Shared.Vehicles
 {
     /// <summary>
     /// Represents a single siren point

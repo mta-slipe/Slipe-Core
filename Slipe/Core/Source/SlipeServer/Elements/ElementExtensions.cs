@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Server.Peds;
-using Slipe.Shared.Elements;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Server.Peds;
+using SlipeLua.Shared.Elements;
 
-namespace Slipe.Server.Elements
+namespace SlipeLua.Server.Elements
 {
     /// <summary>
     /// Extensions for the base shared element class on the server

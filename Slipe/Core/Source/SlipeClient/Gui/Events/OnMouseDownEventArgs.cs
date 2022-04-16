@@ -1,10 +1,10 @@
-﻿using Slipe.Shared.IO;
+﻿using SlipeLua.Shared.IO;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
-namespace Slipe.Client.Gui.Events
+namespace SlipeLua.Client.Gui.Events
 {
     public class OnMouseDownEventArgs
     {

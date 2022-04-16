@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
-namespace Slipe.Client.Gui.Events
+namespace SlipeLua.Client.Gui.Events
 {
     public class OnMouseMoveEventArgs
     {

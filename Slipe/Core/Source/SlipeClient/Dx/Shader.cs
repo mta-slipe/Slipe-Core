@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Shared.Elements;
+using SlipeLua.Shared.Elements;
 
-namespace Slipe.Client.Dx
+namespace SlipeLua.Client.Dx
 {
     /// <summary>
     /// A shader is a graphical 

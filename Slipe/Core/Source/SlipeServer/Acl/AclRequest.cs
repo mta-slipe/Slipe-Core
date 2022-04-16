@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Acl
+namespace SlipeLua.Server.Acl
 {
     /// <summary>
     /// Struct representing a resource ACL request

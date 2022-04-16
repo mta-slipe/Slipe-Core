@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Sounds
+namespace SlipeLua.Client.Sounds
 {
     /// <summary>
     /// Represents different sound containers

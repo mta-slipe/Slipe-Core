@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Helpers
+namespace SlipeLua.Shared.Helpers
 {
     /// <summary>
     /// Represents a status code for the player screenshot event

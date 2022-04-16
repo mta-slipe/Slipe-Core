@@ -1,13 +1,13 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Server.IO.Events;
-using Slipe.Server.Peds;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Utilities;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Server.IO.Events;
+using SlipeLua.Server.Peds;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.IO
+namespace SlipeLua.Server.IO
 {
     /// <summary>
     /// Represents the ingame chatbox

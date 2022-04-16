@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Utilities;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Utilities;
 
-namespace Slipe.Client.Effects
+namespace SlipeLua.Client.Effects
 {
     /// <summary>
     /// Class that enables creation of short lived effects in the world

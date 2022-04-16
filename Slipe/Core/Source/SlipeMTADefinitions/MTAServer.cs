@@ -1,6 +1,6 @@
 using System;
 
-namespace Slipe.MtaDefinitions {
+namespace SlipeLua.MtaDefinitions {
 	public class MtaServer {
 		public static dynamic GetAccounts (){ throw new NotImplementedException(); }
 		public static MtaAccount AddAccount (string name, string pass, bool allowCaseVariations){ throw new NotImplementedException(); }

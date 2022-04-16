@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Vehicles;
-using Slipe.Shared.Utilities;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Vehicles;
+using SlipeLua.Shared.Utilities;
 
-namespace Slipe.Server.Vehicles
+namespace SlipeLua.Server.Vehicles
 {
     /// <summary>
     /// Represents the set of all sirens on a vehicle

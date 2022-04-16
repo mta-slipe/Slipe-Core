@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements.Events;
-using Slipe.Shared.IO;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements.Events;
+using SlipeLua.Shared.IO;
 
-namespace Slipe.Shared.Elements
+namespace SlipeLua.Shared.Elements
 {
     /// <summary>
     /// The main Element class representing an OO version of MTA elements

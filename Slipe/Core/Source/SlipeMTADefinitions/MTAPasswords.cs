@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Slipe.MtaDefinitions
+namespace SlipeLua.MtaDefinitions
 {
     public static class MtaPasswords
     {

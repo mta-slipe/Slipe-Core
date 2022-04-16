@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Utilities;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Utilities;
 using System.ComponentModel;
-using Slipe.Shared.Markers.Events;
+using SlipeLua.Shared.Markers.Events;
 
-namespace Slipe.Shared.Markers
+namespace SlipeLua.Shared.Markers
 {
     /// <summary>
     /// Class that represents different types of markers

@@ -1,11 +1,11 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.Utilities;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
-namespace Slipe.Client.Dx
+namespace SlipeLua.Client.Dx
 {
     public static class Dx
     {

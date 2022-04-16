@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Client.Sounds;
-using Slipe.Client.Rendering;
-using Slipe.Client.IO;
-using Slipe.Shared.Helpers;
-using Slipe.Client.Resources;
-using Slipe.Client.Elements;
-using Slipe.Client.Game.Events;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Client.Sounds;
+using SlipeLua.Client.Rendering;
+using SlipeLua.Client.IO;
+using SlipeLua.Shared.Helpers;
+using SlipeLua.Client.Resources;
+using SlipeLua.Client.Elements;
+using SlipeLua.Client.Game.Events;
 
-namespace Slipe.Client.Game
+namespace SlipeLua.Client.Game
 {
     /// <summary>
     /// Static class that handles calls to functions related to the client

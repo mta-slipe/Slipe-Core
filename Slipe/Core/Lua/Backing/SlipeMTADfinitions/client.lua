@@ -1,4 +1,4 @@
-System.define("Slipe.MtaDefinitions.MtaClient", {
+System.define("SlipeLua.MtaDefinitions.MtaClient", {
 	CreateBlip = function(...) local results = {createBlip(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	PlaySoundFrontEnd = playSoundFrontEnd,
 	CreateBlipAttachedTo = function(...) local results = {createBlipAttachedTo(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,

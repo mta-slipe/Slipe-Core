@@ -1,11 +1,11 @@
-﻿using Slipe.Shared.Elements;
+﻿using SlipeLua.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
-using Slipe.Client.Game;
+using SlipeLua.Client.Game;
 
-namespace Slipe.Client.Helpers
+namespace SlipeLua.Client.Helpers
 {
     /// <summary>
     /// Abstract class that implements attaching functionality in an eager way (updates on PreRender)

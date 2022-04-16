@@ -1,9 +1,9 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Assets
+namespace SlipeLua.Client.Assets
 {
     /// <summary>
     /// A single .col file

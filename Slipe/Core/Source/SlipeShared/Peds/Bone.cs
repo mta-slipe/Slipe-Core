@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Peds
+namespace SlipeLua.Shared.Peds
 {
     /// <summary>
     /// Represents different bones on a ped

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Exceptions;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Exceptions;
 
-namespace Slipe.Server.Acl
+namespace SlipeLua.Server.Acl
 {
     /// <summary>
     /// Class that represents a group of different ACL entries

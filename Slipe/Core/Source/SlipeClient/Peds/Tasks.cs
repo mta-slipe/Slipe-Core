@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Peds
+namespace SlipeLua.Client.Peds
 {
     /// <summary>
     /// Represents primary task slots

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
 
-namespace Slipe.Client.GameWorld
+namespace SlipeLua.Client.GameWorld
 {
     /// <summary>
     /// Represents a SWAT rope that can be created

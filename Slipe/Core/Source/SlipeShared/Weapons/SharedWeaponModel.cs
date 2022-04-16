@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Shared.Weapons
+namespace SlipeLua.Shared.Weapons
 {
     /// <summary>
     /// Class representing a weapon model

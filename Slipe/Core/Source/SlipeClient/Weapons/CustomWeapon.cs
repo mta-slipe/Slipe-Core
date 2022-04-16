@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Shared.Weapons;
-using Slipe.Shared.Elements;
+using SlipeLua.Shared.Weapons;
+using SlipeLua.Shared.Elements;
 using System.ComponentModel;
-using Slipe.Client.Vehicles;
-using Slipe.Shared.Vehicles;
-using Slipe.Client.Peds;
-using Slipe.Shared.Peds;
-using Slipe.Client.SightLines;
-using Slipe.Client.Weapons.Events;
+using SlipeLua.Client.Vehicles;
+using SlipeLua.Shared.Vehicles;
+using SlipeLua.Client.Peds;
+using SlipeLua.Shared.Peds;
+using SlipeLua.Client.SightLines;
+using SlipeLua.Client.Weapons.Events;
 
-namespace Slipe.Client.Weapons
+namespace SlipeLua.Client.Weapons
 {
     /// <summary>
     /// Represents a custom weapon that can be placed in the world

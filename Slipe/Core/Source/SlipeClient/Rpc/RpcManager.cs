@@ -1,15 +1,15 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
-using Slipe.Shared.Elements;
-using Slipe.Client.Elements;
-using Slipe.Shared.Rpc;
-using Slipe.Client.IO;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Client.Elements;
+using SlipeLua.Shared.Rpc;
+using SlipeLua.Client.IO;
 using System.Threading.Tasks;
 
-namespace Slipe.Client.Rpc
+namespace SlipeLua.Client.Rpc
 {
     public class RpcManager
     {

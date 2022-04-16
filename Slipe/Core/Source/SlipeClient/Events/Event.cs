@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Client.Events
+namespace SlipeLua.Client.Events
 {
     /// <summary>
     /// Class that wraps event utility methods

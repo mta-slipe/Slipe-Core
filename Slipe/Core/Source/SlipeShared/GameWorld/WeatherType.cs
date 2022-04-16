@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.GameWorld
+namespace SlipeLua.Shared.GameWorld
 {
     /// <summary>
     /// Represents different weather types

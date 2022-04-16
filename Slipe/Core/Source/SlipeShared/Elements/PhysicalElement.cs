@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.CollisionShapes;
-using Slipe.Shared.Helpers;
-using Slipe.Shared.Markers;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.CollisionShapes;
+using SlipeLua.Shared.Helpers;
+using SlipeLua.Shared.Markers;
 using System.ComponentModel;
-using Slipe.Shared.IO;
-using Slipe.Shared.Peds;
-using Slipe.Shared.Elements.Events;
+using SlipeLua.Shared.IO;
+using SlipeLua.Shared.Peds;
+using SlipeLua.Shared.Elements.Events;
 
-namespace Slipe.Shared.Elements
+namespace SlipeLua.Shared.Elements
 {
     /// <summary>
     /// Represents a physical element in the GTA world

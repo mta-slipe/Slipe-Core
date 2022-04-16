@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.Elements;
-using Slipe.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
 
-namespace Slipe.Client.Gui
+namespace SlipeLua.Client.Gui
 {
     /// <summary>
     /// Represents a multi-line gui edit box

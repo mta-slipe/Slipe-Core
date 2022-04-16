@@ -1,6 +1,6 @@
 using System;
 
-namespace Slipe.MtaDefinitions {
+namespace SlipeLua.MtaDefinitions {
 	public class MtaShared {
 		public static Tuple<int, int, int, int> GetBlipColor (MtaElement theBlip){ throw new NotImplementedException(); }
 		public static int GetBlipIcon (MtaElement theBlip){ throw new NotImplementedException(); }

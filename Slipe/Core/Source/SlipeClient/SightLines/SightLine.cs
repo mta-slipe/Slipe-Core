@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Client.Dx;
-using Slipe.Shared.Elements;
-using Slipe.Client.Game;
-using Slipe.Client.Rendering;
-using Slipe.Client.Elements;
-using Slipe.Client.Rendering.Events;
+using SlipeLua.Client.Dx;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Client.Game;
+using SlipeLua.Client.Rendering;
+using SlipeLua.Client.Elements;
+using SlipeLua.Client.Rendering.Events;
 
-namespace Slipe.Client.SightLines
+namespace SlipeLua.Client.SightLines
 {
     /// <summary>
     /// Represents a line that can do raytracing operations

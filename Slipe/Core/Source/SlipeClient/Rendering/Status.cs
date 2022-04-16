@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Client.Rendering
+namespace SlipeLua.Client.Rendering
 {
     /// <summary>
     /// Object containing a lot of information about various internal datum

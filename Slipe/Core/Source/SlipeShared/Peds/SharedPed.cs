@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Vehicles;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Weapons;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Vehicles;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Weapons;
 using System.ComponentModel;
-using Slipe.Shared.Helpers;
+using SlipeLua.Shared.Helpers;
 
-namespace Slipe.Shared.Peds
+namespace SlipeLua.Shared.Peds
 {
     /// <summary>
     /// Represents a pedestrian with shared server/client functionality

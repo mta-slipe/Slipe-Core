@@ -1,10 +1,10 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.Utilities;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.IO
+namespace SlipeLua.Shared.IO
 {
     public class SharedMtaDebug
     {

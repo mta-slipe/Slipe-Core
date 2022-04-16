@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Vehicles.Events
+namespace SlipeLua.Client.Vehicles.Events
 {
     public class OnExplodeEventArgs
     {

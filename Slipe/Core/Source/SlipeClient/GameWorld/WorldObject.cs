@@ -1,16 +1,16 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
 using System.ComponentModel;
-using Slipe.Shared.GameWorld;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Explosions;
-using Slipe.Client.Elements.Events;
-using Slipe.Client.GameWorld.Events;
+using SlipeLua.Shared.GameWorld;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Explosions;
+using SlipeLua.Client.Elements.Events;
+using SlipeLua.Client.GameWorld.Events;
 
-namespace Slipe.Client.GameWorld
+namespace SlipeLua.Client.GameWorld
 {
     /// <summary>
     /// Class representing an object in the GTA world

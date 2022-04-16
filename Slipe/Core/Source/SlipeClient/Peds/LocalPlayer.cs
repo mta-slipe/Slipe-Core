@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Shared.Peds;
+using SlipeLua.Shared.Peds;
 using System.ComponentModel;
-using Slipe.Shared.Weapons;
-using Slipe.Client.Sounds;
-using Slipe.Shared.Elements;
-using Slipe.Client.Peds.Events;
+using SlipeLua.Shared.Weapons;
+using SlipeLua.Client.Sounds;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Client.Peds.Events;
 
-namespace Slipe.Client.Peds
+namespace SlipeLua.Client.Peds
 {
     public class LocalPlayer : Player
     {

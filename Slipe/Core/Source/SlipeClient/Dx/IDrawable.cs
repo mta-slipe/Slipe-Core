@@ -1,10 +1,10 @@
-﻿using Slipe.Client.Elements;
-using Slipe.Client.Rendering.Events;
+﻿using SlipeLua.Client.Elements;
+using SlipeLua.Client.Rendering.Events;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Dx
+namespace SlipeLua.Client.Dx
 {
     /// <summary>
     /// Interface for drawable objects on render

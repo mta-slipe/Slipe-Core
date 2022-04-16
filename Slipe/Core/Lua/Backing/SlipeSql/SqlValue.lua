@@ -15,4 +15,4 @@ SqlValue.op_Implicit2 = function (this, value)
 	return System.cast(System.Single, this.value)
 end
 
-System.define("Slipe.Sql.SqlValue", SqlValue)
+System.define("SlipeLua.Sql.SqlValue", SqlValue)

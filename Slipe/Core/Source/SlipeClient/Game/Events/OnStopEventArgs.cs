@@ -1,10 +1,10 @@
-﻿using Slipe.Client.Resources;
-using Slipe.MtaDefinitions;
+﻿using SlipeLua.Client.Resources;
+using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Game.Events
+namespace SlipeLua.Client.Game.Events
 {
     public class OnStopEventArgs
     {

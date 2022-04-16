@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Enums
+namespace SlipeLua.Client.Enums
 {
     /// <summary>
     /// Enum representing different font qualities used with Dx Font

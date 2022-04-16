@@ -1,10 +1,10 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.CollisionShapes;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.CollisionShapes;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Elements.Events
+namespace SlipeLua.Shared.Elements.Events
 {
     public class OnCollisionShapeLeaveEventArgs
     {

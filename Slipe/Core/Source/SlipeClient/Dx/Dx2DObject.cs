@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.Shared.Utilities;
-using Slipe.Client.Helpers;
-using Slipe.Client.Game;
-using Slipe.Client.Rendering;
-using Slipe.Client.Game.Events;
-using Slipe.Client.Elements;
+using SlipeLua.Shared.Utilities;
+using SlipeLua.Client.Helpers;
+using SlipeLua.Client.Game;
+using SlipeLua.Client.Rendering;
+using SlipeLua.Client.Game.Events;
+using SlipeLua.Client.Elements;
 
-namespace Slipe.Client.Dx
+namespace SlipeLua.Client.Dx
 {
     /// <summary>
     /// Class representing drawable objects

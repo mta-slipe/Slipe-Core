@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
-using Slipe.Shared.GameWorld;
-using Slipe.Shared.Elements;
+using SlipeLua.Shared.GameWorld;
+using SlipeLua.Shared.Elements;
 
-namespace Slipe.Server.GameWorld
+namespace SlipeLua.Server.GameWorld
 {
     /// <summary>
     /// Class used to create bodies of water on the map

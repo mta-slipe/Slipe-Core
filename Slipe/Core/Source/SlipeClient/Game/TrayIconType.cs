@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Game
+namespace SlipeLua.Client.Game
 {
     /// <summary>
     /// Represents windows notificatoin tray icons

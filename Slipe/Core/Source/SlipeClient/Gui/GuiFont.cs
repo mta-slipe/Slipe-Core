@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
 
-namespace Slipe.Client.Gui
+namespace SlipeLua.Client.Gui
 {
     /// <summary>
     /// Represents a custom Gui Font

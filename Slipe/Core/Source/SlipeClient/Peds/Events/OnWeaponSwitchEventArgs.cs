@@ -1,9 +1,9 @@
-﻿using Slipe.Shared.Weapons;
+﻿using SlipeLua.Shared.Weapons;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Peds.Events
+namespace SlipeLua.Client.Peds.Events
 {
     public class OnWeaponSwitchEventArgs
     {

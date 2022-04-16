@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Exceptions;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Exceptions;
 using System.ComponentModel;
 
-namespace Slipe.Server.Acl
+namespace SlipeLua.Server.Acl
 {
     /// <summary>
     /// ACL or Access Control List is a set of rights grouped together to create a list

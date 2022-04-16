@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Pickups.Events
+namespace SlipeLua.Server.Pickups.Events
 {
     public class OnSpawnEventArgs
     {

@@ -1,12 +1,12 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Server.Weapons;
-using Slipe.Shared.Elements;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Server.Weapons;
+using SlipeLua.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
-namespace Slipe.Server.Peds.Events
+namespace SlipeLua.Server.Peds.Events
 {
     public class OnWeaponFireEventArgs
     {

@@ -1,12 +1,12 @@
-﻿using Slipe.Client.Peds;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Vehicles;
+﻿using SlipeLua.Client.Peds;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Vehicles.Events
+namespace SlipeLua.Client.Vehicles.Events
 {
     public class OnExitEventArgs
     {

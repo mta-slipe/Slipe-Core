@@ -1,13 +1,13 @@
-﻿using Slipe.Client.Elements;
-using Slipe.Client.Game;
-using Slipe.Client.Game.Events;
-using Slipe.MtaDefinitions;
+﻿using SlipeLua.Client.Elements;
+using SlipeLua.Client.Game;
+using SlipeLua.Client.Game.Events;
+using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace Slipe.Client.Assets
+namespace SlipeLua.Client.Assets
 {
     /// <summary>
     /// Represents a single asset file.

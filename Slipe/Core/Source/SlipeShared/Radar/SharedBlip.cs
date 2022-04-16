@@ -1,12 +1,12 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Utilities;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Utilities;
 using System.ComponentModel;
 
-namespace Slipe.Shared.Radar
+namespace SlipeLua.Shared.Radar
 {
     /// <summary>
     /// Class representing a minimap blip

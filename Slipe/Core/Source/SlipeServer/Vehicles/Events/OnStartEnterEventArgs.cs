@@ -1,12 +1,12 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Server.Peds;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Vehicles;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Server.Peds;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Vehicles.Events
+namespace SlipeLua.Server.Vehicles.Events
 {
     public class OnStartEnterEventArgs
     {

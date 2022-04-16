@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Shared.Cryptography
+namespace SlipeLua.Shared.Cryptography
 {
     /// <summary>
     /// Represents static wrappers for the Base64 encoding algorithm

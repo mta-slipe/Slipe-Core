@@ -1,13 +1,13 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Utilities;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Utilities;
 using System.ComponentModel;
-using Slipe.Client.Peds;
+using SlipeLua.Client.Peds;
 
-namespace Slipe.Client.Game
+namespace SlipeLua.Client.Game
 {
     /// <summary>
     /// Class representing a team of players

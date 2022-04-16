@@ -1,13 +1,13 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Vehicles;
-using Slipe.Shared.Weapons;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Vehicles;
+using SlipeLua.Shared.Weapons;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
-namespace Slipe.Client.Vehicles.Events
+namespace SlipeLua.Client.Vehicles.Events
 {
     public class OnDamageEventArgs
     {

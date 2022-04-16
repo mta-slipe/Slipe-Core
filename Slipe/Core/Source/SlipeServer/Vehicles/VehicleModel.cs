@@ -1,12 +1,12 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Vehicles;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace Slipe.Server.Vehicles
+namespace SlipeLua.Server.Vehicles
 {
     /// <summary>
     /// Class for all other road vehicle models

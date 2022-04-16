@@ -1,10 +1,10 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Rpc
+namespace SlipeLua.Shared.Rpc
 {
     public abstract class BaseRpc: IRpc
     {
@@ -28,7 +28,7 @@ namespace Slipe.Shared.Rpc
 
         protected T[] GetArray<T>(dynamic table)
         {
-            return Slipe.MtaDefinitions.MtaShared.GetArrayFromTable<T>(table, "");
+            return SlipeLua.MtaDefinitions.MtaShared.GetArrayFromTable<T>(table, "");
         }
 
         protected MtaElement[] CreateElementArray(Element[] elements)
@@ -45,7 +45,7 @@ namespace Slipe.Shared.Rpc
 
         protected T[] GetElementArray<T>(dynamic table) where T : Element
         {
-            dynamic[] mtaElements = Slipe.MtaDefinitions.MtaShared.GetArrayFromTable<MtaElement>(table, "");
+            dynamic[] mtaElements = SlipeLua.MtaDefinitions.MtaShared.GetArrayFromTable<MtaElement>(table, "");
 
             T[] elements = new T[mtaElements.Length];
             for (int i = 0; i < mtaElements.Length; i++)

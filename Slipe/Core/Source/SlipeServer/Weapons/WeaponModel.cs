@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.Weapons;
-using Slipe.MtaDefinitions;
+using SlipeLua.Shared.Weapons;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Server.Weapons
+namespace SlipeLua.Server.Weapons
 {
     public class WeaponModel : SharedWeaponModel
     {

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Shared.Elements;
+using SlipeLua.Shared.Elements;
 using System.ComponentModel;
-using Slipe.Client.Vehicles.Events;
+using SlipeLua.Client.Vehicles.Events;
 
-namespace Slipe.Client.Vehicles
+namespace SlipeLua.Client.Vehicles
 {
     /// <summary>
     /// Represents a towable trailer

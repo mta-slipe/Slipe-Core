@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Shared.Vehicles;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Peds;
-using Slipe.Shared.Helpers;
+using SlipeLua.Shared.Vehicles;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Peds;
+using SlipeLua.Shared.Helpers;
 using System.Diagnostics;
-using Slipe.Client.GameWorld;
+using SlipeLua.Client.GameWorld;
 
-namespace Slipe.Client.SightLines
+namespace SlipeLua.Client.SightLines
 {
     /// <summary>
     /// Class that wraps the huge amount of data that can be retrieved from SightLine Process

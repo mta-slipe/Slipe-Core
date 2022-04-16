@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using Slipe.Client.Gui.Events;
-using Slipe.MtaDefinitions;
+using SlipeLua.Client.Gui.Events;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Client.Gui
+namespace SlipeLua.Client.Gui
 {
     /// <summary>
     /// Represents an editable Gui element

@@ -53,4 +53,4 @@ end
 SqlOptions.setMulti_statements = function (this, value)
   this.multiStatements = value
 end
-System.define("Slipe.Sql.SqlOptions", SqlOptions)
+System.define("SlipeLua.Sql.SqlOptions", SqlOptions)

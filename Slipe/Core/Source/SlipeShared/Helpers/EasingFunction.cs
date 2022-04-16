@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
 
-namespace Slipe.Shared.Helpers
+namespace SlipeLua.Shared.Helpers
 {
     /// <summary>
     /// Represents an easing function

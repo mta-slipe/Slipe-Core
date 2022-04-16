@@ -1,24 +1,24 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.Exceptions;
-using Slipe.Client.Sounds;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Utilities;
+using SlipeLua.Shared.Exceptions;
+using SlipeLua.Client.Sounds;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Utilities;
 using System.ComponentModel;
-using Slipe.Shared.CollisionShapes;
-using Slipe.Client.Pickups;
-using Slipe.Shared.Peds;
-using Slipe.Client.Vehicles;
-using Slipe.Shared.Vehicles;
-using Slipe.Shared.Weapons;
-using Slipe.Client.Game;
-using Slipe.Client.Peds.Events;
-using Slipe.Shared.Elements.Events;
-using Slipe.Client.IO.Events;
+using SlipeLua.Shared.CollisionShapes;
+using SlipeLua.Client.Pickups;
+using SlipeLua.Shared.Peds;
+using SlipeLua.Client.Vehicles;
+using SlipeLua.Shared.Vehicles;
+using SlipeLua.Shared.Weapons;
+using SlipeLua.Client.Game;
+using SlipeLua.Client.Peds.Events;
+using SlipeLua.Shared.Elements.Events;
+using SlipeLua.Client.IO.Events;
 
-namespace Slipe.Client.Peds
+namespace SlipeLua.Client.Peds
 {
     /// <summary>
     /// Class of MTA player elements

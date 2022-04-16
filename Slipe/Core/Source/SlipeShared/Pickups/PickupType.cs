@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Pickups
+namespace SlipeLua.Shared.Pickups
 {
     /// <summary>
     /// Represents different types of pickups

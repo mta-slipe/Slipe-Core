@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Exports
+namespace SlipeLua.Exports
 {
     public static class Export
     {

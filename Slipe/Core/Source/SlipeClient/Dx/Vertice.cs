@@ -1,10 +1,10 @@
-﻿using Slipe.Shared.Utilities;
+﻿using SlipeLua.Shared.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
-namespace Slipe.Client.Dx
+namespace SlipeLua.Client.Dx
 {
     /// <summary>
     /// Represents a vertice drawn in primitives

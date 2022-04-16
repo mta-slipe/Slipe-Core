@@ -1,12 +1,12 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Explosions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Explosions;
 
-namespace Slipe.Server.Explosions
+namespace SlipeLua.Server.Explosions
 {
     /// <summary>
     /// An explosion in the world

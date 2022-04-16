@@ -1,4 +1,4 @@
-System.define("Slipe.MtaDefinitions.MtaServer", {
+System.define("SlipeLua.MtaDefinitions.MtaServer", {
 	AddAccount = function(...) local results = {addAccount(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	GetAccountPlayer = function(...) local results = {getAccountPlayer(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,
 	GetAccountsBySerial = function(...) local results = {getAccountsBySerial(...)} if results[1] == false then System.throw(Slipe.MtaDefinitions.MtaException()) return end return unpack(results) end,

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.GameWorld
+namespace SlipeLua.Client.GameWorld
 {
     /// <summary>
     /// Represents different properties of setWorldSpecialPropertyEnabled

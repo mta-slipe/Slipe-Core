@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
-using Slipe.Client.Elements;
-using Slipe.Client.Rendering.Events;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Client.Elements;
+using SlipeLua.Client.Rendering.Events;
 
-namespace Slipe.Client.Rendering
+namespace SlipeLua.Client.Rendering
 {
     /// <summary>
     /// Singleton responsible for rendering

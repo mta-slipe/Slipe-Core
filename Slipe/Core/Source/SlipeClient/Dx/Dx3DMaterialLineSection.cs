@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Utilities;
-using Slipe.Client.Elements;
-using Slipe.Client.Rendering.Events;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Utilities;
+using SlipeLua.Client.Elements;
+using SlipeLua.Client.Rendering.Events;
 
-namespace Slipe.Client.Dx
+namespace SlipeLua.Client.Dx
 {
     /// <summary>
     /// Draws a textured 3D line between two points in the 3D world - rendered for one frame

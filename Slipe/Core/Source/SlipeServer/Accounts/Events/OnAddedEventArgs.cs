@@ -1,9 +1,9 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Accounts.Events
+namespace SlipeLua.Server.Accounts.Events
 {
     public class OnAddedEventArgs
     {

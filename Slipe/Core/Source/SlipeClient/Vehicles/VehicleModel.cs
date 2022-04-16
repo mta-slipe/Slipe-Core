@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.Vehicles;
+using SlipeLua.Shared.Vehicles;
 using System.Numerics;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Linq;
 
-namespace Slipe.Client.Vehicles
+namespace SlipeLua.Client.Vehicles
 {
     /// <summary>
     /// Represents a vehicle model 

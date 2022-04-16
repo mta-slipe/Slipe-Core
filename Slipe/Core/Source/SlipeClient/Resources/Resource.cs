@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Resources;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Resources;
 
-namespace Slipe.Client.Resources
+namespace SlipeLua.Client.Resources
 {
     /// <summary>
     /// Represents an MTA resource

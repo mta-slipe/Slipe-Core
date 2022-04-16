@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Client.Enums;
-using Slipe.Shared.GameWorld;
+using SlipeLua.Client.Enums;
+using SlipeLua.Shared.GameWorld;
 
-namespace Slipe.Client.GameWorld
+namespace SlipeLua.Client.GameWorld
 {
     public class World : SharedWorld
     {
@@ -50,7 +50,7 @@ namespace Slipe.Client.GameWorld
             }
             set
             {
-                MtaClient.SetPedsLODDistance(Math.Clamp(value, 0, 500));
+                MtaClient.SetPedsLODDistance(Math.Max(Math.Min(value, 0), 500));
             }
         }
 

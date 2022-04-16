@@ -1,14 +1,14 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.Elements;
+using SlipeLua.Shared.Elements;
 using System.ComponentModel;
 using System.Numerics;
-using Slipe.Shared.IO;
-using Slipe.Client.Gui.Events;
+using SlipeLua.Shared.IO;
+using SlipeLua.Client.Gui.Events;
 
-namespace Slipe.Client.Gui
+namespace SlipeLua.Client.Gui
 {
     public abstract class GuiElement : Element
     {

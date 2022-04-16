@@ -1,14 +1,14 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Utilities;
-using Slipe.Shared.Rendering;
-using Slipe.Client.Rendering;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Utilities;
+using SlipeLua.Shared.Rendering;
+using SlipeLua.Client.Rendering;
 
-namespace Slipe.Client
+namespace SlipeLua.Client
 {
     /// <summary>
     /// Class representing the camera of the local player

@@ -1,12 +1,12 @@
-﻿using Slipe.Client.Game;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
+﻿using SlipeLua.Client.Game;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
-namespace Slipe.Client.Peds.Events
+namespace SlipeLua.Client.Peds.Events
 {
     public class OnSpawnEventArgs
     {

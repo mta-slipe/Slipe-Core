@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Exceptions
+namespace SlipeLua.Shared.Exceptions
 {
     /// <summary>
     /// Exception raised when a wrapped MTA function cannot find a requested element

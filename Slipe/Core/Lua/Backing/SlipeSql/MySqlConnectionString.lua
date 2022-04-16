@@ -40,4 +40,4 @@ MySqlConnectionString.setCharset = function (this, value)
   this.charset = value
 end
 
-System.define("Slipe.Sql.MySqlConnectionString", MySqlConnectionString)
+System.define("SlipeLua.Sql.MySqlConnectionString", MySqlConnectionString)

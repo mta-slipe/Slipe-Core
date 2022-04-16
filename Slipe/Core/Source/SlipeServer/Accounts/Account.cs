@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
-using Slipe.Server.Acl;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Server.Acl;
 using System.ComponentModel;
-using Slipe.Server.Peds;
-using Slipe.Server.Accounts.Events;
-using Slipe.Server.Elements;
+using SlipeLua.Server.Peds;
+using SlipeLua.Server.Accounts.Events;
+using SlipeLua.Server.Elements;
 
-namespace Slipe.Server.Accounts
+namespace SlipeLua.Server.Accounts
 {
     /// <summary>
     /// The account class represents a player's server account. 

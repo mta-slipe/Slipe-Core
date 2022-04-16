@@ -1,12 +1,12 @@
-﻿using Slipe.Client.Elements;
-using Slipe.Client.IO.Events;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.IO;
+﻿using SlipeLua.Client.Elements;
+using SlipeLua.Client.IO.Events;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.IO;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.IO
+namespace SlipeLua.Client.IO
 {
     /// <summary>
     /// Class that handles various types of user input
@@ -54,9 +54,9 @@ namespace Slipe.Client.IO
         /// <returns></returns>
         public static bool BindKey(string key, KeyState state, Action<string, KeyState> handler)
         {
-            Action<string, string> rawClosure = (string command, string state) =>
+            Action<string, string> rawClosure = (string command, string closureState) =>
             {
-                handler(command, (KeyState)Enum.Parse(typeof(KeyState), state, true));
+                handler(command, (KeyState)Enum.Parse(typeof(KeyState), closureState, true));
             };
             closures[handler] = rawClosure;
             return MtaClient.BindKey(key, state.ToString().ToLower(), rawClosure);

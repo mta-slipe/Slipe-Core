@@ -1,3 +1,3 @@
-namespace Slipe.MtaDefinitions {
+namespace SlipeLua.MtaDefinitions {
 	public class MtaAclGroup{}
 }

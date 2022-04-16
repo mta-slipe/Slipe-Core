@@ -1,10 +1,10 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Server.Resources;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Server.Resources;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Game.Events
+namespace SlipeLua.Server.Game.Events
 {
     public class OnStartEventArgs
     {

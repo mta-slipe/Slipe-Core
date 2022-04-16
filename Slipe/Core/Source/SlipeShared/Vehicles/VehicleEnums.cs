@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Vehicles
+namespace SlipeLua.Shared.Vehicles
 {
     /// <summary>
     /// Represents different doors of vehicles

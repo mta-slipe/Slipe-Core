@@ -1,10 +1,10 @@
-﻿using Slipe.Shared.Explosions;
+﻿using SlipeLua.Shared.Explosions;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
-namespace Slipe.Client.Elements.Events
+namespace SlipeLua.Client.Elements.Events
 {
     public class OnExplosionEventArgs
     {

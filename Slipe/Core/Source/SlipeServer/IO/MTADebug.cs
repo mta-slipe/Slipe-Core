@@ -1,13 +1,13 @@
-﻿using Slipe.Shared.IO;
+﻿using SlipeLua.Shared.IO;
 using System;
 using System.Collections.Generic;
-using Slipe.Shared.Utilities;
+using SlipeLua.Shared.Utilities;
 using System.Text;
-using Slipe.Server.IO.Events;
-using Slipe.Server.Elements;
-using Slipe.Shared.Elements;
+using SlipeLua.Server.IO.Events;
+using SlipeLua.Server.Elements;
+using SlipeLua.Shared.Elements;
 
-namespace Slipe.Server.IO
+namespace SlipeLua.Server.IO
 {
     public class MtaDebug: SharedMtaDebug
     {

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Utilities;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Utilities;
 
-namespace Slipe.Server.Displays
+namespace SlipeLua.Server.Displays
 {
     /// <summary>
     /// Represents a text label visible on a display

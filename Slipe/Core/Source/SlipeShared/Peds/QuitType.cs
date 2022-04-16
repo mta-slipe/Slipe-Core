@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Peds
+namespace SlipeLua.Shared.Peds
 {
     /// <summary>
     /// Represents the type with which the player quit

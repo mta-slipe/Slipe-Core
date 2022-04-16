@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.GameWorld;
+using SlipeLua.Shared.GameWorld;
 
-namespace Slipe.Server.GameWorld
+namespace SlipeLua.Server.GameWorld
 {
     /// <summary>
     /// Class wrapping a garage as seen in singleplayer

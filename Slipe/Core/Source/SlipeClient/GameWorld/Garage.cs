@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.GameWorld;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.GameWorld;
 
-namespace Slipe.Client.GameWorld
+namespace SlipeLua.Client.GameWorld
 {
     /// <summary>
     /// Class wrapping a garage as seen in singleplayer

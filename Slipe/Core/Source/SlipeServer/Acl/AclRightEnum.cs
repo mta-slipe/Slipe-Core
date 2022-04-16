@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Acl
+namespace SlipeLua.Server.Acl
 {
     /// <summary>
     /// Represents different types of ACL rights

@@ -1,12 +1,12 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Server.Game;
-using Slipe.Server.Resources;
-using Slipe.Shared.Elements;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Server.Game;
+using SlipeLua.Server.Resources;
+using SlipeLua.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Elements
+namespace SlipeLua.Server.Elements
 {
     [DefaultElementClass(ElementType.Resource)]
     public class ResourceRootElement: Element

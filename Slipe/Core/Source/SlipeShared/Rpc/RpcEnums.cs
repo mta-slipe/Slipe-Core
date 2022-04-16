@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Rpc
+namespace SlipeLua.Shared.Rpc
 {
     public enum ClientRpcFailedAction
     {

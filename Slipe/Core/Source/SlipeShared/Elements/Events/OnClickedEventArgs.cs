@@ -1,12 +1,12 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.IO;
-using Slipe.Shared.Peds;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.IO;
+using SlipeLua.Shared.Peds;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
 
-namespace Slipe.Shared.Elements.Events
+namespace SlipeLua.Shared.Elements.Events
 {
     public class OnClickedEventArgs
     {

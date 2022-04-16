@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.Vehicles;
+using SlipeLua.Shared.Vehicles;
 using System.Numerics;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
 using System.ComponentModel;
-using Slipe.Server.Peds;
-using Slipe.Server.Vehicles.Events;
-using Slipe.Shared.Elements.Events;
+using SlipeLua.Server.Peds;
+using SlipeLua.Server.Vehicles.Events;
+using SlipeLua.Shared.Elements.Events;
 
-namespace Slipe.Server.Vehicles
+namespace SlipeLua.Server.Vehicles
 {
     public class BaseVehicle : SharedVehicle
     {

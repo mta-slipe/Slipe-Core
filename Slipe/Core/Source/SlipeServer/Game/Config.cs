@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Server.Game;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Server.Game;
 
-namespace Slipe.Server.Game
+namespace SlipeLua.Server.Game
 {
     /// <summary>
     /// Represents server config fields

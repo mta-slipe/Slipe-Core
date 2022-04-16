@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Shared.Vehicles
+namespace SlipeLua.Shared.Vehicles
 {
     /// <summary>
     /// Class representation of different vehicle models

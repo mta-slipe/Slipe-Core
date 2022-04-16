@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.Vehicles.Events
+namespace SlipeLua.Server.Vehicles.Events
 {
     public class OnRespawnEventArgs
     {

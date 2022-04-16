@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Elements.Events
+namespace SlipeLua.Shared.Elements.Events
 {
     public class OnStreamInEventArgs
     {

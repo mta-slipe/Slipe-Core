@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.IO
+namespace SlipeLua.Shared.IO
 {
     /// <summary>
     /// Represents different types of messages that can be send by players

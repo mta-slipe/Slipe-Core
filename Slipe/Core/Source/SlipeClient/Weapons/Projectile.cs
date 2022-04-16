@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
-using Slipe.Client.Peds;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Client.Peds;
 using System.Numerics;
-using Slipe.Client.Weapons.Events;
+using SlipeLua.Client.Weapons.Events;
 
-namespace Slipe.Client.Weapons
+namespace SlipeLua.Client.Weapons
 {
     /// <summary>
     /// Represents a custom projectile

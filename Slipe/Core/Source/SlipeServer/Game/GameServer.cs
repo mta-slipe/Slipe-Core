@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
-using Slipe.Server.Elements;
-using Slipe.Server.Game;
-using Slipe.Server.Game.Events;
-using Slipe.Server.IO;
-using Slipe.Server.Resources;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Helpers;
+using SlipeLua.MtaDefinitions;
+using SlipeLua.Server.Elements;
+using SlipeLua.Server.Game;
+using SlipeLua.Server.Game.Events;
+using SlipeLua.Server.IO;
+using SlipeLua.Server.Resources;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Helpers;
 
-namespace Slipe.Server.Game
+namespace SlipeLua.Server.Game
 {
     /// <summary>
     /// Static class for functionality of the actual server process

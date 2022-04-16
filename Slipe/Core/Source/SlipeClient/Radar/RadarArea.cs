@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Shared.Utilities;
-using Slipe.Shared.Radar;
+using SlipeLua.Shared.Utilities;
+using SlipeLua.Shared.Radar;
 using System.ComponentModel;
-using Slipe.Shared.Elements;
+using SlipeLua.Shared.Elements;
 
-namespace Slipe.Client.Radar
+namespace SlipeLua.Client.Radar
 {
     /// <summary>
     /// Class representing a radar area on the minimap

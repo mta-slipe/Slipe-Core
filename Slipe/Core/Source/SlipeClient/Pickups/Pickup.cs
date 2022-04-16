@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
-using Slipe.Shared.Weapons;
-using Slipe.Shared.Pickups;
+using SlipeLua.Shared.Weapons;
+using SlipeLua.Shared.Pickups;
 using System.ComponentModel;
-using Slipe.Shared.Elements;
+using SlipeLua.Shared.Elements;
 
-namespace Slipe.Client.Pickups
+namespace SlipeLua.Client.Pickups
 {
     /// <summary>
     /// Class for a GTA pickup

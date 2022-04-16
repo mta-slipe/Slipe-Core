@@ -1,18 +1,18 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.Elements;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.IO;
+using SlipeLua.Shared.IO;
 using System.Numerics;
-using Slipe.Shared.Peds;
-using Slipe.Shared.Utilities;
-using Slipe.Shared.Helpers;
-using Slipe.Client.IO;
-using Slipe.Client.Browsers;
-using Slipe.Client.Game;
+using SlipeLua.Shared.Peds;
+using SlipeLua.Shared.Utilities;
+using SlipeLua.Shared.Helpers;
+using SlipeLua.Client.IO;
+using SlipeLua.Client.Browsers;
+using SlipeLua.Client.Game;
 
-namespace Slipe.Client.Elements
+namespace SlipeLua.Client.Elements
 {
     [DefaultElementClass(ElementType.Root)]
     public class RootElement: Element

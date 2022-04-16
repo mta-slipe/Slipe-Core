@@ -1,10 +1,10 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Shared.Peds;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Shared.Peds;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Elements.Events
+namespace SlipeLua.Shared.Elements.Events
 {
     public class OnStartSyncEventArgs
     {

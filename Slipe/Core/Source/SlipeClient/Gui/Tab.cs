@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.Shared.Elements;
-using Slipe.MtaDefinitions;
+using SlipeLua.Shared.Elements;
+using SlipeLua.MtaDefinitions;
 using System.Numerics;
 using System.ComponentModel;
-using Slipe.Client.Gui.Events;
+using SlipeLua.Client.Gui.Events;
 
-namespace Slipe.Client.Gui
+namespace SlipeLua.Client.Gui
 {
     /// <summary>
     /// Represents a Cegui tab (use with tab panel)

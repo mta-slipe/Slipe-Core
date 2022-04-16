@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Slipe.MtaDefinitions;
+using SlipeLua.MtaDefinitions;
 
-namespace Slipe.Shared.Helpers
+namespace SlipeLua.Shared.Helpers
 {
     /// <summary>
     /// Represents a handler for the server or client Mta version and Os info

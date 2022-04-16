@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Sql
+namespace SlipeLua.Sql
 {
     public class MySqlConnectionString
     {

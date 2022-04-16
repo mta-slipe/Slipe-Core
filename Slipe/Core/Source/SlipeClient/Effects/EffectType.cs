@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Client.Effects
+namespace SlipeLua.Client.Effects
 {
     /// <summary>
     /// Represents different types of effects

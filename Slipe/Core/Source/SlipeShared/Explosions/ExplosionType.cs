@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Explosions
+namespace SlipeLua.Shared.Explosions
 {
     /// <summary>
     /// Represents different types of explosions

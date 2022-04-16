@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Radar
+namespace SlipeLua.Shared.Radar
 {
     /// <summary>
     /// Represents different icons for map blips

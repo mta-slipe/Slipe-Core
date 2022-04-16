@@ -1,9 +1,9 @@
-﻿using Slipe.Shared.Elements;
+﻿using SlipeLua.Shared.Elements;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Server.IO.Events
+namespace SlipeLua.Server.IO.Events
 {
     public class OnChatMessageEventArgs
     {

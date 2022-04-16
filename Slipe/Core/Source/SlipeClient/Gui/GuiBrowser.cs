@@ -1,13 +1,13 @@
-﻿using Slipe.MtaDefinitions;
+﻿using SlipeLua.MtaDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Numerics;
-using Slipe.Shared.Elements;
-using Slipe.Client.Browsers;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Client.Browsers;
 using System.ComponentModel;
 
-namespace Slipe.Client.Gui
+namespace SlipeLua.Client.Gui
 {
     /// <summary>
     /// GUI variant of a browser element

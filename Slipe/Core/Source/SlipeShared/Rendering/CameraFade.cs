@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Slipe.Shared.Rendering
+namespace SlipeLua.Shared.Rendering
 {
     /// <summary>
     /// Represents camera fades
