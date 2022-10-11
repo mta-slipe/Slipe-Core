@@ -148,7 +148,7 @@ namespace SlipeLua.Client.Rendering
         public delegate void OnHudRenderHandler(RootElement source, OnHudRenderEventArgs eventArgs);
         public static event OnHudRenderHandler OnHudRender;
 
-#pragma warning enable 67
+#pragma warning restore 67
 
         #endregion
     }

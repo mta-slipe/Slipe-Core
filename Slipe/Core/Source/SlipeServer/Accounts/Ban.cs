@@ -188,7 +188,7 @@ namespace SlipeLua.Server.Accounts
         public delegate void OnAddedHandler(RootElement source, OnAddedEventArgs eventArgs);
         public static event OnAddedHandler OnAdded;
 
-#pragma warning enable 67
+#pragma warning restore 67
 
         #endregion
 

@@ -119,7 +119,7 @@ namespace SlipeLua.Client.IO
         public delegate void OnMoveHandler(RootElement source, OnMoveEventArgs eventArgs);
         public static event OnMoveHandler OnMove;
 
-#pragma warning enable 67
+#pragma warning restore 67
 
         #endregion
     }

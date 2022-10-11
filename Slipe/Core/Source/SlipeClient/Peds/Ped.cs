@@ -184,7 +184,9 @@ namespace SlipeLua.Client.Peds
             get
             {
                 Tuple<string, string> result = MtaClient.GetPedAnimation(element);
-                return new Animation(result.Item1, result.Item2);
+                var group = result.Item1;
+                var animation = result.Item2;
+                return new Animation(group, animation);
             }
             set
             {

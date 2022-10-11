@@ -165,7 +165,7 @@ namespace SlipeLua.Client.IO
         public delegate void OnCharacterHandler(RootElement source, OnCharacterEventArgs eventArgs);
         public static event OnCharacterHandler OnCharacter;
 
-#pragma warning enable 67
+#pragma warning restore 67
 
         #endregion
     }

@@ -17,7 +17,7 @@
 		<ProjectReference Include="..\SlipeMTADefinitions\SlipeMTADefinitions.csproj" />
 		<ProjectReference Include="..\SlipeShared\SlipeShared.csproj" />
 		<ProjectReference Include="..\SlipeSql\SlipeSql.csproj" />
-		<ProjectReference Include="..\..\..\..\..\CodeGenerator\CodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<ProjectReference Include="..\..\..\..\..\CodeGenerator\SlipeLua.CodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 	</ItemGroup>
 
 	<ItemGroup>

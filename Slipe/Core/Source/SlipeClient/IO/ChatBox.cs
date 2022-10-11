@@ -298,7 +298,7 @@ namespace SlipeLua.Client.IO
         public delegate void OnMessageHandler(Element source, OnChatMessageEventArgs eventArgs);
         public static event OnMessageHandler OnMessage;
 
-#pragma warning enable 67
+#pragma warning restore 67
 
         #endregion
     }

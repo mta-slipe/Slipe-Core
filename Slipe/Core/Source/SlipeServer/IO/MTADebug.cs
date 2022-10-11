@@ -16,6 +16,6 @@ namespace SlipeLua.Server.IO
 #pragma warning disable 67
         public delegate void OnMessageHandler(Element source, OnDebugMessageEventArgs eventArgs);
         public static event OnMessageHandler OnMessage;
-#pragma warning enable 67
+#pragma warning restore 67
     }
 }

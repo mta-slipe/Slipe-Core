@@ -28,6 +28,6 @@ namespace SlipeLua.Client.IO
         public delegate void OnMessageHandler(RootElement source, OnDebugMessageEventArgs eventArgs);
         public static event OnMessageHandler OnMessage;
 
-#pragma warning enable 67
+#pragma warning restore 67
     }
 }

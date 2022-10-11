@@ -341,7 +341,7 @@ namespace SlipeLua.Server.Accounts
         public delegate void OnDataChangeHandler(RootElement source, OnDataChangeEventArgs eventArgs);
         public static event OnDataChangeHandler OnDataChange;
 
-#pragma warning enable 67
+#pragma warning restore 67
 
         #endregion
 

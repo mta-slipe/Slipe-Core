@@ -239,7 +239,7 @@ namespace SlipeLua.Client.Game
         public delegate void OnRestoreHandler(RootElement source, OnRestoreEventArgs eventArgs);
         public static event OnRestoreHandler OnRestore;
 
-#pragma warning enable 67
+#pragma warning restore 67
 
         #endregion
     }

@@ -87,7 +87,7 @@ namespace SlipeLua.Server.IO
         /// </summary>
         public static event OnMessageHandler OnMessage;
 
-#pragma warning enable 67
+#pragma warning restore 67
         #endregion
     }
 }

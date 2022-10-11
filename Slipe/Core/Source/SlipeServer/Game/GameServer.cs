@@ -257,7 +257,7 @@ namespace SlipeLua.Server.Game
 
         public delegate void OnSettingChangeHandler(RootElement source, OnSettingChangeEventArgs eventArgs);
         public static event OnSettingChangeHandler OnSettingChange;
-#pragma warning enable 67
+#pragma warning restore 67
         #endregion
     }
 }
