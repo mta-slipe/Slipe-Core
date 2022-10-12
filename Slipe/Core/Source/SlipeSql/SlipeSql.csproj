@@ -1,13 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<AssemblyName>Slipe.Sql</AssemblyName>
-		<RootNamespace>Slipe.Sql</RootNamespace>
+		<AssemblyName>SlipeLua.Sql</AssemblyName>
+		<RootNamespace>SlipeLua.Sql</RootNamespace>
+
+		<Version>0.1.9</Version>
+		<Authors>Slipe</Authors>
+		<Company></Company>
+		<Product>Slipe Lua SQL</Product>
+		<PackageProjectUrl>https://github.com/mta-slipe/Slipe-core</PackageProjectUrl>
+		<PackageIcon>slipe-logo.png</PackageIcon>
+		<RepositoryUrl>https://github.com/mta-slipe/Slipe-core</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<Description>Slipe Lua SQL class lib</Description>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Update="Lua\**\*">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Lua\**\*">
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\..\..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\..\..\..\..\slipe-logo.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
 		</None>
 	</ItemGroup>
 </Project>

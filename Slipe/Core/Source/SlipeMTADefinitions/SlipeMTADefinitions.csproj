@@ -1,7 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <RootNamespace>Slipe.MtaDefinitions</RootNamespace>
+		<RootNamespace>SlipeLua.MtaDefinitions</RootNamespace>
+		<AssemblyName>SlipeLua.MtaDefinitions</AssemblyName>
+
+		<Version>0.1.9</Version>
+		<Authors>Slipe</Authors>
+		<Company></Company>
+		<Product>Slipe Lua MTA Definitions</Product>
+		<PackageProjectUrl>https://github.com/mta-slipe/Slipe-core</PackageProjectUrl>
+		<PackageIcon>slipe-logo.png</PackageIcon>
+		<RepositoryUrl>https://github.com/mta-slipe/Slipe-core</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<Description>Slipe Lua MTA function definitions</Description>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,5 +24,34 @@
 		<None Update="Lua\**\*">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Lua\**\*">
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="..\..\..\..\..\CSharp.lua\CSharp.lua\CSharp.lua\CoreSystem.Lua\**\*">
+			<Link>CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<PackagePath>contentFiles\any\net6.0\CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension);content\CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\..\..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\..\..\..\..\slipe-logo.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\..\..\SlipeLua.CSharpLua\SlipeLua.CSharpLua.csproj" />
 	</ItemGroup>
 </Project>

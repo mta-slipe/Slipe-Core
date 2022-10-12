@@ -3,12 +3,37 @@
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<RootNamespace>Slipe.Shared</RootNamespace>
+		<RootNamespace>SlipeLua.Shared</RootNamespace>
+		<AssemblyName>SlipeLua.Shared</AssemblyName>
 		<RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+
+		<Version>0.1.8</Version>
+		<Authors>Slipe</Authors>
+		<Company></Company>
+		<Product>Slipe Lua Shared</Product>
+		<PackageProjectUrl>https://github.com/mta-slipe/Slipe-core</PackageProjectUrl>
+		<PackageIcon>slipe-logo.png</PackageIcon>
+		<RepositoryUrl>https://github.com/mta-slipe/Slipe-core</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<Description>Slipe Lua Shared class lib</Description>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="..\SlipeMTADefinitions\Lua\**\*">
+			<Link>Lua\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<PackagePath>contentFiles\any\net6.0\Lua\%(RecursiveDir)%(Filename)%(Extension);content\Lua\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+		</Content>
+		<Content Include="..\..\..\..\..\CSharp.lua\CSharp.lua\CSharp.lua\CoreSystem.Lua\**\*">
+			<Link>CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<PackagePath>contentFiles\any\net6.0\CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension);content\CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+		</Content>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -19,6 +44,23 @@
 	<ItemGroup>
 		<None Update="Lua\**\*">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Lua\**\*">
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\..\..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\..\..\..\..\slipe-logo.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
 		</None>
 	</ItemGroup>
 

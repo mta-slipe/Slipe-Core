@@ -5,8 +5,20 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<ApplicationIcon />
 		<StartupObject />
-		<RootNamespace>Slipe.Server</RootNamespace>
+		<RootNamespace>SlipeLua.Server</RootNamespace>
+		<AssemblyName>SlipeLua.Server</AssemblyName>
 		<RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+
+		<Version>0.1.8</Version>
+		<Authors>Slipe</Authors>
+		<Company></Company>
+		<Product>Slipe Lua Server</Product>
+		<PackageProjectUrl>https://github.com/mta-slipe/Slipe-core</PackageProjectUrl>
+		<PackageIcon>slipe-logo.png</PackageIcon>
+		<RepositoryUrl>https://github.com/mta-slipe/Slipe-core</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<Description>Slipe Lua Server class lib</Description>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -23,6 +35,23 @@
 	<ItemGroup>
 		<None Update="Lua\**\*">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Lua\**\*">
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\..\..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\..\..\..\..\slipe-logo.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
 		</None>
 	</ItemGroup>
 
