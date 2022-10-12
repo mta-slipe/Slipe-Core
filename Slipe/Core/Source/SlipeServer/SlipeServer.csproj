@@ -9,7 +9,7 @@
 		<AssemblyName>SlipeLua.Server</AssemblyName>
 		<RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
 
-		<Version>0.1.8</Version>
+		<Version>0.1.11</Version>
 		<Authors>Slipe</Authors>
 		<Company></Company>
 		<Product>Slipe Lua Server</Product>
@@ -39,8 +39,30 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="Lua\**\*">
+		<Content Include="..\SlipeMTADefinitions\Lua\**\*">
+			<Link>Lua\%(RecursiveDir)%(Filename)%(Extension)</Link>
 			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<PackagePath>contentFiles\any\net6.0\Lua\%(RecursiveDir)%(Filename)%(Extension);content\Lua\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+		</Content>
+		<Content Include="..\SlipeShared\Lua\**\*">
+			<Link>Lua\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<PackagePath>contentFiles\any\net6.0\Lua\%(RecursiveDir)%(Filename)%(Extension);content\Lua\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+		</Content>
+		<Content Include="..\SlipeSql\Lua\**\*">
+			<Link>Lua\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<PackagePath>contentFiles\any\net6.0\Lua\%(RecursiveDir)%(Filename)%(Extension);content\Lua\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+		</Content>
+		<Content Include="..\..\..\..\..\CSharp.lua\CSharp.lua\CSharp.lua\CoreSystem.Lua\**\*">
+			<Link>CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<PackagePath>contentFiles\any\net6.0\CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension);content\CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+		</Content>
+		<Content Include="Lua\**\*">
+			<Link>CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<PackagePath>contentFiles\any\net6.0\Lua\%(RecursiveDir)%(Filename)%(Extension);content\Lua\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
 		</Content>
 	</ItemGroup>
 
