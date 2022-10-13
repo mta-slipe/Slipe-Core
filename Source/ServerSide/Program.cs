@@ -1,24 +1,21 @@
-﻿using Slipe.MtaDefinitions;
-using Slipe.Server.Peds;
-using Slipe.Server.Peds.Events;
-using Slipe.Server.Vehicles;
-using Slipe.Shared.Elements;
-using Slipe.Shared.Peds;
-using Slipe.Shared.Utilities;
+﻿using SlipeLua.MtaDefinitions;
+using SlipeLua.Server.Game;
+using SlipeLua.Server.IO;
+using SlipeLua.Server.Peds;
+using SlipeLua.Server.Peds.Events;
+using SlipeLua.Server.Resources;
+using SlipeLua.Server.Rpc;
+using SlipeLua.Server.Vehicles;
+using SlipeLua.Server.Vehicles.Events;
+using SlipeLua.Shared.Elements;
+using SlipeLua.Shared.Exports;
+using SlipeLua.Shared.Peds;
+using SlipeLua.Shared.Rendering;
+using SlipeLua.Shared.Rpc;
+using SlipeLua.Shared.Utilities;
 using System;
 using System.Numerics;
-using Slipe.Shared.Rendering;
-using Slipe.Sql;
 using System.Threading.Tasks;
-using Slipe.Shared.Exports;
-using Slipe.Server.Vehicles.Events;
-using Slipe.Server.Accounts;
-using Slipe.Server.Resources;
-using Slipe.Server.Rpc;
-using Slipe.Shared.Rpc;
-using Slipe.Server.IO;
-using Slipe.Server.Game;
-using Slipe.Server.GameWorld;
 using System.Xml;
 
 namespace ServerSide
@@ -50,7 +47,8 @@ namespace ServerSide
 
                 player.OnLogin += OnPlayerLogin;
 
-                Task.Run(async () => {
+                Task.Run(async () =>
+                {
                     var result = await RpcManager.Instance.TriggerAsyncRpc<SingleCastRpc<string>>(player, "Async.RequestLocalization", new EmptyRpc());
                     Console.WriteLine($"Localization for {player.Name}: {result.Value}");
                 });
@@ -105,9 +103,9 @@ namespace ServerSide
         }
     }
 
-    public class KillMessagesResource: Resource
+    public class KillMessagesResource : Resource
     {
-        public KillMessagesResource(): base("killmessages")
+        public KillMessagesResource() : base("killmessages")
         {
             this.OnStart += () => Console.WriteLine("TTT");
         }
@@ -146,7 +144,8 @@ namespace ServerSide
         }
 
         [Export("DoTheThing")]
-        public static void DoTheThing(string x) {
+        public static void DoTheThing(string x)
+        {
             Console.WriteLine("Export has been called with parameter {0}", x);
         }
     }

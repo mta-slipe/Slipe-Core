@@ -1,10 +1,10 @@
-﻿using Slipe.Client.Dx;
-using Slipe.Client.Game;
-using Slipe.Client.IO;
-using Slipe.Client.Peds;
-using Slipe.Client.Rpc;
-using Slipe.Client.Vehicles;
-using Slipe.Shared.Rpc;
+﻿using SlipeLua.Client.Dx;
+using SlipeLua.Client.Game;
+using SlipeLua.Client.IO;
+using SlipeLua.Client.Peds;
+using SlipeLua.Client.Rpc;
+using SlipeLua.Client.Vehicles;
+using SlipeLua.Shared.Rpc;
 using System.Numerics;
 using System.Threading.Tasks;
 

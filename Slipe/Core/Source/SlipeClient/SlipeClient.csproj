@@ -6,7 +6,7 @@
 		<AssemblyName>SlipeLua.Client</AssemblyName>
 		<RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
 
-		<Version>0.1.11</Version>
+		<Version>0.1.12</Version>
 		<Authors>Slipe</Authors>
 		<Company></Company>
 		<Product>Slipe Lua Client</Product>
