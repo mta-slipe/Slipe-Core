@@ -1,0 +1,10 @@
+{
+  "modules": [
+    "SqlValue",
+    "MySqlConnectionString",
+    "SqlOptions",
+    "Database"
+  ],
+  "types": [],
+  "requiredAssemblies": []
+}

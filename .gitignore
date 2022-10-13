@@ -1,4 +1,6 @@
 Dist/
+!Slipe/Core/Source/SlipeMTADefinitions/Lua/Dist
+!Slipe/Core/Source/SlipeSql/Lua/Dist
 Slipe/Build/
 Build/
 InternalModules/
