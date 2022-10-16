@@ -6,8 +6,8 @@ local ArrayObject
 local DictStringObject
 
 System.import(function (out)
-  SlipeMtaDefinitions = Slipe.MtaDefinitions
-  SlipeShared = Slipe.Shared
+  SlipeMtaDefinitions = SlipeLua.MtaDefinitions
+  SlipeShared = SlipeLua.Shared
   ArrayObject = System.Array(System.Object)
   DictStringObject = System.Dictionary(System.String, System.Object)
 end)

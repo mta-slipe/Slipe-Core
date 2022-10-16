@@ -95,22 +95,10 @@ namespace SlipeLua.Shared.Elements
             if (!elements.ContainsKey(element))
             {
                 string mtaElementType = MtaShared.GetElementType(element);
-                Type elementType;
-                try
-                {
-                    elementType = defaultElementTypes[mtaElementType];
-                } catch(KeyNotFoundException)
-                {
-                    elementType = typeof(Element);
-                }
-                try
-                {
-                    object instance = Activator.CreateInstance(elementType, element);
-                    return (T)instance;
-                } catch(Exception)
-                {
-                    return null;
-                }
+                defaultElementTypes.TryGetValue(mtaElementType, out var elementType);
+                elementType = elementType ?? typeof(Element);
+
+                return Activator.CreateInstance(elementType, element) as T;
                 
             }
             return (T) elements[element];
@@ -182,7 +170,7 @@ namespace SlipeLua.Shared.Elements
 
         protected internal void AddEventHandler(Element element, string eventName, bool propagated = true, string priorty = "normal")
         {
-            MtaShared.AddEventHandler(eventName, element.MTAElement, "Slipe.Shared.Elements.ElementManager.HandleEvent", propagated, priorty);
+            MtaShared.AddEventHandler(eventName, element.MTAElement, "SlipeLua.Shared.Elements.ElementManager.HandleEvent", propagated, priorty);
         }
 
         /// <summary>
