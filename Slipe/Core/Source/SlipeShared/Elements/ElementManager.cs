@@ -53,7 +53,7 @@ namespace SlipeLua.Shared.Elements
             defaultElementTypes = new Dictionary<string, Type>();
             defaultElementTypeNames = new Dictionary<Type, string>();
 
-            Type[] defaultClasses = Assembly.GetAssembly(typeof(ElementManager)).GetExportedTypes();
+            var defaultClasses = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetExportedTypes());
             foreach(Type type in defaultClasses)
             {
                 object[] customAttributes = type.GetCustomAttributes(typeof(DefaultElementClassAttribute), false);
