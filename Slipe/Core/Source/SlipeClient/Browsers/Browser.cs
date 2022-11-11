@@ -8,6 +8,7 @@ using System.ComponentModel;
 using SlipeLua.Shared.IO;
 using SlipeLua.Client.Browsers.Events;
 using SlipeLua.Client.Elements;
+using SlipeLua.Client.Dx;
 
 namespace SlipeLua.Client.Browsers
 {
@@ -54,6 +55,11 @@ namespace SlipeLua.Client.Browsers
         public bool IsFocused { get { return MtaClient.IsBrowserFocused(element); } }
 
         /// <summary>
+        /// Get the dx material of the browser, to render it in a Dx function.
+        /// </summary>
+        public BrowserMaterial Material { get { return material; } }
+
+        /// <summary>
         /// Set the volume of this browser
         /// </summary>
         public float Volume { set { MtaClient.SetBrowserVolume(element, value); } }
@@ -70,12 +76,17 @@ namespace SlipeLua.Client.Browsers
 
         #endregion
 
+        #region fields
+        private readonly BrowserMaterial material;
+
+        #endregion
+
         #region Constructors
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public Browser(MtaElement element) : base(element)
         {
-
+            material = new BrowserMaterial(this);
         }
 
         /// <summary>
