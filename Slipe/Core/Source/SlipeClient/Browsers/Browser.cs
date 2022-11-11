@@ -78,7 +78,7 @@ namespace SlipeLua.Client.Browsers
 
         #region fields
         private readonly BrowserMaterial material;
-
+        private List<SpecialBrowserEvent> boundSpecialEvents = new List<SpecialBrowserEvent>();
         #endregion
 
         #region Constructors
@@ -87,6 +87,7 @@ namespace SlipeLua.Client.Browsers
         public Browser(MtaElement element) : base(element)
         {
             material = new BrowserMaterial(this);
+            RootElement.OnMiscelaniousEvent += RouteSpecialEvent;
         }
 
         /// <summary>
@@ -194,6 +195,33 @@ namespace SlipeLua.Client.Browsers
 
             javascriptString += ")";
             return ExecuteJavascript(javascriptString);
+        }
+
+        /// <summary>
+        /// Bind a special browser event instance to this browser instance
+        /// </summary>
+        public void BindSpecialEvent(SpecialBrowserEvent browserEvent)
+        {
+            boundSpecialEvents.Add(browserEvent);
+            this.ListenForEvent(browserEvent.EventName);
+            MtaShared.AddEvent(browserEvent.EventName, true);
+        }
+
+        /// <summary>
+        /// If the source element of this event was this browser, and the event is one of the bound events, this will invoke it.
+        /// </summary>
+        private void RouteSpecialEvent(string eventName, MtaElement element, object p1, object p2, object p3, object p4, object p5, object p6, object p7, object p8)
+        {
+            if (element == this.MTAElement)
+            {
+                boundSpecialEvents.ForEach((SpecialBrowserEvent browserEvent) =>
+                {
+                    if (browserEvent.IsInvokable(eventName))
+                    {
+                        browserEvent.Invoke(eventName, this, p1, p2, p3, p4, p5, p6, p7, p8);
+                    }
+                });
+            }
         }
 
         #endregion
