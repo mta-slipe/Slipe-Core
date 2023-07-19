@@ -7,7 +7,7 @@ namespace Slipe.Sql
     public class Database
     {
         /// <summary>
-        /// Creatse a connection with a sqlite daTabase
+        /// Creates a connection with a SQLite database
         /// </summary>
         public Database(string filepath, SqlOptions options = null)
         {
