@@ -20,6 +20,10 @@
 		<None Include="Lua\**\*" Pack="true" PackagePath="contentFiles\any\any\Lua"/>
 		<EmbeddedResource Include="Lua\**\*" CopyToOutputDirectory="Always" />
 	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\SlipeMTADefinitions\SlipeMTADefinitions.csproj" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<None Include="..\..\..\..\..\LICENSE">

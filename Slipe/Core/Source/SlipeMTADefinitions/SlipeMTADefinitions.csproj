@@ -35,8 +35,4 @@
 			<PackagePath></PackagePath>
 		</None>
 	</ItemGroup>
-
-	<!--<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\..\SlipeLua.CSharpLua\SlipeLua.CSharpLua.csproj" />
-	</ItemGroup>-->
 </Project>
