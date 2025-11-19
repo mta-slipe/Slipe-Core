@@ -17,15 +17,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Update="Lua\**\*">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
-
-	<ItemGroup>
-		<Content Include="Lua\**\*">
-			<PackageCopyToOutput>true</PackageCopyToOutput>
-		</Content>
+		<None Include="Lua\**\*" Pack="true" PackagePath="contentFiles\any\any\Lua"/>
+		<EmbeddedResource Include="Lua\**\*" CopyToOutputDirectory="Always" />
 	</ItemGroup>
 
 	<ItemGroup>

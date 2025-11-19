@@ -19,26 +19,27 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<Description>Slipe Lua Server class lib</Description>
+
+		<LangVersion>Latest</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+		<PackageReference Include="System.Numerics.Vectors" Version="4.6.1" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\SlipeMTADefinitions\SlipeMTADefinitions.csproj" />
 		<ProjectReference Include="..\SlipeShared\SlipeShared.csproj" />
 		<ProjectReference Include="..\SlipeSql\SlipeSql.csproj" />
-		<ProjectReference Include="..\..\..\..\..\CodeGenerator\SlipeLua.CodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<ProjectReference Include="..\..\..\..\..\CodeGenerator\SlipeLua.CodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="Lua\**\*">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
+		<None Include="Lua\**\*" Pack="true" PackagePath="contentFiles\any\any\Lua"/>
+		<EmbeddedResource Include="Lua\**\*" CopyToOutputDirectory="Always" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<!--<ItemGroup>
 		<Content Include="..\SlipeMTADefinitions\Lua\**\*">
 			<Link>Lua\%(RecursiveDir)%(Filename)%(Extension)</Link>
 			<PackageCopyToOutput>true</PackageCopyToOutput>
@@ -64,7 +65,7 @@
 			<PackageCopyToOutput>true</PackageCopyToOutput>
 			<PackagePath>contentFiles\any\net6.0\Lua\%(RecursiveDir)%(Filename)%(Extension);content\Lua\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
 		</Content>
-	</ItemGroup>
+	</ItemGroup>-->
 
 	<ItemGroup>
 		<None Include="..\..\..\..\..\LICENSE">

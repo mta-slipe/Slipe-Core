@@ -17,39 +17,22 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<Description>Slipe Lua Shared class lib</Description>
+
+		<LangVersion>Latest</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+		<PackageReference Include="System.Numerics.Vectors" Version="4.6.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="..\SlipeMTADefinitions\Lua\**\*">
-			<Link>Lua\%(RecursiveDir)%(Filename)%(Extension)</Link>
-			<PackageCopyToOutput>true</PackageCopyToOutput>
-			<PackagePath>contentFiles\any\net6.0\Lua\%(RecursiveDir)%(Filename)%(Extension);content\Lua\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
-		</Content>
-		<Content Include="..\..\..\..\..\CSharp.lua\CSharp.lua\CSharp.lua\CoreSystem.Lua\**\*">
-			<Link>CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension)</Link>
-			<PackageCopyToOutput>true</PackageCopyToOutput>
-			<PackagePath>contentFiles\any\net6.0\CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension);content\CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
-		</Content>
-		<Content Include="Lua\**\*">
-			<Link>CoreSystem.Lua\%(RecursiveDir)%(Filename)%(Extension)</Link>
-			<PackageCopyToOutput>true</PackageCopyToOutput>
-			<PackagePath>contentFiles\any\net6.0\Lua\%(RecursiveDir)%(Filename)%(Extension);content\Lua\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
-		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\..\CodeGenerator\SlipeLua.CodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<ProjectReference Include="..\..\..\..\..\CodeGenerator\SlipeLua.CodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
 		<ProjectReference Include="..\SlipeMTADefinitions\SlipeMTADefinitions.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="Lua\**\*">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
+		<None Include="Lua\**\*" Pack="true" PackagePath="contentFiles\any\any\Lua"/>
+		<EmbeddedResource Include="Lua\**\*" CopyToOutputDirectory="Always" />
 	</ItemGroup>
 
 	<ItemGroup>
